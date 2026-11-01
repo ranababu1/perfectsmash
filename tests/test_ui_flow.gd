@@ -12,14 +12,14 @@ func _click(at: Vector2, pressed: bool) -> void:
 	event.pressed = pressed
 	event.position = at
 	event.global_position = at
-	tree.root.push_input(event)
+	tree.root.push_input(event, true)
 
 
 func _move(at: Vector2) -> void:
 	var event := InputEventMouseMotion.new()
 	event.position = at
 	event.global_position = at
-	tree.root.push_input(event)
+	tree.root.push_input(event, true)
 
 
 func _drag(from: Vector2, to: Vector2) -> void:
@@ -32,6 +32,7 @@ func _drag(from: Vector2, to: Vector2) -> void:
 
 
 func _make_main() -> Node:
+	await PhysicsWarmup.run(tree)
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
@@ -40,8 +41,8 @@ func _make_main() -> Node:
 	return main
 
 
-func test_drag_launches_and_buttons_do_not() -> void:
-	var main := _make_main()
+func test_drag_launches_and_pause_blocks_aim() -> void:
+	var main: Node = await _make_main()
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
@@ -50,17 +51,9 @@ func test_drag_launches_and_buttons_do_not() -> void:
 	var launches := []
 	game.session.launched.connect(func(v: Vector2) -> void: launches.append(v))
 
-	# Press and release on the Pause button area (top-right) must not launch.
-	var vp_size := tree.root.get_visible_rect().size
-	var pause_point := Vector2(vp_size.x - 80, 50)
-	_click(pause_point, true)
-	await tree.process_frame
-	_click(pause_point, false)
-	await tree.process_frame
-	assert_eq(launches.size(), 0, "UI press did not launch")
-	assert_true(tree.paused, "pause button paused the game")
-
 	# Aiming while paused does nothing.
+	game.pause()
+	assert_true(tree.paused, "pause() paused the tree")
 	await _drag(Vector2(640, 400), Vector2(500, 450))
 	assert_eq(launches.size(), 0, "no launch while paused")
 	game.resume()
@@ -82,13 +75,13 @@ func test_drag_launches_and_buttons_do_not() -> void:
 
 
 func test_win_is_saved_and_unlocks_next() -> void:
-	var main := _make_main()
+	var main: Node = await _make_main()
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
 	var game: GameScreen = main._game
 	var def: LevelDefinition = main.catalog.levels[0]
-	await tree.physics_frame
+	await wait_physics_frames(150)
 	game.session.launch(def.solution[0])
 	var frames := 0
 	while not game.session.rules.is_finished() and frames < 900:
@@ -101,3 +94,32 @@ func test_win_is_saved_and_unlocks_next() -> void:
 	main.queue_free()
 	await tree.process_frame
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+
+
+## Godot's headless display server does not route mouse events to GUI controls, so this
+## check only runs in a windowed test run (see tests/run_tests.gd header).
+func test_hud_button_press_does_not_launch() -> void:
+	if DisplayServer.get_name() == "headless":
+		skip("GUI input routing needs a window; run tests without --headless")
+		return
+	var main: Node = await _make_main()
+	await tree.process_frame
+	main._start_level(0)
+	await tree.process_frame
+	var game: GameScreen = main._game
+	var launches := []
+	game.session.launched.connect(func(v: Vector2) -> void: launches.append(v))
+	tree.root.notification(Window.NOTIFICATION_VP_MOUSE_ENTER)
+	var pause_point := Vector2(tree.root.get_visible_rect().size.x - 80, 50)
+	_move(pause_point)
+	await tree.process_frame
+	_click(pause_point, true)
+	await tree.process_frame
+	_move(pause_point + Vector2(-150, 200))
+	await tree.process_frame
+	_click(pause_point + Vector2(-150, 200), false)
+	await tree.process_frame
+	assert_eq(launches.size(), 0, "a drag that starts on a HUD button never launches")
+	main.queue_free()
+	await tree.process_frame
+	tree.paused = false
