@@ -25,5 +25,9 @@ func _init(p_size: Vector2, p_fill: Color = Palette.STATIC, p_edge: Color = Pale
 
 func _draw() -> void:
 	var rect := Rect2(-size / 2.0, size)
-	draw_rect(rect, fill)
-	draw_line(rect.position, Vector2(rect.end.x, rect.position.y), edge, 4.0)
+	var box := StyleBoxFlat.new()
+	box.bg_color = fill
+	box.set_corner_radius_all(3 if size.x < 1000.0 else 0)
+	box.anti_aliasing = true
+	box.draw(get_canvas_item(), rect)
+	draw_line(rect.position + Vector2(1, 1), Vector2(rect.end.x - 1, rect.position.y + 1), edge, 2.0, true)

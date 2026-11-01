@@ -5,8 +5,6 @@ extends RigidBody2D
 signal impacted(strength: float, at: Vector2)
 signal shattered(at: Vector2)
 
-const OUTLINE_WIDTH := 3.0
-
 var size := Vector2.ONE
 var material_kind := "wood"
 var armed := false
@@ -62,12 +60,30 @@ func is_broken() -> bool:
 
 func _draw() -> void:
 	var rect := Rect2(-size / 2.0, size)
-	draw_rect(rect, Palette.material_fill(material_kind))
-	draw_rect(rect.grow(-OUTLINE_WIDTH / 2.0), Palette.material_edge(material_kind), false, OUTLINE_WIDTH)
+	_style_for(material_kind).draw(get_canvas_item(), rect)
+	# A soft bevel along one face gives the pieces a little volume without textures.
+	var inset := minf(5.0, minf(size.x, size.y) * 0.2)
+	var bevel := Rect2(rect.position + Vector2(inset, inset), Vector2(size.x - inset * 2.0, 2.0))
+	draw_rect(bevel, Color(1, 1, 1, 0.22 if material_kind != "glass" else 0.4))
 	if material_kind == "wood":
 		# A single grain line along the long axis keeps orientation readable while tumbling.
 		var horizontal := size.x >= size.y
-		var a := Vector2(-size.x * 0.3, 0) if horizontal else Vector2(0, -size.y * 0.3)
-		draw_line(a, -a, Palette.WOOD_EDGE, 2.0)
+		var a := Vector2(-size.x * 0.28, 0) if horizontal else Vector2(0, -size.y * 0.28)
+		draw_line(a, -a, Color(Palette.WOOD_EDGE, 0.55), 2.0, true)
 	elif material_kind == "glass":
-		draw_line(Vector2(-size.x * 0.3, size.y * 0.3), Vector2(size.x * 0.1, -size.y * 0.3), Palette.GLASS_EDGE, 2.0)
+		draw_line(Vector2(-size.x * 0.25, size.y * 0.3), Vector2(size.x * 0.05, -size.y * 0.3), Color(Palette.GLASS_EDGE, 0.7), 2.0, true)
+
+
+static var _styles := {}
+
+
+static func _style_for(kind: String) -> StyleBoxFlat:
+	if not _styles.has(kind):
+		var box := StyleBoxFlat.new()
+		box.bg_color = Palette.material_fill(kind)
+		box.border_color = Palette.material_edge(kind)
+		box.set_border_width_all(2)
+		box.set_corner_radius_all(4)
+		box.anti_aliasing = true
+		_styles[kind] = box
+	return _styles[kind]

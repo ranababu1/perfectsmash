@@ -62,11 +62,18 @@ func is_destroyed() -> bool:
 	return _destroyed
 
 
+func _process(_delta: float) -> void:
+	queue_redraw()
+
+
 func _draw() -> void:
+	# A slow breathing halo marks the objective without shouting.
+	var pulse := 0.5 + 0.5 * sin(Time.get_ticks_msec() / 520.0 + position.x * 0.01)
+	draw_circle(Vector2.ZERO, radius + 5.0 + pulse * 3.0, Color(Palette.TARGET, 0.10 + pulse * 0.06))
 	draw_circle(Vector2.ZERO, radius, Palette.TARGET)
-	draw_arc(Vector2.ZERO, radius - 1.5, 0, TAU, 32, Palette.TARGET_EDGE, 3.0, true)
-	# Simple face so targets read as "the thing to knock out" at a glance.
-	var eye := radius * 0.28
-	draw_circle(Vector2(-eye, -eye * 0.6), radius * 0.13, Palette.TARGET_EDGE)
-	draw_circle(Vector2(eye, -eye * 0.6), radius * 0.13, Palette.TARGET_EDGE)
-	draw_line(Vector2(-eye, eye * 0.9), Vector2(eye, eye * 0.9), Palette.TARGET_EDGE, 3.0)
+	draw_arc(Vector2.ZERO, radius - 1.0, 0, TAU, 40, Color(Palette.TARGET_EDGE, 0.9), 2.0, true)
+	draw_arc(Vector2.ZERO, radius * 0.55, 0, TAU, 32, Color(Palette.TARGET_EDGE, 0.55), 2.0, true)
+	draw_circle(Vector2.ZERO, radius * 0.22, Palette.TARGET_EDGE)
+	# Rotation-independent specular glint so tumbling still reads as a sphere.
+	var glint := Vector2(-radius * 0.42, -radius * 0.42).rotated(-rotation)
+	draw_circle(glint, radius * 0.14, Color(1, 1, 1, 0.45))
