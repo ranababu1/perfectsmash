@@ -50,6 +50,7 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - Headless: `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 50 passed, 0 failed, 1 skipped.
 - Windowed (adds GUI input-routing check): `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 51 passed, 0 failed.
 - Unit only: append `-- --unit`.
+- App icons: edit the SVGs in `assets/icon/`, then `godot_console --headless -s tools/render_icons.gd`.
 - UI screenshots: `godot_console --resolution 1280x720 -s tools/capture_screens.gd` → `tests/output/screens/`.
 - Re-verify levels after any physics/tuning change: `godot_console --headless --fixed-fps 60 -s tools/solve_levels.gd -- --write`, then run tests.
 - Android debug APK: `godot_console --headless --export-debug "Android Debug" build/perfectsmash-debug.apk` works with a local
@@ -74,7 +75,7 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 2. Play-test the new level order and UI on the emulator/device; adjust anything that feels off.
 3. Run the trajectory-preview experiment (plan §10) — the preview length is `GameConfig.PREVIEW_DURATION`.
 4. Investigate the run-to-run physics variance (minimal repro; check the engine issue tracker).
-5. Decide on app icon/branding and store assets before closed testing (M5).
+5. Store assets before closed testing (M5): the app icon is done (`assets/icon/`); screenshots and a feature graphic are still needed.
 
 ## Owner decisions (2026-11-01)
 

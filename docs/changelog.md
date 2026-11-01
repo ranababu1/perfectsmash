@@ -2,6 +2,18 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-02 — App icon (0.1.0, unreleased)
+
+- Replaced the placeholder icon with a real app icon, designed from common mobile-game icon guidance: one bold subject taken
+  from the core mechanic (the golden ball cracking the red core, with an impact flash), a bright cobalt background, no text.
+- Source art: `assets/icon/icon_{background,foreground,monochrome}.svg` (Android 108dp adaptive grid; the monochrome layer
+  enables Android 13+ themed icons). `tools/render_icons.gd` renders the adaptive layers, `play_store_512.png`, `main_192.png`
+  and `project_256.png`, plus a launcher-mask review sheet at `tests/output/icon_preview.png`.
+- The adaptive foreground art is scaled to 84% because the Pixel launcher crops tighter than the 72dp spec suggests. Checked in the
+  `Pixel10Pro` emulator's app drawer.
+- `project.godot` now uses `assets/icon/project_256.png`; the old `icon.svg` was removed. The local Android preset points
+  `launcher_icons/*` at the rendered PNGs (the preset file is gitignored, so set these four paths on any new machine).
+
 ## 2026-11-02 — UI/UX refresh and difficulty curve (0.1.0, unreleased)
 
 **UI/UX** (modern but restrained: translucent surfaces, hairline borders, one accent per screen)
