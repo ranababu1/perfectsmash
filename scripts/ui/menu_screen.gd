@@ -30,7 +30,7 @@ func _ready() -> void:
 	column.alignment = BoxContainer.ALIGNMENT_CENTER
 	add_child(UiKit.centered(column))
 
-	column.add_child(UiKit.label("SMASH THEORY", 64, Palette.ACCENT))
+	column.add_child(UiKit.label("PERFECT SMASH", 64, Palette.ACCENT))
 	column.add_child(UiKit.label("One smart hit. A spectacular chain reaction.", 22, Palette.TEXT_DIM))
 	var total_possible := catalog.levels.size() * ScoreRules.MAX_STARS
 	column.add_child(UiKit.label("Stars: %d / %d" % [progress.total_stars(), total_possible], 24))

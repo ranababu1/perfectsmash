@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Smash Theory"
+config/name="Perfect Smash"
 config/description="A compact 2D physics destruction puzzle."
 config/version="0.1.0"
 run/main_scene="res://scenes/main.tscn"
