@@ -2,6 +2,8 @@ extends Node
 ## App root: owns persistence, audio and the level catalog; switches between menu and game.
 ## Handles Android back and app backgrounding (auto-pause).
 
+const FADE_TIME := 0.22
+
 var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
@@ -9,6 +11,7 @@ var audio: AudioService
 var _menu: MenuScreen
 var _game: GameScreen
 var _level_index := -1
+var _fade: ColorRect
 
 
 func _ready() -> void:
@@ -24,7 +27,27 @@ func _ready() -> void:
 		message.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(message)
 		return
+	_add_fade_layer()
 	_show_menu()
+
+
+## A full-screen veil that fades out after every screen change. It never takes input.
+func _add_fade_layer() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 100
+	add_child(layer)
+	_fade = ColorRect.new()
+	_fade.color = Palette.SKY_TOP
+	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(_fade)
+
+
+func _reveal() -> void:
+	if _fade == null:
+		return
+	_fade.modulate.a = 1.0
+	_fade.create_tween().tween_property(_fade, "modulate:a", 0.0, FADE_TIME)
 
 
 func _notification(what: int) -> void:
@@ -57,6 +80,7 @@ func _show_menu() -> void:
 	_menu.sound_toggled.connect(_set_sound)
 	_menu.vibration_toggled.connect(_set_vibration)
 	add_child(_menu)
+	_reveal()
 
 
 func _start_level(index: int) -> void:
@@ -72,6 +96,7 @@ func _start_level(index: int) -> void:
 		add_child(_game)
 	_level_index = index
 	_game.start(catalog.levels[index], index + 1, index + 1 < catalog.levels.size())
+	_reveal()
 
 
 func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
