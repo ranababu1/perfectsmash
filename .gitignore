@@ -1,0 +1,30 @@
+# Godot 4
+.godot/
+.import/
+*.translation
+export_presets.cfg
+*.tmp
+
+# Build / export output
+build/
+export/
+*.apk
+*.aab
+*.keystore
+*.jks
+*.idsig
+
+# Local secrets and config
+.env
+*.local.cfg
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test artifacts
+tests/output/
