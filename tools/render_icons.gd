@@ -9,6 +9,9 @@ extends SceneTree
 const DIR := "res://assets/icon/"
 const LAYER_SIZE := 432
 const VISIBLE_FRACTION := 72.0 / 108.0
+## Pixel-style launchers crop the adaptive foreground tighter than the 72dp spec suggests, so the
+## adaptive layer's art is shrunk around the centre. Flat icons keep the full-size framing.
+const ADAPTIVE_ART_SCALE := 0.84
 const PREVIEW_SIZES: Array[int] = [192, 96, 48]
 
 
@@ -20,13 +23,23 @@ func _initialize() -> void:
 		quit(1)
 		return
 	_save(background, "adaptive_background_432.png")
-	_save(foreground, "adaptive_foreground_432.png")
-	_save(monochrome, "adaptive_monochrome_432.png")
+	_save(_shrunk(foreground), "adaptive_foreground_432.png")
+	_save(_shrunk(monochrome), "adaptive_monochrome_432.png")
 	_save(_flat(512), "play_store_512.png")
 	_save(_flat(192), "main_192.png")
 	_save(_flat(256), "project_256.png")
 	_save_preview()
 	quit(0)
+
+
+func _shrunk(layer: Image) -> Image:
+	var inner := int(LAYER_SIZE * ADAPTIVE_ART_SCALE)
+	var art := layer.duplicate() as Image
+	art.resize(inner, inner, Image.INTERPOLATE_LANCZOS)
+	var canvas := Image.create(LAYER_SIZE, LAYER_SIZE, false, Image.FORMAT_RGBA8)
+	var at := (LAYER_SIZE - inner) / 2
+	canvas.blit_rect(art, Rect2i(0, 0, inner, inner), Vector2i(at, at))
+	return canvas
 
 
 ## Background + foreground composited, cropped to the launcher-visible centre and resized.
