@@ -2,18 +2,16 @@
 "levels": [
 {
 	"id": "L01", "name": "First Contact", "shots": 3, "par": 1,
-	"hint": "Drag back anywhere and release to launch. Knock out the red core.",
+	"hint": "Drag back anywhere and release to launch. Hit the red core.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"statics": [],
-	"blocks": [
-		{"x": 820, "y": 610, "w": 60, "h": 60, "material": "stone"}
-	],
+	"blocks": [],
 	"targets": [
-		{"x": 820, "y": 550, "r": 30}
+		{"x": 640, "y": 600, "r": 40}
 	],
 	"solution": [
-		[992, -313]
+		[1169, 51]
 	]
 },
 {
@@ -51,21 +49,21 @@
 	]
 },
 {
-	"id": "L04", "name": "Stacked", "shots": 2, "par": 1,
-	"hint": "Gravity does the rest.",
+	"id": "L07", "name": "Heavy Lid", "shots": 2, "par": 1,
+	"hint": "Stone is heavy. Let it drop.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"statics": [],
 	"blocks": [
-		{"x": 900, "y": 610, "w": 60, "h": 60, "material": "wood"},
-		{"x": 900, "y": 550, "w": 60, "h": 60, "material": "wood"},
-		{"x": 900, "y": 490, "w": 60, "h": 60, "material": "wood"}
+		{"x": 870, "y": 580, "w": 20, "h": 120, "material": "wood"},
+		{"x": 990, "y": 580, "w": 20, "h": 120, "material": "wood"},
+		{"x": 930, "y": 505, "w": 150, "h": 30, "material": "stone"}
 	],
 	"targets": [
-		{"x": 900, "y": 438, "r": 22}
+		{"x": 930, "y": 620, "r": 20}
 	],
 	"solution": [
-		[977, -356]
+		[961, -398]
 	]
 },
 {
@@ -87,6 +85,24 @@
 	]
 },
 {
+	"id": "L04", "name": "Stacked", "shots": 2, "par": 1,
+	"hint": "Gravity does the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 900, "y": 610, "w": 60, "h": 60, "material": "wood"},
+		{"x": 900, "y": 550, "w": 60, "h": 60, "material": "wood"},
+		{"x": 900, "y": 490, "w": 60, "h": 60, "material": "wood"}
+	],
+	"targets": [
+		{"x": 900, "y": 438, "r": 22}
+	],
+	"solution": [
+		[977, -356]
+	]
+},
+{
 	"id": "L06", "name": "Neighbours", "shots": 2, "par": 1,
 	"hint": "One tower can fall into the next.",
 	"launcher": [180, 540],
@@ -102,24 +118,6 @@
 	],
 	"solution": [
 		[1216, -214]
-	]
-},
-{
-	"id": "L07", "name": "Heavy Lid", "shots": 2, "par": 1,
-	"hint": "Stone is heavy. Let it drop.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [],
-	"blocks": [
-		{"x": 870, "y": 580, "w": 20, "h": 120, "material": "wood"},
-		{"x": 990, "y": 580, "w": 20, "h": 120, "material": "wood"},
-		{"x": 930, "y": 505, "w": 150, "h": 30, "material": "stone"}
-	],
-	"targets": [
-		{"x": 930, "y": 620, "r": 20}
-	],
-	"solution": [
-		[961, -398]
 	]
 },
 {
@@ -162,6 +160,126 @@
 	]
 },
 {
+	"id": "L17", "name": "Timber", "shots": 3, "par": 2,
+	"hint": "Lay them all down below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 540},
+	"statics": [],
+	"blocks": [
+		{"x": 850, "y": 560, "w": 30, "h": 160, "material": "wood"},
+		{"x": 950, "y": 560, "w": 30, "h": 160, "material": "wood"},
+		{"x": 1050, "y": 560, "w": 30, "h": 160, "material": "wood"}
+	],
+	"targets": [],
+	"solution": [
+		[1166, 102]
+	]
+},
+{
+	"id": "L15", "name": "Twin Glass", "shots": 3, "par": 2,
+	"hint": "Two fragile towers.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 850, "y": 580, "w": 30, "h": 120, "material": "glass"},
+		{"x": 1100, "y": 580, "w": 30, "h": 120, "material": "glass"}
+	],
+	"targets": [
+		{"x": 850, "y": 498, "r": 22},
+		{"x": 1100, "y": 498, "r": 22}
+	],
+	"solution": [
+		[977, -356]
+	]
+},
+{
+	"id": "L12", "name": "Pyramid", "shots": 2, "par": 1,
+	"hint": "Find the block that holds it all up.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 850, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 900, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 950, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 1000, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 875, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 925, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 975, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 900, "y": 515, "w": 50, "h": 50, "material": "wood"},
+		{"x": 950, "y": 515, "w": 50, "h": 50, "material": "wood"}
+	],
+	"targets": [
+		{"x": 925, "y": 468, "r": 22}
+	],
+	"solution": [
+		[1099, -400]
+	]
+},
+{
+	"id": "L14", "name": "Shield Wall", "shots": 2, "par": 1,
+	"hint": "Hit the shield hard enough and it becomes a weapon.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 1060, "y": 450, "w": 220, "h": 20}
+	],
+	"blocks": [
+		{"x": 960, "y": 600, "w": 40, "h": 80, "material": "stone"},
+		{"x": 1010, "y": 420, "w": 40, "h": 40, "material": "wood"}
+	],
+	"targets": [
+		{"x": 1060, "y": 620, "r": 20}
+	],
+	"solution": [
+		[1142, -253]
+	]
+},
+{
+	"id": "L19", "name": "Chain Reaction", "shots": 1, "par": 1,
+	"hint": "One push, all the way down the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 900, "y": 420, "w": 400, "h": 20}
+	],
+	"blocks": [
+		{"x": 740, "y": 365, "w": 14, "h": 90, "material": "wood"},
+		{"x": 790, "y": 365, "w": 14, "h": 90, "material": "wood"},
+		{"x": 840, "y": 365, "w": 14, "h": 90, "material": "wood"},
+		{"x": 890, "y": 365, "w": 14, "h": 90, "material": "wood"},
+		{"x": 940, "y": 365, "w": 14, "h": 90, "material": "wood"},
+		{"x": 990, "y": 365, "w": 14, "h": 90, "material": "wood"}
+	],
+	"targets": [
+		{"x": 1060, "y": 390, "r": 20}
+	],
+	"solution": [
+		[400, -1099]
+	]
+},
+{
+	"id": "L18", "name": "Over the Wall", "shots": 2, "par": 1,
+	"hint": "Some targets need an arc.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 700, "y": 510, "w": 40, "h": 260}
+	],
+	"blocks": [
+		{"x": 900, "y": 590, "w": 20, "h": 100, "material": "wood"},
+		{"x": 1000, "y": 590, "w": 20, "h": 100, "material": "wood"},
+		{"x": 950, "y": 530, "w": 140, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 950, "y": 498, "r": 22}
+	],
+	"solution": [
+		[440, -943]
+	]
+},
+{
 	"id": "L10", "name": "High Ledge", "shots": 2, "par": 1,
 	"hint": "Push it over the edge.",
 	"launcher": [180, 540],
@@ -198,84 +316,23 @@
 	]
 },
 {
-	"id": "L12", "name": "Pyramid", "shots": 2, "par": 1,
-	"hint": "Find the block that holds it all up.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [],
-	"blocks": [
-		{"x": 850, "y": 615, "w": 50, "h": 50, "material": "wood"},
-		{"x": 900, "y": 615, "w": 50, "h": 50, "material": "wood"},
-		{"x": 950, "y": 615, "w": 50, "h": 50, "material": "wood"},
-		{"x": 1000, "y": 615, "w": 50, "h": 50, "material": "wood"},
-		{"x": 875, "y": 565, "w": 50, "h": 50, "material": "wood"},
-		{"x": 925, "y": 565, "w": 50, "h": 50, "material": "wood"},
-		{"x": 975, "y": 565, "w": 50, "h": 50, "material": "wood"},
-		{"x": 900, "y": 515, "w": 50, "h": 50, "material": "wood"},
-		{"x": 950, "y": 515, "w": 50, "h": 50, "material": "wood"}
-	],
-	"targets": [
-		{"x": 925, "y": 468, "r": 22}
-	],
-	"solution": [
-		[1099, -400]
-	]
-},
-{
 	"id": "L13", "name": "Skylight", "shots": 3, "par": 2,
 	"hint": "Stone walls won't budge. Try the roof.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"statics": [
-		{"x": 830, "y": 580, "w": 30, "h": 120},
-		{"x": 1030, "y": 580, "w": 30, "h": 120}
+		{"x": 810, "y": 595, "w": 30, "h": 90},
+		{"x": 1050, "y": 595, "w": 30, "h": 90}
 	],
 	"blocks": [
-		{"x": 930, "y": 510, "w": 240, "h": 20, "material": "glass"}
+		{"x": 930, "y": 540, "w": 270, "h": 20, "material": "glass"}
 	],
 	"targets": [
 		{"x": 930, "y": 620, "r": 20}
 	],
 	"solution": [
-		[946, -794],
-		[767, -489]
-	]
-},
-{
-	"id": "L14", "name": "Shield Wall", "shots": 2, "par": 1,
-	"hint": "Hit the shield hard enough and it becomes a weapon.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [
-		{"x": 1060, "y": 450, "w": 220, "h": 20}
-	],
-	"blocks": [
-		{"x": 960, "y": 600, "w": 40, "h": 80, "material": "stone"},
-		{"x": 1010, "y": 420, "w": 40, "h": 40, "material": "wood"}
-	],
-	"targets": [
-		{"x": 1060, "y": 620, "r": 20}
-	],
-	"solution": [
-		[1142, -253]
-	]
-},
-{
-	"id": "L15", "name": "Twin Glass", "shots": 3, "par": 2,
-	"hint": "Two fragile towers.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [],
-	"blocks": [
-		{"x": 850, "y": 580, "w": 30, "h": 120, "material": "glass"},
-		{"x": 1100, "y": 580, "w": 30, "h": 120, "material": "glass"}
-	],
-	"targets": [
-		{"x": 850, "y": 498, "r": 22},
-		{"x": 1100, "y": 498, "r": 22}
-	],
-	"solution": [
-		[977, -356]
+		[774, -594],
+		[450, -865]
 	]
 },
 {
@@ -297,65 +354,6 @@
 	"solution": [
 		[480, -922],
 		[1119, -522]
-	]
-},
-{
-	"id": "L17", "name": "Timber", "shots": 3, "par": 2,
-	"hint": "Lay them all down below the line.",
-	"launcher": [180, 540],
-	"objective": {"type": "topple", "line_y": 540},
-	"statics": [],
-	"blocks": [
-		{"x": 850, "y": 560, "w": 30, "h": 160, "material": "wood"},
-		{"x": 950, "y": 560, "w": 30, "h": 160, "material": "wood"},
-		{"x": 1050, "y": 560, "w": 30, "h": 160, "material": "wood"}
-	],
-	"targets": [],
-	"solution": [
-		[1166, 102]
-	]
-},
-{
-	"id": "L18", "name": "Over the Wall", "shots": 2, "par": 1,
-	"hint": "Some targets need an arc.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [
-		{"x": 700, "y": 510, "w": 40, "h": 260}
-	],
-	"blocks": [
-		{"x": 900, "y": 590, "w": 20, "h": 100, "material": "wood"},
-		{"x": 1000, "y": 590, "w": 20, "h": 100, "material": "wood"},
-		{"x": 950, "y": 530, "w": 140, "h": 20, "material": "wood"}
-	],
-	"targets": [
-		{"x": 950, "y": 498, "r": 22}
-	],
-	"solution": [
-		[440, -943]
-	]
-},
-{
-	"id": "L19", "name": "Chain Reaction", "shots": 1, "par": 1,
-	"hint": "One push, all the way down the line.",
-	"launcher": [180, 540],
-	"objective": {"type": "destroy_targets"},
-	"statics": [
-		{"x": 900, "y": 420, "w": 400, "h": 20}
-	],
-	"blocks": [
-		{"x": 740, "y": 365, "w": 14, "h": 90, "material": "wood"},
-		{"x": 790, "y": 365, "w": 14, "h": 90, "material": "wood"},
-		{"x": 840, "y": 365, "w": 14, "h": 90, "material": "wood"},
-		{"x": 890, "y": 365, "w": 14, "h": 90, "material": "wood"},
-		{"x": 940, "y": 365, "w": 14, "h": 90, "material": "wood"},
-		{"x": 990, "y": 365, "w": 14, "h": 90, "material": "wood"}
-	],
-	"targets": [
-		{"x": 1060, "y": 390, "r": 20}
-	],
-	"solution": [
-		[400, -1099]
 	]
 },
 {
