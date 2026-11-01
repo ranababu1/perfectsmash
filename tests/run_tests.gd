@@ -2,6 +2,7 @@ extends SceneTree
 ## Headless test runner. Run from the project root:
 ##   godot --headless --fixed-fps 60 -s tests/run_tests.gd            (all suites)
 ##   godot --headless --fixed-fps 60 -s tests/run_tests.gd -- --unit  (skip physics playthroughs)
+##   godot --fixed-fps 60 -s tests/run_tests.gd                       (windowed: also runs GUI input routing checks)
 ## --fixed-fps disables real-time sync so physics suites run faster than real time.
 ## Exit code is 0 only when every test passes.
 
@@ -27,6 +28,7 @@ func _run() -> void:
 		suites.append_array(PHYSICS_SUITES)
 	var passed := 0
 	var failed := 0
+	var skipped := 0
 	var start := Time.get_ticks_msec()
 	for path: String in suites:
 		var script: GDScript = load(path)
@@ -41,7 +43,10 @@ func _run() -> void:
 			var suite: TestCase = script.new()
 			suite.tree = self
 			await suite.call(method_name)
-			if suite.failures.is_empty():
+			if suite.failures.is_empty() and not suite.skip_reason.is_empty():
+				skipped += 1
+				print("  SKIP %s::%s (%s)" % [path.get_file(), method_name, suite.skip_reason])
+			elif suite.failures.is_empty():
 				passed += 1
 				print("  ok   %s::%s" % [path.get_file(), method_name])
 			else:
@@ -49,5 +54,5 @@ func _run() -> void:
 				printerr("  FAIL %s::%s" % [path.get_file(), method_name])
 				for failure in suite.failures:
 					printerr("         " + failure)
-	print("\n%d passed, %d failed (%.1fs)" % [passed, failed, (Time.get_ticks_msec() - start) / 1000.0])
+	print("\n%d passed, %d failed, %d skipped (%.1fs)" % [passed, failed, skipped, (Time.get_ticks_msec() - start) / 1000.0])
 	quit(1 if failed > 0 else 0)
