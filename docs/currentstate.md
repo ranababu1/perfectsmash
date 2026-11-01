@@ -52,7 +52,7 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - Unit only: append `-- --unit`.
 - Re-verify levels after any physics/tuning change: `godot_console --headless --fixed-fps 60 -s tools/solve_levels.gd -- --write`, then run tests.
 - Android debug APK: `godot_console --headless --export-debug "Android Debug" build/perfectsmash-debug.apk` works with a local
-  `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `com.ranababu.perfectsmash`).
+  `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `dev.imrn.perfectsmash`, the owner's standard `dev.imrn.<app>` scheme).
   Ran on the emulator `sdk_gphone16k_x86_64` and levels 1–3 were played through by hand. The emulator build predates the final L01 tweak.
   **No physical-device test yet.**
 
