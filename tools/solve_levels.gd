@@ -17,6 +17,13 @@ const POWER_MAX := 1.0
 const POWER_STEP := 0.05
 const BATCH_SIZE := 80
 const MAX_FRAMES_PER_BATCH := 60 * 60
+## The playthrough test uses a different wait, so a stored solution must not depend on exact timing.
+const PRE_LAUNCH_SETTLE_FRAMES := 90
+const ROBUST_CANDIDATES := 16
+## (power scale, angle offset in radians) applied to a winning shot; all must still win.
+const PERTURBATIONS: Array[Vector2] = [
+	Vector2(1.0, 0.0), Vector2(0.99, 0.0), Vector2(1.01, 0.0), Vector2(1.0, 0.01), Vector2(1.0, -0.01),
+]
 
 
 func _initialize() -> void:
@@ -39,8 +46,8 @@ func _run() -> void:
 			continue
 		var start := Time.get_ticks_msec()
 		var result: Dictionary = await _solve(def)
-		print("%s %-16s won=%s shots=%d single-shot win rate=%.1f%%  (%.1fs)" % [
-			def.id, def.name, result.won, result.shots.size(), result.single_rate * 100.0,
+		print("%s %-16s won=%s fragile=%s shots=%d single-shot win rate=%.1f%%  (%.1fs)" % [
+			def.id, def.name, result.won, result.fragile, result.shots.size(), result.single_rate * 100.0,
 			(Time.get_ticks_msec() - start) / 1000.0])
 		if result.won:
 			solutions[def.id] = result.shots
@@ -68,6 +75,7 @@ func _candidates() -> Array[Vector2]:
 
 
 func _solve(def: LevelDefinition) -> Dictionary:
+	await PhysicsWarmup.run(self)
 	var candidates := _candidates()
 	var prefix: Array[Vector2] = []
 	var single_rate := 0.0
@@ -76,18 +84,42 @@ func _solve(def: LevelDefinition) -> Dictionary:
 		var wins := outcomes.filter(func(o: Dictionary) -> bool: return o.won).size()
 		if shot_index == 0:
 			single_rate = float(wins) / candidates.size()
-		var best := _pick(outcomes, def)
-		prefix.append(candidates[best])
-		if outcomes[best].won:
-			return {"won": true, "shots": prefix, "single_rate": single_rate}
-	return {"won": false, "shots": prefix, "single_rate": single_rate}
+		var ranked := _rank(outcomes, def)
+		var last_shot: bool = shot_index == def.par - 1
+		if outcomes[ranked[0]].won:
+			var winners: Array = ranked.filter(func(i: int) -> bool: return outcomes[i].won).slice(0, ROBUST_CANDIDATES)
+			var robust: int = await _first_robust(def, prefix, winners.map(func(i: int) -> Vector2: return candidates[i]))
+			if robust >= 0 or last_shot:
+				prefix.append(candidates[winners[maxi(robust, 0)]])
+				return {"won": true, "fragile": robust < 0, "shots": prefix, "single_rate": single_rate}
+		# No robust win yet: keep the best non-winning shot (a winning one would end the level)
+		# and look for a robust finish with the next shot.
+		var setup_shot: int = ranked.filter(func(i: int) -> bool: return not outcomes[i].won)[0]
+		prefix.append(candidates[setup_shot])
+	return {"won": false, "fragile": false, "shots": prefix, "single_rate": single_rate}
 
 
-## Picks the winning candidate with the most winning grid neighbours, else the best partial result.
-func _pick(outcomes: Array, def: LevelDefinition) -> int:
+## Index of the first shot that still wins under every small aim perturbation, or -1.
+## Guards against storing a lucky shot that only wins with bit-exact physics.
+func _first_robust(def: LevelDefinition, prefix: Array[Vector2], shots: Array) -> int:
+	var variants: Array[Vector2] = []
+	for v: Vector2 in shots:
+		for p: Vector2 in PERTURBATIONS:
+			variants.append((v * p.x).rotated(p.y))
+	var outcomes: Array = await _evaluate(def, prefix, variants)
+	for i in shots.size():
+		var all_won := true
+		for k in PERTURBATIONS.size():
+			all_won = all_won and outcomes[i * PERTURBATIONS.size() + k].won
+		if all_won:
+			return i
+	return -1
+
+
+## Candidate indices, best first: winners with the most winning grid neighbours, then best partial results.
+func _rank(outcomes: Array, def: LevelDefinition) -> Array:
 	var powers := int(roundf((POWER_MAX - POWER_MIN) / POWER_STEP)) + 1
-	var best := 0
-	var best_score := -INF
+	var scores := []
 	for i in outcomes.size():
 		var o: Dictionary = outcomes[i]
 		var neighbours := 0
@@ -95,11 +127,10 @@ func _pick(outcomes: Array, def: LevelDefinition) -> int:
 			var j: int = i + d
 			if j >= 0 and j < outcomes.size() and outcomes[j].won == o.won and _progress(outcomes[j], def) >= _progress(o, def):
 				neighbours += 1
-		var score := (1000.0 if o.won else 0.0) + _progress(o, def) * 10.0 + neighbours
-		if score > best_score:
-			best_score = score
-			best = i
-	return best
+		scores.append((1000.0 if o.won else 0.0) + _progress(o, def) * 10.0 + neighbours)
+	var order := range(outcomes.size())
+	order.sort_custom(func(a: int, b: int) -> bool: return scores[a] > scores[b])
+	return order
 
 
 func _progress(o: Dictionary, def: LevelDefinition) -> float:
@@ -131,8 +162,10 @@ func _run_batch(def: LevelDefinition, prefix: Array[Vector2], batch: Array) -> A
 		var shots: Array[Vector2] = prefix.duplicate()
 		shots.append(velocity)
 		runs.append({"viewport": viewport, "session": session, "shots": shots, "next": 0})
-	# Let every world settle one frame before launching, as the game does.
-	await physics_frame
+	# Let structures come to rest (bodies sleep) before the first shot, as they do before a
+	# player can aim. Outcomes from a settled state are reproducible; from a fresh load they are not.
+	for i in PRE_LAUNCH_SETTLE_FRAMES:
+		await physics_frame
 	var frames := 0
 	while frames < MAX_FRAMES_PER_BATCH:
 		var all_done := true
