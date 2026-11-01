@@ -4,7 +4,7 @@ _Last updated: 2026-11-01 · Version 0.1.0 (unreleased) · Branch `master` · Re
 
 ## Purpose and phase
 
-Perfect Smash (working title in `plan.md`: "Smash Theory") is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.
+Perfect Smash (originally titled "Smash Theory") is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.
 **Phase:** M2 (playable prototype) reached on desktop, with M3 content (20 levels) in place.
 M0's "on a physical Android device" criterion is **not yet verified**: no device test or Android export has been done.
 
@@ -75,7 +75,10 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 4. Investigate the run-to-run physics variance (minimal repro; check the engine issue tracker).
 5. Decide on app icon/branding and store assets before closed testing (M5).
 
-## Decisions needing owner approval
+## Owner decisions (2026-11-01)
 
-- Landscape orientation (plan §4 default was portrait; justified in changelog).
-- Product name: owner chose "Perfect Smash" (2026-11-01). `plan.md` still says "Smash Theory" and is left unchanged as the baseline; revise it only if the owner asks.
+- Landscape orientation: approved.
+- Product name "Perfect Smash": approved; `plan.md` revised (rev 1, name only).
+- Package ID `dev.imrn.perfectsmash` (owner domain imrn.dev).
+
+No decisions are currently pending.
