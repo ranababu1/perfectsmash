@@ -32,6 +32,11 @@ const TARGET_MASS := 1.0
 const TARGET_BREAK_IMPULSE := 220.0
 const GLASS_BREAK_IMPULSE := 300.0
 const IMPACT_SOUND_IMPULSE := 120.0
+## Relative speed (px/s) at which a projectile touching a target pops it.
+const TARGET_PROJECTILE_HIT_SPEED := 200.0
+## Velocity change in one physics step (px/s) that breaks a target. A free fall from about
+## 80px reaches this, so a target knocked off a pedestal of that height breaks on landing.
+const TARGET_BREAK_VELOCITY_CHANGE := 400.0
 
 # Simulation settling (see SimulationMonitor).
 const SETTLE_LINEAR_SPEED := 6.0
