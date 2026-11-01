@@ -6,7 +6,7 @@ All meaningful changes, newest first.
 
 - Owner decision: the product is now **Perfect Smash** (matching the repository name). Updated `application/config/name`
   and the menu title. `plan.md` keeps its original "Smash Theory" wording as the immutable baseline.
-- Local Android preset (gitignored): package ID `com.ranababu.smashtheory` → `com.ranababu.perfectsmash`, APK
+- Local Android preset (gitignored): package ID `com.ranababu.smashtheory` → `dev.imrn.perfectsmash` (owner domain imrn.dev; all apps use `dev.imrn.<app>`), APK
   `build/perfectsmash-debug.apk`. Changed before any release, so no store or upgrade impact.
 - Migration note: Godot derives the desktop `user://` folder from the app name, so desktop dev saves made under
   "Smash Theory" are not carried over. On Android the new package ID installs as a separate app.
