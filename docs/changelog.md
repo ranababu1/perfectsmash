@@ -2,6 +2,30 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-02 — UI/UX refresh and difficulty curve (0.1.0, unreleased)
+
+**UI/UX** (modern but restrained: translucent surfaces, hairline borders, one accent per screen)
+- New theme: primary (accent) / secondary / round icon buttons, chips, soft panel shadows, press feedback, fade-and-rise panels.
+- Vector icon set (`Icon`) for restart, pause, sound, vibration, lock and star; no image assets were added.
+- HUD: title/goal chip with ball pips for shots left, round restart/pause buttons, a floating hint pill.
+- Pause and result panels redesigned; result stars pop in one at a time and show par when it was missed.
+- Menu: top bar (title, star total, sound/vibration toggles), lock icons, the next level highlighted, a one-tap Continue button.
+- Scenery: smooth sky gradient, horizon glow and two layers of hills (deterministic), shared by the menu and levels.
+- Pieces: rounded, beveled blocks; a core target with a slow breathing halo; a shaded ball; an idle "grab" cue on the launcher.
+- Short fade between the menu and levels. On touch screens no button is pre-focused, so there's no stray focus ring.
+- `tools/capture_screens.gd` writes screenshots of every screen to `tests/output/screens/` for review.
+
+**Levels**
+- L01 is now a single large core on the ground (solver single-shot win rate 14% -> 44%).
+- L13 Skylight: lower, wider stone walls and a wider glass roof; the solver no longer flags it as fragile.
+- New order: L01 L02 L03 L07 L05 L04 L06 L08 L09 L17 L15 L12 L14 L19 L18 L10 L11 L13 L16 L20, ordered by solver win rate
+  and teaching sequence. Dominoes (L08) stays as an intentional breather after the chain-reaction idea is introduced.
+  Level IDs are stable save keys and no longer match their display number.
+
+**Test evidence (Godot 4.7.2, Windows 11)**
+- Headless: 50 passed, 0 failed, 1 skipped. Windowed: 51 passed, 0 failed, 0 skipped.
+- Debug APK installed and launched on the Android emulator `Pixel10Pro` (2856x1280): menu and levels render in landscape.
+
 ## 2026-11-02 — Design decision recorded (0.1.0, unreleased)
 
 - Owner agreed: no per-shot timer in the core mode. Recorded in `currentstate.md` along with possible later experiments.
