@@ -7,8 +7,8 @@ extends Node2D
 
 signal launch_requested(velocity: Vector2)
 
-const BAND_COLOR := Color(1, 1, 1, 0.5)
-const BAND_WIDTH := 4.0
+const BAND_COLOR := Color(1, 1, 1, 0.45)
+const BAND_WIDTH := 3.0
 const DOT_RADIUS := 5.0
 ## The drawn ball moves this fraction of the pull, so the visual stays near the launcher.
 const BALL_PULL_FACTOR := 0.35
@@ -74,14 +74,18 @@ func _draw() -> void:
 	var ball := origin - pull * BALL_PULL_FACTOR
 	var fork_left := origin + Vector2(-14, 6)
 	var fork_right := origin + Vector2(14, 6)
-	if pull.length() >= GameConfig.MIN_DRAG_DISTANCE:
-		draw_line(fork_left, ball, BAND_COLOR, BAND_WIDTH)
+	var aiming := pull.length() >= GameConfig.MIN_DRAG_DISTANCE
+	if aiming:
+		draw_line(fork_left, ball, BAND_COLOR, BAND_WIDTH, true)
 		_draw_preview(origin, velocity_for_pull(pull))
-	draw_circle(ball, GameConfig.PROJECTILE_RADIUS, Palette.PROJECTILE)
-	draw_arc(ball, GameConfig.PROJECTILE_RADIUS - 1.5, 0, TAU, 32, Palette.PROJECTILE_EDGE, 3.0, true)
-	if pull.length() >= GameConfig.MIN_DRAG_DISTANCE:
-		draw_line(fork_right, ball, BAND_COLOR, BAND_WIDTH)
-		_draw_power(origin, pull.length() / GameConfig.MAX_DRAG_DISTANCE)
+	ProjectileBody.draw_ball(self, ball)
+	if aiming:
+		draw_line(fork_right, ball, BAND_COLOR, BAND_WIDTH, true)
+		_draw_power(ball, pull.length() / GameConfig.MAX_DRAG_DISTANCE)
+	elif not _dragging:
+		# Idle hint ring: a slow, faint pulse says "grab here" without any text.
+		var t := fmod(Time.get_ticks_msec() / 1400.0, 1.0)
+		draw_arc(ball, GameConfig.PROJECTILE_RADIUS + 4.0 + t * 14.0, 0, TAU, 40, Color(Palette.ACCENT, 0.35 * (1.0 - t)), 2.0, true)
 
 
 ## Short partial arc: shows the launch direction and early curve without solving the puzzle.
@@ -90,11 +94,12 @@ func _draw_preview(origin: Vector2, velocity: Vector2) -> void:
 	for i in range(1, GameConfig.PREVIEW_DOTS + 1):
 		var t := GameConfig.PREVIEW_DURATION * i / GameConfig.PREVIEW_DOTS
 		var p := origin + velocity * t + Vector2(0, 0.5 * gravity * t * t)
-		var alpha := 1.0 - float(i) / (GameConfig.PREVIEW_DOTS + 1)
-		draw_circle(p, DOT_RADIUS, Color(Palette.AIM, alpha * Palette.AIM.a))
+		var fade := 1.0 - float(i) / (GameConfig.PREVIEW_DOTS + 1)
+		draw_circle(p, DOT_RADIUS * (0.55 + 0.45 * fade), Color(Palette.AIM, fade * Palette.AIM.a))
 
 
-func _draw_power(origin: Vector2, ratio: float) -> void:
-	var center := origin + Vector2(0, 60)
-	draw_arc(center, 22, -PI / 2.0, -PI / 2.0 + TAU, 32, Color(1, 1, 1, 0.15), 6.0, true)
-	draw_arc(center, 22, -PI / 2.0, -PI / 2.0 + TAU * ratio, 32, Palette.ACCENT, 6.0, true)
+## Thin power arc hugging the ball; turns fully accent-colored at max pull.
+func _draw_power(center: Vector2, ratio: float) -> void:
+	var r := GameConfig.PROJECTILE_RADIUS + 9.0
+	draw_arc(center, r, 0, TAU, 48, Color(1, 1, 1, 0.12), 3.0, true)
+	draw_arc(center, r, -PI / 2.0, -PI / 2.0 + TAU * ratio, 48, Color(Palette.ACCENT, 0.6 + 0.4 * ratio), 3.0, true)

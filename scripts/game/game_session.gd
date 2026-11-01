@@ -13,7 +13,6 @@ signal impact(strength: float, at: Vector2)
 signal shot_resolved(timed_out: bool)
 signal finished(won: bool, stars: int, shots_used: int)
 
-const LAUNCHER_POST_HEIGHT := 44.0
 
 var definition: LevelDefinition
 var rules: SessionRules
@@ -156,12 +155,16 @@ func _draw() -> void:
 	# Launcher post: purely visual, the projectile spawns at its tip.
 	var tip := definition.launcher
 	var base := Vector2(tip.x, GameConfig.GROUND_TOP)
-	draw_line(base, tip + Vector2(0, GameConfig.PROJECTILE_RADIUS), Palette.STATIC_EDGE, 10.0)
-	draw_line(tip + Vector2(-16, LAUNCHER_POST_HEIGHT * 0.4), tip + Vector2(0, GameConfig.PROJECTILE_RADIUS + 6), Palette.STATIC_EDGE, 6.0)
-	draw_line(tip + Vector2(16, LAUNCHER_POST_HEIGHT * 0.4), tip + Vector2(0, GameConfig.PROJECTILE_RADIUS + 6), Palette.STATIC_EDGE, 6.0)
+	var yoke := tip + Vector2(0, GameConfig.PROJECTILE_RADIUS + 10)
+	draw_line(base, yoke, Palette.STATIC_EDGE, 8.0, true)
+	draw_line(yoke, tip + Vector2(-14, 6), Palette.STATIC_EDGE, 5.0, true)
+	draw_line(yoke, tip + Vector2(14, 6), Palette.STATIC_EDGE, 5.0, true)
+	draw_circle(base, 9.0, Palette.STATIC)
 	if definition.objective_type == LevelDefinition.OBJECTIVE_TOPPLE:
 		var y := definition.topple_line_y
 		var x := 0.0
+		# A faint wash below the line shows the "safe" zone; the dashes mark the exact limit.
+		draw_rect(Rect2(-600, y, GameConfig.WORLD_WIDTH + 1200, GameConfig.GROUND_TOP - y), Color(Palette.TOPPLE_LINE, 0.05))
 		while x < GameConfig.WORLD_WIDTH:
-			draw_line(Vector2(x, y), Vector2(x + 18.0, y), Palette.TOPPLE_LINE, 3.0)
-			x += 30.0
+			draw_line(Vector2(x, y), Vector2(x + 14.0, y), Color(Palette.TOPPLE_LINE, 0.8), 2.0, true)
+			x += 24.0
