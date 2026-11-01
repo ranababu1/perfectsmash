@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-11-01 · Version 0.1.0 (unreleased) · Branch `master` · Remote `origin` (github.com/ranababu1/perfectsmash)_
+_Last updated: 2026-11-02 · Version 0.1.0 (unreleased) · Branch `master` · Remote `origin` (github.com/ranababu1/perfectsmash)_
 
 ## Purpose and phase
 
@@ -33,7 +33,7 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - `scripts/services/` — `SaveService` (temp-file + rename, corrupt file kept as `.corrupt`), `AudioService` (synthesized SFX).
 - `scripts/game/` — `GameSession` (headless-capable level runner), `LevelLoader`, `BlockBody`, `TargetBody`,
   `ProjectileBody`, `StaticBox`, `AimController`, `BurstEffect`, `Palette`.
-- `scripts/ui/` — `GameScreen`, `Hud`, `MenuScreen`, `StarRow`, `UiKit`. `scripts/main.gd` is the app root (`scenes/main.tscn`).
+- `scripts/ui/` — `GameScreen`, `Hud`, `MenuScreen`, `StarRow`, `Icon` (vector icons), `UiKit` (theme + widgets). `Backdrop` (scenery) is in `scripts/game/`. `scripts/main.gd` is the app root (`scenes/main.tscn`).
 - Collision layers: 1 static, 2 blocks, 3 targets, 4 projectile; everything collides with everything.
 - Target breaks (only after the first launch "arms" it) on: contact impulse > 220, a direct projectile touch faster than 200 px/s,
   a velocity change > 400 px/s in one step, or leaving the play area. Glass breaks on impulse > 300.
@@ -50,10 +50,11 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - Headless: `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 50 passed, 0 failed, 1 skipped.
 - Windowed (adds GUI input-routing check): `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 51 passed, 0 failed.
 - Unit only: append `-- --unit`.
+- UI screenshots: `godot_console --resolution 1280x720 -s tools/capture_screens.gd` → `tests/output/screens/`.
 - Re-verify levels after any physics/tuning change: `godot_console --headless --fixed-fps 60 -s tools/solve_levels.gd -- --write`, then run tests.
 - Android debug APK: `godot_console --headless --export-debug "Android Debug" build/perfectsmash-debug.apk` works with a local
   `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `dev.imrn.perfectsmash`, the owner's standard `dev.imrn.<app>` scheme).
-  Ran on the emulator `sdk_gphone16k_x86_64` and levels 1–3 were played through by hand. The emulator build predates the final L01 tweak.
+  Latest build installed on the `Pixel10Pro` emulator (2856x1280).
   **No physical-device test yet.**
 
 ## Known issues and risks
@@ -61,16 +62,16 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - **Physics is not bit-reproducible run to run:** an identical shot from an identical settled layout can occasionally resolve
   differently (seen with L01 on Godot 4.7.2; most likely contact ordering depending on engine-internal state). Mitigations: tests
   replay each solution 3× and require ≥2 wins, the solver requires perturbation-robust shots, and a warm-up replay runs first
-  (`tests/physics_warmup.gd`). L13's best two-shot solution is still flagged fragile by the solver.
+  (`tests/physics_warmup.gd`).
 - Solutions are verified on this desktop build only. Plan §2 says not to promise identical physics across devices; levels need device checks.
-- Difficulty curve is uneven: from solver win rates, L08 Dominoes (~56% of grid shots win) is easier than L01, and L10/L11/L13/L16 are the hardest. Needs play-test tuning.
+- Difficulty curve was reordered by solver win rate (2026-11-02). It still needs human play-testing; the win rate measures how forgiving a level is to aim, not how hard it is to figure out.
 - Godot's headless display server doesn't route mouse events to GUI controls, so the HUD-button test only runs windowed (it reports SKIP when headless).
 - Menu layout is tight vertically at 720px; check on short, wide phones.
 
 ## Next recommended actions
 
 1. Test on a physical Android device (M0/M4): touch feel, performance, vibration, pause/resume.
-2. Play-test the 20 levels; reorder/tune for a smoother curve (use the solver's win rate as a guide).
+2. Play-test the new level order and UI on the emulator/device; adjust anything that feels off.
 3. Run the trajectory-preview experiment (plan §10) — the preview length is `GameConfig.PREVIEW_DURATION`.
 4. Investigate the run-to-run physics variance (minimal repro; check the engine issue tracker).
 5. Decide on app icon/branding and store assets before closed testing (M5).
