@@ -21,7 +21,7 @@ var _overlay: Control
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var info := VBoxContainer.new()
@@ -37,10 +37,14 @@ func _ready() -> void:
 	for l in [_title, _objective, _shots]:
 		info.add_child(l)
 
+	# Full-width strip aligned right; the strip itself ignores input so only the buttons block aiming.
 	var buttons := HBoxContainer.new()
-	buttons.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	buttons.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	buttons.position = Vector2(-MARGIN, MARGIN * 0.6)
+	buttons.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	buttons.offset_left = MARGIN
+	buttons.offset_right = -MARGIN
+	buttons.offset_top = MARGIN * 0.6
+	buttons.alignment = BoxContainer.ALIGNMENT_END
+	buttons.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	buttons.add_theme_constant_override("separation", 12)
 	add_child(buttons)
 	var restart := UiKit.button("Restart", 140)
@@ -51,9 +55,9 @@ func _ready() -> void:
 	buttons.add_child(pause)
 
 	_hint = UiKit.label("", 24, Palette.TEXT)
-	_hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	_hint.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	_hint.position.y = -64
+	_hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_hint.offset_top = -56
+	_hint.offset_bottom = -20
 	_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_hint)
 
@@ -124,7 +128,7 @@ func show_result(won: bool, stars: int, shots_used: int, has_next: bool) -> void
 func _open_panel(title: String) -> VBoxContainer:
 	hide_overlay()
 	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(UiKit.overlay())
 	var panel := PanelContainer.new()
