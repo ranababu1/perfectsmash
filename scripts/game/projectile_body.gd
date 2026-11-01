@@ -39,6 +39,6 @@ func _draw() -> void:
 ## Shared with the aim preview so the loaded ball and the flying ball look identical.
 static func draw_ball(canvas: CanvasItem, at: Vector2, light_rotation: float = 0.0) -> void:
 	var r := GameConfig.PROJECTILE_RADIUS
-	canvas.draw_circle(at, r, Palette.PROJECTILE)
+	canvas.draw_circle(at, r, Palette.PROJECTILE, true, -1.0, true)
 	canvas.draw_arc(at, r - 1.0, 0, TAU, 40, Palette.PROJECTILE_EDGE, 2.0, true)
-	canvas.draw_circle(at + Vector2(-r * 0.38, -r * 0.38).rotated(light_rotation), r * 0.22, Color(1, 1, 1, 0.6))
+	canvas.draw_circle(at + Vector2(-r * 0.38, -r * 0.38).rotated(light_rotation), r * 0.22, Color(1, 1, 1, 0.6), true, -1.0, true)

@@ -95,7 +95,7 @@ func _draw_preview(origin: Vector2, velocity: Vector2) -> void:
 		var t := GameConfig.PREVIEW_DURATION * i / GameConfig.PREVIEW_DOTS
 		var p := origin + velocity * t + Vector2(0, 0.5 * gravity * t * t)
 		var fade := 1.0 - float(i) / (GameConfig.PREVIEW_DOTS + 1)
-		draw_circle(p, DOT_RADIUS * (0.55 + 0.45 * fade), Color(Palette.AIM, fade * Palette.AIM.a))
+		draw_circle(p, DOT_RADIUS * (0.55 + 0.45 * fade), Color(Palette.AIM, fade * Palette.AIM.a), true, -1.0, true)
 
 
 ## Thin power arc hugging the ball; turns fully accent-colored at max pull.

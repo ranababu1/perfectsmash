@@ -159,7 +159,7 @@ func _draw() -> void:
 	draw_line(base, yoke, Palette.STATIC_EDGE, 8.0, true)
 	draw_line(yoke, tip + Vector2(-14, 6), Palette.STATIC_EDGE, 5.0, true)
 	draw_line(yoke, tip + Vector2(14, 6), Palette.STATIC_EDGE, 5.0, true)
-	draw_circle(base, 9.0, Palette.STATIC)
+	draw_circle(base, 9.0, Palette.STATIC, true, -1.0, true)
 	if definition.objective_type == LevelDefinition.OBJECTIVE_TOPPLE:
 		var y := definition.topple_line_y
 		var x := 0.0
