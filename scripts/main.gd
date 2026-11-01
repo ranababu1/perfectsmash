@@ -21,7 +21,7 @@ func _ready() -> void:
 	if not catalog.is_valid():
 		push_error("Level catalog invalid: %s" % ", ".join(catalog.errors))
 		var message := UiKit.label("Level data failed to load.\n" + "\n".join(catalog.errors.slice(0, 5)), 22)
-		message.set_anchors_preset(Control.PRESET_FULL_RECT)
+		message.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(message)
 		return
 	_show_menu()
