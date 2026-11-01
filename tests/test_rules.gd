@@ -122,6 +122,19 @@ func test_destruction_requires_arming_and_threshold() -> void:
 	assert_true(DestructionRules.breaks_on_impact(true, 100.5, 100.0))
 
 
+func test_projectile_hit_and_jolt_rules() -> void:
+	var hit := GameConfig.TARGET_PROJECTILE_HIT_SPEED
+	assert_false(DestructionRules.breaks_on_projectile_hit(false, hit * 10.0), "unarmed")
+	assert_false(DestructionRules.breaks_on_projectile_hit(true, hit), "at threshold holds")
+	assert_true(DestructionRules.breaks_on_projectile_hit(true, hit + 1.0))
+	var jolt := GameConfig.TARGET_BREAK_VELOCITY_CHANGE
+	assert_false(DestructionRules.breaks_on_jolt(false, jolt * 10.0), "unarmed")
+	assert_false(DestructionRules.breaks_on_jolt(true, jolt), "at threshold holds")
+	assert_true(DestructionRules.breaks_on_jolt(true, jolt + 1.0))
+	# One step of gravity on a resting or falling body must never count as a jolt.
+	assert_false(DestructionRules.breaks_on_jolt(true, 980.0 / 60.0))
+
+
 func test_out_of_bounds() -> void:
 	assert_false(DestructionRules.is_out_of_bounds(Vector2(640, 300)))
 	assert_true(DestructionRules.is_out_of_bounds(Vector2(640, 5000)))
