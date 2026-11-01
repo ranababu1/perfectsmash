@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-01 — Renamed to Perfect Smash (0.1.0, unreleased)
+
+- Owner decision: the product is now **Perfect Smash** (matching the repository name). Updated `application/config/name`
+  and the menu title. `plan.md` keeps its original "Smash Theory" wording as the immutable baseline.
+- Local Android preset (gitignored): package ID `com.ranababu.smashtheory` → `com.ranababu.perfectsmash`, APK
+  `build/perfectsmash-debug.apk`. Changed before any release, so no store or upgrade impact.
+- Migration note: Godot derives the desktop `user://` folder from the app name, so desktop dev saves made under
+  "Smash Theory" are not carried over. On Android the new package ID installs as a separate app.
+
 ## 2026-11-01 — Playable prototype: physics, 20 levels, UI, Android debug build (0.1.0, unreleased)
 
 **Gameplay**
