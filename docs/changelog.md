@@ -2,6 +2,10 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-02 — Design decision recorded (0.1.0, unreleased)
+
+- Owner agreed: no per-shot timer in the core mode. Recorded in `currentstate.md` along with possible later experiments.
+
 ## 2026-11-01 — Owner decisions recorded (0.1.0, unreleased)
 
 - Landscape orientation approved by the owner (closes the plan §4 portrait/landscape question).

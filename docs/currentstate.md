@@ -80,5 +80,7 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - Landscape orientation: approved.
 - Product name "Perfect Smash": approved; `plan.md` revised (rev 1, name only).
 - Package ID `dev.imrn.perfectsmash` (owner domain imrn.dev).
+- Per-shot timer (2026-11-02): not added to the core mode, because time pressure works against deliberate puzzle-solving and
+  touch aiming. A separate timed mode, a speed badge, or a fast-forward during collapse may be considered later as experiments.
 
 No decisions are currently pending.
