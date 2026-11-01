@@ -5,11 +5,14 @@ extends Control
 
 var kind := ""
 var color := Palette.TEXT
+## Drawn size; the icon stays this size and centered even when the control is stretched.
+var icon_size := 28.0
 
 
 func _init(p_kind: String = "", p_size: float = 28.0, p_color: Color = Palette.TEXT) -> void:
 	kind = p_kind
 	color = p_color
+	icon_size = p_size
 	custom_minimum_size = Vector2(p_size, p_size)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -25,7 +28,7 @@ func set_color(value: Color) -> void:
 
 
 func _draw() -> void:
-	var s := minf(size.x, size.y) / 24.0
+	var s := minf(icon_size, minf(size.x, size.y)) / 24.0
 	var o := (size - Vector2(24, 24) * s) / 2.0
 	var p := func(x: float, y: float) -> Vector2: return o + Vector2(x, y) * s
 	var w := 2.0 * s

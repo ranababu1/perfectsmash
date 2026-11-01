@@ -30,9 +30,12 @@ static func _gradient(canvas: CanvasItem, rect: Rect2, top: Color, bottom: Color
 static func _hills(canvas: CanvasItem, rect: Rect2, base_y: float, height: float, frequency: float, phase: float, color: Color) -> void:
 	var points := PackedVector2Array()
 	var x := rect.position.x
-	while x <= rect.end.x:
+	while x < rect.end.x + 24.0:
+		x = minf(x, rect.end.x)
 		var wave := 0.55 * sin(x * frequency + phase) + 0.3 * sin(x * frequency * 2.3 + phase * 1.7) + 0.15 * sin(x * frequency * 5.1)
 		points.append(Vector2(x, base_y - height * (0.6 + 0.4 * wave)))
+		if x >= rect.end.x:
+			break
 		x += 24.0
 	points.append(Vector2(rect.end.x, base_y + 1.0))
 	points.append(Vector2(rect.position.x, base_y + 1.0))

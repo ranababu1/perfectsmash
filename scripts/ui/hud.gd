@@ -190,6 +190,8 @@ func _open_panel(title: String, subtitle: String) -> VBoxContainer:
 	if subtitle != "":
 		var sub := UiKit.label(subtitle, 19, Palette.TEXT_DIM)
 		sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		# A wrapping label needs a width up front, or it reports one word per line as its height.
+		sub.custom_minimum_size.x = UiKit.PANEL_WIDTH
 		box.add_child(sub)
 	panel.add_child(box)
 	var center := UiKit.centered(panel)

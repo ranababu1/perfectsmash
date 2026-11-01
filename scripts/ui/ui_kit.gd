@@ -106,7 +106,7 @@ static func icon_button(kind: String, toggled_kind: String = "") -> Button:
 	var b := Button.new()
 	b.theme_type_variation = ROUND
 	b.custom_minimum_size = Vector2(ICON_BUTTON, ICON_BUTTON)
-	var icon := Icon.new(kind, 24.0, Palette.TEXT)
+	var icon := Icon.new(kind, 34.0, Palette.TEXT)
 	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	b.add_child(icon)
 	if toggled_kind != "":
