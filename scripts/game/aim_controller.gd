@@ -2,6 +2,8 @@ class_name AimController
 extends Node2D
 ## Drag-back slingshot aiming. Press anywhere in the play area, pull away from the target
 ## direction and release. Uses _unhandled_input so touches on UI controls never fire a shot.
+## The pull is measured in screen space (the camera never zooms), so camera updates between
+## press and release cannot distort it.
 
 signal launch_requested(velocity: Vector2)
 
@@ -44,17 +46,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			_dragging = true
-			_drag_start = get_global_mouse_position()
+			_drag_start = event.position
 			_drag_current = _drag_start
 		elif _dragging:
-			_drag_current = get_global_mouse_position()
+			_drag_current = event.position
 			_dragging = false
 			if _pull().length() >= GameConfig.MIN_DRAG_DISTANCE:
 				launch_requested.emit(velocity_for_pull(_pull()))
 		get_viewport().set_input_as_handled()
 		queue_redraw()
 	elif event is InputEventMouseMotion and _dragging:
-		_drag_current = get_global_mouse_position()
+		_drag_current = event.position
 		get_viewport().set_input_as_handled()
 		queue_redraw()
 
