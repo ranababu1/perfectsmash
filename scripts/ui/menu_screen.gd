@@ -7,7 +7,7 @@ signal sound_toggled(enabled: bool)
 signal vibration_toggled(enabled: bool)
 
 const COLUMNS := 5
-const TILE_SIZE := Vector2(132, 100)
+const TILE_SIZE := Vector2(132, 88)
 
 var catalog: LevelCatalog
 var progress: ProgressData
@@ -19,10 +19,10 @@ func _init(p_catalog: LevelCatalog, p_progress: ProgressData) -> void:
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var background := ColorRect.new()
 	background.color = Palette.SKY_TOP
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
+	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(background)
 
 	var column := VBoxContainer.new()
@@ -66,10 +66,11 @@ func _level_tile(index: int, unlocked: bool, stars: int) -> Button:
 	tile.add_theme_font_size_override("font_size", 30 if unlocked else 20)
 	if unlocked:
 		var row := StarRow.new(stars, 9.0)
-		row.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-		row.grow_horizontal = Control.GROW_DIRECTION_BOTH
-		row.position.y = -26
+		row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+		row.offset_top = -30
+		row.offset_bottom = -6
 		tile.add_child(row)
+		tile.alignment = HORIZONTAL_ALIGNMENT_CENTER
 		tile.pressed.connect(level_selected.emit.bind(index))
 	return tile
 
