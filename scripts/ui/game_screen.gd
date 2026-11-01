@@ -65,6 +65,7 @@ func _ready() -> void:
 	hud.next_pressed.connect(_on_next)
 	hud.sound_toggled.connect(sound_toggled.emit)
 	hud.vibration_toggled.connect(vibration_toggled.emit)
+	hud.star_revealed.connect(func(_i: int) -> void: audio.play("click"))
 	for b in [hud.pause_pressed, hud.resume_pressed, hud.restart_pressed, hud.menu_pressed, hud.next_pressed]:
 		b.connect(func() -> void: audio.play("click"))
 
@@ -137,7 +138,7 @@ func _on_finished(won: bool, stars: int, shots_used: int) -> void:
 	audio.play("win" if won else "lose")
 	if won:
 		_vibrate(VIBRATE_WIN_MS)
-	hud.show_result(won, stars, shots_used, _has_next)
+	hud.show_result(won, stars, shots_used, _has_next, session.definition.par)
 
 
 func _on_menu() -> void:
