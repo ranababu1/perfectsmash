@@ -7,7 +7,8 @@ extends RefCounted
 ##   1 = static world, 2 = blocks, 3 = targets, 4 = projectile.
 
 const GROUND_MARGIN := 600.0
-const GROUND_DEPTH := 200.0
+## Deep enough to fill the screen bottom on tall (4:3) displays with the expand aspect.
+const GROUND_DEPTH := 400.0
 
 
 static func build(def: LevelDefinition) -> Node2D:
