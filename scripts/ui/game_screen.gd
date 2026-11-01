@@ -29,6 +29,8 @@ func _init(p_audio: AudioService, p_progress: ProgressData) -> void:
 
 
 func _ready() -> void:
+	# The app root keeps running while paused (for back handling); gameplay must not.
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var camera := Camera2D.new()
 	camera.position = Vector2(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT) / 2.0
 	add_child(camera)
