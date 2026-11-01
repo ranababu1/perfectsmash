@@ -4,7 +4,7 @@ _Last updated: 2026-11-01 · Version 0.1.0 (unreleased) · Branch `master` · Re
 
 ## Purpose and phase
 
-Smash Theory is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.
+Perfect Smash (working title in `plan.md`: "Smash Theory") is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.
 **Phase:** M2 (playable prototype) reached on desktop, with M3 content (20 levels) in place.
 M0's "on a physical Android device" criterion is **not yet verified**: no device test or Android export has been done.
 
@@ -51,8 +51,8 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 - Windowed (adds GUI input-routing check): `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 51 passed, 0 failed.
 - Unit only: append `-- --unit`.
 - Re-verify levels after any physics/tuning change: `godot_console --headless --fixed-fps 60 -s tools/solve_levels.gd -- --write`, then run tests.
-- Android debug APK: `godot_console --headless --export-debug "Android Debug" build/smashtheory-debug.apk` works with a local
-  `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `com.ranababu.smashtheory`).
+- Android debug APK: `godot_console --headless --export-debug "Android Debug" build/perfectsmash-debug.apk` works with a local
+  `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `com.ranababu.perfectsmash`).
   Ran on the emulator `sdk_gphone16k_x86_64` and levels 1–3 were played through by hand. The emulator build predates the final L01 tweak.
   **No physical-device test yet.**
 
@@ -78,4 +78,4 @@ M0's "on a physical Android device" criterion is **not yet verified**: no device
 ## Decisions needing owner approval
 
 - Landscape orientation (plan §4 default was portrait; justified in changelog).
-- Repository named `perfectsmash` while the product name in docs is "Smash Theory" (app name set to "Smash Theory").
+- Product name: owner chose "Perfect Smash" (2026-11-01). `plan.md` still says "Smash Theory" and is left unchanged as the baseline; revise it only if the owner asks.
