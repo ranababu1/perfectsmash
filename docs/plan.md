@@ -1,13 +1,17 @@
-# Smash Theory: Product and Engineering Plan
+# Perfect Smash: Product and Engineering Plan
 
-**Document status:** Original project baseline  
+**Document status:** Original project baseline, revision 1 (see revision history below)  
 **Product type:** 2D physics destruction puzzle  
 **Initial platform:** Android  
 **Default engine direction:** Godot 4.x + GDScript with built-in 2D physics
 
+**Revision history**
+- Rev 1 (2026-11-01, owner-approved): product renamed from "Smash Theory" to "Perfect Smash". No other content changed.
+  The original baseline text is preserved in git history (commit `e26dd91`).
+
 ## 1. Product vision and target audience
 
-Smash Theory is a compact destruction puzzle where the player has a limited number of actions to destabilize a structure, trigger a satisfying collapse, and meet a clear objective. The fun should come from understanding cause and effect, not from random explosions alone.
+Perfect Smash is a compact destruction puzzle where the player has a limited number of actions to destabilize a structure, trigger a satisfying collapse, and meet a clear objective. The fun should come from understanding cause and effect, not from random explosions alone.
 
 Primary audience:
 - Casual players who enjoy physics toys and destruction.
