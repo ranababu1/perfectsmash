@@ -7,6 +7,7 @@ signal destroyed(at: Vector2)
 var radius := 20.0
 var armed := false
 var _destroyed := false
+var _previous_velocity := Vector2.ZERO
 
 
 func _init(p_radius: float) -> void:
@@ -32,10 +33,20 @@ func _init(p_radius: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _destroyed:
 		return
+	var velocity_change := (state.linear_velocity - _previous_velocity).length()
+	_previous_velocity = state.linear_velocity
+	if DestructionRules.breaks_on_jolt(armed, velocity_change):
+		destroy()
+		return
 	for i in state.get_contact_count():
 		if DestructionRules.breaks_on_impact(armed, state.get_contact_impulse(i).length(), GameConfig.TARGET_BREAK_IMPULSE):
 			destroy()
 			return
+		if state.get_contact_collider_object(i) is ProjectileBody:
+			var relative := state.get_contact_collider_velocity_at_position(i) - state.linear_velocity
+			if DestructionRules.breaks_on_projectile_hit(armed, relative.length()):
+				destroy()
+				return
 
 
 ## Idempotent: a target can only be destroyed (and reported) once.
