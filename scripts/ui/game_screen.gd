@@ -165,15 +165,3 @@ func _vibrate(ms: int) -> void:
 	if progress.vibration_enabled:
 		Input.vibrate_handheld(ms)
 
-
-class Backdrop extends Node2D:
-	## Static sky bands drawn well beyond the 1280x720 canvas to cover any aspect ratio.
-	func _draw() -> void:
-		var bands := 8
-		var top := -400.0
-		var bottom := GameConfig.GROUND_TOP
-		for i in bands:
-			var y0 := lerpf(top, bottom, float(i) / bands)
-			var y1 := lerpf(top, bottom, float(i + 1) / bands)
-			var c := Palette.SKY_TOP.lerp(Palette.SKY_BOTTOM, float(i) / (bands - 1))
-			draw_rect(Rect2(-800, y0, GameConfig.WORLD_WIDTH + 1600, y1 - y0 + 1), c)
