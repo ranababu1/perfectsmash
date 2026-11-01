@@ -2,6 +2,14 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-01 — Owner decisions recorded (0.1.0, unreleased)
+
+- Landscape orientation approved by the owner (closes the plan §4 portrait/landscape question).
+- `plan.md` revised with owner approval (rev 1): product name changed to "Perfect Smash" and a revision-history note added.
+  No other plan content changed; the original baseline is in commit `e26dd91`.
+- Removed the obsolete debug builds (`com.ranababu.smashtheory`, `com.ranababu.perfectsmash`) from the emulator;
+  only `dev.imrn.perfectsmash` remains installed.
+
 ## 2026-11-01 — Renamed to Perfect Smash (0.1.0, unreleased)
 
 - Owner decision: the product is now **Perfect Smash** (matching the repository name). Updated `application/config/name`
