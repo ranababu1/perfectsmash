@@ -2,7 +2,6 @@
 .godot/
 .import/
 *.translation
-export_presets.cfg
 *.tmp
 
 # Build / export output
