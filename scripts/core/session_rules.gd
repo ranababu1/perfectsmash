@@ -30,11 +30,14 @@ func register_launch() -> bool:
 	return true
 
 
-func register_settled(objective_met: bool) -> Phase:
+## `failed` ends the attempt immediately (an ally or cargo was lost), even with shots left.
+func register_settled(objective_met: bool, failed: bool = false) -> Phase:
 	if phase != Phase.SIMULATING:
 		push_error("SessionRules: register_settled called outside a simulation")
 		return phase
-	if objective_met:
+	if failed:
+		phase = Phase.LOST
+	elif objective_met:
 		phase = Phase.WON
 	elif shots_used >= shots_budget:
 		phase = Phase.LOST

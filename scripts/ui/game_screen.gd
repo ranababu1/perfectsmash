@@ -14,6 +14,7 @@ signal stat_counted(level_id: String, key: String)
 const RESULT_DELAY := 0.5
 const VIBRATE_TARGET_MS := 35
 const VIBRATE_WIN_MS := 90
+const VIBRATE_BLAST_MS := 60
 
 var audio: AudioService
 var progress: ProgressData
@@ -59,6 +60,8 @@ func _ready() -> void:
 	session.shots_changed.connect(hud.set_shots)
 	session.target_destroyed.connect(_on_target_destroyed)
 	session.block_shattered.connect(_on_block_shattered)
+	session.exploded.connect(_on_exploded)
+	session.ally_lost.connect(_on_ally_lost)
 	session.impact.connect(func(strength: float, _at: Vector2) -> void: audio.play_impact(strength))
 	session.finished.connect(_on_finished)
 	hud.pause_pressed.connect(pause)
@@ -129,6 +132,17 @@ func _on_target_destroyed(at: Vector2) -> void:
 	audio.play("pop")
 	_vibrate(VIBRATE_TARGET_MS)
 	_spawn_burst.call_deferred(at, Palette.TARGET, 56.0)
+
+
+func _on_exploded(at: Vector2) -> void:
+	audio.play("boom")
+	_vibrate(VIBRATE_BLAST_MS)
+	_spawn_burst.call_deferred(at, Palette.BLAST, GameConfig.BLAST_RADIUS * 0.8)
+
+
+func _on_ally_lost(at: Vector2) -> void:
+	audio.play("lose", -6.0, 1.4)
+	_spawn_burst.call_deferred(at, Palette.ALLY, 50.0)
 
 
 func _on_block_shattered(at: Vector2) -> void:

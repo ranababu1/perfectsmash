@@ -2,6 +2,33 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-05 — Campaign (in progress, 0.3.0): Operation Rebuild, 100 missions
+
+Owner request: 100 levels unlocked in sequence, a storyline narrated before and after every mission (IGI-style),
+and gameplay beyond knocking out red cores. Working plan and resume point: `docs/campaign_plan.md`.
+
+**Phase 1: new mechanics** (done)
+- **Explosive crates** (`material: "explosive"`): detonate on an armed contact impulse above 300 (the same as glass;
+  lower values would set them off under a resting stone slab) or on a direct projectile hit. A blast gives every body
+  within 170 px a velocity change of `900 × (1 − d/170)`, which breaks cores and drones within about 94 px. It lights
+  the fuses of other crates in range, and each fuse burns 4 physics steps, so chains read as a cascade.
+  `GameSession` resolves blasts in a fixed order on the physics tick, so results stay deterministic. A shot never
+  counts as settled while a fuse is burning.
+- **Ammo per shot** (`ammo: [...]`): `standard`, `heavy` (mass 20, radius 22) and `blast` (explodes on its first contact).
+  The loaded ball in the launcher shows the next shot's ammo.
+- **Ally drones** (`allies: [...]`): blue drones that break by the same rules as cores. Losing one fails the mission
+  as soon as the shot settles, even with shots left (`SessionRules.register_settled(met, failed)`).
+- **Supply drops** (objective `deliver` with a `zone`, crates with `material: "cargo"`): win when every crate rests
+  inside the drop zone; a crate that leaves the world fails the mission.
+- **Bounce pads** (static `kind: "bumper"`, bounce 0.95) for bank shots.
+- `ObjectiveEvaluator.evaluate()` returns PENDING / MET / FAILED from a state snapshot. `LevelDefinition` validates
+  every new field. The solver understands deliver progress and rejects shots that lose a drone or the cargo, and its
+  JSON writer keeps the new fields.
+- New sounds: `boom` (explosions) and `radio` (narration blips), both synthesized like the rest.
+- Tests: new `tests/test_mechanics.gd` (explosive chain, blast shot, heavy shot, ally loss, delivery win and loss,
+  bumpers, invalid data) plus rules tests for every outcome. Headless: 75 passed, 0 failed, 1 skipped; the existing
+  20 levels still verify.
+
 ## 2026-11-05 — Release preparation: settings, play-test stats, screen sizes, Android release, store kit (0.2.0, unreleased)
 
 Owner request: finish every pending milestone item that doesn't need the owner; leave signing, review and store

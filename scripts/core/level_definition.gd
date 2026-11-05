@@ -5,6 +5,9 @@ extends RefCounted
 
 const OBJECTIVE_DESTROY_TARGETS := "destroy_targets"
 const OBJECTIVE_TOPPLE := "topple"
+## Knock every cargo block into the drop zone.
+const OBJECTIVE_DELIVER := "deliver"
+const STATIC_KINDS: Array[String] = ["wall", "bumper"]
 const MAX_SHOTS := 5
 const MIN_TARGET_RADIUS := 8.0
 const MAX_TARGET_RADIUS := 60.0
@@ -18,12 +21,18 @@ var objective_type := OBJECTIVE_DESTROY_TARGETS
 ## For topple objectives: every block's top edge must end below (greater y than) this line.
 var topple_line_y := 0.0
 var launcher := Vector2.ZERO
-## Each entry: {position: Vector2, size: Vector2, rotation: float (radians)}.
+## For deliver objectives: the drop zone every cargo block must come to rest in.
+var zone := Rect2()
+## Each entry: {position: Vector2, size: Vector2, rotation: float (radians), kind: "wall"|"bumper"}.
 var statics: Array[Dictionary] = []
 ## Each entry: {position, size, rotation, material: String}.
 var blocks: Array[Dictionary] = []
 ## Each entry: {position: Vector2, radius: float}.
 var targets: Array[Dictionary] = []
+## Friendly drones (same shape as targets). Breaking any of them fails the level.
+var allies: Array[Dictionary] = []
+## Ammunition per shot (index = shot number); shots beyond the list use DEFAULT_AMMO.
+var ammo: Array[String] = []
 ## Verified launch velocities that solve the level; used by automated tests, never shown to players.
 var solution: Array[Vector2] = []
 
@@ -58,6 +67,13 @@ func _parse(data: Dictionary) -> void:
 		objective_type = str(objective.get("type", ""))
 		if objective_type == OBJECTIVE_TOPPLE:
 			topple_line_y = _read_float(objective, "line_y")
+		elif objective_type == OBJECTIVE_DELIVER:
+			var z: Variant = objective.get("zone")
+			if z is Dictionary:
+				zone = Rect2(_read_float(z, "x") - _read_float(z, "w") / 2.0, _read_float(z, "y") - _read_float(z, "h") / 2.0,
+					_read_float(z, "w"), _read_float(z, "h"))
+			else:
+				errors.append("deliver objective needs a zone {x, y, w, h}")
 	else:
 		errors.append("objective must be an object")
 
@@ -70,6 +86,13 @@ func _parse(data: Dictionary) -> void:
 			targets.append({"position": _read_xy(entry), "radius": _read_float(entry, "r")})
 		else:
 			errors.append("target entry is not an object")
+	for entry: Variant in _read_array(data, "allies"):
+		if entry is Dictionary:
+			allies.append({"position": _read_xy(entry), "radius": _read_float(entry, "r")})
+		else:
+			errors.append("ally entry is not an object")
+	for entry: Variant in _read_array(data, "ammo"):
+		ammo.append(str(entry))
 	for entry: Variant in _read_array(data, "solution"):
 		if entry is Array and entry.size() == 2 and _is_number(entry[0]) and _is_number(entry[1]):
 			solution.append(Vector2(entry[0], entry[1]))
@@ -89,6 +112,11 @@ func _validate() -> void:
 		OBJECTIVE_DESTROY_TARGETS:
 			if targets.is_empty():
 				errors.append(prefix + "destroy_targets needs at least one target")
+		OBJECTIVE_DELIVER:
+			if cargo_count() == 0:
+				errors.append(prefix + "deliver needs at least one cargo block")
+			if zone.size.x <= 0.0 or zone.size.y <= 0.0 or not _in_world(zone.get_center()):
+				errors.append(prefix + "deliver zone must have a positive size inside the world")
 		OBJECTIVE_TOPPLE:
 			if blocks.is_empty():
 				errors.append(prefix + "topple needs at least one block")
@@ -105,7 +133,15 @@ func _validate() -> void:
 	for box: Dictionary in blocks:
 		if not GameConfig.MATERIALS.has(box.material):
 			errors.append(prefix + "unknown material '%s'" % box.material)
-	for target: Dictionary in targets:
+	for box: Dictionary in statics:
+		if not STATIC_KINDS.has(box.kind):
+			errors.append(prefix + "unknown static kind '%s'" % box.kind)
+	if ammo.size() > shots:
+		errors.append(prefix + "more ammo entries than shots")
+	for kind in ammo:
+		if not GameConfig.AMMO.has(kind):
+			errors.append(prefix + "unknown ammo '%s'" % kind)
+	for target: Dictionary in targets + allies:
 		if target.radius < MIN_TARGET_RADIUS or target.radius > MAX_TARGET_RADIUS:
 			errors.append(prefix + "target radius out of range")
 		if not _in_world(target.position):
@@ -129,7 +165,22 @@ func _parse_box(entry: Variant, is_block: bool) -> Dictionary:
 	}
 	if is_block:
 		box["material"] = str(entry.get("material", "wood"))
+	else:
+		box["kind"] = str(entry.get("kind", "wall"))
 	return box
+
+
+func cargo_count() -> int:
+	return blocks.filter(func(b: Dictionary) -> bool: return b.material == "cargo").size()
+
+
+## Ammo used by the given shot (0-based).
+func ammo_for_shot(index: int) -> String:
+	return ammo[index] if index >= 0 and index < ammo.size() else GameConfig.DEFAULT_AMMO
+
+
+func uses_material(kind: String) -> bool:
+	return blocks.any(func(b: Dictionary) -> bool: return b.material == kind)
 
 
 static func _in_world(point: Vector2) -> bool:

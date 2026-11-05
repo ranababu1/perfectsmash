@@ -26,6 +26,8 @@ func _ready() -> void:
 		"shatter": _synth(0.3, func(t: float, n: float) -> float: return (n * 0.5 + sin(TAU * 2600.0 * t) * 0.2 + sin(TAU * 3400.0 * t) * 0.15) * exp(-t * 12.0)),
 		"win": _make_arpeggio([523.25, 659.25, 783.99, 1046.5]),
 		"lose": _synth(0.45, func(t: float, _n: float) -> float: return sin(TAU * (420.0 - 260.0 * t) * t) * exp(-t * 4.0) * 0.4),
+		"boom": _make_boom(),
+		"radio": _synth(0.07, func(t: float, n: float) -> float: return (n * 0.25 + sin(TAU * 1900.0 * t) * 0.2) * exp(-t * 40.0)),
 		"click": _synth(0.035, func(t: float, _n: float) -> float: return sin(TAU * 1200.0 * t) * exp(-t * 80.0) * 0.4),
 	}
 	for i in VOICES:
@@ -80,6 +82,14 @@ func _make_impact() -> AudioStreamWAV:
 	return _synth(0.14, func(t: float, n: float) -> float:
 		state.y += 0.15 * (n - state.y)
 		return (state.y * 1.6 + sin(TAU * 90.0 * t) * 0.6) * exp(-t * 28.0))
+
+
+## Low rumble: filtered noise with a falling sub tone.
+func _make_boom() -> AudioStreamWAV:
+	var state := {"y": 0.0}
+	return _synth(0.6, func(t: float, n: float) -> float:
+		state.y += 0.08 * (n - state.y)
+		return (state.y * 2.4 + sin(TAU * (70.0 - 40.0 * t) * t) * 0.7) * exp(-t * 6.0))
 
 
 func _make_arpeggio(notes: Array) -> AudioStreamWAV:

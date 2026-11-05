@@ -100,7 +100,7 @@ All deterministic, data-driven, and verified by the solver.
 ## 6. Progress (resume here)
 
 - [x] Plan written (this file)
-- [ ] **Phase 1 — mechanics:** GameConfig, LevelDefinition, ObjectiveEvaluator, SessionRules, bodies (explosive,
+- [x] **Phase 1 — mechanics:** GameConfig, LevelDefinition, ObjectiveEvaluator, SessionRules, bodies (explosive,
       cargo, ally, bumper, ammo), GameSession explosions, Palette; solver progress for deliver; tests
 - [ ] **Phase 2 — levels:** `tools/build_campaign.gd` + 80 designs; solve; all playthrough tests pass
 - [ ] **Phase 3 — story:** `data/story.json` (chapters, speakers, 100 briefings + debriefs, fail pool), `StoryCatalog`, tests

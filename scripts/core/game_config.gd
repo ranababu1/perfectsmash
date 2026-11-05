@@ -25,7 +25,34 @@ const MATERIALS := {
 	"wood": {"density": 0.0010, "friction": 0.8, "bounce": 0.05},
 	"stone": {"density": 0.0030, "friction": 0.9, "bounce": 0.0},
 	"glass": {"density": 0.0008, "friction": 0.4, "bounce": 0.1},
+	## Detonates on a hard hit (see EXPLOSIVE_*).
+	"explosive": {"density": 0.0012, "friction": 0.8, "bounce": 0.05},
+	## Supply crate for "deliver" objectives: heavy-ish and unbreakable.
+	"cargo": {"density": 0.0016, "friction": 0.9, "bounce": 0.0},
 }
+
+# Ammunition, chosen per shot by the level. Blast shots explode on their first contact.
+const AMMO := {
+	"standard": {"mass": 6.0, "radius": 18.0},
+	"heavy": {"mass": 20.0, "radius": 22.0},
+	"blast": {"mass": 5.0, "radius": 16.0},
+}
+const DEFAULT_AMMO := "standard"
+
+# Explosions (explosive crates and blast shots). A body at distance d from the centre gets a
+# velocity change of BLAST_SPEED * (1 - d / BLAST_RADIUS), whatever its mass. Targets and allies
+# break when that exceeds TARGET_BREAK_VELOCITY_CHANGE, i.e. within about 55% of the radius.
+const BLAST_RADIUS := 170.0
+const BLAST_SPEED := 900.0
+## Contact impulse that sets off an armed explosive crate. Matches glass: a resting stone slab
+## pushes about 200 per step, so a lower value would detonate crates the moment they are armed.
+## A direct projectile hit faster than TARGET_PROJECTILE_HIT_SPEED always sets one off.
+const EXPLOSIVE_TRIGGER_IMPULSE := 300.0
+## Physics steps between a blast and the explosives it sets off, so chains read as a cascade.
+const CHAIN_DELAY_STEPS := 4
+
+# Bounce pads (static "bumper" surfaces) for bank shots.
+const BUMPER_BOUNCE := 0.95
 const TARGET_MASS := 1.0
 
 # Destruction: contact impulse above which a body breaks (once armed by the first launch).

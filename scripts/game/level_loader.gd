@@ -21,7 +21,8 @@ static func build(def: LevelDefinition) -> Node2D:
 	world.add_child(ground)
 
 	for box in def.statics:
-		var body := StaticBox.new(box.size)
+		var bumper: bool = box.kind == "bumper"
+		var body := StaticBox.new(box.size, Palette.BUMPER if bumper else Palette.STATIC, Palette.BUMPER_EDGE if bumper else Palette.STATIC_EDGE, bumper)
 		body.position = box.position
 		body.rotation = box.rotation
 		world.add_child(body)
@@ -34,4 +35,8 @@ static func build(def: LevelDefinition) -> Node2D:
 		var target := TargetBody.new(spec.radius)
 		target.position = spec.position
 		world.add_child(target)
+	for spec in def.allies:
+		var ally := TargetBody.new(spec.radius, true)
+		ally.position = spec.position
+		world.add_child(ally)
 	return world

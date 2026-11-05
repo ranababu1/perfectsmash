@@ -1,9 +1,11 @@
 class_name BlockBody
 extends RigidBody2D
-## A dynamic rectangular structure piece. Glass blocks shatter on hard impacts once armed.
+## A dynamic rectangular structure piece. Glass blocks shatter on hard impacts once armed;
+## explosive crates detonate (the session applies the blast); cargo crates never break.
 
 signal impacted(strength: float, at: Vector2)
 signal shattered(at: Vector2)
+signal detonated(at: Vector2)
 
 var size := Vector2.ONE
 var material_kind := "wood"
@@ -44,14 +46,37 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _broken:
 		return
 	var strongest := 0.0
+	var projectile_hit := false
 	for i in state.get_contact_count():
 		strongest = maxf(strongest, state.get_contact_impulse(i).length())
+		if material_kind == "explosive" and state.get_contact_collider_object(i) is ProjectileBody:
+			var relative := state.get_contact_collider_velocity_at_position(i) - state.linear_velocity
+			projectile_hit = projectile_hit or DestructionRules.breaks_on_projectile_hit(armed, relative.length())
 	if strongest > GameConfig.IMPACT_SOUND_IMPULSE:
 		impacted.emit(strongest, global_position)
 	if material_kind == "glass" and DestructionRules.breaks_on_impact(armed, strongest, GameConfig.GLASS_BREAK_IMPULSE):
 		_broken = true
 		shattered.emit(global_position)
 		queue_free()
+	elif material_kind == "explosive" and (projectile_hit or DestructionRules.breaks_on_impact(armed, strongest, GameConfig.EXPLOSIVE_TRIGGER_IMPULSE)):
+		detonate()
+
+
+## Sets off an explosive crate (idempotent). Also used by the session for chain reactions.
+func detonate() -> void:
+	if _broken or material_kind != "explosive":
+		return
+	_broken = true
+	detonated.emit(global_position)
+	queue_free()
+
+
+func is_explosive() -> bool:
+	return material_kind == "explosive"
+
+
+func is_cargo() -> bool:
+	return material_kind == "cargo"
 
 
 func is_broken() -> bool:
@@ -72,6 +97,21 @@ func _draw() -> void:
 		draw_line(a, -a, Color(Palette.WOOD_EDGE, 0.55), 2.0, true)
 	elif material_kind == "glass":
 		draw_line(Vector2(-size.x * 0.25, size.y * 0.3), Vector2(size.x * 0.05, -size.y * 0.3), Color(Palette.GLASS_EDGE, 0.7), 2.0, true)
+	elif material_kind == "explosive":
+		# Hazard stripes and a bold "!" so the crate reads as dangerous at a glance.
+		var stripe := Color(0.12, 0.08, 0.06, 0.55)
+		var x := -size.x / 2.0 + 4.0
+		while x < size.x / 2.0 - 4.0:
+			draw_line(Vector2(x, size.y / 2.0 - 3.0), Vector2(minf(x + 8.0, size.x / 2.0 - 3.0), size.y / 2.0 - 9.0), stripe, 3.0, true)
+			x += 10.0
+		var m := minf(size.x, size.y)
+		draw_line(Vector2(0, -m * 0.28), Vector2(0, m * 0.05), Palette.EXPLOSIVE_EDGE, maxf(2.5, m * 0.12), true)
+		draw_circle(Vector2(0, m * 0.2), maxf(1.5, m * 0.07), Palette.EXPLOSIVE_EDGE, true, -1.0, true)
+	elif material_kind == "cargo":
+		# Cross straps: a supply crate.
+		var h := size / 2.0 - Vector2(4, 4)
+		draw_line(-h, h, Color(Palette.CARGO_EDGE, 0.6), 2.0, true)
+		draw_line(Vector2(-h.x, h.y), Vector2(h.x, -h.y), Color(Palette.CARGO_EDGE, 0.6), 2.0, true)
 
 
 static var _styles := {}

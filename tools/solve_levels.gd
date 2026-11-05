@@ -134,8 +134,13 @@ func _rank(outcomes: Array, def: LevelDefinition) -> Array:
 
 
 func _progress(o: Dictionary, def: LevelDefinition) -> float:
+	# A shot that loses an ally or the cargo can never lead to a win.
+	if o.failed:
+		return -100.0
 	if def.objective_type == LevelDefinition.OBJECTIVE_TOPPLE:
 		return clampf((o.highest_top - 300.0) / 300.0, 0.0, 1.0) * 10.0
+	if def.objective_type == LevelDefinition.OBJECTIVE_DELIVER:
+		return clampf(1.0 - o.cargo_distance / 800.0, 0.0, 1.0) * 10.0
 	return float(def.targets.size() - o.targets_remaining) * 10.0
 
 
@@ -189,8 +194,10 @@ func _run_batch(def: LevelDefinition, prefix: Array[Vector2], batch: Array) -> A
 		var session: GameSession = run.session
 		outcomes.append({
 			"won": session.rules.phase == SessionRules.Phase.WON,
+			"failed": session.allies_lost > 0 or session.cargo_lost > 0,
 			"targets_remaining": session.targets_remaining,
 			"highest_top": session.highest_block_top(),
+			"cargo_distance": session.cargo_distance_to_zone(),
 		})
 		run.viewport.queue_free()
 	await process_frame
@@ -226,7 +233,13 @@ func _format_catalog(data: Dictionary) -> String:
 		out += "\t\"hint\": %s,\n" % _j(l.get("hint", ""))
 		out += "\t\"launcher\": %s,\n" % _j(l.launcher)
 		out += "\t\"objective\": %s,\n" % _j(l.objective)
-		for key in ["statics", "blocks", "targets", "solution"]:
+		if l.has("ammo"):
+			out += "\t\"ammo\": %s,\n" % _j(l.ammo)
+		var keys := ["statics", "blocks", "targets"]
+		if l.has("allies"):
+			keys.append("allies")
+		keys.append("solution")
+		for key: String in keys:
 			var items: Array = l.get(key, [])
 			if items.is_empty():
 				out += "\t\"%s\": []" % key
@@ -254,7 +267,7 @@ func _j(value: Variant) -> String:
 			parts.append(_j(v))
 		return "[" + ", ".join(parts) + "]"
 	if value is Dictionary:
-		var order := ["type", "line_y", "x", "y", "w", "h", "r", "rot", "material"]
+		var order := ["type", "line_y", "zone", "x", "y", "w", "h", "r", "rot", "material", "kind"]
 		var keys: Array = value.keys()
 		keys.sort_custom(func(a: String, b: String) -> bool:
 			var ia := order.find(a)

@@ -2,6 +2,12 @@
 
 _Last updated: 2026-11-05 · Version 0.2.0 (unreleased, version code 1) · Branch `claude/quirky-bardeen-xmkcnl` · Remote `origin` (github.com/ranababu1/perfectsmash)_
 
+## Work in progress: campaign (0.3.0)
+
+Building the 100-mission "Operation Rebuild" campaign requested by the owner on 2026-11-05. The plan, design and a
+**resume checklist** are in `docs/campaign_plan.md` §6. Done so far: Phase 1 (mechanics: explosive crates, blast and
+heavy shots, ally drones, supply drops, bounce pads). Next: Phase 2 (levels 21–100).
+
 ## Purpose and phase
 
 Perfect Smash (originally titled "Smash Theory") is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.

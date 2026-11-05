@@ -46,22 +46,47 @@ func test_session_minimum_budget() -> void:
 
 func test_objective_destroy_targets() -> void:
 	var t := LevelDefinition.OBJECTIVE_DESTROY_TARGETS
-	assert_true(ObjectiveEvaluator.is_met(t, 0, 100.0, 0.0))
-	assert_false(ObjectiveEvaluator.is_met(t, 1, INF, 0.0))
+	assert_true(ObjectiveEvaluator.is_met(t, {"targets_remaining": 0, "highest_block_top": 100.0}))
+	assert_false(ObjectiveEvaluator.is_met(t, {"targets_remaining": 1}))
 
 
 func test_objective_topple_boundary() -> void:
 	var t := LevelDefinition.OBJECTIVE_TOPPLE
-	assert_true(ObjectiveEvaluator.is_met(t, 5, 520.0, 500.0), "top below line")
-	assert_true(ObjectiveEvaluator.is_met(t, 5, 500.0, 500.0), "top exactly on line")
-	assert_false(ObjectiveEvaluator.is_met(t, 0, 499.0, 500.0), "top above line")
-	assert_true(ObjectiveEvaluator.is_met(t, 0, INF, 500.0), "no blocks left")
+	assert_true(ObjectiveEvaluator.is_met(t, {"highest_block_top": 520.0, "topple_line_y": 500.0}), "top below line")
+	assert_true(ObjectiveEvaluator.is_met(t, {"highest_block_top": 500.0, "topple_line_y": 500.0}), "top exactly on line")
+	assert_false(ObjectiveEvaluator.is_met(t, {"highest_block_top": 499.0, "topple_line_y": 500.0}), "top above line")
+	assert_true(ObjectiveEvaluator.is_met(t, {"highest_block_top": INF, "topple_line_y": 500.0}), "no blocks left")
+
+
+func test_objective_deliver() -> void:
+	var t := LevelDefinition.OBJECTIVE_DELIVER
+	assert_true(ObjectiveEvaluator.is_met(t, {"cargo_total": 2, "cargo_in_zone": 2}))
+	assert_false(ObjectiveEvaluator.is_met(t, {"cargo_total": 2, "cargo_in_zone": 1}), "one crate still out")
+	assert_false(ObjectiveEvaluator.is_met(t, {"cargo_total": 0, "cargo_in_zone": 0}), "no cargo is never a win")
+
+
+func test_evaluate_fails_on_lost_ally_or_cargo() -> void:
+	var t := LevelDefinition.OBJECTIVE_DESTROY_TARGETS
+	var O := ObjectiveEvaluator.Outcome
+	assert_eq(ObjectiveEvaluator.evaluate(t, {"targets_remaining": 0}), O.MET)
+	assert_eq(ObjectiveEvaluator.evaluate(t, {"targets_remaining": 2}), O.PENDING)
+	assert_eq(ObjectiveEvaluator.evaluate(t, {"targets_remaining": 0, "allies_lost": 1}), O.FAILED, "lost ally beats a met goal")
+	assert_eq(ObjectiveEvaluator.evaluate(LevelDefinition.OBJECTIVE_DELIVER,
+		{"cargo_total": 1, "cargo_in_zone": 0, "cargo_lost": 1}), O.FAILED)
+
+
+func test_session_failed_ends_with_shots_left() -> void:
+	var rules := SessionRules.new(3)
+	rules.register_launch()
+	assert_eq(rules.register_settled(false, true), SessionRules.Phase.LOST)
+	assert_true(rules.is_finished())
+	assert_eq(rules.shots_remaining(), 2)
 
 
 func test_objective_is_repeatable() -> void:
 	var t := LevelDefinition.OBJECTIVE_DESTROY_TARGETS
 	for i in 3:
-		assert_true(ObjectiveEvaluator.is_met(t, 0, 0.0, 0.0), "same input, same answer")
+		assert_true(ObjectiveEvaluator.is_met(t, {"targets_remaining": 0}), "same input, same answer")
 
 
 func test_monitor_settles_after_hold_time() -> void:

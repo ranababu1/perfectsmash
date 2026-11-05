@@ -81,14 +81,15 @@ func _draw() -> void:
 		draw_line(fork_left, ball, BAND_COLOR, BAND_WIDTH, true)
 		if show_guide:
 			_draw_preview(origin, velocity_for_pull(pull))
-	ProjectileBody.draw_ball(self, ball)
+	var ammo := session.current_ammo()
+	ProjectileBody.draw_ball(self, ball, 0.0, ammo)
 	if aiming:
 		draw_line(fork_right, ball, BAND_COLOR, BAND_WIDTH, true)
 		_draw_power(ball, pull.length() / GameConfig.MAX_DRAG_DISTANCE)
 	elif not _dragging:
 		# Idle hint ring: a slow, faint pulse says "grab here" without any text.
 		var t := fmod(Time.get_ticks_msec() / 1400.0, 1.0)
-		draw_arc(ball, GameConfig.PROJECTILE_RADIUS + 4.0 + t * 14.0, 0, TAU, 40, Color(Palette.ACCENT, 0.35 * (1.0 - t)), 2.0, true)
+		draw_arc(ball, ProjectileBody.radius_for(ammo) + 4.0 + t * 14.0, 0, TAU, 40, Color(Palette.ACCENT, 0.35 * (1.0 - t)), 2.0, true)
 
 
 ## Short partial arc: shows the launch direction and early curve without solving the puzzle.
