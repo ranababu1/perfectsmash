@@ -104,14 +104,13 @@ All deterministic, data-driven, and verified by the solver.
       cargo, ally, bumper, ammo), GameSession explosions, Palette; solver progress for deliver; tests
 - [x] **Phase 2 — levels:** `tools/build_campaign.gd` + 80 designs; solve; all playthrough tests pass
 - [x] **Phase 3 — story:** `data/story.json` (chapters, speakers, 100 briefings + debriefs, fail pool), `StoryCatalog`, tests
-- [ ] **Phase 4 — UI:** briefing screen, schematic, dialogue box, narration (TTS + blips), debrief, chapter menu,
+- [x] **Phase 4 — UI:** briefing screen, schematic, dialogue box, narration (TTS + blips), debrief, chapter menu,
       HUD, settings toggle, save v3; UI flow + layout tests
-- [ ] **Phase 5 — finish:** full headless + windowed runs, physics report, store screenshots and copy refreshed,
+- [x] **Phase 5 — finish:** full headless + windowed runs, physics report, store screenshots and copy refreshed,
       APK build check, `changelog.md` + `currentstate.md`, push
 
-Phase 4 status: briefing screen, schematic + intel, dialogue box, narration (TTS + radio blips), debrief and
-failure lines, chapter-tab menu, HUD objective/drone/ammo pips, settings toggle and save v3 are in. Remaining:
-UI-flow tests for briefing → mission → debrief, then Phase 5.
+All phases are complete (2026-11-05). What remains needs the owner: a device run (narration, supply-drop
+difficulty), Gradle release builds, and Play Console setup. See `currentstate.md`.
 
 After each phase: commit, push, tick the box above, and add the phase to `changelog.md` and `currentstate.md`.
 

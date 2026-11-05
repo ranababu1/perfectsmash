@@ -2,10 +2,45 @@
 
 All meaningful changes, newest first.
 
-## 2026-11-05 — Campaign (in progress, 0.3.0): Operation Rebuild, 100 missions
+## 2026-11-05 — Campaign (0.3.0, unreleased): Operation Rebuild, 100 missions
 
 Owner request: 100 levels unlocked in sequence, a storyline narrated before and after every mission (IGI-style),
 and gameplay beyond knocking out red cores. Working plan and resume point: `docs/campaign_plan.md`.
+
+**Phase 5: verification and release material** (done)
+- Version 0.3.0 (version code stays 1: nothing has been uploaded). Store copy rewritten for the campaign (short
+  description 80/80, full 1,249/4000), new release notes. The privacy policy explains narration (OS speech engine,
+  game text only). The Play answers note the TTS query and flag the IARC violence answer for re-checking because of
+  cartoon explosions.
+- Store art re-rendered: chapter menu, briefing (mission 61), the finale's heavy shot, mission 60's explosive chain,
+  the original collapse, and a story debrief; the feature graphic shows the explosive chain. `--probe=ids` picks
+  frames for any mission.
+- `docs/release.md`: campaign and narration items added to the device checklist; check the TTS query in the AAB.
+- Evidence: headless 84 passed, 0 failed, 1 skipped (34 s); physics report 300/300 replays won with one end state
+  per mission, peak 17 bodies, mean frame 0.20 ms, worst 8.2 ms; debug APK 0.3.0 signed and verified (VIBRATE only,
+  targetSdk 36). Not run: Gradle release builds (Google Maven blocked here), narration with a real voice, any device.
+
+**Phase 4: story UI** (done)
+- **Briefing** before every mission (`BriefingScreen`): chapter line, "MISSION n" + name, a radio transcript
+  (`DialogueBox`: typewriter text, speaker badges, radio blip, tap to hurry, Skip), a blueprint schematic
+  (`LevelSchematic`) drawn from the level data, and an objective card with shots, ammo and **intel** notes for the
+  mechanics present (`MissionText`). The level loads and settles underneath. Back returns to the missions menu.
+- **Debrief** in the result panel ("Mission complete" + stars + debrief transcript, "Next mission" opens the next
+  briefing). Failures show "Mission failed", a reason (out of shots / drone lost / crate lost) and a rotating
+  radio line.
+- **Voice narration** (`Narrator`): the device's own text-to-speech speaks each line, with a pitch per speaker
+  (Kestrel 1.0, Bolt 0.85, JUNO 1.35, ARCHITECT 0.7), pacing the transcript and timing out if the engine never
+  reports done. Setting "Voice narration" (default on); when the device has no voice the row says so. It needs no
+  permission and no network. `addons/android_tts` adds the `TTS_SERVICE` `<queries>` entry Android 11+ needs. Godot
+  applies it only in Gradle builds, so the tester APK preset now uses Gradle too, and a release-config test enforces it.
+- **Chapter menu**: five chapter tabs of 20 missions, locked until reached, opening on the next mission's chapter.
+  Tiles are 80 units tall so tabs fit at 720.
+- **HUD**: objective text for every objective type, a blue drone constraint line, ammo-coloured shot pips.
+- **Explosions** got a glowing additive effect (`ExplosionEffect`) matching the true blast radius, plus a 0.22 s,
+  6 px camera shake (visual only).
+- Save schema **v3** adds `settings.narration`; v1 and v2 saves migrate without warnings.
+- Tests: briefing → begin → win → debrief → next briefing; back from a briefing; dialogue typing, advancing and
+  skipping; briefing and debrief layouts at all six aspect ratios; v2→v3 migration; release builds can narrate.
 
 **Phase 2: missions 21–100** (done)
 - `tools/build_campaign.gd`: 80 mission designs (name, pattern, shots, par, difficulty, options) expanded by
