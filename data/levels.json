@@ -379,6 +379,1547 @@
 	"solution": [
 		[852, -597]
 	]
+},
+{
+	"id": "L21", "name": "Supply Run", "shots": 3, "par": 1,
+	"hint": "Knock the supply crate into the drop zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 811, "y": 595, "w": 180, "h": 90}},
+	"statics": [
+		{"x": 661, "y": 533, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 661, "y": 503, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L22", "name": "Mirror Hall", "shots": 3, "par": 1,
+	"hint": "Glass breaks. Cores fall.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 605, "y": 598, "w": 20, "h": 84, "material": "glass"},
+		{"x": 675, "y": 598, "w": 20, "h": 84, "material": "glass"},
+		{"x": 640, "y": 546, "w": 90, "h": 20, "material": "glass"},
+		{"x": 784, "y": 590, "w": 20, "h": 100, "material": "glass"},
+		{"x": 854, "y": 590, "w": 20, "h": 100, "material": "glass"},
+		{"x": 819, "y": 530, "w": 90, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 640, "y": 516, "r": 20},
+		{"x": 819, "y": 500, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L23", "name": "Bank Shot", "shots": 3, "par": 1,
+	"hint": "The purple pad bounces. Bank the shot over the shield.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 802, "y": 230, "w": 360, "h": 20, "kind": "bumper"}
+	],
+	"blocks": [
+		{"x": 742, "y": 560, "w": 40, "h": 160, "material": "stone"}
+	],
+	"targets": [
+		{"x": 878, "y": 616, "r": 24}
+	],
+	"solution": []
+},
+{
+	"id": "L24", "name": "Tower Drop", "shots": 3, "par": 1,
+	"hint": "Bring the tower down so the crate lands in the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 919, "y": 595, "w": 167, "h": 90}},
+	"statics": [],
+	"blocks": [
+		{"x": 675, "y": 588, "w": 20, "h": 104, "material": "wood"},
+		{"x": 775, "y": 588, "w": 20, "h": 104, "material": "wood"},
+		{"x": 725, "y": 526, "w": 120, "h": 20, "material": "wood"},
+		{"x": 725, "y": 496, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L25", "name": "Glass Stilts", "shots": 3, "par": 1,
+	"hint": "Glass legs. Break them and the crate drops.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 809, "y": 595, "w": 208, "h": 90}},
+	"statics": [],
+	"blocks": [
+		{"x": 744, "y": 575, "w": 20, "h": 130, "material": "glass"},
+		{"x": 834, "y": 575, "w": 20, "h": 130, "material": "glass"},
+		{"x": 789, "y": 500, "w": 110, "h": 20, "material": "wood"},
+		{"x": 789, "y": 470, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L26", "name": "Overpass", "shots": 3, "par": 1,
+	"hint": "Knock both cores off the bridge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 710, "y": 564, "w": 40, "h": 152},
+		{"x": 922, "y": 564, "w": 40, "h": 152}
+	],
+	"blocks": [
+		{"x": 816, "y": 478, "w": 252, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 766, "y": 448, "r": 20},
+		{"x": 866, "y": 448, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L27", "name": "Shelf Life", "shots": 3, "par": 1,
+	"hint": "Knock the supply crate into the drop zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 852, "y": 595, "w": 160, "h": 90}},
+	"statics": [
+		{"x": 654, "y": 465, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 654, "y": 435, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L28", "name": "Prism", "shots": 3, "par": 1,
+	"hint": "A pyramid of glass. Find the keystone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 839, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 889, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 939, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 864, "y": 565, "w": 50, "h": 50, "material": "glass"},
+		{"x": 914, "y": 565, "w": 50, "h": 50, "material": "glass"},
+		{"x": 889, "y": 515, "w": 50, "h": 50, "material": "glass"}
+	],
+	"targets": [
+		{"x": 889, "y": 468, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L29", "name": "Ricochet", "shots": 3, "par": 1,
+	"hint": "The purple pad bounces. Bank the shot over the shield.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 828, "y": 214, "w": 360, "h": 20, "kind": "bumper"}
+	],
+	"blocks": [
+		{"x": 768, "y": 540, "w": 40, "h": 200, "material": "stone"}
+	],
+	"targets": [
+		{"x": 889, "y": 617.6, "r": 22.4}
+	],
+	"solution": []
+},
+{
+	"id": "L30", "name": "Arcade", "shots": 3, "par": 1,
+	"hint": "Bring every pane below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 560},
+	"statics": [],
+	"blocks": [
+		{"x": 760, "y": 574, "w": 24, "h": 132, "material": "glass"},
+		{"x": 830, "y": 559, "w": 24, "h": 162, "material": "wood"},
+		{"x": 900, "y": 574, "w": 24, "h": 132, "material": "glass"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L31", "name": "Courier", "shots": 3, "par": 1,
+	"hint": "Bring the tower down so the crate lands in the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 980, "y": 595, "w": 155, "h": 90}},
+	"statics": [],
+	"blocks": [
+		{"x": 720, "y": 580, "w": 20, "h": 120, "material": "wood"},
+		{"x": 820, "y": 580, "w": 20, "h": 120, "material": "wood"},
+		{"x": 770, "y": 510, "w": 120, "h": 20, "material": "wood"},
+		{"x": 730, "y": 460, "w": 20, "h": 80, "material": "wood"},
+		{"x": 810, "y": 460, "w": 20, "h": 80, "material": "wood"},
+		{"x": 770, "y": 410, "w": 100, "h": 20, "material": "wood"},
+		{"x": 770, "y": 380, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L32", "name": "Twin Drops", "shots": 3, "par": 2,
+	"hint": "Two crates, one zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 1020, "y": 595, "w": 248, "h": 90}},
+	"statics": [
+		{"x": 620, "y": 492, "w": 100, "h": 20},
+		{"x": 802, "y": 426, "w": 100, "h": 20}
+	],
+	"blocks": [
+		{"x": 620, "y": 462, "w": 40, "h": 40, "material": "cargo"},
+		{"x": 802, "y": 396, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L33", "name": "Skybridge", "shots": 3, "par": 1,
+	"hint": "Knock both cores off the bridge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 715, "y": 552, "w": 40, "h": 176},
+		{"x": 951, "y": 552, "w": 40, "h": 176}
+	],
+	"blocks": [
+		{"x": 833, "y": 454, "w": 276, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 783, "y": 424, "r": 20},
+		{"x": 883, "y": 424, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L34", "name": "Hall of Glass", "shots": 3, "par": 2,
+	"hint": "Glass breaks. Cores fall.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 604, "y": 582.5, "w": 20, "h": 115, "material": "glass"},
+		{"x": 674, "y": 582.5, "w": 20, "h": 115, "material": "glass"},
+		{"x": 639, "y": 515, "w": 90, "h": 20, "material": "glass"},
+		{"x": 813, "y": 578.5, "w": 20, "h": 123, "material": "glass"},
+		{"x": 883, "y": 578.5, "w": 20, "h": 123, "material": "glass"},
+		{"x": 848, "y": 507, "w": 90, "h": 20, "material": "wood"},
+		{"x": 996, "y": 579.5, "w": 20, "h": 121, "material": "glass"},
+		{"x": 1066, "y": 579.5, "w": 20, "h": 121, "material": "glass"},
+		{"x": 1031, "y": 509, "w": 90, "h": 20, "material": "glass"}
+	],
+	"targets": [
+		{"x": 639, "y": 485, "r": 20},
+		{"x": 848, "y": 477, "r": 20},
+		{"x": 1031, "y": 479, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L35", "name": "Long Haul", "shots": 3, "par": 1,
+	"hint": "Knock the supply crate into the drop zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 906, "y": 595, "w": 140, "h": 90}},
+	"statics": [
+		{"x": 660, "y": 395, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 660, "y": 365, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L36", "name": "Reflection", "shots": 3, "par": 1,
+	"hint": "The purple pad bounces. Bank the shot over the shield.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 830, "y": 198, "w": 360, "h": 20, "kind": "bumper"}
+	],
+	"blocks": [
+		{"x": 770, "y": 520, "w": 40, "h": 240, "material": "stone"}
+	],
+	"targets": [
+		{"x": 908, "y": 619.2, "r": 20.8}
+	],
+	"solution": []
+},
+{
+	"id": "L37", "name": "Stained Glass", "shots": 3, "par": 1,
+	"hint": "A pyramid of glass. Find the keystone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 816, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 866, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 916, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 966, "y": 615, "w": 50, "h": 50, "material": "glass"},
+		{"x": 841, "y": 565, "w": 50, "h": 50, "material": "glass"},
+		{"x": 891, "y": 565, "w": 50, "h": 50, "material": "glass"},
+		{"x": 941, "y": 565, "w": 50, "h": 50, "material": "glass"},
+		{"x": 866, "y": 515, "w": 50, "h": 50, "material": "glass"},
+		{"x": 916, "y": 515, "w": 50, "h": 50, "material": "glass"},
+		{"x": 891, "y": 465, "w": 50, "h": 50, "material": "glass"}
+	],
+	"targets": [
+		{"x": 891, "y": 418, "r": 22},
+		{"x": 1031, "y": 618, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L38", "name": "Last Delivery", "shots": 3, "par": 2,
+	"hint": "Two crates, one zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 1020, "y": 595, "w": 232, "h": 90}},
+	"statics": [
+		{"x": 594, "y": 468, "w": 100, "h": 20},
+		{"x": 827, "y": 394, "w": 100, "h": 20}
+	],
+	"blocks": [
+		{"x": 594, "y": 438, "w": 40, "h": 40, "material": "cargo"},
+		{"x": 827, "y": 364, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L39", "name": "Mirrorfall", "shots": 3, "par": 2,
+	"hint": "Bring every pane below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 560},
+	"statics": [],
+	"blocks": [
+		{"x": 760, "y": 564, "w": 24, "h": 152, "material": "glass"},
+		{"x": 830, "y": 549, "w": 24, "h": 182, "material": "wood"},
+		{"x": 900, "y": 564, "w": 24, "h": 152, "material": "glass"},
+		{"x": 970, "y": 549, "w": 24, "h": 182, "material": "wood"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L40", "name": "Glass Quarter", "shots": 3, "par": 2,
+	"hint": "Glass breaks. Cores fall.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 622, "y": 577.5, "w": 20, "h": 125, "material": "glass"},
+		{"x": 692, "y": 577.5, "w": 20, "h": 125, "material": "glass"},
+		{"x": 657, "y": 505, "w": 90, "h": 20, "material": "glass"},
+		{"x": 784, "y": 577, "w": 20, "h": 126, "material": "glass"},
+		{"x": 854, "y": 577, "w": 20, "h": 126, "material": "glass"},
+		{"x": 819, "y": 504, "w": 90, "h": 20, "material": "wood"},
+		{"x": 966, "y": 576.5, "w": 20, "h": 127, "material": "glass"},
+		{"x": 1036, "y": 576.5, "w": 20, "h": 127, "material": "glass"},
+		{"x": 1001, "y": 503, "w": 90, "h": 20, "material": "glass"}
+	],
+	"targets": [
+		{"x": 657, "y": 475, "r": 20},
+		{"x": 819, "y": 474, "r": 20},
+		{"x": 1001, "y": 473, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L41", "name": "Powder Keg", "shots": 3, "par": 1,
+	"hint": "Orange crates explode. Light the fuse.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 761, "y": 620, "w": 40, "h": 40, "material": "explosive"},
+		{"x": 801, "y": 585, "w": 20, "h": 110, "material": "wood"},
+		{"x": 901, "y": 585, "w": 20, "h": 110, "material": "wood"},
+		{"x": 851, "y": 520, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 851, "y": 490, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L42", "name": "Short Fuse", "shots": 3, "par": 1,
+	"hint": "Set off the first crate and let the chain do the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 560, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 680, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 740, "y": 610, "w": 20, "h": 60, "material": "stone"},
+		{"x": 800, "y": 610, "w": 20, "h": 60, "material": "stone"},
+		{"x": 770, "y": 570, "w": 80, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 770, "y": 542, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L43", "name": "Dead Weight", "shots": 3, "par": 1,
+	"hint": "Stone. A heavy shot hits harder.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [],
+	"blocks": [
+		{"x": 818, "y": 595, "w": 30, "h": 90, "material": "stone"},
+		{"x": 938, "y": 595, "w": 30, "h": 90, "material": "stone"},
+		{"x": 878, "y": 538, "w": 160, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 878, "y": 618, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L44", "name": "Blasting Cap", "shots": 3, "par": 1,
+	"hint": "A charge sits in the foundations.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 830, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 950, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 890, "y": 530, "w": 140, "h": 20, "material": "wood"},
+		{"x": 890, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 840, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 940, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 890, "y": 420, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 890, "y": 390, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L45", "name": "Rockfall", "shots": 3, "par": 1,
+	"hint": "Bring every column below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 550},
+	"statics": [],
+	"blocks": [
+		{"x": 780, "y": 567, "w": 30, "h": 146, "material": "stone"},
+		{"x": 860, "y": 567, "w": 30, "h": 146, "material": "stone"},
+		{"x": 940, "y": 567, "w": 30, "h": 146, "material": "stone"},
+		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L46", "name": "Long Fuse", "shots": 3, "par": 1,
+	"hint": "Set off the first crate and let the chain do the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 560, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 686, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 746, "y": 604, "w": 20, "h": 72, "material": "stone"},
+		{"x": 806, "y": 604, "w": 20, "h": 72, "material": "stone"},
+		{"x": 776, "y": 558, "w": 80, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 776, "y": 530, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L47", "name": "Air Mail", "shots": 3, "par": 1,
+	"hint": "Let the blast throw the crate into the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 996, "y": 595, "w": 192, "h": 90}},
+	"statics": [
+		{"x": 724, "y": 518, "w": 160, "h": 20}
+	],
+	"blocks": [
+		{"x": 684, "y": 490, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 754, "y": 488, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L48", "name": "Bedrock", "shots": 3, "par": 1,
+	"hint": "Push the stone slab onto the core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [],
+	"blocks": [
+		{"x": 844, "y": 554.5, "w": 50, "h": 171, "material": "stone"}
+	],
+	"targets": [
+		{"x": 914, "y": 618, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L49", "name": "Seam", "shots": 3, "par": 1,
+	"hint": "Orange crates explode. Light the fuse.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 784, "y": 620, "w": 40, "h": 40, "material": "explosive"},
+		{"x": 824, "y": 579, "w": 20, "h": 122, "material": "wood"},
+		{"x": 924, "y": 579, "w": 20, "h": 122, "material": "wood"},
+		{"x": 874, "y": 508, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 874, "y": 478, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L50", "name": "Quarry Lift", "shots": 3, "par": 1,
+	"hint": "A charge sits in the foundations.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 809, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 929, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 869, "y": 530, "w": 140, "h": 20, "material": "wood"},
+		{"x": 869, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 819, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 919, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 869, "y": 420, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 869, "y": 390, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L51", "name": "Slag Heap", "shots": 3, "par": 2,
+	"hint": "Bring every column below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 550},
+	"statics": [],
+	"blocks": [
+		{"x": 780, "y": 562.5, "w": 30, "h": 155, "material": "stone"},
+		{"x": 860, "y": 562.5, "w": 30, "h": 155, "material": "stone"},
+		{"x": 940, "y": 562.5, "w": 30, "h": 155, "material": "stone"},
+		{"x": 1020, "y": 562.5, "w": 30, "h": 155, "material": "stone"},
+		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L52", "name": "Vault Door", "shots": 3, "par": 1,
+	"hint": "Stone. A heavy shot hits harder.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [],
+	"blocks": [
+		{"x": 799, "y": 587.5, "w": 30, "h": 105, "material": "stone"},
+		{"x": 919, "y": 587.5, "w": 30, "h": 105, "material": "stone"},
+		{"x": 859, "y": 523, "w": 160, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 859, "y": 618, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L53", "name": "Detonator", "shots": 3, "par": 1,
+	"hint": "Set off the first crate and let the chain do the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 560, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 692, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 824, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 884, "y": 598, "w": 20, "h": 84, "material": "stone"},
+		{"x": 944, "y": 598, "w": 20, "h": 84, "material": "stone"},
+		{"x": 914, "y": 546, "w": 80, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 914, "y": 518, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L54", "name": "Express Freight", "shots": 3, "par": 1,
+	"hint": "Let the blast throw the crate into the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 1022, "y": 595, "w": 176, "h": 90}},
+	"statics": [
+		{"x": 726, "y": 494, "w": 160, "h": 20}
+	],
+	"blocks": [
+		{"x": 686, "y": 466, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 756, "y": 464, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L55", "name": "Granite", "shots": 3, "par": 1,
+	"hint": "Push the stone slab onto the core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [],
+	"blocks": [
+		{"x": 805, "y": 540.5, "w": 50, "h": 199, "material": "stone"}
+	],
+	"targets": [
+		{"x": 875, "y": 618, "r": 22}
+	],
+	"solution": []
+},
+{
+	"id": "L56", "name": "Powder Room", "shots": 3, "par": 1,
+	"hint": "Orange crates explode. Light the fuse.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 742, "y": 620, "w": 40, "h": 40, "material": "explosive"},
+		{"x": 782, "y": 574.5, "w": 20, "h": 131, "material": "wood"},
+		{"x": 882, "y": 574.5, "w": 20, "h": 131, "material": "wood"},
+		{"x": 832, "y": 499, "w": 120, "h": 20, "material": "stone"},
+		{"x": 792, "y": 449, "w": 20, "h": 80, "material": "wood"},
+		{"x": 872, "y": 449, "w": 20, "h": 80, "material": "wood"},
+		{"x": 832, "y": 399, "w": 100, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 832, "y": 369, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L57", "name": "Fault Line", "shots": 3, "par": 2,
+	"hint": "Bring every column below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 550},
+	"statics": [],
+	"blocks": [
+		{"x": 780, "y": 558, "w": 30, "h": 164, "material": "stone"},
+		{"x": 860, "y": 558, "w": 30, "h": 164, "material": "stone"},
+		{"x": 940, "y": 558, "w": 30, "h": 164, "material": "stone"},
+		{"x": 1020, "y": 558, "w": 30, "h": 164, "material": "stone"},
+		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"},
+		{"x": 980, "y": 623, "w": 34, "h": 34, "material": "explosive"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L58", "name": "Deep Cut", "shots": 3, "par": 2,
+	"hint": "A charge sits in the foundations.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 809, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 929, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 869, "y": 530, "w": 140, "h": 20, "material": "wood"},
+		{"x": 869, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 819, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 919, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 869, "y": 420, "w": 120, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 869, "y": 390, "r": 20},
+		{"x": 869, "y": 502, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L59", "name": "Stone Heart", "shots": 3, "par": 2,
+	"hint": "Stone. A heavy shot hits harder.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [],
+	"blocks": [
+		{"x": 788, "y": 581.5, "w": 30, "h": 117, "material": "stone"},
+		{"x": 908, "y": 581.5, "w": 30, "h": 117, "material": "stone"},
+		{"x": 848, "y": 511, "w": 160, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 848, "y": 618, "r": 22},
+		{"x": 1008, "y": 620, "r": 20}
+	],
+	"solution": []
+},
+{
+	"id": "L60", "name": "The Quarry", "shots": 3, "par": 1,
+	"hint": "Set off the first crate and let the chain do the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 560, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 700, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 840, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 980, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 1120, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 1180, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 1240, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 1210, "y": 530, "w": 80, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 1210, "y": 502, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L61", "name": "First Rescue", "shots": 3, "par": 1,
+	"hint": "Blue drones are friends. Don't break them.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 834, "y": 585, "w": 20, "h": 110, "material": "wood"},
+		{"x": 934, "y": 585, "w": 20, "h": 110, "material": "wood"},
+		{"x": 884, "y": 520, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 884, "y": 490, "r": 20}
+	],
+	"allies": [
+		{"x": 693, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L62", "name": "Steady Hands", "shots": 3, "par": 1,
+	"hint": "Precision: the drone shares the ledge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 776, "y": 480, "w": 200, "h": 20}
+	],
+	"blocks": [],
+	"targets": [
+		{"x": 826, "y": 450, "r": 20}
+	],
+	"allies": [
+		{"x": 716, "y": 452, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L63", "name": "Breach", "shots": 3, "par": 1,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 780, "y": 590, "w": 30, "h": 100, "material": "stone"},
+		{"x": 920, "y": 590, "w": 30, "h": 100, "material": "stone"},
+		{"x": 850, "y": 528, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 850, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 590, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L64", "name": "Safe Distance", "shots": 3, "par": 1,
+	"hint": "A chain reaction, but the drone above must stay clear.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 560, "y": 370, "w": 80, "h": 20}
+	],
+	"blocks": [
+		{"x": 620, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 740, "y": 622, "w": 36, "h": 36, "material": "explosive"}
+	],
+	"targets": [
+		{"x": 830, "y": 620, "r": 20}
+	],
+	"allies": [
+		{"x": 560, "y": 342, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L65", "name": "Lookout", "shots": 3, "par": 1,
+	"hint": "Topple the pyramid away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 770, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 820, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 870, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 795, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 845, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 820, "y": 515, "w": 50, "h": 50, "material": "wood"}
+	],
+	"targets": [
+		{"x": 820, "y": 470, "r": 20}
+	],
+	"allies": [
+		{"x": 1059, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L66", "name": "Escort", "shots": 3, "par": 1,
+	"hint": "Deliver the crate. Mind the drone beside the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 859, "y": 595, "w": 164, "h": 90}},
+	"statics": [
+		{"x": 647, "y": 494, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 647, "y": 464, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"allies": [
+		{"x": 1019, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L67", "name": "Kin", "shots": 3, "par": 1,
+	"hint": "Blue drones are friends. Don't break them.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 794, "y": 580.5, "w": 20, "h": 119, "material": "wood"},
+		{"x": 894, "y": 580.5, "w": 20, "h": 119, "material": "wood"},
+		{"x": 844, "y": 511, "w": 120, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 844, "y": 481, "r": 20}
+	],
+	"allies": [
+		{"x": 637, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L68", "name": "Ledge Walk", "shots": 3, "par": 1,
+	"hint": "Precision: the drone shares the ledge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 786, "y": 456, "w": 200, "h": 20}
+	],
+	"blocks": [],
+	"targets": [
+		{"x": 836, "y": 426.8, "r": 19.2}
+	],
+	"allies": [
+		{"x": 726, "y": 428, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L69", "name": "Shaped Charge", "shots": 3, "par": 1,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 819, "y": 584, "w": 30, "h": 112, "material": "stone"},
+		{"x": 959, "y": 584, "w": 30, "h": 112, "material": "stone"},
+		{"x": 889, "y": 516, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 889, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 629, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L70", "name": "Firebreak", "shots": 3, "par": 1,
+	"hint": "A chain reaction, but the drone above must stay clear.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 560, "y": 370, "w": 80, "h": 20}
+	],
+	"blocks": [
+		{"x": 620, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 740, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 860, "y": 622, "w": 36, "h": 36, "material": "explosive"}
+	],
+	"targets": [
+		{"x": 950, "y": 620, "r": 20}
+	],
+	"allies": [
+		{"x": 560, "y": 342, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L71", "name": "Watchtower", "shots": 3, "par": 1,
+	"hint": "Topple the pyramid away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 777, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 827, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 877, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 802, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 852, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 827, "y": 515, "w": 50, "h": 50, "material": "wood"}
+	],
+	"targets": [
+		{"x": 827, "y": 470, "r": 20}
+	],
+	"allies": [
+		{"x": 1050, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L72", "name": "Lifeline", "shots": 3, "par": 1,
+	"hint": "Deliver the crate. Mind the drone beside the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 919, "y": 595, "w": 155, "h": 90}},
+	"statics": [
+		{"x": 689, "y": 470, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 689, "y": 440, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"allies": [
+		{"x": 1079, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L73", "name": "Cradle", "shots": 3, "par": 2,
+	"hint": "Blue drones are friends. Don't break them.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 799, "y": 576, "w": 20, "h": 128, "material": "wood"},
+		{"x": 899, "y": 576, "w": 20, "h": 128, "material": "wood"},
+		{"x": 849, "y": 502, "w": 120, "h": 20, "material": "wood"},
+		{"x": 809, "y": 452, "w": 20, "h": 80, "material": "wood"},
+		{"x": 889, "y": 452, "w": 20, "h": 80, "material": "wood"},
+		{"x": 849, "y": 402, "w": 100, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 849, "y": 372, "r": 20}
+	],
+	"allies": [
+		{"x": 650, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L74", "name": "Bunker Hill", "shots": 3, "par": 1,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 763, "y": 581, "w": 30, "h": 118, "material": "stone"},
+		{"x": 903, "y": 581, "w": 30, "h": 118, "material": "stone"},
+		{"x": 833, "y": 510, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 833, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 573, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L75", "name": "Perch", "shots": 3, "par": 1,
+	"hint": "Precision: the drone shares the ledge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 764, "y": 438, "w": 200, "h": 20}
+	],
+	"blocks": [],
+	"targets": [
+		{"x": 814, "y": 409.4, "r": 18.6}
+	],
+	"allies": [
+		{"x": 704, "y": 410, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L76", "name": "Containment", "shots": 3, "par": 1,
+	"hint": "A chain reaction, but the drone above must stay clear.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 560, "y": 370, "w": 80, "h": 20}
+	],
+	"blocks": [
+		{"x": 620, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 740, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 860, "y": 622, "w": 36, "h": 36, "material": "explosive"}
+	],
+	"targets": [
+		{"x": 950, "y": 620, "r": 20}
+	],
+	"allies": [
+		{"x": 560, "y": 342, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L77", "name": "Sentinels", "shots": 3, "par": 2,
+	"hint": "Topple the pyramid away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 799, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 849, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 899, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 824, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 874, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 849, "y": 515, "w": 50, "h": 50, "material": "wood"}
+	],
+	"targets": [
+		{"x": 849, "y": 470, "r": 20},
+		{"x": 969, "y": 622, "r": 18}
+	],
+	"allies": [
+		{"x": 1074, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L78", "name": "Homecoming", "shots": 3, "par": 1,
+	"hint": "Deliver the crate. Mind the drone beside the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 915, "y": 595, "w": 146, "h": 90}},
+	"statics": [
+		{"x": 667, "y": 446, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 667, "y": 416, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"allies": [
+		{"x": 1075, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L79", "name": "Surgical", "shots": 3, "par": 2,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 797, "y": 576.5, "w": 30, "h": 127, "material": "stone"},
+		{"x": 937, "y": 576.5, "w": 30, "h": 127, "material": "stone"},
+		{"x": 867, "y": 501, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 867, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 607, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L80", "name": "Juno's Kin", "shots": 3, "par": 2,
+	"hint": "Blue drones are friends. Don't break them.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 820, "y": 570, "w": 20, "h": 140, "material": "wood"},
+		{"x": 920, "y": 570, "w": 20, "h": 140, "material": "wood"},
+		{"x": 870, "y": 490, "w": 120, "h": 20, "material": "wood"},
+		{"x": 830, "y": 440, "w": 20, "h": 80, "material": "wood"},
+		{"x": 910, "y": 440, "w": 20, "h": 80, "material": "wood"},
+		{"x": 870, "y": 390, "w": 100, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 870, "y": 360, "r": 20}
+	],
+	"allies": [
+		{"x": 663, "y": 622, "r": 18},
+		{"x": 1090, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L81", "name": "Approach", "shots": 3, "par": 1,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 782, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 817, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 947, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 882, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 825, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 939, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 882, "y": 436, "w": 134, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 882, "y": 408, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L82", "name": "Outer Wall", "shots": 3, "par": 1,
+	"hint": "Push the stone slab onto the core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [
+		{"x": 1200, "y": 461, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 810, "y": 537, "w": 50, "h": 206, "material": "stone"}
+	],
+	"targets": [
+		{"x": 880, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 1200, "y": 433, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L83", "name": "Gatehouse", "shots": 3, "par": 1,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 806, "y": 579.5, "w": 30, "h": 121, "material": "stone"},
+		{"x": 946, "y": 579.5, "w": 30, "h": 121, "material": "stone"},
+		{"x": 876, "y": 507, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 876, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 616, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L84", "name": "Supply Line", "shots": 3, "par": 1,
+	"hint": "Let the blast throw the crate into the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 1019, "y": 595, "w": 168, "h": 90}},
+	"statics": [
+		{"x": 711, "y": 482, "w": 160, "h": 20},
+		{"x": 1200, "y": 500, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 671, "y": 454, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 741, "y": 452, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"allies": [
+		{"x": 1200, "y": 472, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L85", "name": "Lower Spire", "shots": 3, "par": 1,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 812, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 847, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 977, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 912, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 855, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 969, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 912, "y": 436, "w": 134, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 912, "y": 408, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L86", "name": "Cascade", "shots": 3, "par": 1,
+	"hint": "Set off the first crate and let the chain do the rest.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 1200, "y": 489, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 560, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 698, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 836, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 974, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 1034, "y": 592, "w": 20, "h": 96, "material": "stone"},
+		{"x": 1094, "y": 592, "w": 20, "h": 96, "material": "stone"},
+		{"x": 1064, "y": 534, "w": 80, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 1064, "y": 506, "r": 18}
+	],
+	"allies": [
+		{"x": 1200, "y": 461, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L87", "name": "Glass Ward", "shots": 3, "par": 2,
+	"hint": "Glass breaks. Cores fall.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 1200, "y": 476, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 610, "y": 578, "w": 20, "h": 124, "material": "glass"},
+		{"x": 680, "y": 578, "w": 20, "h": 124, "material": "glass"},
+		{"x": 645, "y": 506, "w": 90, "h": 20, "material": "glass"},
+		{"x": 804, "y": 578.5, "w": 20, "h": 123, "material": "glass"},
+		{"x": 874, "y": 578.5, "w": 20, "h": 123, "material": "glass"},
+		{"x": 839, "y": 507, "w": 90, "h": 20, "material": "wood"},
+		{"x": 1004, "y": 577, "w": 20, "h": 126, "material": "glass"},
+		{"x": 1074, "y": 577, "w": 20, "h": 126, "material": "glass"},
+		{"x": 1039, "y": 504, "w": 90, "h": 20, "material": "glass"}
+	],
+	"targets": [
+		{"x": 645, "y": 476, "r": 20},
+		{"x": 839, "y": 477, "r": 20},
+		{"x": 1039, "y": 474, "r": 20}
+	],
+	"allies": [
+		{"x": 1200, "y": 448, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L88", "name": "Counterweight", "shots": 3, "par": 1,
+	"hint": "Stone. A heavy shot hits harder.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "heavy", "heavy"],
+	"statics": [
+		{"x": 1200, "y": 507, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 829, "y": 583, "w": 30, "h": 114, "material": "stone"},
+		{"x": 949, "y": 583, "w": 30, "h": 114, "material": "stone"},
+		{"x": 889, "y": 514, "w": 160, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 889, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 1200, "y": 479, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L89", "name": "Mid Spire", "shots": 3, "par": 2,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "blast", "standard"],
+	"statics": [],
+	"blocks": [
+		{"x": 795, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 830, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 960, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 895, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 838, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 952, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 895, "y": 436, "w": 134, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 895, "y": 408, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L90", "name": "Bank Vault", "shots": 3, "par": 1,
+	"hint": "The purple pad bounces. Bank the shot over the shield.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 808, "y": 190, "w": 360, "h": 20, "kind": "bumper"},
+		{"x": 1200, "y": 482, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 748, "y": 510, "w": 40, "h": 260, "material": "stone"}
+	],
+	"targets": [
+		{"x": 865, "y": 620, "r": 20}
+	],
+	"allies": [
+		{"x": 1200, "y": 454, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L91", "name": "Overload", "shots": 3, "par": 1,
+	"hint": "Orange crates explode. Light the fuse.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 1200, "y": 503, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 771, "y": 620, "w": 40, "h": 40, "material": "explosive"},
+		{"x": 811, "y": 570, "w": 20, "h": 140, "material": "wood"},
+		{"x": 911, "y": 570, "w": 20, "h": 140, "material": "wood"},
+		{"x": 861, "y": 490, "w": 120, "h": 20, "material": "stone"},
+		{"x": 821, "y": 440, "w": 20, "h": 80, "material": "wood"},
+		{"x": 901, "y": 440, "w": 20, "h": 80, "material": "wood"},
+		{"x": 861, "y": 390, "w": 100, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 861, "y": 360, "r": 20}
+	],
+	"allies": [
+		{"x": 1200, "y": 475, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L92", "name": "Last Crate", "shots": 3, "par": 1,
+	"hint": "Deliver the crate. Mind the drone beside the zone.",
+	"launcher": [180, 540],
+	"objective": {"type": "deliver", "zone": {"x": 936, "y": 595, "w": 140, "h": 90}},
+	"statics": [
+		{"x": 676, "y": 430, "w": 120, "h": 20}
+	],
+	"blocks": [
+		{"x": 676, "y": 400, "w": 40, "h": 40, "material": "cargo"}
+	],
+	"targets": [],
+	"allies": [
+		{"x": 1096, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L93", "name": "High Spire", "shots": 3, "par": 2,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "blast", "standard"],
+	"statics": [],
+	"blocks": [
+		{"x": 795, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 830, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 960, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 895, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 838, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 952, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 895, "y": 436, "w": 134, "h": 20, "material": "wood"},
+		{"x": 846, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 944, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 895, "y": 338, "w": 118, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 895, "y": 408, "r": 18},
+		{"x": 895, "y": 310, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L94", "name": "Fallen Bridge", "shots": 3, "par": 1,
+	"hint": "Knock both cores off the bridge.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 677, "y": 540, "w": 40, "h": 200},
+		{"x": 937, "y": 540, "w": 40, "h": 200},
+		{"x": 1200, "y": 455, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 807, "y": 430, "w": 300, "h": 20, "material": "wood"}
+	],
+	"targets": [
+		{"x": 757, "y": 400, "r": 20},
+		{"x": 857, "y": 400, "r": 20}
+	],
+	"allies": [
+		{"x": 1200, "y": 427, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L95", "name": "Pressure", "shots": 3, "par": 2,
+	"hint": "A charge sits in the foundations.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [
+		{"x": 1200, "y": 480, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 830, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 950, "y": 590, "w": 20, "h": 100, "material": "stone"},
+		{"x": 890, "y": 530, "w": 140, "h": 20, "material": "wood"},
+		{"x": 890, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 840, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 940, "y": 475, "w": 20, "h": 90, "material": "wood"},
+		{"x": 890, "y": 420, "w": 120, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 890, "y": 390, "r": 20},
+		{"x": 890, "y": 502, "r": 18}
+	],
+	"allies": [
+		{"x": 1200, "y": 452, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L96", "name": "Collapse Protocol", "shots": 3, "par": 2,
+	"hint": "Bring every column below the line.",
+	"launcher": [180, 540],
+	"objective": {"type": "topple", "line_y": 550},
+	"statics": [],
+	"blocks": [
+		{"x": 780, "y": 555, "w": 30, "h": 170, "material": "stone"},
+		{"x": 860, "y": 555, "w": 30, "h": 170, "material": "stone"},
+		{"x": 940, "y": 555, "w": 30, "h": 170, "material": "stone"},
+		{"x": 1020, "y": 555, "w": 30, "h": 170, "material": "stone"},
+		{"x": 1100, "y": 555, "w": 30, "h": 170, "material": "stone"},
+		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"},
+		{"x": 980, "y": 623, "w": 34, "h": 34, "material": "explosive"}
+	],
+	"targets": [],
+	"solution": []
+},
+{
+	"id": "L97", "name": "Crown", "shots": 3, "par": 2,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "blast", "standard"],
+	"statics": [],
+	"blocks": [
+		{"x": 798, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 833, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 963, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 898, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 841, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 955, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 898, "y": 436, "w": 134, "h": 20, "material": "wood"},
+		{"x": 849, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 947, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 898, "y": 338, "w": 118, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 898, "y": 408, "r": 18},
+		{"x": 898, "y": 310, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L98", "name": "Guardians", "shots": 3, "par": 2,
+	"hint": "Topple the pyramid away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"statics": [],
+	"blocks": [
+		{"x": 758, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 808, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 858, "y": 615, "w": 50, "h": 50, "material": "wood"},
+		{"x": 783, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 833, "y": 565, "w": 50, "h": 50, "material": "wood"},
+		{"x": 808, "y": 515, "w": 50, "h": 50, "material": "wood"}
+	],
+	"targets": [
+		{"x": 808, "y": 470, "r": 20},
+		{"x": 928, "y": 622, "r": 18}
+	],
+	"allies": [
+		{"x": 1029, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L99", "name": "The Heart Gate", "shots": 3, "par": 2,
+	"hint": "Blast shots explode on contact. Keep them away from the drone.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["blast", "blast", "blast"],
+	"statics": [],
+	"blocks": [
+		{"x": 787, "y": 575, "w": 30, "h": 130, "material": "stone"},
+		{"x": 927, "y": 575, "w": 30, "h": 130, "material": "stone"},
+		{"x": 857, "y": 498, "w": 180, "h": 24, "material": "stone"}
+	],
+	"targets": [
+		{"x": 857, "y": 618, "r": 22}
+	],
+	"allies": [
+		{"x": 597, "y": 622, "r": 18}
+	],
+	"solution": []
+},
+{
+	"id": "L100", "name": "The Heart", "shots": 3, "par": 2,
+	"hint": "The spire. Every floor holds a core.",
+	"launcher": [180, 540],
+	"objective": {"type": "destroy_targets"},
+	"ammo": ["heavy", "blast", "standard"],
+	"statics": [
+		{"x": 1200, "y": 472, "w": 90, "h": 20}
+	],
+	"blocks": [
+		{"x": 786, "y": 622, "w": 36, "h": 36, "material": "explosive"},
+		{"x": 821, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 951, "y": 595, "w": 20, "h": 90, "material": "stone"},
+		{"x": 886, "y": 540, "w": 150, "h": 20, "material": "wood"},
+		{"x": 829, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 943, "y": 488, "w": 20, "h": 84, "material": "wood"},
+		{"x": 886, "y": 436, "w": 134, "h": 20, "material": "wood"},
+		{"x": 837, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 935, "y": 387, "w": 20, "h": 78, "material": "glass"},
+		{"x": 886, "y": 338, "w": 118, "h": 20, "material": "wood"},
+		{"x": 845, "y": 292, "w": 20, "h": 72, "material": "wood"},
+		{"x": 927, "y": 292, "w": 20, "h": 72, "material": "wood"},
+		{"x": 886, "y": 246, "w": 102, "h": 20, "material": "stone"}
+	],
+	"targets": [
+		{"x": 886, "y": 408, "r": 18},
+		{"x": 886, "y": 218, "r": 18}
+	],
+	"allies": [
+		{"x": 1200, "y": 444, "r": 18}
+	],
+	"solution": []
 }
 ]
 }

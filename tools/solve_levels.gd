@@ -2,13 +2,18 @@ extends SceneTree
 ## Level design tool: searches launch velocities that solve each level within par, using the real
 ## GameSession in parallel isolated physics worlds (one SubViewport per candidate shot).
 ##
-##   godot --headless --fixed-fps 60 -s tools/solve_levels.gd -- [--write] [--stability] [L03 L07 ...]
+##   godot --headless --fixed-fps 60 -s tools/solve_levels.gd -- [--write] [--out=FILE] [L03 L07 ...]
+##
+## --out=FILE writes {"solved": {id: [[vx, vy], ...]}, "unsolved": [ids], "rates": {id: rate}} instead of touching
+## levels.json, so several solver processes can run in parallel on disjoint level sets
+## (tools/build_campaign.gd --merge=FILE folds the results back in).
 ##
 ## Reports, per level, the share of single-shot candidates that win (a rough difficulty signal).
 ## With --write, verified solutions are stored back into data/levels.json.
 ## Search is greedy per shot; it prefers the centre of a winning region so the stored shot
 ## is not a pixel-perfect fluke. Results must still be confirmed by tests/test_level_playthrough.gd.
 
+const CatalogFormat := preload("res://tools/catalog_format.gd")
 const ANGLE_MIN := -20.0
 const ANGLE_MAX := 75.0
 const ANGLE_STEP := 2.5
@@ -33,6 +38,10 @@ func _initialize() -> void:
 func _run() -> void:
 	var args := OS.get_cmdline_user_args()
 	var write := args.has("--write")
+	var out_path := ""
+	for a in args:
+		if a.begins_with("--out="):
+			out_path = a.trim_prefix("--out=")
 	var only: Array = Array(args).filter(func(a: String) -> bool: return not a.begins_with("--"))
 	var catalog := LevelCatalog.load_from_file()
 	if not catalog.is_valid():
@@ -41,6 +50,7 @@ func _run() -> void:
 		return
 	var solutions := {}
 	var unsolved := []
+	var rates := {}
 	for def in catalog.levels:
 		if not only.is_empty() and not only.has(def.id):
 			continue
@@ -49,6 +59,7 @@ func _run() -> void:
 		print("%s %-16s won=%s fragile=%s shots=%d single-shot win rate=%.1f%%  (%.1fs)" % [
 			def.id, def.name, result.won, result.fragile, result.shots.size(), result.single_rate * 100.0,
 			(Time.get_ticks_msec() - start) / 1000.0])
+		rates[def.id] = snappedf(result.single_rate, 0.001)
 		if result.won:
 			solutions[def.id] = result.shots
 		else:
@@ -57,6 +68,13 @@ func _run() -> void:
 		print("UNSOLVED within par: ", unsolved)
 	if write:
 		_write_solutions(solutions)
+	if out_path != "":
+		var solved := {}
+		for id: String in solutions:
+			solved[id] = solutions[id].map(func(v: Vector2) -> Array: return [int(v.x), int(v.y)])
+		var file := FileAccess.open(out_path, FileAccess.WRITE)
+		file.store_string(JSON.stringify({"solved": solved, "unsolved": unsolved, "rates": rates}, "\t"))
+		file.close()
 	quit(0)
 
 
@@ -218,63 +236,5 @@ func _write_solutions(solutions: Dictionary) -> void:
 	if file == null:
 		printerr("cannot write ", path)
 		return
-	file.store_string(_format_catalog(data))
+	file.store_string(CatalogFormat.format_catalog(data))
 	print("wrote solutions for ", solutions.keys())
-
-
-## Compact, diff-friendly layout: one entity per line.
-func _format_catalog(data: Dictionary) -> String:
-	var out := "{\n\"levels\": [\n"
-	var levels: Array = data.levels
-	for li in levels.size():
-		var l: Dictionary = levels[li]
-		out += "{\n"
-		out += "\t\"id\": %s, \"name\": %s, \"shots\": %s, \"par\": %s,\n" % [_j(l.id), _j(l.name), _j(l.shots), _j(l.par)]
-		out += "\t\"hint\": %s,\n" % _j(l.get("hint", ""))
-		out += "\t\"launcher\": %s,\n" % _j(l.launcher)
-		out += "\t\"objective\": %s,\n" % _j(l.objective)
-		if l.has("ammo"):
-			out += "\t\"ammo\": %s,\n" % _j(l.ammo)
-		var keys := ["statics", "blocks", "targets"]
-		if l.has("allies"):
-			keys.append("allies")
-		keys.append("solution")
-		for key: String in keys:
-			var items: Array = l.get(key, [])
-			if items.is_empty():
-				out += "\t\"%s\": []" % key
-			else:
-				var lines := PackedStringArray()
-				for item: Variant in items:
-					lines.append("\t\t" + _j(item))
-				out += "\t\"%s\": [\n%s\n\t]" % [key, ",\n".join(lines)]
-			out += ",\n" if key != "solution" else "\n"
-		out += "}" + (",\n" if li < levels.size() - 1 else "\n")
-	return out + "]\n}\n"
-
-
-## JSON with whole numbers printed as integers and keys kept in a stable, readable order.
-func _j(value: Variant) -> String:
-	if value is float:
-		return str(int(value)) if value == floorf(value) else str(value)
-	if value is int:
-		return str(value)
-	if value is String:
-		return JSON.stringify(value)
-	if value is Array:
-		var parts := PackedStringArray()
-		for v: Variant in value:
-			parts.append(_j(v))
-		return "[" + ", ".join(parts) + "]"
-	if value is Dictionary:
-		var order := ["type", "line_y", "zone", "x", "y", "w", "h", "r", "rot", "material", "kind"]
-		var keys: Array = value.keys()
-		keys.sort_custom(func(a: String, b: String) -> bool:
-			var ia := order.find(a)
-			var ib := order.find(b)
-			return (ia if ia >= 0 else 99) < (ib if ib >= 0 else 99))
-		var parts := PackedStringArray()
-		for k: String in keys:
-			parts.append("%s: %s" % [JSON.stringify(k), _j(value[k])])
-		return "{" + ", ".join(parts) + "}"
-	return JSON.stringify(value)
