@@ -10,6 +10,7 @@ const UNIT_SUITES := [
 	"res://tests/test_level_definition.gd",
 	"res://tests/test_rules.gd",
 	"res://tests/test_progress.gd",
+	"res://tests/test_layout.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",

@@ -23,6 +23,9 @@ var _shots: ShotPips
 var _hint: Label
 var _hint_chip: Control
 var _overlay: Control
+var _info_chip: Control
+var _buttons: Control
+var _hint_row: Control
 
 
 func _ready() -> void:
@@ -30,7 +33,7 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var info_chip := _chip()
-	info_chip.position = Vector2(MARGIN, MARGIN)
+	_info_chip = info_chip
 	add_child(info_chip)
 	var info := VBoxContainer.new()
 	info.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -52,9 +55,7 @@ func _ready() -> void:
 	# Full-width strip aligned right; the strip itself ignores input so only the buttons block aiming.
 	var buttons := HBoxContainer.new()
 	buttons.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	buttons.offset_left = MARGIN
-	buttons.offset_right = -MARGIN
-	buttons.offset_top = MARGIN
+	_buttons = buttons
 	buttons.alignment = BoxContainer.ALIGNMENT_END
 	buttons.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	buttons.add_theme_constant_override("separation", 12)
@@ -70,8 +71,7 @@ func _ready() -> void:
 
 	var hint_row := HBoxContainer.new()
 	hint_row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	hint_row.offset_top = -78
-	hint_row.offset_bottom = -26
+	_hint_row = hint_row
 	hint_row.alignment = BoxContainer.ALIGNMENT_CENTER
 	hint_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hint_row)
@@ -79,6 +79,20 @@ func _ready() -> void:
 	_hint = _left_label(19, Palette.TEXT)
 	_hint_chip.add_child(_hint)
 	hint_row.add_child(_hint_chip)
+	apply_insets(SafeArea.current(get_viewport()))
+	get_viewport().size_changed.connect(func() -> void: apply_insets(SafeArea.current(get_viewport())))
+
+
+## Keeps the corner controls clear of display cutouts and rounded corners (left, top, right, bottom).
+func apply_insets(insets: Vector4) -> void:
+	_info_chip.position = Vector2(MARGIN + insets.x, MARGIN + insets.y)
+	_buttons.offset_left = MARGIN + insets.x
+	_buttons.offset_right = -MARGIN - insets.z
+	_buttons.offset_top = MARGIN + insets.y
+	_hint_row.offset_left = insets.x
+	_hint_row.offset_right = -insets.z
+	_hint_row.offset_top = -78 - insets.w
+	_hint_row.offset_bottom = -26 - insets.w
 
 
 func set_level(def: LevelDefinition, number: int) -> void:

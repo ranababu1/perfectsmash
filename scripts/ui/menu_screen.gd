@@ -30,6 +30,8 @@ func _ready() -> void:
 	content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(content)
+	_apply_insets(content)
+	get_viewport().size_changed.connect(_apply_insets.bind(content))
 	content.add_child(_top_bar())
 
 	var column := VBoxContainer.new()
@@ -41,6 +43,7 @@ func _ready() -> void:
 	content.add_child(center)
 
 	var grid := GridContainer.new()
+	grid.name = "LevelGrid"
 	grid.columns = COLUMNS
 	grid.add_theme_constant_override("h_separation", 14)
 	grid.add_theme_constant_override("v_separation", 14)
@@ -67,6 +70,15 @@ func _ready() -> void:
 	UiKit.animate_in(content, 10.0)
 
 
+## Shifts all controls inside the display's safe area; the scenery stays full screen.
+func _apply_insets(content: Control) -> void:
+	var insets := SafeArea.current(get_viewport())
+	content.offset_left = insets.x
+	content.offset_top = insets.y
+	content.offset_right = -insets.z
+	content.offset_bottom = -insets.w
+
+
 ## First unlocked level without a star, or -1 when everything is cleared.
 func _current_index() -> int:
 	var ids := catalog.ids()
@@ -78,6 +90,7 @@ func _current_index() -> int:
 
 func _top_bar() -> Control:
 	var bar := HBoxContainer.new()
+	bar.name = "TopBar"
 	bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	bar.offset_left = MARGIN
 	bar.offset_right = -MARGIN
