@@ -40,6 +40,12 @@ func _run() -> void:
 	main.close_settings()
 
 	main._start_level(level)
+	await _settle(30)
+	if main._briefing != null:
+		main._briefing.dialogue.finish_all()
+		await _settle(20)
+		await _shot("briefing")
+		main._close_briefing()
 	await _settle(60)
 	await _shot("level")
 
@@ -57,11 +63,23 @@ func _run() -> void:
 	await _shot("pause")
 	game.resume()
 
-	game.hud.show_result(true, 2, 2, true)
+	var id: String = game.session.definition.id
+	var story: StoryCatalog = main.story
+	var win_lines: Array[Dictionary] = story.debrief(id) if story != null else []
+	game.hud.show_result(true, 2, 2, true, 1, win_lines)
 	await _settle(40)
+	var debrief: Node = game.hud._overlay.find_child("Debrief", true, false)
+	if debrief != null:
+		debrief.finish_all()
+	await _settle(30)
 	await _shot("win")
-	game.hud.show_result(false, 0, 2, true)
+	var fail_lines: Array[Dictionary] = [story.fail_line("fail", 0)] if story != null else []
+	game.hud.show_result(false, 0, 2, true, 1, fail_lines, null, null, "Out of shots.")
 	await _settle(40)
+	debrief = game.hud._overlay.find_child("Debrief", true, false)
+	if debrief != null:
+		debrief.finish_all()
+	await _settle(30)
 	await _shot("lose")
 
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(CAPTURE_SAVE))

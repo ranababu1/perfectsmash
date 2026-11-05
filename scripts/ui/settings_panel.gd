@@ -1,7 +1,7 @@
 class_name SettingsPanel
 extends Control
-## Settings overlay opened from the menu: sound, vibration, aim guide, the play-test report and
-## progress reset. Changes are reported through signals; the app root applies and saves them.
+## Settings overlay opened from the menu: sound, vibration, aim guide, voice narration, the
+## play-test report and progress reset. Changes are reported through signals; the app root applies and saves them.
 
 signal setting_changed(key: String, enabled: bool)
 signal copy_report_pressed
@@ -46,6 +46,7 @@ func _ready() -> void:
 	box.add_child(_toggle_row("Sound", "sound", "sound_off", "sound", progress.sound_enabled))
 	box.add_child(_toggle_row("Vibration", "vibrate", "vibrate_off", "vibration", progress.vibration_enabled))
 	box.add_child(_toggle_row("Aim guide", "aim", "aim_off", "aim_guide", progress.aim_guide_enabled))
+	box.add_child(_toggle_row("Voice narration", "voice", "voice_off", "narration", progress.narration_enabled))
 
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 12)

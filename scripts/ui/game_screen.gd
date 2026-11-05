@@ -18,6 +18,9 @@ const VIBRATE_BLAST_MS := 60
 
 var audio: AudioService
 var progress: ProgressData
+## Optional: when set, results show the mission debrief / failure line.
+var story: StoryCatalog
+var narrator: Narrator
 var session: GameSession
 var aim: AimController
 var hud: Hud
@@ -91,6 +94,8 @@ func start(def: LevelDefinition, number: int, has_next: bool) -> void:
 
 
 func restart() -> void:
+	if narrator != null:
+		narrator.stop()
 	_attempt += 1
 	get_tree().paused = false
 	hud.hide_overlay()
@@ -171,16 +176,38 @@ func _on_finished(won: bool, stars: int, shots_used: int) -> void:
 	audio.play("win" if won else "lose")
 	if won:
 		_vibrate(VIBRATE_WIN_MS)
-	hud.show_result(won, stars, shots_used, _has_next, session.definition.par)
+	var lines: Array[Dictionary] = []
+	var reason := ""
+	if story != null:
+		var id := session.definition.id
+		if won:
+			lines = story.debrief(id)
+		else:
+			var kind := "fail"
+			reason = "Out of shots."
+			if session.allies_lost > 0:
+				kind = "fail_ally"
+				reason = "A blue drone was lost."
+			elif session.cargo_lost > 0:
+				kind = "fail_cargo"
+				reason = "The supply crate was lost."
+			var line := story.fail_line(kind, progress.stat(id, "losses") + _attempt)
+			if not line.is_empty():
+				lines.append(line)
+	hud.show_result(won, stars, shots_used, _has_next, session.definition.par, lines, narrator, audio, reason)
 
 
 func _on_menu() -> void:
 	get_tree().paused = false
+	if narrator != null:
+		narrator.stop()
 	exit_requested.emit()
 
 
 func _on_next() -> void:
 	get_tree().paused = false
+	if narrator != null:
+		narrator.stop()
 	next_requested.emit()
 
 

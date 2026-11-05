@@ -392,7 +392,9 @@
 		{"x": 661, "y": 503, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[675, -390]
+	]
 },
 {
 	"id": "L22", "name": "Mirror Hall", "shots": 3, "par": 1,
@@ -412,7 +414,9 @@
 		{"x": 640, "y": 516, "r": 20},
 		{"x": 819, "y": 500, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[879, -236]
+	]
 },
 {
 	"id": "L23", "name": "Bank Shot", "shots": 3, "par": 1,
@@ -428,7 +432,9 @@
 	"targets": [
 		{"x": 878, "y": 616, "r": 24}
 	],
-	"solution": []
+	"solution": [
+		[1088, -192]
+	]
 },
 {
 	"id": "L24", "name": "Tower Drop", "shots": 3, "par": 1,
@@ -443,7 +449,9 @@
 		{"x": 725, "y": 496, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[930, 293]
+	]
 },
 {
 	"id": "L25", "name": "Glass Stilts", "shots": 3, "par": 1,
@@ -458,7 +466,9 @@
 		{"x": 789, "y": 470, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1104, 48]
+	]
 },
 {
 	"id": "L26", "name": "Overpass", "shots": 3, "par": 1,
@@ -476,7 +486,9 @@
 		{"x": 766, "y": 448, "r": 20},
 		{"x": 866, "y": 448, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[767, -489]
+	]
 },
 {
 	"id": "L27", "name": "Shelf Life", "shots": 3, "par": 1,
@@ -490,7 +502,9 @@
 		{"x": 654, "y": 435, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[501, -598]
+	]
 },
 {
 	"id": "L28", "name": "Prism", "shots": 3, "par": 1,
@@ -509,7 +523,9 @@
 	"targets": [
 		{"x": 889, "y": 468, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[977, -356]
+	]
 },
 {
 	"id": "L29", "name": "Ricochet", "shots": 3, "par": 1,
@@ -525,7 +541,9 @@
 	"targets": [
 		{"x": 889, "y": 617.6, "r": 22.4}
 	],
-	"solution": []
+	"solution": [
+		[713, -454]
+	]
 },
 {
 	"id": "L30", "name": "Arcade", "shots": 3, "par": 1,
@@ -539,7 +557,9 @@
 		{"x": 900, "y": 574, "w": 24, "h": 132, "material": "glass"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[750, -390]
+	]
 },
 {
 	"id": "L31", "name": "Courier", "shots": 3, "par": 1,
@@ -557,7 +577,9 @@
 		{"x": 770, "y": 380, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1141, -473]
+	]
 },
 {
 	"id": "L32", "name": "Twin Drops", "shots": 3, "par": 2,
@@ -573,7 +595,10 @@
 		{"x": 802, "y": 396, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[585, -697],
+		[807, -420]
+	]
 },
 {
 	"id": "L33", "name": "Skybridge", "shots": 3, "par": 1,
@@ -591,7 +616,9 @@
 		{"x": 783, "y": 424, "r": 20},
 		{"x": 883, "y": 424, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[822, -524]
+	]
 },
 {
 	"id": "L34", "name": "Hall of Glass", "shots": 3, "par": 2,
@@ -615,7 +642,9 @@
 		{"x": 848, "y": 477, "r": 20},
 		{"x": 1031, "y": 479, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1054, -332]
+	]
 },
 {
 	"id": "L35", "name": "Long Haul", "shots": 3, "par": 1,
@@ -629,7 +658,9 @@
 		{"x": 660, "y": 365, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[852, -597]
+	]
 },
 {
 	"id": "L36", "name": "Reflection", "shots": 3, "par": 1,
@@ -645,7 +676,9 @@
 	"targets": [
 		{"x": 908, "y": 619.2, "r": 20.8}
 	],
-	"solution": []
+	"solution": [
+		[916, -333]
+	]
 },
 {
 	"id": "L37", "name": "Stained Glass", "shots": 3, "par": 1,
@@ -669,7 +702,9 @@
 		{"x": 891, "y": 418, "r": 22},
 		{"x": 1031, "y": 618, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[1216, -214]
+	]
 },
 {
 	"id": "L38", "name": "Last Delivery", "shots": 3, "par": 2,
@@ -685,7 +720,10 @@
 		{"x": 827, "y": 364, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1119, -522],
+		[1166, 102]
+	]
 },
 {
 	"id": "L39", "name": "Mirrorfall", "shots": 3, "par": 2,
@@ -700,7 +738,9 @@
 		{"x": 970, "y": 549, "w": 24, "h": 182, "material": "wood"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1067, -286]
+	]
 },
 {
 	"id": "L40", "name": "Glass Quarter", "shots": 3, "par": 2,
@@ -724,7 +764,9 @@
 		{"x": 819, "y": 474, "r": 20},
 		{"x": 1001, "y": 473, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1193, -320]
+	]
 },
 {
 	"id": "L41", "name": "Powder Keg", "shots": 3, "par": 1,
@@ -741,7 +783,9 @@
 	"targets": [
 		{"x": 851, "y": 490, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1169, 51]
+	]
 },
 {
 	"id": "L42", "name": "Short Fuse", "shots": 3, "par": 1,
@@ -759,7 +803,9 @@
 	"targets": [
 		{"x": 770, "y": 542, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[520, -23]
+	]
 },
 {
 	"id": "L43", "name": "Dead Weight", "shots": 3, "par": 1,
@@ -776,7 +822,9 @@
 	"targets": [
 		{"x": 878, "y": 618, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[1160, -153]
+	]
 },
 {
 	"id": "L44", "name": "Blasting Cap", "shots": 3, "par": 1,
@@ -796,7 +844,9 @@
 	"targets": [
 		{"x": 890, "y": 390, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[980, -510]
+	]
 },
 {
 	"id": "L45", "name": "Rockfall", "shots": 3, "par": 1,
@@ -811,7 +861,9 @@
 		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1096, -144]
+	]
 },
 {
 	"id": "L46", "name": "Long Fuse", "shots": 3, "par": 1,
@@ -829,7 +881,9 @@
 	"targets": [
 		{"x": 776, "y": 530, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[975, 0]
+	]
 },
 {
 	"id": "L47", "name": "Air Mail", "shots": 3, "par": 1,
@@ -844,7 +898,9 @@
 		{"x": 754, "y": 488, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[390, -750]
+	]
 },
 {
 	"id": "L48", "name": "Bedrock", "shots": 3, "par": 1,
@@ -859,7 +915,9 @@
 	"targets": [
 		{"x": 914, "y": 618, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[855, -311]
+	]
 },
 {
 	"id": "L49", "name": "Seam", "shots": 3, "par": 1,
@@ -876,7 +934,9 @@
 	"targets": [
 		{"x": 874, "y": 478, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1031, 136]
+	]
 },
 {
 	"id": "L50", "name": "Quarry Lift", "shots": 3, "par": 1,
@@ -896,7 +956,9 @@
 	"targets": [
 		{"x": 869, "y": 390, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1060, -494]
+	]
 },
 {
 	"id": "L51", "name": "Slag Heap", "shots": 3, "par": 2,
@@ -912,7 +974,9 @@
 		{"x": 820, "y": 623, "w": 34, "h": 34, "material": "explosive"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1169, 51]
+	]
 },
 {
 	"id": "L52", "name": "Vault Door", "shots": 3, "par": 1,
@@ -929,7 +993,9 @@
 	"targets": [
 		{"x": 859, "y": 618, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[1230, -108]
+	]
 },
 {
 	"id": "L53", "name": "Detonator", "shots": 3, "par": 1,
@@ -948,7 +1014,9 @@
 	"targets": [
 		{"x": 914, "y": 518, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1039, -45]
+	]
 },
 {
 	"id": "L54", "name": "Express Freight", "shots": 3, "par": 1,
@@ -963,7 +1031,9 @@
 		{"x": 756, "y": 464, "w": 40, "h": 40, "material": "cargo"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[422, -732]
+	]
 },
 {
 	"id": "L55", "name": "Granite", "shots": 3, "par": 1,
@@ -978,7 +1048,9 @@
 	"targets": [
 		{"x": 875, "y": 618, "r": 22}
 	],
-	"solution": []
+	"solution": [
+		[992, -313]
+	]
 },
 {
 	"id": "L56", "name": "Powder Room", "shots": 3, "par": 1,
@@ -998,7 +1070,9 @@
 	"targets": [
 		{"x": 832, "y": 369, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1160, -153]
+	]
 },
 {
 	"id": "L57", "name": "Fault Line", "shots": 3, "par": 2,
@@ -1015,7 +1089,9 @@
 		{"x": 980, "y": 623, "w": 34, "h": 34, "material": "explosive"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1001, -467]
+	]
 },
 {
 	"id": "L58", "name": "Deep Cut", "shots": 3, "par": 2,
@@ -1036,7 +1112,9 @@
 		{"x": 869, "y": 390, "r": 20},
 		{"x": 869, "y": 502, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1216, -214]
+	]
 },
 {
 	"id": "L59", "name": "Stone Heart", "shots": 3, "par": 2,
@@ -1054,7 +1132,9 @@
 		{"x": 848, "y": 618, "r": 22},
 		{"x": 1008, "y": 620, "r": 20}
 	],
-	"solution": []
+	"solution": [
+		[1130, -303]
+	]
 },
 {
 	"id": "L60", "name": "The Quarry", "shots": 3, "par": 1,
@@ -1075,7 +1155,9 @@
 	"targets": [
 		{"x": 1210, "y": 502, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[942, -252]
+	]
 },
 {
 	"id": "L61", "name": "First Rescue", "shots": 3, "par": 1,
@@ -1094,7 +1176,9 @@
 	"allies": [
 		{"x": 693, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[571, -623]
+	]
 },
 {
 	"id": "L62", "name": "Steady Hands", "shots": 3, "par": 1,
@@ -1111,7 +1195,9 @@
 	"allies": [
 		{"x": 716, "y": 452, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[332, -1054]
+	]
 },
 {
 	"id": "L63", "name": "Breach", "shots": 3, "par": 1,
@@ -1131,7 +1217,9 @@
 	"allies": [
 		{"x": 590, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1224, -161]
+	]
 },
 {
 	"id": "L64", "name": "Safe Distance", "shots": 3, "par": 1,
@@ -1151,7 +1239,9 @@
 	"allies": [
 		{"x": 560, "y": 342, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1104, -48]
+	]
 },
 {
 	"id": "L65", "name": "Lookout", "shots": 3, "par": 1,
@@ -1173,7 +1263,9 @@
 	"allies": [
 		{"x": 1059, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1161, -422]
+	]
 },
 {
 	"id": "L66", "name": "Escort", "shots": 3, "par": 1,
@@ -1190,7 +1282,9 @@
 	"allies": [
 		{"x": 1019, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[598, -501]
+	]
 },
 {
 	"id": "L67", "name": "Kin", "shots": 3, "par": 1,
@@ -1209,7 +1303,9 @@
 	"allies": [
 		{"x": 637, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1067, -286]
+	]
 },
 {
 	"id": "L68", "name": "Ledge Walk", "shots": 3, "par": 1,
@@ -1226,7 +1322,9 @@
 	"allies": [
 		{"x": 726, "y": 428, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[554, -722]
+	]
 },
 {
 	"id": "L69", "name": "Shaped Charge", "shots": 3, "par": 1,
@@ -1246,7 +1344,9 @@
 	"allies": [
 		{"x": 629, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[766, -357]
+	]
 },
 {
 	"id": "L70", "name": "Firebreak", "shots": 3, "par": 1,
@@ -1267,7 +1367,9 @@
 	"allies": [
 		{"x": 560, "y": 342, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[907, -79]
+	]
 },
 {
 	"id": "L71", "name": "Watchtower", "shots": 3, "par": 1,
@@ -1289,7 +1391,9 @@
 	"allies": [
 		{"x": 1050, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1161, -422]
+	]
 },
 {
 	"id": "L72", "name": "Lifeline", "shots": 3, "par": 1,
@@ -1306,7 +1410,9 @@
 	"allies": [
 		{"x": 1079, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1081, -448]
+	]
 },
 {
 	"id": "L73", "name": "Cradle", "shots": 3, "par": 2,
@@ -1328,7 +1434,9 @@
 	"allies": [
 		{"x": 650, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1095, -570]
+	]
 },
 {
 	"id": "L74", "name": "Bunker Hill", "shots": 3, "par": 1,
@@ -1348,7 +1456,9 @@
 	"allies": [
 		{"x": 573, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[879, -236]
+	]
 },
 {
 	"id": "L75", "name": "Perch", "shots": 3, "par": 1,
@@ -1365,7 +1475,9 @@
 	"allies": [
 		{"x": 704, "y": 410, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[378, -1038]
+	]
 },
 {
 	"id": "L76", "name": "Containment", "shots": 3, "par": 1,
@@ -1386,7 +1498,9 @@
 	"allies": [
 		{"x": 560, "y": 342, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[907, -79]
+	]
 },
 {
 	"id": "L77", "name": "Sentinels", "shots": 3, "par": 2,
@@ -1409,7 +1523,10 @@
 	"allies": [
 		{"x": 1074, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1160, 153],
+		[1001, -467]
+	]
 },
 {
 	"id": "L78", "name": "Homecoming", "shots": 3, "par": 1,
@@ -1426,7 +1543,9 @@
 	"allies": [
 		{"x": 1075, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[647, -543]
+	]
 },
 {
 	"id": "L79", "name": "Surgical", "shots": 3, "par": 2,
@@ -1446,7 +1565,9 @@
 	"allies": [
 		{"x": 607, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1116, -352]
+	]
 },
 {
 	"id": "L80", "name": "Juno's Kin", "shots": 3, "par": 2,
@@ -1469,7 +1590,10 @@
 		{"x": 663, "y": 622, "r": 18},
 		{"x": 1090, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[791, -1031],
+		[958, -671]
+	]
 },
 {
 	"id": "L81", "name": "Approach", "shots": 3, "par": 1,
@@ -1489,7 +1613,9 @@
 	"targets": [
 		{"x": 882, "y": 408, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1039, -45]
+	]
 },
 {
 	"id": "L82", "name": "Outer Wall", "shots": 3, "par": 1,
@@ -1509,7 +1635,9 @@
 	"allies": [
 		{"x": 1200, "y": 433, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1130, -303]
+	]
 },
 {
 	"id": "L83", "name": "Gatehouse", "shots": 3, "par": 1,
@@ -1529,7 +1657,9 @@
 	"allies": [
 		{"x": 616, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[868, -274]
+	]
 },
 {
 	"id": "L84", "name": "Supply Line", "shots": 3, "par": 1,
@@ -1548,7 +1678,9 @@
 	"allies": [
 		{"x": 1200, "y": 472, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[670, -514]
+	]
 },
 {
 	"id": "L85", "name": "Lower Spire", "shots": 3, "par": 1,
@@ -1568,7 +1700,9 @@
 	"targets": [
 		{"x": 912, "y": 408, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1021, -423]
+	]
 },
 {
 	"id": "L86", "name": "Cascade", "shots": 3, "par": 1,
@@ -1593,7 +1727,9 @@
 	"allies": [
 		{"x": 1200, "y": 461, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[648, -57]
+	]
 },
 {
 	"id": "L87", "name": "Glass Ward", "shots": 3, "par": 2,
@@ -1622,7 +1758,9 @@
 	"allies": [
 		{"x": 1200, "y": 448, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1193, -320]
+	]
 },
 {
 	"id": "L88", "name": "Counterweight", "shots": 3, "par": 1,
@@ -1644,7 +1782,9 @@
 	"allies": [
 		{"x": 1200, "y": 479, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[942, -252]
+	]
 },
 {
 	"id": "L89", "name": "Mid Spire", "shots": 3, "par": 2,
@@ -1665,7 +1805,9 @@
 	"targets": [
 		{"x": 895, "y": 408, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1224, -161]
+	]
 },
 {
 	"id": "L90", "name": "Bank Vault", "shots": 3, "par": 1,
@@ -1685,7 +1827,9 @@
 	"allies": [
 		{"x": 1200, "y": 454, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1099, -400]
+	]
 },
 {
 	"id": "L91", "name": "Overload", "shots": 3, "par": 1,
@@ -1710,7 +1854,9 @@
 	"allies": [
 		{"x": 1200, "y": 475, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[971, -85]
+	]
 },
 {
 	"id": "L92", "name": "Last Crate", "shots": 3, "par": 1,
@@ -1727,7 +1873,9 @@
 	"allies": [
 		{"x": 1096, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[598, -598]
+	]
 },
 {
 	"id": "L93", "name": "High Spire", "shots": 3, "par": 2,
@@ -1752,7 +1900,9 @@
 		{"x": 895, "y": 408, "r": 18},
 		{"x": 895, "y": 310, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[628, -168]
+	]
 },
 {
 	"id": "L94", "name": "Fallen Bridge", "shots": 3, "par": 1,
@@ -1774,7 +1924,9 @@
 	"allies": [
 		{"x": 1200, "y": 427, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[799, -559]
+	]
 },
 {
 	"id": "L95", "name": "Pressure", "shots": 3, "par": 2,
@@ -1800,7 +1952,9 @@
 	"allies": [
 		{"x": 1200, "y": 452, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[961, -398]
+	]
 },
 {
 	"id": "L96", "name": "Collapse Protocol", "shots": 3, "par": 2,
@@ -1818,7 +1972,9 @@
 		{"x": 980, "y": 623, "w": 34, "h": 34, "material": "explosive"}
 	],
 	"targets": [],
-	"solution": []
+	"solution": [
+		[1170, 0]
+	]
 },
 {
 	"id": "L97", "name": "Crown", "shots": 3, "par": 2,
@@ -1843,7 +1999,9 @@
 		{"x": 898, "y": 408, "r": 18},
 		{"x": 898, "y": 310, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1160, -153]
+	]
 },
 {
 	"id": "L98", "name": "Guardians", "shots": 3, "par": 2,
@@ -1866,7 +2024,10 @@
 	"allies": [
 		{"x": 1029, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[845, 0],
+		[1070, -618]
+	]
 },
 {
 	"id": "L99", "name": "The Heart Gate", "shots": 3, "par": 2,
@@ -1886,7 +2047,9 @@
 	"allies": [
 		{"x": 597, "y": 622, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[781, -323]
+	]
 },
 {
 	"id": "L100", "name": "The Heart", "shots": 3, "par": 2,
@@ -1919,7 +2082,9 @@
 	"allies": [
 		{"x": 1200, "y": 444, "r": 18}
 	],
-	"solution": []
+	"solution": [
+		[1130, -303]
+	]
 }
 ]
 }

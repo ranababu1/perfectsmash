@@ -1,6 +1,6 @@
 extends Node
-## App root: owns persistence, audio and the level catalog; switches between menu and game.
-## Handles Android back and app backgrounding (auto-pause).
+## App root: owns persistence, audio, narration, the level catalog and the story; switches between
+## the menu, mission briefings and the game. Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
 
@@ -8,9 +8,14 @@ var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
 var audio: AudioService
+var narrator: Narrator
+## Null when data/story.json is missing or invalid: the game then plays without briefings.
+var story: StoryCatalog
 var _menu: MenuScreen
 var _game: GameScreen
 var _settings: SettingsPanel
+var _briefing: BriefingScreen
+var _briefing_layer: CanvasLayer
 var _level_index := -1
 var _fade: ColorRect
 
@@ -21,6 +26,9 @@ func _ready() -> void:
 	audio = AudioService.new()
 	audio.enabled = progress.sound_enabled
 	add_child(audio)
+	narrator = Narrator.new()
+	narrator.enabled = progress.narration_enabled
+	add_child(narrator)
 	catalog = LevelCatalog.load_from_file()
 	if not catalog.is_valid():
 		push_error("Level catalog invalid: %s" % ", ".join(catalog.errors))
@@ -28,6 +36,11 @@ func _ready() -> void:
 		message.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(message)
 		return
+	story = StoryCatalog.load_from_file()
+	var story_problems := story.errors + story.validate_against(catalog.ids())
+	if not story_problems.is_empty():
+		push_error("Story disabled: %s" % ", ".join(story_problems.slice(0, 5)))
+		story = null
 	_add_fade_layer()
 	_show_menu()
 
@@ -56,7 +69,8 @@ func _notification(what: int) -> void:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			_handle_back()
 		NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT:
-			if _game != null:
+			narrator.stop()
+			if _game != null and _briefing == null:
 				_game.pause()
 
 
@@ -69,6 +83,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _handle_back() -> void:
 	if close_settings():
 		return
+	if _briefing != null:
+		_show_menu()
+		return
 	if _game != null:
 		_game.handle_back()
 	elif OS.get_name() == "Android":
@@ -77,7 +94,7 @@ func _handle_back() -> void:
 
 func _show_menu() -> void:
 	_clear_screens()
-	_menu = MenuScreen.new(catalog, progress)
+	_menu = MenuScreen.new(catalog, progress, story)
 	_menu.theme = UiKit.make_theme()
 	_menu.level_selected.connect(_start_level)
 	_menu.settings_pressed.connect(_open_settings)
@@ -116,6 +133,12 @@ func _apply_setting(key: String, enabled: bool) -> void:
 			_set_vibration(enabled)
 		"aim_guide":
 			_set_aim_guide(enabled)
+		"narration":
+			progress.narration_enabled = enabled
+			narrator.enabled = enabled
+			if not enabled:
+				narrator.stop()
+			save.save_progress(progress)
 		_:
 			push_error("Unknown setting '%s'" % key)
 
@@ -133,11 +156,16 @@ func _reset_progress() -> void:
 	_show_menu()
 
 
-func _start_level(index: int) -> void:
+## Loads a level and, when the story is available, shows its briefing on top while the
+## structure settles underneath.
+func _start_level(index: int, brief: bool = true) -> void:
 	audio.play("click")
+	_close_briefing()
 	if _game == null:
 		_clear_screens()
 		_game = GameScreen.new(audio, progress)
+		_game.story = story
+		_game.narrator = narrator
 		_game.exit_requested.connect(_show_menu)
 		_game.next_requested.connect(func() -> void: _start_level(_level_index + 1))
 		_game.level_won.connect(_on_level_won)
@@ -148,7 +176,33 @@ func _start_level(index: int) -> void:
 		add_child(_game)
 	_level_index = index
 	_game.start(catalog.levels[index], index + 1, index + 1 < catalog.levels.size())
+	if brief and story != null:
+		_show_briefing(index)
 	_reveal()
+
+
+func _show_briefing(index: int) -> void:
+	var def: LevelDefinition = catalog.levels[index]
+	var chapter := story.chapter_index(index)
+	var chapter_name := "Chapter %d  ·  %s" % [chapter + 1, story.chapters[chapter].title] if chapter >= 0 else ""
+	_briefing_layer = CanvasLayer.new()
+	_briefing_layer.layer = 50
+	add_child(_briefing_layer)
+	_briefing = BriefingScreen.new(def, index + 1, chapter_name, story.briefing(index, def.id), narrator, audio)
+	_briefing.theme = UiKit.make_theme()
+	_briefing.begin_pressed.connect(func() -> void:
+		audio.play("click")
+		_close_briefing())
+	_briefing.back_pressed.connect(_show_menu)
+	_briefing_layer.add_child(_briefing)
+
+
+func _close_briefing() -> void:
+	narrator.stop()
+	if _briefing_layer != null:
+		_briefing_layer.queue_free()
+	_briefing_layer = null
+	_briefing = null
 
 
 func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
@@ -179,6 +233,7 @@ func _set_vibration(enabled: bool) -> void:
 
 func _clear_screens() -> void:
 	get_tree().paused = false
+	_close_briefing()
 	for screen: Node in [_menu, _game]:
 		if screen != null:
 			remove_child(screen)

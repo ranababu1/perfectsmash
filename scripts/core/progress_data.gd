@@ -2,9 +2,9 @@ class_name ProgressData
 extends RefCounted
 ## Local player progress and settings with a versioned, validated serialization format.
 
-## v2 (0.2.0): adds the aim-guide setting and local play-test stats. v1 saves load unchanged
-## with defaults for the new fields.
-const SCHEMA_VERSION := 2
+## v2 (0.2.0): adds the aim-guide setting and local play-test stats.
+## v3 (0.3.0): adds the voice-narration setting. Older saves load unchanged with defaults for new fields.
+const SCHEMA_VERSION := 3
 const OLDEST_SUPPORTED_VERSION := 1
 ## Counters kept per level for play-test feedback. They never leave the device unless the player
 ## copies the report themselves (see playtest_report()).
@@ -18,6 +18,8 @@ var sound_enabled := true
 var vibration_enabled := true
 ## Shows the short trajectory preview while aiming (plan §10 experiment: preview on/off).
 var aim_guide_enabled := true
+## Speaks briefings aloud with the device's text-to-speech voice (text is always shown).
+var narration_enabled := true
 ## Problems found while loading; non-empty means some data was discarded.
 var load_warnings := PackedStringArray()
 
@@ -90,7 +92,7 @@ func stat(level_id: String, key: String) -> int:
 func playtest_report(level_ids: Array[String], version: String) -> String:
 	var lines := PackedStringArray()
 	lines.append("Perfect Smash %s play-test report" % version)
-	lines.append("aim guide: %s" % ("on" if aim_guide_enabled else "off"))
+	lines.append("aim guide: %s  ·  narration: %s" % ["on" if aim_guide_enabled else "off", "on" if narration_enabled else "off"])
 	lines.append("#   level  stars  best  attempts  wins  losses  timeouts")
 	for i in level_ids.size():
 		var id := level_ids[i]
@@ -107,7 +109,8 @@ func to_dict() -> Dictionary:
 		"version": SCHEMA_VERSION,
 		"levels": level_results.duplicate(true),
 		"stats": level_stats.duplicate(true),
-		"settings": {"sound": sound_enabled, "vibration": vibration_enabled, "aim_guide": aim_guide_enabled},
+		"settings": {"sound": sound_enabled, "vibration": vibration_enabled, "aim_guide": aim_guide_enabled,
+			"narration": narration_enabled},
 	}
 
 
@@ -145,6 +148,8 @@ static func from_dict(data: Variant) -> ProgressData:
 			progress.vibration_enabled = settings.vibration
 		if settings.get("aim_guide") is bool:
 			progress.aim_guide_enabled = settings.aim_guide
+		if settings.get("narration") is bool:
+			progress.narration_enabled = settings.narration
 	else:
 		progress.load_warnings.append("'settings' is not an object")
 

@@ -1,24 +1,35 @@
 class_name MenuScreen
 extends Control
-## Title and level select. Levels unlock in order; each shows its best star medal.
-## The next level to play is highlighted and reachable in one tap via "Continue".
+## Title and mission select. Missions unlock in order; each shows its best star medal. Missions are
+## grouped into story chapters (pages of PAGE_SIZE); the page of the next mission opens first, and
+## that mission is highlighted and reachable in one tap via "Continue".
 
 signal level_selected(index: int)
 signal settings_pressed
 
 const COLUMNS := 5
-const TILE_SIZE := Vector2(136, 92)
+const PAGE_SIZE := 20
+const TILE_SIZE := Vector2(136, 80)
 const MARGIN := 32.0
 const TILE := "LevelTile"
 const TILE_CURRENT := "LevelTileCurrent"
 
 var catalog: LevelCatalog
 var progress: ProgressData
+var story: StoryCatalog
+var page := 0
+var _grid: GridContainer
+var _tabs: HBoxContainer
 
 
-func _init(p_catalog: LevelCatalog, p_progress: ProgressData) -> void:
+func _init(p_catalog: LevelCatalog, p_progress: ProgressData, p_story: StoryCatalog = null) -> void:
 	catalog = p_catalog
 	progress = p_progress
+	story = p_story
+
+
+func page_count() -> int:
+	return ceili(catalog.levels.size() / float(PAGE_SIZE))
 
 
 func _ready() -> void:
@@ -35,27 +46,35 @@ func _ready() -> void:
 	content.add_child(_top_bar())
 
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 22)
+	column.add_theme_constant_override("separation", 16)
 	column.alignment = BoxContainer.ALIGNMENT_CENTER
 	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var center := UiKit.centered(column)
-	center.offset_top = 70.0
+	center.offset_top = 84.0
 	content.add_child(center)
 
-	var grid := GridContainer.new()
-	grid.name = "LevelGrid"
-	grid.columns = COLUMNS
-	grid.add_theme_constant_override("h_separation", 14)
-	grid.add_theme_constant_override("v_separation", 14)
-	var ids := catalog.ids()
 	var current := _current_index()
-	for i in catalog.levels.size():
-		grid.add_child(_level_tile(i, progress.is_unlocked(ids, i), progress.stars_for(ids[i]), i == current))
-	column.add_child(grid)
+	page = clampi((current if current >= 0 else catalog.levels.size() - 1) / PAGE_SIZE, 0, page_count() - 1)
+	if page_count() > 1:
+		_tabs = HBoxContainer.new()
+		_tabs.name = "ChapterTabs"
+		_tabs.alignment = BoxContainer.ALIGNMENT_CENTER
+		_tabs.add_theme_constant_override("separation", 10)
+		column.add_child(_tabs)
+
+	_grid = GridContainer.new()
+	_grid.name = "LevelGrid"
+	_grid.columns = COLUMNS
+	_grid.add_theme_constant_override("h_separation", 14)
+	_grid.add_theme_constant_override("v_separation", 12)
+	column.add_child(_grid)
+	show_page(page)
 
 	if current >= 0:
-		var started := progress.is_completed(ids[0])
-		var play := UiKit.primary_button("%s  ·  Level %d" % ["Continue" if started else "Play", current + 1], 320)
+		var started := progress.is_completed(catalog.ids()[0])
+		var word := "Mission" if story != null else "Level"
+		var play := UiKit.primary_button("%s  ·  %s %d" % ["Continue" if started else "Play", word, current + 1], 320)
+		play.name = "PlayButton"
 		play.pressed.connect(level_selected.emit.bind(current))
 		var row := HBoxContainer.new()
 		row.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -63,11 +82,44 @@ func _ready() -> void:
 		column.add_child(row)
 		UiKit.focus_default(play)
 	else:
-		var done := UiKit.label("Every level cleared. Replay any level to chase three stars.", 20, Palette.TEXT_DIM)
+		var done := UiKit.label("Every mission cleared. Replay any of them to chase three stars.", 20, Palette.TEXT_DIM)
 		if progress.total_stars() == catalog.levels.size() * ScoreRules.MAX_STARS:
-			done.text = "Perfect run: every level cleared with three stars."
+			done.text = "Perfect run: every mission cleared with three stars."
 		column.add_child(done)
 	UiKit.animate_in(content, 10.0)
+
+
+## Shows one chapter's tiles and refreshes the tab highlight.
+func show_page(index: int) -> void:
+	page = clampi(index, 0, page_count() - 1)
+	for child in _grid.get_children():
+		_grid.remove_child(child)
+		child.queue_free()
+	var ids := catalog.ids()
+	var current := _current_index()
+	for i in range(page * PAGE_SIZE, mini((page + 1) * PAGE_SIZE, catalog.levels.size())):
+		_grid.add_child(_level_tile(i, progress.is_unlocked(ids, i), progress.stars_for(ids[i]), i == current))
+	if _tabs != null:
+		for child in _tabs.get_children():
+			_tabs.remove_child(child)
+			child.queue_free()
+		for p in page_count():
+			_tabs.add_child(_chapter_tab(p))
+
+
+func _chapter_tab(p: int) -> Button:
+	var first := p * PAGE_SIZE
+	var title := "%d–%d" % [first + 1, mini(first + PAGE_SIZE, catalog.levels.size())]
+	if story != null and p < story.chapters.size():
+		title = story.chapters[p].title
+	var unlocked := progress.is_unlocked(catalog.ids(), first)
+	var tab := UiKit.button("%d  %s" % [p + 1, title] if unlocked else "%d  Locked" % (p + 1), 150)
+	tab.name = "Chapter%d" % (p + 1)
+	tab.add_theme_font_size_override("font_size", 18)
+	tab.disabled = not unlocked
+	tab.theme_type_variation = TILE_CURRENT if p == page else TILE
+	tab.pressed.connect(func() -> void: show_page(p))
+	return tab
 
 
 ## Shifts all controls inside the display's safe area; the scenery stays full screen.
@@ -142,16 +194,16 @@ func _level_tile(index: int, unlocked: bool, stars: int, current: bool) -> Butto
 		lock.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		tile.add_child(lock)
 		return tile
-	var number := UiKit.label(str(index + 1), 30, Palette.TEXT)
+	var number := UiKit.label(str(index + 1), 27, Palette.TEXT)
 	number.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	number.offset_bottom = -22.0
+	number.offset_bottom = -24.0
 	number.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	number.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tile.add_child(number)
 	var row := StarRow.new(stars, 8.0)
 	row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	row.offset_top = -32
-	row.offset_bottom = -12
+	row.offset_top = -28
+	row.offset_bottom = -10
 	tile.add_child(row)
 	tile.pressed.connect(level_selected.emit.bind(index))
 	UiKit.add_press_feedback(tile)

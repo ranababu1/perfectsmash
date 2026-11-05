@@ -103,3 +103,18 @@ func _draw() -> void:
 		"close":
 			draw_line(p.call(6.5, 6.5), p.call(17.5, 17.5), color, w * 1.1, true)
 			draw_line(p.call(17.5, 6.5), p.call(6.5, 17.5), color, w * 1.1, true)
+		"voice", "voice_off":
+			# Speech bubble; sound waves beside it when on.
+			var bubble := StyleBoxFlat.new()
+			bubble.draw_center = false
+			bubble.border_color = color
+			bubble.set_border_width_all(int(maxf(1.0, w)))
+			bubble.set_corner_radius_all(int(4 * s))
+			draw_style_box(bubble, Rect2(p.call(3, 5), Vector2(12, 10) * s))
+			draw_colored_polygon(PackedVector2Array([p.call(6, 14.5), p.call(10, 14.5), p.call(6, 19)]), color)
+			if kind == "voice":
+				draw_arc(p.call(16, 10), 3.5 * s, -0.9, 0.9, 10, color, w * 0.9, true)
+				draw_arc(p.call(16, 10), 6.5 * s, -0.9, 0.9, 14, color, w * 0.9, true)
+			else:
+				draw_line(p.call(17, 7), p.call(22, 13), color, w, true)
+				draw_line(p.call(22, 7), p.call(17, 13), color, w, true)

@@ -161,8 +161,9 @@ func _build_all(variants: Dictionary, existing: Dictionary) -> Array:
 
 
 func _same_layout(a: Dictionary, b: Dictionary) -> bool:
-	var x := a.duplicate(true)
-	var y := b.duplicate(true)
+	# Round-trip both through JSON so ints and floats (180 vs 180.0) compare equal.
+	var x: Dictionary = JSON.parse_string(JSON.stringify(a))
+	var y: Dictionary = JSON.parse_string(JSON.stringify(b))
 	x.erase("solution")
 	y.erase("solution")
 	return JSON.stringify(x, "", true) == JSON.stringify(y, "", true)

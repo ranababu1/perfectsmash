@@ -12,6 +12,7 @@ const UNIT_SUITES := [
 	"res://tests/test_progress.gd",
 	"res://tests/test_layout.gd",
 	"res://tests/test_release_config.gd",
+	"res://tests/test_story.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",

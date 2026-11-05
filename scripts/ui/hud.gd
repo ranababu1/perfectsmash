@@ -19,6 +19,7 @@ const MARGIN := 20.0
 var _number: Label
 var _title: Label
 var _objective: Label
+var _constraint: Label
 var _shots: ShotPips
 var _hint: Label
 var _hint_chip: Control
@@ -47,9 +48,11 @@ func _ready() -> void:
 	heading.add_child(_number)
 	heading.add_child(_title)
 	_objective = _left_label(17, Palette.TEXT_DIM)
+	_constraint = _left_label(16, Palette.ALLY)
 	_shots = ShotPips.new()
 	info.add_child(heading)
 	info.add_child(_objective)
+	info.add_child(_constraint)
 	info.add_child(_shots)
 
 	# Full-width strip aligned right; the strip itself ignores input so only the buttons block aiming.
@@ -98,11 +101,13 @@ func apply_insets(insets: Vector4) -> void:
 func set_level(def: LevelDefinition, number: int) -> void:
 	_number.text = str(number)
 	_title.text = def.name
-	if def.objective_type == LevelDefinition.OBJECTIVE_TOPPLE:
-		_objective.text = "Bring every block below the green line"
-	else:
-		var count := def.targets.size()
-		_objective.text = "Knock out the red core" if count == 1 else "Knock out all %d red cores" % count
+	_objective.text = MissionText.objective(def)
+	_constraint.text = MissionText.constraint(def)
+	_constraint.visible = _constraint.text != ""
+	var kinds: Array[String] = []
+	for i in def.shots:
+		kinds.append(def.ammo_for_shot(i))
+	_shots.ammo = kinds
 	_hint.text = def.hint
 	_hint_chip.modulate.a = 1.0
 	_hint_chip.visible = def.hint != ""
@@ -161,11 +166,13 @@ func show_pause(sound_on: bool, vibration_on: bool, aim_guide_on: bool = true) -
 	UiKit.focus_default(resume)
 
 
-func show_result(won: bool, stars: int, shots_used: int, has_next: bool, par: int = 0) -> void:
+## Mission result with the debrief (or failure) dialogue. `lines` may be empty (no story).
+func show_result(won: bool, stars: int, shots_used: int, has_next: bool, par: int = 0,
+		lines: Array[Dictionary] = [], narrator: Narrator = null, audio: AudioService = null, reason: String = "") -> void:
 	var box: VBoxContainer
 	var first: Button
 	if won:
-		box = _open_panel("Level clear", "")
+		box = _open_panel("Mission complete" if not lines.is_empty() else "Level clear", "", not lines.is_empty())
 		var row_stars := StarRow.new(stars, 30.0)
 		box.add_child(row_stars)
 		row_stars.reveal(star_revealed.emit)
@@ -173,28 +180,43 @@ func show_result(won: bool, stars: int, shots_used: int, has_next: bool, par: in
 		if par > 0 and stars < ScoreRules.MAX_STARS:
 			detail += "  ·  par %d" % par
 		box.add_child(UiKit.label(detail, 19, Palette.TEXT_DIM))
+		_add_dialogue(box, lines, narrator, audio)
 		box.add_child(_spacer(6))
 		if has_next:
-			first = UiKit.primary_button("Next level", UiKit.PANEL_WIDTH)
+			first = UiKit.primary_button("Next mission" if not lines.is_empty() else "Next level", UiKit.PANEL_WIDTH)
 			first.pressed.connect(next_pressed.emit)
 			box.add_child(first)
 		var row := _button_row()
 		row.add_child(_action("Replay", restart_pressed, true))
-		row.add_child(_action("Levels", menu_pressed, true))
+		row.add_child(_action("Missions" if not lines.is_empty() else "Levels", menu_pressed, true))
 		box.add_child(row)
 		if first == null:
 			first = row.get_child(0)
 	else:
-		box = _open_panel("Out of shots", "Study the structure and try another angle.")
+		var subtitle := reason if reason != "" else "Study the structure and try another angle."
+		box = _open_panel("Mission failed" if not lines.is_empty() else "Out of shots", subtitle, not lines.is_empty())
+		_add_dialogue(box, lines, narrator, audio)
 		box.add_child(_spacer(6))
 		first = UiKit.primary_button("Retry", UiKit.PANEL_WIDTH)
 		first.pressed.connect(restart_pressed.emit)
 		box.add_child(first)
-		box.add_child(_action("Levels", menu_pressed))
+		box.add_child(_action("Missions" if not lines.is_empty() else "Levels", menu_pressed))
 	UiKit.focus_default(first)
 
 
-func _open_panel(title: String, subtitle: String) -> VBoxContainer:
+## Radio transcript inside the result panel (debrief or failure line).
+func _add_dialogue(box: VBoxContainer, lines: Array[Dictionary], narrator: Narrator, audio: AudioService) -> void:
+	if lines.is_empty():
+		return
+	var dialogue := DialogueBox.new(narrator, audio)
+	dialogue.name = "Debrief"
+	dialogue.theme_type_variation = UiKit.CHIP
+	dialogue.custom_minimum_size = Vector2(UiKit.PANEL_WIDTH + 200.0, minf(64.0 + 58.0 * lines.size(), 200.0))
+	box.add_child(dialogue)
+	dialogue.play.call_deferred(lines)
+
+
+func _open_panel(title: String, subtitle: String, wide: bool = false) -> VBoxContainer:
 	hide_overlay()
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -202,7 +224,7 @@ func _open_panel(title: String, subtitle: String) -> VBoxContainer:
 	var dim := UiKit.overlay()
 	root.add_child(dim)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size.x = UiKit.PANEL_WIDTH + 64.0
+	panel.custom_minimum_size.x = UiKit.PANEL_WIDTH + (264.0 if wide else 64.0)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 12)
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -258,12 +280,14 @@ func _left_label(font_size: int, color: Color) -> Label:
 	return l
 
 
-## Remaining shots as a row of small balls: filled = available, hollow = spent.
+## Remaining shots as a row of small balls: filled = available, hollow = spent. Each pip takes the
+## color of that shot's ammo, so special shots are visible before they are fired.
 class ShotPips extends Control:
 	const PIP := 7.0
 	const GAP := 8.0
 	var remaining := 0
 	var budget := 0
+	var ammo: Array[String] = []
 
 	func _init() -> void:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -277,7 +301,9 @@ class ShotPips extends Control:
 	func _draw() -> void:
 		for i in budget:
 			var center := Vector2(PIP + 1.0 + i * (PIP * 2.0 + GAP), size.y / 2.0 + 2.0)
-			if i < remaining:
-				draw_circle(center, PIP, Palette.PROJECTILE, true, -1.0, true)
+			# Pip i stands for shot i, so spent shots are the hollow ones on the left.
+			var kind: String = ammo[i] if i < ammo.size() else GameConfig.DEFAULT_AMMO
+			if i >= budget - remaining:
+				draw_circle(center, PIP, Palette.ammo_colors(kind)[0], true, -1.0, true)
 			else:
 				draw_arc(center, PIP - 1.0, 0, TAU, 24, Palette.TEXT_FAINT, 1.5, true)

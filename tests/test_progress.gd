@@ -131,6 +131,7 @@ func test_migrates_v1_save() -> void:
 	assert_eq(loaded.stars_for("L02"), 1)
 	assert_false(loaded.sound_enabled)
 	assert_true(loaded.aim_guide_enabled, "new setting defaults on")
+	assert_true(loaded.narration_enabled, "v3 setting defaults on")
 	assert_true(loaded.level_stats.is_empty())
 	# Saving rewrites it as the current schema.
 	assert_eq(service.save_progress(loaded), OK)
@@ -179,4 +180,18 @@ func test_playtest_report_lists_only_played_levels() -> void:
 	assert_true(report.begins_with("Perfect Smash 9.9.9"), "header")
 	assert_true(report.contains("B "), "played level listed")
 	assert_false(report.contains("A "), "unplayed level omitted")
-	assert_eq(report.split("\n").size(), 4, "header, setting, columns, one row")
+	assert_eq(report.split("\n").size(), 4, "header, settings, columns, one row")
+
+
+func test_v2_save_migrates_and_narration_round_trips() -> void:
+	var v2 := ProgressData.from_dict({"version": 2, "levels": {"L01": {"stars": 2, "best_shots": 2}},
+		"stats": {"L01": {"attempts": 4}}, "settings": {"sound": true, "vibration": true, "aim_guide": false}})
+	assert_true(v2.load_warnings.is_empty(), "v2 loads cleanly: %s" % ", ".join(v2.load_warnings))
+	assert_eq(v2.stars_for("L01"), 2)
+	assert_eq(v2.stat("L01", "attempts"), 4)
+	assert_false(v2.aim_guide_enabled)
+	assert_true(v2.narration_enabled)
+	v2.narration_enabled = false
+	var copy := ProgressData.from_dict(JSON.parse_string(JSON.stringify(v2.to_dict())))
+	assert_false(copy.narration_enabled, "narration off persisted")
+	assert_eq(int(v2.to_dict().version), 3)

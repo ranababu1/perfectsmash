@@ -135,3 +135,42 @@ func test_safe_area_conversion() -> void:
 	assert_eq(SafeArea.insets_for(Vector2i.ZERO, Rect2i(), Vector2(1280, 720)), Vector4.ZERO, "no window")
 	var bogus := SafeArea.insets_for(Vector2i(2400, 1080), Rect2i(2000, 0, 400, 1080), Vector2(1600, 720))
 	assert_near(bogus.x, 2400 * SafeArea.MAX_SHARE * (1600.0 / 2400.0), 0.01, "huge inset capped")
+
+
+func test_briefing_and_debrief_fit_every_canvas() -> void:
+	var story := StoryCatalog.load_from_file()
+	var catalog := LevelCatalog.load_from_file()
+	# The finale has the longest debrief; mission 21 has a chapter card plus briefing.
+	var last := catalog.levels.size() - 1
+	for aspect: String in CANVASES:
+		var size: Vector2i = CANVASES[aspect]
+		var bounds := Rect2(Vector2.ZERO, Vector2(size))
+		var viewport := _host(size)
+		var def: LevelDefinition = catalog.levels[20]
+		var briefing := BriefingScreen.new(def, 21, "Chapter 2  ·  Glass Quarter", story.briefing(20, def.id), null, null)
+		briefing.theme = UiKit.make_theme()
+		viewport.add_child(briefing)
+		await _settle()
+		briefing.dialogue.finish_all()
+		await _settle()
+		_check_buttons(_buttons(briefing), bounds, "briefing " + aspect)
+		var schematic: Control = briefing.find_child("Schematic", true, false)
+		assert_true(schematic.size.x >= 250.0 and schematic.size.y >= 120.0, "briefing %s: schematic visible %s" % [aspect, schematic.size])
+		var dialogue: Control = briefing.find_child("Dialogue", true, false)
+		assert_true(bounds.encloses(dialogue.get_global_rect()), "briefing %s: dialogue on screen" % aspect)
+		briefing.queue_free()
+
+		var hud := Hud.new()
+		hud.theme = UiKit.make_theme()
+		viewport.add_child(hud)
+		hud.set_level(catalog.levels[last], last + 1)
+		hud.show_result(true, 3, 2, false, 2, story.debrief(catalog.levels[last].id))
+		await _settle()
+		_check_buttons(_buttons(hud._overlay), bounds, "debrief " + aspect)
+		var panel: Control = hud._overlay.find_child("Debrief", true, false)
+		assert_true(bounds.encloses(panel.get_global_rect()), "debrief %s: dialogue on screen" % aspect)
+		hud.show_result(false, 0, 3, true, 1, [story.fail_line("fail_ally", 0)], null, null, "A blue drone was lost.")
+		await _settle()
+		_check_buttons(_buttons(hud._overlay), bounds, "failed " + aspect)
+		tree.root.remove_child(viewport)
+		viewport.queue_free()

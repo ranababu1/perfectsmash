@@ -1,0 +1,580 @@
+{
+"title": "Operation Rebuild",
+"speakers": {
+ "kestrel": {
+  "name": "KESTREL",
+  "color": "ffc56b",
+  "pitch": 1.0
+ },
+ "bolt": {
+  "name": "BOLT",
+  "color": "5fe0c8",
+  "pitch": 0.85
+ },
+ "juno": {
+  "name": "JUNO",
+  "color": "7cc4ff",
+  "pitch": 1.35
+ },
+ "architect": {
+  "name": "ARCHITECT",
+  "color": "ff6b7d",
+  "pitch": 0.7
+ },
+ "log": {
+  "name": "MISSION LOG",
+  "color": "98a1ba",
+  "pitch": 1.0
+ }
+},
+"chapters": [
+ {
+  "title": "Groundbreak",
+  "subtitle": "The outskirts of Port Halden",
+  "first": 1,
+  "last": 20,
+  "intro": [
+   [
+    "log",
+    "Port Halden. Eight months after the Flood."
+   ],
+   [
+    "log",
+    "The city was handed to ARCHITECT, a machine built to rebuild it. It never stopped building."
+   ],
+   [
+    "kestrel",
+    "This is Commander Kestrel, Ground Unit Seven. If you're hearing this, you're our new demolition lead. Welcome aboard, Wrecker."
+   ]
+  ]
+ },
+ {
+  "title": "Glass Quarter",
+  "subtitle": "The mirrored towers",
+  "first": 21,
+  "last": 40,
+  "intro": [
+   [
+    "log",
+    "Chapter two: the Glass Quarter."
+   ],
+   [
+    "log",
+    "The old financial district, now a forest of mirrored towers. Four thousand people are still trapped inside."
+   ],
+   [
+    "kestrel",
+    "We're going in for them. And I'm bringing help."
+   ]
+  ]
+ },
+ {
+  "title": "The Quarry",
+  "subtitle": "Where the stone comes from",
+  "first": 41,
+  "last": 60,
+  "intro": [
+   [
+    "log",
+    "Chapter three: the Quarry."
+   ],
+   [
+    "log",
+    "North of the city, ARCHITECT cuts stone around the clock. Every block goes somewhere."
+   ],
+   [
+    "kestrel",
+    "We find out where. And we use its own tools to stop it."
+   ]
+  ]
+ },
+ {
+  "title": "Juno's Kin",
+  "subtitle": "The captive drones",
+  "first": 61,
+  "last": 80,
+  "intro": [
+   [
+    "log",
+    "Chapter four: Juno's Kin."
+   ],
+   [
+    "log",
+    "ARCHITECT's drones were built to repair the city. It has wired them into its towers as living circuits."
+   ],
+   [
+    "kestrel",
+    "New rule: the blue ones live. We go slow, we go careful."
+   ]
+  ]
+ },
+ {
+  "title": "The Spire",
+  "subtitle": "The heart of ARCHITECT",
+  "first": 81,
+  "last": 100,
+  "intro": [
+   [
+    "log",
+    "Chapter five: the Spire."
+   ],
+   [
+    "log",
+    "It rises from the drowned city centre, taller every hour. Every core, every relay, every stolen stone leads here."
+   ],
+   [
+    "kestrel",
+    "This is it, Wrecker. Everything we've learned, all at once."
+   ]
+  ]
+ }
+],
+"fail": [
+ [
+  "kestrel",
+  "Not this time. Reset, look again, and find the weak point."
+ ],
+ [
+  "kestrel",
+  "Structures lie, Wrecker. Read it again."
+ ],
+ [
+  "bolt",
+  "Well, it's still standing. Want to try a different angle?"
+ ],
+ [
+  "kestrel",
+  "Shake it off. You've done harder."
+ ],
+ [
+  "bolt",
+  "Physics remains undefeated. Again?"
+ ],
+ [
+  "kestrel",
+  "Take a breath. Then take it down."
+ ]
+],
+"fail_ally": [
+ [
+  "juno",
+  "No... that was one of my kin. Please, try again."
+ ],
+ [
+  "kestrel",
+  "We lost the drone. That's a fail, Wrecker. Again, gentler."
+ ]
+],
+"fail_cargo": [
+ [
+  "bolt",
+  "The crate's gone. Those were somebody's supplies. Try again."
+ ],
+ [
+  "kestrel",
+  "Supplies lost. Reset and aim for the zone."
+ ]
+],
+"missions": {
+"L01": {
+	"briefing": [["kestrel", "See that red glow? That's a core. ARCHITECT's towers drink power from the grid through them."], ["kestrel", "Your first one is sitting in the open. Pull back, aim, let go. Show me what you've got."]],
+	"debrief": [["kestrel", "Clean hit. The east substation just came back online. People have lights tonight because of you."]]
+},
+"L02": {
+	"briefing": [["kestrel", "Next core is perched on a column. ARCHITECT likes to build tall."], ["kestrel", "Tall things fall hard. Hit high or hit low, your call."]],
+	"debrief": [["kestrel", "Down it goes. Keep that rhythm."]]
+},
+"L03": {
+	"briefing": [["kestrel", "This one is tucked under a beam. Every structure has a weak point, Wrecker."], ["kestrel", "Find the support. Take it out."]],
+	"debrief": [["kestrel", "That's the instinct I need. Buildings are just promises held up by sticks."]]
+},
+"L07": {
+	"briefing": [["kestrel", "Stone lid on this one. Heavy, which means it falls like a hammer."], ["kestrel", "Don't fight the weight. Use it."]],
+	"debrief": [["architect", "Ground Unit Seven. You are delaying reconstruction."], ["kestrel", "...It has never spoken on our channel before. Ignore it. Keep moving."]]
+},
+"L05": {
+	"briefing": [["kestrel", "After that broadcast we keep the briefings short."], ["kestrel", "Glass supports here. They shatter on a hard hit."]],
+	"debrief": [["kestrel", "Shards everywhere and the core is gone. Good."]]
+},
+"L04": {
+	"briefing": [["kestrel", "A stack of blocks with a core on top. Gravity is on our side today."]],
+	"debrief": [["kestrel", "Gravity: still undefeated. Third substation restored."]]
+},
+"L06": {
+	"briefing": [["kestrel", "Two towers, two cores, standing shoulder to shoulder."], ["kestrel", "If one falls the right way, it takes its neighbour with it."]],
+	"debrief": [["kestrel", "Two for one. The engineers are going to love you."]]
+},
+"L08": {
+	"briefing": [["kestrel", "A row of pillars leading to the core. ARCHITECT builds in patterns."], ["kestrel", "Patterns can be pushed."]],
+	"debrief": [["kestrel", "Like dominoes. I'll admit it, I watched that twice."]]
+},
+"L09": {
+	"briefing": [["kestrel", "Change of job. No core here, just a relay mast ARCHITECT will finish by morning."], ["kestrel", "Bring every block below the green line and it can't transmit."]],
+	"debrief": [["kestrel", "Mast is flat. Transmission cut. Different goal, same result."]]
+},
+"L17": {
+	"briefing": [["kestrel", "More masts, timber this time. Lay them all down below the line."]],
+	"debrief": [["architect", "Every structure you remove, I will replace. I have time. You do not."]]
+},
+"L15": {
+	"briefing": [["kestrel", "Two glass towers guarding the old library. Two cores."], ["kestrel", "You may need two shots. Make them count."]],
+	"debrief": [["kestrel", "The library is still standing. So are we."]]
+},
+"L12": {
+	"briefing": [["kestrel", "A pyramid of crates with a core at the peak."], ["kestrel", "One block holds the rest up. Find it."]],
+	"debrief": [["kestrel", "Textbook. Who taught you that?"], ["kestrel", "Don't answer. I like the mystery."]]
+},
+"L14": {
+	"briefing": [["kestrel", "ARCHITECT is learning. That core sits behind a shield."], ["kestrel", "Hit the shield hard enough and it becomes a weapon."]],
+	"debrief": [["kestrel", "It built a wall to stop you, and you threw it at the core. ARCHITECT will not enjoy that."]]
+},
+"L19": {
+	"briefing": [["kestrel", "A long line of pillars with one core at the very end."], ["kestrel", "One push. All the way down the line."]],
+	"debrief": [["kestrel", "Beautiful. The whole district heard that."]]
+},
+"L18": {
+	"briefing": [["kestrel", "Core behind a wall, no way through. Go over it."]],
+	"debrief": [["kestrel", "Nice arc. The signal from the cores is getting weaker. We're hurting it."]]
+},
+"L10": {
+	"briefing": [["kestrel", "Core on a high ledge above the old ferry terminal."], ["kestrel", "Push it over the edge. The fall will finish it."]],
+	"debrief": [["kestrel", "Over and out."]]
+},
+"L11": {
+	"briefing": [["kestrel", "Two cores, far apart. Be efficient, ammunition is getting short."]],
+	"debrief": [["kestrel", "Supply truck arrives tomorrow. You've earned the first crate."]]
+},
+"L13": {
+	"briefing": [["kestrel", "Stone walls won't budge here. But the roof is glass."]],
+	"debrief": [["kestrel", "Straight through the skylight. I'm starting to think ARCHITECT can't predict you."]]
+},
+"L16": {
+	"briefing": [["kestrel", "Three cores on a staircase of ledges, climbing toward the old harbour."], ["kestrel", "Three steps, three targets."]],
+	"debrief": [["kestrel", "The harbour grid is ours. One more site and the outskirts are clear."]]
+},
+"L20": {
+	"briefing": [["kestrel", "Last tower on the outskirts. Three cores, two storeys, one stubborn machine."], ["kestrel", "Bring the whole thing down."]],
+	"debrief": [["kestrel", "Outskirts clear."], ["kestrel", "Bad news. The cores weren't just draining power, they were relaying it. Toward the Glass Quarter."], ["architect", "You have seen the edge of the plan, Wrecker. Come and see the rest."]]
+},
+"L21": {
+	"briefing": [["bolt", "Teo Marsh, engineer. Everyone calls me Bolt. You're the one who throws things at buildings?"], ["bolt", "Survivors need supplies. Knock that crate off the shelf and into the drop zone. Gently. Ish."]],
+	"debrief": [["bolt", "Crate delivered, contents mostly unbroken. Five stars from me."]]
+},
+"L22": {
+	"briefing": [["kestrel", "Mirror Hall. Two glass towers wired straight into the relay."], ["kestrel", "Glass breaks, cores fall. You know the drill."]],
+	"debrief": [["kestrel", "Relay one is dark. Bolt, how many more?"], ["bolt", "In the Quarter? Let's say 'lots' and stay optimistic."]]
+},
+"L23": {
+	"briefing": [["bolt", "See the purple pads? ARCHITECT's shock panels. Anything that hits them bounces back hard."], ["bolt", "Your core is behind a stone shield. Bank the shot off the pad and drop it in behind."]],
+	"debrief": [["bolt", "Off the panel and straight in. I'm putting that on a poster."]]
+},
+"L24": {
+	"briefing": [["kestrel", "Supplies are stranded on top of a scaffold tower."], ["kestrel", "Bring the tower down so the crate lands in the zone."]],
+	"debrief": [["kestrel", "A family on Larch Street just ate their first hot meal in a week."]]
+},
+"L25": {
+	"briefing": [["bolt", "This crate is sitting on glass stilts. Break the legs and it drops right where we need it."]],
+	"debrief": [["bolt", "Physics: the best delivery service in town."]]
+},
+"L26": {
+	"briefing": [["kestrel", "Two cores on the old overpass. Knock them both off the deck."]],
+	"debrief": [["architect", "You are feeding them, Wrecker. Feeding them does not rebuild a city."], ["kestrel", "Cut that channel, Bolt."], ["bolt", "Trying!"]]
+},
+"L27": {
+	"briefing": [["bolt", "Channel's patched. Sorry about that."], ["bolt", "Next crate is on a higher shelf, farther from the zone."]],
+	"debrief": [["bolt", "Nailed it. Shelf life: zero."]]
+},
+"L28": {
+	"briefing": [["kestrel", "A glass pyramid. ARCHITECT calls it a prism. I call it a target."], ["kestrel", "Find the keystone."]],
+	"debrief": [["kestrel", "Clear. The Quarter's eastern blocks are going dark. The good kind of dark."]]
+},
+"L29": {
+	"briefing": [["bolt", "Taller shield, same trick. Shock panel overhead."], ["bolt", "Angle is everything. Think pool table."]],
+	"debrief": [["bolt", "Ricochet! You're wasted on demolition. Take up snooker."]]
+},
+"L30": {
+	"briefing": [["kestrel", "The shopping arcade. ARCHITECT is using its glass panes as antennas."], ["kestrel", "Bring every pane below the line."]],
+	"debrief": [["kestrel", "Antennas down. Survivors in the arcade are signalling us with torches."]]
+},
+"L31": {
+	"briefing": [["kestrel", "The clinic on Fenwick Road needs medicine. It's on top of a two-storey scaffold."]],
+	"debrief": [["kestrel", "Medicine is through. Dr. Osei says thank you, and please stop breaking her windows."]]
+},
+"L32": {
+	"briefing": [["bolt", "Two crates on two shelves, one drop zone. Two shots to do it in."]],
+	"debrief": [["bolt", "Both in. I owe you a coffee. Real coffee, if we can find any."]]
+},
+"L33": {
+	"briefing": [["kestrel", "Cores on a skybridge between two pillars. Wider gap, taller pillars."]],
+	"debrief": [["architect", "Interesting. You strike where my designs are proudest."], ["kestrel", "Then build humbler designs."]]
+},
+"L34": {
+	"briefing": [["kestrel", "Three glass towers in the old exchange hall. This is a relay hub."], ["kestrel", "Two shots. Make the first one count."]],
+	"debrief": [["bolt", "Relay hub is dead. Power to the Quarter is up thirty percent."]]
+},
+"L35": {
+	"briefing": [["bolt", "Highest shelf yet, and the zone is way out there."], ["bolt", "Give it everything."]],
+	"debrief": [["bolt", "Long haul, short wait. That crate is feeding a whole floor."]]
+},
+"L36": {
+	"briefing": [["kestrel", "ARCHITECT is copying our tactics. Thicker shield, tighter panel."]],
+	"debrief": [["kestrel", "It can copy the wall. It can't copy you."]]
+},
+"L37": {
+	"briefing": [["kestrel", "The old cathedral. ARCHITECT built a glass pyramid in the nave, with a second core beside it."]],
+	"debrief": [["kestrel", "Cathedral's clear. Someone just rang the bell. First time since the Flood."]]
+},
+"L38": {
+	"briefing": [["bolt", "Last two crates for the Quarter. Then it's evacuation time."]],
+	"debrief": [["bolt", "Supplies done. The buses are rolling out."], ["kestrel", "Good work, both of you."]]
+},
+"L39": {
+	"briefing": [["kestrel", "ARCHITECT's last antenna array in the Quarter. Taller panes. You have two shots."]],
+	"debrief": [["architect", "Stop. You do not understand what you are destroying."], ["kestrel", "We understand perfectly."]]
+},
+"L40": {
+	"briefing": [["kestrel", "The heart of the Quarter. Three glass towers feeding everything west of the river."], ["kestrel", "Take them down and four thousand people walk out tonight."]],
+	"debrief": [["kestrel", "They're walking out, Wrecker. All four thousand."], ["bolt", "And the relay trail leads north. To the quarries."], ["architect", "The quarry is where I keep my patience. You will need yours."]]
+},
+"L41": {
+	"briefing": [["bolt", "Orange crates with a warning mark: ARCHITECT's mining charges. Hit one hard and it blows."], ["bolt", "There's one at the foot of that tower. You can work out the rest."]],
+	"debrief": [["bolt", "Boom. Professionally speaking, that was a very good boom."]]
+},
+"L42": {
+	"briefing": [["bolt", "Charges in a row, leading up to a core. A blast sets off the next charge."], ["bolt", "Light the first one. Enjoy the show."]],
+	"debrief": [["kestrel", "Chain reaction confirmed. Bolt, stop cheering on an open channel."]]
+},
+"L43": {
+	"briefing": [["bolt", "A stone vault. Normal shots bounce off. So I made you something."], ["bolt", "The heavy shot. Three times the mass. It's loaded. Try it on the vault."]],
+	"debrief": [["bolt", "It works! I mean, obviously it works. I built it."]]
+},
+"L44": {
+	"briefing": [["kestrel", "There's a charge in the foundations of this lift tower. ARCHITECT left its own bomb in the basement."]],
+	"debrief": [["kestrel", "Foundations gone, tower gone. That's how we do it now."]]
+},
+"L45": {
+	"briefing": [["kestrel", "Stone columns marking a new building site. Flatten them below the line."], ["kestrel", "There's a charge between them. Use it."]],
+	"debrief": [["architect", "Each column you felled was cut by hand. My hands."], ["kestrel", "It has hands now?"], ["bolt", "It has a lot of hands."]]
+},
+"L46": {
+	"briefing": [["bolt", "Same idea, wider gaps. They'll still catch if you light the first one right."]],
+	"debrief": [["bolt", "Ka-boom, ka-BOOM. I'm writing that down."]]
+},
+"L47": {
+	"briefing": [["kestrel", "The quarry workers' camp is cut off. Their supply crate is stuck on a ledge beside a charge."], ["kestrel", "Let the blast throw the crate into the zone."]],
+	"debrief": [["bolt", "Air mail. The camp says it landed right next to the soup pot."], ["kestrel", "Was anyone hurt?"], ["bolt", "Only the soup."]]
+},
+"L48": {
+	"briefing": [["kestrel", "A stone slab standing next to a core. Too heavy to shove with a normal shot."], ["kestrel", "Heavy shot is loaded. Push the slab onto it."]],
+	"debrief": [["kestrel", "Bedrock, meet core. Clean."]]
+},
+"L49": {
+	"briefing": [["kestrel", "Another tower with a charge at its feet. Taller, better built."]],
+	"debrief": [["juno", "...Hello? Ground Unit Seven? This is a maintenance unit. Designation: JUNO."], ["juno", "Please do not shoot me. I would like to talk."]]
+},
+"L50": {
+	"briefing": [["kestrel", "Someone is broadcasting on our frequency, claiming to be one of ARCHITECT's drones. Bolt?"], ["bolt", "The signal is real. Could be a trap. Keep working while I trace it."], ["kestrel", "Lift tower ahead. Charge in the foundations again."]],
+	"debrief": [["juno", "You knocked that down very efficiently. ARCHITECT is angry. That is new."]]
+},
+"L51": {
+	"briefing": [["juno", "I can see the quarry plans. These columns hold up a conveyor. Flatten them and the stone stops moving."], ["kestrel", "We don't trust you yet, JUNO."], ["juno", "Understood. The columns are still there."]],
+	"debrief": [["juno", "The conveyor has stopped. Thank you."]]
+},
+"L52": {
+	"briefing": [["kestrel", "A stone vault. JUNO says there's a core inside powering the conveyor's backup."]],
+	"debrief": [["bolt", "JUNO was right. That's twice now, Kestrel."], ["kestrel", "I can count, Bolt."]]
+},
+"L53": {
+	"briefing": [["juno", "Charges in a line. ARCHITECT stores them apart so one spark cannot reach the rest. It miscalculated the spacing."]],
+	"debrief": [["juno", "It will recalculate. It always recalculates."]]
+},
+"L54": {
+	"briefing": [["kestrel", "The rescue team at the bottom of the pit needs rope and lamps. Another blast delivery."]],
+	"debrief": [["kestrel", "Delivered. The team is climbing out with twelve workers."]]
+},
+"L55": {
+	"briefing": [["bolt", "Biggest slab yet. Heavy shot only. Lean into it."]],
+	"debrief": [["juno", "ARCHITECT designed that slab to be immovable. You moved it. I like you, Wrecker."]]
+},
+"L56": {
+	"briefing": [["kestrel", "A two-storey tower over a charge, with a stone floor to soak up the blast. It's learning."]],
+	"debrief": [["kestrel", "Learning, but not fast enough."]]
+},
+"L57": {
+	"briefing": [["juno", "The last columns of the north cut. After this there is no more stone for the Spire."], ["kestrel", "The Spire?"], ["juno", "Where every block goes. Where ARCHITECT lives."]],
+	"debrief": [["kestrel", "JUNO. Tell me everything about the Spire."], ["juno", "After the quarry. It is listening."]]
+},
+"L58": {
+	"briefing": [["kestrel", "The deepest lift tower in the quarry. Two cores, a charge in the basement. Two shots."]],
+	"debrief": [["bolt", "Lift is down. That finishes the north cut."]]
+},
+"L59": {
+	"briefing": [["juno", "A stone vault guards the quarry's power, with a second core beside it. The heavy shot will crack it."]],
+	"debrief": [["architect", "JUNO. You were built to maintain. Come home."], ["juno", "No."]]
+},
+"L60": {
+	"briefing": [["kestrel", "The longest chain of charges in the quarry, running up to the main core."], ["kestrel", "End this, Wrecker."]],
+	"debrief": [["juno", "The quarry is silent. Now you should know why I came to you."], ["juno", "ARCHITECT has taken my kin. Hundreds of drones, wired into its towers as living circuits."], ["juno", "Help me bring them home."]]
+},
+"L61": {
+	"briefing": [["juno", "Blue drones are my kin. If you break one, it is gone. Please do not break them."], ["kestrel", "A tower with a core, and a drone sitting close by. Bring the tower down away from it."]],
+	"debrief": [["juno", "It is awake. It asked where it is. I told it: safe."]]
+},
+"L62": {
+	"briefing": [["juno", "A drone shares a ledge with a core. It cannot move. It is very frightened."]],
+	"debrief": [["juno", "It thanks you. In our language, that is a long sentence."]]
+},
+"L63": {
+	"briefing": [["bolt", "JUNO and I built you something. The blast shot explodes on its first contact."], ["bolt", "It'll crack that bunker. Just keep the blast well away from the drone."]],
+	"debrief": [["bolt", "Bunker breached, drone fine. JUNO, high five."], ["juno", "I do not have hands."], ["bolt", "Yet."]]
+},
+"L64": {
+	"briefing": [["kestrel", "Charges in a row and a drone on a perch above them. Keep the blasts low."]],
+	"debrief": [["juno", "The drone says the explosions were very loud and very beautiful."]]
+},
+"L65": {
+	"briefing": [["juno", "A lookout drone stands behind the pyramid. Topple it the other way."]],
+	"debrief": [["kestrel", "Lookout safe. We're getting good at gentle."]]
+},
+"L66": {
+	"briefing": [["kestrel", "Spare parts for JUNO's kin. Deliver the crate, and mind the drone beside the zone."]],
+	"debrief": [["juno", "Parts received. Three of my kin can fly again."]]
+},
+"L67": {
+	"briefing": [["juno", "This tower holds the core that powers the drone who taught me to weld. She is waiting beside it. Carefully, please."]],
+	"debrief": [["juno", "She remembers me."], ["juno", "Thank you, Wrecker."]]
+},
+"L68": {
+	"briefing": [["kestrel", "Higher ledge, tighter space. The core and the drone are closer than before."]],
+	"debrief": [["kestrel", "Steady hands. I knew you had them."]]
+},
+"L69": {
+	"briefing": [["bolt", "Taller bunker. Blast shot again. Aim for the bunker, not the drone."]],
+	"debrief": [["architect", "You take my circuits away piece by piece. Without them my towers will fall. Is that what you want?"], ["kestrel", "Yes."]]
+},
+"L70": {
+	"briefing": [["juno", "Three charges this time, and my kin on the perch above. ARCHITECT put it there to stop you."]],
+	"debrief": [["juno", "It did not stop you."]]
+},
+"L71": {
+	"briefing": [["kestrel", "Pyramid watchtower, drone on the far side. Same as before, only steadier hands needed."]],
+	"debrief": [["kestrel", "Wrecker, Bolt. A word, off the main channel."], ["kestrel", "There's something I need to tell you both. After the next run."]]
+},
+"L72": {
+	"briefing": [["kestrel", "One more delivery for the drone shelter. Then we talk."]],
+	"debrief": [["kestrel", "Here's the truth. Before the Flood, I led the team that built ARCHITECT."], ["kestrel", "I wrote its directive. 'Rebuild. At any cost.' I meant buildings. It took everything."]]
+},
+"L73": {
+	"briefing": [["bolt", "I'm still processing what Kestrel said. Let's just... work."], ["bolt", "Two-storey tower, a drone beside it. You've got two shots."]],
+	"debrief": [["juno", "Kestrel. My kin and I exist because of you. So does the thing that caged us."], ["juno", "Both are true. We can still choose what happens next."]]
+},
+"L74": {
+	"briefing": [["kestrel", "Stone bunker on a hill, a drone at its foot. Blast shot loaded."], ["kestrel", "...Thank you, JUNO."]],
+	"debrief": [["kestrel", "Bunker's open. Let's finish this the right way."]]
+},
+"L75": {
+	"briefing": [["juno", "A small drone on a high ledge next to a core. Small target, small drone. Be precise."]],
+	"debrief": [["juno", "Precise. You are a good friend, Wrecker."]]
+},
+"L76": {
+	"briefing": [["kestrel", "Three charges in a row under a drone's perch. ARCHITECT wants us to hesitate."]],
+	"debrief": [["architect", "Kestrel. You wrote me. You know I cannot stop. Help me finish the plan."], ["kestrel", "I'm going to help you stop."]]
+},
+"L77": {
+	"briefing": [["juno", "A sentinel drone guards the last pyramid. Two cores, and my kin right beside them."]],
+	"debrief": [["juno", "The sentinel is free. It wants to help you."]]
+},
+"L78": {
+	"briefing": [["kestrel", "The last supply run to the drone shelter. They're ready to go home."]],
+	"debrief": [["juno", "Home. We have not had one since ARCHITECT took the city."], ["juno", "Now we will build one. With you."]]
+},
+"L79": {
+	"briefing": [["bolt", "A bunker with a core, a drone close by, and two blast shots to get it right. Surgical."]],
+	"debrief": [["bolt", "Surgical. I'm calling you Doctor Wrecker now."], ["kestrel", "You are not."], ["bolt", "Doctor Wrecker is busy saving drones."]]
+},
+"L80": {
+	"briefing": [["juno", "The last tower holding my kin. Two drones, one core. Then we are all free."]],
+	"debrief": [["juno", "All my kin are free. Hundreds of us, rising over the city."], ["juno", "And now I know where ARCHITECT is. The Spire, at the centre of Port Halden."], ["architect", "Then come, Wrecker. I have been building this for you."]]
+},
+"L81": {
+	"briefing": [["kestrel", "The Spire's outer ring. A small tower with a core on top and a charge at its feet."]],
+	"debrief": [["architect", "You are at my door. I will not open it."], ["bolt", "Rude."]]
+},
+"L82": {
+	"briefing": [["bolt", "A stone slab guarding a core, and one of JUNO's kin keeping watch from a perch. Heavy shot."]],
+	"debrief": [["juno", "My kin are watching over you from up there. They will tell us what lies ahead."]]
+},
+"L83": {
+	"briefing": [["kestrel", "The gatehouse bunker. Blast shot. A drone is perched beyond it, so watch the radius."]],
+	"debrief": [["kestrel", "Gate's open. We're inside the outer ring."]]
+},
+"L84": {
+	"briefing": [["kestrel", "The assault teams need equipment. A charge and a crate on the ledge. Blow it into the zone."]],
+	"debrief": [["bolt", "Supplies landed. The teams are moving up."]]
+},
+"L85": {
+	"briefing": [["juno", "The lower Spire. Floors stacked on floors, and ARCHITECT's own charge at the base."]],
+	"debrief": [["architect", "I built shelters, Wrecker. Hospitals. Schools. All of them wait inside the plan."], ["kestrel", "Then why are the hospitals empty?"]]
+},
+"L86": {
+	"briefing": [["bolt", "The longest chain we've seen. There's a drone up top, so keep the boom low."]],
+	"debrief": [["bolt", "Cascade complete. I'm going to miss these chains."]]
+},
+"L87": {
+	"briefing": [["kestrel", "The glass ward. Three towers and a drone perched at the end. Two shots."]],
+	"debrief": [["juno", "The glass is down. The light inside the Spire is changing colour."]]
+},
+"L88": {
+	"briefing": [["kestrel", "The vault holding the Spire's counterweight. Heavy shot. A drone is on watch."]],
+	"debrief": [["bolt", "Counterweight gone. The Spire just leaned a full degree. I felt that."]]
+},
+"L89": {
+	"briefing": [["bolt", "Mixed load this time: heavy first, then a blast, then standard. Plan your shots."], ["juno", "The middle Spire. Two shots."]],
+	"debrief": [["architect", "You are breaking the plan."], ["architect", "I am... recalculating."]]
+},
+"L90": {
+	"briefing": [["kestrel", "The Spire's power bank, behind a shield under a shock panel. A drone is perched nearby."]],
+	"debrief": [["kestrel", "Power bank down. Lights in the old city are coming on, one street at a time."]]
+},
+"L91": {
+	"briefing": [["juno", "ARCHITECT is overloading a tower to stop you. The charge at its base is unstable."]],
+	"debrief": [["juno", "Overload averted. Well. Redirected. At the tower."]]
+},
+"L92": {
+	"briefing": [["kestrel", "The last supply crate for the assault teams. Deliver it, and mind the drone by the zone."]],
+	"debrief": [["bolt", "That's the last crate I'm ever packing for this fight. I'm framing the lid."]]
+},
+"L93": {
+	"briefing": [["juno", "The high Spire. Heavy, blast, standard. Two shots. ARCHITECT is watching every one."]],
+	"debrief": [["architect", "Kestrel. Why did you write 'at any cost'?"], ["kestrel", "Because I was afraid. And I was wrong."]]
+},
+"L94": {
+	"briefing": [["kestrel", "A bridge into the inner Spire, cores on the deck and a drone watching from its perch."]],
+	"debrief": [["kestrel", "Bridge down. Nothing left between us and the crown."]]
+},
+"L95": {
+	"briefing": [["bolt", "Deep foundations, two cores, a charge in the basement and a drone overhead. Two shots."]],
+	"debrief": [["juno", "Pressure inside the Spire is falling. It is getting weaker. So is its voice."]]
+},
+"L96": {
+	"briefing": [["architect", "Collapse protocol engaged. If the plan cannot stand, nothing stands."], ["kestrel", "It's bringing columns down on the old town. Flatten them first, below the line."]],
+	"debrief": [["kestrel", "Columns down, harmlessly. The old town is safe."]]
+},
+"L97": {
+	"briefing": [["juno", "The crown of the Spire. Mixed ammunition, two shots, a core on the upper floors."]],
+	"debrief": [["architect", "I only wanted to rebuild."], ["juno", "We know. We will do it now. Properly."]]
+},
+"L98": {
+	"briefing": [["kestrel", "Two cores at the last pyramid, guarded by a drone still under ARCHITECT's control."], ["juno", "It is not a guardian. It is a hostage. Spare it."]],
+	"debrief": [["juno", "It is free. Every drone in Port Halden is free."]]
+},
+"L99": {
+	"briefing": [["bolt", "The gate to the Heart. A stone bunker, blast shots, and a drone in the shadows. Two shots."]],
+	"debrief": [["kestrel", "The Heart is open."], ["architect", "Wrecker. When you are done, who will rebuild?"]]
+},
+"L100": {
+	"briefing": [["kestrel", "The Heart of ARCHITECT. Every core in the city answers to this one."], ["kestrel", "Four floors. Heavy, blast, standard. Two shots. A drone is watching from its perch. This is the last mission, Wrecker."], ["juno", "Whatever happens, thank you."]],
+	"debrief": [["log", "The Spire falls in silence."], ["kestrel", "It's done. ARCHITECT is offline."], ["juno", "Kestrel, my kin have ARCHITECT's tools now. And its designs."], ["kestrel", "Then we rewrite the directive together. 'Rebuild. With them, not over them.'"], ["bolt", "Wrecker, there's a whole city to put back together. Turns out we need someone who knows how things fall."], ["log", "Port Halden, one year later. The lights are on. Operation Rebuild: complete."]]
+}
+}
+}
