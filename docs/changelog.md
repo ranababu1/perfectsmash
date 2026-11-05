@@ -16,7 +16,8 @@ and gameplay beyond knocking out red cores. Working plan and resume point: `docs
   the original collapse, and a story debrief; the feature graphic shows the explosive chain. `--probe=ids` picks
   frames for any mission.
 - `docs/release.md`: campaign and narration items added to the device checklist; check the TTS query in the AAB.
-- Evidence: headless 84 passed, 0 failed, 1 skipped (34 s); physics report 300/300 replays won with one end state
+- Evidence: headless 84 passed, 0 failed, 1 skipped (34 s); windowed (Xvfb) 86 passed, 0 failed, 0 skipped
+  (1191 s; an earlier windowed run showed 5 UI failures only because scripts were edited while it was running); physics report 300/300 replays won with one end state
   per mission, peak 17 bodies, mean frame 0.20 ms, worst 8.2 ms; debug APK 0.3.0 signed and verified (VIBRATE only,
   targetSdk 36). Not run: Gradle release builds (Google Maven blocked here), narration with a real voice, any device.
 
