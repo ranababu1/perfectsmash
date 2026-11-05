@@ -4,7 +4,7 @@ extends SceneTree
 ##
 ##   Screenshots (16:9):   godot --resolution 1920x1080 --fixed-fps 60 -s tools/render_store_art.gd
 ##   Feature graphic:      godot --resolution 1024x500 --fixed-fps 60 -s tools/render_store_art.gd -- --feature
-##   Pick moments:         godot --resolution 960x540 --fixed-fps 60 -s tools/render_store_art.gd -- --probe
+##   Pick moments:         godot --resolution 960x540 --fixed-fps 60 -s tools/render_store_art.gd -- --probe[=L60,L61]
 ##
 ## Uses a throwaway save, so the developer's own progress is untouched.
 
@@ -15,6 +15,9 @@ const MainScript := preload("res://scripts/main.gd")
 ## the --probe contact frames). Re-pick them after any level or physics change.
 const COLLAPSE_FRAMES := 88
 const CHAIN_FRAMES := 136
+## Mission 60's explosive chain mid-cascade, and mission 100's heavy shot striking the spire.
+const BLAST_CHAIN_FRAMES := 56
+const SPIRE_FRAMES := 16
 const SETTLE_BEFORE_LAUNCH := 90
 
 
@@ -26,9 +29,9 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR))
 	var catalog := LevelCatalog.load_from_file()
 	var progress := ProgressData.new()
-	# A believable mid-game save: the first eleven levels cleared with mixed medals.
-	for i in 11:
-		progress.record_win(catalog.levels[i].id, [3, 3, 2, 3, 1, 3, 2, 3, 3, 2, 3][i], 1)
+	# A believable mid-game save: chapter 1 and part of chapter 2 cleared with mixed medals.
+	for i in 26:
+		progress.record_win(catalog.levels[i].id, [3, 3, 2, 3, 1, 3, 2, 3, 3, 2, 3, 2, 3][i % 13], 1)
 	var save := SaveService.new(CAPTURE_SAVE)
 	save.save_progress(progress)
 	var main: Node = MainScript.new()
@@ -36,8 +39,14 @@ func _run() -> void:
 	root.add_child(main)
 	await _frames(20)
 
+	var probe_ids := PackedStringArray()
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--probe="):
+			probe_ids = a.trim_prefix("--probe=").split(",")
 	if OS.get_cmdline_user_args().has("--probe"):
-		await _probe(main, catalog)
+		probe_ids = PackedStringArray(["L20", "L19", "L12"])
+	if not probe_ids.is_empty():
+		await _probe(main, catalog, probe_ids)
 	elif OS.get_cmdline_user_args().has("--feature"):
 		await _feature_graphic(main, catalog)
 	else:
@@ -49,39 +58,42 @@ func _run() -> void:
 func _screenshots(main: Node, catalog: LevelCatalog) -> void:
 	await _shot("screenshot_1_menu")
 
-	# Aiming at the Pyramid with the guide visible.
-	await _open_level(main, catalog, "L12")
-	var game: GameScreen = main._game
-	var origin := game.session.launcher_position()
-	game.aim._dragging = true
-	game.aim._drag_start = origin + Vector2(260, 40)
-	game.aim._drag_current = origin + Vector2(80, 130)
-	await _frames(6)
-	await _shot("screenshot_2_aim")
-	game.aim.cancel()
+	# A mission briefing with the whole transcript shown.
+	main._start_level(catalog.ids().find("L61"))
+	await _frames(30)
+	main._briefing.dialogue.finish_all()
+	await _frames(30)
+	await _shot("screenshot_2_briefing")
+	main._close_briefing()
 
-	# Mid-collapse on the final level.
-	await _open_level(main, catalog, "L20")
-	await _launch_and_wait(main._game, COLLAPSE_FRAMES)
-	await _shot("screenshot_3_collapse")
+	# The finale: the heavy shot striking the spire.
+	await _open_level(main, catalog, "L100")
+	await _launch_and_wait(main._game, SPIRE_FRAMES)
+	await _shot("screenshot_3_spire")
 
-	# Chain reaction level, a little later in the fall.
-	await _open_level(main, catalog, "L19")
-	await _launch_and_wait(main._game, CHAIN_FRAMES)
+	# An explosive chain mid-cascade.
+	await _open_level(main, catalog, "L60")
+	await _launch_and_wait(main._game, BLAST_CHAIN_FRAMES)
 	await _shot("screenshot_4_chain")
 
-	# The result panel after a clean solve.
-	await _open_level(main, catalog, "L08")
-	main._game.hud.show_result(true, 3, 1, true, 1)
-	# Stars pop in one at a time; wait for all three.
-	await create_timer(1.6).timeout
-	await _frames(10)
-	await _shot("screenshot_5_clear")
-
-
-## 1024x500: the final level collapsing, the title on the open sky at the left, no HUD.
-func _feature_graphic(main: Node, catalog: LevelCatalog) -> void:
+	# The original two-storey collapse.
 	await _open_level(main, catalog, "L20")
+	await _launch_and_wait(main._game, COLLAPSE_FRAMES)
+	await _shot("screenshot_5_collapse")
+
+	# A story debrief after a clean solve.
+	await _open_level(main, catalog, "L40")
+	main._game.hud.show_result(true, 3, 1, true, 2, main.story.debrief("L40"))
+	await create_timer(1.6).timeout
+	var debrief: DialogueBox = main._game.hud._overlay.find_child("Debrief", true, false)
+	debrief.finish_all()
+	await _frames(20)
+	await _shot("screenshot_6_debrief")
+
+
+## 1024x500: an explosive chain going off, the title on the open sky at the left, no HUD.
+func _feature_graphic(main: Node, catalog: LevelCatalog) -> void:
+	await _open_level(main, catalog, "L60")
 	var game: GameScreen = main._game
 	game.hud.visible = false
 	var layer := CanvasLayer.new()
@@ -97,14 +109,14 @@ func _feature_graphic(main: Node, catalog: LevelCatalog) -> void:
 	titles.add_child(title)
 	titles.add_child(tagline)
 	layer.add_child(titles)
-	await _launch_and_wait(game, COLLAPSE_FRAMES)
+	await _launch_and_wait(game, BLAST_CHAIN_FRAMES)
 	await _shot("feature_graphic")
 
 
 ## Design aid: captures each collapse level every 8 physics frames into store/probe/ to pick the moments.
-func _probe(main: Node, catalog: LevelCatalog) -> void:
+func _probe(main: Node, catalog: LevelCatalog, ids: PackedStringArray) -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR + "/probe"))
-	for id in ["L20", "L19", "L12"]:
+	for id in ids:
 		await _open_level(main, catalog, id)
 		main._game.session.launch(main._game.session.definition.solution[0])
 		for step in 24:
@@ -115,6 +127,7 @@ func _probe(main: Node, catalog: LevelCatalog) -> void:
 
 func _open_level(main: Node, catalog: LevelCatalog, id: String) -> void:
 	main._start_level(catalog.ids().find(id))
+	main._close_briefing()
 	await _frames(SETTLE_BEFORE_LAUNCH)
 	main._game.hud.fade_hint()
 	await _frames(40)

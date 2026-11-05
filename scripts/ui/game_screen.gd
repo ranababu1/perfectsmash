@@ -15,6 +15,8 @@ const RESULT_DELAY := 0.5
 const VIBRATE_TARGET_MS := 35
 const VIBRATE_WIN_MS := 90
 const VIBRATE_BLAST_MS := 60
+const SHAKE_TIME := 0.22
+const SHAKE_PIXELS := 6.0
 
 var audio: AudioService
 var progress: ProgressData
@@ -25,6 +27,8 @@ var session: GameSession
 var aim: AimController
 var hud: Hud
 var _effects: Node2D
+var _camera: Camera2D
+var _shake := 0.0
 var _has_next := false
 ## Incremented on every (re)start so delayed result popups from a previous attempt are ignored.
 var _attempt := 0
@@ -41,6 +45,7 @@ func _ready() -> void:
 	var camera := Camera2D.new()
 	camera.position = Vector2(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT) / 2.0
 	add_child(camera)
+	_camera = camera
 	add_child(Backdrop.new())
 
 	session = GameSession.new()
@@ -142,7 +147,26 @@ func _on_target_destroyed(at: Vector2) -> void:
 func _on_exploded(at: Vector2) -> void:
 	audio.play("boom")
 	_vibrate(VIBRATE_BLAST_MS)
-	_spawn_burst.call_deferred(at, Palette.BLAST, GameConfig.BLAST_RADIUS * 0.8)
+	_spawn_explosion.call_deferred(at)
+	_shake = SHAKE_TIME
+
+
+func _spawn_explosion(at: Vector2) -> void:
+	var effect := ExplosionEffect.new()
+	effect.position = at
+	_effects.add_child(effect)
+
+
+## Brief, small camera shake after explosions (purely visual; physics is unaffected).
+func _process(delta: float) -> void:
+	if _camera == null:
+		return
+	if _shake > 0.0:
+		_shake = maxf(_shake - delta, 0.0)
+		var strength := SHAKE_PIXELS * (_shake / SHAKE_TIME)
+		_camera.offset = Vector2(sin(_shake * 91.0), cos(_shake * 77.0)) * strength
+	elif _camera.offset != Vector2.ZERO:
+		_camera.offset = Vector2.ZERO
 
 
 func _on_ally_lost(at: Vector2) -> void:

@@ -211,7 +211,8 @@ func _add_dialogue(box: VBoxContainer, lines: Array[Dictionary], narrator: Narra
 	var dialogue := DialogueBox.new(narrator, audio)
 	dialogue.name = "Debrief"
 	dialogue.theme_type_variation = UiKit.CHIP
-	dialogue.custom_minimum_size = Vector2(UiKit.PANEL_WIDTH + 200.0, minf(64.0 + 58.0 * lines.size(), 200.0))
+	# Grows with the debrief up to a cap that still fits a 720-unit-tall screen; longer ones scroll.
+	dialogue.custom_minimum_size = Vector2(UiKit.PANEL_WIDTH + 200.0, minf(40.0 + 70.0 * lines.size(), 250.0))
 	box.add_child(dialogue)
 	dialogue.play.call_deferred(lines)
 
