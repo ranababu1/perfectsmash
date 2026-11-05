@@ -12,6 +12,8 @@ signal closed
 const RESET_CONFIRM_TIME := 3.0
 
 var progress: ProgressData
+## False when the device has no text-to-speech voice; the narration row then says so.
+var narration_available := true
 var _status: Label
 var _reset: Button
 var _reset_armed := false
@@ -46,7 +48,8 @@ func _ready() -> void:
 	box.add_child(_toggle_row("Sound", "sound", "sound_off", "sound", progress.sound_enabled))
 	box.add_child(_toggle_row("Vibration", "vibrate", "vibrate_off", "vibration", progress.vibration_enabled))
 	box.add_child(_toggle_row("Aim guide", "aim", "aim_off", "aim_guide", progress.aim_guide_enabled))
-	box.add_child(_toggle_row("Voice narration", "voice", "voice_off", "narration", progress.narration_enabled))
+	box.add_child(_toggle_row("Voice narration" if narration_available else "Voice narration (no voice on device)",
+		"voice", "voice_off", "narration", progress.narration_enabled))
 
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 12)

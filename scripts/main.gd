@@ -107,6 +107,7 @@ func _open_settings() -> void:
 		return
 	audio.play("click")
 	_settings = SettingsPanel.new(progress)
+	_settings.narration_available = narrator.is_available()
 	_settings.theme = _menu.theme
 	_settings.setting_changed.connect(_apply_setting)
 	_settings.copy_report_pressed.connect(_copy_report)

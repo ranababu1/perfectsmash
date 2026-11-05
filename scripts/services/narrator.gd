@@ -31,6 +31,11 @@ func _ready() -> void:
 	DisplayServer.tts_set_utterance_callback(DisplayServer.TTS_UTTERANCE_CANCELED, _on_utterance_done)
 
 
+## True when the device offers a text-to-speech voice at all.
+func is_available() -> bool:
+	return _available
+
+
 ## True when lines will actually be spoken aloud.
 func is_speaking_enabled() -> bool:
 	return enabled and _available

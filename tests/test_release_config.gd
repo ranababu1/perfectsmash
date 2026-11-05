@@ -67,3 +67,17 @@ func test_release_presets_target_play_architectures() -> void:
 		if str(cfg.get_value(preset, "name")).begins_with("Android Release"):
 			assert_true(cfg.get_value(s, "architectures/arm64-v8a"), "%s ships 64-bit ARM (Play requirement)" % preset)
 			assert_true(str(cfg.get_value(preset, "exclude_filter")).contains("tests/*"), "%s leaves tests out" % preset)
+
+
+## Voice narration on Android 11+ needs the TTS <queries> manifest entry, which addons/android_tts adds
+## only in Gradle builds. Release builds must therefore use Gradle and the plugin must be enabled.
+func test_release_builds_can_narrate() -> void:
+	assert_true(ProjectSettings.get_setting("audio/general/text_to_speech", false), "text-to-speech enabled")
+	var plugins: PackedStringArray = ProjectSettings.get_setting("editor_plugins/enabled", PackedStringArray())
+	assert_true(plugins.has("res://addons/android_tts/plugin.cfg"), "TTS query export plugin enabled")
+	var cfg := _presets()
+	for s in _android_option_sections(cfg):
+		var preset := s.trim_suffix(".options")
+		if str(cfg.get_value(preset, "name")).begins_with("Android Release"):
+			assert_true(cfg.get_value(s, "gradle_build/use_gradle_build"), "%s uses Gradle (manifest plugin applies)" % preset)
+		assert_true(str(cfg.get_value(preset, "exclude_filter")).contains("addons/*"), "%s leaves editor plugins out" % preset)

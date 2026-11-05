@@ -2,7 +2,7 @@
 # Builds Android packages from export_presets.cfg and verifies them.
 #
 #   tools/build_android.sh debug        -> build/perfectsmash-debug.apk   (debug-signed, arm64 + x86_64)
-#   tools/build_android.sh release-apk  -> build/perfectsmash-release.apk (release-signed, for testers)
+#   tools/build_android.sh release-apk  -> build/perfectsmash-release.apk (release-signed, for testers; Gradle build)
 #   tools/build_android.sh release-aab  -> build/perfectsmash-release.aab (Play upload; Gradle build)
 #
 # Requirements: Godot 4.7.2 with export templates, a JDK, and an Android SDK with build-tools
@@ -55,7 +55,10 @@ else
 	done
 fi
 
-if [[ "$MODE" == release-aab && ! -d android/build ]]; then
+# Release builds use Gradle so addons/android_tts can add the TTS <queries> manifest entry
+# (Android 11+ hides the text-to-speech engine without it). The debug APK skips Gradle for speed,
+# so voice narration may be unavailable in debug builds on newer Android versions.
+if [[ "$MODE" != debug && ! -d android/build ]]; then
 	"$GODOT" --headless --install-android-build-template --quit
 fi
 
