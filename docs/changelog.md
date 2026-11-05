@@ -2,6 +2,68 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-05 — Release preparation: settings, play-test stats, screen sizes, Android release, store kit (0.2.0, unreleased)
+
+Owner request: finish every pending milestone item that doesn't need the owner; leave signing, review and store
+submission to them. Work done in a Linux container (Godot 4.7.2 official Linux build, Xvfb for windowed runs).
+
+**Gameplay / UI**
+- New **Settings** panel (gear in the menu top bar; it replaces the separate sound and vibration buttons there):
+  sound, vibration, **aim guide** (turns the 0.3 s trajectory preview on or off, enabling the plan §10 experiment),
+  **Copy play report**, and **Reset progress** (two taps within 3 s; settings are kept). Android back closes it.
+- Pause panel gained the aim-guide toggle.
+- Menu shows a completion line once every level is cleared ("Perfect run" at 60/60 stars).
+- **Safe-area insets** (`SafeArea`): on phones and tablets the HUD corners, hint and menu content move clear of display
+  cutouts and rounded corners. Release presets enable edge-to-edge, so this matters on cutout phones.
+- Contrast: the HUD level number and the settings footer now use `TEXT_DIM` (6.8:1 on panels; `TEXT_FAINT` was 3.1:1).
+
+**Save data (schema v2)**
+- Adds `settings.aim_guide` and per-level `stats` (attempts, wins, losses, timeouts). Loading a v1 save keeps every result
+  and setting with no warnings, and the next save rewrites it as v2. Newer or unknown versions are still refused.
+- Stats never leave the device. The play report is plain text (level ids, counters, stars, aim-guide setting) put on the
+  clipboard only when the player taps the button.
+
+**Android release**
+- `export_presets.cfg` is now committed (it was gitignored). Godot 4 keeps credentials out of it, and
+  `tests/test_release_config.gd` enforces empty keystore fields, a single version code, empty `version/name`
+  (so `project.godot` is the one version-name source), VIBRATE as the only permission, and icon paths that exist.
+  **Migration:** move your local untracked copy aside before pulling.
+- Presets: "Android Debug" (APK, arm64 + x86_64), "Android Release" (AAB via Gradle, arm64 + armv7),
+  "Android Release APK" (for sideloading to testers). Immersive, edge-to-edge, `allowBackup` off.
+- `tools/build_android.sh debug|release-apk|release-aab`: signing only from `GODOT_ANDROID_KEYSTORE_*` environment
+  variables, creates a local debug keystore if needed, then verifies the signature and prints the SHA-256.
+- Version name bumped to **0.2.0**; version code stays 1 (nothing has been uploaded yet).
+
+**Store / release kit** (`store/`, `docs/release.md`)
+- Feature graphic (1024×500) and five 1920×1080 screenshots rendered from the real game by `tools/render_store_art.gd`
+  (24-bit PNG, no alpha). `--probe` writes contact frames to pick collapse moments.
+- Listing copy within Play limits (short description 68/80, full 1,007/4000), privacy policy, Data safety / content
+  rating / target audience answers, and a release guide with an owner device checklist.
+
+**Tools / tests**
+- `tools/physics_report.gd`: per-level repeatability (wins, distinct end states), peak body count and frame cost.
+- Test runner now fails a suite that does not parse (it was silently skipped before).
+- New suites: `test_layout.gd` (menu, settings, HUD, pause, win and lose layouts at 16:9, 19.5:9, 20:9, 21:9, 16:10 and
+  4:3: every button on screen, at least 60 units, no overlaps; inset handling; inset conversion) and
+  `test_release_config.gd`. New tests for v1→v2 migration, stats validation, the report, the settings panel,
+  reset, backgrounding, back-button handling and loss/attempt counting.
+- `tests/output/.gdignore` keeps review screenshots out of the asset import.
+
+**Findings**
+- Physics repeatability on Linux: 10 replays × 20 levels, each in a fresh world, all won with exactly one end state per
+  level, with and without the warm-up. The run-to-run variance seen earlier on Windows did not reproduce here, so it is
+  platform- or machine-specific.
+- Cost: at most 11 live bodies; mean frame 0.25 ms, worst about 6 ms on the container CPU (16.7 ms budget at 60 fps).
+  Desktop numbers only; phones are slower.
+- Built release APK manifest: minSdk 24, targetSdk 36, versionCode 1, versionName 0.2.0; the only requested permission
+  is VIBRATE (the `DUMP` string is the protection on AndroidX's profile-installer receiver, not a requested permission).
+
+**Test evidence (Godot 4.7.2, Ubuntu 24.04 container)**
+- Headless: 65 passed, 0 failed, 1 skipped. Windowed (Xvfb): in progress at commit time (58 passed, 0 failed so far).
+- `tools/build_android.sh debug` → `perfectsmash-debug.apk` (57.8 MB), `apksigner verify` OK.
+- `tools/build_android.sh release-apk` with a throwaway key → `perfectsmash-release.apk` (53.2 MB), `apksigner verify` OK.
+- Not run: `release-aab` (the container cannot reach Google's Maven repository); any physical-device or emulator run.
+
 ## 2026-11-02 — App icon (0.1.0, unreleased)
 
 - Replaced the placeholder icon with a real app icon, designed from common mobile-game icon guidance: one bold subject taken
