@@ -2,12 +2,22 @@ class_name ProgressData
 extends RefCounted
 ## Local player progress and settings with a versioned, validated serialization format.
 
-const SCHEMA_VERSION := 1
+## v2 (0.2.0): adds the aim-guide setting and local play-test stats. v1 saves load unchanged
+## with defaults for the new fields.
+const SCHEMA_VERSION := 2
+const OLDEST_SUPPORTED_VERSION := 1
+## Counters kept per level for play-test feedback. They never leave the device unless the player
+## copies the report themselves (see playtest_report()).
+const STAT_KEYS: Array[String] = ["attempts", "wins", "losses", "timeouts"]
 
 ## level id -> {"stars": int, "best_shots": int}
 var level_results := {}
+## level id -> {"attempts": int, "wins": int, "losses": int, "timeouts": int}
+var level_stats := {}
 var sound_enabled := true
 var vibration_enabled := true
+## Shows the short trajectory preview while aiming (plan §10 experiment: preview on/off).
+var aim_guide_enabled := true
 ## Problems found while loading; non-empty means some data was discarded.
 var load_warnings := PackedStringArray()
 
@@ -52,11 +62,46 @@ func record_win(level_id: String, stars: int, shots_used: int) -> bool:
 	return improved
 
 
+## Adds one to a play-test counter (one of STAT_KEYS) for a level.
+func count_stat(level_id: String, key: String) -> void:
+	if not STAT_KEYS.has(key):
+		push_error("ProgressData: unknown stat '%s'" % key)
+		return
+	if not level_stats.has(level_id):
+		var fresh := {}
+		for k in STAT_KEYS:
+			fresh[k] = 0
+		level_stats[level_id] = fresh
+	level_stats[level_id][key] += 1
+
+
+func stat(level_id: String, key: String) -> int:
+	return int(level_stats.get(level_id, {}).get(key, 0))
+
+
+## Plain-text summary a tester can copy and send to the developer. Contains only level ids,
+## counters, stars and settings: nothing that identifies the player or the device.
+func playtest_report(level_ids: Array[String], version: String) -> String:
+	var lines := PackedStringArray()
+	lines.append("Perfect Smash %s play-test report" % version)
+	lines.append("aim guide: %s" % ("on" if aim_guide_enabled else "off"))
+	lines.append("#   level  stars  best  attempts  wins  losses  timeouts")
+	for i in level_ids.size():
+		var id := level_ids[i]
+		if not level_stats.has(id) and not level_results.has(id):
+			continue
+		var best: Variant = level_results.get(id, {}).get("best_shots", "-")
+		lines.append("%-3d %-6s %5d  %4s  %8d  %4d  %6d  %8d" % [i + 1, id, stars_for(id), str(best),
+			stat(id, "attempts"), stat(id, "wins"), stat(id, "losses"), stat(id, "timeouts")])
+	return "\n".join(lines)
+
+
 func to_dict() -> Dictionary:
 	return {
 		"version": SCHEMA_VERSION,
 		"levels": level_results.duplicate(true),
-		"settings": {"sound": sound_enabled, "vibration": vibration_enabled},
+		"stats": level_stats.duplicate(true),
+		"settings": {"sound": sound_enabled, "vibration": vibration_enabled, "aim_guide": aim_guide_enabled},
 	}
 
 
@@ -67,8 +112,8 @@ static func from_dict(data: Variant) -> ProgressData:
 		progress.load_warnings.append("save root is not an object; using defaults")
 		return progress
 	var version: Variant = data.get("version")
-	if not _is_whole(version) or int(version) != SCHEMA_VERSION:
-		# No older schemas exist yet; unknown or newer versions are not trusted.
+	if not _is_whole(version) or int(version) < OLDEST_SUPPORTED_VERSION or int(version) > SCHEMA_VERSION:
+		# Unknown or newer versions are not trusted (a downgrade must not misread a newer save).
 		progress.load_warnings.append("unsupported save version %s; using defaults" % str(version))
 		return progress
 
@@ -92,9 +137,34 @@ static func from_dict(data: Variant) -> ProgressData:
 			progress.sound_enabled = settings.sound
 		if settings.get("vibration") is bool:
 			progress.vibration_enabled = settings.vibration
+		if settings.get("aim_guide") is bool:
+			progress.aim_guide_enabled = settings.aim_guide
 	else:
 		progress.load_warnings.append("'settings' is not an object")
+
+	# v1 saves have no stats; that is expected, not a warning.
+	var stats: Variant = data.get("stats", {})
+	if stats is Dictionary:
+		for key: Variant in stats:
+			var entry: Variant = stats[key]
+			if key is String and entry is Dictionary and _valid_stats(entry):
+				var clean := {}
+				for k in STAT_KEYS:
+					clean[k] = int(entry.get(k, 0))
+				progress.level_stats[key] = clean
+			else:
+				progress.load_warnings.append("dropped invalid stats for level '%s'" % str(key))
+	else:
+		progress.load_warnings.append("'stats' is not an object")
 	return progress
+
+
+static func _valid_stats(entry: Dictionary) -> bool:
+	for k in STAT_KEYS:
+		var v: Variant = entry.get(k, 0)
+		if not _is_whole(v) or int(v) < 0:
+			return false
+	return true
 
 
 static func _is_whole(value: Variant) -> bool:
