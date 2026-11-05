@@ -17,6 +17,10 @@ Reasoning: Play's definition of "collect" means data transmitted off the device.
 the app has no network permission. The play report is only put on the clipboard when the user taps the button, and
 the user decides whether to share it, so it is user-initiated sharing, not app collection.
 
+Voice narration uses the device's own text-to-speech service through Android's standard API. The game passes it
+only its own story text. The manifest declares a `<queries>` entry for `android.intent.action.TTS_SERVICE`
+(package visibility, not a permission). No personal data is involved, so this doesn't change the answers above.
+
 ## Ads
 
 - Contains ads: **No**
@@ -28,8 +32,10 @@ the user decides whether to share it, so it is user-initiated sharing, not app c
 ## Content rating (IARC questionnaire)
 
 - Category: **Game** (Puzzle)
-- Violence: **No.** Abstract wooden, stone and glass blocks and round "cores" break apart. There are no people,
-  creatures or blood.
+- Violence: **No.** Abstract wooden, stone and glass blocks, round "cores" and small drones break apart; orange
+  crates explode with a cartoon flash. There are no people, creatures or blood, and the story never depicts harm
+  to anyone. Re-check this answer against the IARC wording: "explosions of objects" may count as mild fantasy
+  violence in some regions.
 - Fear, sexuality, language, controlled substances, gambling: **No**
 - User interaction / user-generated content / sharing location / digital purchases: **No**
 - Expected result: the lowest age rating in most regions (for example PEGI 3 / ESRB Everyone). The actual rating

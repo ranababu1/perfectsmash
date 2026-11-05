@@ -6,7 +6,7 @@ accounts, keys, devices or approval. Everything else is scripted and was verifie
 
 ## 1. Versioning (one source each)
 
-- **Version name:** `application/config/version` in `project.godot` (currently `0.2.0`). The export presets
+- **Version name:** `application/config/version` in `project.godot` (currently `0.3.0`). The export presets
   leave `version/name` empty so Godot uses it.
 - **Version code:** `version/code` in `export_presets.cfg`. It appears once per preset; `tests/test_release_config.gd`
   fails if the presets disagree. Increase it by one for every upload to Play, including internal and closed testing.
@@ -40,7 +40,7 @@ export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD='…'
 | Command | Output | Use |
 |---|---|---|
 | `tools/build_android.sh debug` | `build/perfectsmash-debug.apk` | Emulator/device checks (arm64 + x86_64, debug key) |
-| `tools/build_android.sh release-apk` | `build/perfectsmash-release.apk` | Sideloading to testers outside Play |
+| `tools/build_android.sh release-apk` | `build/perfectsmash-release.apk` | Sideloading to testers outside Play (Gradle build) |
 | `tools/build_android.sh release-aab` | `build/perfectsmash-release.aab` | **Play upload** (Gradle build; installs `android/build` on first run) |
 
 The script prints the signing certificate and the SHA-256 of the output. Before every build, run the tests:
@@ -65,6 +65,14 @@ in `changelog.md`:
 - [ ] Phones with a camera cutout or rounded corners: HUD and menu controls are clear of the cutout.
 - [ ] Upgrade: install the previous build, play a few levels, install the new build over it, and confirm progress is kept.
 - [ ] Settings → Copy play report pastes a readable report into a messaging app.
+- [ ] Campaign: mission 1's briefing types out and is **spoken aloud** (release build; the debug APK has no TTS
+      query). Each speaker sounds different. Narration off in Settings silences it, and text still shows.
+- [ ] Briefings are readable at arm's length, and Skip / Begin mission respond on the first tap.
+- [ ] Chapter tabs unlock as chapters are finished; "Continue" opens the next mission's briefing.
+- [ ] Play a few missions from each chapter (for example 21, 41, 47, 61, 63, 100) and check the new mechanics:
+      bounce pads, explosive chains, drop zones, drones and heavy/blast shots. Explosions and screen shake
+      should feel punchy, not uncomfortable.
+- [ ] Supply-drop missions (21, 27, 35, 66, 72, 78, 92) need precise aim; note if any feels unfair.
 
 ## 5. Play Console (owner)
 
@@ -81,6 +89,9 @@ in `changelog.md`:
    Use a staged rollout if offered.
 
 ## 6. Before each release
+
+- Confirm the AAB's merged manifest contains the `android.intent.action.TTS_SERVICE` query, added by
+  `addons/android_tts` in Gradle builds; without it, voice narration is silently unavailable on Android 11+.
 
 - Re-check Play's current target-API requirement against the built manifest (Godot 4.7.2 builds target API 36).
 - Re-run the data safety review if any permission, SDK or network use changed.

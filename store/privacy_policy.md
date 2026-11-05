@@ -9,7 +9,7 @@ _Effective date: to be set when first published · Applies to Perfect Smash for 
 The game keeps a small save file on your device only. It contains:
 
 - which levels you have completed, your best star rating and fewest shots for each;
-- your settings (sound, vibration, aim guide);
+- your settings (sound, vibration, aim guide, voice narration);
 - simple per-level play counters (attempts, wins, losses, timeouts) used for the optional play report.
 
 This file never leaves your device. It is not backed up to a cloud service by the app, and it is deleted when you
@@ -19,6 +19,13 @@ uninstall the game. You can erase your progress at any time with **Settings → 
 
 The app does not request internet access, so it cannot send anything anywhere. It contains no advertising,
 analytics, crash-reporting or tracking software, and it has no accounts or sign-in.
+
+## Voice narration
+
+If voice narration is on, mission briefings are read aloud by the text-to-speech engine already installed
+on your device (for example, the system's speech service). The game passes it only its own story text,
+never anything about you. You can switch narration off in **Settings → Voice narration**. How the speech
+engine itself works is governed by its provider's terms; the game does not change or configure it.
 
 ## Permissions
 
