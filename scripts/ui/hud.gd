@@ -10,6 +10,7 @@ signal menu_pressed
 signal next_pressed
 signal sound_toggled(enabled: bool)
 signal vibration_toggled(enabled: bool)
+signal aim_guide_toggled(enabled: bool)
 ## Emitted as each result star appears, so the screen can play a sound for it.
 signal star_revealed(index: int)
 
@@ -114,7 +115,7 @@ func hide_overlay() -> void:
 		_overlay = null
 
 
-func show_pause(sound_on: bool, vibration_on: bool) -> void:
+func show_pause(sound_on: bool, vibration_on: bool, aim_guide_on: bool = true) -> void:
 	var box := _open_panel("Paused", "")
 	var resume := UiKit.primary_button("Resume", UiKit.PANEL_WIDTH)
 	resume.pressed.connect(resume_pressed.emit)
@@ -134,8 +135,13 @@ func show_pause(sound_on: bool, vibration_on: bool) -> void:
 	vibration.tooltip_text = "Vibration"
 	vibration.button_pressed = vibration_on
 	vibration.toggled.connect(vibration_toggled.emit)
+	var guide := UiKit.icon_button("aim", "aim_off")
+	guide.tooltip_text = "Aim guide"
+	guide.button_pressed = aim_guide_on
+	guide.toggled.connect(aim_guide_toggled.emit)
 	toggles.add_child(sound)
 	toggles.add_child(vibration)
+	toggles.add_child(guide)
 	box.add_child(_spacer(4))
 	box.add_child(toggles)
 	UiKit.focus_default(resume)

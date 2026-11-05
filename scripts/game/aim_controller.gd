@@ -14,6 +14,8 @@ const DOT_RADIUS := 5.0
 const BALL_PULL_FACTOR := 0.35
 
 var session: GameSession
+## Draws the short trajectory preview while aiming (the "Aim guide" setting).
+var show_guide := true
 var _dragging := false
 var _drag_start := Vector2.ZERO
 var _drag_current := Vector2.ZERO
@@ -77,7 +79,8 @@ func _draw() -> void:
 	var aiming := pull.length() >= GameConfig.MIN_DRAG_DISTANCE
 	if aiming:
 		draw_line(fork_left, ball, BAND_COLOR, BAND_WIDTH, true)
-		_draw_preview(origin, velocity_for_pull(pull))
+		if show_guide:
+			_draw_preview(origin, velocity_for_pull(pull))
 	ProjectileBody.draw_ball(self, ball)
 	if aiming:
 		draw_line(fork_right, ball, BAND_COLOR, BAND_WIDTH, true)

@@ -32,6 +32,10 @@ func _run() -> void:
 	root.add_child(main)
 	await _settle(20)
 	await _shot("menu")
+	main._open_settings()
+	await _settle(30)
+	await _shot("settings")
+	main.close_settings()
 
 	main._start_level(level)
 	await _settle(60)

@@ -62,6 +62,12 @@ func record_win(level_id: String, stars: int, shots_used: int) -> bool:
 	return improved
 
 
+## Clears results and play-test stats; settings are kept.
+func reset_progress() -> void:
+	level_results.clear()
+	level_stats.clear()
+
+
 ## Adds one to a play-test counter (one of STAT_KEYS) for a level.
 func count_stat(level_id: String, key: String) -> void:
 	if not STAT_KEYS.has(key):

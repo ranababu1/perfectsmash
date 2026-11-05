@@ -4,8 +4,7 @@ extends Control
 ## The next level to play is highlighted and reachable in one tap via "Continue".
 
 signal level_selected(index: int)
-signal sound_toggled(enabled: bool)
-signal vibration_toggled(enabled: bool)
+signal settings_pressed
 
 const COLUMNS := 5
 const TILE_SIZE := Vector2(136, 92)
@@ -60,6 +59,11 @@ func _ready() -> void:
 		row.add_child(play)
 		column.add_child(row)
 		UiKit.focus_default(play)
+	else:
+		var done := UiKit.label("Every level cleared. Replay any level to chase three stars.", 20, Palette.TEXT_DIM)
+		if progress.total_stars() == catalog.levels.size() * ScoreRules.MAX_STARS:
+			done.text = "Perfect run: every level cleared with three stars."
+		column.add_child(done)
 	UiKit.animate_in(content, 10.0)
 
 
@@ -106,17 +110,12 @@ func _top_bar() -> Control:
 	stars.add_child(star_row)
 	bar.add_child(stars)
 
-	var sound := UiKit.icon_button("sound", "sound_off")
-	sound.tooltip_text = "Sound"
-	sound.button_pressed = progress.sound_enabled
-	sound.toggled.connect(sound_toggled.emit)
-	var vibration := UiKit.icon_button("vibrate", "vibrate_off")
-	vibration.tooltip_text = "Vibration"
-	vibration.button_pressed = progress.vibration_enabled
-	vibration.toggled.connect(vibration_toggled.emit)
-	for b: Button in [sound, vibration]:
-		b.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		bar.add_child(b)
+	var settings := UiKit.icon_button("settings")
+	settings.name = "SettingsButton"
+	settings.tooltip_text = "Settings"
+	settings.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	settings.pressed.connect(settings_pressed.emit)
+	bar.add_child(settings)
 	return bar
 
 

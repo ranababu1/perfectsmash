@@ -82,3 +82,24 @@ func _draw() -> void:
 				draw_line(p.call(4, 4), p.call(20, 20), color, w, true)
 		"star":
 			draw_colored_polygon(StarRow.star_points(p.call(12, 12.5), 9.0 * s), color)
+		"settings":
+			# Gear outline with a round hub; outlines keep it legible on any button background.
+			var points := PackedVector2Array()
+			var teeth := 8
+			for i in teeth * 4 + 1:
+				var a := TAU * (i % (teeth * 4)) / (teeth * 4) - PI / 2.0
+				var r := 9.5 if (i % 4) < 2 else 7.0
+				points.append(p.call(12, 12) + Vector2.from_angle(a) * r * s)
+			draw_polyline(points, color, w * 0.9, true)
+			draw_arc(p.call(12, 12), 3.0 * s, 0, TAU, 20, color, w * 0.9, true)
+		"aim", "aim_off":
+			# Launch arc made of dots fading out, as the trajectory preview looks in play.
+			for i in 4:
+				var t := i / 3.0
+				var at: Vector2 = p.call(4.5 + t * 15.0, 18.0 - t * 14.0 + t * t * 6.0)
+				draw_circle(at, (2.6 - t * 0.8) * s, Color(color, 1.0 - t * 0.45), true, -1.0, true)
+			if kind == "aim_off":
+				draw_line(p.call(4, 4), p.call(20, 20), color, w, true)
+		"close":
+			draw_line(p.call(6.5, 6.5), p.call(17.5, 17.5), color, w * 1.1, true)
+			draw_line(p.call(17.5, 6.5), p.call(6.5, 17.5), color, w * 1.1, true)

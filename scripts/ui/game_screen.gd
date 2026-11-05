@@ -7,6 +7,9 @@ signal next_requested
 signal level_won(level_id: String, stars: int, shots_used: int)
 signal sound_toggled(enabled: bool)
 signal vibration_toggled(enabled: bool)
+signal aim_guide_toggled(enabled: bool)
+## A play-test counter changed for the current level (key is one of ProgressData.STAT_KEYS).
+signal stat_counted(level_id: String, key: String)
 
 const RESULT_DELAY := 0.5
 const VIBRATE_TARGET_MS := 35
@@ -65,6 +68,8 @@ func _ready() -> void:
 	hud.next_pressed.connect(_on_next)
 	hud.sound_toggled.connect(sound_toggled.emit)
 	hud.vibration_toggled.connect(vibration_toggled.emit)
+	hud.aim_guide_toggled.connect(_on_aim_guide_toggled)
+	session.shot_resolved.connect(_on_shot_resolved)
 	hud.star_revealed.connect(func(_i: int) -> void: audio.play("click"))
 	for b in [hud.pause_pressed, hud.resume_pressed, hud.restart_pressed, hud.menu_pressed, hud.next_pressed]:
 		b.connect(func() -> void: audio.play("click"))
@@ -77,7 +82,9 @@ func start(def: LevelDefinition, number: int, has_next: bool) -> void:
 	session.setup(def)
 	hud.set_level(def, number)
 	aim.cancel()
+	aim.show_guide = progress.aim_guide_enabled
 	_clear_effects()
+	stat_counted.emit(def.id, "attempts")
 
 
 func restart() -> void:
@@ -87,6 +94,7 @@ func restart() -> void:
 	aim.cancel()
 	_clear_effects()
 	session.restart()
+	stat_counted.emit(session.definition.id, "attempts")
 
 
 func pause() -> void:
@@ -94,7 +102,7 @@ func pause() -> void:
 		return
 	aim.cancel()
 	get_tree().paused = true
-	hud.show_pause(progress.sound_enabled, progress.vibration_enabled)
+	hud.show_pause(progress.sound_enabled, progress.vibration_enabled, progress.aim_guide_enabled)
 
 
 func resume() -> void:
@@ -128,8 +136,19 @@ func _on_block_shattered(at: Vector2) -> void:
 	_spawn_burst.call_deferred(at, Palette.GLASS_EDGE, 44.0)
 
 
+func _on_aim_guide_toggled(enabled: bool) -> void:
+	aim.show_guide = enabled
+	aim_guide_toggled.emit(enabled)
+
+
+func _on_shot_resolved(timed_out: bool) -> void:
+	if timed_out:
+		stat_counted.emit(session.definition.id, "timeouts")
+
+
 func _on_finished(won: bool, stars: int, shots_used: int) -> void:
 	var attempt := _attempt
+	stat_counted.emit(session.definition.id, "wins" if won else "losses")
 	if won:
 		level_won.emit(session.definition.id, stars, shots_used)
 	await get_tree().create_timer(RESULT_DELAY).timeout

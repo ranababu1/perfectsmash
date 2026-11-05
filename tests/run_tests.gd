@@ -32,7 +32,8 @@ func _run() -> void:
 	var start := Time.get_ticks_msec()
 	for path: String in suites:
 		var script: GDScript = load(path)
-		if script == null:
+		# A suite with a parse error still loads as a GDScript but has no methods; count it as failed.
+		if script == null or not script.can_instantiate():
 			printerr("FAIL could not load suite %s" % path)
 			failed += 1
 			continue

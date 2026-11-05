@@ -123,3 +123,95 @@ func test_hud_button_press_does_not_launch() -> void:
 	main.queue_free()
 	await tree.process_frame
 	tree.paused = false
+
+
+func test_settings_panel_toggles_persist_and_back_closes() -> void:
+	var main: Node = await _make_main()
+	await tree.process_frame
+	main._open_settings()
+	await tree.process_frame
+	var panel: SettingsPanel = main._settings
+	assert_true(panel != null, "settings opened")
+	var guide: Button = panel.find_child("Toggle_aim_guide", true, false)
+	assert_true(guide != null and guide.button_pressed, "aim guide shown as on")
+	guide.button_pressed = false
+	var sound: Button = panel.find_child("Toggle_sound", true, false)
+	sound.button_pressed = false
+	var reloaded := SaveService.new(TEST_SAVE).load_progress()
+	assert_false(reloaded.aim_guide_enabled, "aim guide off persisted")
+	assert_false(reloaded.sound_enabled, "sound off persisted")
+	assert_false(main.audio.enabled, "audio muted immediately")
+	main._handle_back()
+	await tree.process_frame
+	assert_true(main._settings == null, "back closes settings")
+	assert_true(main._menu != null, "still on the menu")
+
+	main._start_level(0)
+	await tree.process_frame
+	assert_false(main._game.aim.show_guide, "level uses the saved aim guide setting")
+	main.queue_free()
+	await tree.process_frame
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+
+
+func test_reset_progress_clears_results_keeps_settings() -> void:
+	var main: Node = await _make_main()
+	await tree.process_frame
+	main.progress.record_win(main.catalog.ids()[0], 3, 1)
+	main.progress.vibration_enabled = false
+	main._open_settings()
+	await tree.process_frame
+	main._settings.reset_confirmed.emit()
+	await tree.process_frame
+	var reloaded := SaveService.new(TEST_SAVE).load_progress()
+	assert_eq(reloaded.total_stars(), 0, "results cleared")
+	assert_false(reloaded.vibration_enabled, "settings kept")
+	assert_true(main._settings == null, "menu rebuilt without the panel")
+	main.queue_free()
+	await tree.process_frame
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+
+
+## Lifecycle (plan M4): backgrounding pauses play, back toggles the pause menu, and restarts/losses
+## are counted in the local play-test stats.
+func test_background_back_and_stats() -> void:
+	var main: Node = await _make_main()
+	await tree.process_frame
+	main._start_level(0)
+	await tree.process_frame
+	var game: GameScreen = main._game
+	var id: String = main.catalog.ids()[0]
+	assert_eq(main.progress.stat(id, "attempts"), 1, "start counts an attempt")
+
+	main.notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+	assert_true(tree.paused, "losing focus pauses")
+	assert_true(game.hud.has_overlay(), "pause menu shown")
+	main._handle_back()
+	assert_false(tree.paused, "back resumes from pause")
+	main._handle_back()
+	assert_true(tree.paused, "back opens pause during play")
+	game.resume()
+	main.notification(Node.NOTIFICATION_APPLICATION_PAUSED)
+	assert_true(tree.paused, "app pause (Android background) pauses")
+	game.restart()
+	assert_false(tree.paused, "restart unpauses")
+	assert_eq(main.progress.stat(id, "attempts"), 2, "restart counts an attempt")
+
+	# Use every shot on a harmless miss straight down-left to lose.
+	var budget: int = main.catalog.levels[0].shots
+	for i in budget:
+		while not game.session.can_launch():
+			await tree.physics_frame
+		game.session.launch(Vector2(-300, 50))
+	var frames := 0
+	while not game.session.rules.is_finished() and frames < 1500:
+		await tree.physics_frame
+		frames += 1
+	assert_eq(game.session.rules.phase, SessionRules.Phase.LOST, "misses lose")
+	var reloaded := SaveService.new(TEST_SAVE).load_progress()
+	assert_eq(reloaded.stat(id, "losses"), 1, "loss counted and saved")
+	assert_eq(reloaded.stat(id, "attempts"), 2)
+	main.queue_free()
+	await tree.process_frame
+	tree.paused = false
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
