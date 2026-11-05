@@ -7,6 +7,30 @@ All meaningful changes, newest first.
 Owner request: 100 levels unlocked in sequence, a storyline narrated before and after every mission (IGI-style),
 and gameplay beyond knocking out red cores. Working plan and resume point: `docs/campaign_plan.md`.
 
+**Phase 2: missions 21–100** (done)
+- `tools/build_campaign.gd`: 80 mission designs (name, pattern, shots, par, difficulty, options) expanded by
+  20 seeded patterns (supply shelf/tower/stilts/twin, glass towers/pyramid, bumper shield, bridge, glass topple,
+  powder keg, chain fuse, stone vault, heavy wall, quarry stack, explosive topple, blast supply, rescue tower,
+  ally ledge, blast bunker, guarded chain, ally pyramid, escort supply, spire). `--check` simulates every level
+  for 3 s and re-rolls any that drifts more than 3 px; `--merge` folds solver results back in and re-rolls
+  unsolved levels. Variants are recorded in `tools/campaign_variants.json`. Stored solutions are kept only while
+  the layout is unchanged.
+- `tools/solve_levels.gd --out=FILE` lets four solver processes run in parallel. The JSON writer moved to
+  `tools/catalog_format.gd`.
+- Results: all 80 levels solved within par on the first pass. Supply drops then won on only 0.4–1.4% of the
+  solver's aim grid, because 628 of 665 sampled shots never touched a small crate on a high ledge. Lower shelves,
+  bigger crates (56→44 px) and wider zones raised that to 1.2–3.7%. The only fragile solution left is L80
+  (the chapter 4 finale, 3 shots, par 2).
+- Fixed during the stability check: cores placed off-centre on stacked floors overlapped the next floor's column.
+
+**Phase 3: story** (done)
+- `data/story.json`: "Operation Rebuild": 5 chapters, 5 speakers (Kestrel, Bolt, JUNO, ARCHITECT, Mission Log),
+  a briefing and a debrief for each of the 100 missions (294 lines), chapter cards, and failure pools for general
+  failures, lost drones and lost cargo. Every briefing was checked against its level's real layout (floors,
+  cores, drones, charges, ammo). The player is never given a gender.
+- `StoryCatalog` loads and validates it, and cross-checks it against the level catalog.
+  `tests/test_story.gd` covers coverage, line length, chapter cards and failure rotation.
+
 **Phase 1: new mechanics** (done)
 - **Explosive crates** (`material: "explosive"`): detonate on an armed contact impulse above 300 (the same as glass;
   lower values would set them off under a resting stone slab) or on a direct projectile hit. A blast gives every body
