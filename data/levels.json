@@ -1597,7 +1597,7 @@
 },
 {
 	"id": "L81", "name": "Approach", "shots": 3, "par": 1,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"statics": [],
@@ -1684,7 +1684,7 @@
 },
 {
 	"id": "L85", "name": "Lower Spire", "shots": 3, "par": 1,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"statics": [],
@@ -1788,7 +1788,7 @@
 },
 {
 	"id": "L89", "name": "Mid Spire", "shots": 3, "par": 2,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"ammo": ["heavy", "blast", "standard"],
@@ -1879,7 +1879,7 @@
 },
 {
 	"id": "L93", "name": "High Spire", "shots": 3, "par": 2,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"ammo": ["heavy", "blast", "standard"],
@@ -1978,7 +1978,7 @@
 },
 {
 	"id": "L97", "name": "Crown", "shots": 3, "par": 2,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"ammo": ["heavy", "blast", "standard"],
@@ -2053,7 +2053,7 @@
 },
 {
 	"id": "L100", "name": "The Heart", "shots": 3, "par": 2,
-	"hint": "The spire. Every floor holds a core.",
+	"hint": "The spire. Cores hide between its floors.",
 	"launcher": [180, 540],
 	"objective": {"type": "destroy_targets"},
 	"ammo": ["heavy", "blast", "standard"],

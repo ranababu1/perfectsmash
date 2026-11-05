@@ -2,6 +2,7 @@ extends SceneTree
 ## Design aid: boots the real app with a throwaway save and writes PNG screenshots of the main screens
 ## to tests/output/screens/. Needs a window (not --headless):
 ##   godot_console --resolution 1280x720 -s tools/capture_screens.gd [-- --level=N]
+##   ... -- --levels=21,41,61     one screenshot per listed mission (gallery mode)
 
 const OUT_DIR := "res://tests/output/screens"
 const CAPTURE_SAVE := "user://capture_progress.json"
@@ -33,6 +34,17 @@ func _run() -> void:
 	main.save = save
 	root.add_child(main)
 	await _settle(20)
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--levels="):
+			# Gallery mode: one screenshot per listed mission (1-based), briefing dismissed.
+			for n in arg.trim_prefix("--levels=").split(","):
+				main._start_level(int(n) - 1)
+				main._close_briefing()
+				await _settle(50)
+				await _shot("mission_%03d" % int(n))
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(CAPTURE_SAVE))
+			quit()
+			return
 	await _shot("menu")
 	main._open_settings()
 	await _settle(30)

@@ -164,8 +164,10 @@ func _same_layout(a: Dictionary, b: Dictionary) -> bool:
 	# Round-trip both through JSON so ints and floats (180 vs 180.0) compare equal.
 	var x: Dictionary = JSON.parse_string(JSON.stringify(a))
 	var y: Dictionary = JSON.parse_string(JSON.stringify(b))
-	x.erase("solution")
-	y.erase("solution")
+	# Text changes (name, hint) don't affect physics, so they keep the stored solution.
+	for key in ["solution", "name", "hint"]:
+		x.erase(key)
+		y.erase(key)
 	return JSON.stringify(x, "", true) == JSON.stringify(y, "", true)
 
 
@@ -497,7 +499,7 @@ func _p_spire(b: Builder, d: float) -> Dictionary:
 		if f % 2 == 1 or f == floors - 1:
 			# Centred, between the next floor's columns.
 			b.core(x, top, 18.0)
-	return {"hint": "The spire. Every floor holds a core."}
+	return {"hint": "The spire. Cores hide between its floors."}
 
 
 # --- Stability check ----------------------------------------------------------------------------
