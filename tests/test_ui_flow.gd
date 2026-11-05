@@ -46,6 +46,7 @@ func test_drag_launches_and_pause_blocks_aim() -> void:
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
+	main._close_briefing()
 	var game: GameScreen = main._game
 	assert_true(game != null, "game screen created")
 	var launches := []
@@ -79,6 +80,7 @@ func test_win_is_saved_and_unlocks_next() -> void:
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
+	main._close_briefing()
 	var game: GameScreen = main._game
 	var def: LevelDefinition = main.catalog.levels[0]
 	await wait_physics_frames(150)
@@ -106,6 +108,7 @@ func test_hud_button_press_does_not_launch() -> void:
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
+	main._close_briefing()
 	var game: GameScreen = main._game
 	var launches := []
 	game.session.launched.connect(func(v: Vector2) -> void: launches.append(v))
@@ -148,6 +151,7 @@ func test_settings_panel_toggles_persist_and_back_closes() -> void:
 
 	main._start_level(0)
 	await tree.process_frame
+	main._close_briefing()
 	assert_false(main._game.aim.show_guide, "level uses the saved aim guide setting")
 	main.queue_free()
 	await tree.process_frame
@@ -179,6 +183,7 @@ func test_background_back_and_stats() -> void:
 	await tree.process_frame
 	main._start_level(0)
 	await tree.process_frame
+	main._close_briefing()
 	var game: GameScreen = main._game
 	var id: String = main.catalog.ids()[0]
 	assert_eq(main.progress.stat(id, "attempts"), 1, "start counts an attempt")
@@ -215,3 +220,66 @@ func test_background_back_and_stats() -> void:
 	await tree.process_frame
 	tree.paused = false
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+
+
+
+## Story loop: briefing before the mission (back returns to the menu), Begin starts play, a win shows
+## the debrief, and Next mission opens the next briefing.
+func test_briefing_debrief_and_next_mission() -> void:
+	var main: Node = await _make_main()
+	await tree.process_frame
+	assert_true(main.story != null, "story loaded and valid")
+	main._start_level(0)
+	await tree.process_frame
+	assert_true(main._briefing != null, "briefing shown before mission 1")
+	var lines: Array = main.story.briefing(0, main.catalog.ids()[0])
+	assert_eq(lines[0].speaker, "log", "mission 1 opens with the chapter card")
+	main._handle_back()
+	await tree.process_frame
+	assert_true(main._briefing == null and main._menu != null, "back from the briefing returns to the menu")
+
+	main._start_level(0)
+	await tree.process_frame
+	main._briefing.begin_pressed.emit()
+	await tree.process_frame
+	assert_true(main._briefing == null, "begin closes the briefing")
+	var game: GameScreen = main._game
+	var def: LevelDefinition = main.catalog.levels[0]
+	await wait_physics_frames(150)
+	game.session.launch(def.solution[0])
+	var frames := 0
+	while not game.hud.has_overlay() and frames < 1200:
+		await tree.physics_frame
+		frames += 1
+	await tree.create_timer(0.1).timeout
+	assert_true(game.hud.has_overlay(), "result shown")
+	var debrief: DialogueBox = game.hud._overlay.find_child("Debrief", true, false)
+	assert_true(debrief != null, "debrief dialogue in the result panel")
+	game.hud.next_pressed.emit()
+	await tree.process_frame
+	assert_eq(main._level_index, 1, "next mission")
+	assert_true(main._briefing != null, "next mission opens with its briefing")
+	main.queue_free()
+	await tree.process_frame
+	tree.paused = false
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+
+
+func test_dialogue_box_types_advances_and_skips() -> void:
+	var box := DialogueBox.new()
+	tree.root.add_child(box)
+	var lines: Array[Dictionary] = [
+		{"speaker": "kestrel", "name": "KESTREL", "color": Color.ORANGE, "pitch": 1.0, "text": "First line."},
+		{"speaker": "bolt", "name": "BOLT", "color": Color.AQUA, "pitch": 0.9, "text": "Second line, a bit longer."},
+	]
+	var shown := []
+	box.all_shown.connect(func() -> void: shown.append(true))
+	box.play(lines)
+	assert_false(box.is_done(), "typing")
+	box.advance()
+	box.advance()
+	assert_false(box.is_done(), "second line started")
+	box.finish_all()
+	assert_true(box.is_done(), "skip shows everything")
+	assert_eq(shown.size(), 1, "all_shown emitted once")
+	box.queue_free()
