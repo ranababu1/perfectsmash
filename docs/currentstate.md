@@ -81,7 +81,7 @@ done; see "Waiting on the owner".
 
 - Headless: `godot --headless --fixed-fps 60 -s tests/run_tests.gd` → 84 passed, 0 failed, 1 skipped (34 s). Includes
   every mission standing before launch and every stored solution winning ≥2 of 3 replays.
-- Windowed (Xvfb): WINDOWED_RESULT
+- Windowed (Xvfb): `godot --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → still running at the time of writing (software rendering is slow over 300 solution replays); every suite before the playthrough suite had passed.
 - Physics report (`tools/physics_report.gd -- --replays=3`): 300/300 replays won, one end state per mission, peak 17
   live bodies (L100), mean frame 0.20 ms, worst 8.2 ms on the container CPU.
 - Campaign build: `godot --headless --fixed-fps 60 -s tools/build_campaign.gd -- --check` → 80 levels, all stable,
