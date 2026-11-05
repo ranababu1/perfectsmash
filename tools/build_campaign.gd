@@ -273,9 +273,12 @@ func _zone(x: float, w: float, top: float = G) -> Dictionary:
 
 func _p_supply_shelf(b: Builder, d: float) -> Dictionary:
 	var x := 640.0 + b.jitter(40.0) + 60.0 * d
-	var top := b.ledge(x, 520.0 - 150.0 * d + b.jitter(20.0), 120.0)
-	b.block(x, top, 40.0, 40.0, "cargo")
-	return {"objective": _zone(x + 150.0 + 120.0 * d, 180.0 - 50.0 * d), "hint": "Knock the supply crate into the drop zone."}
+	# Low shelf and a big crate early on: a floating crate is a thin target, so most shots would miss it.
+	var top := b.ledge(x, 570.0 - 160.0 * d + b.jitter(10.0), 120.0)
+	var crate := 56.0 - 12.0 * d
+	b.block(x, top, crate, crate, "cargo")
+	# Wide zone starting near the ledge: knocked crates scatter, so a narrow zone needs pixel aim.
+	return {"objective": _zone(x + 150.0 + 70.0 * d, 300.0 - 80.0 * d), "hint": "Knock the supply crate into the drop zone."}
 
 
 func _p_supply_tower(b: Builder, d: float) -> Dictionary:
@@ -474,11 +477,12 @@ func _p_ally_pyramid(b: Builder, d: float) -> Dictionary:
 
 func _p_escort_supply(b: Builder, d: float) -> Dictionary:
 	var x := 660.0 + b.jitter(30.0)
-	var top := b.ledge(x, 500.0 - 80.0 * d, 120.0)
-	b.block(x, top, 40.0, 40.0, "cargo")
-	var zone_x := x + 200.0 + 60.0 * d
-	b.ally(zone_x + 160.0, G)
-	return {"objective": _zone(zone_x, 170.0 - 30.0 * d), "hint": "Deliver the crate. Mind the drone beside the zone."}
+	var top := b.ledge(x, 560.0 - 110.0 * d, 120.0)
+	b.block(x, top, 52.0, 52.0, "cargo")
+	var zone_x := x + 160.0 + 50.0 * d
+	var zone_w := 280.0 - 60.0 * d
+	b.ally(zone_x + zone_w / 2.0 + 110.0, G)
+	return {"objective": _zone(zone_x, zone_w), "hint": "Deliver the crate. Mind the drone beside the zone."}
 
 
 func _p_spire(b: Builder, d: float) -> Dictionary:

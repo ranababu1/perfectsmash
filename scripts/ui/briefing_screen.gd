@@ -34,7 +34,7 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	var dim := ColorRect.new()
-	dim.color = Color(0.03, 0.04, 0.09, 0.9)
+	dim.color = Color(0.03, 0.04, 0.09, 0.97)
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(dim)
@@ -95,12 +95,14 @@ func _ready() -> void:
 	side.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	side.add_theme_constant_override("separation", 12)
 	side.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# The recon image is wide and low like the structures; the card below takes the rest.
 	var schematic := LevelSchematic.new(definition)
 	schematic.name = "Schematic"
-	schematic.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	schematic.custom_minimum_size = Vector2(300, 150)
+	schematic.custom_minimum_size = Vector2(300, 220)
 	side.add_child(schematic)
-	side.add_child(_objective_card())
+	var card := _objective_card()
+	card.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	side.add_child(card)
 	body.add_child(side)
 	root.add_child(body)
 
@@ -151,6 +153,21 @@ func _objective_card() -> Control:
 	var shots := UiKit.label(MissionText.shots_summary(definition), 17, Palette.TEXT_DIM)
 	shots.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	box.add_child(shots)
+	var notes := MissionText.intel(definition)
+	if not notes.is_empty():
+		var gap := Control.new()
+		gap.custom_minimum_size.y = 6
+		box.add_child(gap)
+		var intel_heading := UiKit.label("INTEL", 14, Palette.TEXT_DIM)
+		intel_heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		intel_heading.add_theme_font_override("font", MenuScreen._spaced_font(3))
+		box.add_child(intel_heading)
+		for note in notes:
+			var n := UiKit.label("•  " + note, 17, Palette.TEXT)
+			n.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+			n.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			n.custom_minimum_size.x = 260
+			box.add_child(n)
 	card.add_child(box)
 	return card
 

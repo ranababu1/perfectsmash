@@ -45,3 +45,31 @@ static func shots_summary(def: LevelDefinition) -> String:
 	if special:
 		text += "  ·  " + ", ".join(kinds)
 	return text
+
+
+## Short notes on the mechanics present in a level, shown in the briefing ("intel").
+static func intel(def: LevelDefinition) -> PackedStringArray:
+	var notes := PackedStringArray()
+	match def.objective_type:
+		LevelDefinition.OBJECTIVE_DELIVER:
+			notes.append("The crate must come to rest inside the green zone.")
+		LevelDefinition.OBJECTIVE_TOPPLE:
+			notes.append("Every block must end up below the green line.")
+	if not def.allies.is_empty():
+		notes.append("Breaking a blue drone fails the mission.")
+	if def.uses_material("explosive"):
+		notes.append("Orange crates explode and set off crates nearby.")
+	if def.statics.any(func(s: Dictionary) -> bool: return s.kind == "bumper"):
+		notes.append("Purple pads bounce the ball back hard.")
+	if def.uses_material("glass"):
+		notes.append("Glass shatters on a hard hit.")
+	var kinds := {}
+	for i in def.shots:
+		kinds[def.ammo_for_shot(i)] = true
+	if kinds.has("heavy"):
+		notes.append("Heavy shot: a big, heavy ball that shoves stone.")
+	if kinds.has("blast"):
+		notes.append("Blast shot: explodes on its first contact.")
+	if notes.is_empty() and def.uses_material("stone"):
+		notes.append("Stone is heavy. Let it fall on something.")
+	return notes

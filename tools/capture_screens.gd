@@ -73,7 +73,9 @@ func _run() -> void:
 		debrief.finish_all()
 	await _settle(30)
 	await _shot("win")
-	var fail_lines: Array[Dictionary] = [story.fail_line("fail", 0)] if story != null else []
+	var fail_lines: Array[Dictionary] = []
+	if story != null:
+		fail_lines.append(story.fail_line("fail", 0))
 	game.hud.show_result(false, 0, 2, true, 1, fail_lines, null, null, "Out of shots.")
 	await _settle(40)
 	debrief = game.hud._overlay.find_child("Debrief", true, false)
