@@ -72,7 +72,7 @@ milestone item that can be done without the owner's devices, accounts or keys is
 ## Build / test status (verified 2026-11-05, Linux container)
 
 - Headless: `godot --headless --fixed-fps 60 -s tests/run_tests.gd` → 65 passed, 0 failed, 1 skipped (GUI routing needs a window).
-- Windowed (Xvfb): `godot --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → run in progress at commit time (58 passed, 0 failed so far); see the next changelog entry.
+- Windowed (Xvfb): `godot --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 66 passed, 0 failed, 0 skipped (303 s).
 - Unit only: append `-- --unit` (includes layout and release-config suites).
 - Physics report: `godot --headless --fixed-fps 60 -s tools/physics_report.gd -- --replays=10` → 200/200 replays won,
   1 distinct end state per level; also identical with `--no-warmup`. Peak 11 live bodies; mean frame 0.25 ms,

@@ -59,7 +59,7 @@ submission to them. Work done in a Linux container (Godot 4.7.2 official Linux b
   is VIBRATE (the `DUMP` string is the protection on AndroidX's profile-installer receiver, not a requested permission).
 
 **Test evidence (Godot 4.7.2, Ubuntu 24.04 container)**
-- Headless: 65 passed, 0 failed, 1 skipped. Windowed (Xvfb): in progress at commit time (58 passed, 0 failed so far).
+- Headless: 65 passed, 0 failed, 1 skipped. Windowed (Xvfb): 66 passed, 0 failed, 0 skipped (303 s).
 - `tools/build_android.sh debug` → `perfectsmash-debug.apk` (57.8 MB), `apksigner verify` OK.
 - `tools/build_android.sh release-apk` with a throwaway key → `perfectsmash-release.apk` (53.2 MB), `apksigner verify` OK.
 - Not run: `release-aab` (the container cannot reach Google's Maven repository); any physical-device or emulator run.
