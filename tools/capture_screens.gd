@@ -14,6 +14,8 @@ func _initialize() -> void:
 
 func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR))
+	# Keep screenshots out of Godot's asset import (and out of exported builds).
+	FileAccess.open("res://tests/output/.gdignore", FileAccess.WRITE)
 	var level := 0
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--level="):
