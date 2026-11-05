@@ -61,7 +61,7 @@ func _ready() -> void:
 	actions.add_child(_reset)
 	box.add_child(actions)
 
-	_status = UiKit.label("No data leaves this device.  ·  v%s" % ProjectSettings.get_setting("application/config/version", "?"), 16, Palette.TEXT_FAINT)
+	_status = UiKit.label("No data leaves this device.  ·  v%s" % ProjectSettings.get_setting("application/config/version", "?"), 16, Palette.TEXT_DIM)
 	box.add_child(_status)
 
 	var center := UiKit.centered(panel)
@@ -73,7 +73,7 @@ func _ready() -> void:
 ## Shows a short confirmation under the buttons (e.g. "Report copied").
 func show_status(text: String) -> void:
 	_status.text = text
-	_status.add_theme_color_override("font_color", Palette.TEXT_DIM)
+	_status.add_theme_color_override("font_color", Palette.TEXT)
 
 
 func _toggle_row(text: String, on_icon: String, off_icon: String, key: String, enabled: bool) -> Control:

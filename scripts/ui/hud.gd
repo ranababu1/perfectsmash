@@ -42,7 +42,7 @@ func _ready() -> void:
 	var heading := HBoxContainer.new()
 	heading.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	heading.add_theme_constant_override("separation", 10)
-	_number = _left_label(24, Palette.TEXT_FAINT)
+	_number = _left_label(24, Palette.TEXT_DIM)
 	_title = _left_label(24, Palette.TEXT)
 	heading.add_child(_number)
 	heading.add_child(_title)
