@@ -202,7 +202,7 @@ func _build_environment() -> void:
 		# Production set (dark graphite hall): lower fill, a reflection-only sky so metals read
 		# as metal (ASSET_CONTRACT 9, proposed source), and depth fog so the back recedes.
 		env.ambient_light_color = Color("6c7a88")
-		env.ambient_light_energy = 0.32
+		env.ambient_light_energy = 0.42
 		var sky_material := ProceduralSkyMaterial.new()
 		sky_material.sky_top_color = Color("4a5866")
 		sky_material.sky_horizon_color = Color("8090a0")
@@ -222,7 +222,7 @@ func _build_environment() -> void:
 
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-52.0, -38.0, 0.0)
-	sun.light_energy = 0.85 if has_set else 1.15
+	sun.light_energy = 1.0 if has_set else 1.15
 	sun.light_color = Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0

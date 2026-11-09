@@ -85,10 +85,10 @@ func test_material_slots_bind_texture_sets() -> void:
 	var bound := 0
 	for mesh_instance: MeshInstance3D in model.find_children("*", "MeshInstance3D", true, false):
 		for surface in mesh_instance.mesh.get_surface_count():
-			var material := mesh_instance.get_surface_override_material(surface) as StandardMaterial3D
+			var material := mesh_instance.get_active_material(surface) as StandardMaterial3D
 			if material != null and material.normal_texture != null:
 				bound += 1
-	assert_true(bound > 0, "main slots carry the chapter normal map")
+	assert_true(bound > 0, "surfaces carry texture-set normal maps (authored or bound by slot)")
 	model.free()
 
 
@@ -110,3 +110,16 @@ func test_mission_view_uses_production_models_and_set() -> void:
 	assert_true((rack.find_child("mesh_light", true, false) as Node3D).visible, "damaged rack shows its light-damage node")
 	screen.queue_free()
 	await wait_physics_frames(1)
+
+
+func test_textures_referenced_by_models_are_integrated() -> void:
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(AssetLibrary.DEFAULT_PATH))
+	var paths := {}
+	for entry: Dictionary in data.entries:
+		paths[entry.path] = entry
+	for entry: Dictionary in data.entries:
+		if entry.get("slice") == "dependency":
+			assert_false((entry.get("required_by", []) as Array).is_empty(), "%s records which models need it" % entry.id)
+			for model_id: String in entry.required_by:
+				assert_true(_library.has_entry(model_id), "%s is required by an integrated model" % entry.id)
+	assert_true(paths.has("assets/materials/shared/shr_mat_gunmetal_a_albedo.png"), "shared sets used by the kits ship with them")

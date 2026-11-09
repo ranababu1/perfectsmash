@@ -6,8 +6,9 @@ extends RefCounted
 ##   reference_size_px needs the least stretch to fit the physics rectangle (section 5);
 ## - meshes are scaled in X and Y to the physics rectangle, depth unchanged (sections 3 and 5);
 ## - state nodes mesh_intact / mesh_light / mesh_heavy, one shown at a time (section 8);
-## - main surfaces `mat_<material>_<ch>[_zone]` get the chapter texture set's normal and ORM
-##   maps by slot name (section 7); the slot's authored colour is kept;
+## - main surfaces `mat_<material>_<ch>[_zone]` without textures of their own get the chapter
+##   texture set's normal and ORM maps by slot name (section 7); surfaces the model already
+##   textures (external glTF images, current kit exports) keep the authored binding;
 ## - environment pieces by asset id.
 ## Anything missing returns null so the caller falls back to the greybox (section 17).
 
@@ -111,7 +112,8 @@ func bind_materials(root: Node, chapter: String) -> void:
 			continue
 		for surface in mesh.get_surface_count():
 			var material := mesh.surface_get_material(surface) as StandardMaterial3D
-			if material == null:
+			# Models that bind their own texture sets (glTF image URIs) keep the authored look.
+			if material == null or material.albedo_texture != null or material.normal_texture != null:
 				continue
 			var material_id := slot_material_id(material.resource_name, code)
 			if material_id.is_empty():
