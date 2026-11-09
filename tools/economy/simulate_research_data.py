@@ -2,45 +2,43 @@
 """Research Data economy simulation across the planned 100-mission campaign.
 
 Models how much Research Data (RD) three player profiles earn by the end of each chapter and
-how much of the upgrade catalogue they could afford, for a set of price schemes. Reward values
-are read from data/missions/helix_01.json and data/scoring.json (assumed for every mission unless
-a scheme overrides them); upgrade prices come from data/weapons.json for the current scheme.
+how much of the upgrade catalogue they could afford, for each price scheme. The model is fully
+deterministic: the same inputs always print the same table.
 
-Assumptions (planning, not measured play data):
-- 100 missions, 20 per chapter; each mission has OPTIONAL_PER_MISSION optional objectives.
-- Weapons: chapter 1 Kinetic Accelerator + Breach Charge, then one new weapon per chapter
-  (Penetrator, Pulse Cannon, Disruptor, Temporal Lance): 6 weapons x 4 attributes x 3 levels.
-- RD per first clear = completion + optional_rd * optional_done + efficiency_max * efficiency.
+Inputs:
+- tools/economy/economy_assumptions.json: campaign shape, unlock schedule, player profiles,
+  candidate schemes and target affordability (planning assumptions, not measured play data).
+- data/missions/helix_01.json and data/scoring.json: per-mission rewards (assumed for every
+  mission unless a scheme scales them per chapter).
+- data/weapons.json: upgrade prices for the "current" scheme.
+
+Model:
+- RD per first clear = completion + optional_rd * optional_done + efficiency_max * efficiency,
+  times (1 + reward_chapter_scale * (chapter - 1)).
 - Replays only pay the improvement over the mission's best (anti-farming rule), modelled as a
-  share of missions replayed once with a better efficiency/optional result.
+  share of missions replayed once with a better optional/efficiency result.
+- A weapon unlocked in chapter c costs attributes * sum(costs) * (1 + cost_chapter_scale * (c - 1)).
+- "Affordable" = RD earned so far / cost of every upgrade unlocked so far (capped at 100%).
 
-    python tools/economy/simulate_research_data.py
+    python tools/economy/simulate_research_data.py [--scheme ID]
 """
 
+import argparse
 import json
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-MISSIONS = 100
-PER_CHAPTER = 20
-OPTIONAL_PER_MISSION = 3
-WEAPON_UNLOCKS = {1: 2, 2: 1, 3: 1, 4: 1, 5: 1}  # chapter -> new weapons
-ATTRIBUTES_PER_WEAPON = 4
-LEVELS = 3
-
-# share of optional objectives done on first clear, average efficiency (0-1),
-# share of missions replayed, optional share / efficiency reached on replay
-PROFILES = {
-    "casual": {"optional": 0.30, "efficiency": 0.45, "replay": 0.00, "replay_optional": 0.0, "replay_eff": 0.0},
-    "typical": {"optional": 0.55, "efficiency": 0.65, "replay": 0.20, "replay_optional": 0.85, "replay_eff": 0.85},
-    "completionist": {"optional": 0.80, "efficiency": 0.85, "replay": 0.60, "replay_optional": 1.0, "replay_eff": 0.95},
-}
+ASSUMPTIONS = REPO / "tools/economy/economy_assumptions.json"
 
 
-def load_current():
-    mission = json.loads((REPO / "data/missions/helix_01.json").read_text(encoding="utf-8"))
-    scoring = json.loads((REPO / "data/scoring.json").read_text(encoding="utf-8"))
-    weapons = json.loads((REPO / "data/weapons.json").read_text(encoding="utf-8"))
+def read_json(relative):
+    return json.loads((REPO / relative).read_text(encoding="utf-8"))
+
+
+def live_rewards():
+    mission = read_json("data/missions/helix_01.json")
+    scoring = read_json("data/scoring.json")
+    weapons = read_json("data/weapons.json")
     costs = next(iter(weapons["weapons"][0]["upgrades"].values()))["costs"]
     rewards = mission["rewards"]
     return {
@@ -51,51 +49,60 @@ def load_current():
     }
 
 
-def mission_rd(r, optional_share, efficiency, chapter, scheme):
-    scale = scheme.get("reward_chapter_scale", 0.0)
-    factor = 1.0 + scale * (chapter - 1)
-    return factor * (r["completion"] + r["optional"] * OPTIONAL_PER_MISSION * optional_share + r["efficiency_max"] * efficiency)
+def mission_rd(model, scheme, optional_share, efficiency, chapter):
+    factor = 1.0 + scheme.get("reward_chapter_scale", 0.0) * (chapter - 1)
+    return factor * (model["completion"] + model["optional"] * model["optional_per_mission"] * optional_share
+                     + model["efficiency_max"] * efficiency)
 
 
-def weapon_cost(scheme, unlock_chapter):
-    costs = scheme["costs"]
-    scale = scheme.get("cost_chapter_scale", 0.0)
-    return ATTRIBUTES_PER_WEAPON * sum(c * (1.0 + scale * (unlock_chapter - 1)) for c in costs)
+def weapon_cost(model, scheme, unlock_chapter):
+    scale = 1.0 + scheme.get("cost_chapter_scale", 0.0) * (unlock_chapter - 1)
+    return model["attributes"] * sum(c * scale for c in scheme["costs"])
 
 
-def simulate(scheme, profile):
+def simulate(model, scheme, profile):
     rows = []
     earned = 0.0
-    available_cost = 0.0
-    for chapter in range(1, 6):
-        available_cost += WEAPON_UNLOCKS[chapter] * weapon_cost(scheme, chapter)
-        for _ in range(PER_CHAPTER):
-            first = mission_rd(scheme, profile["optional"], profile["efficiency"], chapter, scheme)
+    available = 0.0
+    chapters = model["missions"] // model["per_chapter"]
+    for chapter in range(1, chapters + 1):
+        available += model["unlocks"].get(chapter, 0) * weapon_cost(model, scheme, chapter)
+        for _ in range(model["per_chapter"]):
+            first = mission_rd(model, scheme, profile["optional"], profile["efficiency"], chapter)
             earned += first
             if profile["replay"]:
-                best = mission_rd(scheme, profile["replay_optional"], profile["replay_eff"], chapter, scheme)
+                best = mission_rd(model, scheme, profile["replay_optional"], profile["replay_efficiency"], chapter)
                 earned += profile["replay"] * max(0.0, best - first)
-        rows.append((chapter, earned, available_cost, min(1.0, earned / available_cost)))
+        rows.append((chapter, earned, available, min(1.0, earned / available) if available else 1.0))
     return rows
 
 
 def main():
-    current = load_current()
-    schemes = {
-        "current (30/60/100 flat)": dict(current),
-        "B: 25/50/90, +50% cost per later chapter, rewards +25%/chapter": dict(current, costs=[25, 50, 90], cost_chapter_scale=0.5, reward_chapter_scale=0.25),
-        "C: 20/40/70 flat": dict(current, costs=[20, 40, 70]),
-    }
-    total_levels = 6 * ATTRIBUTES_PER_WEAPON * LEVELS
-    print(f"Rewards per mission: completion {current['completion']}, optional {current['optional']} x {OPTIONAL_PER_MISSION}, efficiency up to {current['efficiency_max']}")
-    print(f"Upgrade catalogue at campaign end: 6 weapons x {ATTRIBUTES_PER_WEAPON} attributes x {LEVELS} levels = {total_levels} levels\n")
-    for name, scheme in schemes.items():
-        full = sum(WEAPON_UNLOCKS[c] * weapon_cost(scheme, c) for c in range(1, 6))
-        print(f"== {name}: full catalogue {full:.0f} RD")
-        for pname, profile in PROFILES.items():
-            rows = simulate(scheme, profile)
-            cells = "  ".join(f"ch{c}: {e:5.0f} RD / {a:5.0f} ({100 * share:3.0f}%)" for c, e, a, share in rows)
-            print(f"   {pname:13s} {cells}")
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--scheme", help="only this scheme id")
+    args = parser.parse_args()
+    assumptions = json.loads(ASSUMPTIONS.read_text(encoding="utf-8"))
+    live = live_rewards()
+    model = dict(live, optional_per_mission=assumptions["optional_objectives_per_mission"],
+                 missions=assumptions["missions"], per_chapter=assumptions["missions_per_chapter"],
+                 unlocks={int(k): v for k, v in assumptions["weapon_unlocks_by_chapter"].items()},
+                 attributes=assumptions["attributes_per_weapon"])
+    weapons = sum(model["unlocks"].values())
+    levels = weapons * model["attributes"] * assumptions["levels_per_attribute"]
+    print(f"Rewards per mission: completion {live['completion']}, optional {live['optional']} x {model['optional_per_mission']}, efficiency up to {live['efficiency_max']}")
+    print(f"Upgrade catalogue at campaign end: {weapons} weapons x {model['attributes']} attributes x {assumptions['levels_per_attribute']} levels = {levels} levels")
+    print(f"Target affordability at campaign end: {assumptions['target_affordability_at_campaign_end']}\n")
+    for scheme in assumptions["schemes"]:
+        if args.scheme and scheme["id"] != args.scheme:
+            continue
+        scheme = dict(scheme)
+        scheme.setdefault("costs", live["costs"])
+        full = sum(model["unlocks"].get(c, 0) * weapon_cost(model, scheme, c) for c in model["unlocks"])
+        print(f"== {scheme['id']}: {scheme['label']} (costs {scheme['costs']}; full catalogue {full:.0f} RD)")
+        for name, profile in assumptions["profiles"].items():
+            rows = simulate(model, scheme, profile)
+            cells = "  ".join(f"ch{c}: {e:5.0f} / {a:5.0f} ({100 * share:3.0f}%)" for c, e, a, share in rows)
+            print(f"   {name:13s} {cells}")
         print()
 
 
