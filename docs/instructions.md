@@ -22,6 +22,11 @@ While editing:
 - Implement only the requested scope. Do not introduce accounts, remote services, analytics SDKs, ads SDKs, dependency frameworks, or architectural layers without a documented need and approval.
 - Follow the established architecture and naming conventions. Explain any new dependency or architectural decision in the changelog.
 - Keep gameplay rules deterministic and separable from rendering, input, audio, and platform APIs.
+- Treat the approved production target as Android + iOS, with mobile performance and battery efficiency as the primary quality goals.
+- The current renderer is Compatibility. The proposed production renderer is Godot Mobile, subject to the renderer evaluation in `plan.md`. Do not switch the production renderer until the evaluation is complete and evidence is recorded.
+- For renderer changes, preserve a reproducible Compatibility baseline and compare Mobile on representative physical Android and iOS devices. Validate actual GPU/backend support rather than assuming OS version or API level guarantees it.
+- Do not change minimum supported Android/iOS versions, renderer defaults, rendering method, or export presets without recording the compatibility evidence and obtaining owner approval.
+- Keep renderer-specific effects optional or provide a tested fallback where a feature is unsupported. Do not couple gameplay rules or physics behavior to a rendering backend.
 - Use seeded random number generation whenever reproducibility is important for puzzle generation, challenge generation, or tests.
 - Handle errors explicitly. Do not swallow exceptions or add empty catch blocks.
 - Never fabricate test output, build results, performance numbers, store status, or feature completion.
@@ -42,7 +47,7 @@ Before committing:
 - Preserve all pre-existing user changes. Do not discard, reset, stash, or overwrite them without explicit permission.
 - Keep the project buildable at all times. Prefer small, coherent, compilable increments.
 - Frequently committing changes.
-- **Push after every file change when a new file is written or approximately 50 lines of code have changed since the previous push, whichever comes first.** If any requirement dsnt require 50 lines of code, dnt block the code push.
+- **Push after every file change that leaves the solution buildable, or when approximately 50 lines of production code have changed since the previous push, whichever comes first.** Do not wait for the 50-line threshold when a completed file change leaves the project buildable. For documentation-only changes, use a focused commit and push after the requested documentation update is complete.
 - After each push, verify success using the Git command output and, where available, the remote branch status. Report the commit hash and verification result accurately.
 - Review diffs before committing. Use focused, descriptive commit messages such as `feat: add seeded puzzle generator` or `fix: prevent duplicate score submission`.
 - Do not use AI co-author trailers in commit messages.
@@ -84,7 +89,7 @@ Every meaningful change must have tests proportionate to risk. At minimum, add o
 - Daily challenge determinism and date/time boundary behavior where applicable.
 - Reproducible bug regressions.
 
-Also perform practical device/manual checks for touch input, pause/resume, audio settings, screen sizes, accessibility/contrast, and performance. Test on a physical Android device before a production release. Record actual commands, outcomes, and limitations. A skipped test must be labeled skipped with a reason, not passed.
+Also perform practical device/manual checks for touch input, pause/resume, audio settings, screen sizes, accessibility/contrast, and performance. Test on physical Android and iOS devices before a production release. For the renderer evaluation, compare Compatibility and Mobile using the same representative scenes and repeatable test conditions. Record device model, OS version, GPU, renderer/backend, frame pacing, thermal behavior, memory observations, visual differences and limitations. A skipped test must be labeled skipped with a reason, not passed.
 
 ## 7. Versioning and release management
 
@@ -92,7 +97,8 @@ Also perform practical device/manual checks for touch input, pause/resume, audio
 - Use semantic versioning for product-facing versions where suitable: `MAJOR.MINOR.PATCH`. Increment Android version code monotonically for every uploaded release.
 - Keep debug, internal testing, closed testing, and production configuration distinct.
 - Never publish directly to production without explicit release approval.
-- Before release, verify package/application ID, app name, icon, orientation, target SDK and current Google Play requirements, privacy policy and Data safety answers, content rating, ads declaration, permissions, signing, crash-free startup, save migration, and release notes.
+- Before Android release, verify package/application ID, app name, icon, orientation, target SDK and current Google Play requirements, privacy policy and Data safety answers, content rating, ads declaration, permissions, signing, crash-free startup, save migration, and release notes.
+- Before iOS release, verify the exported Xcode project, supported iOS deployment target, Metal renderer/backend, bundle identifier, signing team, provisioning, entitlements, privacy declarations, App Store requirements and TestFlight upgrade behavior. Final iOS builds/signing/submission require macOS with Xcode; do not claim iOS release validation from a Windows-only export.
 - Keep signing credentials outside Git and use a secure local or CI secret store. Never send signing secrets to an AI agent.
 - Build and test a release candidate, install it on a clean device/profile, verify upgrade behavior from the previous version, and retain reproducible build instructions.
 - Document the exact artifact filename, version name, version code, commit hash, test evidence, and release approval. Never claim a Play listing or release exists before it does.
