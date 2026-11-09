@@ -185,6 +185,21 @@ Standard component 200-1,500 tris; hero and critical assets <= 3,000; debris set
 - `generated_assets/tools/godot/run_import_check.sh`: copies the repo to a temp dir, runs Godot 4.7.2 `--headless --import`, then loads every manifest glb, png, ogg and font and reports failures.
 - `generated_assets/tools/godot/render_previews.sh`: renders kits under the MissionView camera and light to PNG (Xvfb, software OpenGL) into `generated_assets/docs/previews/`.
 
+## 19. Ids the coverage matrix looks for
+
+`generated_assets/tools/build_coverage_matrix.py` resolves each level's needs against manifest ids with these patterns (chapter code `CH`, shared `SHR`). Use them so your work is counted:
+
+- Components: `category: destructibles`, `chapter`, `component_kind` from section 5 (glb). Debris: id contains `-DEB-`, same `component_kind`.
+- Materials: `<CH|SHR>-MAT-<MATERIAL_ID>-*`; damage overlays `SHR-DMG-<MATERIAL_ID>-LIGHT` and `-HEAVY`.
+- Environment: `<CH>-ENV-*FLOOR*`, `<CH>-ENV-*WALL*` or `*BACK*`, other `<CH>-ENV-*` structures, statics `<CH>-ENV-*(STATIC|LEDGE|PLINTH|BARRIER|PLATFORM)*`. Far layers `<CH>-BG-*` (four per chapter rotate by band).
+- Band landmarks (one per five levels): Helix `RELAY_ARRAY`, `LOGISTICS_CRANE`, `COOLING_TOWER`, `AURA_CORE_CHAMBER`; VITA `CLEANROOM_AIRLOCK`, `BIOREACTOR_BANK`, `ARCHIVE_VAULT`, `GROWTH_CHAMBER`; Nova Grid `INTAKE_TURBINE`, `COOLING_TOWER`, `TRANSFORMER_YARD`, `REACTOR_RING`; Civitas `SENSOR_TOWER`, `SCREEN_WALL`, `PREDICTION_ROOM`, `RELAY_SPIRE`; Meridian `HYBRID_STACK`, `FOUNDATION_PILLARS`, `TEMPORAL_ANCHOR`, `CONVERGENCE_CHAMBER`, as `<CH>-PRP-<KEY>-A` (or `-ENV-`). Other `<CH>-PRP-*` ids form the dressing pool.
+- VFX keywords in `<CH|SHR|OPR>-VFX-*` ids: `MUZZLE` or `KINETIC`, `IMPACT` or `SPARK`, `BLAST`/`EXPLOSION`/`BREACH`, `SMOKE`, `GLASS`/`SHARD`, `ARC`/`ELECTRIC`, `ENERGY`/`DISCHARGE`/`PLASMA`, `DUST`/`CONCRETE`, `DEBRIS`/`CHIP`/`FRAGMENT`, `CORE`/`CRITICAL`, and `THRESHOLD`/`TOPPLE` for the topple line marker.
+- Music: `<CH>-MUS-GAMEPLAY-*`, `<CH>-MUS-COMBAT-*`, `<CH>-MUS-BOSS-*`, `<CH|GAM>-MUS-TRANSITION-*`, `GAM-MUS-MENU-*`, `GAM-MUS-ENDING-*`, stingers with `VICTORY` and `DEFEAT` in `-MUS-` or `-SFX-` ids. Ambience `<CH>-AMB-<BAND>-*` with band keys Helix `SERVER_HALL, LOGISTICS, COOLING, CORE`; VITA `CLEANROOM, BIOREACTOR, ARCHIVE, GROWTH`; Nova Grid `INTAKE, COOLING, TRANSFORMER, REACTOR`; Civitas `STREET, PLAZA, CONTROL, SPIRE`; Meridian `EXCAVATION, CAVERN, ANCHOR, CONVERGENCE`.
+- SFX keywords in `-SFX-` ids: `KINETIC`, `BREACH`/`EXPLOSION`/`BLAST`, `METAL`, `GLASS`, `CONCRETE`/`STONE`/`RUBBLE`, `ELECTRIC`/`ARC`/`MACHINE`/`SERVO`/`HUM`, `UI`/`CLICK`/`CONFIRM`, `ALARM`.
+- Cinematics: `GAM-CIN-OPENING-*`, `<CH>-CIN-INTRO-*`, `<CH>-CIN-OUTRO-*`, `GAM-CIN-FINALE-*`.
+- Game-wide: `OPR-CHR-OPERATIVE-*`, `OPR-ANM-OPERATIVE-*`, `OPR-WPN-KINETIC_ACCELERATOR-*`, `OPR-WPN-BREACH_CHARGE-*`, `OPR-PRJ-KINETIC_*`, `OPR-PRJ-BREACH_*`, `*-UI-*HUD*`, `*-ICN-*` for weapons and objectives, `*-UI-*MENU*`, `*-UI-*RESULT*`, `*-UI-*(PROGRESS|CHAPTER|UPGRADE)*`, `GAM-LOGO-*`, app icon ids containing `APP_ICON`, splash ids containing `SPLASH`, fonts `*-FNT-*`.
+
 ## Change log
 
 - v1 (2026-11-09): first version.
+- v1.1 (2026-11-10): section 19, ids the coverage matrix resolves. No breaking change.
