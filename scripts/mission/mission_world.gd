@@ -19,21 +19,33 @@ const GROUND_MARGIN := 800.0
 ## A blast only knocks a frozen piece loose if it would move it at least this fast (px/s).
 const MIN_PUSH_SPEED := 60.0
 const SETTLE_MIN_TIME := 0.3
+## Blast occlusion prototype (off by default; under evaluation, see docs/project-audit.md).
+## A blocker passes (BASE - its blast resistance) of the blast, never less than MIN; statics pass MIN.
+const OCCLUSION_BASE_TRANSMISSION := 0.5
+const OCCLUSION_MIN_TRANSMISSION := 0.05
+const OCCLUSION_MAX_BLOCKERS := 4
 
 var engine: MissionEngine
 var definition: MissionDefinition
 var bodies := {}
 var projectiles: Array[WeaponProjectile] = []
 var monitor := SimulationMonitor.new()
+## When true, intervening components/statics attenuate blast damage and knockback.
+var blast_occlusion := false
+## Prototype (off by default): a blast must move a piece *and everything resting on it* at
+## MIN_PUSH_SPEED to knock it loose, so loaded structures are harder to dislodge.
+var load_aware_push := false
+var materials: MaterialCatalog
 var _settled := true
 var _kill_bounds := Rect2()
 ## Last position of destroyed components, for their secondary blasts.
 var _secondary_origin := {}
 
 
-func setup(p_definition: MissionDefinition, p_engine: MissionEngine, materials: MaterialCatalog) -> void:
+func setup(p_definition: MissionDefinition, p_engine: MissionEngine, p_materials: MaterialCatalog) -> void:
 	definition = p_definition
 	engine = p_engine
+	materials = p_materials if p_materials != null else materials
 	visible = false
 	monitor.min_time = SETTLE_MIN_TIME
 	_kill_bounds = Rect2(-GROUND_MARGIN, -definition.ground_y * 3.0, definition.width + GROUND_MARGIN * 2.0, definition.ground_y * 3.0 + GROUND_DEPTH * 2.0)
@@ -48,7 +60,7 @@ func setup(p_definition: MissionDefinition, p_engine: MissionEngine, materials: 
 		box.rotation = s.rotation
 		add_child(box)
 	for c in definition.components:
-		var body := ComponentBody.new(c, materials.get_material(c.material))
+		var body := ComponentBody.new(c, p_materials.get_material(c.material))
 		body.impacted.connect(_on_component_impacted)
 		add_child(body)
 		bodies[c.id] = body
@@ -106,12 +118,16 @@ func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_f
 		var distance := DamageRules.distance_to_box(center, body.global_position, body.size / 2.0, body.global_rotation)
 		if distance > radius:
 			continue
-		applied += engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction), DamageRules.TYPE_BLAST, penetration)
+		var transmission := blast_transmission(center, body, penetration) if blast_occlusion else 1.0
+		applied += engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction) * transmission, DamageRules.TYPE_BLAST, penetration)
 		body = body_for(id)
 		if body == null or body.is_queued_for_deletion():
 			continue
 		var push := DamageRules.blast_impulse(impulse, center, body.global_position, radius + body.size.length() / 2.0, edge_fraction)
-		if push.length() / body.mass >= MIN_PUSH_SPEED:
+		if blast_occlusion:
+			push *= blast_transmission(center, body, penetration)
+		var pushed_mass := supported_mass(id) if load_aware_push else body.mass
+		if push.length() / pushed_mass >= MIN_PUSH_SPEED:
 			release_component(id)
 			body.push(push)
 	_settled = false
@@ -137,6 +153,57 @@ func release_component(component_id: String) -> void:
 			queue.append(dependent)
 	_settled = false
 	monitor.reset()
+
+
+## Mass of a component plus every intact component resting on it (directly or indirectly).
+func supported_mass(component_id: String) -> float:
+	var total := 0.0
+	var queue: Array[String] = [component_id]
+	var seen := {}
+	while not queue.is_empty():
+		var id: String = queue.pop_front()
+		if seen.has(id):
+			continue
+		seen[id] = true
+		var body := body_for(id)
+		if body != null:
+			total += body.mass
+		for dependent: String in engine.structure.dependents_of(id):
+			queue.append(dependent)
+	return maxf(total, 0.001)
+
+
+## Share of a blast that reaches `target` from `center`: a ray to the target's nearest point is
+## checked for intervening components (by their material's blast resistance) and statics.
+## Penetration lets part of the blocked share through.
+func blast_transmission(center: Vector2, target: ComponentBody, penetration: float = 0.0) -> float:
+	var local := (center - target.global_position).rotated(-target.global_rotation)
+	var half := target.size / 2.0
+	var nearest_local := Vector2(clampf(local.x, -half.x, half.x), clampf(local.y, -half.y, half.y))
+	if nearest_local == local:
+		return 1.0
+	var nearest := target.global_position + nearest_local.rotated(target.global_rotation)
+	var space := get_world_2d().direct_space_state
+	var exclude: Array[RID] = [target.get_rid()]
+	for p in projectiles:
+		if is_instance_valid(p):
+			exclude.append(p.get_rid())
+	var transmission := 1.0
+	for i in OCCLUSION_MAX_BLOCKERS:
+		var query := PhysicsRayQueryParameters2D.create(center, nearest, ComponentBody.STATIC_LAYER | ComponentBody.COLLISION_LAYER, exclude)
+		var hit := space.intersect_ray(query)
+		if hit.is_empty():
+			break
+		var blocker: Object = hit.collider
+		var passes := OCCLUSION_MIN_TRANSMISSION
+		if blocker is ComponentBody and materials != null:
+			var material := materials.get_material((blocker as ComponentBody).material_id)
+			if material != null:
+				passes = maxf(OCCLUSION_MIN_TRANSMISSION, OCCLUSION_BASE_TRANSMISSION - material.blast_resistance)
+		passes += (1.0 - passes) * clampf(penetration, 0.0, WeaponCatalog.MAX_PENETRATION)
+		transmission *= passes
+		exclude.append(hit.rid)
+	return transmission
 
 
 func _physics_process(delta: float) -> void:

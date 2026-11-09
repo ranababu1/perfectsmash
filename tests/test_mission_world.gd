@@ -227,3 +227,66 @@ func test_scripted_replay_is_repeatable_and_near_reference() -> void:
 	assert_eq(a.research_data, 40)
 	assert_near(float(a.structural_damage), 0.4516, 0.01, "reference structural damage")
 	assert_true(absi(int(a.mission_points) - 3752) <= 15, "within tolerance of the 3752 reference: %d" % a.mission_points)
+
+
+## --- Blast occlusion prototype (opt-in; off in the shipped game until approved) ---
+
+func test_occlusion_is_off_by_default() -> void:
+	var world := _world()
+	assert_false(world.blast_occlusion)
+	assert_false(world.load_aware_push)
+	_free()
+
+
+func test_steel_shield_attenuates_blast_and_clear_line_does_not() -> void:
+	var world := _world()
+	world.blast_occlusion = true
+	await wait_physics_frames(2)
+	var core := world.body_for("aura_core")
+	# Left of the 16 px steel core_shield: the ray to the core crosses the shield.
+	var shielded := world.blast_transmission(Vector2(822, 390), core)
+	assert_near(shielded, 0.1, 0.001, "reinforced steel passes 0.5 - 0.4 = 0.1")
+	# Directly above the core: clear line of sight.
+	assert_near(world.blast_transmission(Vector2(885, 300), core), 1.0, 0.001)
+	# Inside the target's box: always full.
+	assert_near(world.blast_transmission(core.global_position, core), 1.0, 0.001)
+	_free()
+
+
+func test_penetration_lets_blast_through_blockers() -> void:
+	var world := _world()
+	world.blast_occlusion = true
+	await wait_physics_frames(2)
+	var core := world.body_for("aura_core")
+	assert_near(world.blast_transmission(Vector2(822, 390), core, 0.5), 0.1 + 0.9 * 0.5, 0.001)
+	_free()
+
+
+func test_blockers_compound() -> void:
+	var world := _world()
+	world.blast_occlusion = true
+	await wait_physics_frames(2)
+	# Right of the blast wall, aiming at rack_2 through rack_1 (electronics pass 0.5).
+	var through_one := world.blast_transmission(Vector2(622, 560), world.body_for("rack_2"))
+	assert_near(through_one, 0.5, 0.001)
+	# From left of the blast wall: steel wall (0.1) then rack_1 (0.5).
+	var through_two := world.blast_transmission(Vector2(560, 560), world.body_for("rack_2"))
+	assert_near(through_two, 0.05, 0.001)
+	_free()
+
+
+func test_occlusion_reduces_blast_damage_with_falloff() -> void:
+	var off := _world()
+	off.blast(Vector2(822, 390), 160.0, 140.0, 900.0, 0.25)
+	var core_off: float = off.engine.components.aura_core.health
+	_free()
+	var on := _world()
+	on.blast_occlusion = true
+	await wait_physics_frames(2)
+	on.blast(Vector2(822, 390), 160.0, 140.0, 900.0, 0.25)
+	var core_on: float = on.engine.components.aura_core.health
+	assert_true(core_on > core_off, "shielded core keeps more health (%.0f vs %.0f)" % [core_on, core_off])
+	var max_health: float = on.engine.components.aura_core.max_health
+	var expected_loss := DamageRules.blast_damage(160.0, 33.0, 140.0, 0.25) * 0.1
+	assert_near(max_health - core_on, expected_loss if expected_loss >= 4.0 else 0.0, 3.0, "falloff x transmission")
+	_free()
