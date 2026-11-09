@@ -107,7 +107,11 @@ def produce_music(cue, song, intro=None, quality=6):
     pdir = os.path.join(REPO, 'generated_assets/audio/previews/music')
     os.makedirs(pdir, exist_ok=True)
     title = f"{cid}  {info['seconds']} s  {info['lufs_i']} LUFS  {info['true_peak_dbtp']} dBTP" + (f"  loop {info['loop_start_samples']}-{info['loop_end_samples']} @44.1k" if song.loop else '')
-    spectrogram_png(dec48, os.path.join(pdir, os.path.basename(rel).replace('.ogg', '.png')), title)
+    png = os.path.join(pdir, os.path.basename(rel).replace('.ogg', '.png'))
+    spectrogram_png(dec48, png, title)
+    from PIL import Image
+    Image.open(png).convert('RGB').save(png.replace('.png', '.webp'), 'WEBP', quality=82, method=6)
+    os.remove(png)
     rec = dict(cue)
     rec.update(info)
     rec.update(extra)

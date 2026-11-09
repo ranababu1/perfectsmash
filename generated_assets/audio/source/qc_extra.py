@@ -28,6 +28,17 @@ for f in sorted(glob.glob(f'{QC}/*.json')):
     ref = np.concatenate([g[-k:], g[:k]])
     mid = g.shape[0] // 2 - k
     s = seam_metrics(bd, ref, (mid, g[mid:mid + 2 * k]), sr=GAME_SR)
+    # strict reference: encode body, body, body back to back with the same encoder settings and measure
+    # the codec error at the internal boundary (identical material, no file wrap)
+    import subprocess
+    tile = np.concatenate([g, g, g], 0)
+    sf.write('/tmp/tfj_tile.wav', np.clip(tile, -1, 1), GAME_SR, subtype='FLOAT')
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', '/tmp/tfj_tile.wav', '-c:a', 'libvorbis', '-q:a', '6', '/tmp/tfj_tile.ogg'], check=True)
+    dt, _ = sf.read('/tmp/tfj_tile.ogg', always_2d=True)
+    nb = g.shape[0]
+    err = dt[nb - k: nb + k] - ref
+    s['tile_boundary_error_db'] = round(float(20 * np.log10(np.sqrt(np.mean(err ** 2)) / (np.sqrt(np.mean(ref ** 2)) + 1e-12))), 1)
+    s['seamless'] = bool(s['wrap_hf_delta_db'] < 1.5 and s['wrap_error_db'] <= max(s['mid_error_db'], s['tile_boundary_error_db']) + 3)
     d['seam'] = s
     json.dump(d, open(f, 'w'), indent=1)
     out['seams'][d['id']] = s
@@ -44,9 +55,10 @@ for code in ['HLX', 'VTA', 'NVG', 'CVT', 'MRD']:
             continue
         B, _ = sf.read(p, always_2d=True)
         n = min(L.shape[0], B.shape[0])
-        mix = L[:n] + B[:n]
-        m48 = resample_poly(mix, 160, 147, axis=0)
-        r = {'samples_equal': bool(L.shape[0] == B.shape[0]), 'sum_true_peak_dbtp': round(true_peak_db(m48), 2), 'sum_lufs': round(lufs(m48), 2)}
+        r = {'samples_equal': bool(L.shape[0] == B.shape[0])}
+        for duck in (0, 3, 4):
+            m48 = resample_poly(L[:n] + B[:n] * 10 ** (-duck / 20), 160, 147, axis=0)
+            r[f'bed_minus_{duck}dB'] = {'sum_true_peak_dbtp': round(true_peak_db(m48), 2), 'sum_lufs': round(lufs(m48), 2)}
         out['stems'][f'{code}-MUS-CRITICAL_LAYER-01 + {code}-MUS-{other.upper()}'] = r
         print('stem', code, other, r, flush=True)
 json.dump(out, open('/workspace/tfj-scratch/qc_extra.json', 'w'), indent=1)
