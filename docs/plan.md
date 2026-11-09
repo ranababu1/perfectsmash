@@ -3,12 +3,16 @@
 **Document status:** Owner-approved revision 2 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
 **Working product name:** Perfect Smash (existing store/app identity; rename is a separate pending owner decision)  
 **Product type:** Story-driven 2D physics destruction puzzle  
-**Initial platform:** Android  
-**Engine:** Godot 4.x + GDScript + built-in 2D physics  
+**Target platforms:** Android + iOS  
+**Engine:** Godot 4.7.2 + GDScript + built-in 2D physics  
+**Proposed production renderer:** Godot Mobile (pending Compatibility-vs-Mobile evaluation)  
+**Graphics backends:** Vulkan on supported Android devices; Metal on supported Apple devices  
+**Primary quality priority:** Mobile performance, frame pacing and battery efficiency  
 **Initial content target:** 100 levels across five chapters
 
 ## Revision history
 
+- **Rev 3 (2026-11-09, owner-approved):** Expanded target platforms from Android to Android + iOS; confirmed mobile performance and battery efficiency as the primary quality priorities; selected Godot 4.7.2 as the engine; and designated the Godot Mobile renderer as the proposed production renderer, subject to a documented Compatibility-vs-Mobile evaluation on representative physical Android and iOS devices. Vulkan is the intended Android backend and Metal the intended Apple backend where supported. Added renderer validation, device compatibility, and iOS/Xcode release requirements. No renderer switch or minimum OS/device support change is authorized until evaluation evidence is reviewed.
 - **Rev 2 (2026-11-09, owner-approved):** Reframed the game as a time-travel science-fiction destruction puzzle. Added a skippable opening cinematic, narrated chapter introductions and endings, a five-chapter/100-level narrative plan, a cliffhanger at level 100, a reusable cinematic/content pipeline, and a visual/audio production direction. Core physics puzzle gameplay remains the foundation. Added companion documents: `docs/narrative-bible.md` and `docs/visual-audio-production-guide.md`.
 - **Rev 1 (2026-11-01, owner-approved):** Product renamed from "Smash Theory" to "Perfect Smash". No other content changed in that revision.
 - The original baseline text is preserved in Git history (commit `e26dd91`).
@@ -176,6 +180,46 @@ A cinematic sequence contains:
 
 The coding agent must inspect the actual Godot project before choosing final resource paths or script names. Do not implement this conceptual schema blindly.
 
+
+### Renderer and mobile platform architecture
+
+**Owner-approved targets and priorities (2026-11-09)**
+- Platforms: Android + iOS.
+- Primary quality priority: mobile performance, stable frame pacing, thermal behavior and battery efficiency.
+- Engine: Godot 4.7.2, GDScript and built-in 2D physics.
+- Proposed production renderer: Godot Mobile.
+- Intended graphics backend: Vulkan on supported Android devices; Metal on supported Apple devices.
+- Existing project renderer: Compatibility. It remains the known-good baseline until the evaluation below is completed.
+
+**Renderer decision gate (must happen before bulk level production)**
+1. Preserve the existing Compatibility configuration and establish a reproducible baseline.
+2. Create an isolated Mobile-renderer test configuration or test branch without overwriting user work.
+3. Test representative gameplay scenes: ordinary level, the most demanding destruction/collision level, UI/menu, chapter background/parallax, particles/shaders and a cinematic sequence.
+4. Run the same test scenarios on representative physical Android and iOS devices. Record exact device, OS, GPU, Godot version, renderer and backend.
+5. Compare frame pacing (including frame-time spikes), sustained performance, thermal behavior, memory use, battery observations, visual output, shader/material compatibility and startup/loading.
+6. Verify actual Vulkan/Metal capability on each test device. Do not infer Vulkan support from Android API level or Metal feature support from device age alone.
+7. Document failures, fallbacks and device exclusions. Recommend Mobile as production only if the results meet the mobile quality goals without unacceptable compatibility regressions.
+8. Do not change minimum supported Android/iOS versions, production renderer settings or export presets until the owner reviews the evidence and approves the change.
+
+**Rendering principles**
+- Prefer baked/static artwork, restrained 2D lighting, layered backgrounds and efficient sprite effects over expensive real-time full-screen effects.
+- Use conservative particle counts, overdraw and transparent full-screen layers.
+- Keep shaders simple and provide a tested fallback for optional visual effects where necessary.
+- Rendering backend changes must not alter physics, collision tuning, level outcomes, scoring or save data.
+- Compatibility may remain a fallback build/configuration if the device matrix demonstrates a real need and the maintenance cost is acceptable.
+
+**Initial performance goals (targets, not measured claims)**
+- Target 60 FPS with consistent frame pacing on the agreed device matrix; do not treat this as a guarantee for every device.
+- Keep the 16.67 ms frame budget as the 60 FPS reference.
+- Avoid sustained thermal throttling during representative play sessions.
+- Measure memory, loading and battery behavior on physical devices; do not infer them from editor or emulator results alone.
+
+**Platform and release constraints**
+- Android builds must validate actual GPU/backend compatibility, touch behavior, lifecycle and thermal performance.
+- iOS rendering uses Metal where supported. Godot iOS export must be opened, built and signed with Xcode on macOS.
+- Windows development can prepare the project and export an iOS project, but cannot replace final Xcode build, signing, TestFlight and App Store validation.
+- Android and iOS should share gameplay/content code. Platform-specific export, signing, permissions and backend settings remain separate and documented.
+
 ## 7. UI/UX and visual direction
 
 ### Gameplay
@@ -242,7 +286,15 @@ Do not treat a cinematic skip as a negative engagement event by itself. Track it
 ### M0-M4: Existing core
 Preserve the existing physics, rules, save and UI acceptance criteria. Re-verify before adding content.
 
-### M5: Narrative and visual vertical slice
+### M5: Renderer evaluation and mobile platform foundation
+- Preserve and benchmark the existing Compatibility renderer.
+- Create and benchmark an isolated Mobile-renderer configuration.
+- Validate Vulkan on representative Android hardware and Metal on representative iOS hardware.
+- Compare frame pacing, sustained performance, thermal behavior, memory, battery observations and visual compatibility.
+- Document device matrix, results, limitations and recommendation; obtain owner approval before changing production renderer or minimum OS/device support.
+- Verify the Godot-to-Xcode iOS export workflow on macOS if available; otherwise record it as pending and do not claim iOS build validation.
+
+### M6: Narrative and visual vertical slice
 - Approve final game name separately.
 - Lock one visual style reference and temporal-charge design.
 - Produce and review opening cinematic frames.
@@ -250,21 +302,21 @@ Preserve the existing physics, rules, save and UI acceptance criteria. Re-verify
 - Reskin one existing level in each of the five chapter environments before bulk production.
 - Validate gameplay readability on a physical Android device.
 
-### M6: 100-level content build
+### M7: 100-level content build
 - Author 100 levels in five 20-level chapters.
 - Reuse current 20 level definitions where suitable; retain stable IDs or implement an explicit, tested migration if IDs change.
 - Verify every new or modified level with solver tooling and human play-testing.
 - Add chapter intros/outros and level-100 ending.
 - Verify asset sizes, loading, memory and Android export.
 
-### M7: Audio and cinematic integration
+### M8: Audio and cinematic integration
 - Record/generate final narration.
 - Integrate the approved continuous gameplay music bed and cinematic cues.
 - Confirm all licenses and credits.
 - Test mute, volume, pause, backgrounding, skip and replay.
 
-### M8: Closed testing and release candidate
-- Test all 100 levels end-to-end on representative physical Android devices.
+### M9: Closed testing and release candidate
+- Test all 100 levels end-to-end on representative physical Android and iOS devices.
 - Verify clean install, upgrade path, save integrity, level unlocks and cinematic archive.
 - Check crashes/ANRs, memory, frame pacing, loading, audio loops and touch targets.
 - Prepare store assets, privacy disclosures, release notes and signing.
@@ -292,7 +344,7 @@ Assumptions:
 - **Future updates:** Add 25-50 level story arcs as production capacity allows. Each arc must have its own local objective, chapter reveal and forward hook.
 - Do not make the story dependent on an exact number of future updates. Keep the mystery expandable and avoid revealing the ultimate cause until the narrative has earned it.
 
-## 14. Google Play release strategy
+## 14. Android / Google Play release strategy
 
 - Check current Play Console target API and policy requirements at release time.
 - Use internal testing, then closed testing before production.
@@ -302,4 +354,18 @@ Assumptions:
 - Use an Android App Bundle unless current Play guidance says otherwise.
 - Keep signing material out of Git; use Play App Signing where appropriate.
 - Roll out gradually if available and monitor crashes/ANRs, level failures, timeouts, conversion, tutorial completion and retention.
+- Obtain explicit owner approval before production release.
+
+
+## 15. iOS / App Store release strategy
+
+- Generate the iOS export from the approved Godot project and open it in Xcode on macOS.
+- Verify the selected renderer and Metal backend on representative physical iPhones/iPads in the supported device matrix.
+- Configure bundle identifier, signing team, provisioning profiles, capabilities and entitlements deliberately; keep certificates, private keys and provisioning secrets out of Git.
+- Validate app lifecycle, audio interruption, safe areas, touch targets, landscape behavior, save persistence, thermal behavior, memory and performance on physical devices.
+- Use TestFlight for internal and external beta validation before App Store submission.
+- Prepare App Store screenshots, description, age rating, privacy disclosures, support details and required metadata.
+- Verify the current App Store review requirements and privacy declarations at release time.
+- Test clean install and upgrade behavior, including persistence of existing local progress where applicable.
+- A successful Godot export is not proof of a successful Xcode build, signing, TestFlight upload or App Store approval.
 - Obtain explicit owner approval before production release.
