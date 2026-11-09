@@ -41,7 +41,7 @@ The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environ
 | 2026-11-10 | Integration pass 2 | surfaces batch 1 merged (273 entries); Godot import and load 550 / 550; contract v1.4; textured greybox and material-board previews in `docs/previews/harness_*`; coverage 1074 / 3176 requirement slots, 0 / 100 levels complete (`ecddb76`) |
 | 2026-11-10 | Integration pass 3 | audio batch 1 merged (190 entries); Godot load 740 / 740; loudness measured (ambience about -24 LUFS, SFX peaks at most -1.1 dBTP); coverage 1174 / 3176, game-wide 26 / 36, 0 / 100 levels complete (`77b86ae`) |
 | 2026-11-10 | Integration pass 4 | VFX library merged (51 entries, 11 particle presets); Godot load 802 / 802; coverage 2014 / 3176, game-wide 27 / 36, 0 / 100 levels complete (`9776f35`) |
-| 2026-11-10 | Main sync | `main` `abf69fc` merged (`9cb2efe`); contract v1.5 (`ai_core_module`, new `helix_01` sizes); coverage 1903 / 3236, 0 / 100 levels complete |
+| 2026-11-10 | Main sync | `main` `abf69fc` merged (`41eec2e`, `462f4ae`, `425dd6a`); contract v1.5 (`ai_core_module`, new `helix_01` sizes); coverage 1903 / 3236, 0 / 100 levels complete |
 
 ## Review status (2026-11-09)
 
