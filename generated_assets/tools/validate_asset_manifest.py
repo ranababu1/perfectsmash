@@ -74,6 +74,7 @@ CODE_KIND_DEPTH = {
 }
 PX_PER_METRE = 100.0
 # Tolerances for contract geometry checks (metres).
+DAMAGE_BULGE_TOL = 0.10
 SILHOUETTE_TOL = 0.011
 ORIGIN_TOL = 0.02
 TRIS_STANDARD = 1500
@@ -560,7 +561,7 @@ def check_mesh(item: dict, full: Path, where: str, problems: Problems, facts: di
     if str(asset.get("version")) != "2.0":
         problems.error(f"{where}: glTF asset.version {asset.get('version')!r}, expected 2.0")
     try:
-        info = gltf_facts(doc, ("mesh_intact", "mesh_heavy"))
+        info = gltf_facts(doc, ("mesh_intact", "mesh_light", "mesh_heavy"))
     except (KeyError, IndexError, TypeError) as exc:
         problems.error(f"{where}: malformed glTF structure: {exc}")
         return
@@ -576,6 +577,16 @@ def check_mesh(item: dict, full: Path, where: str, problems: Problems, facts: di
     for name in info["materials"]:
         if not MATERIAL_NAME_RE.match(name):
             problems.warn(f"{where}: material slot {name!r} does not follow mat_/trim_/emit_/glass_ naming (ASSET_CONTRACT 7)")
+    mats = doc.get("materials", [])
+    vc_slots = sorted({
+        mats[prim["material"]].get("name", "")
+        for mesh in doc.get("meshes", []) for prim in mesh.get("primitives", [])
+        if "COLOR_0" in prim.get("attributes", {}) and isinstance(prim.get("material"), int)
+        and prim["material"] < len(mats) and str(mats[prim["material"]].get("name", "")).startswith(("mat_", "trim_"))
+    })
+    if vc_slots:
+        problems.warn(f"{where}: COLOR_0 vertex colours on {', '.join(vc_slots)}; Godot 4.7 import does not reliably use them as albedo, "
+                      "so bake the intended colour into baseColorFactor or an albedo texture (ASSET_CONTRACT 7)")
     if item.get("tris") is not None and int(item["tris"]) != info["tris"]:
         problems.warn(f"{where}: manifest tris {item['tris']} differ from file {info['tris']}")
 
@@ -597,6 +608,12 @@ def check_mesh(item: dict, full: Path, where: str, problems: Problems, facts: di
             problems.error(f"{where}: origin not at the rectangle centre (bounds centre x={cx:.3f}, y={cy:.3f}) (ASSET_CONTRACT 4)")
         if abs(cz) > ORIGIN_TOL + 0.05:
             problems.warn(f"{where}: depth not centred on z = 0 (centre z={cz:.3f}) (ASSET_CONTRACT 3)")
+        for alt in ("mesh_light", "mesh_heavy"):
+            ab = info["named_bounds"].get(alt)
+            if ab:
+                over = max(max(lo[k] - ab["min"][k], ab["max"][k] - hi[k]) for k in range(3))
+                if over > DAMAGE_BULGE_TOL:
+                    problems.warn(f"{where}: {alt} reaches {over:.3f} m outside mesh_intact bounds (limit {DAMAGE_BULGE_TOL} m, ASSET_CONTRACT 8)")
         ref = item.get("reference_size_px")
         if isinstance(ref, (list, tuple)) and len(ref) == 2:
             w, h = ref[0] / PX_PER_METRE, ref[1] / PX_PER_METRE

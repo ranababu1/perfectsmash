@@ -7,7 +7,9 @@ extends SceneTree
 ## Outputs PNGs: mission_<chapter>.png (helix_01 layout with that chapter's kit swapped in, greybox
 ## boxes where a kind has no mesh yet), kit_<chapter>.png (every destructible mesh of the chapter in a
 ## row), states_<chapter>.png (intact / light / heavy / debris strip where overlays exist), and
-## props_<chapter>.png (environment, character and weapon meshes).
+## props_<chapter>.png (environment, character and weapon meshes), materials_<chapter>.png (chapter
+## texture sets on 1 m cubes with damage overlays). Greybox fallbacks use the chapter texture set for
+## the component's physics material, and the floor uses <CH>-MAT-FLOOR-A, when those sets exist.
 
 const MANIFEST := "res://generated_assets/asset_manifest.json"
 const MISSION := "res://data/missions/helix_01.json"
@@ -36,13 +38,18 @@ const ROLE_MAP := {
 	"meridian": {"blast_wall": "monolith_slab", "server_rack": "quantum_stabilizer", "support_column": "anchor_column", "service_deck": "convergence_deck", "core_shield": "phase_shield", "ai_core": "convergence_core", "power_cell": "temporal_cell", "relay_mast": "timeline_relay", "relay_dish": "phase_shield"},
 }
 const CHAPTERS := ["helix", "vita", "nova_grid", "civitas", "meridian"]
-const BG := {"helix": Color("15191e"), "vita": Color("161a1a"), "nova_grid": Color("18161400"), "civitas": Color("16181c"), "meridian": Color("101316")}
+const CODES := {"helix": "HLX", "vita": "VTA", "nova_grid": "NVG", "civitas": "CVT", "meridian": "MRD", "shared": "SHR"}
+const PHYSICS_MATERIALS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "energy_component"]
 
 var out_dir := "/tmp/tfj-previews"
 var only := ""
 var entries: Array = []
 var stage: Node3D
 var log_lines: Array[String] = []
+var material_cache := {}
+## When true, _new_stage adds the proposed reflection source (ASSET_CONTRACT 9): a dark procedural
+## sky used only for reflected light, background and ambient unchanged. Off = the game as it is.
+var proposed_env := false
 
 
 func _initialize() -> void:
@@ -72,6 +79,11 @@ func _run() -> void:
 		if not props.is_empty():
 			await _render_row("props_" + chapter, chapter, props)
 		await _render_states(chapter, kit)
+		await _render_materials(chapter)
+		proposed_env = true
+		await _render_materials(chapter)
+		await _render_mission(chapter, mission, "_proposed_env")
+		proposed_env = false
 	var f := FileAccess.open(out_dir.path_join("render_log.txt"), FileAccess.WRITE)
 	f.store_string("\n".join(log_lines) + "\n")
 	f.close()
@@ -97,11 +109,20 @@ func _meshes_for(chapter: String, category: String) -> Array:
 	return out
 
 
-func _kind_entry(chapter: String, kind: String) -> Variant:
+## The variant of `kind` whose reference size needs the least stretching to fit `size_px`.
+func _kind_entry(chapter: String, kind: String, size_px: Vector2 = Vector2.ZERO) -> Variant:
+	var best: Variant = null
+	var best_cost := INF
 	for e: Dictionary in entries:
 		if e.get("component_kind", "") == kind and str(e.get("chapter", "")) == chapter and e.get("category", "") == "destructibles" and String(e.get("path", "")).ends_with(".glb") and not String(e.get("id", "")).contains("-DEB-"):
-			return e
-	return null
+			var cost := 0.0
+			var ref: Variant = e.get("reference_size_px")
+			if size_px != Vector2.ZERO and ref is Array and (ref as Array).size() == 2:
+				cost = absf(log(size_px.x / float(ref[0]))) + absf(log(size_px.y / float(ref[1])))
+			if cost < best_cost:
+				best_cost = cost
+				best = e
+	return best
 
 
 func _debris_entry(chapter: String, kind: String) -> Variant:
@@ -119,6 +140,67 @@ func _overlay(material_id: String, state: String) -> Texture2D:
 	return null
 
 
+func _entry_by_id(id: String) -> Variant:
+	for e: Dictionary in entries:
+		if e.get("id", "") == id:
+			return e
+	return null
+
+
+## Chapter texture set `<CH>-MAT-<NAME>-A` (ASSET_CONTRACT 7) as the proposed StandardMaterial3D:
+## albedo sRGB, OpenGL normal, ORM packed (R occlusion, G roughness, B metallic), optional emission,
+## object-space triplanar at the tile size stated in the entry purpose ("<n> m per tile", default 1 m).
+## Returns null when the set is not in the manifest.
+func _material_set(chapter: String, name: String) -> Variant:
+	var id := "%s-MAT-%s-A" % [CODES.get(chapter, "SHR"), name.to_upper()]
+	if material_cache.has(id):
+		return material_cache[id]
+	var base: Variant = _entry_by_id(id)
+	var mat: Variant = null
+	if base != null:
+		var m := StandardMaterial3D.new()
+		m.resource_name = id
+		m.albedo_texture = load("res://" + String(base["path"]))
+		var tile := 1.0
+		var rx := RegEx.create_from_string("([0-9.]+) m per tile")
+		var hit := rx.search(String(base.get("purpose", "")))
+		if hit != null:
+			tile = maxf(0.1, hit.get_string(1).to_float())
+		m.uv1_triplanar = true
+		m.uv1_world_triplanar = false
+		m.uv1_scale = Vector3.ONE / tile
+		var nrm: Variant = _entry_by_id(id + "-NORMAL")
+		if nrm != null:
+			m.normal_enabled = true
+			m.normal_texture = load("res://" + String(nrm["path"]))
+		var orm: Variant = _entry_by_id(id + "-ORM")
+		if orm != null:
+			var t: Texture2D = load("res://" + String(orm["path"]))
+			m.ao_enabled = true
+			m.ao_texture = t
+			m.ao_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
+			m.roughness = 1.0
+			m.roughness_texture = t
+			m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_GREEN
+			m.metallic = 1.0
+			m.metallic_texture = t
+			m.metallic_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_BLUE
+		var emi: Variant = _entry_by_id(id + "-EMISSION")
+		if emi != null:
+			m.emission_enabled = true
+			m.emission_texture = load("res://" + String(emi["path"]))
+			# Godot's default emission operator is ADD (colour + texture), which turns the whole
+			# surface white with a white colour; MULTIPLY makes the map the emission mask.
+			m.emission_operator = BaseMaterial3D.EMISSION_OP_MULTIPLY
+			m.emission = Color.WHITE
+			m.emission_energy_multiplier = 1.0
+		if name == "glass_polymer":
+			m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		mat = m
+	material_cache[id] = mat
+	return mat
+
+
 # ------------------------------------------------------------------ scene building
 
 func _new_stage(chapter: String, width_m: float, focus_x: float, cam_scale: float = 1.0, seed_id: String = "") -> void:
@@ -134,6 +216,16 @@ func _new_stage(chapter: String, width_m: float, focus_x: float, cam_scale: floa
 	env.ambient_light_color = Color("8090a0")
 	env.ambient_light_energy = 0.55
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	if proposed_env:
+		var sky_mat := ProceduralSkyMaterial.new()
+		sky_mat.sky_top_color = Color("4a5866")
+		sky_mat.sky_horizon_color = Color("8090a0")
+		sky_mat.ground_horizon_color = Color("3a4048")
+		sky_mat.ground_bottom_color = Color("1b2026")
+		var sky := Sky.new()
+		sky.sky_material = sky_mat
+		env.sky = sky
+		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	var we := WorldEnvironment.new()
 	we.environment = env
 	stage.add_child(we)
@@ -144,7 +236,8 @@ func _new_stage(chapter: String, width_m: float, focus_x: float, cam_scale: floa
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0 * cam_scale
 	stage.add_child(sun)
-	_box(Vector3(width_m + 30.0, 0.4, 14.0), _flat(Color("23282e")), Vector3(width_m / 2.0, -0.2, -2.0))
+	var floor_mat: Variant = _material_set(chapter, "floor")
+	_box(Vector3(width_m + 30.0, 0.4, 14.0), floor_mat if floor_mat != null else _flat(Color("23282e")), Vector3(width_m / 2.0, -0.2, -2.0))
 	_box(Vector3(width_m + 30.0, 9.0, 0.4), _flat(Color("1b2026")), Vector3(width_m / 2.0, 4.5, -6.0))
 	if seed_id != "":
 		# Same seeded distant blocks as MissionView._build_environment.
@@ -188,7 +281,39 @@ func _instance(entry: Dictionary) -> Node3D:
 	if not (res is PackedScene):
 		log_lines.append("LOAD FAIL %s" % entry["path"])
 		return null
-	return (res as PackedScene).instantiate() as Node3D
+	var n := (res as PackedScene).instantiate() as Node3D
+	_show_damage_geometry(n, 0)
+	return n
+
+
+func _has_state_geometry(entry: Dictionary) -> bool:
+	var n := _instance(entry)
+	if n == null:
+		return false
+	var has := n.find_child("mesh_light", true, false) != null or n.find_child("mesh_heavy", true, false) != null
+	n.free()
+	return has
+
+
+## glTF carries no visibility, so every state mesh imports visible. The proposed loader hook
+## (ASSET_CONTRACT 8) shows exactly one of mesh_intact / mesh_light / mesh_heavy:
+## state 0 intact, 1 light (else intact), 2 heavy (else light, else intact).
+func _show_damage_geometry(n: Node, state: int) -> void:
+	var nodes := {}
+	for name in ["mesh_intact", "mesh_light", "mesh_heavy"]:
+		var found := n.find_child(name, true, false)
+		if found is Node3D:
+			nodes[name] = found
+	if nodes.is_empty():
+		return
+	var order: Array = [["mesh_intact"], ["mesh_light", "mesh_intact"], ["mesh_heavy", "mesh_light", "mesh_intact"]][state]
+	var pick := ""
+	for name: String in order:
+		if nodes.has(name):
+			pick = name
+			break
+	for name: String in nodes:
+		(nodes[name] as Node3D).visible = name == pick or pick == ""
 
 
 func _aabb(node: Node) -> AABB:
@@ -199,9 +324,11 @@ func _aabb(node: Node) -> AABB:
 		var item: Array = stack.pop_back()
 		var n: Node = item[0]
 		var xf: Transform3D = item[1]
+		if n is Node3D and not (n as Node3D).visible:
+			continue
 		if n is Node3D and n != node:
 			xf = xf * (n as Node3D).transform
-		if n is MeshInstance3D and (n as MeshInstance3D).mesh != null and (n as MeshInstance3D).visible:
+		if n is MeshInstance3D and (n as MeshInstance3D).mesh != null:
 			var bb: AABB = xf * (n as MeshInstance3D).mesh.get_aabb()
 			out = bb if first else out.merge(bb)
 			first = false
@@ -215,7 +342,7 @@ func _place_component(chapter: String, c: Dictionary, ground_y: float) -> void:
 	var mapped: String = (ROLE_MAP[chapter] as Dictionary).get(kind, kind)
 	var size := Vector2(float(c["w"]), float(c["h"]))
 	var at := Vector3(float(c["x"]) / PX, (ground_y - float(c["y"])) / PX, 0.0)
-	var entry: Variant = _kind_entry(chapter, mapped)
+	var entry: Variant = _kind_entry(chapter, mapped, size)
 	if entry != null:
 		var node := _instance(entry)
 		if node != null:
@@ -227,16 +354,22 @@ func _place_component(chapter: String, c: Dictionary, ground_y: float) -> void:
 			log_lines.append("%s %s -> %s (%s) scale %s" % [chapter, c["id"], mapped, (entry as Dictionary)["id"], node.scale])
 			return
 	var look: Array = KINDS.get(kind, [0.8, Color("5a6068"), null, 0.0])
-	var m := _flat(look[1])
-	if look[2] != null:
+	var m: StandardMaterial3D = _flat(look[1])
+	var set_name := str(c.get("material", ""))
+	# Code rule: the critical target keeps a white housing with red emission in every chapter,
+	# so the ai_core greybox stays flat; other kinds use the chapter texture set (ASSET_CONTRACT 7).
+	var textured: Variant = _material_set(chapter, set_name) if set_name != "" and kind != "ai_core" else null
+	if textured != null:
+		m = (textured as StandardMaterial3D).duplicate()
+	if look[2] != null and not m.emission_enabled:
 		m.emission_enabled = true
 		m.emission = look[2]
 		m.emission_energy_multiplier = look[3]
 	_box(Vector3(size.x / PX, size.y / PX, look[0]), m, at)
-	log_lines.append("%s %s -> %s greybox (no mesh yet)" % [chapter, c["id"], mapped])
+	log_lines.append("%s %s -> %s greybox%s (no mesh yet)" % [chapter, c["id"], mapped, (" textured " + (textured as Material).resource_name) if textured != null else ""])
 
 
-func _render_mission(chapter: String, mission: Dictionary) -> void:
+func _render_mission(chapter: String, mission: Dictionary, suffix: String = "") -> void:
 	var ground_y := float(mission["ground_y"])
 	var left := INF
 	var right := -INF
@@ -272,7 +405,7 @@ func _render_mission(chapter: String, mission: Dictionary) -> void:
 		operative = (load("res://scripts/mission/view/operative_rig.gd") as GDScript).new()
 	operative.position = Vector3(float(op[0]) / PX, (ground_y - float(op[1])) / PX, 0.3)
 	stage.add_child(operative)
-	await _shot("mission_" + chapter)
+	await _shot("mission_" + chapter + suffix)
 
 
 func _render_row(shot_name: String, chapter: String, list: Array) -> void:
@@ -303,16 +436,51 @@ func _render_row(shot_name: String, chapter: String, list: Array) -> void:
 	await _shot(shot_name)
 
 
+## materials_<chapter>.png: one 1 m cube per chapter texture set (physics materials, then floor),
+## each with its light and heavy damage overlay beside it when the shared overlays exist.
+func _render_materials(chapter: String) -> void:
+	var names: Array = PHYSICS_MATERIALS + ["floor"]
+	var cells := []
+	for name: String in names:
+		var m: Variant = _material_set(chapter, name)
+		if m == null:
+			continue
+		cells.append([m, null])
+		if name != "floor":
+			for state in ["light", "heavy"]:
+				var ov := _overlay(name, state)
+				if ov != null:
+					cells.append([m, ov])
+	if cells.is_empty():
+		return
+	var gap := 0.25
+	var width := cells.size() * (1.0 + gap)
+	await _new_stage(chapter, width, width / 2.0, maxf(1.0, width * 1.12 / 13.9))
+	var x := 0.5
+	for cell: Array in cells:
+		var mat := (cell[0] as StandardMaterial3D).duplicate() as StandardMaterial3D
+		if cell[1] != null:
+			var pass_mat := StandardMaterial3D.new()
+			pass_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			pass_mat.albedo_texture = cell[1]
+			pass_mat.uv1_triplanar = true
+			pass_mat.uv1_world_triplanar = false
+			pass_mat.roughness = 0.9
+			mat.next_pass = pass_mat
+		_box(Vector3(1.0, 1.0, 1.0), mat, Vector3(x, 0.5, 0.0))
+		x += 1.0 + gap
+	log_lines.append("%s materials: %d cells%s" % [chapter, cells.size(), " (proposed env)" if proposed_env else ""])
+	await _shot("materials_" + chapter + ("_proposed_env" if proposed_env else ""))
+
+
 func _render_states(chapter: String, kit: Array) -> void:
 	var rows := []
 	for e: Dictionary in kit:
 		var mat := str(e.get("material", ""))
-		if mat == "":
-			continue
-		var light := _overlay(mat, "light")
-		var heavy := _overlay(mat, "heavy")
+		var light: Variant = _overlay(mat, "light") if mat != "" else null
+		var heavy: Variant = _overlay(mat, "heavy") if mat != "" else null
 		var deb: Variant = _debris_entry(chapter, str(e.get("component_kind", "")))
-		if light == null and heavy == null and deb == null:
+		if light == null and heavy == null and deb == null and not _has_state_geometry(e):
 			continue
 		rows.append([e, light, heavy, deb])
 		if rows.size() >= 3:
@@ -331,7 +499,8 @@ func _render_states(chapter: String, kit: Array) -> void:
 			else:
 				n = _instance(e)
 				if n != null and state > 0:
-					_apply_state(n, r[state] as Texture2D, state == 2)
+					_show_damage_geometry(n, state)
+					_apply_state(n, r[state] as Texture2D)
 			if n == null:
 				continue
 			var bb := _aabb(n)
@@ -350,18 +519,13 @@ func _render_states(chapter: String, kit: Array) -> void:
 
 
 ## The proposed damage hook from ASSET_CONTRACT 8: overlay as next_pass with object-space triplanar,
-## and mesh_heavy shown instead of mesh_intact at the heavy state.
-func _apply_state(n: Node, overlay: Texture2D, heavy: bool) -> void:
+## and mesh_light / mesh_heavy geometry swapped in by _show_damage_geometry.
+func _apply_state(n: Node, overlay: Texture2D) -> void:
 	var stack: Array[Node] = [n]
 	while not stack.is_empty():
 		var cur: Node = stack.pop_back()
 		for c in cur.get_children():
 			stack.append(c)
-		if heavy and cur is Node3D:
-			if cur.name == "mesh_heavy":
-				(cur as Node3D).visible = true
-			elif cur.name == "mesh_intact" and n.find_child("mesh_heavy", true, false) != null:
-				(cur as Node3D).visible = false
 		if cur is MeshInstance3D and overlay != null:
 			var mi := cur as MeshInstance3D
 			for s in mi.mesh.get_surface_count():

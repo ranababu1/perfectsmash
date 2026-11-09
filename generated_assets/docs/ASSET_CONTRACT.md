@@ -1,6 +1,6 @@
 # Temporal: First Jump - Asset contract (v1)
 
-**Status:** v1, published 2026-11-09 by the integration stream. Binding for every production stream (3d-kits, surfaces, ui-vfx, audio) and the proposed integration contract for the coding agent. Later versions refine it; breaking changes are listed in the change log at the end.
+**Status:** v1.4 (first published 2026-11-09, revised 2026-11-10) by the integration stream. Binding for every production stream (3d-kits, surfaces, ui-vfx, audio) and the proposed integration contract for the coding agent. Later versions refine it; breaking changes are listed in the change log at the end.
 **Derived from code on `main` merged into `assets` at `84a34fd`:** `scripts/mission/view/view_mapping.gd`, `mission_view.gd`, `operative_rig.gd`, `scripts/core/damageable_component.gd`, `material_catalog.gd`, `weapon_catalog.gd`, `scripts/services/music_director.gd`, `audio_service.gd`, `data/materials.json`, `data/weapons.json`, `data/missions/helix_01.json`, `data/chapters.json`, `project.godot`.
 **Engine:** Godot 4.7.2 stable, GL Compatibility renderer on desktop and mobile, ETC2/ASTC VRAM compression enabled (`textures/vram_compression/import_etc2_astc=true`).
 
@@ -77,7 +77,7 @@ Kinds are the `kind` strings in mission JSON. Helix kinds exist in code today. C
 
 **File name:** the id in lower case with hyphens turned into underscores, plus a role suffix where a set has several files: `hlx_cmp_server_rack_a.glb`, `hlx_mat_electronic_module_a_albedo.png`, `_normal.png`, `_orm.png`, `_emission.png`.
 **Folders:** `generated_assets/<category>/<chapter folder>/`, chapter folders `helix`, `vita`, `nova_grid`, `civitas`, `meridian`, `shared` (same keys as `data/chapters.json` themes and `ChapterTheme`). Concepts stay in `<category>/concepts/`, previews in `<category>/previews/`.
-**Inside glb files:** root node named after the file stem; mesh nodes `mesh_intact` (required), optional `mesh_heavy`; marker empties `fx_spark_01..`, `fx_smoke_01..`, `fx_glow_01..`, `muzzle`, `socket_<name>`; no spaces or dots in node or material names.
+**Inside glb files:** root node named after the file stem; mesh nodes `mesh_intact` (required), optional `mesh_light` and `mesh_heavy` (section 8); marker empties `fx_spark_01..`, `fx_smoke_01..`, `fx_glow_01..`, `muzzle`, `socket_<name>`; no spaces or dots in node or material names.
 
 ## 7. Materials and data/materials.json
 
@@ -88,6 +88,9 @@ Physics materials (code, `data/materials.json`): `lightweight_alloy`, `reinforce
 - **Texel density:** the game camera shows about 94 px per metre at 720p and about 180 px per metre on a 1440p-tall phone screen. Target 256-512 px/m on gameplay pieces (512 px/m for the AI core and other critical assets); never above 1024 px/m.
 - **Texture sizes:** 512 x 512 standard, 1024 x 1024 hero and tileable material sets, 2048 x 1024 maximum for far background cards. Powers of two everywhere except UI.
 - **Embedded or shared textures:** kit glb files may embed their textures (PNG or JPEG inside the glb, self-contained import) or carry only material slots that the coding agent binds to the shared material sets by name. Record which in the manifest `notes`. Keep one glb under 3 MB (hero under 6 MB).
+- **Colour lives in the material, not in vertex colours.** Godot 4.7.2 import did not use `COLOR_0` as albedo on the main `mat_` slot of the early Helix kits (checked: `vertex_color_use_as_albedo` false, so the dark vertex colour was ignored and the light `baseColorFactor` showed, which reads almost white under the game light). Put the intended colour in `baseColorFactor` or an albedo texture. Leave `COLOR_0` out, or white, on `mat_` and `trim_` slots. The validator warns on `COLOR_0` there.
+- **Emission maps are masks.** Godot's default emission operator adds the emission colour to the map, so a white emission colour plus a map turns the whole surface white. The loader sets `emission_operator = MULTIPLY` with the emission colour white, or the colour of the light, so `_emission.png` decides where light comes from. Keep emission maps black where nothing glows.
+- **Metals and the current environment.** MissionView has no sky and no reflection probe, so the only thing a metal reflects is the background colour `#15191e`. Fully metallic sets (ORM blue near 255) therefore render close to black apart from the sun highlight. Section 9 proposes a reflection source for the coding agent. Until it exists, judge metals in both harness renders (`materials_<ch>.png` as the game is today, `materials_<ch>_proposed_env.png` with the proposed source) and keep gameplay pieces readable in the first.
 - **Chapter palettes** (gameplay pieces; backgrounds darker and lower contrast): Helix cold steel and graphite, cyan `#2f8fa3` to `#5fd4e8` compute light, orange only for warnings and danger. VITA sterile white and pale grey, glass, restrained green `#7fd8a0`. Nova Grid graphite, amber heat `#ffae42`, electric blue `#4aa8ff`. Civitas desaturated concrete and blue-grey, cold blue, red security `#ff3b4e` used sparingly. Meridian graphite and polished dark stone, violet `#8f7cff`, cyan and white, restrained. Critical assets keep the code's rule: white housing with red `#ff3b4e` emission reads as "the target" in every chapter.
 
 ## 8. Damage states
@@ -99,10 +102,12 @@ Code states (`DamageableComponent.State`): `INTACT` (>= 75% health), `DAMAGED` (
 | Contract state | Code state | Art delivered | How it is shown (proposed hook) |
 |---|---|---|---|
 | `intact` | INTACT | Kit glb, `mesh_intact` | Default |
-| `light` | DAMAGED | Tileable RGBA overlay per material: `SHR-DMG-<MATERIAL_ID>-LIGHT` (scuffs, dents, hairline cracks, chipped paint) | `material.next_pass` = transparent StandardMaterial3D with the overlay as albedo, object-space triplanar (`uv1_triplanar = true`, `uv1_world_triplanar = false`, 1 tile per metre); main albedo darkened by about 15% (code already darkens 25%) |
-| `heavy` | CRITICAL | Overlay `SHR-DMG-<MATERIAL_ID>-HEAVY` (deep cracks, scorch, exposed structure); optional `mesh_heavy` node in the same glb for hero pieces (bent, broken panels), hidden by default | Swap overlay; show `mesh_heavy` and hide `mesh_intact` if present; electronic and energy materials also flicker emission |
+| `light` | DAMAGED | Tileable RGBA overlay per material: `SHR-DMG-<MATERIAL_ID>-LIGHT` (scuffs, dents, hairline cracks, chipped paint); optional `mesh_light` node | `material.next_pass` = transparent StandardMaterial3D with the overlay as albedo, object-space triplanar (`uv1_triplanar = true`, `uv1_world_triplanar = false`, 1 tile per metre); main albedo darkened by about 15% (code already darkens 25%) |
+| `heavy` | CRITICAL | Overlay `SHR-DMG-<MATERIAL_ID>-HEAVY` (deep cracks, scorch, exposed structure); optional `mesh_heavy` node in the same glb (bent, broken panels), hidden by the loader until this state | Swap overlay; show `mesh_heavy` and hide the other state nodes if present; electronic and energy materials also flicker emission |
 | `sparking` (optional) | CRITICAL, for `electronic_module` and `energy_component` | VFX sprite sheet `SHR-VFX-SPARK_BURST-*` and `SHR-VFX-ARC_*`, emitted from `fx_spark_*` empties if present, else random points on the front face | Looping CPUParticles3D at heavy state |
 | `destroyed` | DESTROYED | Debris glb `<CH>-DEB-<KIND>-A`: 4-10 closed fragments that together read as the broken component, same materials, total tris <= 1.5x the intact mesh. Plus VFX (dust, sparks, glass shards per material) | Fragments spawned as short-lived visual-only RigidBody3D or CPUParticles3D meshes at the removed body (code today spawns grey cubes) |
+
+**State geometry nodes.** A kit glb may carry `mesh_intact` (required), `mesh_light` (optional, DAMAGED) and `mesh_heavy` (optional, CRITICAL) as sibling nodes under the root. glTF has no hidden flag, so all three import visible and overlap. The loader shows exactly one at a time: INTACT shows `mesh_intact`; DAMAGED shows `mesh_light`, else `mesh_intact`; CRITICAL shows `mesh_heavy`, else `mesh_light`, else `mesh_intact`. The preview harness does the same. Bent or broken panels in `mesh_light` and `mesh_heavy` may leave the intact bounds by up to 0.10 m. Beyond that they poke into neighbouring pieces, and the validator warns.
 
 So: **one shared mesh per component with overlay and emission swaps**, optional `mesh_heavy` geometry for hero pieces, and a separate debris set for destruction. Overlays are per physics material and shared by all chapters (chapter tint via the overlay material's albedo colour), which keeps the texture count small. Tileable overlay size 512 x 512 RGBA PNG.
 
@@ -115,6 +120,7 @@ Reproduce this exactly in previews and turntables:
 - Environment: background colour `#15191e`, ambient colour `#8090a0` energy 0.55, tonemap Filmic, no sky, no glow in code yet (assets must not depend on glow; emission should read without it).
 - Sun: `DirectionalLight3D` rotation (-52, -38, 0) degrees, energy 1.15, colour `#dfe8f0`, shadows on, max distance 40 m. Light travels toward (0.38, -0.79, -0.49): it comes from the upper left and slightly in front, so front, top and left faces are lit and shadows fall right and backwards.
 - Floor (code greybox): slab top at y = 0, colour `#23282e`. Back wall at z = -6 (9 m tall), distant blocks at z = -5.
+- **Proposed reflection source (code change, for the coding agent):** keep the background colour and ambient colour as they are, and add a dark `ProceduralSkyMaterial` used only for reflections (`environment.sky` set, `reflected_light_source = REFLECTION_SOURCE_SKY`; sky top `#4a5866`, horizon `#8090a0`, ground horizon `#3a4048`, ground bottom `#1b2026`). Metals and glass then read as metal rather than black. The harness renders `*_proposed_env.png` with exactly this set-up, next to the as-is renders.
 - GL Compatibility: no SDFGI, no SSAO, no volumetric fog, no screen-space reflections. Bake ambient occlusion into textures; use emission plus a few OmniLight3D for local light.
 
 ## 10. Environment and background layers
@@ -204,5 +210,6 @@ Standard component 200-1,500 tris; hero and critical assets <= 3,000; debris set
 
 - v1 (2026-11-09): first version.
 - v1.1 (2026-11-10): section 19, ids the coverage matrix resolves. No breaking change.
-- v1.3 (2026-11-10): section 14 aligned with the ui-vfx kit: 1x and 2x deliveries, 1x textures in StyleBoxTexture, app icon under `ui/branding/app_icon/`. Coverage ignores concept, mock and editable-source entries.
 - v1.2 (2026-11-10): section 15 game hook ids (`sound_id`, `music_cue`, `ambience_cue`) aligned with the coding agent's Batch 5 audio proposal. No breaking change.
+- v1.3 (2026-11-10): section 14 aligned with the ui-vfx kit: 1x and 2x deliveries, 1x textures in StyleBoxTexture, app icon under `ui/branding/app_icon/`. Coverage ignores concept, mock and editable-source entries.
+- v1.4 (2026-11-10): from the first Godot renders of kits and texture sets. Section 7: colour in the material, not `COLOR_0`; emission maps are masks (`EMISSION_OP_MULTIPLY`); metals in the current environment. Section 8: `mesh_light` added as an optional DAMAGED node, the loader shows one state node at a time, damage geometry within 0.10 m of the intact bounds. Section 9: proposed reflection source. No breaking change for files already made, apart from moving colour out of vertex colours.
