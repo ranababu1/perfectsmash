@@ -286,7 +286,7 @@ Gate: no bulk production until Batch 3 greybox is played and visually validated.
 2. Provide Suno plan / terms evidence for `gameplay_bed.ogg` (release blocker).  
 3. Approve style-validation package before Helix art pack production.  
 4. Confirm whether Git LFS should be enabled before large texture/mesh commits.  
-5. Confirm merge path: keep production on `asset` until review, then PR into `main`.
+5. Confirm merge path: keep production on `assets` until review, then PR into `main`.
 
 ---
 
