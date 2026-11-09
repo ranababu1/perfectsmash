@@ -57,6 +57,16 @@ Integration reported that metal sets read near black in the current MissionView,
 - Shared sets are unchanged. If a reflection probe or sky is added to MissionView later, the cap can be removed by rebuilding with the tools in the masters folder.
 - Tile previews and the five chapter contact sheets were regenerated.
 
+## Revision 3 (integration pass 8)
+
+Changes, rebuilt in place with the same ids and paths unless marked new:
+
+- `VTA-MAT-FLOOR-A`: the floor washed out under the game light. The albedo is now a cool off-white grey with a mean of about 160 sRGB (it was much brighter), roughness raised to about 0.62, so it separates from the VITA walls.
+- `VTA-MAT-COMPOSITE-A` and `VTA-MAT-ELECTRONIC_MODULE-A`: albedo lowered to a mean of about 204 sRGB so the whites no longer clip (the electronic module had about 72% of pixels at 245 or above). The factor is in each manifest entry's notes.
+- New `HLX-MAT-AI_CORE_MODULE-A`, `VTA-MAT-AI_CORE_MODULE-A`, `CVT-MAT-AI_CORE_MODULE-A` (512, material `ai_core_module`, slot `mat_ai_core_module_<chapter>`): the white housing with the red #ff3b4e emission rule. Procedural panel grid over the VITA lab white source, with a chapter-specific emitter pattern so the three read apart: Helix a horizontal slot per 2x2 panel, VITA a vertical strip per 1x2 panel, Civitas a round lens per 3x3 panel. Emission is a red mask; metallic 0, roughness about 0.33.
+- New `SHR-DMG-AI_CORE_MODULE-LIGHT` and `-HEAVY` damage overlays (1024, RGBA, made with the same wrap-stamp method as the other overlays): light has grime, scratches, a hairline housing crack and one burn; heavy adds cracked housing, scorch, spark burns and a soot plume. Coverage is in the manifest notes.
+- Tile previews, the Helix, VITA and Civitas contact sheets and the damage overlay sheets (now also one over VITA) were regenerated.
+
 ## Validation
 
 - `python3 generated_assets/tools/validate_asset_manifest.py` on the fragment: PASS (structure, ids, paths and deep image checks).

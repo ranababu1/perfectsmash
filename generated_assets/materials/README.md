@@ -4,7 +4,7 @@ Tileable texture sets, ORM maps and decals for the seven gameplay materials in `
 
 ## Intended contents
 
-Per material (`lightweight_alloy`, `reinforced_steel`, `composite`, `glass_polymer`, `concrete`, `electronic_module`, `energy_component`):
+Per material (`lightweight_alloy`, `reinforced_steel`, `composite`, `glass_polymer`, `concrete`, `electronic_module`, `energy_component`, and `ai_core_module` for Helix, VITA and Civitas):
 
 - Albedo (tileable, flat-lit, no baked shadows).
 - Normal.
