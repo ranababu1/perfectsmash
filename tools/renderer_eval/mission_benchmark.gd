@@ -137,12 +137,12 @@ func _drive_kinetic_collapse() -> void:
 		world.fire(plan.direction if plan.direction != Vector2.ZERO else core.global_position - world.muzzle_position())
 
 
-## Breach blasts: the rack cluster, the deck by the power cell (chain reaction), then the core.
+## Breach blasts: the rack pair beside the right column, the deck by the power cell (chain reaction), then the core.
 func _drive_breach_chain() -> void:
 	var screen := _screen()
 	var world := screen.world
 	var stats: Dictionary = screen.engine.weapons.breach_charge.stats
-	world.spawn_projectile("breach_charge", stats, Vector2(674, 480), Vector2(0, 300))
+	world.spawn_projectile("breach_charge", stats, Vector2(1055, 480), Vector2(0, 300))
 	await _wait(1.5)
 	world.spawn_projectile("breach_charge", stats, Vector2(955, 330), Vector2(0, 150))
 	await _wait(2.0)

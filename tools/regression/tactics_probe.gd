@@ -126,15 +126,15 @@ func _evaluate(variant: String) -> void:
 	print("PROBE %s two-step: %s" % [variant, " | ".join(two_step)])
 	# Placed tactics.
 	var rack := _make(variant)
-	rack.world.spawn_projectile("breach_charge", rack.engine.weapons.breach_charge.stats, Vector2(674, 480), Vector2(0, 300))
+	rack.world.spawn_projectile("breach_charge", rack.engine.weapons.breach_charge.stats, Vector2(1055, 480), Vector2(0, 300))
 	await _settle(rack, 300)
 	var cell := _make(variant)
 	cell.engine.apply_damage("power_cell", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	await _settle(cell, 300)
 	if variant == "shipped":
 		print("PROBE %s kinetic first shot (first component to change state): %s" % [variant, ", ".join(first_hits)])
-	print("PROBE %s placed: rack-cluster breach -> racks %s/%s, core %s | power-cell chain -> core %s" % [
-		variant, _state(rack, "rack_1"), _state(rack, "rack_2"), _state(rack, "aura_core"), _state(cell, "aura_core")])
+	print("PROBE %s placed: rack-cluster breach (racks 3-4) -> racks %s/%s, core %s | power-cell chain -> core %s" % [
+		variant, _state(rack, "rack_3"), _state(rack, "rack_4"), _state(rack, "aura_core"), _state(cell, "aura_core")])
 	_free(rack)
 	_free(cell)
 

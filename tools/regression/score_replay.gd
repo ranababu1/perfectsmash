@@ -18,8 +18,8 @@ const MAX_SETTLE_FRAMES := 600
 const SEQUENCES := {
 	# Kinetic route: two rounds break the left column, the collapse leaves the core critical, one finishing round.
 	"kinetic_collapse_finish": [["kinetic_accelerator", Vector2(826, 512), 70], ["kinetic_accelerator", Vector2(826, 512), SETTLE], ["kinetic_accelerator", "core", 0]],
-	# Expert play: one charge against the left column's face (30 degrees, 90% power).
-	"column_breach": [["breach_charge", Vector2(818, 170), 0]],
+	# Expert line: one charge against the left column (30 degrees, 90% power), one finishing round.
+	"column_breach_finish": [["breach_charge", Vector2(818, 170), SETTLE], ["kinetic_accelerator", "core", 0]],
 	# A charge lobbed over the deck: damages without clearing the mission (runs to MAX_FRAMES).
 	"breach_over_deck": [["breach_charge", Vector2(760, 120), 0]],
 }

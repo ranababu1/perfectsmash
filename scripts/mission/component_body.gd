@@ -5,7 +5,8 @@ extends RigidBody2D
 ## loses its supports, becomes unstable, or is pushed by a blast.
 ##
 ## Collision damage comes from impacts, measured as the body's sudden velocity change with the
-## expected gravity change removed, so resting contacts and free fall deal nothing.
+## expected gravity change and one step of support removed, so resting contacts and free fall
+## deal nothing.
 
 ## A hard impact on this (dynamic) body. `others` are the bodies touched in that step.
 signal impacted(body: ComponentBody, impulse: float, others: Array)
@@ -76,7 +77,10 @@ func _physics_process(delta: float) -> void:
 		_previous_velocity = Vector2.ZERO
 		return
 	var gravity_step := get_gravity() * gravity_scale * delta
-	var jolt := (linear_velocity - (_previous_velocity + gravity_step)).length()
+	# A supporting contact cancels one gravity step every frame; that is resting, not an impact.
+	# Without this allowance a heavy body at rest (blast wall: mass 9.45 x 16.3 px/s = 154)
+	# reported an "impact" every frame, which also kept the scene from ever settling.
+	var jolt := maxf(0.0, (linear_velocity - (_previous_velocity + gravity_step)).length() - gravity_step.length())
 	_previous_velocity = linear_velocity
 	var impulse := mass * jolt
 	if impulse <= DamageRules.COLLISION_DAMAGE_FLOOR:
