@@ -44,9 +44,26 @@ Review rejects included a haze slab baked into a Nova Grid mid plate, monolith s
 
 AI-generated plates: rights not verified, not commercially cleared. Procedural overlays and loops: original procedural work (AI-assisted authorship), ownership not legally settled, not marked commercially cleared. Real-ESRGAN models: BSD-3-Clause (xinntao/Real-ESRGAN).
 
-## Godot check
+## Godot check (run 2026-11-10)
 
-See the section below once renders are complete; nothing is claimed here until the command and its output are recorded.
+`tools/bg_godot.py` copies the layers into a scratch project, writes one scene spec per set (base far, mid and near; variants use the variant far over the base band mid and near), imports, then renders each set under the MissionView camera (FOV 40, offset (-2.2, 2.3, 10.5)) and sun copied from `scripts/mission/view/mission_view.gd`, with a helix_01-like greybox band in front and no back wall:
+
+```
+/opt/tfj-tools/bin/godot --headless --path /tmp/tfj-surf-godot --import
+import rc 0
+xvfb-run -a -s "-screen 0 1280x720x24" /opt/tfj-tools/bin/godot --path /tmp/tfj-surf-godot --rendering-driver opengl3 --resolution 1280x720 --script res://bg_render.gd -- --spec=/tmp/tfj-surf-godot/spec.json --out=/tmp/tfj-surf-godot/out
+BGRENDER game_cvt_1 ... BGRENDER game_vta_v2   (30 sets, no ERROR lines)
+render rc 0
+```
+
+Renders: `previews/godot_<chapter>_sets.webp` (bands 1 to 4, then V1 and V2). Composites of the full cards: `previews/contact_<chapter>_sets.webp`.
+
+What the renders show, for review:
+
+- At this camera the play band covers the lower half of the screen, so mostly the lower half of each far plate and the mid and near cards read. Skies matter less than the skyline and ground line.
+- Repeats of mid and near cards are visible on wide shots (for example the Civitas spire mid card). Alternate flips help; a `-B` card per band would remove it if needed.
+- Meridian excavation (band 1 and V1) is the brightest set and competes most with the greybox blocks. If it is too strong once real components are in, lower the card `albedo_color` to about 0.8.
+- The Meridian convergence mid and near cards were regenerated after review (the first pair read as clay renders and did not sit in the night light).
 
 
 ## Environment modules, statics, props and landmarks (3d-kits stream)

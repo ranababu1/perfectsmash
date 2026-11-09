@@ -621,7 +621,7 @@
    "mid": "CVT-BG-MID_1_STREET-A",
    "near": "CVT-BG-NEAR_1_STREET-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "62": {
    "chapter": "civitas",
@@ -631,18 +631,18 @@
    "mid": "CVT-BG-MID_1_STREET-A",
    "near": "CVT-BG-NEAR_1_STREET-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "63": {
    "chapter": "civitas",
    "band": 1,
    "zone": "street",
-   "far": "CVT-BG-FAR_1_STREET-A",
+   "far": "CVT-BG-FAR_V1_STREET_CURFEW-A",
    "mid": "CVT-BG-MID_1_STREET-A",
    "near": "CVT-BG-NEAR_1_STREET-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "alt_far": "CVT-BG-FAR_V1_STREET_CURFEW-A",
-   "ready": false
+   "variant": "V1",
+   "ready": true
   },
   "64": {
    "chapter": "civitas",
@@ -652,7 +652,7 @@
    "mid": "CVT-BG-MID_1_STREET-A",
    "near": "CVT-BG-NEAR_1_STREET-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "65": {
    "chapter": "civitas",
@@ -662,7 +662,7 @@
    "mid": "CVT-BG-MID_1_STREET-A",
    "near": "CVT-BG-NEAR_1_STREET-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "66": {
    "chapter": "civitas",
@@ -672,7 +672,7 @@
    "mid": "CVT-BG-MID_2_PLAZA-A",
    "near": "CVT-BG-NEAR_2_PLAZA-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "67": {
    "chapter": "civitas",
@@ -682,7 +682,7 @@
    "mid": "CVT-BG-MID_2_PLAZA-A",
    "near": "CVT-BG-NEAR_2_PLAZA-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "68": {
    "chapter": "civitas",
@@ -693,7 +693,7 @@
    "near": "CVT-BG-NEAR_2_PLAZA-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
    "alt_far": "CVT-BG-FAR_V1_STREET_CURFEW-A",
-   "ready": false
+   "ready": true
   },
   "69": {
    "chapter": "civitas",
@@ -703,7 +703,7 @@
    "mid": "CVT-BG-MID_2_PLAZA-A",
    "near": "CVT-BG-NEAR_2_PLAZA-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "70": {
    "chapter": "civitas",
@@ -713,7 +713,7 @@
    "mid": "CVT-BG-MID_2_PLAZA-A",
    "near": "CVT-BG-NEAR_2_PLAZA-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "71": {
    "chapter": "civitas",
@@ -723,7 +723,7 @@
    "mid": "CVT-BG-MID_3_CONTROL-A",
    "near": "CVT-BG-NEAR_3_CONTROL-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "72": {
    "chapter": "civitas",
@@ -733,7 +733,7 @@
    "mid": "CVT-BG-MID_3_CONTROL-A",
    "near": "CVT-BG-NEAR_3_CONTROL-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "73": {
    "chapter": "civitas",
@@ -743,7 +743,7 @@
    "mid": "CVT-BG-MID_3_CONTROL-A",
    "near": "CVT-BG-NEAR_3_CONTROL-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "74": {
    "chapter": "civitas",
@@ -753,7 +753,7 @@
    "mid": "CVT-BG-MID_3_CONTROL-A",
    "near": "CVT-BG-NEAR_3_CONTROL-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "75": {
    "chapter": "civitas",
@@ -763,7 +763,7 @@
    "mid": "CVT-BG-MID_3_CONTROL-A",
    "near": "CVT-BG-NEAR_3_CONTROL-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "76": {
    "chapter": "civitas",
@@ -773,7 +773,7 @@
    "mid": "CVT-BG-MID_4_SPIRE-A",
    "near": "CVT-BG-NEAR_4_SPIRE-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "77": {
    "chapter": "civitas",
@@ -783,7 +783,7 @@
    "mid": "CVT-BG-MID_4_SPIRE-A",
    "near": "CVT-BG-NEAR_4_SPIRE-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "78": {
    "chapter": "civitas",
@@ -793,29 +793,29 @@
    "mid": "CVT-BG-MID_4_SPIRE-A",
    "near": "CVT-BG-NEAR_4_SPIRE-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "79": {
    "chapter": "civitas",
    "band": 4,
    "zone": "spire",
-   "far": "CVT-BG-FAR_4_SPIRE-A",
+   "far": "CVT-BG-FAR_V2_SPIRE_SIEGE-A",
    "mid": "CVT-BG-MID_4_SPIRE-A",
    "near": "CVT-BG-NEAR_4_SPIRE-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "alt_far": "CVT-BG-FAR_V2_SPIRE_SIEGE-A",
-   "ready": false
+   "variant": "V2",
+   "ready": true
   },
   "80": {
    "chapter": "civitas",
    "band": 4,
    "zone": "spire",
-   "far": "CVT-BG-FAR_4_SPIRE-A",
+   "far": "CVT-BG-FAR_V2_SPIRE_SIEGE-A",
    "mid": "CVT-BG-MID_4_SPIRE-A",
    "near": "CVT-BG-NEAR_4_SPIRE-A",
    "overlay": "CVT-BG-OVL_HAZE-A",
-   "alt_far": "CVT-BG-FAR_V2_SPIRE_SIEGE-A",
-   "ready": false
+   "variant": "V2",
+   "ready": true
   },
   "81": {
    "chapter": "meridian",
@@ -825,7 +825,7 @@
    "mid": "MRD-BG-MID_1_EXCAVATION-A",
    "near": "MRD-BG-NEAR_1_EXCAVATION-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "82": {
    "chapter": "meridian",
@@ -835,7 +835,7 @@
    "mid": "MRD-BG-MID_1_EXCAVATION-A",
    "near": "MRD-BG-NEAR_1_EXCAVATION-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "83": {
    "chapter": "meridian",
@@ -845,18 +845,18 @@
    "mid": "MRD-BG-MID_1_EXCAVATION-A",
    "near": "MRD-BG-NEAR_1_EXCAVATION-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "84": {
    "chapter": "meridian",
    "band": 1,
    "zone": "excavation",
-   "far": "MRD-BG-FAR_1_EXCAVATION-A",
+   "far": "MRD-BG-FAR_V1_EXCAVATION_NIGHT-A",
    "mid": "MRD-BG-MID_1_EXCAVATION-A",
    "near": "MRD-BG-NEAR_1_EXCAVATION-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "alt_far": "MRD-BG-FAR_V1_EXCAVATION_NIGHT-A",
-   "ready": false
+   "variant": "V1",
+   "ready": true
   },
   "85": {
    "chapter": "meridian",
@@ -866,7 +866,7 @@
    "mid": "MRD-BG-MID_1_EXCAVATION-A",
    "near": "MRD-BG-NEAR_1_EXCAVATION-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "86": {
    "chapter": "meridian",
@@ -876,7 +876,7 @@
    "mid": "MRD-BG-MID_2_CAVERN-A",
    "near": "MRD-BG-NEAR_2_CAVERN-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "87": {
    "chapter": "meridian",
@@ -886,7 +886,7 @@
    "mid": "MRD-BG-MID_2_CAVERN-A",
    "near": "MRD-BG-NEAR_2_CAVERN-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "88": {
    "chapter": "meridian",
@@ -897,7 +897,7 @@
    "near": "MRD-BG-NEAR_2_CAVERN-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
    "alt_far": "MRD-BG-FAR_V1_EXCAVATION_NIGHT-A",
-   "ready": false
+   "ready": true
   },
   "89": {
    "chapter": "meridian",
@@ -907,7 +907,7 @@
    "mid": "MRD-BG-MID_2_CAVERN-A",
    "near": "MRD-BG-NEAR_2_CAVERN-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "90": {
    "chapter": "meridian",
@@ -917,7 +917,7 @@
    "mid": "MRD-BG-MID_2_CAVERN-A",
    "near": "MRD-BG-NEAR_2_CAVERN-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "91": {
    "chapter": "meridian",
@@ -927,7 +927,7 @@
    "mid": "MRD-BG-MID_3_ANCHOR-A",
    "near": "MRD-BG-NEAR_3_ANCHOR-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "92": {
    "chapter": "meridian",
@@ -937,7 +937,7 @@
    "mid": "MRD-BG-MID_3_ANCHOR-A",
    "near": "MRD-BG-NEAR_3_ANCHOR-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "93": {
    "chapter": "meridian",
@@ -947,7 +947,7 @@
    "mid": "MRD-BG-MID_3_ANCHOR-A",
    "near": "MRD-BG-NEAR_3_ANCHOR-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "94": {
    "chapter": "meridian",
@@ -957,7 +957,7 @@
    "mid": "MRD-BG-MID_3_ANCHOR-A",
    "near": "MRD-BG-NEAR_3_ANCHOR-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "95": {
    "chapter": "meridian",
@@ -967,7 +967,7 @@
    "mid": "MRD-BG-MID_3_ANCHOR-A",
    "near": "MRD-BG-NEAR_3_ANCHOR-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "96": {
    "chapter": "meridian",
@@ -977,7 +977,7 @@
    "mid": "MRD-BG-MID_4_CONVERGENCE-A",
    "near": "MRD-BG-NEAR_4_CONVERGENCE-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "97": {
    "chapter": "meridian",
@@ -987,7 +987,7 @@
    "mid": "MRD-BG-MID_4_CONVERGENCE-A",
    "near": "MRD-BG-NEAR_4_CONVERGENCE-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "98": {
    "chapter": "meridian",
@@ -997,29 +997,29 @@
    "mid": "MRD-BG-MID_4_CONVERGENCE-A",
    "near": "MRD-BG-NEAR_4_CONVERGENCE-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "ready": false
+   "ready": true
   },
   "99": {
    "chapter": "meridian",
    "band": 4,
    "zone": "convergence",
-   "far": "MRD-BG-FAR_4_CONVERGENCE-A",
+   "far": "MRD-BG-FAR_V2_CONVERGENCE_COLLAPSE-A",
    "mid": "MRD-BG-MID_4_CONVERGENCE-A",
    "near": "MRD-BG-NEAR_4_CONVERGENCE-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "alt_far": "MRD-BG-FAR_V2_CONVERGENCE_COLLAPSE-A",
-   "ready": false
+   "variant": "V2",
+   "ready": true
   },
   "100": {
    "chapter": "meridian",
    "band": 4,
    "zone": "convergence",
-   "far": "MRD-BG-FAR_4_CONVERGENCE-A",
+   "far": "MRD-BG-FAR_V2_CONVERGENCE_COLLAPSE-A",
    "mid": "MRD-BG-MID_4_CONVERGENCE-A",
    "near": "MRD-BG-NEAR_4_CONVERGENCE-A",
    "overlay": "MRD-BG-OVL_HAZE-A",
-   "alt_far": "MRD-BG-FAR_V2_CONVERGENCE_COLLAPSE-A",
-   "ready": false
+   "variant": "V2",
+   "ready": true
   }
  }
 }
