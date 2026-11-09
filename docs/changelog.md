@@ -2,6 +2,13 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Batch 4: Mission Points, Research Data, upgrades, save v3
+
+- `d6e5071` `data/scoring.json` + `MissionScoring`: Mission Points and Research Data relative to each mission's recommended shots and target time; time weighted lightly with a 30% floor; accuracy from shots that dealt damage; failure keeps destruction points only. Per-mission `rewards` block; `MissionEngine.effective_shots`. New suite `test_scoring` (8).
+- `edb98bc` Save schema v3 (missions, Research Data balance/lifetime, weapon upgrades) with v1/v2 migration; anti-farming (only improvement over the mission's best Research Data is granted); upgrade costs in `weapons.json`; `UpgradeRules`. New suite `test_progression` (8).
+- `c469756` Mission results scored, stored and saved on finish; result panel shows Mission Points breakdown and Research Data; missions use purchased upgrades. +1 screen test (score, save, no farming on replay).
+- Results: headless 155 / 0 / 1 skipped; windowed 156 / 0 / 0; emulator: v1 save migrated to v3 on a real device-style install after a touch-played win.
+
 ## 2026-11-09 — Batch 3: first playable Helix prototype
 
 - `33cd669` 2D physics mission world (`ComponentBody`, `WeaponProjectile`, `MissionWorld`): frozen-until-released components, impact-jolt collision damage, direct kinetic damage, Breach detonation with area damage and knockback, secondary-blast chains, settle detection; release propagates to everything resting on a released body. Helix layout tuned from a physics probe (wall/racks moved, core shield added, recommended shots 4). New suite `test_mission_world` (7).

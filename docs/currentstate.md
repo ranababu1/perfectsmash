@@ -161,6 +161,22 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Batch 4 — mission scoring and progression (implemented 2026-11-09, `d6e5071`..`c469756`)
+
+| Part | Files | Notes |
+|---|---|---|
+| Scoring formula | `data/scoring.json`, `scripts/core/mission_scoring.gd` | **Mission Points** = completion (per mission) + 500 per critical asset destroyed + up to 1000 for structural destruction + 300 per optional objective + up to 800 shot efficiency + up to 300 time efficiency + up to 400 accuracy (shots that damaged something). Shot credit is full at or under the mission's recommended shots and reaches 0 at 2×; time credit is full at or under the target time and never drops below 30% (floor at 3×). Time is ~6% of the maximum. Failure keeps destruction/critical/accuracy points but earns no completion, efficiency or Research Data. **Research Data** = mission completion + per optional objective + up to 15 efficiency (70% shots / 30% time) |
+| Mission rewards | `data/missions/*.json` `rewards` | `completion_points`, `completion_research_data`, `optional_research_data` (defaults 1000 / 20 / 5) |
+| Accuracy | `MissionEngine.effective_shots`, `MissionWorld` | A shot counts as effective when its hit or blast applied damage |
+| Save schema v3 | `scripts/core/progress_data.gd` | Adds `missions` (completed, best points, best Research Data, best shots, best time, optional objectives done), `research` (balance, lifetime earned) and `upgrades` (weapon → attribute → level). v1 and v2 migrate in place; legacy level results, settings and story are kept. Invalid fields are dropped with warnings; balance above lifetime earnings is rejected |
+| Anti-farming | `ProgressData.record_mission` | Research Data granted = improvement over this mission's previous best Research Data; bests only improve; failed runs never replace bests or grant optional credit |
+| Upgrades | `data/weapons.json` `costs`, `scripts/core/upgrade_rules.gd` | Costs 30/60/100 Research Data per level (placeholder values); purchase/affordability rules; levels filtered against the catalog before reaching MissionEngine. No upgrade UI yet |
+| Integration | `mission_screen.gd`, `mission_hud.gd`, `main.gd` | Missions start with the player's upgrades; results are scored, recorded and saved on finish; result panel shows Mission Points (with breakdown), Research Data gained and balance |
+
+**Verification (2026-11-09, `c469756`):** headless 155 passed / 0 failed / 1 skipped; windowed 156 / 0 / 0. On the `Pixel10Pro` emulator a real **v1 save** (5 legacy level results from an earlier session) loaded without warnings and, after a mission won with one touch-aimed Breach lob, was rewritten as **v3** with the legacy results and settings intact plus `helix_01` (3746 points, 40 Research Data, balance 40).
+
+**Open points:** upgrade UI and pricing balance; Standard vs. Competitive ranking conditions are not modelled yet (leaderboards are a later phase); the one-shot Breach-lob clear scores nearly maximum points, which makes the Helix layout balance (Batch 5) more pressing.
+
 ## Batch 3 — first playable Helix prototype (implemented 2026-11-09, `33cd669`..`1109b8a`)
 
 **The app now boots straight into the Helix greybox mission (`helix_01`, Relay Node).** The legacy menu/levels are no longer shown (code kept for regression tests/reference).
