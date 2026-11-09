@@ -134,6 +134,8 @@ Reproduce this exactly in previews and turntables:
 | Mid back | -4 .. -8 | Facility walls, gantries, windows, chapter landmarks | Value range compressed, 30-50% darker than gameplay pieces |
 | Far cards | -12 .. -30 | Textured quads or cylinders (skyline, cavern, megastructure) | 2048 x 1024 WebP or PNG, unshaded or very low light response |
 
+Placement used by the surfaces stream's cards (recorded in each entry's `notes`, reproduced by the harness `*_bg<band>` renders): far card 72 x 36 m at z -30 with its horizon row at camera height (y 3.9 m), mid cards 28 x 14 m at z -20 with the bottom at y -1, near cards 16 x 8 m at z -12 with the bottom at y -0.4, all unshaded, mid and near repeated with flips. These cards replace MissionView's back wall at z -6 and the seeded blocks at z -5, which would hide them. Extend the floor, or lay a ground-mist overlay, from z -9 to -12 so no gap shows under the near cards.
+
 Background props must never cover a target or the trajectory line. Keep the band behind the critical asset quiet (no bright emission directly behind it).
 
 ## 11. Operative, weapons and animation

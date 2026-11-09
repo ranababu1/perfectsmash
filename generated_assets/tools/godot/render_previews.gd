@@ -52,6 +52,9 @@ var material_cache := {}
 ## When true, _new_stage adds the proposed reflection source (ASSET_CONTRACT 9): a dark procedural
 ## sky used only for reflected light, background and ambient unchanged. Off = the game as it is.
 var proposed_env := false
+## When > 0, _new_stage replaces MissionView's back wall and seeded blocks with that band's
+## background cards (far, mid, near) placed as the surfaces stream's manifest notes specify.
+var bg_band := 0
 
 
 func _initialize() -> void:
@@ -85,6 +88,11 @@ func _run() -> void:
 		proposed_env = true
 		await _render_materials(chapter)
 		await _render_mission(chapter, mission, "_proposed_env")
+		for band in [1, 2, 3, 4]:
+			if _has_bg_band(chapter, band):
+				bg_band = band
+				await _render_mission(chapter, mission, "_bg%d" % band)
+				bg_band = 0
 		proposed_env = false
 	var f := FileAccess.open(out_dir.path_join("render_log.txt"), FileAccess.WRITE)
 	f.store_string("\n".join(log_lines) + "\n")
@@ -243,7 +251,11 @@ func _new_stage(chapter: String, width_m: float, focus_x: float, cam_scale: floa
 	stage.add_child(sun)
 	var floor_mat: Variant = _material_set(chapter, "floor")
 	_box(Vector3(width_m + 30.0, 0.4, 14.0), floor_mat if floor_mat != null else _flat(Color("23282e")), Vector3(width_m / 2.0, -0.2, -2.0))
-	_box(Vector3(width_m + 30.0, 9.0, 0.4), _flat(Color("1b2026")), Vector3(width_m / 2.0, 4.5, -6.0))
+	if bg_band > 0:
+		_add_background_cards(chapter, focus_x)
+		seed_id = ""
+	else:
+		_box(Vector3(width_m + 30.0, 9.0, 0.4), _flat(Color("1b2026")), Vector3(width_m / 2.0, 4.5, -6.0))
 	if seed_id != "":
 		# Same seeded distant blocks as MissionView._build_environment.
 		var rng := RandomNumberGenerator.new()
@@ -259,6 +271,60 @@ func _new_stage(chapter: String, width_m: float, focus_x: float, cam_scale: floa
 	stage.add_child(cam)
 	cam.look_at(focus + Vector3(0.0, -0.4 * cam_scale, 0.0), Vector3.UP)
 	cam.current = true
+
+
+## Background entry `<CH>-BG-<LAYER>_<band>_*` (e.g. HLX-BG-FAR_1_SERVER_HALL-A), or null.
+func _bg_entry(chapter: String, layer: String, band: int) -> Variant:
+	var prefix := "%s-BG-%s_%d_" % [CODES.get(chapter, "SHR"), layer, band]
+	for e: Dictionary in entries:
+		if String(e.get("id", "")).begins_with(prefix):
+			return e
+	return null
+
+
+func _has_bg_band(chapter: String, band: int) -> bool:
+	return _bg_entry(chapter, "FAR", band) != null
+
+
+## Far card 72 x 36 m at z -30 (horizon row at camera height, y 3.9 m, at the stated fraction of the
+## card height from the top); mid cards 28 x 14 m at z -20, bottom at y -1, 3 repeats with flips;
+## near cards 16 x 8 m at z -12, bottom at y -0.4, 5 repeats with flips. All unshaded.
+func _add_background_cards(chapter: String, focus_x: float) -> void:
+	var far: Variant = _bg_entry(chapter, "FAR", bg_band)
+	if far != null:
+		var horizon := 0.55
+		var rx := RegEx.create_from_string("Horizon at ([0-9.]+) of the card height")
+		var hit := rx.search(String((far as Dictionary).get("notes", "")))
+		if hit != null:
+			horizon = hit.get_string(1).to_float()
+		var centre_y := 3.9 + (horizon - 0.5) * 36.0
+		_card(far, Vector2(72.0, 36.0), Vector3(focus_x, centre_y, -30.0), false, false)
+	for spec: Array in [["MID", Vector2(28.0, 14.0), -20.0, -1.0, 3], ["NEAR", Vector2(16.0, 8.0), -12.0, -0.4, 5]]:
+		var e: Variant = _bg_entry(chapter, spec[0], bg_band)
+		if e == null:
+			continue
+		var size: Vector2 = spec[1]
+		var count: int = spec[4]
+		for i in count:
+			var x := focus_x + (i - (count - 1) / 2.0) * size.x
+			_card(e, size, Vector3(x, float(spec[3]) + size.y / 2.0, float(spec[2])), true, i % 2 == 1)
+
+
+func _card(entry: Dictionary, size: Vector2, at: Vector3, alpha: bool, flip: bool) -> void:
+	var mi := MeshInstance3D.new()
+	var q := QuadMesh.new()
+	q.size = size
+	mi.mesh = q
+	var m := StandardMaterial3D.new()
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.albedo_texture = load("res://" + String(entry["path"]))
+	if alpha:
+		m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mi.material_override = m
+	mi.position = at
+	if flip:
+		mi.scale = Vector3(-1.0, 1.0, 1.0)
+	stage.add_child(mi)
 
 
 func _box(size: Vector3, material: Material, at: Vector3, rot_z: float = 0.0) -> MeshInstance3D:
