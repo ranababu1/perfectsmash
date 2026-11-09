@@ -150,15 +150,30 @@ func show_pause() -> void:
 	box.add_child(_action("Restart mission", restart_pressed))
 
 
-func show_result(success: bool, engine: MissionEngine) -> void:
+## `score` is a MissionScoring breakdown; `granted` the Research Data actually added this run.
+func show_result(success: bool, engine: MissionEngine, score: Dictionary = {}, granted: int = 0, balance: int = 0) -> void:
 	var title := "FACILITY NEUTRALISED" if success else "MISSION FAILED"
 	var detail := "Shots %d (recommended %d)  ·  %s (target %s)" % [
 		engine.shots_fired(), engine.definition.recommended_shots, _clock(engine.elapsed), _clock(engine.definition.target_time)]
 	var box := _open_panel(title, detail)
 	for o in engine.objectives.objectives:
 		var ok := o.status == MissionObjectives.Status.COMPLETE
-		var line := UiKit.label("%s  %s" % ["✓" if ok else "✗", o.label], 17, DONE if ok else Palette.TEXT_FAINT)
+		var line := UiKit.label("%s  %s" % ["✓" if ok else "✗", o.label], 16, DONE if ok else Palette.TEXT_FAINT)
 		box.add_child(line)
+	if not score.is_empty():
+		var points := UiKit.label("MISSION POINTS  %d" % int(score.mission_points), 24, Palette.ACCENT)
+		points.name = "MissionPoints"
+		box.add_child(points)
+		var p: Dictionary = score.points
+		var breakdown := "Destruction %d · Critical %d · Efficiency %d · Accuracy %d" % [
+			p.destruction, p.critical_asset, int(p.shot_efficiency) + int(p.time_efficiency), p.accuracy]
+		box.add_child(UiKit.label(breakdown, 15, Palette.TEXT_DIM))
+		var research := "RESEARCH DATA  +%d   (balance %d)" % [granted, balance]
+		if success and granted == 0 and int(score.research_data) > 0:
+			research += "  · beat your best to earn more"
+		var research_label := UiKit.label(research, 18, Color("8fe3f5"))
+		research_label.name = "ResearchData"
+		box.add_child(research_label)
 	box.add_child(_action("Run it again" if success else "Retry", restart_pressed, true))
 
 

@@ -19,6 +19,12 @@ const IDLE_AFTER := 4.0
 
 var mission_path := DEFAULT_MISSION
 var audio: AudioService
+var progress: ProgressData
+var save: SaveService
+var scoring: MissionScoring
+## Scoring breakdown of the finished attempt and the Research Data it granted.
+var last_score := {}
+var last_research_granted := 0
 var engine: MissionEngine
 var world: MissionWorld
 var view: MissionView
@@ -30,8 +36,11 @@ var _since_input := 0.0
 var _result_shown := false
 
 
-func _init(p_audio: AudioService = null, p_mission_path: String = DEFAULT_MISSION) -> void:
+## `p_progress`/`p_save` may be null (e.g. tools); results are then scored but not stored.
+func _init(p_audio: AudioService = null, p_progress: ProgressData = null, p_save: SaveService = null, p_mission_path: String = DEFAULT_MISSION) -> void:
 	audio = p_audio
+	progress = p_progress
+	save = p_save
 	mission_path = p_mission_path
 
 
@@ -40,14 +49,16 @@ func _ready() -> void:
 	var materials := MaterialCatalog.load_from_file()
 	var weapons := WeaponCatalog.load_from_file()
 	var definition := MissionDefinition.load_from_file(mission_path, materials, weapons)
-	if not materials.is_valid() or not weapons.is_valid() or not definition.is_valid():
-		var problems := materials.errors + weapons.errors + definition.errors
+	scoring = MissionScoring.load_from_file()
+	if not materials.is_valid() or not weapons.is_valid() or not definition.is_valid() or not scoring.is_valid():
+		var problems := materials.errors + weapons.errors + definition.errors + scoring.errors
 		push_error("MissionScreen: invalid data: %s" % ", ".join(problems))
 		var message := UiKit.label("Mission data failed to load.\n" + "\n".join(problems.slice(0, 5)), 20)
 		message.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(message)
 		return
-	engine = MissionEngine.new(definition, materials, weapons)
+	var upgrades := UpgradeRules.levels_for_engine(weapons, progress) if progress != null else {}
+	engine = MissionEngine.new(definition, materials, weapons, upgrades)
 	world = MissionWorld.new()
 	add_child(world)
 	world.setup(definition, engine, materials)
@@ -209,10 +220,29 @@ func _update_hint() -> void:
 func _on_mission_finished(success: bool) -> void:
 	_cancel_aim()
 	_play("win" if success else "lose")
+	_record_result()
 	await get_tree().create_timer(RESULT_DELAY).timeout
 	if is_inside_tree() and not _result_shown:
 		_result_shown = true
-		hud.show_result(success, engine)
+		var balance := progress.research_data if progress != null else 0
+		hud.show_result(success, engine, last_score, last_research_granted, balance)
+
+
+## Scores the attempt and stores bests / Research Data (only improvements are granted).
+func _record_result() -> void:
+	last_score = scoring.score(engine)
+	last_research_granted = 0
+	if progress == null:
+		return
+	var optional: Array[String] = []
+	for o in engine.objectives.objectives:
+		if not o.mandatory and o.status == MissionObjectives.Status.COMPLETE:
+			optional.append(o.id)
+	last_research_granted = progress.record_mission(engine.definition.id, last_score, engine.shots_fired(), engine.elapsed, optional)
+	if save != null:
+		var err := save.save_progress(progress)
+		if err != OK:
+			push_error("MissionScreen: could not save mission result (error %d)" % err)
 
 
 ## Destruction moves goal progress without changing objective status, so refresh here too.

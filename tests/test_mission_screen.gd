@@ -121,3 +121,32 @@ func test_objective_progress_refreshes_on_destruction() -> void:
 	var texts := screen.hud._objective_box.get_children().filter(func(n: Node) -> bool: return not n.is_queued_for_deletion()).map(func(l: Label) -> String: return l.text)
 	assert_true(texts.any(func(t: String) -> bool: return t.contains("server racks") and t.contains("25%")), str(texts))
 	await _free(main)
+
+
+func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	screen.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
+	for i in 600:
+		if not screen.engine.is_active():
+			break
+		await tree.physics_frame
+	assert_eq(screen.engine.phase, MissionEngine.Phase.SUCCEEDED)
+	assert_true(screen.last_score.mission_points > 1000)
+	assert_true(screen.last_research_granted >= 20, "completion Research Data granted")
+	var stored := SaveService.new(TEST_SAVE).load_progress()
+	assert_true(stored.is_mission_completed("helix_01"), "result written to disk")
+	assert_eq(stored.research_data, screen.last_research_granted)
+	# Same mission again with an identical result: no new Research Data.
+	screen.restart_requested.emit()
+	await tree.process_frame
+	var again: MissionScreen = main._mission
+	again.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
+	for i in 600:
+		if not again.engine.is_active():
+			break
+		await tree.physics_frame
+	assert_eq(int(again.last_score.research_data), int(screen.last_score.research_data), "identical run, identical score")
+	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
+	assert_eq(SaveService.new(TEST_SAVE).load_progress().research_data, screen.last_research_granted)
+	await _free(main)

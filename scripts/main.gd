@@ -96,7 +96,7 @@ func _handle_back() -> void:
 
 func _show_mission() -> void:
 	_clear_screens()
-	_mission = MissionScreen.new(audio)
+	_mission = MissionScreen.new(audio, progress, save)
 	_mission.restart_requested.connect(_show_mission)
 	add_child(_mission)
 	_reveal()
