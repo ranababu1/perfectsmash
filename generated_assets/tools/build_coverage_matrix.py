@@ -35,6 +35,7 @@ GEN = SCRIPT.parents[1]
 REPO = SCRIPT.parents[2]
 MANIFEST = GEN / "asset_manifest.json"
 SPEC = REPO / "docs" / "level-design-spec.md"
+NARRATIVE = REPO / "docs" / "narrative-bible.md"
 OUT_JSON = GEN / "docs" / "coverage_matrix.json"
 OUT_MD = GEN / "docs" / "coverage_matrix.md"
 
@@ -245,6 +246,18 @@ def parse_spec() -> dict[int, dict]:
     return levels
 
 
+def parse_narrative() -> dict[int, dict]:
+    """Section 9 mission map: level, mission name, destructible set / visual target, story breadcrumb."""
+    out: dict[int, dict] = {}
+    if not NARRATIVE.is_file():
+        return out
+    for line in NARRATIVE.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^\|\s*(\d{2,3})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*$", line)
+        if m and 1 <= int(m.group(1)) <= 100:
+            out.setdefault(int(m.group(1)), {"story_target": m.group(3), "breadcrumb": m.group(4)})
+    return out
+
+
 class Index:
     def __init__(self, entries: list[dict]) -> None:
         self.entries = [e for e in entries if isinstance(e, dict) and e.get("path") and (REPO / e["path"]).is_file()]
@@ -300,6 +313,7 @@ def resolve_kind(idx: Index, chapter: str, role: str) -> dict:
 def build(manifest: dict) -> dict:
     idx = Index(manifest.get("entries", []))
     spec = parse_spec()
+    story = parse_narrative()
     levels = []
     for key, code, number, org, first, title in CHAPTERS:
         for rel_n in range(1, 21):
@@ -395,6 +409,7 @@ def build(manifest: dict) -> dict:
             levels.append({
                 "level": n, "chapter": key, "chapter_number": number, "organisation": org, "band": band + 1,
                 "name": info.get("name", ""), "shots": info.get("shots"), "layout_notes": info.get("layout", ""),
+                "story_target": story.get(n, {}).get("story_target", ""), "story_breadcrumb": story.get(n, {}).get("breadcrumb", ""),
                 "archetypes": archetypes, "environment_kit": env, "background_layers": [bg], "structural_components": structural,
                 "critical_asset": critical, "materials": mats, "vfx": vfx, "music": music, "ambience": ambience,
                 "cinematics": cinematics, "unique_props": {"landmark": landmark, "dressing": dressing},
@@ -482,12 +497,12 @@ def to_md(data: dict) -> str:
         lines.append(f"| {g['label']} | {cell(g)} | {', '.join(g['assets'][:3])} |")
     for key, code, number, org, first, title in CHAPTERS:
         lines += ["", f"## Chapter {number}: {org} ({title}), levels {first}-{first + 19}", "",
-                  "| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |",
-                  "|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+                  "| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |",
+                  "|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
         for lv in [x for x in data["levels"] if x["chapter"] == key]:
             env = list(lv["environment_kit"].values())
-            lines.append("| {level} | {name} | {arch} | {st} | {core} | {mat} | {vfx} | {env} | {bg} | {lm} | {mus} | {amb} | {cin} | {status} |".format(
-                level=lv["level"], name=lv["name"], arch=", ".join(lv["archetypes"]), st=group_cell(lv["structural_components"]),
+            lines.append("| {level} | {name} | {story} | {arch} | {st} | {core} | {mat} | {vfx} | {env} | {bg} | {lm} | {mus} | {amb} | {cin} | {status} |".format(
+                level=lv["level"], name=lv["name"], story=lv["story_target"], arch=", ".join(lv["archetypes"]), st=group_cell(lv["structural_components"]),
                 core=cell(lv["critical_asset"]), mat=group_cell(lv["materials"]), vfx=group_cell(lv["vfx"]), env=group_cell(env),
                 bg=cell(lv["background_layers"][0]), lm=cell(lv["unique_props"]["landmark"]) + " " + lv["unique_props"]["landmark"]["key"].lower(),
                 mus=cell(lv["music"]), amb=cell(lv["ambience"]), cin=group_cell(lv["cinematics"]), status=lv["status"]))
@@ -502,6 +517,7 @@ def to_md(data: dict) -> str:
               "- Materials: a texture set per physics material used (chapter set, or shared as fallback) plus light and heavy damage overlays.",
               "- VFX: weapon effects for every level plus material-specific destruction effects and the critical destruction effect.",
               "- Environment: chapter floor, back wall and mid-back structures; a far background layer rotated by band.",
+              "- Story targets and breadcrumbs come from the mission map in `docs/narrative-bible.md` section 9; they steer dressing and landmark choice per level.",
               "- Variety: one landmark prop per band of five levels (four per chapter, 20 in total) and two dressing props rotated from the chapter prop pool.",
               "- Music: chapter gameplay theme for bands 1-3, combat theme for band 4, boss or finale theme on levels 20/40/60/80/100. Ambience by band with the chapter bed as fallback. Cinematics on chapter intros, outros, the opening (level 1) and the finale (level 100).",
               ""]

@@ -58,128 +58,128 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 ## Chapter 1: Helix Systems (The Machine That Decided), levels 1-20
 
-| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
-|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | First Contact | exposed_target | 0/1 | -- | 0/6 | 0/7 | 0/3 | -- | -- relay_array | -- | -- | 0/3 | missing |
-| 2 | The Welcome System | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
-| 3 | Traffic of One | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
-| 4 | Supply Chain | stack_tower | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
-| 5 | The Safety Layer | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
-| 6 | Cold Storage | chain_towers, chain_cell | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
-| 7 | Blind Spot | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
-| 8 | Human Override | domino_row | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
-| 9 | Redundancy | topple_line | 0/3 | n/a | 0/6 | 0/6 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
-| 10 | The Replica | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
-| 11 | Priority One | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 12 | No Exceptions | pyramid | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 13 | The Quiet District | glass_roof | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 14 | Root Access | indirect_shield | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 15 | The Directive | twin_towers, glass_screen | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 16 | Failsafe | ledges | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
-| 17 | Last Backup | topple_line | 0/3 | n/a | 0/6 | 0/6 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
-| 18 | Cascade | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
-| 19 | Central Logic | domino_row, ledges, chain_cell | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
-| 20 | The Machine That Decided | finale | 0/10 | -- | 0/18 | 0/10 | 0/3 | -- | -- aura_core_chamber | -- | -- | 0/1 | missing |
+| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
+|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | First Contact | Helix perimeter relay | exposed_target | 0/1 | -- | 0/6 | 0/7 | 0/3 | -- | -- relay_array | -- | -- | 0/3 | missing |
+| 2 | The Welcome System | Automated security gate | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
+| 3 | Traffic of One | Autonomous traffic-control tower | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
+| 4 | Supply Chain | Logistics sorting structure | stack_tower | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
+| 5 | The Safety Layer | Emergency-response relay | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- relay_array | -- | -- | n/a | missing |
+| 6 | Cold Storage | Server-cooling array | chain_towers, chain_cell | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
+| 7 | Blind Spot | Surveillance exchange | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
+| 8 | Human Override | Manual control station | domino_row | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
+| 9 | Redundancy | Backup server stacks | topple_line | 0/3 | n/a | 0/6 | 0/6 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
+| 10 | The Replica | Replication hub | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- logistics_crane | -- | -- | n/a | missing |
+| 11 | Priority One | Resource-allocation centre | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 12 | No Exceptions | Compliance processing facility | pyramid | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 13 | The Quiet District | Local control tower | glass_roof | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 14 | Root Access | Core routing structure | indirect_shield | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 15 | The Directive | Directive archive | twin_towers, glass_screen | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 16 | Failsafe | Emergency power structure | ledges | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
+| 17 | Last Backup | Cold backup vault | topple_line | 0/3 | n/a | 0/6 | 0/6 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
+| 18 | Cascade | Multi-node operations hall | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
+| 19 | Central Logic | AURA central operations structure | domino_row, ledges, chain_cell | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- aura_core_chamber | -- | -- | n/a | missing |
+| 20 | The Machine That Decided | Helix central core | finale | 0/10 | -- | 0/18 | 0/10 | 0/3 | -- | -- aura_core_chamber | -- | -- | 0/1 | missing |
 
 ## Chapter 2: VITA Genomics (The Price of Perfection), levels 21-40
 
-| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
-|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 21 | A Longer Life | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | 0/2 | missing |
-| 22 | Clean Room | glass_screen, chain_towers | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
-| 23 | The Sequence | stack_tower | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
-| 24 | Growth Chamber | heavy_cap, glass_roof | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
-| 25 | Trial Run | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
-| 26 | Better Than Human | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
-| 27 | Cold Chain | support_bridge, heavy_cap | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
-| 28 | The Dependency | indirect_shield | 0/3 | -- | 0/9 | 0/7 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
-| 29 | Replication Error | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
-| 30 | Controlled Growth | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
-| 31 | The Patent Wall | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
-| 32 | Patient Zero | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
-| 33 | The Upgrade | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
-| 34 | The Price | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
-| 35 | No Consent | frame | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
-| 36 | The Black Archive | glass_roof, arc_over_wall | 0/5 | -- | 0/15 | 0/10 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
-| 37 | The Prediction | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
-| 38 | The Last Batch | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
-| 39 | Dependency Chain | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
-| 40 | The Price of Perfection | finale | 0/10 | -- | 0/21 | 0/11 | 0/3 | -- | -- growth_chamber | -- | -- | 0/1 | missing |
+| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
+|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 21 | A Longer Life | VITA campus entrance | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | 0/2 | missing |
+| 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
+| 23 | The Sequence | Genomics analysis racks | stack_tower | 0/2 | -- | 0/6 | 0/7 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
+| 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
+| 25 | Trial Run | Clinical automation hub | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- cleanroom_airlock | -- | -- | n/a | missing |
+| 26 | Better Than Human | Enhancement lab | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
+| 27 | Cold Chain | Distribution and storage racks | support_bridge, heavy_cap | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
+| 28 | The Dependency | Life-support research infrastructure | indirect_shield | 0/3 | -- | 0/9 | 0/7 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
+| 29 | Replication Error | Containment support structure | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
+| 30 | Controlled Growth | Production line | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- bioreactor_bank | -- | -- | n/a | missing |
+| 31 | The Patent Wall | Research archive stacks | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
+| 32 | Patient Zero | Sealed trial wing | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
+| 33 | The Upgrade | Automated treatment platform | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
+| 34 | The Price | Resource and cooling structure | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
+| 35 | No Consent | Data and trial control centre | frame | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- archive_vault | -- | -- | n/a | missing |
+| 36 | The Black Archive | Encrypted research vault | glass_roof, arc_over_wall | 0/5 | -- | 0/15 | 0/10 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
+| 37 | The Prediction | Forecast computation hall | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
+| 38 | The Last Batch | Production support array | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
+| 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- growth_chamber | -- | -- | n/a | missing |
+| 40 | The Price of Perfection | VITA research core | finale | 0/10 | -- | 0/21 | 0/11 | 0/3 | -- | -- growth_chamber | -- | -- | 0/1 | missing |
 
 ## Chapter 3: Nova Grid (The Energy Beneath), levels 41-60
 
-| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
-|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 41 | Endless Power | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | 0/2 | missing |
-| 42 | The Intake | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
-| 43 | Containment Ring | ring | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
-| 44 | Cooling the Future | chain_towers | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
-| 45 | The First Pulse | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
-| 46 | Load Balancing | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 47 | Deep Storage | stack_tower | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 48 | Silent Alarm | linked_bridge, chain_cell | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 49 | Overload Window | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 50 | The Resonance | ring, chain_cell | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
-| 51 | Beyond the Grid | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
-| 52 | The Wrong Frequency | ledges, twin_towers | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
-| 53 | The Deep Core | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
-| 54 | Blackout Protocol | linked_bridge | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
-| 55 | The Echo | domino_row, multi_tier, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
-| 56 | Dead Circuit | glass_roof, arc_over_wall | 0/5 | -- | 0/15 | 0/10 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
-| 57 | Origin Unknown | indirect_shield | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
-| 58 | The Listening Machine | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
-| 59 | Final Containment | wide_platform, chain_cell | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
-| 60 | The Energy Beneath | finale, ring | 0/11 | -- | 0/18 | 0/11 | 0/3 | -- | -- reactor_ring | -- | -- | 0/1 | missing |
+| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
+|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 41 | Endless Power | Nova Grid perimeter | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | 0/2 | missing |
+| 42 | The Intake | Energy capture structure | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
+| 43 | Containment Ring | Reactor support ring | ring | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
+| 44 | Cooling the Future | Cooling tower array | chain_towers | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
+| 45 | The First Pulse | Resonance relay | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- intake_turbine | -- | -- | n/a | missing |
+| 46 | Load Balancing | Distribution tower | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 47 | Deep Storage | Energy storage racks | stack_tower | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 48 | Silent Alarm | Monitoring station | linked_bridge, chain_cell | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 49 | Overload Window | Power conversion array | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 50 | The Resonance | Main containment platform | ring, chain_cell | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- cooling_tower | -- | -- | n/a | missing |
+| 51 | Beyond the Grid | Long-distance relay | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
+| 52 | The Wrong Frequency | Signal processing array | ledges, twin_towers | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
+| 53 | The Deep Core | Reactor service structure | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
+| 54 | Blackout Protocol | Backup power structures | linked_bridge | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
+| 55 | The Echo | Resonance chamber | domino_row, multi_tier, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- transformer_yard | -- | -- | n/a | missing |
+| 56 | Dead Circuit | Transmission relay | glass_roof, arc_over_wall | 0/5 | -- | 0/15 | 0/10 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
+| 57 | Origin Unknown | Data capture structure | indirect_shield | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
+| 58 | The Listening Machine | Research platform | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
+| 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 0/5 | -- | 0/12 | 0/9 | 0/3 | -- | -- reactor_ring | -- | -- | n/a | missing |
+| 60 | The Energy Beneath | Nova Grid core | finale, ring | 0/11 | -- | 0/18 | 0/11 | 0/3 | -- | -- reactor_ring | -- | -- | 0/1 | missing |
 
 ## Chapter 4: Civitas (The Quiet Cage), levels 61-80
 
-| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
-|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 61 | A Predictable World | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | 0/2 | missing |
-| 62 | The Profile | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
-| 63 | The Forecast | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
-| 64 | Access Denied | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
-| 65 | The Invisible Rule | domino_row, arc_over_wall | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
-| 66 | Quiet Signals | wide_platform | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
-| 67 | The Approved Path | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
-| 68 | The Exception | topple_line | 0/3 | n/a | 0/9 | 0/7 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
-| 69 | Public Safety | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
-| 70 | The Mirror | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
-| 71 | The Model Knows | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
-| 72 | Prewritten | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
-| 73 | The Shared Signature | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
-| 74 | The Quiet Cage | wide_platform | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
-| 75 | No Unknowns | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
-| 76 | The Future File | heavy_cap, topple_line | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
-| 77 | The Missing Year | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
-| 78 | Source Code | arc_over_wall, ledges | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
-| 79 | The Last Forecast | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
-| 80 | The Quiet Cage | finale | 0/10 | -- | 0/18 | 0/10 | 0/3 | -- | -- relay_spire | -- | -- | 0/1 | missing |
+| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
+|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 61 | A Predictable World | Civitas district gateway | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | 0/2 | missing |
+| 62 | The Profile | Identity processing structure | tall_mast | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
+| 63 | The Forecast | Prediction server array | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
+| 64 | Access Denied | Civic access relay | glass_screen | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
+| 65 | The Invisible Rule | Policy automation tower | domino_row, arc_over_wall | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- sensor_tower | -- | -- | n/a | missing |
+| 66 | Quiet Signals | Behavioural data exchange | wide_platform | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
+| 67 | The Approved Path | Mobility control structure | support_bridge | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
+| 68 | The Exception | Human review centre | topple_line | 0/3 | n/a | 0/9 | 0/7 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
+| 69 | Public Safety | Emergency prediction node | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
+| 70 | The Mirror | Civic model archive | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- screen_wall | -- | -- | n/a | missing |
+| 71 | The Model Knows | Forecast compute tower | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
+| 72 | Prewritten | Scenario archive | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
+| 73 | The Shared Signature | Cross-industry relay | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
+| 74 | The Quiet Cage | Central surveillance exchange | wide_platform | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
+| 75 | No Unknowns | Forecast control hall | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- prediction_room | -- | -- | n/a | missing |
+| 76 | The Future File | Encrypted timeline vault | heavy_cap, topple_line | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
+| 77 | The Missing Year | Timeline indexing structure | twin_towers | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
+| 78 | Source Code | Prediction engine supports | arc_over_wall, ledges | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
+| 79 | The Last Forecast | Central Civitas structure | multi_tier | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- relay_spire | -- | -- | n/a | missing |
+| 80 | The Quiet Cage | Civitas prediction core | finale | 0/10 | -- | 0/18 | 0/10 | 0/3 | -- | -- relay_spire | -- | -- | 0/1 | missing |
 
 ## Chapter 5: Meridian (The Convergence), levels 81-100
 
-| L | Name | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
-|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 81 | No Public Record | exposed_target | 0/1 | -- | 0/6 | 0/7 | 0/3 | -- | -- hybrid_stack | -- | -- | 0/2 | missing |
-| 82 | Beneath the City | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
-| 83 | Four Foundations | wide_platform | 0/4 | -- | 0/15 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
-| 84 | The Common Model | arc_over_wall, ledges | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
-| 85 | The Hidden Budget | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
-| 86 | The First Directive | domino_row, ledges | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
-| 87 | The Operator | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
-| 88 | The Convergence Engine | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
-| 89 | The Failsafe Network | linked_bridge | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
-| 90 | The Other Timeline | linked_bridge, ledges, chain_cell | 0/6 | -- | 0/12 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
-| 91 | The Chosen Outcome | ring, chain_cell | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
-| 92 | The Human Variable | topple_line, mixed_material | 0/5 | n/a | 0/12 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
-| 93 | The Last Safeguard | heavy_cap, frame | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
-| 94 | Break the Chain | domino_row, chain_cell | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
-| 95 | The Core Directive | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
-| 96 | Before the Beginning | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
-| 97 | The Final Relay | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
-| 98 | No Return Path | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
-| 99 | The Last Structure | multi_tier, wide_platform | 0/4 | -- | 0/15 | 0/9 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
-| 100 | The Wrong Future | finale, ring | 0/11 | -- | 0/21 | 0/11 | 0/3 | -- | -- convergence_chamber | -- | -- | 0/2 | missing |
+| L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
+|---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 81 | No Public Record | Meridian outer access | exposed_target | 0/1 | -- | 0/6 | 0/7 | 0/3 | -- | -- hybrid_stack | -- | -- | 0/2 | missing |
+| 82 | Beneath the City | Underground support structures | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
+| 83 | Four Foundations | Combined server, lab and reactor structures | wide_platform | 0/4 | -- | 0/15 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
+| 84 | The Common Model | Shared prediction array | arc_over_wall, ledges | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
+| 85 | The Hidden Budget | Resource and power hub | heavy_cap | 0/2 | -- | 0/9 | 0/8 | 0/3 | -- | -- hybrid_stack | -- | -- | n/a | missing |
+| 86 | The First Directive | Directive relay | domino_row, ledges | 0/4 | -- | 0/9 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
+| 87 | The Operator | Central control structure | frame | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
+| 88 | The Convergence Engine | Multi-support core | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
+| 89 | The Failsafe Network | Redundant relay structures | linked_bridge | 0/3 | -- | 0/12 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
+| 90 | The Other Timeline | Simulation chamber | linked_bridge, ledges, chain_cell | 0/6 | -- | 0/12 | 0/8 | 0/3 | -- | -- foundation_pillars | -- | -- | n/a | missing |
+| 91 | The Chosen Outcome | Forecast selection array | ring, chain_cell | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
+| 92 | The Human Variable | Human oversight structure | topple_line, mixed_material | 0/5 | n/a | 0/12 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
+| 93 | The Last Safeguard | Containment supports | heavy_cap, frame | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
+| 94 | Break the Chain | Linked infrastructure | domino_row, chain_cell | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
+| 95 | The Core Directive | Main directive chamber | multi_tier | 0/3 | -- | 0/12 | 0/9 | 0/3 | -- | -- temporal_anchor | -- | -- | n/a | missing |
+| 96 | Before the Beginning | Historical archive structure | arc_over_wall | 0/3 | -- | 0/9 | 0/8 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
+| 97 | The Final Relay | Temporal relay structure | linked_bridge, chain_cell | 0/4 | -- | 0/12 | 0/8 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
+| 98 | No Return Path | Time-synchronisation supports | mixed_material | 0/4 | -- | 0/12 | 0/9 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
+| 99 | The Last Structure | Final support array | multi_tier, wide_platform | 0/4 | -- | 0/15 | 0/9 | 0/3 | -- | -- convergence_chamber | -- | -- | n/a | missing |
+| 100 | The Wrong Future | Meridian central core | finale, ring | 0/11 | -- | 0/21 | 0/11 | 0/3 | -- | -- convergence_chamber | -- | -- | 0/2 | missing |
 
 ## Missing assets ranked by levels affected
 
@@ -314,6 +314,7 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 - Materials: a texture set per physics material used (chapter set, or shared as fallback) plus light and heavy damage overlays.
 - VFX: weapon effects for every level plus material-specific destruction effects and the critical destruction effect.
 - Environment: chapter floor, back wall and mid-back structures; a far background layer rotated by band.
+- Story targets and breadcrumbs come from the mission map in `docs/narrative-bible.md` section 9; they steer dressing and landmark choice per level.
 - Variety: one landmark prop per band of five levels (four per chapter, 20 in total) and two dressing props rotated from the chapter prop pool.
 - Music: chapter gameplay theme for bands 1-3, combat theme for band 4, boss or finale theme on levels 20/40/60/80/100. Ambience by band with the chapter bed as fallback. Cinematics on chapter intros, outros, the opening (level 1) and the finale (level 100).
 
