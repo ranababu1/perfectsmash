@@ -6,7 +6,7 @@ _Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `master` · Re
 
 The project is a 2D physics destruction puzzle for Android (Godot 4). The owner has approved a major narrative/product direction: transform the existing puzzle into a story-driven time-travel destruction game, with a skippable opening cinematic, narrated chapter introductions/outros, and 100 levels across five chapters. The physics gameplay remains the foundation.
 
-**Implementation phase:** Existing playable prototype with 20 levels. Narrative and 100-level expansion are documented/planned only. No cinematic player, story archive, chapter art reskin, new projectile art, 100-level content or background music has been integrated yet.
+**Implementation phase:** Existing playable prototype with 20 levels. Narrative and 100-level expansion are documented/planned only. A production-level design specification now defines all 100 puzzle concepts, intended reasoning, shot budgets and validation gates. No cinematic player, story archive, chapter art reskin, new projectile art, 100-level content or background music has been integrated yet.
 
 ## Feature status
 
@@ -50,7 +50,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 ## Documentation added/updated (2026-11-09)
 
 - `docs/plan.md`: owner-approved revision 2 with story-driven 100-level direction and release/expansion requirements.
-- `docs/narrative-bible.md`: complete five-chapter story, opening voiceover, chapter intro/outro scripts, 100-level mission map and Season 2 hook.
+- `docs/narrative-bible.md`: complete five-chapter story, opening voiceover, chapter intro/outro scripts, 100-level mission map and Season 2 hook.\n- `docs/level-design-spec.md`: production design for all 100 levels, including intended puzzle layouts, skill progression, shot budgets and coding-agent acceptance criteria.
 - `docs/visual-audio-production-guide.md`: art direction, chapter art bible, cinematic shot list, prompt templates, asset inventory, narration, music licensing and SFX guidance.
 
 ## Toolchain
