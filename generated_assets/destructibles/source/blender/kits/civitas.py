@@ -199,3 +199,83 @@ SPECS = [
     S("security_wall", "B", "reinforced_steel", 40, 200, 1.0, security_wall),
     S("surveillance_core", "A", "ai_core_module", 70, 110, 0.8, surveillance_core, critical=True),
 ]
+
+
+# ---------------------------------------------------------------- premium pass (2026-11-10): secondary detail
+import tfjdetail as Dt
+
+
+def _p_column(B, w, h, d, rng, spec):
+    base_h = min(0.12, h * 0.08)
+    Dt.bolts(B, [(sx * w * 0.3, -h / 2 + base_h / 2) for sx in (-1, 1)], -d * 0.45 - 0.001, 0.014)  # plinth bolts
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.6, d * 0.45, "panel")
+    Dt.status_leds(B, -0.02, h / 2 - 0.1, -d * 0.425 - 0.002, 2, 0.022, (0.012, 0.006), "emit", "emit2", rng)
+
+
+def _p_bridge(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.loom(B, (-w / 2 + 0.1, -d * 0.05, z0 + 0.03), (w / 2 - 0.1, -d * 0.05, z0 + 0.03), 2, 0.012, 0.03, 0.03,
+            (0, 1, 0), seg=6)
+    n = max(2, int(w / 0.5))
+    Dt.bolts(B, [(-w / 2 + (i + 0.5) * w / n + sx * (w / n / 2 - 0.05), h / 2 - h * 0.15) for i in range(n) for sx in (-1, 1)],
+             -d / 2 + 0.002, 0.012)
+
+
+def _p_mast(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    B.cyl((-w * 0.2, w * 0.05, 0), 0.008, h - 0.4, "Z", 6, "cable", "cable", 0.0)
+    Dt.bolts(B, [(sx * w * 0.32, z0 + 0.03) for sx in (-1, 1)], -d * 0.35 - 0.002, 0.012)
+    Dt.top_hatch(B, 0, 0, z1 - min(0.22, h * 0.14) / 2 + min(0.22, h * 0.14) * 0.275, w * 0.6, d * 0.4, "panel")
+
+
+def _p_array(B, w, h, d, rng, spec):
+    Dt.dress(B, CH, w, h, d, -d * 0.25, rng, leds=False, top_d=0.0, inset=0.02)
+    Dt.louvre(B, 0, 0.0, w * 0.5, d * 0.2, h / 2, 4, "dark", "internal", normal="+Z")
+
+
+def _p_screen(B, w, h, d, rng, spec):
+    Dt.dress(B, CH, w, h, d, -d * 0.175, rng, leds=False, screen=False, inset=0.012)
+    Dt.status_leds(B, -w / 2 + 0.05, -h / 2 + 0.015, -d * 0.2 - 0.025, 3, 0.022, (0.012, 0.006), "emit", "emit2", rng)
+
+
+def _p_rack(B, w, h, d, rng, spec):
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.6, d * 0.5, "panel")
+    Dt.side_seams(B, -d / 2 + 0.06, d / 2 - 0.06, -h / 2 + 0.08, h / 2 - 0.08, -w / 2, -1, 2, max(2, int(h / 0.4)))
+    Dt.bolts(B, [(sx * (w / 2 - 0.02), zz) for sx in (-1, 1) for zz in (-h / 2 + 0.1, h / 2 - 0.1)], -d / 2 - 0.0, 0.012)
+
+
+def _p_wall(B, w, h, d, rng, spec):
+    n = max(3, int(h / 0.3))
+    pts = []
+    for k in range(n):
+        z = -h / 2 + 0.12 + (k + 0.5) * (h - 0.2) / n
+        pts += [(sx * w * 0.36, z) for sx in (-1, 1)]
+    Dt.bolts(B, pts, -d * 0.32 - 0.02, 0.014)
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.6, d * 0.4, "panel")
+    Dt.side_seams(B, -d * 0.3, d * 0.3, -h / 2 + 0.15, h / 2 - 0.1, -w * 0.35, -1, 2, max(2, int(h / 0.5)))
+
+
+def _p_core(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.bolts(B, [(x, z0 + h * 0.06) for x in (-w * 0.3, -w * 0.1, w * 0.1, w * 0.3)], -d * 0.43 - 0.002, 0.016)
+    for sx in (-1, 1):
+        Dt.loom(B, (sx * w * 0.44, 0.0, z0 + h * 0.2), (sx * w * 0.2, 0.0, z0 + h * 0.3), 2, 0.008, 0.02, 0.02,
+                (0, 1, 0), seg=5)
+
+
+PREMIUM = {"civic_column": _p_column, "relay_bridge": _p_bridge, "sensor_mast": _p_mast, "sensor_array": _p_array,
+           "civic_screen": _p_screen, "data_exchange_rack": _p_rack, "security_wall": _p_wall,
+           "surveillance_core": _p_core}
+
+
+def _wrap(fn, extra):
+    def build(B, w, h, d, rng, spec):
+        fn(B, w, h, d, rng, spec)
+        extra(B, w, h, d, rng, spec)
+    return build
+
+
+for _s in SPECS:
+    if _s["kind"] in PREMIUM and not _s.get("_premium"):
+        _s["build"] = _wrap(_s["build"], PREMIUM[_s["kind"]])
+        _s["_premium"] = True

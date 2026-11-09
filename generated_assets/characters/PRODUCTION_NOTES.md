@@ -64,3 +64,18 @@ This is original procedural work. The scripted Blender code was written by the 3
   - `previews/opr_chr_operative_showcase.webp`: graded frame with side, three-quarter and front views. Its layout is `environments/showcase/operative_showcase_layout.json`.
   - `previews/opr_chr_operative_sheet.webp`: Cycles, 8 poses.
 - **Limits.** The plates are hard-surface boxes with soft bevels, and the cape has no cloth simulation. At close range it reads as a stylised game character, not a sculpted one.
+
+## Operative premium pass 2 (2026-11-10, after owner review)
+
+Review note: the first premium operative still read as box primitives. Rebuilt in `runchar.py` with smooth forms; node names, `weapon_socket`, `cape_rig` and the 9 clips are unchanged.
+
+- Torso: a superellipse loft instead of chamfered boxes. Limbs: bulged 12-sided lathes with ball joints at the shoulders and elbows.
+- Armour: every plate is a curved shell sampled from the body surface it sits on (chest, camera-side plate and flank, back, abdomen bands, two-layer pauldrons, bracers with an inlay, thigh, knee, shin and toe guards). Each shell has a skirt back to the body and a chamfered rim, so the suit reads as layered panels.
+- Hood: soft cloth shape (deep opening, soft brow point over the visor, loose folds, rolled rim). Cowl loft and a V scarf.
+- Cape: shorter flowing cloth, 12 x 10 grid with soft folds, a pointed uneven hem and a backward flare, still skinned to the 3 x 3 bone grid.
+- Normal detail: suit panel seams (key suit zone) and cloth creases (hood, cowl, cape) are added as a bake-time bump in object space and land in the baked 1024 normal map.
+- Palette darkened for Godot (MissionView lifts greys): key 202329, frame 2a2f36, panel 383e47, trim 646b74, cloth 131417.
+- 5,892 tris (budget 6,000), glb about 4.0 MB, one 1024 baked set.
+- Godot 4.7.2 `char_check.gd`: all nodes, Skeleton3D, cape and the 9 animations load; poses render with the Kinetic Accelerator B mounted.
+- Previews (after): `previews/opr_chr_operative_showcase.webp` (graded, three views: aim, front, back), `previews/opr_chr_operative_godot_poses.webp` (MissionView camera), `previews/opr_chr_operative_sheet.webp` (Cycles). Before: the same paths at commit `218ced4`.
+- Compared with SV-01: hooded faceless silhouette, dark visor with cyan slits, layered rounded plates, cross straps, belt pouches and a short dark cape now match the concept's read. Still short of the concept: no sculpted fabric detail, the plates are lighter than the concept's near-black under the graded frame, and the cape has no simulation.

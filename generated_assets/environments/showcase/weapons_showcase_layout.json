@@ -6,7 +6,7 @@
   0.0
  ],
  "zoom": 0.24,
- "exposure": 0.9,
+ "exposure": 1.0,
  "ambient": 0.45,
  "rim": 1.0,
  "fog_begin": 14.0,
@@ -112,5 +112,10 @@
    "r": 8.0,
    "angle": 35
   }
- ]
+ ],
+ "fill": 0.35,
+ "asis_exposure": 1.2,
+ "asis_ambient": 0.7,
+ "glow": 0.45,
+ "emission_scale": 0.5
 }

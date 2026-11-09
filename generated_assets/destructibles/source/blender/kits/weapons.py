@@ -22,74 +22,87 @@ def _grip(B, x=0.0, z=0.0):
 
 
 def kinetic_accelerator(B, rng, spec):
-    """SV-02 Kinetic Accelerator: a coilgun, not a rifle. Long angular gunmetal spine over an exposed
-    electromagnetic coil stack carried between two rails, a forward bracket tying the rails to a ported
-    muzzle, a skeletal thumbhole stock, cyan light lines along the lower rail and a side ammo readout.
-    Tiers: B longer stack and capacitor pack, C third side rail, heat-sink fins and twin capacitors."""
+    """SV-02 Kinetic Accelerator, second premium pass: an open electromagnetic coil and rail accelerator,
+    not a rifle. A compact angular power-cell receiver sits over the shared grip (no rifle stock, only a
+    short rubber brace on the cell), and the dominant silhouette is a large exposed coil stack carried
+    between two heavy rails with a cyan energy core running through the gaps, cyan strips on the rail
+    inner faces and forked rail prongs past the muzzle bracket.
+    Tiers differ in coil count and shroud: A 4 coils fully open, B 6 coils with a vented top shroud and
+    capacitor pack, C 8 coils with an armoured top shroud, shroud bands, heat-sink fins, a side rail
+    and twin capacitors."""
     tier = spec["tier"]
-    ext = 0.06 * (tier - 1)
-    xc0, xc1 = 0.15, 0.44 + ext      # coil stack
-    xr = xc1 + 0.07                  # rail tips
-    zc = 0.088                       # bore axis
+    ncoil = {1: 4, 2: 6, 3: 8}[tier]
+    pitch, clen, rc = 0.052, 0.034, 0.066
+    zc = 0.1                                   # bore axis
+    xc0 = 0.15                                 # first coil face
+    xc1 = xc0 + ncoil * pitch                  # end of stack
+    xb = xc1 + 0.03                            # forward bracket centre
+    zt, zb = zc + rc + 0.016, zc - rc - 0.016  # rail centre heights
     _grip(B)
-    # receiver block (side profile extruded across the width), chamfered top-front
-    B.prism([(-0.13, 0.02), (0.15, 0.02), (0.15, 0.135), (0.12, 0.158), (-0.08, 0.158), (-0.13, 0.13)], 0.072, 0.0,
-            "panel", "frame", 0.0)
-    B.box((0.01, -0.037, 0.095), (0.16, 0.004, 0.05), "dark", "greeble", 0.0)          # side inset
-    B.light_strip((0.0, -0.0395, 0.112), (0.05, 0.002, 0.016), "emit")                  # ammo readout
+    # compact power-cell receiver, chamfered, layered side plate and readout
+    # receiver wedge: tall at the coil mount, sloping down to the rear so the coils lead the silhouette
+    B.prism([(-0.17, 0.0), (0.15, 0.0), (0.15, 0.196), (0.07, 0.204), (-0.1, 0.168), (-0.17, 0.13)], 0.078, 0.0,
+            "panel", "frame", 0.004)
+    B.prism([(-0.13, 0.025), (0.125, 0.025), (0.125, 0.172), (0.06, 0.178), (-0.08, 0.15), (-0.13, 0.12)], 0.004,
+            -0.04, "frame", "cover", 0.0)                                               # layered side plate
+    B.box((0.02, -0.0425, 0.1), (0.1, 0.003, 0.04), "dark", "greeble", 0.0)            # readout bezel
+    B.light_strip((0.005, -0.0445, 0.104), (0.05, 0.002, 0.014), "emit")
     for k in range(3):
-        B.box((0.05 + k * 0.016, -0.0395, 0.112), (0.008, 0.002, 0.012), "light", "greeble", 0.0)
-    B.box((0.02, 0, 0.183), (0.1, 0.03, 0.014), "dark", "greeble", 0.0)                 # optic block
-    B.light_strip((0.06, 0, 0.1905), (0.012, 0.014, 0.002), "emit")
-    # skeletal thumbhole stock: top bar, lower bar, butt plate
-    B.prism([(-0.13, 0.158), (-0.13, 0.1), (-0.4, 0.078), (-0.42, 0.122)], 0.052, 0.0, "panel", "frame", 0.0)
-    B.prism([(-0.4, -0.085), (-0.37, -0.085), (-0.04, 0.0), (-0.07, 0.028), (-0.4, -0.04)], 0.044, 0.0, "frame", "frame", 0.0)
-    B.box((-0.22, -0.023, 0.095), (0.14, 0.004, 0.012), "dark", "greeble", 0.0)           # stock seam
-    B.prism([(-0.4, 0.13), (-0.375, 0.13), (-0.375, -0.07), (-0.4, -0.08), (-0.44, -0.08), (-0.44, 0.125)], 0.055,
-            0.0, "panel", "frame", 0.0)
-    B.box((-0.445, 0, 0.02), (0.012, 0.05, 0.19), "rubber", "frame", 0.0)
-    B.box((-0.26, -0.026, 0.104), (0.1, 0.003, 0.005), "emit", "emit", 0.0)
-    # upper spine rail and lower rail run past the coils to the bracket
-    B.prism([(0.14, 0.172), (0.15, 0.124), (xr, 0.114), (xr + 0.012, 0.126), (xr - 0.03, 0.15), (0.24, 0.17)], 0.062, 0.0,
-            "panel", "frame", 0.0)                                                         # sweeping upper spine
-    B.prism([(-0.1, 0.158), (0.15, 0.158), (0.2, 0.172), (-0.06, 0.176)], 0.058, 0.0, "panel", "frame", 0.0)  # receiver hump
-    B.prism([(0.15, 0.02), (xr, 0.034), (xr, 0.054), (0.15, 0.052)], 0.058, 0.0, "frame", "frame", 0.0)
-    B.light_strip(((0.15 + xr) / 2, -0.03, 0.043), (xr - 0.19, 0.002, 0.005), "emit")
-    for k in range(int((xr - 0.2) / 0.05)):
-        B.box((0.2 + k * 0.05, -0.031, 0.14), (0.018, 0.003, 0.008), "dark", "greeble", 0.0)  # spine vents
-    # exposed coil stack: bore liner, ribbed windings, end collars, glowing feed ring
-    B.cyl(((xc0 + xc1) / 2, 0, zc), 0.011, xc1 - xc0 + 0.02, "X", 8, "dark", "internal", 0.0)
-    n = max(10, int((xc1 - xc0) / 0.011))
-    prof = [(0.0, 0.0)]
-    for i in range(n + 1):
-        prof.append((0.037 if i % 2 == 0 else 0.03, i * (xc1 - xc0) / n))
-    prof.append((0.0, xc1 - xc0))
-    B.lathe(prof, (xc0, 0, zc), 10, "trim", "internal", axis="X")
-    for xx in (xc0, xc1, (xc0 + xc1) / 2):
-        B.cyl((xx, 0, zc), 0.041, 0.014, "X", 10, "frame", "greeble", 0.0)
-    B.ring((xc0 + 0.012, 0, zc), 0.033, 0.026, 0.004, "X", 12, "emit", "emit", 0.0)
-    B.box(((xc0 + xc1) / 2, 0.026, zc), (xc1 - xc0, 0.006, 0.07), "internal", "internal", 0.0)   # back plate
-    # forward bracket and ported muzzle
-    B.prism([(xr - 0.035, 0.02), (xr, 0.034), (xr, 0.146), (xr - 0.035, 0.158)], 0.064, 0.0, "frame", "frame", 0.0)
-    B.cyl((xr + 0.035, 0, zc), 0.025, 0.07, "X", 10, "dark", "frame", 0.0)
-    B.cyl((xr + 0.075, 0, zc), 0.03, 0.035, "X", 10, "frame", "frame", 0.0)
+        B.box((0.045 + k * 0.014, -0.0445, 0.104), (0.007, 0.002, 0.01), "light", "greeble", 0.0)
     for k in range(3):
-        B.box((xr + 0.022 + k * 0.016, -0.019, zc), (0.007, 0.004, 0.022), "internal", "greeble", 0.0)
-    B.ring((xr + 0.09, 0, zc), 0.016, 0.009, 0.004, "X", 10, "emit", "emit", 0.0)
+        B.box((-0.1 + k * 0.028, -0.0425, 0.06), (0.012, 0.003, 0.03), "dark", "greeble", 0.0)  # vents
+    B.box((0.06, 0, 0.214), (0.09, 0.03, 0.02), "dark", "greeble", 0.003)               # optic block
+    B.light_strip((0.1, 0, 0.2245), (0.01, 0.014, 0.002), "emit")
+    # rear energy cell (replaces the stock): small angled block, cyan window, short rubber brace
+    B.prism([(-0.17, 0.13), (-0.17, 0.0), (-0.2, 0.025), (-0.225, 0.06), (-0.225, 0.115)], 0.066, 0.0,
+            "frame", "frame", 0.004)
+    B.light_strip((-0.198, -0.0335, 0.075), (0.03, 0.002, 0.008), "emit")
+    B.box((-0.232, 0, 0.088), (0.012, 0.056, 0.06), "rubber", "frame", 0.003)
+    # heavy upper and lower rails, cyan inner faces, forked prongs past the bracket
+    for z, sgn in ((zt, -1), (zb, 1)):
+        B.box(((0.13 + xb + 0.09) / 2, 0, z), (xb + 0.09 - 0.13, 0.03, 0.024), "frame", "frame", 0.004)
+        B.light_strip(((0.15 + xb + 0.08) / 2, 0, z + sgn * 0.0125), (xb + 0.08 - 0.15, 0.012, 0.002), "emit")
+        B.box(((0.15 + xb) / 2, -0.0155, z), (xb - 0.18, 0.002, 0.006), "dark", "greeble", 0.0)   # rail seam
+    # exposed coil stack: chamfered windings, emissive core showing through every gap
+    B.cyl(((xc0 + xc1) / 2, 0, zc), 0.022, xc1 - xc0 + 0.04, "X", 8, "emit", "emit", 0.0)
+    prof = [(0.0, 0.0), (rc - 0.012, 0.0), (rc, 0.006), (rc, clen - 0.006), (rc - 0.012, clen), (0.0, clen)]
+    for i in range(ncoil):
+        x = xc0 + 0.009 + i * pitch
+        B.lathe(prof, (x, 0, zc), 10, "dark", "internal", axis="X")                         # dark ribbed winding
+        B.cyl((x + clen + 0.009, 0, zc), 0.042, 0.012, "X", 8, "emit", "emit", 0.0)          # cyan energy band
+    # forward bracket tying the rails, muzzle projector
+    B.prism([(xb - 0.022, zb - 0.012), (xb + 0.022, zb - 0.012), (xb + 0.022, zt + 0.012), (xb - 0.022, zt + 0.012)],
+            0.05, 0.0, "panel", "frame", 0.004)
+    B.ring((xb - 0.0255, 0, zc), 0.05, 0.03, 0.004, "X", 12, "emit", "emit", 0.0)
+    B.cyl((xb + 0.04, 0, zc), 0.026, 0.06, "X", 10, "dark", "frame", 0.0)
+    B.ring((xb + 0.072, 0, zc), 0.032, 0.016, 0.01, "X", 10, "frame", "frame", 0.0)
+    B.ring((xb + 0.078, 0, zc), 0.016, 0.01, 0.003, "X", 10, "emit", "emit", 0.0)
+    # rear coil mount ring at the receiver face
+    B.cyl((xc0 - 0.004, 0, zc), rc + 0.008, 0.012, "X", 12, "frame", "frame", 0.0)
     if tier >= 2:
-        B.box((-0.03, 0, 0.0), (0.16, 0.05, 0.026), "panel", "cover", 0.0)             # capacitor pack
-        B.light_strip((-0.03, -0.0255, 0.0), (0.12, 0.002, 0.005), "emit")
-        B.cable_run((0.06, -0.03, 0.006), (0.16, -0.026, 0.04), 0.01, 0.005, 5)
+        L = (xc1 - xc0) * (0.55 if tier == 2 else 1.0)
+        B.prism([(0.13, zt + 0.012), (xc0 + L, zt + 0.012), (xc0 + L - 0.03, zt + 0.04), (0.15, zt + 0.04)], 0.044,
+                0.0, "panel", "cover", 0.003)                                           # top shroud
+        for k in range(int(L / 0.05)):
+            B.box((xc0 + 0.03 + k * 0.05, -0.0225, zt + 0.026), (0.022, 0.003, 0.01), "dark", "greeble", 0.0)
+        B.box((-0.05, 0, -0.018), (0.2, 0.05, 0.03), "panel", "cover", 0.003)           # capacitor pack
+        B.light_strip((-0.05, -0.0255, -0.018), (0.15, 0.002, 0.006), "emit")
+        B.cable_run((0.05, -0.028, -0.01), (0.15, -0.02, zb), 0.012, 0.005, 5)
     if tier >= 3:
-        for k in range(6):
-            B.box((0.24 + k * 0.035, 0, 0.172), (0.008, 0.056, 0.016), "trim", "greeble", 0.0)  # heat sinks
-        B.box(((0.15 + xr) / 2, -0.036, zc), (xr - 0.16, 0.008, 0.01), "frame", "frame", 0.0)    # third rail
-        B.light_strip(((0.15 + xr) / 2, -0.0405, zc), (xr - 0.2, 0.002, 0.003), "emit")
-        B.box((-0.2, 0, 0.0), (0.12, 0.044, 0.03), "panel", "cover", 0.0)
-        B.light_strip((-0.2, -0.0225, 0.0), (0.08, 0.002, 0.006), "emit")
+        for k in range(5):
+            B.box((xc0 + 0.04 + k * 0.075, 0, zt + 0.05), (0.012, 0.05, 0.02), "trim", "greeble", 0.0)  # fins
+        for i in (1, 4, 7):
+            B.box((xc0 + i * pitch, 0.0, zc), (0.012, 0.034, zt - zb), "frame", "frame", 0.002)       # shroud bands
+            B.box((xc0 + i * pitch, -0.018, zc), (0.012, 0.004, zt - zb - 0.03), "dark", "greeble", 0.0)
+        B.box(((xc0 + xb) / 2, -0.074, zc - 0.03), (xb - xc0, 0.01, 0.012), "frame", "frame", 0.0)   # side rail
+        B.light_strip(((xc0 + xb) / 2, -0.0795, zc - 0.03), (xb - xc0 - 0.04, 0.002, 0.004), "emit")
+        for x in (xc0 + 0.05, xb - 0.05):
+            B.box((x, -0.05, zc - 0.03), (0.012, 0.04, 0.012), "frame", "greeble", 0.0)
+        B.box((-0.21, 0, -0.018), (0.1, 0.046, 0.03), "panel", "cover", 0.003)          # twin capacitor
+        B.light_strip((-0.21, -0.0235, -0.018), (0.07, 0.002, 0.006), "emit")
     for ob in B.parts:
         K.scale(ob, (0.92, 1.0, 0.95))
-    return {"muzzle": ((xr + 0.092) * 0.92, 0, zc * 0.95)}
+    return {"muzzle": ((xb + 0.083) * 0.92, 0, zc * 0.95)}
 
 
 def breach_launcher(B, rng, spec):
@@ -226,9 +239,9 @@ def W(name, var, fn, purpose, emit="cyan", emit2="amber", typ="WPN", **kw):
 
 
 SPECS = [
-    W("KINETIC_ACCELERATOR", "A", kinetic_accelerator, "Kinetic Accelerator, tier 1 (base): electromagnetic rail with cyan coil stack", tier=1),
-    W("KINETIC_ACCELERATOR", "B", kinetic_accelerator, "Kinetic Accelerator, tier 2: longer rail, more coils, heat sinks", tier=2),
-    W("KINETIC_ACCELERATOR", "C", kinetic_accelerator, "Kinetic Accelerator, tier 3: third rail, twin capacitors", tier=3),
+    W("KINETIC_ACCELERATOR", "A", kinetic_accelerator, "Kinetic Accelerator, tier 1 (base): open coil and rail accelerator, 4 exposed coils", tier=1),
+    W("KINETIC_ACCELERATOR", "B", kinetic_accelerator, "Kinetic Accelerator, tier 2: 6 coils, vented top shroud, capacitor pack", tier=2),
+    W("KINETIC_ACCELERATOR", "C", kinetic_accelerator, "Kinetic Accelerator, tier 3: 8 coils, armoured shroud and bands, side rail, heat sinks, twin capacitors", tier=3),
     W("BREACH_CHARGE", "A", breach_launcher, "Breach Charge launcher, tier 1: lobbed-canister tube, amber arming band", emit="amber", emit2="amber", tier=1),
     W("BREACH_CHARGE", "B", breach_launcher, "Breach Charge launcher, tier 2: larger drum, sight rail", emit="amber", emit2="amber", tier=2),
     W("BREACH_CHARGE", "C", breach_launcher, "Breach Charge launcher, tier 3: second arming ring, booster cell", emit="amber", emit2="amber", tier=3),

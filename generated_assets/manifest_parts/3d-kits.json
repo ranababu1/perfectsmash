@@ -3888,7 +3888,7 @@
    "category": "weapons",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Kinetic Accelerator, tier 1 (base): electromagnetic rail with cyan coil stack",
+   "purpose": "Kinetic Accelerator, tier 1 (base): open coil and rail accelerator, 4 exposed coils",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/weapons.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -3998,9 +3998,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1460,
-   "dimensions": "0.97 x 0.30 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1460 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 817 KB."
+   "tris": 1456,
+   "dimensions": "0.66 x 0.33 x 0.15 m (w x h x d)",
+   "notes": "Single node mesh_intact (1456 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 889 KB."
   },
   {
    "id": "OPR-WPN-KINETIC_ACCELERATOR-B",
@@ -4008,7 +4008,7 @@
    "category": "weapons",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Kinetic Accelerator, tier 2: longer rail, more coils, heat sinks",
+   "purpose": "Kinetic Accelerator, tier 2: 6 coils, vented top shroud, capacitor pack",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/weapons.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -4118,9 +4118,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1664,
-   "dimensions": "1.02 x 0.30 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1664 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_b. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 849 KB."
+   "tris": 1876,
+   "dimensions": "0.75 x 0.33 x 0.15 m (w x h x d)",
+   "notes": "Single node mesh_intact (1876 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_b. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 974 KB."
   },
   {
    "id": "OPR-WPN-KINETIC_ACCELERATOR-C",
@@ -4128,7 +4128,7 @@
    "category": "weapons",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Kinetic Accelerator, tier 3: third rail, twin capacitors",
+   "purpose": "Kinetic Accelerator, tier 3: 8 coils, armoured shroud and bands, side rail, heat sinks, twin capacitors",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/weapons.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -4238,9 +4238,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1916,
-   "dimensions": "1.08 x 0.30 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1916 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_c. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 910 KB."
+   "tris": 2388,
+   "dimensions": "0.87 x 0.35 x 0.15 m (w x h x d)",
+   "notes": "Single node mesh_intact (2388 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_c. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 1035 KB."
   },
   {
    "id": "OPR-WPN-PENETRATOR-A",
@@ -5398,7 +5398,7 @@
    "purpose": "Operative: stylised low-mid poly hooded faceless operative (SV-01, shorter cape) with a rigid node rig and nine animations",
    "used_by": "OperativeRig replacement (proposed, ASSET_CONTRACT 11): drive torso, arm_weapon, head, legs like the primitive placeholder",
    "pivot": "between the feet at floor level, facing +X",
-   "tris": 3516,
+   "tris": 5892,
    "dimensions": "about 0.55 x 1.84 x 0.5 m (w x h x d)",
    "animation": [
     "aim_pose",
@@ -5520,7 +5520,7 @@
     100
    ],
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (runchar.py, tfjenv.py)",
-   "notes": "Premium pass (2026-11-10, SV-01): dark hooded faceless figure with a glossy black visor and cyan slits, cowl and scarf, angular layered pauldrons, chest chevrons, cross straps, belt pouches, bracers, knee and shin guards and boots; a shorter cloth cape skinned to cape_rig (Skeleton3D on import, bones cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand should follow the aim. Head carries the emissive visor slits (in the baked emission mask). Animations are node TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. Material: one baked 1024 set embedded in the glb (chr_operative_a: albedo, tangent normal, ORM, emission mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep emission enabled. Quality: stylised production candidate built procedurally; it reads well at game distance but is not a sculpted hero character (hard-surface plates, no cloth simulation). Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 2245 KB."
+   "notes": "Premium pass 2 (2026-11-10, SV-01, after review): smooth stylised forms instead of box primitives. Superellipse-lofted torso, bulged 12-sided limbs with ball joints, and every armour plate is a curved shell sampled from the body surface it sits on (chest, side, back, abdomen bands, pauldrons in two layers, bracers, thigh, knee, shin and toe guards) with a chamfered rim, so the suit reads as layered panels. Soft cloth hood (deep opening, soft brow point, loose folds, rolled rim) over a glossy black visor with cyan slits; cowl and V scarf; cross straps over the plates; belt pouches. Suit panel seams and cloth creases are baked into the normal map (bake-time bump). A shorter flowing cloth cape (12 x 10 grid, folds and a pointed hem, flaring back) is skinned to cape_rig (Skeleton3D on import, bones cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand should follow the aim. Head carries the emissive visor slits (in the baked emission mask). Animations are node TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. Material: one baked 1024 set embedded in the glb (chr_operative_a: albedo, tangent normal, ORM, emission mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep emission enabled. Quality: stylised production candidate built procedurally; it reads well at game distance but is not a sculpted hero character (procedural shells, no cloth simulation, 5892 of 6,000 tris). Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 4083 KB."
   },
   {
    "id": "OPR-ANM-OPERATIVE-AIM_POSE",
@@ -27725,7 +27725,7 @@
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "used_by": "review only",
    "chapter": "shared",
-   "dimensions": "1280x1102",
+   "dimensions": "1200x1000",
    "approval_status": "pending_review"
   },
   {
@@ -27781,7 +27781,7 @@
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "used_by": "review only",
    "chapter": "shared",
-   "dimensions": "1280x746",
+   "dimensions": "1200x678",
    "approval_status": "pending_review"
   },
   {

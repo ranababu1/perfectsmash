@@ -40,6 +40,7 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
         TB.fit_envelope(parts, w, h, d, spec["id"])
     budget = spec.get("budget", 2000)
     pre = sum(sum(len(f.vertices) - 2 for f in p.data.polygons) for p in parts)
+    print("PRE_TRIS", spec["id"], pre)
     ob = P.pack(parts, "mesh_intact", ao=False, budget=budget if pre > budget else None)
     P.bake_ao(ob, dist=spec.get("ao_dist", 0.12), samples=16)
     scale_value(ob, spec.get("value", 1.0))

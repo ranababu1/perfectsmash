@@ -142,3 +142,9 @@ The 21 Helix environment pieces were rebuilt in place with the same ids.
   - `previews/hlx_showcase_close.webp` is a closer graded view of the core deck.
   - These are honest engine frames. They do not reach the SV-04 painting: SV-04 uses a much higher camera, painted bounce light and AO, and GL Compatibility has no SSAO, SDFGI or volumetric fog.
 - **Checks.** Godot lineup: 21 of 21 files load.
+
+## Helix showcase lift (2026-11-10, 3d-kits, after owner review)
+
+- Review note: the Helix MissionView showcase frame was too dark for a phone screen. `showcase.gd` gains two layout opt-ins: `asis_exposure` / `asis_ambient` (presentation lift for the MissionView-camera frame) and `fill` (a soft camera-side fill light, no shadow). Helix uses exposure 1.3, ambient 0.72 and fill 0.42 for that frame, and exposure 1.12, ambient 0.55 for the graded frame. The background stays dark, so the mood holds.
+- `previews/hlx_godot_test_frame.webp` is not regenerated and stays the strict MissionView lighting reference.
+- Re-rendered with the pass-2 operative and Kinetic Accelerator: `previews/hlx_showcase_missionview.webp`, `previews/hlx_showcase_graded.webp`, `previews/hlx_showcase_close.webp`.

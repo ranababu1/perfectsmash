@@ -35,19 +35,19 @@ PALETTES = {
                   emit={"cyan": "35d6f2", "orange": "ff8a24", "red": "ff3b4e", "white": "dff6ff"}),
     "vita": dict(hazard="e8c860", key="eef1f2", frame="9aa2aa", panel="dfe4e7", trim="eef1f2", internal="1b1f22",
                  rubber="2a2d30", cable="30353a", light="f4f6f7", dark="6b737a", scorch="141414",
-                 concrete="a8adb1", polymer="e9ecee", accent="c3cbd1", metal=0.06, rough=0.34,
+                 concrete="a8adb1", polymer="e9ecee", accent="c3cbd1", edge="f8fafb", module="c9d0d5", floor="d4d9dc", tread="b9c0c5", metal=0.06, rough=0.34,
                  emit={"green": "62e3a4", "white": "e8fff4", "orange": "ffb347", "red": "ff3b4e"}),
     "nova_grid": dict(hazard="e0b53c", key="b0aaa0", frame="4a4c52", panel="65676d", trim="a39d93", internal="141416",
                       rubber="18181a", cable="202022", light="c4beb4", dark="383a3f", scorch="0c0c0c",
-                      concrete="74767a", polymer="6a6c72", accent="7a756e", metal=0.3, rough=0.5,
+                      concrete="74767a", polymer="6a6c72", accent="7a756e", edge="c9c3b8", module="3a3c41", floor="3b3d42", tread="55575c", metal=0.3, rough=0.5,
                       emit={"amber": "ffae42", "blue": "4aa8ff", "red": "ff3b4e", "white": "fff1d8"}),
     "civitas": dict(hazard="c9b04a", key="c4c9ce", frame="5d636a", panel="848a91", trim="b8bdc3", internal="17191c",
                     rubber="1d1e20", cable="26292c", light="d6dade", dark="454a50", scorch="101011",
-                    concrete="9a9ea2", polymer="aab0b6", accent="6f7a88", metal=0.16, rough=0.6,
+                    concrete="9a9ea2", polymer="aab0b6", accent="6f7a88", edge="dfe3e6", module="4a5058", floor="8a8f94", tread="6c7177", metal=0.16, rough=0.6,
                     emit={"blue": "8ab4ff", "red": "ff3b4e", "white": "e6eeff", "orange": "ffb347"}),
     "meridian": dict(hazard="c8b070", key="d4d7e0", frame="4c4e5a", panel="626576", trim="c4c8d4", internal="111117",
                      rubber="16161b", cable="1e1f26", light="e6e8ee", dark="3a3c47", scorch="0b0b0e",
-                     concrete="6a6b74", polymer="dcdee6", accent="6c6a86", metal=0.28, rough=0.32,
+                     concrete="6a6b74", polymer="dcdee6", accent="6c6a86", edge="e0e2ea", module="33343e", floor="3a3b45", tread="50525e", metal=0.28, rough=0.32,
                      emit={"violet": "8f7cff", "cyan": "7fe8ff", "white": "f0f0ff", "red": "ff3b4e"}),
 }
 PALETTES["arsenal"] = dict(hazard="8a7440", key="40464d", frame="2d3137", panel="474e56", trim="7d858d",
@@ -55,10 +55,10 @@ PALETTES["arsenal"] = dict(hazard="8a7440", key="40464d", frame="2d3137", panel=
                            scorch="101011", concrete="70747a", polymer="d8dce0", accent="2f3338", edge="c2cad2",
                            metal=0.22,
                            rough=0.38, emit={"cyan": "35d6f2", "amber": "ffae42", "white": "e6f6ff", "red": "ff3b4e"})
-PALETTES["operative"] = dict(hazard="d9a838", key="2a2e37", frame="363c45", panel="4e5661", trim="8a939d",
+PALETTES["operative"] = dict(hazard="d9a838", key="202329", frame="2a2f36", panel="383e47", trim="646b74",
                              internal="111216", rubber="1d1f23", cable="22252a", light="9aa2ac", dark="1c1f24",
                              scorch="0e0e0f", concrete="5a5e63", polymer="60656c", accent="33302c", edge="c0c8d2",
-                             cloth="1d1f24", visor="0b0c0e", metal=0.12,
+                             cloth="131417", visor="0b0c0e", metal=0.12,
                              rough=0.62, emit={"cyan": "35d6f2", "white": "e6f6ff", "amber": "ffae42", "red": "ff3b4e"})
 PALETTES["shared"] = dict(PALETTES["helix"])
 PALETTES["shared"]["emit"] = {"cyan": "5fd4e8", "orange": "ff8a24", "red": "ff3b4e", "white": "e6f2ff"}
@@ -708,6 +708,7 @@ def _zone_material(main, zone, name, value):
         pz.inputs["Roughness"].default_value = max(pz.inputs["Roughness"].default_value, CTX["matte"])
         pz.inputs["Metallic"].default_value *= 0.4
     m["tfj_kind"] = "zone"
+    m["tfj_zone"] = zone or "key"
     m["tfj_value"] = value
     m.use_backface_culling = True
     if CTX.get("matte"):

@@ -166,9 +166,14 @@ def char_entries():
              used_by="OperativeRig replacement (proposed, ASSET_CONTRACT 11): drive torso, arm_weapon, head, legs like the primitive placeholder",
              pivot="between the feet at floor level, facing +X", tris=t, dimensions="about 0.55 x 1.84 x 0.5 m (w x h x d)",
              animation=sorted(anims), **base)
-    e["notes"] = (f"Premium pass (2026-11-10, SV-01): dark hooded faceless figure with a glossy black visor and cyan "
-                  f"slits, cowl and scarf, angular layered pauldrons, chest chevrons, cross straps, belt pouches, bracers, "
-                  f"knee and shin guards and boots; a shorter cloth cape skinned to cape_rig (Skeleton3D on import, bones "
+    e["notes"] = (f"Premium pass 2 (2026-11-10, SV-01, after review): smooth stylised forms instead of box primitives. "
+                  f"Superellipse-lofted torso, bulged 12-sided limbs with ball joints, and every armour plate is a curved "
+                  f"shell sampled from the body surface it sits on (chest, side, back, abdomen bands, pauldrons in two layers, "
+                  f"bracers, thigh, knee, shin and toe guards) with a chamfered rim, so the suit reads as layered panels. "
+                  f"Soft cloth hood (deep opening, soft brow point, loose folds, rolled rim) over a glossy black visor with "
+                  f"cyan slits; cowl and V scarf; cross straps over the plates; belt pouches. Suit panel seams and cloth "
+                  f"creases are baked into the normal map (bake-time bump). A shorter flowing cloth cape (12 x 10 grid, "
+                  f"folds and a pointed hem, flaring back) is skinned to cape_rig (Skeleton3D on import, bones "
                   f"cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. "
                   f"Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, "
                   f"torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the "
@@ -180,7 +185,7 @@ def char_entries():
                   f"Material: one baked 1024 set embedded in the glb ({', '.join(st['materials'])}: albedo, tangent normal, ORM, emission "
                   f"mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep "
                   f"emission enabled. Quality: stylised production candidate built procedurally; it reads well at game "
-                  f"distance but is not a sculpted hero character (hard-surface plates, no cloth simulation). {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
+                  f"distance but is not a sculpted hero character (procedural shells, no cloth simulation, {t} of 6,000 tris). {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
     out = [e]
     for name, a in sorted(anims.items()):
         out.append(dict(id=f"OPR-ANM-OPERATIVE-{name.upper()}", path=rel(st["file"]),

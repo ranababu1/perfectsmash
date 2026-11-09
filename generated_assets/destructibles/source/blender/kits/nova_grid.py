@@ -239,3 +239,68 @@ SPECS = [
     S("containment_wall", "B", "concrete", 60, 120, 1.0, containment_wall),
     S("reactor_core", "A", "energy_component", 80, 120, 0.8, reactor_core, critical=True, emit2="red"),
 ]
+
+
+# ---------------------------------------------------------------- premium pass (2026-11-10): secondary detail
+# Nova Grid: heavy industrial, flange bolts, cable looms, hazard tabs, amber status pips and roof louvres.
+import tfjdetail as Dt
+
+
+def _p_pylon(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.bolts(B, [(x, z0 + 0.04) for x in (-w * 0.4, -w * 0.15, w * 0.15, w * 0.4)], -d * 0.45 - 0.001, 0.02)
+    B.cyl((w * 0.05, -d * 0.2, 0), 0.012, h * 0.8, "Z", 6, "cable", "cable", 0.0)
+
+
+def _p_bridge(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    Dt.loom(B, (-w / 2 + 0.05, -d * 0.1, z0 + 0.02), (w / 2 - 0.05, -d * 0.1, z0 + 0.02), 3, 0.014, 0.05, 0.035,
+            (0, 1, 0), seg=6)
+
+
+def _p_transformer(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    fy = -d / 2
+    Dt.bolts(B, [(x, z0 + 0.04) for x in (-w * 0.42, -w * 0.14, w * 0.14, w * 0.42)], fy - 0.001, 0.02)
+    Dt.status_leds(B, -w * 0.33, z0 + 0.04, fy, 3, 0.024, (0.014, 0.008), "emit", "emit2", rng)
+
+
+def _p_tower(B, w, h, d, rng, spec):
+    Dt.louvre(B, 0, 0, w * 0.5, d * 0.3, h / 2, 5, "dark", "internal", normal="+Z")
+
+
+def _p_ring(B, w, h, d, rng, spec):
+    Dt.bolts(B, [(sx * w * 0.3, -h / 2 + h * 0.1) for sx in (-1, 1)], -d * 0.4 - 0.02, 0.018)
+
+
+def _p_capacitor(B, w, h, d, rng, spec):
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.5, d * 0.4, "panel")
+    Dt.status_leds(B, w * 0.15, -h / 2 + 0.07, -d / 2 - 0.002, 3, 0.024, (0.014, 0.008), "emit", "emit2", rng)
+
+
+def _p_wall(B, w, h, d, rng, spec):
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.5, d * 0.4, "panel")
+    Dt.loom(B, (w * 0.38, -d * 0.39, h / 2 - 0.12), (w * 0.38, -d * 0.39, -h / 2 + 0.15), 2, 0.012, 0.02, 0.026,
+            (1, 0, 0), seg=6)
+
+
+def _p_core(B, w, h, d, rng, spec):
+    Dt.bolts(B, [(x, -h / 2 + 0.04) for x in (-w * 0.35, -w * 0.12, w * 0.12, w * 0.35)], -d * 0.45 - 0.001, 0.02)
+
+
+PREMIUM = {"grid_pylon": _p_pylon, "cable_bridge": _p_bridge, "transformer": _p_transformer,
+           "cooling_tower_segment": _p_tower, "containment_ring_segment": _p_ring, "capacitor_cell": _p_capacitor,
+           "containment_wall": _p_wall, "reactor_core": _p_core}
+
+
+def _wrap(fn, extra):
+    def build(B, w, h, d, rng, spec):
+        fn(B, w, h, d, rng, spec)
+        extra(B, w, h, d, rng, spec)
+    return build
+
+
+for _s in SPECS:
+    if _s["kind"] in PREMIUM and not _s.get("_premium"):
+        _s["build"] = _wrap(_s["build"], PREMIUM[_s["kind"]])
+        _s["_premium"] = True

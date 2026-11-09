@@ -25,6 +25,8 @@ func _init() -> void:
 	root3d = Node3D.new()
 	get_root().add_child(root3d)
 	_environment(mode, layout)
+	if mode == "showcase":  # graded frames only: optional emission trim so cyan does not clip to white under ACES
+		emit_scale = float(layout.get("emission_scale", 1.0))
 	for it in layout["items"]:
 		_place(it)
 	if mode == "showcase":
@@ -93,6 +95,10 @@ func _environment(mode: String, layout: Dictionary) -> void:
 		env.adjustment_enabled = true
 		env.adjustment_contrast = 1.08
 		env.adjustment_saturation = 1.05
+	if mode != "showcase" and layout.has("asis_exposure"):
+		# presentation lift for phone screens (layout opt-in); the strict MissionView test frame omits it
+		env.tonemap_exposure = float(layout["asis_exposure"])
+		env.ambient_light_energy = float(layout.get("asis_ambient", 0.55))
 	var we := WorldEnvironment.new()
 	we.environment = env
 	root3d.add_child(we)
@@ -103,6 +109,13 @@ func _environment(mode: String, layout: Dictionary) -> void:
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
 	root3d.add_child(sun)
+	if layout.has("fill"):  # soft camera-side fill, no shadow, keeps the low-key mood
+		var fill := DirectionalLight3D.new()
+		fill.rotation_degrees = Vector3(-18.0, -8.0, 0.0)
+		fill.light_energy = float(layout["fill"])
+		fill.light_color = Color("cfdcea")
+		fill.light_specular = 0.3
+		root3d.add_child(fill)
 	if mode == "showcase":
 		var rim := DirectionalLight3D.new()  # cool back rim from behind-right, no shadow
 		rim.rotation_degrees = Vector3(-28.0, 150.0, 0.0)
@@ -133,6 +146,9 @@ func _light(l: Dictionary) -> void:
 		n.look_at(_v3(l["look"]), Vector3.UP)
 
 
+var emit_scale := 1.0
+
+
 func loader_rules(n: Node, state: String) -> void:
 	for m in n.find_children("*", "MeshInstance3D", true, false):
 		var mi := m as MeshInstance3D
@@ -146,6 +162,8 @@ func loader_rules(n: Node, state: String) -> void:
 				mat.vertex_color_use_as_albedo = true
 			if mat.emission_enabled and mat.emission_texture:
 				mat.emission_operator = BaseMaterial3D.EMISSION_OP_MULTIPLY
+			if mat.emission_enabled and emit_scale != 1.0:
+				mat.emission_energy_multiplier *= emit_scale
 
 
 func _load(f: String) -> Node3D:
