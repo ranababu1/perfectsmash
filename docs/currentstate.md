@@ -1,6 +1,8 @@
 # Current State
 
-_Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `master` · Remote `origin` (github.com/ranababu1/perfectsmash)_
+_Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `main` · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+
+M1 audit findings (toolchain, architecture, level mapping, identity/signing, risks): see `docs/project-audit.md`.
 
 ## Purpose and phase
 

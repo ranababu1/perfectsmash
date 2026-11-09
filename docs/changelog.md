@@ -2,6 +2,13 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — M1 repository and project audit
+
+- Added `docs/project-audit.md`: toolchain/device inventory, architecture review, supported level vocabulary, mapping of the existing 20 levels to Chapter I, identity/signing audit, store-migration implications, renderer/export baseline, risks and recommended sequence.
+- Corrected `docs/currentstate.md` header: branch `main`, remote `temporal-chapter1` (it still referenced the old `master`/`perfectsmash` repository).
+- Baseline re-verified on this clone: `godot_console --headless --import`, then `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 50 passed, 0 failed, 1 skipped (Godot 4.7.2, Windows 11).
+- Findings needing owner input: Chapter I level order (spec order vs. current difficulty order); confirmation that `dev.imrn.perfectsmash` was never uploaded to any store. No physical Android/iOS device, Mac or iOS export templates are available on this machine.
+
 ## 2026-11-09 — Android + iOS mobile rendering architecture approved
 
 - Owner confirmed Android + iOS as target platforms and mobile performance/battery efficiency as the primary priority.
