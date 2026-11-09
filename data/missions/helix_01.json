@@ -1,0 +1,39 @@
+{
+	"_note": "Greybox Helix mission for the first playable prototype (Batch 3). Coordinates are in the 2D physics plane (y down, ground at ground_y). Layout values are untested starting points; physics stability is verified in Batch 3.",
+	"id": "helix_01",
+	"name": "Relay Node",
+	"chapter": 1,
+	"briefing": "AURA's regional core runs from this relay node. Destroy the core. Keep the impact contained.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [180, 640],
+	"recommended_shots": 6,
+	"target_time": 75,
+	"weapons": {
+		"kinetic_accelerator": {"ammunition": 14},
+		"breach_charge": {"ammunition": 3}
+	},
+	"statics": [
+		{"x": 900, "y": 625, "w": 420, "h": 30}
+	],
+	"components": [
+		{"id": "blast_wall", "kind": "blast_wall", "material": "reinforced_steel", "x": 640, "y": 540, "w": 30, "h": 140},
+		{"id": "rack_1", "kind": "server_rack", "material": "electronic_module", "x": 720, "y": 560, "w": 40, "h": 100},
+		{"id": "rack_2", "kind": "server_rack", "material": "electronic_module", "x": 770, "y": 560, "w": 40, "h": 100},
+		{"id": "pillar_l", "kind": "support_column", "material": "lightweight_alloy", "x": 830, "y": 530, "w": 26, "h": 160},
+		{"id": "pillar_r", "kind": "support_column", "material": "lightweight_alloy", "x": 970, "y": 530, "w": 26, "h": 160},
+		{"id": "deck", "kind": "service_deck", "material": "composite", "x": 900, "y": 438, "w": 200, "h": 24, "supports": ["pillar_l", "pillar_r"]},
+		{"id": "aura_core", "kind": "ai_core", "material": "electronic_module", "x": 885, "y": 396, "w": 60, "h": 60, "health_scale": 1.5, "critical_asset": true, "supports": ["deck"]},
+		{"id": "power_cell", "kind": "power_cell", "material": "energy_component", "x": 955, "y": 406, "w": 36, "h": 40, "supports": ["deck"]},
+		{"id": "rack_3", "kind": "server_rack", "material": "electronic_module", "x": 1030, "y": 560, "w": 40, "h": 100},
+		{"id": "rack_4", "kind": "server_rack", "material": "electronic_module", "x": 1080, "y": 560, "w": 40, "h": 100},
+		{"id": "relay_mast", "kind": "relay_mast", "material": "lightweight_alloy", "x": 1200, "y": 500, "w": 22, "h": 220},
+		{"id": "relay_dish", "kind": "relay_dish", "material": "glass_polymer", "x": 1200, "y": 378, "w": 70, "h": 24, "supports": ["relay_mast"]}
+	],
+	"objectives": [
+		{"id": "core", "type": "destroy_critical", "mandatory": true, "label": "Destroy the AURA core", "targets": ["aura_core"]},
+		{"id": "racks", "type": "destroy_components", "mandatory": false, "label": "Wipe the server racks", "targets": ["rack_1", "rack_2", "rack_3", "rack_4"]},
+		{"id": "relay", "type": "destroy_components", "mandatory": false, "label": "Cut the relay uplink", "targets": ["relay_dish"]},
+		{"id": "efficient", "type": "max_shots", "mandatory": false, "label": "Finish within 8 shots", "limit": 8}
+	]
+}
