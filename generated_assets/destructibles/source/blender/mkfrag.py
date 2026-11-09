@@ -183,6 +183,8 @@ def main():
     for cat in ("destructibles", "environments", "weapons", "characters"):
         for p in sorted(glob.glob(f"{REPO}/generated_assets/{cat}/previews/*.webp")):
             b = os.path.basename(p)[:-5]
+            if not (b.endswith(("_components_sheet", "_environment_sheet", "_godot_test_frame")) or b.startswith("opr_")):
+                continue  # other streams' previews share these folders
             ch = CH_BY.get(b.split("_")[0], "shared")
             w, h = Image.open(p).size
             godot = "godot" in b
