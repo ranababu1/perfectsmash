@@ -205,7 +205,7 @@ The coding agent must inspect the actual Godot project before choosing final res
 8. Do not change minimum supported Android/iOS versions, production renderer settings or export presets until the owner reviews the evidence and approves the change.
 
 **Rendering principles**
-- Prefer baked/static artwork, restrained 2D lighting, layered backgrounds and efficient sprite effects over expensive real-time full-screen effects.
+- Prefer modest 3D geometry, simple real-time lighting/shadows tuned for mobile, layered backgrounds and efficient particle/sprite VFX over expensive full-screen effects. *(Updated 2026-11-09 for the 3D presentation over 2D physics.)*
 - Use conservative particle counts, overdraw and transparent full-screen layers.
 - Keep shaders simple and provide a tested fallback for optional visual effects where necessary.
 - Rendering backend changes must not alter physics, collision tuning, level outcomes, scoring or save data.
@@ -263,7 +263,7 @@ Initial research candidates are listed in the audio guide. They are candidates o
 
 - Use AI to produce consistent environment concept art, cinematic frames, object concepts and music prototypes.
 - Generate chapter art from a locked style reference and chapter-specific prompt templates.
-- Generate separate foreground/gameplay assets with transparent backgrounds when needed; cinematic background images are not substitutes for clean gameplay sprites.
+- ~~Generate separate foreground/gameplay assets with transparent backgrounds~~ *(Superseded 2026-11-09)*: gameplay objects are 3D modular geometry with textures; generated 2D art is used for textures, decals, damage variations, VFX, UI and cinematic stills. See §9b.
 - Review every generated asset for consistency, unwanted text, artefacts, visual clarity and commercial-use rights.
 - Keep source prompts, output IDs/files, license evidence and intended use in the asset manifest.
 - Do not create 100 unique full-screen backgrounds. Use five chapter environment families, reusable props and a small number of cinematic keyframes.
@@ -555,6 +555,17 @@ Multiplayer is part of the approved product roadmap but must not block the first
 The original 20 slingshot/block levels and their mechanics (pull-back aiming, single projectile, five-shot cap, all-or-nothing destruction, stars-only scoring) are retired. They remain temporarily for regression/reference only and do not constrain the new architecture or menus. The Helix Systems prototype is the first playable experience. Preserved: physics simulation, data-driven loading, saves/migrations, services, audio, tests, solver utilities, renderer benchmark and reusable UI/platform code.
 
 Implementation batches for the prototype: (1) materials, weapons, damage, damageable components, structural dependencies; (2) mission architecture; (3) first playable Helix prototype; (4) Mission Points, Research Data, upgrade calculation, save v3 migration; (5) polish, tuning and device validation. Proceed to the five-chapter campaign only after prototype review and approval.
+
+## 9b. Production pipeline alignment (owner, 2026-11-09)
+
+- **Architecture (Option B, already planned):** Godot 3D rendering, tilted three-quarter camera, existing Godot 2D physics. Batch 3 builds the greybox on this, including a placeholder 3D operative.
+- **No per-object PNG sprite pipeline.** Buildings and destructible components are 3D-ready modular geometry with suitable textures; each component's front face matches its 2D physics rectangle.
+- **2D generated art remains** for textures, decals, damage variations, VFX, UI and cinematics.
+- **Operative and weapons:** placeholders until the greybox is validated; no detailed models yet.
+- **First asset milestone:** concepts, material references, texture sets and specifications only.
+- **Gate:** no bulk asset production until the Batch 3 greybox has been played and visually validated.
+- **Cinematics:** narrated stills (images, subtle zoom/parallax, subtitles, music). Video production is not a dependency.
+- Details: `docs/visual-audio-production-guide.md` → “3D-ready production pipeline”.
 
 ## 10. Revised acceptance principles
 

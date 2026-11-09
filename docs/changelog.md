@@ -2,6 +2,12 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Production pipeline aligned with the 3D-over-2D-physics architecture
+
+- `plan.md` §9b and a new “3D-ready production pipeline” section in `visual-audio-production-guide.md`: 3D modular components whose front face matches the 2D physics rectangle (100 px = 1 m, centre pivots, glTF, mobile triangle/texture budgets); 2D art for textures, decals, damage variants, VFX, UI and cinematic stills; placeholder operative/weapons; first asset milestone = concepts, material references, texture sets, specs; bulk production gated on the validated Batch 3 greybox; narrated stills, no video dependency.
+- Marked the sprite-based guidance (Temporal Charge sprite, object sprite and gameplay-background templates, sprite format rules, approval checklist items) as superseded where it stands; updated plan §6 rendering principles and §9.
+- Documentation only; no code changed.
+
 ## 2026-11-09 — Batch 2: mission architecture
 
 - `db82117` MissionDefinition + `data/missions/helix_01.json` (Relay Node greybox: blast wall, 4 server racks, 2 support columns, service deck, AURA core (critical), power cell, relay mast + dish; objectives: core (mandatory), racks, relay dish, ≤8 shots).

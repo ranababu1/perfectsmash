@@ -161,6 +161,10 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Production pipeline alignment (owner, 2026-11-09)
+
+Option B is the planned architecture: Godot 3D rendering + tilted three-quarter camera over the existing 2D physics, with a placeholder 3D operative (Batch 3). Gameplay objects are 3D modular geometry with textures (no per-object PNG sprites); 2D art is for textures, decals, damage variants, VFX, UI and narrated-still cinematics (no video dependency). The first asset milestone is concepts, material references, textures and specs; bulk asset production waits for the validated Batch 3 greybox. See `plan.md` §9b and the guide's “3D-ready production pipeline”.
+
 ## Batch 2 — mission architecture (implemented 2026-11-09, `db82117`..`d7a3738`)
 
 | System | Files | Status |
