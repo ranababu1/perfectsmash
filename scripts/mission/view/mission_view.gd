@@ -60,6 +60,23 @@ func setup(p_world: MissionWorld) -> void:
 	world.blast_happened.connect(_on_blast)
 	world.impact_happened.connect(_on_impact)
 	world.engine.component_state_changed.connect(_on_component_state_changed)
+	_warm_up_effects()
+
+
+## The first blast flash (alpha-blended) and its omni light need shader variants that nothing
+## else in the scene uses; compiling them on the first detonation stalled that frame by
+## 0.5-1.1 s on the Android emulator (renderer evaluation, 2026-11-10). Show both once,
+## invisibly (zero alpha, near-zero light energy over the facility), while the mission loads,
+## so that cost is paid up front. Debris and sparks warm up the same way.
+func _warm_up_effects() -> void:
+	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
+	_spawn_flash(centre, 4.0, 0.0, 0.001)
+	# Particles just under the ground surface: drawn (so compiled) but hidden, and not moving.
+	var hidden := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y + 60.0), definition.ground_y)
+	for particles: CPUParticles3D in [_spawn_sparks(hidden), _spawn_debris(hidden, Color.BLACK, Vector3.ONE * 0.1)]:
+		particles.initial_velocity_min = 0.0
+		particles.initial_velocity_max = 0.0
+		particles.gravity = Vector3.ZERO
 
 
 ## The point in the 2D physics plane under a screen position (null if the ray misses it).
@@ -296,7 +313,10 @@ func _on_projectile_removed(projectile: WeaponProjectile) -> void:
 
 
 func _on_blast(center: Vector2, radius: float) -> void:
-	var at := ViewMapping.to_3d(center, definition.ground_y)
+	_spawn_flash(ViewMapping.to_3d(center, definition.ground_y), radius / ViewMapping.PX_PER_METRE * 2.0, 0.7, 4.0)
+
+
+func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -> void:
 	var flash := MeshInstance3D.new()
 	var sphere := SphereMesh.new()
 	sphere.radius = 0.5
@@ -305,18 +325,17 @@ func _on_blast(center: Vector2, radius: float) -> void:
 	var material := StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(1.0, 0.72, 0.35, 0.7)
+	material.albedo_color = Color(1.0, 0.72, 0.35, alpha)
 	flash.material_override = material
 	flash.position = at
 	add_child(flash)
-	var size := radius / ViewMapping.PX_PER_METRE * 2.0
 	var tween := flash.create_tween().set_parallel()
 	tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
 	tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
 	tween.chain().tween_callback(flash.queue_free)
 	var light := OmniLight3D.new()
 	light.light_color = Color("ffb060")
-	light.light_energy = 4.0
+	light.light_energy = light_energy
 	light.omni_range = size * 1.5
 	light.position = at + Vector3(0, 0, 0.8)
 	add_child(light)
@@ -329,7 +348,7 @@ func _on_impact(at: Vector2, strength: float, _component_id: String) -> void:
 	_spawn_sparks(ViewMapping.to_3d(at, definition.ground_y, 0.3))
 
 
-func _spawn_sparks(at: Vector3) -> void:
+func _spawn_sparks(at: Vector3) -> CPUParticles3D:
 	var sparks := CPUParticles3D.new()
 	sparks.one_shot = true
 	sparks.amount = 14
@@ -350,9 +369,10 @@ func _spawn_sparks(at: Vector3) -> void:
 	add_child(sparks)
 	sparks.emitting = true
 	sparks.finished.connect(sparks.queue_free)
+	return sparks
 
 
-func _spawn_debris(at: Vector3, color: Color, size: Vector3) -> void:
+func _spawn_debris(at: Vector3, color: Color, size: Vector3) -> CPUParticles3D:
 	var debris := CPUParticles3D.new()
 	debris.one_shot = true
 	debris.amount = 10
@@ -371,3 +391,4 @@ func _spawn_debris(at: Vector3, color: Color, size: Vector3) -> void:
 	add_child(debris)
 	debris.emitting = true
 	debris.finished.connect(debris.queue_free)
+	return debris

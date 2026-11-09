@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tools/renderer_eval/mission_benchmark.gd" id="1"]
+
+[node name="MissionBenchmark" type="Node"]
+script = ExtResource("1")
