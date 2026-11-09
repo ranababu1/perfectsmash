@@ -72,10 +72,10 @@ func _ready() -> void:
 
 	engine.objective_changed.connect(func(_id: String, _s: int) -> void: hud.update_objectives(engine.objectives))
 	engine.mission_finished.connect(_on_mission_finished)
-	engine.component_destroyed.connect(func(_id: String) -> void: _play("pop"))
+	engine.component_destroyed.connect(_on_component_destroyed)
 	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("shatter"))
 	world.impact_happened.connect(_on_impact)
-	hud.update_objectives(engine.objectives)
+	hud.update_objectives.call_deferred(engine.objectives)
 	view.operative.set_weapon(engine.selected_weapon_id)
 	_update_hint()
 
@@ -213,6 +213,12 @@ func _on_mission_finished(success: bool) -> void:
 	if is_inside_tree() and not _result_shown:
 		_result_shown = true
 		hud.show_result(success, engine)
+
+
+## Destruction moves goal progress without changing objective status, so refresh here too.
+func _on_component_destroyed(_component_id: String) -> void:
+	_play("pop")
+	hud.update_objectives.call_deferred(engine.objectives)
 
 
 func _on_impact(_at: Vector2, strength: float) -> void:

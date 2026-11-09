@@ -111,3 +111,13 @@ func test_pause_blocks_aim_and_restart_rebuilds() -> void:
 	assert_true(main._mission != null and main._mission != screen, "restart builds a fresh mission")
 	assert_eq(main._mission.engine.shots_fired(), 0)
 	await _free(main)
+
+
+func test_objective_progress_refreshes_on_destruction() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	screen.engine.apply_damage("rack_1", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
+	await tree.process_frame
+	var texts := screen.hud._objective_box.get_children().filter(func(n: Node) -> bool: return not n.is_queued_for_deletion()).map(func(l: Label) -> String: return l.text)
+	assert_true(texts.any(func(t: String) -> bool: return t.contains("server racks") and t.contains("25%")), str(texts))
+	await _free(main)
