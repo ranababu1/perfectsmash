@@ -8,6 +8,14 @@
 **Brief:** Master Art, Animation, Video and Audio Production Brief §26 first response.  
 **Rendering decision (owner):** Option B - Godot 3D rendering with a tilted three-quarter camera over retained Godot 2D physics. No 3D physics.
 
+## Review status (2026-11-09)
+
+- Staging structure: approved by reviewer.
+- Visual direction (SV-01 to SV-07): pending owner review. These are concepts and references, not production meshes, textures or animations.
+- Production meshes and textures: none yet; all remain in `planned[]` until the Batch 3 Helix greybox is validated.
+- Gameplay music (`gameplay_bed.ogg`): preserved, rights unverified, not commercially cleared.
+- Merge: do not merge `assets` yet. It is behind `main`; reconcile with the latest mainline before integration.
+
 This plan does not start bulk production. It records understanding, audit findings, Helix prototype scope, coding-agent dependencies and open owner decisions. Proposed notes for `docs/changelog.md` and `docs/currentstate.md` are at the end so mainline docs stay untouched until the owner merges.
 
 ---
