@@ -1,7 +1,7 @@
 # Coding agent handoff: integrating the generated assets
 
 **For:** the coding agent that wires art, VFX, UI and audio into the Godot game.
-**Written:** 2026-11-10 against `assets` at `30a95a7` (main last merged in: `9f773fd`).
+**Written:** 2026-11-10 against `assets` at `249a49a` (main last merged in: `9f773fd`).
 **Read with:** `generated_assets/docs/ASSET_CONTRACT.md` (v1.7, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
 
 Everything below is checked against the files on `assets`. Anything not yet delivered is marked **PENDING** with what is on disk today.
@@ -11,7 +11,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 ## 1. Ground rules
 
 - All generated assets live on the **`assets` branch** under `generated_assets/`. `main` stays untouched until Imran approves the merge. Do not cherry-pick or copy files from `assets` into `main`. Prototype the loader on a branch of your own that is based on `assets`, or in a scratch copy, and keep it out of `main` until Imran approves.
-- **Every new asset is `approval_status: pending_review`** (1,293 of 1,303 entries in the current fragments; the other 10 are legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
+- **Every new asset is `approval_status: pending_review`** (1,316 of 1,326 entries at the time of writing; the other 10 are legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
 - **Rights caveats (do not ship as cleared):**
   - AI-generated images are **not commercially cleared**. These are the background plates and texture sources (GenerateImage), the two UI backdrops, and the concepts. Check the `rights_status` text of each entry.
   - Procedural and code-generated work (meshes, VFX, UI vector art, synthesised audio) is original work, but ownership of AI-assisted output is not legally settled, so none of it is marked commercially cleared.
@@ -22,7 +22,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 2. How to find and load assets
 
-- **Manifest:** `generated_assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `generated_assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. **Right now it lags behind the fragments:** it has 1,199 entries and the fragments have 1,303, because the VITA, Nova Grid and Civitas environment kits and the Civitas and Meridian backgrounds landed after the last merge. Until the next pass, read the fragments, or the union of both by `id`.
+- **Manifest:** `generated_assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `generated_assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. **Right now it lags behind the fragments:** it has 1,245 entries and the fragments have 1,326, because the VITA, Nova Grid, Civitas and Meridian environment kits and the Civitas and Meridian backgrounds landed after the last merge. Until the next pass, read the fragments, or the union of both by `id`.
 - **Entry fields you need:** `id`, `path` (repo-relative, so prefix it with `res://`), `category`, `render_type` (`mesh`, `texture`, `sprite`, `ui`, `audio`, `font`, `reference`), `chapter` (`helix`, `vita`, `nova_grid`, `civitas`, `meridian`, `shared`), and, where they apply, `component_kind`, `material`, `reference_size_px`, `depth_m`, `scale_range`, `states`, `critical`, `animation`, `blend`, `pivot`, `nine_slice`, `bus`, `loop`, `loop_offset_seconds`, `sound_id`, `music_cue`, `ambience_cue`, `levels`.
 - **Skip** `render_type: reference` entries and ids ending `-MOCK` (concepts, previews, screen mock-ups). They are review material, not game assets.
 - **Ids** are `<CH>-<TYPE>-<NAME>-<VARIANT>` (section 6). `CH` is `HLX`, `VTA`, `NVG`, `CVT`, `MRD`, `SHR`, `OPR` or `GAM`. `TYPE` includes `CMP` (component), `DEB` (debris), `ENV`, `PRP`, `BG`, `MAT`, `DMG`, `DCL`, `VFX`, `UI`, `ICN`, `MUS`, `SFX`, `AMB`, `FNT` and `LOGO`. The file name is the id in lower case with hyphens turned into underscores, for example `HLX-CMP-SERVER_RACK-B` is `generated_assets/destructibles/helix/hlx_cmp_server_rack_b.glb`.
@@ -77,7 +77,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 **Environment and backgrounds (section 10, `environments/PRODUCTION_NOTES.md`):**
 - **Kit modules:** `<CH>-ENV-*` and `<CH>-PRP-*`, 21 per chapter. They cover floor tiles (top at y = 0, left edge at x = 0), back walls, pillar, catwalk, truss, massing, two statics (`LEDGE_STATIC`, `PLINTH_STATIC`, centred and 1.6 m deep), four near props and four band landmarks.
-  - Delivered for HLX, VTA, NVG and CVT. **PENDING:** the Meridian kit.
+  - Delivered for all five chapters (the Meridian kit landed in `249a49a`).
 - **Background cards:** `<CH>-BG-FAR|MID|NEAR_<band>_<ZONE>-A` are delivered for all five chapters, four bands each, plus two variant far plates. They are unshaded quads:
   - far: 72 x 36 m at z -30, with the horizon at camera height (y 3.9 m)
   - mid: 28 x 14 m at z -20, bottom at y -1, repeated with flips
@@ -188,7 +188,6 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   - operative mesh and animations (on hold until the greybox decision)
   - weapon meshes (Kinetic Accelerator, Breach Charge launcher)
   - projectile meshes (kinetic slug, breach canister)
-  - the Meridian environment kit
   - cinematic stills
   - a Godot Theme `.tres`
 
