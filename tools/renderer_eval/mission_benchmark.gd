@@ -10,6 +10,13 @@ extends "res://tools/renderer_eval/benchmark.gd"
 
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 const RESTARTS := 8
+## Frames slower than this are logged as RENDER_EVAL_SPIKE with the gameplay events of the
+## preceding frames, to find what caused them.
+const SPIKE_MS := 100.0
+
+var _events: Array[String] = []
+var _spike_last_usec := 0
+var _watched: Object
 
 
 func _run() -> void:
@@ -52,11 +59,39 @@ func _run() -> void:
 
 
 func _screen() -> MissionScreen:
-	return _main._mission
+	var screen: MissionScreen = _main._mission
+	if screen != null and screen != _watched:
+		_watch(screen)
+	return screen
+
+
+## Records gameplay events (with the frame they happened in) for the spike log.
+func _watch(screen: MissionScreen) -> void:
+	_watched = screen
+	screen.world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _event("blast"))
+	screen.world.projectile_spawned.connect(func(p: WeaponProjectile) -> void: _event("spawn " + p.weapon_id))
+	screen.world.component_removed.connect(func(id: String, _at: Vector2) -> void: _event("removed " + id))
+	screen.world.impact_happened.connect(func(_a: Vector2, s: float, id: String) -> void: _event("impact %s %.0f" % [id, s]))
+	screen.engine.component_state_changed.connect(func(id: String, _p: int, c: int) -> void: _event("state %s %d" % [id, c]))
+
+
+func _event(text: String) -> void:
+	_events.append("f%d %s" % [Engine.get_process_frames(), text])
+	if _events.size() > 12:
+		_events.pop_front()
+
+
+func _process(delta: float) -> void:
+	super(delta)
+	var now := Time.get_ticks_usec()
+	if _spike_last_usec > 0 and (now - _spike_last_usec) / 1000.0 > SPIKE_MS:
+		print("RENDER_EVAL_SPIKE %.1f ms at f%d after %s" % [(now - _spike_last_usec) / 1000.0, Engine.get_process_frames(), str(_events.slice(-6))])
+	_spike_last_usec = now
 
 
 func _restart() -> void:
 	_screen().restart_requested.emit()
+	_event("restart")
 	await get_tree().process_frame
 	await _wait(0.5)
 
@@ -93,7 +128,12 @@ func _drive_kinetic_collapse() -> void:
 	if core != null and engine.is_active():
 		while not engine.can_fire():
 			await get_tree().physics_frame
+		# The aim search is the benchmark driver's own work (many shape casts in one frame), not
+		# gameplay: restart the frame clocks after it so it is not measured as a game hitch.
 		var plan: Dictionary = ProbeAim.aim(world, core)
+		_last_usec = Time.get_ticks_usec()
+		_spike_last_usec = _last_usec
+		_event("driver aim search (excluded)")
 		world.fire(plan.direction if plan.direction != Vector2.ZERO else core.global_position - world.muzzle_position())
 
 
@@ -114,6 +154,7 @@ func _measure_restarts() -> Array:
 	for i in RESTARTS:
 		var start := Time.get_ticks_usec()
 		_screen().restart_requested.emit()
+		_event("restart")
 		await get_tree().process_frame
 		times.append(snappedf((Time.get_ticks_usec() - start) / 1000.0, 0.01))
 		await _wait(0.3)
