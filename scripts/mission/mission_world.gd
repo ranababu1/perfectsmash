@@ -19,10 +19,10 @@ const GROUND_MARGIN := 800.0
 ## A blast only knocks a frozen piece loose if it would move it at least this fast (px/s).
 const MIN_PUSH_SPEED := 60.0
 const SETTLE_MIN_TIME := 0.3
-## Blast occlusion prototype (off by default; under evaluation, see docs/project-audit.md).
-## A blocker passes (BASE - its blast resistance) of the blast, never less than MIN; statics pass MIN.
-const OCCLUSION_BASE_TRANSMISSION := 0.5
-const OCCLUSION_MIN_TRANSMISSION := 0.05
+## Blast occlusion: a component between a blast and its target passes its material's
+## blast_transmission (data/materials.json); static geometry and unknown materials pass the
+## minimum. Blockers compound, up to OCCLUSION_MAX_BLOCKERS along one ray.
+const OCCLUSION_MIN_TRANSMISSION := MaterialCatalog.MIN_BLAST_TRANSMISSION
 const OCCLUSION_MAX_BLOCKERS := 4
 
 var engine: MissionEngine
@@ -30,11 +30,12 @@ var definition: MissionDefinition
 var bodies := {}
 var projectiles: Array[WeaponProjectile] = []
 var monitor := SimulationMonitor.new()
-## When true, intervening components/statics attenuate blast damage and knockback.
-var blast_occlusion := false
-## Prototype (off by default): a blast must move a piece *and everything resting on it* at
-## MIN_PUSH_SPEED to knock it loose, so loaded structures are harder to dislodge.
-var load_aware_push := false
+## Intervening components/statics attenuate blast damage and knockback (approved Batch 5 rule;
+## the switch exists for comparison probes and tests).
+var blast_occlusion := true
+## A blast must move a piece *and everything resting on it* at MIN_PUSH_SPEED to knock it loose,
+## so loaded structures are harder to dislodge (approved Batch 5 rule; switchable for probes).
+var load_aware_push := true
 var materials: MaterialCatalog
 var _settled := true
 var _kill_bounds := Rect2()
@@ -199,7 +200,7 @@ func blast_transmission(center: Vector2, target: ComponentBody, penetration: flo
 		if blocker is ComponentBody and materials != null:
 			var material := materials.get_material((blocker as ComponentBody).material_id)
 			if material != null:
-				passes = maxf(OCCLUSION_MIN_TRANSMISSION, OCCLUSION_BASE_TRANSMISSION - material.blast_resistance)
+				passes = maxf(OCCLUSION_MIN_TRANSMISSION, material.blast_transmission)
 		passes += (1.0 - passes) * clampf(penetration, 0.0, WeaponCatalog.MAX_PENETRATION)
 		transmission *= passes
 		exclude.append(hit.rid)

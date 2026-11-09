@@ -44,6 +44,8 @@ static func resisted_damage(raw: float, resistance: float, penetration: float, m
 static func resistance_for(material: MaterialCatalog.MaterialSpec, damage_type: String) -> float:
 	if damage_type == TYPE_BLAST:
 		return material.blast_resistance
+	if damage_type == TYPE_STRUCTURAL:
+		return material.structural_resistance
 	return material.impact_resistance
 
 

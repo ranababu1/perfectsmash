@@ -6,6 +6,8 @@ extends RefCounted
 
 const DEFAULT_PATH := "res://data/materials.json"
 const MAX_RESISTANCE := 0.95
+## Even the densest blocker lets a little of a blast through.
+const MIN_BLAST_TRANSMISSION := 0.05
 
 
 class MaterialSpec:
@@ -15,8 +17,13 @@ class MaterialSpec:
 	var bounce := 0.0
 	var health := 0.0
 	var impact_resistance := 0.0
+	## Resistance to structural damage (falls, crushing, debris). Optional in data; defaults to
+	## impact_resistance. A shock-mounted housing survives drops but not weapon fire.
+	var structural_resistance := 0.0
 	var blast_resistance := 0.0
 	var min_damage := 0.0
+	## Share of a blast that passes through this material when it occludes a target.
+	var blast_transmission := 1.0
 	## Secondary blast when a component of this material is destroyed (0 = none).
 	var secondary_blast_damage := 0.0
 	var secondary_blast_radius := 0.0
@@ -90,7 +97,11 @@ func _add(entry: Variant) -> void:
 	spec.health = _number(entry, "health", prefix, 0.0, INF, false)
 	spec.impact_resistance = _number(entry, "impact_resistance", prefix, 0.0, MAX_RESISTANCE, true)
 	spec.blast_resistance = _number(entry, "blast_resistance", prefix, 0.0, MAX_RESISTANCE, true)
+	spec.structural_resistance = spec.impact_resistance
+	if entry.has("structural_resistance"):
+		spec.structural_resistance = _number(entry, "structural_resistance", prefix, 0.0, MAX_RESISTANCE, true)
 	spec.min_damage = _number(entry, "min_damage", prefix, 0.0, INF, true)
+	spec.blast_transmission = _number(entry, "blast_transmission", prefix, MIN_BLAST_TRANSMISSION, 1.0, true)
 	var secondary: Variant = entry.get("on_destroyed")
 	if secondary != null:
 		if secondary is Dictionary:

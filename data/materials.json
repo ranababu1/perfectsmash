@@ -1,40 +1,46 @@
 {
-	"_note": "Physical behaviour only. Visual appearance lives in presentation code. Initial values are tuning starting points, to be calibrated in play (Batch 5). Units: density = mass per square pixel; health = damage points; resistances = fraction of damage absorbed (0-0.95); min_damage = per-hit damage (after resistance) below which a hit is ignored.",
+	"_note": "Physical behaviour only. Visual appearance lives in presentation code. Initial values are tuning starting points, to be calibrated in play (Batch 5). Units: density = mass per square pixel; health = damage points; resistances = fraction of damage absorbed (0-0.95); min_damage = per-hit damage (after resistance) below which a hit is ignored; structural_resistance (optional, defaults to impact_resistance) = fraction of structural damage (falls, crushing, debris) absorbed; blast_transmission = share of a blast (damage and knockback) that passes through a component of this material when it stands between the blast and a target (0.05-1, multiplied per blocker; weapon penetration lets part of the blocked share through).",
 	"materials": [
 		{
 			"id": "lightweight_alloy",
 			"density": 0.0012, "friction": 0.6, "bounce": 0.05,
-			"health": 120, "impact_resistance": 0.2, "blast_resistance": 0.1, "min_damage": 6
+			"health": 120, "impact_resistance": 0.2, "blast_resistance": 0.1, "min_damage": 6, "blast_transmission": 0.4
 		},
 		{
 			"id": "reinforced_steel",
 			"density": 0.0035, "friction": 0.7, "bounce": 0.02,
-			"health": 400, "impact_resistance": 0.6, "blast_resistance": 0.4, "min_damage": 15
+			"health": 400, "impact_resistance": 0.6, "blast_resistance": 0.4, "min_damage": 15, "blast_transmission": 0.1
 		},
 		{
 			"id": "composite",
 			"density": 0.0018, "friction": 0.7, "bounce": 0.05,
-			"health": 220, "impact_resistance": 0.4, "blast_resistance": 0.3, "min_damage": 8
+			"health": 220, "impact_resistance": 0.4, "blast_resistance": 0.3, "min_damage": 8, "blast_transmission": 0.2
 		},
 		{
 			"id": "glass_polymer",
 			"density": 0.0009, "friction": 0.4, "bounce": 0.1,
-			"health": 50, "impact_resistance": 0.0, "blast_resistance": 0.0, "min_damage": 3
+			"health": 50, "impact_resistance": 0.0, "blast_resistance": 0.0, "min_damage": 3, "blast_transmission": 0.5
 		},
 		{
 			"id": "concrete",
 			"density": 0.0028, "friction": 0.9, "bounce": 0.0,
-			"health": 300, "impact_resistance": 0.35, "blast_resistance": 0.55, "min_damage": 10
+			"health": 300, "impact_resistance": 0.35, "blast_resistance": 0.55, "min_damage": 10, "blast_transmission": 0.05
 		},
 		{
 			"id": "electronic_module",
 			"density": 0.0015, "friction": 0.6, "bounce": 0.05,
-			"health": 80, "impact_resistance": 0.1, "blast_resistance": 0.0, "min_damage": 4
+			"health": 80, "impact_resistance": 0.1, "blast_resistance": 0.0, "min_damage": 4, "blast_transmission": 0.5
+		},
+		{
+			"_note": "The AI core's shock-mounted housing: as soft as other electronics to weapon fire, but built to survive falls and debris, so a collapse exposes and damages it rather than destroying it outright.",
+			"id": "ai_core_module",
+			"density": 0.0015, "friction": 0.6, "bounce": 0.05,
+			"health": 80, "impact_resistance": 0.1, "blast_resistance": 0.0, "structural_resistance": 0.5, "min_damage": 4, "blast_transmission": 0.5
 		},
 		{
 			"id": "energy_component",
 			"density": 0.0016, "friction": 0.6, "bounce": 0.05,
-			"health": 90, "impact_resistance": 0.15, "blast_resistance": 0.0, "min_damage": 4,
+			"health": 90, "impact_resistance": 0.15, "blast_resistance": 0.0, "min_damage": 4, "blast_transmission": 0.5,
 			"on_destroyed": {"blast_damage": 70, "blast_radius": 110, "blast_impulse": 260}
 		}
 	]

@@ -91,7 +91,7 @@ func test_critical_asset_state_and_mission_success_waits_for_settle() -> void:
 	var finished := []
 	e.critical_asset_changed.connect(func(id: String, s: int) -> void: critical.append(s))
 	e.mission_finished.connect(func(ok: bool) -> void: finished.append(ok))
-	e.apply_damage("aura_core", 40.0, DamageRules.TYPE_IMPACT)
+	e.apply_damage("aura_core", 80.0, DamageRules.TYPE_IMPACT)
 	assert_eq(critical, [DamageableComponent.State.DAMAGED])
 	assert_eq(e.critical_asset_states(), {"aura_core": DamageableComponent.State.DAMAGED})
 	_kill(e, "aura_core")
