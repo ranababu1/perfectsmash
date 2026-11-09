@@ -27,6 +27,8 @@ func _run() -> void:
 	_report["environment"]["benchmark"] = "mission_benchmark (real Helix 3D gameplay scene)"
 	print("RENDER_EVAL_ENV ", JSON.stringify(_report.environment))
 
+	MissionView.blast_lights_enabled = bool(_config.get("blast_lights", true))
+	_report["environment"]["blast_lights"] = MissionView.blast_lights_enabled
 	_main = _make_main()
 	var boot_start := Time.get_ticks_usec()
 	add_child(_main)
