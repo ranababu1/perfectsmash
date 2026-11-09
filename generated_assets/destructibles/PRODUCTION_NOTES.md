@@ -91,3 +91,10 @@ Revision of the 22 Helix components and their debris sets in place. File names a
 - Tris: 532 to 1,612 intact (reactor core critical, under 3,000). Debris within 1.5x. IDs unchanged.
 - Godot `kit_lineup.gd`: 26/26 component and debris files load, COLOR_0 on all 26.
 - Previews (after): `previews/nvg_components_sheet.webp` (Cycles). Before: the same path at commit `023939a`.
+
+## Premium uplift, Civitas batch (2026-11-10)
+
+- Civitas components (16) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_cvt` and `trim_module_cvt` slots with fit UVs, and civic secondary detail from the premium block in `kits/civitas.py`: column capitals, seams and bolts, relay bridge deck trims and LEDs, sensor mast collars and pips, array frames, civic screen bezels, data exchange rack bays and status lights, security wall panels, and the surveillance core's ring and eye detail.
+- Tris: 320 to 1,592 intact (surveillance core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 32/32 component and debris files load, COLOR_0 on all 32.
+- Previews (after): `previews/cvt_components_sheet.webp` (Cycles). Before: the same path at commit `0b4feb7`.
