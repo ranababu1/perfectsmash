@@ -1,5 +1,5 @@
 {
-	"_note": "Weapon behaviour and upgrade data. Speeds in px/s, radii in px, cooldown in seconds. 'ammunition' is the weapon's default per-mission allowance; missions may override it. Upgrade levels are 1-3 (0 = base). Values are tuning starting points.",
+	"_note": "Weapon behaviour and upgrade data. Speeds in px/s, radii in px, cooldown in seconds. 'ammunition' is the weapon's default per-mission allowance; missions may override it. Upgrade levels are 1-3 (0 = base); costs are Research Data per level. Values are tuning starting points.",
 	"weapons": [
 		{
 			"id": "kinetic_accelerator",
@@ -24,10 +24,10 @@
 				"aim_preview_seconds": 0.6
 			},
 			"upgrades": {
-				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5]},
-				"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.3]},
-				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.15, 0.3, 0.45]},
-				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7]}
+				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [30, 60, 100]},
+				"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.3], "costs": [30, 60, 100]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.15, 0.3, 0.45], "costs": [30, 60, 100]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [30, 60, 100]}
 			}
 		},
 		{
@@ -53,10 +53,10 @@
 				"aim_preview_seconds": 0.35
 			},
 			"upgrades": {
-				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5]},
-				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3]},
-				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.1, 0.2, 0.3]},
-				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7]}
+				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [30, 60, 100]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3], "costs": [30, 60, 100]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.1, 0.2, 0.3], "costs": [30, 60, 100]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [30, 60, 100]}
 			}
 		}
 	]

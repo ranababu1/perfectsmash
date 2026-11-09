@@ -29,7 +29,7 @@ class WeaponSpec:
 	var unlock_chapter := 1
 	var delivery := "direct"
 	var stats := {}
-	## attribute -> {stat: String, op: String, levels: Array[float] (3 entries)}
+	## attribute -> {stat: String, op: String, levels: Array[float], costs: Array[int]} (3 entries each)
 	var upgrades := {}
 
 	func has_blast() -> bool:
@@ -206,7 +206,11 @@ func _parse_upgrades(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
 		var stat: Variant = upgrade.get("stat")
 		var op: Variant = upgrade.get("op")
 		var levels: Variant = upgrade.get("levels")
+		var costs: Variant = upgrade.get("costs")
 		var ok := true
+		if not costs is Array or costs.size() != MAX_UPGRADE_LEVEL 				or not costs.all(func(v: Variant) -> bool: return (v is float or v is int) and v >= 1 and v == floorf(v)):
+			errors.append(where + "needs %d whole Research Data costs >= 1" % MAX_UPGRADE_LEVEL)
+			ok = false
 		if not REQUIRED_STATS.has(stat):
 			errors.append(where + "unknown stat '%s'" % str(stat))
 			ok = false
@@ -224,4 +228,7 @@ func _parse_upgrades(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
 			var values: Array[float] = []
 			for v: Variant in levels:
 				values.append(float(v))
-			spec.upgrades[attribute] = {"stat": stat, "op": op, "levels": values}
+			var prices: Array[int] = []
+			for v: Variant in costs:
+				prices.append(int(v))
+			spec.upgrades[attribute] = {"stat": stat, "op": op, "levels": values, "costs": prices}
