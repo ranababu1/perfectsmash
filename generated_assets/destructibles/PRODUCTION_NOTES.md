@@ -98,3 +98,11 @@ Revision of the 22 Helix components and their debris sets in place. File names a
 - Tris: 320 to 1,592 intact (surveillance core critical, under 3,000). Debris within 1.5x. IDs unchanged.
 - Godot `kit_lineup.gd`: 32/32 component and debris files load, COLOR_0 on all 32.
 - Previews (after): `previews/cvt_components_sheet.webp` (Cycles). Before: the same path at commit `0b4feb7`.
+
+## Premium uplift, Meridian batch (2026-11-10)
+
+- Meridian components (12) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_mrd` and `trim_module_mrd` slots with fit UVs, and secondary detail from the premium block in `kits/meridian.py`: temporal glyph inlays, anchor column collars, convergence deck edge rings, phase shield frames, stabilizer rings, temporal cell bands, monolith slab seams, timeline relay pips and the convergence core cage.
+- The quantum stabilizer first came out at 1,568 tris (over the 1,500 standard budget); a cable loom was removed and it is now 1,432.
+- Tris: 208 to 1,972 intact (convergence core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 24/24 component and debris files load, COLOR_0 on all 24.
+- Previews (after): `previews/mrd_components_sheet.webp` (Cycles). Before: the same path at commit `6864c26`.
