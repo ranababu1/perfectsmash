@@ -51,6 +51,7 @@ The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environ
 | 2026-11-10 | Integration pass 10 | 3d-kits batch 6 (Helix environment kit, 21 modules) merged; validator 0 warnings; Godot load 1206 / 1206; coverage 2720 / 3236, 2 levels full, 16 fallback |
 | 2026-11-10 | Integration pass 11 | 3d-kits batches 7 and 8 (VITA, Nova Grid environment kits) merged; validator 0 warnings; Godot load 1252 / 1252; coverage 2886 / 3236, 20 levels full, 34 fallback |
 | 2026-11-10 | Integration pass 12 | surfaces batch 4 (Civitas, Meridian backgrounds) and 3d-kits batch 9 (Civitas environment kit) merged; validator 0 warnings; Godot load 1310 / 1310; coverage 2970 / 3236, 21 full, 51 fallback |
+| 2026-11-10 | Integration pass 13 | rigged operative and Meridian environment kit merged; manifest level with fragments (1351); validator 0 warnings; Godot load 1358 / 1358; coverage 3054 / 3236, 39 full, 51 fallback, 10 missing |
 
 ## Review status (2026-11-09)
 

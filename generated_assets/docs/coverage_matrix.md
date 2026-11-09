@@ -1,15 +1,15 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1303 entries on disk, 1174 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1351 entries on disk, 1217 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **21 / 100**; covered with fallbacks: 51; with missing assets: 28.
-- Requirements available: 2970 / 3236 level-requirement slots.
-- Game-wide requirements available: 29 / 36.
+- Levels fully covered: **39 / 100**; covered with fallbacks: 51; with missing assets: 10.
+- Requirements available: 3054 / 3236 level-requirement slots.
+- Game-wide requirements available: 35 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
@@ -17,7 +17,7 @@ A level is **full** when every requirement is available, **fallback** when nothi
 | vita | 0 | 18 | 2 |
 | nova_grid | 18 | 0 | 2 |
 | civitas | 1 | 17 | 2 |
-| meridian | 0 | 0 | 20 |
+| meridian | 18 | 0 | 2 |
 
 Layout archetype use across the campaign (variety check): chain_cell 14, arc_over_wall 13, heavy_cap 9, multi_tier 9, linked_bridge 9, ledges 7, glass_screen 6, domino_row 6, twin_towers 6, frame 6, support_bridge 5, topple_line 5, finale 5, mixed_material 5, ring 5, wide_platform 5, glass_roof 4, tall_mast 3, stack_tower 3, chain_towers 3, indirect_shield 3, exposed_target 2, pyramid 1.
 
@@ -25,12 +25,12 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Requirement | Status | Assets |
 |---|---|---|
-| Operative character mesh | -- |  |
-| Operative animations | -- |  |
-| Kinetic Accelerator weapon | -- |  |
-| Breach Charge launcher | -- |  |
-| Kinetic projectile | -- |  |
-| Breach canister projectile | -- |  |
+| Operative character mesh | ok | OPR-CHR-OPERATIVE-A |
+| Operative animations | ok | OPR-ANM-OPERATIVE-AIM_POSE, OPR-ANM-OPERATIVE-DEFEAT, OPR-ANM-OPERATIVE-FIRE_RECOIL |
+| Kinetic Accelerator weapon | ok | OPR-WPN-KINETIC_ACCELERATOR-A, OPR-WPN-KINETIC_ACCELERATOR-B, OPR-WPN-KINETIC_ACCELERATOR-C |
+| Breach Charge launcher | ok | OPR-WPN-BREACH_CHARGE-A, OPR-WPN-BREACH_CHARGE-B, OPR-WPN-BREACH_CHARGE-C |
+| Kinetic projectile | ok | OPR-PRJ-KINETIC_SLUG-A |
+| Breach canister projectile | ok | OPR-PRJ-BREACH_CANISTER-A |
 | HUD elements (weapon slots, ammo, cooldown, reticle, trajectory) | ok | GAM-UI-AIM_RETICLE-A, GAM-UI-AMMO_PIP_BREACH_EMPTY-A, GAM-UI-AMMO_PIP_BREACH_FULL-A |
 | Critical asset target marker | ok | GAM-UI-CRITICAL_MARKER_ALL-A, GAM-UI-CRITICAL_MARKER_BRACKETS-A, GAM-UI-CRITICAL_MARKER_DIAMOND-A |
 | Objective markers | ok | GAM-UI-OBJECTIVE_MARKER_COMPLETE-A, GAM-UI-OBJECTIVE_MARKER_FAILED-A, GAM-UI-OBJECTIVE_MARKER_OPTIONAL-A |
@@ -166,39 +166,31 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 81 | No Public Record | Meridian outer access | exposed_target | 1/1 | ok | 6/6 | 7/7 | 0/3 | ok | -- hybrid_stack | ok | ok | 1/2 | missing |
-| 82 | Beneath the City | Underground support structures | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 83 | Four Foundations | Combined server, lab and reactor structures | wide_platform | 4/4 | ok | 15/15 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 84 | The Common Model | Shared prediction array | arc_over_wall, ledges | 3/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 85 | The Hidden Budget | Resource and power hub | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 86 | The First Directive | Directive relay | domino_row, ledges | 3/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 87 | The Operator | Central control structure | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 88 | The Convergence Engine | Multi-support core | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 89 | The Failsafe Network | Redundant relay structures | linked_bridge | 3/3 | ok | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 90 | The Other Timeline | Simulation chamber | linked_bridge, ledges, chain_cell | 5/6 | ok | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 91 | The Chosen Outcome | Forecast selection array | ring, chain_cell | 4/4 | ok | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 92 | The Human Variable | Human oversight structure | topple_line, mixed_material | 5/5 | n/a | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 93 | The Last Safeguard | Containment supports | heavy_cap, frame | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 94 | Break the Chain | Linked infrastructure | domino_row, chain_cell | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 95 | The Core Directive | Main directive chamber | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 96 | Before the Beginning | Historical archive structure | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 97 | The Final Relay | Temporal relay structure | linked_bridge, chain_cell | 4/4 | ok | 12/12 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 98 | No Return Path | Time-synchronisation supports | mixed_material | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 99 | The Last Structure | Final support array | multi_tier, wide_platform | 4/4 | ok | 15/15 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 100 | The Wrong Future | Meridian central core | finale, ring | 11/11 | ok | 21/21 | 11/11 | 0/3 | ok | -- convergence_chamber | ok | ok | 1/2 | missing |
+| 81 | No Public Record | Meridian outer access | exposed_target | 1/1 | ok | 6/6 | 7/7 | 3/3 | ok | ok hybrid_stack | ok | ok | 1/2 | missing |
+| 82 | Beneath the City | Underground support structures | multi_tier | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok hybrid_stack | ok | ok | n/a | full |
+| 83 | Four Foundations | Combined server, lab and reactor structures | wide_platform | 4/4 | ok | 15/15 | 9/9 | 3/3 | ok | ok hybrid_stack | ok | ok | n/a | full |
+| 84 | The Common Model | Shared prediction array | arc_over_wall, ledges | 4/4 | ok | 12/12 | 9/9 | 3/3 | ok | ok hybrid_stack | ok | ok | n/a | full |
+| 85 | The Hidden Budget | Resource and power hub | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok hybrid_stack | ok | ok | n/a | full |
+| 86 | The First Directive | Directive relay | domino_row, ledges | 4/4 | ok | 9/9 | 8/8 | 3/3 | ok | ok foundation_pillars | ok | ok | n/a | full |
+| 87 | The Operator | Central control structure | frame | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok foundation_pillars | ok | ok | n/a | full |
+| 88 | The Convergence Engine | Multi-support core | multi_tier | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok foundation_pillars | ok | ok | n/a | full |
+| 89 | The Failsafe Network | Redundant relay structures | linked_bridge | 3/3 | ok | 12/12 | 8/8 | 3/3 | ok | ok foundation_pillars | ok | ok | n/a | full |
+| 90 | The Other Timeline | Simulation chamber | linked_bridge, ledges, chain_cell | 6/6 | ok | 12/12 | 8/8 | 3/3 | ok | ok foundation_pillars | ok | ok | n/a | full |
+| 91 | The Chosen Outcome | Forecast selection array | ring, chain_cell | 4/4 | ok | 12/12 | 8/8 | 3/3 | ok | ok temporal_anchor | ok | ok | n/a | full |
+| 92 | The Human Variable | Human oversight structure | topple_line, mixed_material | 5/5 | n/a | 12/12 | 8/8 | 3/3 | ok | ok temporal_anchor | ok | ok | n/a | full |
+| 93 | The Last Safeguard | Containment supports | heavy_cap, frame | 4/4 | ok | 12/12 | 9/9 | 3/3 | ok | ok temporal_anchor | ok | ok | n/a | full |
+| 94 | Break the Chain | Linked infrastructure | domino_row, chain_cell | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok temporal_anchor | ok | ok | n/a | full |
+| 95 | The Core Directive | Main directive chamber | multi_tier | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok temporal_anchor | ok | ok | n/a | full |
+| 96 | Before the Beginning | Historical archive structure | arc_over_wall | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok convergence_chamber | ok | ok | n/a | full |
+| 97 | The Final Relay | Temporal relay structure | linked_bridge, chain_cell | 4/4 | ok | 12/12 | 8/8 | 3/3 | ok | ok convergence_chamber | ok | ok | n/a | full |
+| 98 | No Return Path | Time-synchronisation supports | mixed_material | 4/4 | ok | 12/12 | 9/9 | 3/3 | ok | ok convergence_chamber | ok | ok | n/a | full |
+| 99 | The Last Structure | Final support array | multi_tier, wide_platform | 4/4 | ok | 15/15 | 9/9 | 3/3 | ok | ok convergence_chamber | ok | ok | n/a | full |
+| 100 | The Wrong Future | Meridian central core | finale, ring | 11/11 | ok | 21/21 | 11/11 | 3/3 | ok | ok convergence_chamber | ok | ok | 1/2 | missing |
 
 ## Missing assets ranked by levels affected
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `MRD-ENV-<STRUCTURE>-A` | 20 | 81 |
-| `MRD-ENV-BACK_WALL-A` | 20 | 81 |
-| `MRD-ENV-FLOOR-A` | 20 | 81 |
-| `MRD-PRP-HYBRID_STACK-A` | 5 | 81 |
-| `MRD-PRP-FOUNDATION_PILLARS-A` | 5 | 86 |
-| `MRD-PRP-TEMPORAL_ANCHOR-A` | 5 | 91 |
-| `MRD-PRP-CONVERGENCE_CHAMBER-A` | 5 | 96 |
-| `MRD-ENV-STATIC_LEDGE-A` | 4 | 84 |
 | `GAM-CIN-OPENING-01` | 1 | 1 |
 | `HLX-CIN-INTRO-01` | 1 | 1 |
 | `HLX-CIN-OUTRO-01` | 1 | 20 |
