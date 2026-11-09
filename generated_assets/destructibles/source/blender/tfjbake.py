@@ -42,9 +42,13 @@ def _target(mats, im):
 def _bake(kind, pairs, im, cage, margin=4, pass_filter=None):
     for i, (low, high) in enumerate(pairs):
         _target([m for m in low.data.materials if m], im)
-        _select([high, low], low)
-        kw = dict(type=kind, use_selected_to_active=True, cage_extrusion=cage, max_ray_distance=cage * 4,
-                  margin=margin, use_clear=(i == 0))
+        if high is None:  # self bake: the low's own material (library normal maps included), no ray misses
+            _select([low], low)
+            kw = dict(type=kind, use_selected_to_active=False, margin=margin, use_clear=(i == 0))
+        else:
+            _select([high, low], low)
+            kw = dict(type=kind, use_selected_to_active=True, cage_extrusion=cage, max_ray_distance=cage * 4,
+                      margin=margin, use_clear=(i == 0))
         if pass_filter:
             kw["pass_filter"] = pass_filter
         bpy.ops.object.bake(**kw)
@@ -57,7 +61,7 @@ def _px(im):
 
 
 def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=0.006, emit_strength=1.0,
-         samples=16, ao_mix=0.55, slot=None):
+         samples=16, ao_mix=0.55, slot=None, use_high=True):
     """lows: one object or a list sharing one atlas (the operative's rigid nodes)."""
     if not isinstance(lows, (list, tuple)):
         lows = [lows]
@@ -66,12 +70,18 @@ def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=
     sc.render.engine = "CYCLES"
     sc.cycles.device = "CPU"
     sc.cycles.samples = samples
-    sc.render.bake.use_selected_to_active = True
+    sc.render.bake.use_selected_to_active = use_high
     # world needed for AO / diffuse
     if sc.world is None:
         sc.world = bpy.data.worlds.new("bake_world")
     pairs = []
     for low in lows:
+        if not use_high:
+            me = low.data
+            uv_bake = me.uv_layers.get("bake") or me.uv_layers.new(name="bake")
+            me.uv_layers.active = uv_bake
+            pairs.append((low, None))
+            continue
         high = low.copy()
         high.data = low.data.copy()
         high.name = low.name + "_high"
@@ -208,7 +218,8 @@ def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=
         me.materials.append(bm)
         for p in me.polygons:
             p.material_index = 0
-        hm = high.data
-        bpy.data.objects.remove(high, do_unlink=True)
-        bpy.data.meshes.remove(hm)
+        if high is not None:
+            hm = high.data
+            bpy.data.objects.remove(high, do_unlink=True)
+            bpy.data.meshes.remove(hm)
     return out

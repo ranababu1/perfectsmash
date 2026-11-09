@@ -49,3 +49,18 @@ When loaded at runtime with `GLTFDocument`, the root comes back as `<stem>2` bec
 ## Rights
 
 This is original procedural work. The scripted Blender code was written by the 3d-kits asset agent (AI-assisted authorship). The form language follows SV-01; no concept pixels are used. Ownership is not legally settled, and nothing is marked commercially cleared.
+
+## Premium uplift pass: operative rebuilt to SV-01 (2026-11-10)
+
+`characters/shared/opr_chr_operative_a.glb` was rebuilt in place. The id, the node names, `weapon_socket` and all nine clips are unchanged.
+
+- **Look.** A dark hooded faceless figure: a deep cloth hood with a peak, a glossy black visor with two angled cyan slits, and a cowl and scarf. A layered tactical suit sits under gunmetal armour: angular two-layer pauldrons, chest chevrons with cyan lines, a back plate and pack, cross straps with a buckle, a belt with four pouches, bracers, gloves with knuckle plates, thigh plates and pouches, knee and shin guards, and boots with soles and toe caps.
+- **Cape.** It is shorter than before, ending just above the knee. It is a cloth-like 8 x 6 strip mesh skinned to a small armature, `cape_rig`, parented under `torso`. The bones are `cape_root` plus three chains of three (`cape_0_0` to `cape_2_2`). Every clip keys a sway, plus a lift for `reposition`, `fire_recoil` and `defeat`. Godot imports it as a `Skeleton3D` with the `cape` mesh.
+- **Material.** One baked 1024 set (albedo, normal, ORM, emission mask) is embedded in the glb, in the single slot `chr_operative_a`. The zone surfaces (carbon composite suit, rubber cloth, gunmetal plates, glass visor) were baked through one shared unique UV.
+- **Size.** 3,516 tris (budget 6,000). The glb is 2.2 MB.
+- **Checks.** The Godot 4.7.2 GL Compatibility check loads all nodes, the `Skeleton3D` and the nine animations, and mounts the weapon on `weapon_socket`.
+- **Previews.**
+  - `previews/opr_chr_operative_godot_poses.webp`: MissionView camera.
+  - `previews/opr_chr_operative_showcase.webp`: graded frame with side, three-quarter and front views. Its layout is `environments/showcase/operative_showcase_layout.json`.
+  - `previews/opr_chr_operative_sheet.webp`: Cycles, 8 poses.
+- **Limits.** The plates are hard-surface boxes with soft bevels, and the cape has no cloth simulation. At close range it reads as a stylised game character, not a sculpted one.

@@ -44,7 +44,7 @@ def limb(a, b, r0, r1, slot, verts=8):
 
 
 # ---------------------------------------------------------------- premium pass (SV-01): layered tactical suit
-def plate(center, size, slot="panel", rx=0.0, ry=0.0, rz=0.0, bevel=0.006, taper=None):
+def plate(center, size, slot="panel", rx=0.0, ry=0.0, rz=0.0, bevel=0.011, taper=None):
     ob = B.box(center, size, slot, "cover", bevel, taper=taper)
     for ang, ax in ((rx, "X"), (ry, "Y"), (rz, "Z")):
         if ang:
@@ -125,7 +125,7 @@ for sy in (-1, 1):  # angled cyan eye slits
 B.box((0.124, 0, 1.6), (0.012, 0.03, 0.006), "frame", "greeble", 0.0)
 d()
 d = grp("hood")
-hood = B.uvsphere((-0.02, 0, 1.67), 0.158, 16, 10, "cloth", "frame", (1.1, 1.02, 1.12))
+hood = B.uvsphere((-0.02, 0, 1.672), 0.148, 16, 10, "cloth", "frame", (1.08, 1.0, 1.14))
 bmh = bmesh.new()
 bmh.from_mesh(hood.data)
 bmesh.ops.delete(bmh, geom=[v for v in bmh.verts if v.co.x > 0.06 and 1.53 < v.co.z < 1.78], context="VERTS")
@@ -489,7 +489,7 @@ for pb in rig.pose.bones:
 cape.modifiers["skin"].show_viewport = False
 cape.modifiers["skin"].show_render = False
 tfjbake.bake(mesh_nodes, SID, 1024, high_bevel=0.003, cage=0.008, emit_strength=1.6, slot="chr_operative_a",
-             samples=16, ao_mix=0.5)
+             samples=16, ao_mix=0.5, use_high=False)
 cape.modifiers["skin"].show_viewport = True
 cape.modifiers["skin"].show_render = True
 for o in bpy.context.view_layer.objects:

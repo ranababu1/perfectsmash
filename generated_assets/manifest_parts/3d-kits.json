@@ -5398,7 +5398,7 @@
    "purpose": "Operative: stylised low-mid poly hooded faceless operative (SV-01, shorter cape) with a rigid node rig and nine animations",
    "used_by": "OperativeRig replacement (proposed, ASSET_CONTRACT 11): drive torso, arm_weapon, head, legs like the primitive placeholder",
    "pivot": "between the feet at floor level, facing +X",
-   "tris": 2806,
+   "tris": 3516,
    "dimensions": "about 0.55 x 1.84 x 0.5 m (w x h x d)",
    "animation": [
     "aim_pose",
@@ -5520,7 +5520,7 @@
     100
    ],
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (runchar.py, tfjenv.py)",
-   "notes": "Node rig (no skin): hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand should follow the aim. Head carries the emissive visor slits (emit_cyan_opr). Animations are node TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. Material slots: emit_cyan_opr, mat_suit_opr, mat_suit_opr_accent, mat_suit_opr_panel, trim_dark_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Slot convention as the kit (colour in baseColorFactor, no COLOR_0). Quality: stylised production candidate built procedurally; it reads well at game distance but is not a sculpted hero character. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 354 KB."
+   "notes": "Premium pass (2026-11-10, SV-01): dark hooded faceless figure with a glossy black visor and cyan slits, cowl and scarf, angular layered pauldrons, chest chevrons, cross straps, belt pouches, bracers, knee and shin guards and boots; a shorter cloth cape skinned to cape_rig (Skeleton3D on import, bones cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand should follow the aim. Head carries the emissive visor slits (in the baked emission mask). Animations are node TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. Material: one baked 1024 set embedded in the glb (chr_operative_a: albedo, tangent normal, ORM, emission mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep emission enabled. Quality: stylised production candidate built procedurally; it reads well at game distance but is not a sculpted hero character (hard-surface plates, no cloth simulation). Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 2245 KB."
   },
   {
    "id": "OPR-ANM-OPERATIVE-AIM_POSE",
@@ -27754,6 +27754,20 @@
    "used_by": "review only",
    "chapter": "shared",
    "dimensions": "1280x746",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "OPR-PRV-CHARACTERS-OPR_CHR_OPERATIVE_SHOWCASE",
+   "path": "generated_assets/characters/previews/opr_chr_operative_showcase.webp",
+   "category": "characters",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "shared",
+   "dimensions": "1152x648",
    "approval_status": "pending_review"
   }
  ]

@@ -160,15 +160,21 @@ def char_entries():
              used_by="OperativeRig replacement (proposed, ASSET_CONTRACT 11): drive torso, arm_weapon, head, legs like the primitive placeholder",
              pivot="between the feet at floor level, facing +X", tris=t, dimensions="about 0.55 x 1.84 x 0.5 m (w x h x d)",
              animation=sorted(anims), **base)
-    e["notes"] = (f"Node rig (no skin): hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, "
+    e["notes"] = (f"Premium pass (2026-11-10, SV-01): dark hooded faceless figure with a glossy black visor and cyan "
+                  f"slits, cowl and scarf, angular layered pauldrons, chest chevrons, cross straps, belt pouches, bracers, "
+                  f"knee and shin guards and boots; a shorter cloth cape skinned to cape_rig (Skeleton3D on import, bones "
+                  f"cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. "
+                  f"Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, "
                   f"torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the "
                   f"right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as "
                   f"in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). "
                   f"The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand "
-                  f"should follow the aim. Head carries the emissive visor slits (emit_cyan_opr). Animations are node "
+                  f"should follow the aim. Head carries the emissive visor slits (in the baked emission mask). Animations are node "
                   f"TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. "
-                  f"Material slots: {', '.join(st['materials'])}. Slot convention as the kit (colour in baseColorFactor, no COLOR_0). Quality: stylised production candidate built procedurally; it reads "
-                  f"well at game distance but is not a sculpted hero character. {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
+                  f"Material: one baked 1024 set embedded in the glb ({', '.join(st['materials'])}: albedo, tangent normal, ORM, emission "
+                  f"mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep "
+                  f"emission enabled. Quality: stylised production candidate built procedurally; it reads well at game "
+                  f"distance but is not a sculpted hero character (hard-surface plates, no cloth simulation). {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
     out = [e]
     for name, a in sorted(anims.items()):
         out.append(dict(id=f"OPR-ANM-OPERATIVE-{name.upper()}", path=rel(st["file"]),

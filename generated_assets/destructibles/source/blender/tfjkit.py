@@ -55,10 +55,10 @@ PALETTES["arsenal"] = dict(hazard="8a7440", key="5f666f", frame="3c4249", panel=
                            scorch="101011", concrete="70747a", polymer="d8dce0", accent="2f3338", edge="c2cad2",
                            metal=0.22,
                            rough=0.38, emit={"cyan": "35d6f2", "amber": "ffae42", "white": "e6f6ff", "red": "ff3b4e"})
-PALETTES["operative"] = dict(hazard="d9a838", key="262a32", frame="353a42", panel="474e58", trim="8e96a0",
+PALETTES["operative"] = dict(hazard="d9a838", key="2a2e37", frame="363c45", panel="4e5661", trim="8a939d",
                              internal="111216", rubber="1d1f23", cable="22252a", light="9aa2ac", dark="1c1f24",
-                             scorch="0e0e0f", concrete="5a5e63", polymer="60656c", accent="2b2f35", edge="aab2bc",
-                             cloth="1b1d22", visor="0b0c0e", metal=0.12,
+                             scorch="0e0e0f", concrete="5a5e63", polymer="60656c", accent="33302c", edge="c0c8d2",
+                             cloth="1d1f24", visor="0b0c0e", metal=0.12,
                              rough=0.62, emit={"cyan": "35d6f2", "white": "e6f6ff", "amber": "ffae42", "red": "ff3b4e"})
 PALETTES["shared"] = dict(PALETTES["helix"])
 PALETTES["shared"]["emit"] = {"cyan": "5fd4e8", "orange": "ff8a24", "red": "ff3b4e", "white": "e6f2ff"}
