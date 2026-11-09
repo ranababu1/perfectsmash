@@ -137,6 +137,8 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	var stored := SaveService.new(TEST_SAVE).load_progress()
 	assert_true(stored.is_mission_completed("helix_01"), "result written to disk")
 	assert_eq(stored.research_data, screen.last_research_granted)
+	var first_score: Dictionary = screen.last_score.duplicate()
+	var first_granted := screen.last_research_granted
 	# Same mission again with an identical result: no new Research Data.
 	screen.restart_requested.emit()
 	await tree.process_frame
@@ -146,7 +148,10 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 		if not again.engine.is_active():
 			break
 		await tree.physics_frame
-	assert_eq(int(again.last_score.research_data), int(screen.last_score.research_data), "identical run, identical score")
+	assert_eq(int(again.last_score.research_data), int(first_score.research_data), "identical run, identical score")
 	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
-	assert_eq(SaveService.new(TEST_SAVE).load_progress().research_data, screen.last_research_granted)
+	var reloaded := SaveService.new(TEST_SAVE).load_progress()
+	assert_eq(reloaded.research_data, first_granted)
+	assert_eq(reloaded.mission_result("helix_01").attempts, 2, "both runs counted")
+	assert_eq(reloaded.mission_result("helix_01").completions, 2)
 	await _free(main)

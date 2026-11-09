@@ -18,14 +18,14 @@
 		{"x": 900, "y": 625, "w": 420, "h": 30}
 	],
 	"components": [
-		{"id": "blast_wall", "kind": "blast_wall", "material": "reinforced_steel", "x": 590, "y": 540, "w": 30, "h": 140},
-		{"id": "rack_1", "kind": "server_rack", "material": "electronic_module", "x": 650, "y": 560, "w": 40, "h": 100},
-		{"id": "rack_2", "kind": "server_rack", "material": "electronic_module", "x": 698, "y": 560, "w": 40, "h": 100},
+		{"id": "blast_wall", "kind": "blast_wall", "material": "reinforced_steel", "x": 590, "y": 595, "w": 30, "h": 90},
+		{"id": "rack_1", "kind": "server_rack", "material": "electronic_module", "x": 650, "y": 590, "w": 40, "h": 40},
+		{"id": "rack_2", "kind": "server_rack", "material": "electronic_module", "x": 698, "y": 590, "w": 40, "h": 40},
 		{"id": "pillar_l", "kind": "support_column", "material": "lightweight_alloy", "x": 830, "y": 530, "w": 26, "h": 160},
 		{"id": "pillar_r", "kind": "support_column", "material": "lightweight_alloy", "x": 970, "y": 530, "w": 26, "h": 160},
 		{"id": "deck", "kind": "service_deck", "material": "composite", "x": 900, "y": 438, "w": 200, "h": 24, "supports": ["pillar_l", "pillar_r"]},
 		{"id": "core_shield", "kind": "core_shield", "material": "reinforced_steel", "x": 842, "y": 386, "w": 16, "h": 80, "supports": ["deck"]},
-		{"id": "aura_core", "kind": "ai_core", "material": "electronic_module", "x": 885, "y": 396, "w": 60, "h": 60, "health_scale": 1.5, "critical_asset": true, "supports": ["deck"]},
+		{"id": "aura_core", "kind": "ai_core", "material": "ai_core_module", "x": 885, "y": 396, "w": 60, "h": 60, "health_scale": 3.0, "critical_asset": true, "supports": ["deck"]},
 		{"id": "power_cell", "kind": "power_cell", "material": "energy_component", "x": 955, "y": 406, "w": 36, "h": 40, "supports": ["deck"]},
 		{"id": "rack_3", "kind": "server_rack", "material": "electronic_module", "x": 1030, "y": 560, "w": 40, "h": 100},
 		{"id": "rack_4", "kind": "server_rack", "material": "electronic_module", "x": 1080, "y": 560, "w": 40, "h": 100},

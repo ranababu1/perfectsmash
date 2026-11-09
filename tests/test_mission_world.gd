@@ -6,21 +6,22 @@ extends TestCase
 
 const HELIX := "res://data/missions/helix_01.json"
 const State := DamageableComponent.State
+const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 
 var _materials := MaterialCatalog.load_from_file()
 var _weapons := WeaponCatalog.load_from_file()
 var _viewport: SubViewport
 
 
-func _world() -> MissionWorld:
-	var def := MissionDefinition.load_from_file(HELIX, _materials, _weapons)
-	var engine := MissionEngine.new(def, _materials, _weapons)
+func _world(materials: MaterialCatalog = _materials) -> MissionWorld:
+	var def := MissionDefinition.load_from_file(HELIX, materials, _weapons)
+	var engine := MissionEngine.new(def, materials, _weapons)
 	_viewport = SubViewport.new()
 	_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	tree.root.add_child(_viewport)
 	var world := MissionWorld.new()
 	_viewport.add_child(world)
-	world.setup(def, engine, _materials)
+	world.setup(def, engine, materials)
 	return world
 
 
@@ -35,6 +36,23 @@ func _kinetic(world: MissionWorld, from: Vector2) -> void:
 
 func _breach(world: MissionWorld, from: Vector2, velocity: Vector2) -> void:
 	world.spawn_projectile("breach_charge", world.engine.weapons.breach_charge.stats, from, velocity)
+
+
+## Waits until projectiles are gone and the scene has settled (or `seconds` pass).
+func _settle(world: MissionWorld, seconds: float = 8.0) -> void:
+	await wait_physics_frames(30)
+	await _until(func() -> bool: return world.projectiles.is_empty() and world.is_settled(), seconds)
+
+
+## Fires the Kinetic Accelerator from the operative's muzzle at the core, aiming like a player
+## with the arc preview, and waits for the mission to end.
+func _finish_core_with_kinetic(world: MissionWorld) -> void:
+	world.engine.select_weapon("kinetic_accelerator")
+	await _until(func() -> bool: return world.engine.can_fire(), 3.0)
+	var plan: Dictionary = ProbeAim.aim(world, world.body_for("aura_core"))
+	assert_true(plan.direction != Vector2.ZERO, "a clear kinetic line to the exposed core (blocked by %s)" % plan.blocker)
+	world.fire(plan.direction)
+	await _until(func() -> bool: return not world.engine.is_active(), 10.0)
 
 
 ## Waits until `condition` holds or `seconds` of physics time pass.
@@ -57,7 +75,7 @@ func test_facility_stands_until_attacked() -> void:
 	_free()
 
 
-func test_two_kinetic_hits_collapse_support_and_destroy_core() -> void:
+func test_kinetic_collapse_exposes_core_and_finishing_shot_destroys_it() -> void:
 	var world := _world()
 	var e := world.engine
 	_kinetic(world, Vector2(803, 530))
@@ -65,11 +83,49 @@ func test_two_kinetic_hits_collapse_support_and_destroy_core() -> void:
 	assert_eq(e.component_state("pillar_l"), State.DAMAGED, "first hit weakens the column")
 	assert_true(world.body_for("deck").freeze, "deck still held")
 	_kinetic(world, Vector2(803, 530))
-	await _until(func() -> bool: return not e.is_active(), 8.0)
+	await _settle(world)
 	assert_eq(e.component_state("pillar_l"), State.DESTROYED)
-	assert_eq(e.component_state("aura_core"), State.DESTROYED, "core falls with the deck")
+	assert_false(world.body_for("aura_core").freeze, "the core came down with the deck")
+	assert_eq(e.component_state("aura_core"), State.CRITICAL, "the collapse exposes and damages the core without destroying it")
+	assert_true(e.is_active(), "the objective still needs a finishing shot")
+	await _finish_core_with_kinetic(world)
+	assert_eq(e.component_state("aura_core"), State.DESTROYED)
 	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED)
 	_free()
+
+
+func test_collapse_from_both_columns_leaves_core_critical() -> void:
+	var world := _world()
+	var e := world.engine
+	e.destroy_component("pillar_l", "test")
+	e.destroy_component("pillar_r", "test")
+	await _settle(world)
+	assert_eq(e.component_state("aura_core"), State.CRITICAL, "a full drop damages but does not destroy the core")
+	assert_true(e.is_active())
+	_free()
+
+
+func test_precise_column_breach_can_destroy_core_outright() -> void:
+	var world := _world()
+	var e := world.engine
+	e.select_weapon("breach_charge")
+	# Expert play from the operative: a charge against the left column (30 degrees, 90% power).
+	world.fire(Vector2.RIGHT.rotated(-deg_to_rad(30.0)), 0.9)
+	await _until(func() -> bool: return not e.is_active(), 10.0)
+	assert_eq(e.component_state("aura_core"), State.DESTROYED)
+	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED)
+	_free()
+
+
+func test_ordinary_deck_breach_does_not_clear_the_mission() -> void:
+	for at: Vector2 in [Vector2(815, 380), Vector2(990, 380)]:
+		var world := _world()
+		var e := world.engine
+		_breach(world, at, Vector2(0, 250))
+		await _settle(world)
+		assert_true(e.component_state("aura_core") != State.DESTROYED, "a charge on the deck at %s does not bypass the objective" % at)
+		assert_true(e.is_active())
+		_free()
 
 
 func test_breach_charge_clears_rack_cluster_without_reaching_core() -> void:
@@ -90,14 +146,15 @@ func test_breach_charge_clears_rack_cluster_without_reaching_core() -> void:
 	_free()
 
 
-func test_breach_lobbed_onto_core_destroys_it() -> void:
+func test_breach_lobbed_onto_core_leaves_it_critical_for_a_finishing_shot() -> void:
 	var world := _world()
 	var e := world.engine
 	_breach(world, Vector2(885, 300), Vector2(0, 200))
-	await wait_physics_frames(60)
-	assert_eq(e.component_state("aura_core"), State.DESTROYED)
+	await _settle(world)
+	assert_eq(e.component_state("aura_core"), State.CRITICAL, "a direct charge cripples the core")
+	assert_true(e.is_active())
+	await _finish_core_with_kinetic(world)
 	assert_eq(e.objectives.get_objective("core").status, MissionObjectives.Status.COMPLETE)
-	await _until(func() -> bool: return not e.is_active(), 10.0)
 	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED, "succeeds once the debris settles")
 	_free()
 
@@ -122,7 +179,8 @@ func test_power_cell_secondary_blast_damages_core() -> void:
 	await wait_physics_frames(30)
 	assert_eq(removed, ["power_cell"])
 	assert_true(world.body_for("power_cell") == null, "destroyed body removed")
-	assert_true(e.component_state("aura_core") >= State.DAMAGED, "chain reaction reached the core")
+	var core: DamageableComponent = e.components.aura_core
+	assert_true(core.health < core.max_health, "chain reaction reached the core")
 	_free()
 
 
@@ -204,7 +262,8 @@ func test_two_damaging_shots_count_twice() -> void:
 ## Godot 2D physics is deterministic for identical input on one platform, but not bit-identical
 ## across platforms: the same sequence measured 0.4516 structural damage on Windows x86_64 and
 ## 0.4519 on the Android x86_64 emulator (2026-11-09). Hence: exact within a run, tolerance
-## against the reference.
+## against the reference (docs/instructions.md, "Physics tolerances"). Reference re-measured on
+## Windows x86_64 after the Batch 5 tuning (2026-11-10): 3648 points, damage 0.3476.
 
 const ScoreReplay := preload("res://tools/regression/score_replay.gd")
 
@@ -213,7 +272,7 @@ func test_scripted_replay_is_repeatable_and_near_reference() -> void:
 	var scoring := MissionScoring.load_from_file()
 	var summaries := []
 	for i in 2:
-		var result: Dictionary = await ScoreReplay.play(tree.root, "kinetic_then_breach")
+		var result: Dictionary = await ScoreReplay.play(tree.root, "kinetic_collapse_finish")
 		summaries.append(ScoreReplay.summary(scoring, result.engine))
 		tree.root.remove_child(result.viewport)
 		(result.viewport as Node).queue_free()
@@ -223,18 +282,19 @@ func test_scripted_replay_is_repeatable_and_near_reference() -> void:
 	assert_eq(a.structural_damage, b.structural_damage)
 	assert_eq(a.physics_frames, b.physics_frames)
 	assert_eq(a.phase, MissionEngine.Phase.SUCCEEDED)
-	assert_eq(a.effective_shots, 2)
+	assert_eq(a.shots, 3)
+	assert_eq(a.effective_shots, 3)
 	assert_eq(a.research_data, 40)
-	assert_near(float(a.structural_damage), 0.4516, 0.01, "reference structural damage")
-	assert_true(absi(int(a.mission_points) - 3752) <= 15, "within tolerance of the 3752 reference: %d" % a.mission_points)
+	assert_near(float(a.structural_damage), 0.3476, 0.01, "reference structural damage")
+	assert_true(absi(int(a.mission_points) - 3648) <= 15, "within tolerance of the 3648 reference: %d" % a.mission_points)
 
 
-## --- Blast occlusion prototype (opt-in; off in the shipped game until approved) ---
+## --- Blast occlusion (approved Batch 5 rule; transmission per material in data/materials.json) ---
 
-func test_occlusion_is_off_by_default() -> void:
+func test_occlusion_and_load_aware_push_are_on() -> void:
 	var world := _world()
-	assert_false(world.blast_occlusion)
-	assert_false(world.load_aware_push)
+	assert_true(world.blast_occlusion)
+	assert_true(world.load_aware_push)
 	_free()
 
 
@@ -245,7 +305,8 @@ func test_steel_shield_attenuates_blast_and_clear_line_does_not() -> void:
 	var core := world.body_for("aura_core")
 	# Left of the 16 px steel core_shield: the ray to the core crosses the shield.
 	var shielded := world.blast_transmission(Vector2(822, 390), core)
-	assert_near(shielded, 0.1, 0.001, "reinforced steel passes 0.5 - 0.4 = 0.1")
+	assert_near(shielded, _materials.get_material("reinforced_steel").blast_transmission, 0.001, "reinforced steel passes its data value")
+	assert_near(shielded, 0.1, 0.001)
 	# Directly above the core: clear line of sight.
 	assert_near(world.blast_transmission(Vector2(885, 300), core), 1.0, 0.001)
 	# Inside the target's box: always full.
@@ -264,19 +325,22 @@ func test_penetration_lets_blast_through_blockers() -> void:
 
 func test_blockers_compound() -> void:
 	var world := _world()
-	world.blast_occlusion = true
 	await wait_physics_frames(2)
 	# Right of the blast wall, aiming at rack_2 through rack_1 (electronics pass 0.5).
-	var through_one := world.blast_transmission(Vector2(622, 560), world.body_for("rack_2"))
+	var through_one := world.blast_transmission(Vector2(622, 590), world.body_for("rack_2"))
 	assert_near(through_one, 0.5, 0.001)
 	# From left of the blast wall: steel wall (0.1) then rack_1 (0.5).
-	var through_two := world.blast_transmission(Vector2(560, 560), world.body_for("rack_2"))
+	var through_two := world.blast_transmission(Vector2(560, 590), world.body_for("rack_2"))
 	assert_near(through_two, 0.05, 0.001)
+	# Penetration applies to each blocker before compounding.
+	var p := 0.5
+	assert_near(world.blast_transmission(Vector2(560, 590), world.body_for("rack_2"), p), (0.1 + 0.9 * p) * (0.5 + 0.5 * p), 0.001)
 	_free()
 
 
 func test_occlusion_reduces_blast_damage_with_falloff() -> void:
 	var off := _world()
+	off.blast_occlusion = false
 	off.blast(Vector2(822, 390), 160.0, 140.0, 900.0, 0.25)
 	var core_off: float = off.engine.components.aura_core.health
 	_free()
@@ -289,4 +353,42 @@ func test_occlusion_reduces_blast_damage_with_falloff() -> void:
 	var max_health: float = on.engine.components.aura_core.max_health
 	var expected_loss := DamageRules.blast_damage(160.0, 33.0, 140.0, 0.25) * 0.1
 	assert_near(max_health - core_on, expected_loss if expected_loss >= 4.0 else 0.0, 3.0, "falloff x transmission")
+	_free()
+
+
+func test_static_geometry_blocks_blasts() -> void:
+	var world := _world()
+	var screen := StaticBox.new(Vector2(20, 120))
+	screen.position = Vector2(1300, 560)
+	world.add_child(screen)
+	await wait_physics_frames(2)
+	var mast := world.body_for("relay_mast")
+	# From right of the static screen, the ray to the mast crosses it.
+	assert_near(world.blast_transmission(Vector2(1340, 560), mast), MaterialCatalog.MIN_BLAST_TRANSMISSION, 0.001, "statics pass the minimum")
+	assert_near(world.blast_transmission(Vector2(1340, 560), mast, 0.5), 0.05 + 0.95 * 0.5, 0.001, "penetration still works through statics")
+	_free()
+
+
+func test_transmission_follows_material_data() -> void:
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MaterialCatalog.DEFAULT_PATH))
+	for m: Dictionary in data.materials:
+		if m.id == "reinforced_steel":
+			m.blast_transmission = 0.3
+	var custom := MaterialCatalog.from_json_text(JSON.stringify(data))
+	assert_true(custom.is_valid(), ", ".join(custom.errors))
+	var world := _world(custom)
+	await wait_physics_frames(2)
+	assert_near(world.blast_transmission(Vector2(822, 390), world.body_for("aura_core")), 0.3, 0.001, "the steel shield passes what the data says")
+	_free()
+
+
+func test_load_aware_push_counts_carried_mass() -> void:
+	var world := _world()
+	var deck_load := world.supported_mass("deck")
+	var expected := 0.0
+	for id: String in ["deck", "core_shield", "aura_core", "power_cell"]:
+		expected += world.body_for(id).mass
+	assert_near(deck_load, expected, 0.01, "the deck carries the shield, core and cell")
+	assert_true(world.supported_mass("pillar_l") > deck_load, "the column carries the loaded deck")
+	assert_near(world.supported_mass("relay_dish"), world.body_for("relay_dish").mass, 0.001)
 	_free()
