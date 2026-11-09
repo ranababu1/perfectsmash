@@ -46,7 +46,6 @@ Before committing:
 - Work on the intended existing branch unless the project owner explicitly authorizes a branch change. Do not create or switch branches without checking the repository's existing workflow and obtaining authorization where required.
 - Preserve all pre-existing user changes. Do not discard, reset, stash, or overwrite them without explicit permission.
 - Keep the project buildable at all times. Prefer small, coherent, compilable increments.
-- Frequently committing changes.
 - **Push after every file change that leaves the solution buildable, or when approximately 50 lines of production code have changed since the previous push, whichever comes first.** Do not wait for the 50-line threshold when a completed file change leaves the project buildable. For documentation-only changes, use a focused commit and push after the requested documentation update is complete.
 - After each push, verify success using the Git command output and, where available, the remote branch status. Report the commit hash and verification result accurately.
 - Review diffs before committing. Use focused, descriptive commit messages such as `feat: add seeded puzzle generator` or `fix: prevent duplicate score submission`.
