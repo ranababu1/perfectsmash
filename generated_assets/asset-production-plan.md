@@ -54,6 +54,7 @@ The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environ
 | 2026-11-10 | Integration pass 13 | rigged operative and Meridian environment kit merged; manifest level with fragments (1351); validator 0 warnings; Godot load 1358 / 1358; coverage 3054 / 3236, 39 full, 51 fallback, 10 missing |
 | 2026-11-10 | Main sync and pass 14 | main 9cfee96 merged (Helix racks 40 x 100 again, shader warm-up); contract v1.8; previews re-rendered; Godot load 1358 / 1358; coverage 3054 / 3236 |
 | 2026-11-10 | Main sync and pass 15 | main 6ce8c8e merged, contract v1.9; surfaces batch 5 (cinematics part 1) merged; validator checks JSON, SRT and the cinematic catalogue; Godot load 1374 / 1374; coverage 3057 / 3236, 8 levels missing (cinematics only), game-wide 36 / 36 |
+| 2026-11-10 | Main sync and pass 16 | main 2a2c935 merged (no contract change); surfaces batch 6 (cinematics part 2) merged, one SRT timing fixed; manifest level with fragments (1394), `--check` passes; Godot load 1392, 0 failed; coverage 3062 / 3236, 41 full, 56 fallback, 3 missing |
 
 ## Review status (2026-11-09)
 

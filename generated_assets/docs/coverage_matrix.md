@@ -1,22 +1,22 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1372 entries on disk, 1232 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1394 entries on disk, 1248 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **39 / 100**; covered with fallbacks: 53; with missing assets: 8.
-- Requirements available: 3057 / 3236 level-requirement slots.
+- Levels fully covered: **41 / 100**; covered with fallbacks: 56; with missing assets: 3.
+- Requirements available: 3062 / 3236 level-requirement slots.
 - Game-wide requirements available: 36 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
 | helix | 2 | 18 | 0 |
-| vita | 0 | 18 | 2 |
-| nova_grid | 18 | 0 | 2 |
-| civitas | 1 | 17 | 2 |
+| vita | 0 | 20 | 0 |
+| nova_grid | 20 | 0 | 0 |
+| civitas | 1 | 18 | 1 |
 | meridian | 18 | 0 | 2 |
 
 Layout archetype use across the campaign (variety check): chain_cell 14, arc_over_wall 13, heavy_cap 9, multi_tier 9, linked_bridge 9, ledges 7, glass_screen 6, domino_row 6, twin_towers 6, frame 6, support_bridge 5, topple_line 5, finale 5, mixed_material 5, ring 5, wide_platform 5, glass_roof 4, tall_mast 3, stack_tower 3, chain_towers 3, indirect_shield 3, exposed_target 2, pyramid 1.
@@ -91,7 +91,7 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 21 | A Longer Life | VITA campus entrance | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | 1/2 | missing |
+| 21 | A Longer Life | VITA campus entrance | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | 2/2 | fallback |
 | 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
 | 23 | The Sequence | Genomics analysis racks | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
 | 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
@@ -110,13 +110,13 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | 37 | The Prediction | Forecast computation hall | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
 | 38 | The Last Batch | Production support array | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
 | 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
-| 40 | The Price of Perfection | VITA research core | finale | 10/10 | ok | 21/24 (3 fb) | 11/11 | 3/3 | ok | ok growth_chamber | ok | ok | 0/1 | missing |
+| 40 | The Price of Perfection | VITA research core | finale | 10/10 | ok | 21/24 (3 fb) | 11/11 | 3/3 | ok | ok growth_chamber | ok | ok | 1/1 | fallback |
 
 ## Chapter 3: Nova Grid (The Energy Beneath), levels 41-60
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 41 | Endless Power | Nova Grid perimeter | support_bridge | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | 1/2 | missing |
+| 41 | Endless Power | Nova Grid perimeter | support_bridge | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | 2/2 | full |
 | 42 | The Intake | Energy capture structure | frame | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
 | 43 | Containment Ring | Reactor support ring | ring | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
 | 44 | Cooling the Future | Cooling tower array | chain_towers | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
@@ -135,13 +135,13 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | 57 | Origin Unknown | Data capture structure | indirect_shield | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
 | 58 | The Listening Machine | Research platform | frame | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
 | 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 5/5 | ok | 12/12 | 9/9 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
-| 60 | The Energy Beneath | Nova Grid core | finale, ring | 11/11 | ok | 18/18 | 11/11 | 3/3 | ok | ok reactor_ring | ok | ok | 0/1 | missing |
+| 60 | The Energy Beneath | Nova Grid core | finale, ring | 11/11 | ok | 18/18 | 11/11 | 3/3 | ok | ok reactor_ring | ok | ok | 1/1 | full |
 
 ## Chapter 4: Civitas (The Quiet Cage), levels 61-80
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 61 | A Predictable World | Civitas district gateway | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | 1/2 | missing |
+| 61 | A Predictable World | Civitas district gateway | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | 2/2 | fallback |
 | 62 | The Profile | Identity processing structure | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
 | 63 | The Forecast | Prediction server array | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
 | 64 | Access Denied | Civic access relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
@@ -191,11 +191,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `VTA-CIN-INTRO-01` | 1 | 21 |
-| `VTA-CIN-OUTRO-01` | 1 | 40 |
-| `NVG-CIN-INTRO-01` | 1 | 41 |
-| `NVG-CIN-OUTRO-01` | 1 | 60 |
-| `CVT-CIN-INTRO-01` | 1 | 61 |
 | `CVT-CIN-OUTRO-01` | 1 | 80 |
 | `MRD-CIN-INTRO-01` | 1 | 81 |
 | `GAM-CIN-FINALE-01` | 1 | 100 |
