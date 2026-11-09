@@ -2,6 +2,17 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Batch 1: materials, weapons, damage, components, structural dependencies
+
+- `99dbd6c` MaterialCatalog + `data/materials.json` (7 materials; physical behaviour only).
+- `396bf3c` WeaponCatalog + `data/weapons.json`: Kinetic Accelerator (direct, fixed speed, flat) and Breach Charge (lobbed, variable power, area blast + knockback, limited). Upgrade tables (base + 3 levels) applied by one `effective_stats()` layer; penetration capped at 0.9; ammunition stays integral.
+- `2e486ce` DamageRules (deterministic impact/collision/blast/falloff/knockback/resistance maths) and DamageableComponent (progressive states, critical-asset flag, secondary blast).
+- `139a570` StructuralDependencySystem (explicit supports, minimum-support redundancy, deterministic cascades, cycle and reference validation).
+- `1c844e0` Fixed a flaky music test: its WAV fixture was empty because `wav.data.resize()` resized a copy; it failed in ~50% of windowed runs and never headless. 8/8 windowed runs pass after the fix.
+- `dc99024` Gameplay music bed from the owner's track: trimmed Ogg loop with a 4.5 s self-overlap in `MusicDirector`; MP3 master stays gitignored and `.gdignore`d; licence pending (`docs/asset-manifest.md`).
+- New suites: `test_materials` (5), `test_weapons` (7), `test_damage` (11), `test_structure` (8), plus 2 music tests.
+- Results: headless 104 passed / 0 failed / 1 skipped; windowed 105 / 0 / 0; Android debug export builds.
+
 ## 2026-11-09 — Owner clarifications: legacy levels retired, Batch 1 approved
 
 - Recorded owner clarifications in `currentstate.md` and `plan.md` (§9a): the 20 original levels and slingshot mechanics are legacy (regression/reference only); the Helix prototype becomes the first playable experience; responsibility split (MaterialCatalog, WeaponCatalog, DamageRules, DamageableComponent, StructuralDependencySystem, MissionEngine); progressive damage; data-driven upgrades (base + 3); no universal shot cap; five-batch sequence.

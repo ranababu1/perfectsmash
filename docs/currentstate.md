@@ -161,6 +161,24 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Batch 1 — tactical foundation (implemented 2026-11-09, `99dbd6c`..`1c844e0`)
+
+Node-free core systems under `scripts/core/`, each with its own test suite. Nothing in the running game uses them yet; Batch 2 (mission architecture) and Batch 3 (Helix prototype) wire them in.
+
+| System | Files | Status |
+|---|---|---|
+| MaterialCatalog | `data/materials.json`, `material_catalog.gd` | Implemented. 7 materials (lightweight_alloy, reinforced_steel, composite, glass_polymer, concrete, electronic_module, energy_component): density, friction, bounce, health, impact/blast resistance, per-hit minimum, optional secondary blast. Untuned starting values |
+| WeaponCatalog + upgrade layer | `data/weapons.json`, `weapon_catalog.gd` | Implemented. Kinetic Accelerator (direct, fixed 1700 px/s, gravity ×0.25, 90 impact) and Breach Charge (lobbed, 350-950 px/s, blast 160 dmg / 140 px / 900 impulse, 3 charges). `effective_stats(levels)` applies base + 3 upgrade levels from data |
+| DamageRules | `damage_rules.gd` | Implemented. Speed-scaled projectile damage, collision damage above an impulse floor, resistance with penetration and per-hit minimum, linear blast falloff, radial knockback, distance to rotated boxes |
+| DamageableComponent | `damageable_component.gd` | Implemented. Health with INTACT → DAMAGED (<75%) → CRITICAL/unstable (<35%) → DESTROYED; signals; critical-asset flag; secondary blast on destruction |
+| StructuralDependencySystem | `structural_dependency_system.gd` | Implemented. Explicit "rests on" graph, all-or-minimum support rules, deterministic cascades, validation (unknown, self, duplicate, range, cycles) |
+| MissionEngine | — | Batch 2 |
+
+Legacy note: the old `GameSession`/levels are untouched and still run (legacy, reference only).
+Music: `assets/audio/music/gameplay_bed.ogg` plays from startup (owner instruction); the sound toggle mutes it; licence evidence is a release blocker (`docs/asset-manifest.md`).
+
+Last verified (2026-11-09, `1c844e0`): headless `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 104 passed, 0 failed, 1 skipped; windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 105 passed, 0 failed; `--export-debug "Android Debug"` → APK built (60.3 MB).
+
 ## Owner clarifications to revision 5 (2026-11-09)
 
 - **The old gameplay is retired.** Slingshot pull-back aiming, generic blocks and targets, the single projectile, the five-shot cap, all-or-nothing destruction and stars-only scoring are not part of Temporal: First Jump. The existing 20 levels are **legacy**: kept temporarily for regression and reference only, never maintained as a parallel campaign, never made compatible with new systems and never the primary menu. Remove them later only after checking references.
