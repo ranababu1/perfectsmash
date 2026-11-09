@@ -3,7 +3,7 @@
 **Role:** Art / asset lead (images, modular meshes + textures, VFX, UI, cinematics stills; audio via external services).  
 **Repository:** `ranababu1/temporal-chapter1`  
 **Branch for this work:** `assets`  
-**Staging root:** `generated_assets/`  
+**Staging root:** `assets/`  
 **Date:** 2026-11-09 (Asia/Calcutta); full-scale production section added 2026-11-10  
 **Brief:** Master Art, Animation, Video and Audio Production Brief §26 first response.  
 **Rendering decision (owner):** Option B - Godot 3D rendering with a tilted three-quarter camera over retained Godot 2D physics. No 3D physics.
@@ -14,7 +14,7 @@ The owner authorised production of the complete library for all five chapters an
 
 ### Streams
 
-| Stream | Owns (under `generated_assets/`) | Manifest fragment |
+| Stream | Owns (under `assets/`) | Manifest fragment |
 |---|---|---|
 | integration | `asset_manifest.json`, `tools/`, `docs/` (contract, coverage matrix, previews), this plan, `docs/changelog.md` and `docs/currentstate.md` on `assets` | merges all fragments |
 | 3d-kits | destructible component kits and debris for five chapters, environment kits, props and landmarks, operative and weapons | `manifest_parts/3d-kits.json` |
@@ -132,13 +132,13 @@ Relative to brief deliverables and Helix needs:
 9. Cinematic stills (~40-50 campaign; none produced).
 10. Music with verified commercial rights; SFX; VO.
 11. Fonts with redistributable licences.
-12. Machine-readable manifest with path existence checks (added here under `generated_assets/`).
+12. Machine-readable manifest with path existence checks (added here under `assets/`).
 
 ---
 
 ## 5. Proposed Asset Bible structure
 
-To be written as `generated_assets/docs/art-bible.md` after style validation (not in this first commit):
+To be written as `assets/docs/art-bible.md` after style validation (not in this first commit):
 
 1. Overall art direction  
 2. Visual references and style rules  
@@ -166,7 +166,7 @@ To be written as `generated_assets/docs/art-bible.md` after style validation (no
 ## 6. Proposed asset folder structure
 
 ```
-generated_assets/
+assets/
   characters/
   weapons/
   environments/
@@ -310,7 +310,7 @@ Please treat these as explicit asks for Batch 3:
 3. Map each component `kind` to a placeholder mesh (box/cylinder extruded to front-face size and agreed depth).  
 4. Wire damage states to material/emissive or mesh-swap hooks the art pack can target.  
 5. Operative and both weapons as greybox placeholders at the mission operative position.  
-6. Expose import path conventions for `.glb` and textures under or alongside `generated_assets/` (or a future `assets/` subpath you prefer).  
+6. Expose import path conventions for `.glb` and textures under or alongside `assets/` (or a future `assets/` subpath you prefer).  
 7. Re-run renderer evaluation with 3D content before any Compatibility vs Mobile production switch.  
 8. Do not require per-object PNG sprites for gameplay pieces.  
 9. Confirm Breach Charge presentation as launcher + lobbed canister (or request throwable-only).  
@@ -362,7 +362,7 @@ Gate: no bulk production until Batch 3 greybox is played and visually validated.
 ```
 ## 2026-11-09 - Asset branch: production plan and generated_assets scaffold
 
-- Branch `assets`: added `generated_assets/` with category folders, asset production plan (brief §26, Option B), machine-readable `asset_manifest.json` (existing paths only + planned inventory), and `tools/validate_asset_manifest.py`.
+- Branch `assets`: added `assets/` with category folders, asset production plan (brief §26, Option B), machine-readable `asset_manifest.json` (existing paths only + planned inventory), and `tools/validate_asset_manifest.py`.
 - No gameplay code or shipped `assets/` files changed. Owner reference pack kept external (unverified AI provenance).
 - Helix prototype scoped to a small mesh+texture kit gated on Batch 3 greybox validation.
 ```
@@ -372,7 +372,7 @@ Gate: no bulk production until Batch 3 greybox is played and visually validated.
 ```
 ## Asset production (branch `assets`, 2026-11-09)
 
-- Staging tree: `generated_assets/` (plan, manifest, category READMEs). See `generated_assets/asset-production-plan.md`.
+- Staging tree: `assets/` (plan, manifest, category READMEs). See `assets/asset-production-plan.md`.
 - Rendering alignment: Option B (3D presentation over 2D physics); first milestone = small Helix prototype after greybox validation.
 - Existing shipped assets unchanged: `assets/icon/*`, `assets/audio/music/gameplay_bed.ogg` (rights still unverified).
 - Coding agent ask: Batch 3 Helix greybox with placeholder meshes for joint visual sign-off before bulk art.

@@ -4,7 +4,7 @@ extends SceneTree
 ## with GL Compatibility. Applies the ASSET_CONTRACT loader rules to every imported glb (one state node
 ## visible, COLOR_0 as albedo multiplier, emission maps as masks with EMISSION_OP_MULTIPLY).
 ## Usage: godot --path <project> --rendering-driver opengl3 --script showcase.gd -- <layout.json> <out.png> [asis|showcase]
-## Layout: {"ga": "<generated_assets dir>", "focus": [x,y,z], "items": [{"f": "destructibles/helix/x.glb",
+## Layout: {"ga": "<assets dir>", "focus": [x,y,z], "items": [{"f": "destructibles/helix/x.glb",
 ##   "p": [x,y,z], "r": deg_y, "s": scale, "state": "mesh_intact", "anim": "aim_pose", "t": 0.5,
 ##   "mount": {"f": "...", "socket": "weapon_socket"}}], "lights": [{"type": "omni", "p": [..], "c": "hex",
 ##   "e": energy, "r": range}]}

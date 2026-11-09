@@ -3,12 +3,12 @@
 
 Inputs:
   docs/level-design-spec.md                 level numbers, names, puzzle notes, shot budgets (parsed)
-  generated_assets/asset_manifest.json      merged manifest (run validate_asset_manifest.py --merge first)
+  assets/asset_manifest.json      merged manifest (run validate_asset_manifest.py --merge first)
   this file                                 level archetypes, chapter role->kind tables, landmark props,
                                             music/ambience/cinematic/VFX requirements (the design layer)
 Outputs:
-  generated_assets/docs/coverage_matrix.json
-  generated_assets/docs/coverage_matrix.md
+  assets/docs/coverage_matrix.json
+  assets/docs/coverage_matrix.md
 
 Every requirement is resolved against the manifest at run time, so re-running after streams push
 updates availability automatically. Status per requirement:
@@ -18,7 +18,7 @@ updates availability automatically. Status per requirement:
 A level is "fully covered" when every hard requirement is available, "covered with fallbacks" when
 nothing is missing but some use fallbacks, otherwise "missing".
 
-Usage: python3 generated_assets/tools/build_coverage_matrix.py [--check]
+Usage: python3 assets/tools/build_coverage_matrix.py [--check]
 """
 
 from __future__ import annotations
@@ -500,7 +500,7 @@ def to_md(data: dict) -> str:
     lines = [
         "# 100-level asset coverage matrix",
         "",
-        f"Generated {data['generated']} by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest "
+        f"Generated {data['generated']} by `assets/tools/build_coverage_matrix.py` from the merged manifest "
         f"(updated {data['manifest_updated']}, {data['manifest_entries']} entries on disk, {data['production_entries']} production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.",
         "",
         "Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.",

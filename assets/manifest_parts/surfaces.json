@@ -4,7 +4,7 @@
  "entries": [
   {
    "id": "CVT-MAT-AI_CORE_MODULE-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_ai_core_module_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_ai_core_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -21,7 +21,7 @@
   },
   {
    "id": "CVT-MAT-AI_CORE_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_ai_core_module_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_ai_core_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -38,7 +38,7 @@
   },
   {
    "id": "CVT-MAT-AI_CORE_MODULE-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_ai_core_module_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_ai_core_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -55,7 +55,7 @@
   },
   {
    "id": "CVT-MAT-AI_CORE_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/civitas/cvt_mat_ai_core_module_a_emission.png",
+   "path": "assets/materials/civitas/cvt_mat_ai_core_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -72,7 +72,7 @@
   },
   {
    "id": "CVT-MAT-AI_CORE_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_ai_core_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_ai_core_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -86,7 +86,7 @@
   },
   {
    "id": "CVT-MAT-COMPOSITE-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_composite_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -103,7 +103,7 @@
   },
   {
    "id": "CVT-MAT-COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_composite_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -120,7 +120,7 @@
   },
   {
    "id": "CVT-MAT-COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_composite_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -137,7 +137,7 @@
   },
   {
    "id": "CVT-MAT-COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -151,7 +151,7 @@
   },
   {
    "id": "CVT-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_concrete_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -168,7 +168,7 @@
   },
   {
    "id": "CVT-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_concrete_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -185,7 +185,7 @@
   },
   {
    "id": "CVT-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_concrete_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -202,7 +202,7 @@
   },
   {
    "id": "CVT-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -216,7 +216,7 @@
   },
   {
    "id": "CVT-MAT-ELECTRONIC_MODULE-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_electronic_module_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_electronic_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -233,7 +233,7 @@
   },
   {
    "id": "CVT-MAT-ELECTRONIC_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_electronic_module_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_electronic_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -250,7 +250,7 @@
   },
   {
    "id": "CVT-MAT-ELECTRONIC_MODULE-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_electronic_module_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_electronic_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -267,7 +267,7 @@
   },
   {
    "id": "CVT-MAT-ELECTRONIC_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/civitas/cvt_mat_electronic_module_a_emission.png",
+   "path": "assets/materials/civitas/cvt_mat_electronic_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -284,7 +284,7 @@
   },
   {
    "id": "CVT-MAT-ELECTRONIC_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_electronic_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_electronic_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -298,7 +298,7 @@
   },
   {
    "id": "CVT-MAT-ENERGY_COMPONENT-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_energy_component_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_energy_component_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -315,7 +315,7 @@
   },
   {
    "id": "CVT-MAT-ENERGY_COMPONENT-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_energy_component_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_energy_component_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -332,7 +332,7 @@
   },
   {
    "id": "CVT-MAT-ENERGY_COMPONENT-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_energy_component_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_energy_component_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -349,7 +349,7 @@
   },
   {
    "id": "CVT-MAT-ENERGY_COMPONENT-A-EMISSION",
-   "path": "generated_assets/materials/civitas/cvt_mat_energy_component_a_emission.png",
+   "path": "assets/materials/civitas/cvt_mat_energy_component_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -366,7 +366,7 @@
   },
   {
    "id": "CVT-MAT-ENERGY_COMPONENT-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_energy_component_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_energy_component_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -380,7 +380,7 @@
   },
   {
    "id": "CVT-MAT-FLOOR-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_floor_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_floor_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -397,7 +397,7 @@
   },
   {
    "id": "CVT-MAT-FLOOR-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_floor_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_floor_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -414,7 +414,7 @@
   },
   {
    "id": "CVT-MAT-FLOOR-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_floor_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_floor_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -431,7 +431,7 @@
   },
   {
    "id": "CVT-MAT-FLOOR-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_floor_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_floor_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -445,7 +445,7 @@
   },
   {
    "id": "CVT-MAT-GLASS_POLYMER-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_glass_polymer_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_glass_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -462,7 +462,7 @@
   },
   {
    "id": "CVT-MAT-GLASS_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_glass_polymer_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_glass_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -479,7 +479,7 @@
   },
   {
    "id": "CVT-MAT-GLASS_POLYMER-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_glass_polymer_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_glass_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -496,7 +496,7 @@
   },
   {
    "id": "CVT-MAT-GLASS_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_glass_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_glass_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -510,7 +510,7 @@
   },
   {
    "id": "CVT-MAT-LIGHTWEIGHT_ALLOY-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_lightweight_alloy_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_lightweight_alloy_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -527,7 +527,7 @@
   },
   {
    "id": "CVT-MAT-LIGHTWEIGHT_ALLOY-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_lightweight_alloy_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_lightweight_alloy_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -544,7 +544,7 @@
   },
   {
    "id": "CVT-MAT-LIGHTWEIGHT_ALLOY-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_lightweight_alloy_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_lightweight_alloy_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -561,7 +561,7 @@
   },
   {
    "id": "CVT-MAT-LIGHTWEIGHT_ALLOY-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_lightweight_alloy_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_lightweight_alloy_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -575,7 +575,7 @@
   },
   {
    "id": "CVT-MAT-REINFORCED_STEEL-A",
-   "path": "generated_assets/materials/civitas/cvt_mat_reinforced_steel_a_albedo.png",
+   "path": "assets/materials/civitas/cvt_mat_reinforced_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -592,7 +592,7 @@
   },
   {
    "id": "CVT-MAT-REINFORCED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/civitas/cvt_mat_reinforced_steel_a_normal.png",
+   "path": "assets/materials/civitas/cvt_mat_reinforced_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -609,7 +609,7 @@
   },
   {
    "id": "CVT-MAT-REINFORCED_STEEL-A-ORM",
-   "path": "generated_assets/materials/civitas/cvt_mat_reinforced_steel_a_orm.png",
+   "path": "assets/materials/civitas/cvt_mat_reinforced_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -626,7 +626,7 @@
   },
   {
    "id": "CVT-MAT-REINFORCED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/cvt_mat_reinforced_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/cvt_mat_reinforced_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -640,7 +640,7 @@
   },
   {
    "id": "HLX-MAT-AI_CORE_MODULE-A",
-   "path": "generated_assets/materials/helix/hlx_mat_ai_core_module_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_ai_core_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -657,7 +657,7 @@
   },
   {
    "id": "HLX-MAT-AI_CORE_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_ai_core_module_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_ai_core_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -674,7 +674,7 @@
   },
   {
    "id": "HLX-MAT-AI_CORE_MODULE-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_ai_core_module_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_ai_core_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -691,7 +691,7 @@
   },
   {
    "id": "HLX-MAT-AI_CORE_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/helix/hlx_mat_ai_core_module_a_emission.png",
+   "path": "assets/materials/helix/hlx_mat_ai_core_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -708,7 +708,7 @@
   },
   {
    "id": "HLX-MAT-AI_CORE_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_ai_core_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_ai_core_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -722,7 +722,7 @@
   },
   {
    "id": "HLX-MAT-COMPOSITE-A",
-   "path": "generated_assets/materials/helix/hlx_mat_composite_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -739,7 +739,7 @@
   },
   {
    "id": "HLX-MAT-COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_composite_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -756,7 +756,7 @@
   },
   {
    "id": "HLX-MAT-COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_composite_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -773,7 +773,7 @@
   },
   {
    "id": "HLX-MAT-COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -787,7 +787,7 @@
   },
   {
    "id": "HLX-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/helix/hlx_mat_concrete_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -804,7 +804,7 @@
   },
   {
    "id": "HLX-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_concrete_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -821,7 +821,7 @@
   },
   {
    "id": "HLX-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_concrete_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -838,7 +838,7 @@
   },
   {
    "id": "HLX-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -852,7 +852,7 @@
   },
   {
    "id": "HLX-MAT-ELECTRONIC_MODULE-A",
-   "path": "generated_assets/materials/helix/hlx_mat_electronic_module_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_electronic_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -869,7 +869,7 @@
   },
   {
    "id": "HLX-MAT-ELECTRONIC_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_electronic_module_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_electronic_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -886,7 +886,7 @@
   },
   {
    "id": "HLX-MAT-ELECTRONIC_MODULE-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_electronic_module_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_electronic_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -903,7 +903,7 @@
   },
   {
    "id": "HLX-MAT-ELECTRONIC_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/helix/hlx_mat_electronic_module_a_emission.png",
+   "path": "assets/materials/helix/hlx_mat_electronic_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -920,7 +920,7 @@
   },
   {
    "id": "HLX-MAT-ELECTRONIC_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_electronic_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_electronic_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -934,7 +934,7 @@
   },
   {
    "id": "HLX-MAT-ENERGY_COMPONENT-A",
-   "path": "generated_assets/materials/helix/hlx_mat_energy_component_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_energy_component_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -951,7 +951,7 @@
   },
   {
    "id": "HLX-MAT-ENERGY_COMPONENT-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_energy_component_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_energy_component_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -968,7 +968,7 @@
   },
   {
    "id": "HLX-MAT-ENERGY_COMPONENT-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_energy_component_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_energy_component_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -985,7 +985,7 @@
   },
   {
    "id": "HLX-MAT-ENERGY_COMPONENT-A-EMISSION",
-   "path": "generated_assets/materials/helix/hlx_mat_energy_component_a_emission.png",
+   "path": "assets/materials/helix/hlx_mat_energy_component_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1002,7 +1002,7 @@
   },
   {
    "id": "HLX-MAT-ENERGY_COMPONENT-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_energy_component_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_energy_component_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1016,7 +1016,7 @@
   },
   {
    "id": "HLX-MAT-FLOOR-A",
-   "path": "generated_assets/materials/helix/hlx_mat_floor_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_floor_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1033,7 +1033,7 @@
   },
   {
    "id": "HLX-MAT-FLOOR-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_floor_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_floor_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1050,7 +1050,7 @@
   },
   {
    "id": "HLX-MAT-FLOOR-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_floor_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_floor_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1067,7 +1067,7 @@
   },
   {
    "id": "HLX-MAT-FLOOR-A-EMISSION",
-   "path": "generated_assets/materials/helix/hlx_mat_floor_a_emission.png",
+   "path": "assets/materials/helix/hlx_mat_floor_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1084,7 +1084,7 @@
   },
   {
    "id": "HLX-MAT-FLOOR-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_floor_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_floor_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1098,7 +1098,7 @@
   },
   {
    "id": "HLX-MAT-GLASS_POLYMER-A",
-   "path": "generated_assets/materials/helix/hlx_mat_glass_polymer_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_glass_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1115,7 +1115,7 @@
   },
   {
    "id": "HLX-MAT-GLASS_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_glass_polymer_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_glass_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1132,7 +1132,7 @@
   },
   {
    "id": "HLX-MAT-GLASS_POLYMER-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_glass_polymer_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_glass_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1149,7 +1149,7 @@
   },
   {
    "id": "HLX-MAT-GLASS_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_glass_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_glass_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1163,7 +1163,7 @@
   },
   {
    "id": "HLX-MAT-LIGHTWEIGHT_ALLOY-A",
-   "path": "generated_assets/materials/helix/hlx_mat_lightweight_alloy_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_lightweight_alloy_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1180,7 +1180,7 @@
   },
   {
    "id": "HLX-MAT-LIGHTWEIGHT_ALLOY-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_lightweight_alloy_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_lightweight_alloy_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1197,7 +1197,7 @@
   },
   {
    "id": "HLX-MAT-LIGHTWEIGHT_ALLOY-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_lightweight_alloy_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_lightweight_alloy_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1214,7 +1214,7 @@
   },
   {
    "id": "HLX-MAT-LIGHTWEIGHT_ALLOY-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_lightweight_alloy_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_lightweight_alloy_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1228,7 +1228,7 @@
   },
   {
    "id": "HLX-MAT-REINFORCED_STEEL-A",
-   "path": "generated_assets/materials/helix/hlx_mat_reinforced_steel_a_albedo.png",
+   "path": "assets/materials/helix/hlx_mat_reinforced_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1245,7 +1245,7 @@
   },
   {
    "id": "HLX-MAT-REINFORCED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/helix/hlx_mat_reinforced_steel_a_normal.png",
+   "path": "assets/materials/helix/hlx_mat_reinforced_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1262,7 +1262,7 @@
   },
   {
    "id": "HLX-MAT-REINFORCED_STEEL-A-ORM",
-   "path": "generated_assets/materials/helix/hlx_mat_reinforced_steel_a_orm.png",
+   "path": "assets/materials/helix/hlx_mat_reinforced_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1279,7 +1279,7 @@
   },
   {
    "id": "HLX-MAT-REINFORCED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/hlx_mat_reinforced_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/hlx_mat_reinforced_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1293,7 +1293,7 @@
   },
   {
    "id": "MRD-MAT-COMPOSITE-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_composite_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1310,7 +1310,7 @@
   },
   {
    "id": "MRD-MAT-COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_composite_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1327,7 +1327,7 @@
   },
   {
    "id": "MRD-MAT-COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_composite_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1344,7 +1344,7 @@
   },
   {
    "id": "MRD-MAT-COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1358,7 +1358,7 @@
   },
   {
    "id": "MRD-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_concrete_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1375,7 +1375,7 @@
   },
   {
    "id": "MRD-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_concrete_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1392,7 +1392,7 @@
   },
   {
    "id": "MRD-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_concrete_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1409,7 +1409,7 @@
   },
   {
    "id": "MRD-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1423,7 +1423,7 @@
   },
   {
    "id": "MRD-MAT-ELECTRONIC_MODULE-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_electronic_module_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_electronic_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1440,7 +1440,7 @@
   },
   {
    "id": "MRD-MAT-ELECTRONIC_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_electronic_module_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_electronic_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1457,7 +1457,7 @@
   },
   {
    "id": "MRD-MAT-ELECTRONIC_MODULE-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_electronic_module_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_electronic_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1474,7 +1474,7 @@
   },
   {
    "id": "MRD-MAT-ELECTRONIC_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/meridian/mrd_mat_electronic_module_a_emission.png",
+   "path": "assets/materials/meridian/mrd_mat_electronic_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1491,7 +1491,7 @@
   },
   {
    "id": "MRD-MAT-ELECTRONIC_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_electronic_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_electronic_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1505,7 +1505,7 @@
   },
   {
    "id": "MRD-MAT-ENERGY_COMPONENT-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_energy_component_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_energy_component_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1522,7 +1522,7 @@
   },
   {
    "id": "MRD-MAT-ENERGY_COMPONENT-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_energy_component_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_energy_component_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1539,7 +1539,7 @@
   },
   {
    "id": "MRD-MAT-ENERGY_COMPONENT-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_energy_component_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_energy_component_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1556,7 +1556,7 @@
   },
   {
    "id": "MRD-MAT-ENERGY_COMPONENT-A-EMISSION",
-   "path": "generated_assets/materials/meridian/mrd_mat_energy_component_a_emission.png",
+   "path": "assets/materials/meridian/mrd_mat_energy_component_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1573,7 +1573,7 @@
   },
   {
    "id": "MRD-MAT-ENERGY_COMPONENT-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_energy_component_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_energy_component_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1587,7 +1587,7 @@
   },
   {
    "id": "MRD-MAT-FLOOR-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_floor_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_floor_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1604,7 +1604,7 @@
   },
   {
    "id": "MRD-MAT-FLOOR-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_floor_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_floor_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1621,7 +1621,7 @@
   },
   {
    "id": "MRD-MAT-FLOOR-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_floor_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_floor_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1638,7 +1638,7 @@
   },
   {
    "id": "MRD-MAT-FLOOR-A-EMISSION",
-   "path": "generated_assets/materials/meridian/mrd_mat_floor_a_emission.png",
+   "path": "assets/materials/meridian/mrd_mat_floor_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1655,7 +1655,7 @@
   },
   {
    "id": "MRD-MAT-FLOOR-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_floor_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_floor_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1669,7 +1669,7 @@
   },
   {
    "id": "MRD-MAT-GLASS_POLYMER-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_glass_polymer_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_glass_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1686,7 +1686,7 @@
   },
   {
    "id": "MRD-MAT-GLASS_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_glass_polymer_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_glass_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1703,7 +1703,7 @@
   },
   {
    "id": "MRD-MAT-GLASS_POLYMER-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_glass_polymer_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_glass_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1720,7 +1720,7 @@
   },
   {
    "id": "MRD-MAT-GLASS_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_glass_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_glass_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1734,7 +1734,7 @@
   },
   {
    "id": "MRD-MAT-LIGHTWEIGHT_ALLOY-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_lightweight_alloy_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_lightweight_alloy_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1751,7 +1751,7 @@
   },
   {
    "id": "MRD-MAT-LIGHTWEIGHT_ALLOY-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_lightweight_alloy_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_lightweight_alloy_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1768,7 +1768,7 @@
   },
   {
    "id": "MRD-MAT-LIGHTWEIGHT_ALLOY-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_lightweight_alloy_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_lightweight_alloy_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1785,7 +1785,7 @@
   },
   {
    "id": "MRD-MAT-LIGHTWEIGHT_ALLOY-A-EMISSION",
-   "path": "generated_assets/materials/meridian/mrd_mat_lightweight_alloy_a_emission.png",
+   "path": "assets/materials/meridian/mrd_mat_lightweight_alloy_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1802,7 +1802,7 @@
   },
   {
    "id": "MRD-MAT-LIGHTWEIGHT_ALLOY-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_lightweight_alloy_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_lightweight_alloy_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1816,7 +1816,7 @@
   },
   {
    "id": "MRD-MAT-REINFORCED_STEEL-A",
-   "path": "generated_assets/materials/meridian/mrd_mat_reinforced_steel_a_albedo.png",
+   "path": "assets/materials/meridian/mrd_mat_reinforced_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1833,7 +1833,7 @@
   },
   {
    "id": "MRD-MAT-REINFORCED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/meridian/mrd_mat_reinforced_steel_a_normal.png",
+   "path": "assets/materials/meridian/mrd_mat_reinforced_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1850,7 +1850,7 @@
   },
   {
    "id": "MRD-MAT-REINFORCED_STEEL-A-ORM",
-   "path": "generated_assets/materials/meridian/mrd_mat_reinforced_steel_a_orm.png",
+   "path": "assets/materials/meridian/mrd_mat_reinforced_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1867,7 +1867,7 @@
   },
   {
    "id": "MRD-MAT-REINFORCED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/mrd_mat_reinforced_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/mrd_mat_reinforced_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1881,7 +1881,7 @@
   },
   {
    "id": "NVG-MAT-COMPOSITE-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_composite_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1898,7 +1898,7 @@
   },
   {
    "id": "NVG-MAT-COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_composite_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1915,7 +1915,7 @@
   },
   {
    "id": "NVG-MAT-COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_composite_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1932,7 +1932,7 @@
   },
   {
    "id": "NVG-MAT-COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -1946,7 +1946,7 @@
   },
   {
    "id": "NVG-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_concrete_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1963,7 +1963,7 @@
   },
   {
    "id": "NVG-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_concrete_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1980,7 +1980,7 @@
   },
   {
    "id": "NVG-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_concrete_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -1997,7 +1997,7 @@
   },
   {
    "id": "NVG-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2011,7 +2011,7 @@
   },
   {
    "id": "NVG-MAT-ELECTRONIC_MODULE-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_electronic_module_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_electronic_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2028,7 +2028,7 @@
   },
   {
    "id": "NVG-MAT-ELECTRONIC_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_electronic_module_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_electronic_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2045,7 +2045,7 @@
   },
   {
    "id": "NVG-MAT-ELECTRONIC_MODULE-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_electronic_module_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_electronic_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2062,7 +2062,7 @@
   },
   {
    "id": "NVG-MAT-ELECTRONIC_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_electronic_module_a_emission.png",
+   "path": "assets/materials/nova_grid/nvg_mat_electronic_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2079,7 +2079,7 @@
   },
   {
    "id": "NVG-MAT-ELECTRONIC_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_electronic_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_electronic_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2093,7 +2093,7 @@
   },
   {
    "id": "NVG-MAT-ENERGY_COMPONENT-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_energy_component_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_energy_component_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2110,7 +2110,7 @@
   },
   {
    "id": "NVG-MAT-ENERGY_COMPONENT-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_energy_component_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_energy_component_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2127,7 +2127,7 @@
   },
   {
    "id": "NVG-MAT-ENERGY_COMPONENT-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_energy_component_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_energy_component_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2144,7 +2144,7 @@
   },
   {
    "id": "NVG-MAT-ENERGY_COMPONENT-A-EMISSION",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_energy_component_a_emission.png",
+   "path": "assets/materials/nova_grid/nvg_mat_energy_component_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2161,7 +2161,7 @@
   },
   {
    "id": "NVG-MAT-ENERGY_COMPONENT-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_energy_component_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_energy_component_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2175,7 +2175,7 @@
   },
   {
    "id": "NVG-MAT-FLOOR-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_floor_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_floor_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2192,7 +2192,7 @@
   },
   {
    "id": "NVG-MAT-FLOOR-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_floor_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_floor_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2209,7 +2209,7 @@
   },
   {
    "id": "NVG-MAT-FLOOR-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_floor_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_floor_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2226,7 +2226,7 @@
   },
   {
    "id": "NVG-MAT-FLOOR-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_floor_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_floor_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2240,7 +2240,7 @@
   },
   {
    "id": "NVG-MAT-GLASS_POLYMER-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_glass_polymer_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_glass_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2257,7 +2257,7 @@
   },
   {
    "id": "NVG-MAT-GLASS_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_glass_polymer_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_glass_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2274,7 +2274,7 @@
   },
   {
    "id": "NVG-MAT-GLASS_POLYMER-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_glass_polymer_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_glass_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2291,7 +2291,7 @@
   },
   {
    "id": "NVG-MAT-GLASS_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_glass_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_glass_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2305,7 +2305,7 @@
   },
   {
    "id": "NVG-MAT-LIGHTWEIGHT_ALLOY-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2322,7 +2322,7 @@
   },
   {
    "id": "NVG-MAT-LIGHTWEIGHT_ALLOY-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2339,7 +2339,7 @@
   },
   {
    "id": "NVG-MAT-LIGHTWEIGHT_ALLOY-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_lightweight_alloy_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2356,7 +2356,7 @@
   },
   {
    "id": "NVG-MAT-LIGHTWEIGHT_ALLOY-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_lightweight_alloy_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_lightweight_alloy_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2370,7 +2370,7 @@
   },
   {
    "id": "NVG-MAT-REINFORCED_STEEL-A",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_reinforced_steel_a_albedo.png",
+   "path": "assets/materials/nova_grid/nvg_mat_reinforced_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2387,7 +2387,7 @@
   },
   {
    "id": "NVG-MAT-REINFORCED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_reinforced_steel_a_normal.png",
+   "path": "assets/materials/nova_grid/nvg_mat_reinforced_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2404,7 +2404,7 @@
   },
   {
    "id": "NVG-MAT-REINFORCED_STEEL-A-ORM",
-   "path": "generated_assets/materials/nova_grid/nvg_mat_reinforced_steel_a_orm.png",
+   "path": "assets/materials/nova_grid/nvg_mat_reinforced_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2421,7 +2421,7 @@
   },
   {
    "id": "NVG-MAT-REINFORCED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/nvg_mat_reinforced_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/nvg_mat_reinforced_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2435,7 +2435,7 @@
   },
   {
    "id": "SHR-MAT-BRUSHED_STEEL-A",
-   "path": "generated_assets/materials/shared/shr_mat_brushed_steel_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_brushed_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2452,7 +2452,7 @@
   },
   {
    "id": "SHR-MAT-BRUSHED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_brushed_steel_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_brushed_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2469,7 +2469,7 @@
   },
   {
    "id": "SHR-MAT-BRUSHED_STEEL-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_brushed_steel_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_brushed_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2486,7 +2486,7 @@
   },
   {
    "id": "SHR-MAT-BRUSHED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_brushed_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_brushed_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2500,7 +2500,7 @@
   },
   {
    "id": "SHR-MAT-CABLE_BUNDLE-A",
-   "path": "generated_assets/materials/shared/shr_mat_cable_bundle_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_cable_bundle_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2517,7 +2517,7 @@
   },
   {
    "id": "SHR-MAT-CABLE_BUNDLE-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_cable_bundle_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_cable_bundle_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2534,7 +2534,7 @@
   },
   {
    "id": "SHR-MAT-CABLE_BUNDLE-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_cable_bundle_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_cable_bundle_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2551,7 +2551,7 @@
   },
   {
    "id": "SHR-MAT-CABLE_BUNDLE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_cable_bundle_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_cable_bundle_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2565,7 +2565,7 @@
   },
   {
    "id": "SHR-MAT-CARBON_COMPOSITE-A",
-   "path": "generated_assets/materials/shared/shr_mat_carbon_composite_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_carbon_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2582,7 +2582,7 @@
   },
   {
    "id": "SHR-MAT-CARBON_COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_carbon_composite_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_carbon_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2599,7 +2599,7 @@
   },
   {
    "id": "SHR-MAT-CARBON_COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_carbon_composite_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_carbon_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2616,7 +2616,7 @@
   },
   {
    "id": "SHR-MAT-CARBON_COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_carbon_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_carbon_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2630,7 +2630,7 @@
   },
   {
    "id": "SHR-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/shared/shr_mat_concrete_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2647,7 +2647,7 @@
   },
   {
    "id": "SHR-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_concrete_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2664,7 +2664,7 @@
   },
   {
    "id": "SHR-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_concrete_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2681,7 +2681,7 @@
   },
   {
    "id": "SHR-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2695,7 +2695,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A",
-   "path": "generated_assets/materials/shared/shr_mat_emissive_strips_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_emissive_strips_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2711,7 +2711,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_emissive_strips_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_emissive_strips_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2727,7 +2727,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_emissive_strips_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_emissive_strips_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2743,7 +2743,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A-EMISSION",
-   "path": "generated_assets/materials/shared/shr_mat_emissive_strips_a_emission.png",
+   "path": "assets/materials/shared/shr_mat_emissive_strips_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2759,7 +2759,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_emissive_strips_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_emissive_strips_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2773,7 +2773,7 @@
   },
   {
    "id": "SHR-MAT-FLOOR_TREAD-A",
-   "path": "generated_assets/materials/shared/shr_mat_floor_tread_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_floor_tread_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2790,7 +2790,7 @@
   },
   {
    "id": "SHR-MAT-FLOOR_TREAD-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_floor_tread_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_floor_tread_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2807,7 +2807,7 @@
   },
   {
    "id": "SHR-MAT-FLOOR_TREAD-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_floor_tread_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_floor_tread_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2824,7 +2824,7 @@
   },
   {
    "id": "SHR-MAT-FLOOR_TREAD-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_floor_tread_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_floor_tread_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2838,7 +2838,7 @@
   },
   {
    "id": "SHR-MAT-FROSTED_POLYMER-A",
-   "path": "generated_assets/materials/shared/shr_mat_frosted_polymer_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_frosted_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2855,7 +2855,7 @@
   },
   {
    "id": "SHR-MAT-FROSTED_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_frosted_polymer_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_frosted_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2872,7 +2872,7 @@
   },
   {
    "id": "SHR-MAT-FROSTED_POLYMER-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_frosted_polymer_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_frosted_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2889,7 +2889,7 @@
   },
   {
    "id": "SHR-MAT-FROSTED_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_frosted_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_frosted_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2903,7 +2903,7 @@
   },
   {
    "id": "SHR-MAT-GLASS-A",
-   "path": "generated_assets/materials/shared/shr_mat_glass_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_glass_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2920,7 +2920,7 @@
   },
   {
    "id": "SHR-MAT-GLASS-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_glass_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_glass_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2937,7 +2937,7 @@
   },
   {
    "id": "SHR-MAT-GLASS-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_glass_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_glass_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2954,7 +2954,7 @@
   },
   {
    "id": "SHR-MAT-GLASS-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_glass_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_glass_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -2968,7 +2968,7 @@
   },
   {
    "id": "SHR-MAT-GUNMETAL-A",
-   "path": "generated_assets/materials/shared/shr_mat_gunmetal_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_gunmetal_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -2985,7 +2985,7 @@
   },
   {
    "id": "SHR-MAT-GUNMETAL-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_gunmetal_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_gunmetal_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3002,7 +3002,7 @@
   },
   {
    "id": "SHR-MAT-GUNMETAL-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_gunmetal_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_gunmetal_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3019,7 +3019,7 @@
   },
   {
    "id": "SHR-MAT-GUNMETAL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_gunmetal_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_gunmetal_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3033,7 +3033,7 @@
   },
   {
    "id": "SHR-MAT-PAINTED_PANEL-A",
-   "path": "generated_assets/materials/shared/shr_mat_painted_panel_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_painted_panel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3050,7 +3050,7 @@
   },
   {
    "id": "SHR-MAT-PAINTED_PANEL-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_painted_panel_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_painted_panel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3067,7 +3067,7 @@
   },
   {
    "id": "SHR-MAT-PAINTED_PANEL-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_painted_panel_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_painted_panel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3084,7 +3084,7 @@
   },
   {
    "id": "SHR-MAT-PAINTED_PANEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_painted_panel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_painted_panel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3098,7 +3098,7 @@
   },
   {
    "id": "SHR-MAT-REINFORCED_CONCRETE-A",
-   "path": "generated_assets/materials/shared/shr_mat_reinforced_concrete_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_reinforced_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3115,7 +3115,7 @@
   },
   {
    "id": "SHR-MAT-REINFORCED_CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_reinforced_concrete_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_reinforced_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3132,7 +3132,7 @@
   },
   {
    "id": "SHR-MAT-REINFORCED_CONCRETE-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_reinforced_concrete_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_reinforced_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3149,7 +3149,7 @@
   },
   {
    "id": "SHR-MAT-REINFORCED_CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_reinforced_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_reinforced_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3163,7 +3163,7 @@
   },
   {
    "id": "SHR-MAT-RUBBER-A",
-   "path": "generated_assets/materials/shared/shr_mat_rubber_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_rubber_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3180,7 +3180,7 @@
   },
   {
    "id": "SHR-MAT-RUBBER-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_rubber_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_rubber_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3197,7 +3197,7 @@
   },
   {
    "id": "SHR-MAT-RUBBER-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_rubber_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_rubber_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3214,7 +3214,7 @@
   },
   {
    "id": "SHR-MAT-RUBBER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_rubber_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_rubber_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3228,7 +3228,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A",
-   "path": "generated_assets/materials/shared/shr_mat_trim_sheet_a_albedo.png",
+   "path": "assets/materials/shared/shr_mat_trim_sheet_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3244,7 +3244,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A-NORMAL",
-   "path": "generated_assets/materials/shared/shr_mat_trim_sheet_a_normal.png",
+   "path": "assets/materials/shared/shr_mat_trim_sheet_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3260,7 +3260,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A-ORM",
-   "path": "generated_assets/materials/shared/shr_mat_trim_sheet_a_orm.png",
+   "path": "assets/materials/shared/shr_mat_trim_sheet_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3276,7 +3276,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A-EMISSION",
-   "path": "generated_assets/materials/shared/shr_mat_trim_sheet_a_emission.png",
+   "path": "assets/materials/shared/shr_mat_trim_sheet_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3292,7 +3292,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/shr_mat_trim_sheet_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/shr_mat_trim_sheet_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3306,7 +3306,7 @@
   },
   {
    "id": "VTA-MAT-AI_CORE_MODULE-A",
-   "path": "generated_assets/materials/vita/vta_mat_ai_core_module_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_ai_core_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3323,7 +3323,7 @@
   },
   {
    "id": "VTA-MAT-AI_CORE_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_ai_core_module_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_ai_core_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3340,7 +3340,7 @@
   },
   {
    "id": "VTA-MAT-AI_CORE_MODULE-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_ai_core_module_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_ai_core_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3357,7 +3357,7 @@
   },
   {
    "id": "VTA-MAT-AI_CORE_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/vita/vta_mat_ai_core_module_a_emission.png",
+   "path": "assets/materials/vita/vta_mat_ai_core_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3374,7 +3374,7 @@
   },
   {
    "id": "VTA-MAT-AI_CORE_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_ai_core_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_ai_core_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3388,7 +3388,7 @@
   },
   {
    "id": "VTA-MAT-COMPOSITE-A",
-   "path": "generated_assets/materials/vita/vta_mat_composite_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_composite_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3405,7 +3405,7 @@
   },
   {
    "id": "VTA-MAT-COMPOSITE-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_composite_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_composite_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3422,7 +3422,7 @@
   },
   {
    "id": "VTA-MAT-COMPOSITE-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_composite_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_composite_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3439,7 +3439,7 @@
   },
   {
    "id": "VTA-MAT-COMPOSITE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_composite_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_composite_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3453,7 +3453,7 @@
   },
   {
    "id": "VTA-MAT-CONCRETE-A",
-   "path": "generated_assets/materials/vita/vta_mat_concrete_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_concrete_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3470,7 +3470,7 @@
   },
   {
    "id": "VTA-MAT-CONCRETE-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_concrete_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_concrete_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3487,7 +3487,7 @@
   },
   {
    "id": "VTA-MAT-CONCRETE-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_concrete_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_concrete_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3504,7 +3504,7 @@
   },
   {
    "id": "VTA-MAT-CONCRETE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_concrete_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_concrete_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3518,7 +3518,7 @@
   },
   {
    "id": "VTA-MAT-ELECTRONIC_MODULE-A",
-   "path": "generated_assets/materials/vita/vta_mat_electronic_module_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_electronic_module_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3535,7 +3535,7 @@
   },
   {
    "id": "VTA-MAT-ELECTRONIC_MODULE-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_electronic_module_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_electronic_module_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3552,7 +3552,7 @@
   },
   {
    "id": "VTA-MAT-ELECTRONIC_MODULE-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_electronic_module_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_electronic_module_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3569,7 +3569,7 @@
   },
   {
    "id": "VTA-MAT-ELECTRONIC_MODULE-A-EMISSION",
-   "path": "generated_assets/materials/vita/vta_mat_electronic_module_a_emission.png",
+   "path": "assets/materials/vita/vta_mat_electronic_module_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3586,7 +3586,7 @@
   },
   {
    "id": "VTA-MAT-ELECTRONIC_MODULE-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_electronic_module_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_electronic_module_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3600,7 +3600,7 @@
   },
   {
    "id": "VTA-MAT-ENERGY_COMPONENT-A",
-   "path": "generated_assets/materials/vita/vta_mat_energy_component_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_energy_component_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3617,7 +3617,7 @@
   },
   {
    "id": "VTA-MAT-ENERGY_COMPONENT-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_energy_component_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_energy_component_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3634,7 +3634,7 @@
   },
   {
    "id": "VTA-MAT-ENERGY_COMPONENT-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_energy_component_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_energy_component_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3651,7 +3651,7 @@
   },
   {
    "id": "VTA-MAT-ENERGY_COMPONENT-A-EMISSION",
-   "path": "generated_assets/materials/vita/vta_mat_energy_component_a_emission.png",
+   "path": "assets/materials/vita/vta_mat_energy_component_a_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3668,7 +3668,7 @@
   },
   {
    "id": "VTA-MAT-ENERGY_COMPONENT-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_energy_component_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_energy_component_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3682,7 +3682,7 @@
   },
   {
    "id": "VTA-MAT-FLOOR-A",
-   "path": "generated_assets/materials/vita/vta_mat_floor_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_floor_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3699,7 +3699,7 @@
   },
   {
    "id": "VTA-MAT-FLOOR-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_floor_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_floor_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3716,7 +3716,7 @@
   },
   {
    "id": "VTA-MAT-FLOOR-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_floor_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_floor_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3733,7 +3733,7 @@
   },
   {
    "id": "VTA-MAT-FLOOR-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_floor_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_floor_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3747,7 +3747,7 @@
   },
   {
    "id": "VTA-MAT-GLASS_POLYMER-A",
-   "path": "generated_assets/materials/vita/vta_mat_glass_polymer_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_glass_polymer_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3764,7 +3764,7 @@
   },
   {
    "id": "VTA-MAT-GLASS_POLYMER-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_glass_polymer_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_glass_polymer_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3781,7 +3781,7 @@
   },
   {
    "id": "VTA-MAT-GLASS_POLYMER-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_glass_polymer_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_glass_polymer_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3798,7 +3798,7 @@
   },
   {
    "id": "VTA-MAT-GLASS_POLYMER-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_glass_polymer_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_glass_polymer_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3812,7 +3812,7 @@
   },
   {
    "id": "VTA-MAT-LIGHTWEIGHT_ALLOY-A",
-   "path": "generated_assets/materials/vita/vta_mat_lightweight_alloy_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_lightweight_alloy_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3829,7 +3829,7 @@
   },
   {
    "id": "VTA-MAT-LIGHTWEIGHT_ALLOY-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_lightweight_alloy_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_lightweight_alloy_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3846,7 +3846,7 @@
   },
   {
    "id": "VTA-MAT-LIGHTWEIGHT_ALLOY-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_lightweight_alloy_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_lightweight_alloy_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3863,7 +3863,7 @@
   },
   {
    "id": "VTA-MAT-LIGHTWEIGHT_ALLOY-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_lightweight_alloy_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_lightweight_alloy_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3877,7 +3877,7 @@
   },
   {
    "id": "VTA-MAT-REINFORCED_STEEL-A",
-   "path": "generated_assets/materials/vita/vta_mat_reinforced_steel_a_albedo.png",
+   "path": "assets/materials/vita/vta_mat_reinforced_steel_a_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3894,7 +3894,7 @@
   },
   {
    "id": "VTA-MAT-REINFORCED_STEEL-A-NORMAL",
-   "path": "generated_assets/materials/vita/vta_mat_reinforced_steel_a_normal.png",
+   "path": "assets/materials/vita/vta_mat_reinforced_steel_a_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3911,7 +3911,7 @@
   },
   {
    "id": "VTA-MAT-REINFORCED_STEEL-A-ORM",
-   "path": "generated_assets/materials/vita/vta_mat_reinforced_steel_a_orm.png",
+   "path": "assets/materials/vita/vta_mat_reinforced_steel_a_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3928,7 +3928,7 @@
   },
   {
    "id": "VTA-MAT-REINFORCED_STEEL-A-TILE_PREVIEW",
-   "path": "generated_assets/materials/previews/tiles/vta_mat_reinforced_steel_a_3x3.webp",
+   "path": "assets/materials/previews/tiles/vta_mat_reinforced_steel_a_3x3.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -3942,7 +3942,7 @@
   },
   {
    "id": "SHR-DCL-SCORCH-01",
-   "path": "generated_assets/materials/shared/shr_dcl_scorch_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_scorch_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3958,7 +3958,7 @@
   },
   {
    "id": "SHR-DCL-SCORCH-02",
-   "path": "generated_assets/materials/shared/shr_dcl_scorch_02_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_scorch_02_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3974,7 +3974,7 @@
   },
   {
    "id": "SHR-DCL-SOOT-01",
-   "path": "generated_assets/materials/shared/shr_dcl_soot_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_soot_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -3990,7 +3990,7 @@
   },
   {
    "id": "SHR-DCL-CRACK-01",
-   "path": "generated_assets/materials/shared/shr_dcl_crack_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_crack_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4006,7 +4006,7 @@
   },
   {
    "id": "SHR-DCL-CRACK-01-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_crack_01_normal.png",
+   "path": "assets/materials/shared/shr_dcl_crack_01_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4022,7 +4022,7 @@
   },
   {
    "id": "SHR-DCL-CRACK-02",
-   "path": "generated_assets/materials/shared/shr_dcl_crack_02_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_crack_02_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4038,7 +4038,7 @@
   },
   {
    "id": "SHR-DCL-CRACK-02-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_crack_02_normal.png",
+   "path": "assets/materials/shared/shr_dcl_crack_02_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4054,7 +4054,7 @@
   },
   {
    "id": "SHR-DCL-GLASS_FRACTURE-01",
-   "path": "generated_assets/materials/shared/shr_dcl_glass_fracture_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_glass_fracture_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4070,7 +4070,7 @@
   },
   {
    "id": "SHR-DCL-KINETIC_IMPACT_METAL-01",
-   "path": "generated_assets/materials/shared/shr_dcl_kinetic_impact_metal_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_kinetic_impact_metal_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4086,7 +4086,7 @@
   },
   {
    "id": "SHR-DCL-KINETIC_IMPACT_METAL-01-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_kinetic_impact_metal_01_normal.png",
+   "path": "assets/materials/shared/shr_dcl_kinetic_impact_metal_01_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4102,7 +4102,7 @@
   },
   {
    "id": "SHR-DCL-KINETIC_IMPACT_METAL-01-ORM",
-   "path": "generated_assets/materials/shared/shr_dcl_kinetic_impact_metal_01_orm.png",
+   "path": "assets/materials/shared/shr_dcl_kinetic_impact_metal_01_orm.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4118,7 +4118,7 @@
   },
   {
    "id": "SHR-DCL-KINETIC_IMPACT_CONCRETE-01",
-   "path": "generated_assets/materials/shared/shr_dcl_kinetic_impact_concrete_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_kinetic_impact_concrete_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4134,7 +4134,7 @@
   },
   {
    "id": "SHR-DCL-KINETIC_IMPACT_CONCRETE-01-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_kinetic_impact_concrete_01_normal.png",
+   "path": "assets/materials/shared/shr_dcl_kinetic_impact_concrete_01_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4150,7 +4150,7 @@
   },
   {
    "id": "SHR-DCL-SPARK_BURN-01",
-   "path": "generated_assets/materials/shared/shr_dcl_spark_burn_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_spark_burn_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4166,7 +4166,7 @@
   },
   {
    "id": "SHR-DCL-SPARK_BURN-01-EMISSION",
-   "path": "generated_assets/materials/shared/shr_dcl_spark_burn_01_emission.png",
+   "path": "assets/materials/shared/shr_dcl_spark_burn_01_emission.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4182,7 +4182,7 @@
   },
   {
    "id": "SHR-DCL-SCRATCHES-01",
-   "path": "generated_assets/materials/shared/shr_dcl_scratches_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_scratches_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4198,7 +4198,7 @@
   },
   {
    "id": "SHR-DCL-DENT-01",
-   "path": "generated_assets/materials/shared/shr_dcl_dent_01_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_dent_01_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4214,7 +4214,7 @@
   },
   {
    "id": "SHR-DCL-DENT-01-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_dent_01_normal.png",
+   "path": "assets/materials/shared/shr_dcl_dent_01_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4230,7 +4230,7 @@
   },
   {
    "id": "SHR-DCL-DENT-02",
-   "path": "generated_assets/materials/shared/shr_dcl_dent_02_albedo.png",
+   "path": "assets/materials/shared/shr_dcl_dent_02_albedo.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4246,7 +4246,7 @@
   },
   {
    "id": "SHR-DCL-DENT-02-NORMAL",
-   "path": "generated_assets/materials/shared/shr_dcl_dent_02_normal.png",
+   "path": "assets/materials/shared/shr_dcl_dent_02_normal.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4262,7 +4262,7 @@
   },
   {
    "id": "SHR-DMG-LIGHTWEIGHT_ALLOY-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_lightweight_alloy_light.png",
+   "path": "assets/materials/shared/shr_dmg_lightweight_alloy_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4279,7 +4279,7 @@
   },
   {
    "id": "SHR-DMG-LIGHTWEIGHT_ALLOY-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_lightweight_alloy_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_lightweight_alloy_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4296,7 +4296,7 @@
   },
   {
    "id": "SHR-DMG-REINFORCED_STEEL-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_reinforced_steel_light.png",
+   "path": "assets/materials/shared/shr_dmg_reinforced_steel_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4313,7 +4313,7 @@
   },
   {
    "id": "SHR-DMG-REINFORCED_STEEL-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_reinforced_steel_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_reinforced_steel_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4330,7 +4330,7 @@
   },
   {
    "id": "SHR-DMG-COMPOSITE-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_composite_light.png",
+   "path": "assets/materials/shared/shr_dmg_composite_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4347,7 +4347,7 @@
   },
   {
    "id": "SHR-DMG-COMPOSITE-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_composite_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_composite_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4364,7 +4364,7 @@
   },
   {
    "id": "SHR-DMG-GLASS_POLYMER-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_glass_polymer_light.png",
+   "path": "assets/materials/shared/shr_dmg_glass_polymer_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4381,7 +4381,7 @@
   },
   {
    "id": "SHR-DMG-GLASS_POLYMER-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_glass_polymer_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_glass_polymer_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4398,7 +4398,7 @@
   },
   {
    "id": "SHR-DMG-CONCRETE-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_concrete_light.png",
+   "path": "assets/materials/shared/shr_dmg_concrete_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4415,7 +4415,7 @@
   },
   {
    "id": "SHR-DMG-CONCRETE-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_concrete_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_concrete_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4432,7 +4432,7 @@
   },
   {
    "id": "SHR-DMG-ELECTRONIC_MODULE-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_electronic_module_light.png",
+   "path": "assets/materials/shared/shr_dmg_electronic_module_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4449,7 +4449,7 @@
   },
   {
    "id": "SHR-DMG-ELECTRONIC_MODULE-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_electronic_module_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_electronic_module_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4466,7 +4466,7 @@
   },
   {
    "id": "SHR-DMG-ENERGY_COMPONENT-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_energy_component_light.png",
+   "path": "assets/materials/shared/shr_dmg_energy_component_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4483,7 +4483,7 @@
   },
   {
    "id": "SHR-DMG-ENERGY_COMPONENT-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_energy_component_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_energy_component_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4500,7 +4500,7 @@
   },
   {
    "id": "SHR-DMG-AI_CORE_MODULE-LIGHT",
-   "path": "generated_assets/materials/shared/shr_dmg_ai_core_module_light.png",
+   "path": "assets/materials/shared/shr_dmg_ai_core_module_light.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4517,7 +4517,7 @@
   },
   {
    "id": "SHR-DMG-AI_CORE_MODULE-HEAVY",
-   "path": "generated_assets/materials/shared/shr_dmg_ai_core_module_heavy.png",
+   "path": "assets/materials/shared/shr_dmg_ai_core_module_heavy.png",
    "category": "materials",
    "render_type": "texture",
    "format": "png",
@@ -4534,7 +4534,7 @@
   },
   {
    "id": "SHR-MAT-EMISSIVE_STRIPS-A-UV_GUIDE",
-   "path": "generated_assets/materials/shared/shr_mat_emissive_strips_a_uv_guide.json",
+   "path": "assets/materials/shared/shr_mat_emissive_strips_a_uv_guide.json",
    "category": "materials",
    "render_type": "reference",
    "format": "json",
@@ -4547,7 +4547,7 @@
   },
   {
    "id": "SHR-MAT-TRIM_SHEET-A-UV_GUIDE",
-   "path": "generated_assets/materials/shared/shr_mat_trim_sheet_a_uv_guide.json",
+   "path": "assets/materials/shared/shr_mat_trim_sheet_a_uv_guide.json",
    "category": "materials",
    "render_type": "reference",
    "format": "json",
@@ -4560,7 +4560,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_CIVITAS-A",
-   "path": "generated_assets/materials/previews/contact_civitas.webp",
+   "path": "assets/materials/previews/contact_civitas.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4574,7 +4574,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_DAMAGE_OVERLAYS_CIVITAS-A",
-   "path": "generated_assets/materials/previews/contact_damage_overlays_civitas.webp",
+   "path": "assets/materials/previews/contact_damage_overlays_civitas.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4588,7 +4588,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_DAMAGE_OVERLAYS_HELIX-A",
-   "path": "generated_assets/materials/previews/contact_damage_overlays_helix.webp",
+   "path": "assets/materials/previews/contact_damage_overlays_helix.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4602,7 +4602,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_DAMAGE_OVERLAYS_MERIDIAN-A",
-   "path": "generated_assets/materials/previews/contact_damage_overlays_meridian.webp",
+   "path": "assets/materials/previews/contact_damage_overlays_meridian.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4616,7 +4616,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_DAMAGE_OVERLAYS_VITA-A",
-   "path": "generated_assets/materials/previews/contact_damage_overlays_vita.webp",
+   "path": "assets/materials/previews/contact_damage_overlays_vita.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4630,7 +4630,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_DECALS-A",
-   "path": "generated_assets/materials/previews/contact_decals.webp",
+   "path": "assets/materials/previews/contact_decals.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4644,7 +4644,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_HELIX-A",
-   "path": "generated_assets/materials/previews/contact_helix.webp",
+   "path": "assets/materials/previews/contact_helix.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4658,7 +4658,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_MERIDIAN-A",
-   "path": "generated_assets/materials/previews/contact_meridian.webp",
+   "path": "assets/materials/previews/contact_meridian.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4672,7 +4672,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_NOVA_GRID-A",
-   "path": "generated_assets/materials/previews/contact_nova_grid.webp",
+   "path": "assets/materials/previews/contact_nova_grid.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4686,7 +4686,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_SHARED-A",
-   "path": "generated_assets/materials/previews/contact_shared.webp",
+   "path": "assets/materials/previews/contact_shared.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4700,7 +4700,7 @@
   },
   {
    "id": "SHR-MAT-CONTACT_SHEET_VITA-A",
-   "path": "generated_assets/materials/previews/contact_vita.webp",
+   "path": "assets/materials/previews/contact_vita.webp",
    "category": "materials",
    "render_type": "reference",
    "format": "webp",
@@ -4714,7 +4714,7 @@
   },
   {
    "id": "CVT-BG-FAR_1_STREET-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_1_street_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_1_street_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4737,7 +4737,7 @@
   },
   {
    "id": "CVT-BG-FAR_2_PLAZA-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_2_plaza_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_2_plaza_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4760,7 +4760,7 @@
   },
   {
    "id": "CVT-BG-FAR_3_CONTROL-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_3_control_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_3_control_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4783,7 +4783,7 @@
   },
   {
    "id": "CVT-BG-FAR_4_SPIRE-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_4_spire_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_4_spire_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4806,7 +4806,7 @@
   },
   {
    "id": "CVT-BG-FAR_V1_STREET_CURFEW-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_v1_street_curfew_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_v1_street_curfew_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4825,7 +4825,7 @@
   },
   {
    "id": "CVT-BG-FAR_V2_SPIRE_SIEGE-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_far_v2_spire_siege_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_far_v2_spire_siege_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4845,7 +4845,7 @@
   },
   {
    "id": "CVT-BG-MID_1_STREET-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_mid_1_street_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_mid_1_street_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4868,7 +4868,7 @@
   },
   {
    "id": "CVT-BG-MID_2_PLAZA-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_mid_2_plaza_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_mid_2_plaza_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4891,7 +4891,7 @@
   },
   {
    "id": "CVT-BG-MID_3_CONTROL-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_mid_3_control_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_mid_3_control_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4914,7 +4914,7 @@
   },
   {
    "id": "CVT-BG-MID_4_SPIRE-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_mid_4_spire_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_mid_4_spire_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4937,7 +4937,7 @@
   },
   {
    "id": "CVT-BG-NEAR_1_STREET-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_near_1_street_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_near_1_street_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4960,7 +4960,7 @@
   },
   {
    "id": "CVT-BG-NEAR_2_PLAZA-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_near_2_plaza_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_near_2_plaza_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -4983,7 +4983,7 @@
   },
   {
    "id": "CVT-BG-NEAR_3_CONTROL-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_near_3_control_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_near_3_control_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5006,7 +5006,7 @@
   },
   {
    "id": "CVT-BG-NEAR_4_SPIRE-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_near_4_spire_a.webp",
+   "path": "assets/environments/civitas/cvt_bg_near_4_spire_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5029,7 +5029,7 @@
   },
   {
    "id": "HLX-BG-FAR_1_SERVER_HALL-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_1_server_hall_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_1_server_hall_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5052,7 +5052,7 @@
   },
   {
    "id": "HLX-BG-FAR_2_LOGISTICS-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_2_logistics_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_2_logistics_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5075,7 +5075,7 @@
   },
   {
    "id": "HLX-BG-FAR_3_COOLING-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_3_cooling_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_3_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5098,7 +5098,7 @@
   },
   {
    "id": "HLX-BG-FAR_4_CORE-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_4_core_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_4_core_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5121,7 +5121,7 @@
   },
   {
    "id": "HLX-BG-FAR_V1_SERVER_HALL_DUSK-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_v1_server_hall_dusk_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_v1_server_hall_dusk_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5140,7 +5140,7 @@
   },
   {
    "id": "HLX-BG-FAR_V2_CORE_BURNING-A",
-   "path": "generated_assets/environments/helix/hlx_bg_far_v2_core_burning_a.webp",
+   "path": "assets/environments/helix/hlx_bg_far_v2_core_burning_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5160,7 +5160,7 @@
   },
   {
    "id": "HLX-BG-MID_1_SERVER_HALL-A",
-   "path": "generated_assets/environments/helix/hlx_bg_mid_1_server_hall_a.webp",
+   "path": "assets/environments/helix/hlx_bg_mid_1_server_hall_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5183,7 +5183,7 @@
   },
   {
    "id": "HLX-BG-MID_2_LOGISTICS-A",
-   "path": "generated_assets/environments/helix/hlx_bg_mid_2_logistics_a.webp",
+   "path": "assets/environments/helix/hlx_bg_mid_2_logistics_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5206,7 +5206,7 @@
   },
   {
    "id": "HLX-BG-MID_3_COOLING-A",
-   "path": "generated_assets/environments/helix/hlx_bg_mid_3_cooling_a.webp",
+   "path": "assets/environments/helix/hlx_bg_mid_3_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5229,7 +5229,7 @@
   },
   {
    "id": "HLX-BG-MID_4_CORE-A",
-   "path": "generated_assets/environments/helix/hlx_bg_mid_4_core_a.webp",
+   "path": "assets/environments/helix/hlx_bg_mid_4_core_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5252,7 +5252,7 @@
   },
   {
    "id": "HLX-BG-NEAR_1_SERVER_HALL-A",
-   "path": "generated_assets/environments/helix/hlx_bg_near_1_server_hall_a.webp",
+   "path": "assets/environments/helix/hlx_bg_near_1_server_hall_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5275,7 +5275,7 @@
   },
   {
    "id": "HLX-BG-NEAR_2_LOGISTICS-A",
-   "path": "generated_assets/environments/helix/hlx_bg_near_2_logistics_a.webp",
+   "path": "assets/environments/helix/hlx_bg_near_2_logistics_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5298,7 +5298,7 @@
   },
   {
    "id": "HLX-BG-NEAR_3_COOLING-A",
-   "path": "generated_assets/environments/helix/hlx_bg_near_3_cooling_a.webp",
+   "path": "assets/environments/helix/hlx_bg_near_3_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5321,7 +5321,7 @@
   },
   {
    "id": "HLX-BG-NEAR_4_CORE-A",
-   "path": "generated_assets/environments/helix/hlx_bg_near_4_core_a.webp",
+   "path": "assets/environments/helix/hlx_bg_near_4_core_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5344,7 +5344,7 @@
   },
   {
    "id": "MRD-BG-FAR_1_EXCAVATION-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_1_excavation_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_1_excavation_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5367,7 +5367,7 @@
   },
   {
    "id": "MRD-BG-FAR_2_CAVERN-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_2_cavern_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_2_cavern_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5390,7 +5390,7 @@
   },
   {
    "id": "MRD-BG-FAR_3_ANCHOR-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_3_anchor_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_3_anchor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5413,7 +5413,7 @@
   },
   {
    "id": "MRD-BG-FAR_4_CONVERGENCE-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_4_convergence_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_4_convergence_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5436,7 +5436,7 @@
   },
   {
    "id": "MRD-BG-FAR_V1_EXCAVATION_NIGHT-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_v1_excavation_night_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_v1_excavation_night_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5455,7 +5455,7 @@
   },
   {
    "id": "MRD-BG-FAR_V2_CONVERGENCE_COLLAPSE-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_far_v2_convergence_collapse_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_far_v2_convergence_collapse_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5475,7 +5475,7 @@
   },
   {
    "id": "MRD-BG-MID_1_EXCAVATION-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_mid_1_excavation_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_mid_1_excavation_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5498,7 +5498,7 @@
   },
   {
    "id": "MRD-BG-MID_2_CAVERN-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_mid_2_cavern_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_mid_2_cavern_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5521,7 +5521,7 @@
   },
   {
    "id": "MRD-BG-MID_3_ANCHOR-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_mid_3_anchor_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_mid_3_anchor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5544,7 +5544,7 @@
   },
   {
    "id": "MRD-BG-MID_4_CONVERGENCE-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_mid_4_convergence_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_mid_4_convergence_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5567,7 +5567,7 @@
   },
   {
    "id": "MRD-BG-NEAR_1_EXCAVATION-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_near_1_excavation_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_near_1_excavation_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5590,7 +5590,7 @@
   },
   {
    "id": "MRD-BG-NEAR_2_CAVERN-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_near_2_cavern_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_near_2_cavern_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5613,7 +5613,7 @@
   },
   {
    "id": "MRD-BG-NEAR_3_ANCHOR-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_near_3_anchor_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_near_3_anchor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5636,7 +5636,7 @@
   },
   {
    "id": "MRD-BG-NEAR_4_CONVERGENCE-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_near_4_convergence_a.webp",
+   "path": "assets/environments/meridian/mrd_bg_near_4_convergence_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5659,7 +5659,7 @@
   },
   {
    "id": "NVG-BG-FAR_1_INTAKE-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_1_intake_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_1_intake_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5682,7 +5682,7 @@
   },
   {
    "id": "NVG-BG-FAR_2_COOLING-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_2_cooling_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_2_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5705,7 +5705,7 @@
   },
   {
    "id": "NVG-BG-FAR_3_TRANSFORMER-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_3_transformer_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_3_transformer_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5728,7 +5728,7 @@
   },
   {
    "id": "NVG-BG-FAR_4_REACTOR-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_4_reactor_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_4_reactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5751,7 +5751,7 @@
   },
   {
    "id": "NVG-BG-FAR_V1_INTAKE_DUST-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_v1_intake_dust_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_v1_intake_dust_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5770,7 +5770,7 @@
   },
   {
    "id": "NVG-BG-FAR_V2_REACTOR_OVERLOAD-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_far_v2_reactor_overload_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_far_v2_reactor_overload_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5790,7 +5790,7 @@
   },
   {
    "id": "NVG-BG-MID_1_INTAKE-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_mid_1_intake_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_mid_1_intake_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5813,7 +5813,7 @@
   },
   {
    "id": "NVG-BG-MID_2_COOLING-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_mid_2_cooling_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_mid_2_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5836,7 +5836,7 @@
   },
   {
    "id": "NVG-BG-MID_3_TRANSFORMER-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_mid_3_transformer_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_mid_3_transformer_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5859,7 +5859,7 @@
   },
   {
    "id": "NVG-BG-MID_4_REACTOR-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_mid_4_reactor_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_mid_4_reactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5882,7 +5882,7 @@
   },
   {
    "id": "NVG-BG-NEAR_1_INTAKE-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_near_1_intake_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_near_1_intake_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5905,7 +5905,7 @@
   },
   {
    "id": "NVG-BG-NEAR_2_COOLING-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_near_2_cooling_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_near_2_cooling_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5928,7 +5928,7 @@
   },
   {
    "id": "NVG-BG-NEAR_3_TRANSFORMER-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_near_3_transformer_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_near_3_transformer_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5951,7 +5951,7 @@
   },
   {
    "id": "NVG-BG-NEAR_4_REACTOR-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_near_4_reactor_a.webp",
+   "path": "assets/environments/nova_grid/nvg_bg_near_4_reactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5974,7 +5974,7 @@
   },
   {
    "id": "VTA-BG-FAR_1_CLEANROOM-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_1_cleanroom_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_1_cleanroom_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -5997,7 +5997,7 @@
   },
   {
    "id": "VTA-BG-FAR_2_BIOREACTOR-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_2_bioreactor_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_2_bioreactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6020,7 +6020,7 @@
   },
   {
    "id": "VTA-BG-FAR_3_ARCHIVE-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_3_archive_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_3_archive_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6043,7 +6043,7 @@
   },
   {
    "id": "VTA-BG-FAR_4_GROWTH-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_4_growth_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_4_growth_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6066,7 +6066,7 @@
   },
   {
    "id": "VTA-BG-FAR_V1_CLEANROOM_FOG-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_v1_cleanroom_fog_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_v1_cleanroom_fog_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6085,7 +6085,7 @@
   },
   {
    "id": "VTA-BG-FAR_V2_GROWTH_BREACH-A",
-   "path": "generated_assets/environments/vita/vta_bg_far_v2_growth_breach_a.webp",
+   "path": "assets/environments/vita/vta_bg_far_v2_growth_breach_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6105,7 +6105,7 @@
   },
   {
    "id": "VTA-BG-MID_1_CLEANROOM-A",
-   "path": "generated_assets/environments/vita/vta_bg_mid_1_cleanroom_a.webp",
+   "path": "assets/environments/vita/vta_bg_mid_1_cleanroom_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6128,7 +6128,7 @@
   },
   {
    "id": "VTA-BG-MID_2_BIOREACTOR-A",
-   "path": "generated_assets/environments/vita/vta_bg_mid_2_bioreactor_a.webp",
+   "path": "assets/environments/vita/vta_bg_mid_2_bioreactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6151,7 +6151,7 @@
   },
   {
    "id": "VTA-BG-MID_3_ARCHIVE-A",
-   "path": "generated_assets/environments/vita/vta_bg_mid_3_archive_a.webp",
+   "path": "assets/environments/vita/vta_bg_mid_3_archive_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6174,7 +6174,7 @@
   },
   {
    "id": "VTA-BG-MID_4_GROWTH-A",
-   "path": "generated_assets/environments/vita/vta_bg_mid_4_growth_a.webp",
+   "path": "assets/environments/vita/vta_bg_mid_4_growth_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6197,7 +6197,7 @@
   },
   {
    "id": "VTA-BG-NEAR_1_CLEANROOM-A",
-   "path": "generated_assets/environments/vita/vta_bg_near_1_cleanroom_a.webp",
+   "path": "assets/environments/vita/vta_bg_near_1_cleanroom_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6220,7 +6220,7 @@
   },
   {
    "id": "VTA-BG-NEAR_2_BIOREACTOR-A",
-   "path": "generated_assets/environments/vita/vta_bg_near_2_bioreactor_a.webp",
+   "path": "assets/environments/vita/vta_bg_near_2_bioreactor_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6243,7 +6243,7 @@
   },
   {
    "id": "VTA-BG-NEAR_3_ARCHIVE-A",
-   "path": "generated_assets/environments/vita/vta_bg_near_3_archive_a.webp",
+   "path": "assets/environments/vita/vta_bg_near_3_archive_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6266,7 +6266,7 @@
   },
   {
    "id": "VTA-BG-NEAR_4_GROWTH-A",
-   "path": "generated_assets/environments/vita/vta_bg_near_4_growth_a.webp",
+   "path": "assets/environments/vita/vta_bg_near_4_growth_a.webp",
    "category": "environments",
    "render_type": "texture",
    "format": "webp",
@@ -6289,7 +6289,7 @@
   },
   {
    "id": "CVT-BG-OVL_HAZE-A",
-   "path": "generated_assets/environments/civitas/cvt_bg_ovl_haze_a.png",
+   "path": "assets/environments/civitas/cvt_bg_ovl_haze_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6306,7 +6306,7 @@
   },
   {
    "id": "HLX-BG-OVL_HAZE-A",
-   "path": "generated_assets/environments/helix/hlx_bg_ovl_haze_a.png",
+   "path": "assets/environments/helix/hlx_bg_ovl_haze_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6323,7 +6323,7 @@
   },
   {
    "id": "MRD-BG-OVL_HAZE-A",
-   "path": "generated_assets/environments/meridian/mrd_bg_ovl_haze_a.png",
+   "path": "assets/environments/meridian/mrd_bg_ovl_haze_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6340,7 +6340,7 @@
   },
   {
    "id": "NVG-BG-LOOP_DISTANT_ARC-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_loop_distant_arc_a.png",
+   "path": "assets/environments/nova_grid/nvg_bg_loop_distant_arc_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6365,7 +6365,7 @@
   },
   {
    "id": "NVG-BG-OVL_HAZE-A",
-   "path": "generated_assets/environments/nova_grid/nvg_bg_ovl_haze_a.png",
+   "path": "assets/environments/nova_grid/nvg_bg_ovl_haze_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6382,7 +6382,7 @@
   },
   {
    "id": "SHR-BG-LOOP_BEACON_PULSE-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_beacon_pulse_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_beacon_pulse_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6407,7 +6407,7 @@
   },
   {
    "id": "SHR-BG-LOOP_HAZE_DRIFT-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_haze_drift_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_haze_drift_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6432,7 +6432,7 @@
   },
   {
    "id": "SHR-BG-LOOP_RAIN-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_rain_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_rain_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6457,7 +6457,7 @@
   },
   {
    "id": "SHR-BG-LOOP_SEARCHLIGHT_SWEEP-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_searchlight_sweep_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_searchlight_sweep_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6482,7 +6482,7 @@
   },
   {
    "id": "SHR-BG-LOOP_SMOKE_PLUME-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_smoke_plume_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_smoke_plume_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6507,7 +6507,7 @@
   },
   {
    "id": "SHR-BG-LOOP_STEAM_VENT-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_steam_vent_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_steam_vent_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6532,7 +6532,7 @@
   },
   {
    "id": "SHR-BG-LOOP_WARNING_BEACON-A",
-   "path": "generated_assets/environments/shared/shr_bg_loop_warning_beacon_a.png",
+   "path": "assets/environments/shared/shr_bg_loop_warning_beacon_a.png",
    "category": "environments",
    "render_type": "sprite",
    "format": "png",
@@ -6557,7 +6557,7 @@
   },
   {
    "id": "SHR-BG-OVL_DUST_MOTES-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_dust_motes_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_dust_motes_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6574,7 +6574,7 @@
   },
   {
    "id": "SHR-BG-OVL_GROUND_MIST-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_ground_mist_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_ground_mist_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6591,7 +6591,7 @@
   },
   {
    "id": "SHR-BG-OVL_HAZE_BAND-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_haze_band_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_haze_band_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6608,7 +6608,7 @@
   },
   {
    "id": "SHR-BG-OVL_LIGHT_SHAFTS-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_light_shafts_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_light_shafts_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6625,7 +6625,7 @@
   },
   {
    "id": "SHR-BG-OVL_RAIN_STREAKS-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_rain_streaks_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_rain_streaks_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6642,7 +6642,7 @@
   },
   {
    "id": "SHR-BG-OVL_SMOKE_COLUMN-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_smoke_column_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_smoke_column_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6659,7 +6659,7 @@
   },
   {
    "id": "SHR-BG-OVL_SMOKE_DRIFT-A",
-   "path": "generated_assets/environments/shared/shr_bg_ovl_smoke_drift_a.png",
+   "path": "assets/environments/shared/shr_bg_ovl_smoke_drift_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6676,7 +6676,7 @@
   },
   {
    "id": "VTA-BG-OVL_HAZE-A",
-   "path": "generated_assets/environments/vita/vta_bg_ovl_haze_a.png",
+   "path": "assets/environments/vita/vta_bg_ovl_haze_a.png",
    "category": "environments",
    "render_type": "texture",
    "format": "png",
@@ -6693,7 +6693,7 @@
   },
   {
    "id": "SHR-BG-LEVEL_SCHEDULE-A",
-   "path": "generated_assets/environments/level_schedule.json",
+   "path": "assets/environments/level_schedule.json",
    "category": "environments",
    "render_type": "reference",
    "format": "json",
@@ -6706,7 +6706,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_ATMOSPHERICS-A",
-   "path": "generated_assets/environments/previews/contact_atmospherics.webp",
+   "path": "assets/environments/previews/contact_atmospherics.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6720,7 +6720,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_CIVITAS_SETS-A",
-   "path": "generated_assets/environments/previews/contact_civitas_sets.webp",
+   "path": "assets/environments/previews/contact_civitas_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6734,7 +6734,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_HELIX_SETS-A",
-   "path": "generated_assets/environments/previews/contact_helix_sets.webp",
+   "path": "assets/environments/previews/contact_helix_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6748,7 +6748,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_MERIDIAN_SETS-A",
-   "path": "generated_assets/environments/previews/contact_meridian_sets.webp",
+   "path": "assets/environments/previews/contact_meridian_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6762,7 +6762,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_NOVA_GRID_SETS-A",
-   "path": "generated_assets/environments/previews/contact_nova_grid_sets.webp",
+   "path": "assets/environments/previews/contact_nova_grid_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6776,7 +6776,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_CONTACT_VITA_SETS-A",
-   "path": "generated_assets/environments/previews/contact_vita_sets.webp",
+   "path": "assets/environments/previews/contact_vita_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6790,7 +6790,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_GODOT_CIVITAS_SETS-A",
-   "path": "generated_assets/environments/previews/godot_civitas_sets.webp",
+   "path": "assets/environments/previews/godot_civitas_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6804,7 +6804,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_GODOT_HELIX_SETS-A",
-   "path": "generated_assets/environments/previews/godot_helix_sets.webp",
+   "path": "assets/environments/previews/godot_helix_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6818,7 +6818,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_GODOT_MERIDIAN_SETS-A",
-   "path": "generated_assets/environments/previews/godot_meridian_sets.webp",
+   "path": "assets/environments/previews/godot_meridian_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6832,7 +6832,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_GODOT_NOVA_GRID_SETS-A",
-   "path": "generated_assets/environments/previews/godot_nova_grid_sets.webp",
+   "path": "assets/environments/previews/godot_nova_grid_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6846,7 +6846,7 @@
   },
   {
    "id": "SHR-BG-PREVIEW_GODOT_VITA_SETS-A",
-   "path": "generated_assets/environments/previews/godot_vita_sets.webp",
+   "path": "assets/environments/previews/godot_vita_sets.webp",
    "category": "environments",
    "render_type": "reference",
    "format": "webp",
@@ -6860,7 +6860,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-01",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_01.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6876,7 +6876,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-02",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_02.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6892,7 +6892,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-03",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_03.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6908,7 +6908,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-04",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_04.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_04.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6924,7 +6924,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-05",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_05.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_05.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6940,7 +6940,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-06",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_06.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_06.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6956,7 +6956,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-07",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_07.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_07.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6972,7 +6972,7 @@
   },
   {
    "id": "GAM-CIN-OPENING-08",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_08.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_08.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -6988,7 +6988,7 @@
   },
   {
    "id": "GAM-CIN-OPENING_ENDCARD-01",
-   "path": "generated_assets/cinematics/opening/gam_cin_opening_endcard_01.webp",
+   "path": "assets/cinematics/opening/gam_cin_opening_endcard_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7004,7 +7004,7 @@
   },
   {
    "id": "HLX-CIN-INTRO-01",
-   "path": "generated_assets/cinematics/ch01_intro/hlx_cin_intro_01.webp",
+   "path": "assets/cinematics/ch01_intro/hlx_cin_intro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7020,7 +7020,7 @@
   },
   {
    "id": "HLX-CIN-INTRO-02",
-   "path": "generated_assets/cinematics/ch01_intro/hlx_cin_intro_02.webp",
+   "path": "assets/cinematics/ch01_intro/hlx_cin_intro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7036,7 +7036,7 @@
   },
   {
    "id": "HLX-CIN-INTRO-03",
-   "path": "generated_assets/cinematics/ch01_intro/hlx_cin_intro_03.webp",
+   "path": "assets/cinematics/ch01_intro/hlx_cin_intro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7052,7 +7052,7 @@
   },
   {
    "id": "HLX-CIN-OUTRO-01",
-   "path": "generated_assets/cinematics/ch01_outro/hlx_cin_outro_01.webp",
+   "path": "assets/cinematics/ch01_outro/hlx_cin_outro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7068,7 +7068,7 @@
   },
   {
    "id": "HLX-CIN-OUTRO-02",
-   "path": "generated_assets/cinematics/ch01_outro/hlx_cin_outro_02.webp",
+   "path": "assets/cinematics/ch01_outro/hlx_cin_outro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7084,7 +7084,7 @@
   },
   {
    "id": "HLX-CIN-OUTRO-03",
-   "path": "generated_assets/cinematics/ch01_outro/hlx_cin_outro_03.webp",
+   "path": "assets/cinematics/ch01_outro/hlx_cin_outro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7100,7 +7100,7 @@
   },
   {
    "id": "VTA-CIN-INTRO-01",
-   "path": "generated_assets/cinematics/ch02_intro/vta_cin_intro_01.webp",
+   "path": "assets/cinematics/ch02_intro/vta_cin_intro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7116,7 +7116,7 @@
   },
   {
    "id": "VTA-CIN-INTRO-02",
-   "path": "generated_assets/cinematics/ch02_intro/vta_cin_intro_02.webp",
+   "path": "assets/cinematics/ch02_intro/vta_cin_intro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7132,7 +7132,7 @@
   },
   {
    "id": "VTA-CIN-INTRO-03",
-   "path": "generated_assets/cinematics/ch02_intro/vta_cin_intro_03.webp",
+   "path": "assets/cinematics/ch02_intro/vta_cin_intro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7148,7 +7148,7 @@
   },
   {
    "id": "VTA-CIN-INTRO-04",
-   "path": "generated_assets/cinematics/ch02_intro/vta_cin_intro_04.webp",
+   "path": "assets/cinematics/ch02_intro/vta_cin_intro_04.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7164,7 +7164,7 @@
   },
   {
    "id": "VTA-CIN-INTRO-05",
-   "path": "generated_assets/cinematics/ch02_intro/vta_cin_intro_05.webp",
+   "path": "assets/cinematics/ch02_intro/vta_cin_intro_05.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7180,7 +7180,7 @@
   },
   {
    "id": "VTA-CIN-OUTRO-01",
-   "path": "generated_assets/cinematics/ch02_outro/vta_cin_outro_01.webp",
+   "path": "assets/cinematics/ch02_outro/vta_cin_outro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7196,7 +7196,7 @@
   },
   {
    "id": "VTA-CIN-OUTRO-02",
-   "path": "generated_assets/cinematics/ch02_outro/vta_cin_outro_02.webp",
+   "path": "assets/cinematics/ch02_outro/vta_cin_outro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7212,7 +7212,7 @@
   },
   {
    "id": "VTA-CIN-OUTRO-03",
-   "path": "generated_assets/cinematics/ch02_outro/vta_cin_outro_03.webp",
+   "path": "assets/cinematics/ch02_outro/vta_cin_outro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7228,7 +7228,7 @@
   },
   {
    "id": "VTA-CIN-OUTRO-04",
-   "path": "generated_assets/cinematics/ch02_outro/vta_cin_outro_04.webp",
+   "path": "assets/cinematics/ch02_outro/vta_cin_outro_04.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7244,7 +7244,7 @@
   },
   {
    "id": "NVG-CIN-INTRO-01",
-   "path": "generated_assets/cinematics/ch03_intro/nvg_cin_intro_01.webp",
+   "path": "assets/cinematics/ch03_intro/nvg_cin_intro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7260,7 +7260,7 @@
   },
   {
    "id": "NVG-CIN-INTRO-02",
-   "path": "generated_assets/cinematics/ch03_intro/nvg_cin_intro_02.webp",
+   "path": "assets/cinematics/ch03_intro/nvg_cin_intro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7276,7 +7276,7 @@
   },
   {
    "id": "NVG-CIN-OUTRO-01",
-   "path": "generated_assets/cinematics/ch03_outro/nvg_cin_outro_01.webp",
+   "path": "assets/cinematics/ch03_outro/nvg_cin_outro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7292,7 +7292,7 @@
   },
   {
    "id": "NVG-CIN-OUTRO-02",
-   "path": "generated_assets/cinematics/ch03_outro/nvg_cin_outro_02.webp",
+   "path": "assets/cinematics/ch03_outro/nvg_cin_outro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7308,7 +7308,7 @@
   },
   {
    "id": "NVG-CIN-OUTRO-03",
-   "path": "generated_assets/cinematics/ch03_outro/nvg_cin_outro_03.webp",
+   "path": "assets/cinematics/ch03_outro/nvg_cin_outro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7324,7 +7324,7 @@
   },
   {
    "id": "NVG-CIN-INTRO-03",
-   "path": "generated_assets/cinematics/ch03_intro/nvg_cin_intro_03.webp",
+   "path": "assets/cinematics/ch03_intro/nvg_cin_intro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7340,7 +7340,7 @@
   },
   {
    "id": "CVT-CIN-INTRO-01",
-   "path": "generated_assets/cinematics/ch04_intro/cvt_cin_intro_01.webp",
+   "path": "assets/cinematics/ch04_intro/cvt_cin_intro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7356,7 +7356,7 @@
   },
   {
    "id": "CVT-CIN-INTRO-02",
-   "path": "generated_assets/cinematics/ch04_intro/cvt_cin_intro_02.webp",
+   "path": "assets/cinematics/ch04_intro/cvt_cin_intro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7372,7 +7372,7 @@
   },
   {
    "id": "CVT-CIN-INTRO-03",
-   "path": "generated_assets/cinematics/ch04_intro/cvt_cin_intro_03.webp",
+   "path": "assets/cinematics/ch04_intro/cvt_cin_intro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7388,7 +7388,7 @@
   },
   {
    "id": "CVT-CIN-OUTRO-01",
-   "path": "generated_assets/cinematics/ch04_outro/cvt_cin_outro_01.webp",
+   "path": "assets/cinematics/ch04_outro/cvt_cin_outro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7404,7 +7404,7 @@
   },
   {
    "id": "CVT-CIN-OUTRO-02",
-   "path": "generated_assets/cinematics/ch04_outro/cvt_cin_outro_02.webp",
+   "path": "assets/cinematics/ch04_outro/cvt_cin_outro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7420,7 +7420,7 @@
   },
   {
    "id": "CVT-CIN-OUTRO-03",
-   "path": "generated_assets/cinematics/ch04_outro/cvt_cin_outro_03.webp",
+   "path": "assets/cinematics/ch04_outro/cvt_cin_outro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7436,7 +7436,7 @@
   },
   {
    "id": "CVT-CIN-OUTRO-04",
-   "path": "generated_assets/cinematics/ch04_outro/cvt_cin_outro_04.webp",
+   "path": "assets/cinematics/ch04_outro/cvt_cin_outro_04.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7452,7 +7452,7 @@
   },
   {
    "id": "MRD-CIN-INTRO-01",
-   "path": "generated_assets/cinematics/ch05_intro/mrd_cin_intro_01.webp",
+   "path": "assets/cinematics/ch05_intro/mrd_cin_intro_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7468,7 +7468,7 @@
   },
   {
    "id": "MRD-CIN-INTRO-02",
-   "path": "generated_assets/cinematics/ch05_intro/mrd_cin_intro_02.webp",
+   "path": "assets/cinematics/ch05_intro/mrd_cin_intro_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7484,7 +7484,7 @@
   },
   {
    "id": "MRD-CIN-INTRO-03",
-   "path": "generated_assets/cinematics/ch05_intro/mrd_cin_intro_03.webp",
+   "path": "assets/cinematics/ch05_intro/mrd_cin_intro_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7500,7 +7500,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-01",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_01.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7516,7 +7516,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-02",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_02.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_02.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7532,7 +7532,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-03",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_03.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7548,7 +7548,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-04",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_04.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_04.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7564,7 +7564,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-06",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_06.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_06.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7580,7 +7580,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-07",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_07.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_07.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7596,7 +7596,7 @@
   },
   {
    "id": "GAM-CIN-FINALE_ENDCARD-01",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_endcard_01.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_endcard_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7612,7 +7612,7 @@
   },
   {
    "id": "GAM-CIN-FINALE-05",
-   "path": "generated_assets/cinematics/finale/gam_cin_finale_05.webp",
+   "path": "assets/cinematics/finale/gam_cin_finale_05.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7628,7 +7628,7 @@
   },
   {
    "id": "GAM-CIN-TEASER_2041-01",
-   "path": "generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_01.webp",
+   "path": "assets/cinematics/teaser_2041/gam_cin_teaser_2041_01.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7644,7 +7644,7 @@
   },
   {
    "id": "GAM-CIN-TEASER_2041-03",
-   "path": "generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_03.webp",
+   "path": "assets/cinematics/teaser_2041/gam_cin_teaser_2041_03.webp",
    "category": "cinematics",
    "render_type": "ui",
    "format": "webp",
@@ -7660,7 +7660,7 @@
   },
   {
    "id": "GAM-CIN-SEQUENCES-A",
-   "path": "generated_assets/cinematics/cinematic_sequences.json",
+   "path": "assets/cinematics/cinematic_sequences.json",
    "category": "cinematics",
    "render_type": "reference",
    "format": "json",
@@ -7673,7 +7673,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_ALL-A",
-   "path": "generated_assets/cinematics/subtitles/subtitles.json",
+   "path": "assets/cinematics/subtitles/subtitles.json",
    "category": "cinematics",
    "render_type": "reference",
    "format": "json",
@@ -7686,7 +7686,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_OPENING-A",
-   "path": "generated_assets/cinematics/subtitles/opening.srt",
+   "path": "assets/cinematics/subtitles/opening.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7699,7 +7699,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH01_INTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch01_intro.srt",
+   "path": "assets/cinematics/subtitles/ch01_intro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7712,7 +7712,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH01_OUTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch01_outro.srt",
+   "path": "assets/cinematics/subtitles/ch01_outro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7725,7 +7725,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH02_INTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch02_intro.srt",
+   "path": "assets/cinematics/subtitles/ch02_intro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7738,7 +7738,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH02_OUTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch02_outro.srt",
+   "path": "assets/cinematics/subtitles/ch02_outro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7751,7 +7751,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH03_INTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch03_intro.srt",
+   "path": "assets/cinematics/subtitles/ch03_intro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7764,7 +7764,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH03_OUTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch03_outro.srt",
+   "path": "assets/cinematics/subtitles/ch03_outro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7777,7 +7777,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH04_INTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch04_intro.srt",
+   "path": "assets/cinematics/subtitles/ch04_intro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7790,7 +7790,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH04_OUTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch04_outro.srt",
+   "path": "assets/cinematics/subtitles/ch04_outro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7803,7 +7803,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_CH05_INTRO-A",
-   "path": "generated_assets/cinematics/subtitles/ch05_intro.srt",
+   "path": "assets/cinematics/subtitles/ch05_intro.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7816,7 +7816,7 @@
   },
   {
    "id": "GAM-CIN-SUBTITLES_FINALE-A",
-   "path": "generated_assets/cinematics/subtitles/finale.srt",
+   "path": "assets/cinematics/subtitles/finale.srt",
    "category": "cinematics",
    "render_type": "reference",
    "format": "srt",
@@ -7829,7 +7829,7 @@
   },
   {
    "id": "GAM-CIN-CONTACT_SHEET_OPENING_AND_HELIX-A",
-   "path": "generated_assets/cinematics/previews/contact_opening_and_helix.webp",
+   "path": "assets/cinematics/previews/contact_opening_and_helix.webp",
    "category": "cinematics",
    "render_type": "reference",
    "format": "webp",
@@ -7843,7 +7843,7 @@
   },
   {
    "id": "GAM-CIN-CONTACT_SHEET_VITA_AND_NOVA_GRID-A",
-   "path": "generated_assets/cinematics/previews/contact_vita_and_nova_grid.webp",
+   "path": "assets/cinematics/previews/contact_vita_and_nova_grid.webp",
    "category": "cinematics",
    "render_type": "reference",
    "format": "webp",
@@ -7857,7 +7857,7 @@
   },
   {
    "id": "GAM-CIN-CONTACT_SHEET_CIVITAS_AND_MERIDIAN-A",
-   "path": "generated_assets/cinematics/previews/contact_civitas_and_meridian.webp",
+   "path": "assets/cinematics/previews/contact_civitas_and_meridian.webp",
    "category": "cinematics",
    "render_type": "reference",
    "format": "webp",
@@ -7871,7 +7871,7 @@
   },
   {
    "id": "GAM-CIN-CONTACT_SHEET_FINALE_AND_TEASER-A",
-   "path": "generated_assets/cinematics/previews/contact_finale_and_teaser.webp",
+   "path": "assets/cinematics/previews/contact_finale_and_teaser.webp",
    "category": "cinematics",
    "render_type": "reference",
    "format": "webp",

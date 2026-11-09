@@ -13,7 +13,7 @@ Every file is decoded after encoding and measured: integrated loudness, true pea
 
 ## Manifest validator
 
-`python3 generated_assets/tools/validate_asset_manifest.py --quiet --loudness`
+`python3 assets/tools/validate_asset_manifest.py --quiet --loudness`
 
 ```
 entries: 849 checked, 849 present, 280.0 MB
@@ -35,4 +35,4 @@ LOADCHECK loaded 857 entries (11 unlisted scenes/resources), 0 failed, by type {
 AUDIOCHECK 245 ok, 0 failed, 52 loop entries set loop=true with loop_offset
 ```
 
-The import printed `Failed decoding WebP image` errors for animated WebP previews of another stream (generated_assets/vfx/previews/); none concern audio files. `audio_check.gd` loads every entry of `manifest_parts/audio.json`, compares Godot's stream length with `duration_seconds` (all within 0.02 s) and sets `loop` and `loop_offset` on every loop entry. It cannot judge the seam by ear; the seam evidence is the decoded-file test above.
+The import printed `Failed decoding WebP image` errors for animated WebP previews of another stream (assets/vfx/previews/); none concern audio files. `audio_check.gd` loads every entry of `manifest_parts/audio.json`, compares Godot's stream length with `duration_seconds` (all within 0.02 s) and sets `loop` and `loop_offset` on every loop entry. It cannot judge the seam by ear; the seam evidence is the decoded-file test above.

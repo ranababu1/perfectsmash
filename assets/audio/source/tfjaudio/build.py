@@ -104,7 +104,7 @@ def produce_music(cue, song, intro=None, quality=6):
         info['master_loop_start_samples'] = int(ls48)
         info['master_loop_end_samples'] = int(le48)
     info['track_levels_lufs'] = getattr(song, 'track_report', {})
-    pdir = os.path.join(REPO, 'generated_assets/audio/previews/music')
+    pdir = os.path.join(REPO, 'assets/audio/previews/music')
     os.makedirs(pdir, exist_ok=True)
     title = f"{cid}  {info['seconds']} s  {info['lufs_i']} LUFS  {info['true_peak_dbtp']} dBTP" + (f"  loop {info['loop_start_samples']}-{info['loop_end_samples']} @44.1k" if song.loop else '')
     png = os.path.join(pdir, os.path.basename(rel).replace('.ogg', '.png'))

@@ -156,7 +156,7 @@
  "music": [
   {
    "id": "CVT-MUS-BOSS-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_boss_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_boss_01.ogg",
    "kind": "climax",
    "use": "Mission climax / boss track for the chapter finale (level 80) and other hero missions",
    "chapter": "civitas",
@@ -196,7 +196,7 @@
   },
   {
    "id": "CVT-MUS-COMBAT-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_combat_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_combat_01.ogg",
    "kind": "loop",
    "use": "High-intensity destruction / chain-reaction phase",
    "chapter": "civitas",
@@ -236,7 +236,7 @@
   },
   {
    "id": "CVT-MUS-CRITICAL_LAYER-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_critical_layer_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_critical_layer_01.ogg",
    "kind": "layer",
    "use": "Critical-asset engagement layer: add on top of the tension or combat loop while a critical target is exposed or damaged",
    "chapter": "civitas",
@@ -276,7 +276,7 @@
   },
   {
    "id": "CVT-MUS-GAMEPLAY-PREP",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_gameplay_prep.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_gameplay_prep.ogg",
    "kind": "loop",
    "use": "Tactical preparation: mission briefing, aiming before the first shot, pause menu",
    "chapter": "civitas",
@@ -316,7 +316,7 @@
   },
   {
    "id": "CVT-MUS-GAMEPLAY-TENSION",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_gameplay_tension.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_gameplay_tension.ogg",
    "kind": "loop",
    "use": "Standard mission bed (default gameplay intensity)",
    "chapter": "civitas",
@@ -356,7 +356,7 @@
   },
   {
    "id": "CVT-MUS-INTRO-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_intro_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_intro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 4 introduction cinematic score (narrated stills)",
    "chapter": "civitas",
@@ -391,7 +391,7 @@
   },
   {
    "id": "CVT-MUS-OUTRO-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_outro_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_outro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 4 ending cinematic score",
    "chapter": "civitas",
@@ -426,7 +426,7 @@
   },
   {
    "id": "CVT-MUS-THEME-01",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_theme_01.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_theme_01.ogg",
    "kind": "theme",
    "use": "Civitas Network 2100 chapter theme: chapter intro screen, chapter select preview, story archive",
    "chapter": "civitas",
@@ -459,7 +459,7 @@
   },
   {
    "id": "CVT-MUS-TRANSITION-STINGER",
-   "path": "generated_assets/audio/music/civitas/cvt_mus_transition_stinger.ogg",
+   "path": "assets/audio/music/civitas/cvt_mus_transition_stinger.ogg",
    "kind": "stinger",
    "use": "Chapter 4 transition stinger / chapter reveal",
    "chapter": "civitas",
@@ -492,7 +492,7 @@
   },
   {
    "id": "GAM-MUS-DEFEAT-MISSION",
-   "path": "generated_assets/audio/music/shared/gam_mus_defeat_mission.ogg",
+   "path": "assets/audio/music/shared/gam_mus_defeat_mission.ogg",
    "kind": "result",
    "use": "Mission failed results screen",
    "chapter": "shared",
@@ -525,7 +525,7 @@
   },
   {
    "id": "GAM-MUS-ENDING-CREDITS",
-   "path": "generated_assets/audio/music/shared/gam_mus_ending_credits.ogg",
+   "path": "assets/audio/music/shared/gam_mus_ending_credits.ogg",
    "kind": "credits",
    "use": "Ending / credits music",
    "chapter": "shared",
@@ -558,7 +558,7 @@
   },
   {
    "id": "GAM-MUS-FINALE-01",
-   "path": "generated_assets/audio/music/shared/gam_mus_finale_01.ogg",
+   "path": "assets/audio/music/shared/gam_mus_finale_01.ogg",
    "kind": "cinematic",
    "use": "Level 100 finale \"The Wrong Future\"",
    "chapter": "shared",
@@ -595,7 +595,7 @@
   },
   {
    "id": "GAM-MUS-MAIN_THEME-01",
-   "path": "generated_assets/audio/music/shared/gam_mus_main_theme_01.ogg",
+   "path": "assets/audio/music/shared/gam_mus_main_theme_01.ogg",
    "kind": "theme",
    "use": "Title / main theme; trailer and store video bed",
    "chapter": "shared",
@@ -628,7 +628,7 @@
   },
   {
    "id": "GAM-MUS-MENU-01",
-   "path": "generated_assets/audio/music/shared/gam_mus_menu_01.ogg",
+   "path": "assets/audio/music/shared/gam_mus_menu_01.ogg",
    "kind": "loop",
    "use": "Main menu, chapter select, settings",
    "chapter": "shared",
@@ -668,7 +668,7 @@
   },
   {
    "id": "GAM-MUS-OPENING-01",
-   "path": "generated_assets/audio/music/shared/gam_mus_opening_01.ogg",
+   "path": "assets/audio/music/shared/gam_mus_opening_01.ogg",
    "kind": "cinematic",
    "use": "Opening cinematic \"The Last Transmission\" (7 narrated slides)",
    "chapter": "shared",
@@ -703,7 +703,7 @@
   },
   {
    "id": "GAM-MUS-TEASER-01",
-   "path": "generated_assets/audio/music/shared/gam_mus_teaser_01.ogg",
+   "path": "assets/audio/music/shared/gam_mus_teaser_01.ogg",
    "kind": "cinematic",
    "use": "Expansion teaser after the credits (NEXT COORDINATE: 2041)",
    "chapter": "shared",
@@ -736,7 +736,7 @@
   },
   {
    "id": "GAM-MUS-TRANSITION-TIMELINE_SHIFT",
-   "path": "generated_assets/audio/music/shared/gam_mus_transition_timeline_shift.ogg",
+   "path": "assets/audio/music/shared/gam_mus_transition_timeline_shift.ogg",
    "kind": "stinger",
    "use": "Generic timeline shift / time insertion transition",
    "chapter": "shared",
@@ -769,7 +769,7 @@
   },
   {
    "id": "GAM-MUS-VICTORY-CHAPTER",
-   "path": "generated_assets/audio/music/shared/gam_mus_victory_chapter.ogg",
+   "path": "assets/audio/music/shared/gam_mus_victory_chapter.ogg",
    "kind": "result",
    "use": "Chapter complete screen",
    "chapter": "shared",
@@ -802,7 +802,7 @@
   },
   {
    "id": "GAM-MUS-VICTORY-MISSION",
-   "path": "generated_assets/audio/music/shared/gam_mus_victory_mission.ogg",
+   "path": "assets/audio/music/shared/gam_mus_victory_mission.ogg",
    "kind": "result",
    "use": "Mission success results screen",
    "chapter": "shared",
@@ -835,7 +835,7 @@
   },
   {
    "id": "HLX-MUS-BOSS-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_boss_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_boss_01.ogg",
    "kind": "climax",
    "use": "Mission climax / boss track for the chapter finale (level 20) and other hero missions",
    "chapter": "helix",
@@ -875,7 +875,7 @@
   },
   {
    "id": "HLX-MUS-COMBAT-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_combat_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_combat_01.ogg",
    "kind": "loop",
    "use": "High-intensity destruction / chain-reaction phase",
    "chapter": "helix",
@@ -915,7 +915,7 @@
   },
   {
    "id": "HLX-MUS-CRITICAL_LAYER-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_critical_layer_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_critical_layer_01.ogg",
    "kind": "layer",
    "use": "Critical-asset engagement layer: add on top of the tension or combat loop while a critical target is exposed or damaged",
    "chapter": "helix",
@@ -955,7 +955,7 @@
   },
   {
    "id": "HLX-MUS-GAMEPLAY-PREP",
-   "path": "generated_assets/audio/music/helix/hlx_mus_gameplay_prep.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_gameplay_prep.ogg",
    "kind": "loop",
    "use": "Tactical preparation: mission briefing, aiming before the first shot, pause menu",
    "chapter": "helix",
@@ -995,7 +995,7 @@
   },
   {
    "id": "HLX-MUS-GAMEPLAY-TENSION",
-   "path": "generated_assets/audio/music/helix/hlx_mus_gameplay_tension.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_gameplay_tension.ogg",
    "kind": "loop",
    "use": "Standard mission bed (default gameplay intensity)",
    "chapter": "helix",
@@ -1035,7 +1035,7 @@
   },
   {
    "id": "HLX-MUS-INTRO-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_intro_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_intro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 1 introduction cinematic score (narrated stills)",
    "chapter": "helix",
@@ -1070,7 +1070,7 @@
   },
   {
    "id": "HLX-MUS-OUTRO-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_outro_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_outro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 1 ending cinematic score",
    "chapter": "helix",
@@ -1105,7 +1105,7 @@
   },
   {
    "id": "HLX-MUS-THEME-01",
-   "path": "generated_assets/audio/music/helix/hlx_mus_theme_01.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_theme_01.ogg",
    "kind": "theme",
    "use": "Helix Systems 2089 chapter theme: chapter intro screen, chapter select preview, story archive",
    "chapter": "helix",
@@ -1138,7 +1138,7 @@
   },
   {
    "id": "HLX-MUS-TRANSITION-STINGER",
-   "path": "generated_assets/audio/music/helix/hlx_mus_transition_stinger.ogg",
+   "path": "assets/audio/music/helix/hlx_mus_transition_stinger.ogg",
    "kind": "stinger",
    "use": "Chapter 1 transition stinger / chapter reveal",
    "chapter": "helix",
@@ -1171,7 +1171,7 @@
   },
   {
    "id": "MRD-MUS-BOSS-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_boss_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_boss_01.ogg",
    "kind": "climax",
    "use": "Mission climax / boss track for the chapter finale (level 100) and other hero missions",
    "chapter": "meridian",
@@ -1211,7 +1211,7 @@
   },
   {
    "id": "MRD-MUS-COMBAT-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_combat_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_combat_01.ogg",
    "kind": "loop",
    "use": "High-intensity destruction / chain-reaction phase",
    "chapter": "meridian",
@@ -1251,7 +1251,7 @@
   },
   {
    "id": "MRD-MUS-CRITICAL_LAYER-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_critical_layer_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_critical_layer_01.ogg",
    "kind": "layer",
    "use": "Critical-asset engagement layer: add on top of the tension or combat loop while a critical target is exposed or damaged",
    "chapter": "meridian",
@@ -1291,7 +1291,7 @@
   },
   {
    "id": "MRD-MUS-GAMEPLAY-PREP",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_gameplay_prep.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_gameplay_prep.ogg",
    "kind": "loop",
    "use": "Tactical preparation: mission briefing, aiming before the first shot, pause menu",
    "chapter": "meridian",
@@ -1331,7 +1331,7 @@
   },
   {
    "id": "MRD-MUS-GAMEPLAY-TENSION",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_gameplay_tension.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_gameplay_tension.ogg",
    "kind": "loop",
    "use": "Standard mission bed (default gameplay intensity)",
    "chapter": "meridian",
@@ -1371,7 +1371,7 @@
   },
   {
    "id": "MRD-MUS-INTRO-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_intro_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_intro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 5 introduction cinematic score (narrated stills)",
    "chapter": "meridian",
@@ -1406,7 +1406,7 @@
   },
   {
    "id": "MRD-MUS-OUTRO-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_outro_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_outro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 5 ending cinematic score",
    "chapter": "meridian",
@@ -1441,7 +1441,7 @@
   },
   {
    "id": "MRD-MUS-THEME-01",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_theme_01.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_theme_01.ogg",
    "kind": "theme",
    "use": "Meridian 2104 chapter theme: chapter intro screen, chapter select preview, story archive",
    "chapter": "meridian",
@@ -1474,7 +1474,7 @@
   },
   {
    "id": "MRD-MUS-TRANSITION-STINGER",
-   "path": "generated_assets/audio/music/meridian/mrd_mus_transition_stinger.ogg",
+   "path": "assets/audio/music/meridian/mrd_mus_transition_stinger.ogg",
    "kind": "stinger",
    "use": "Chapter 5 transition stinger / chapter reveal",
    "chapter": "meridian",
@@ -1507,7 +1507,7 @@
   },
   {
    "id": "NVG-MUS-BOSS-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_boss_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_boss_01.ogg",
    "kind": "climax",
    "use": "Mission climax / boss track for the chapter finale (level 60) and other hero missions",
    "chapter": "nova_grid",
@@ -1547,7 +1547,7 @@
   },
   {
    "id": "NVG-MUS-COMBAT-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_combat_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_combat_01.ogg",
    "kind": "loop",
    "use": "High-intensity destruction / chain-reaction phase",
    "chapter": "nova_grid",
@@ -1587,7 +1587,7 @@
   },
   {
    "id": "NVG-MUS-CRITICAL_LAYER-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_critical_layer_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_critical_layer_01.ogg",
    "kind": "layer",
    "use": "Critical-asset engagement layer: add on top of the tension or combat loop while a critical target is exposed or damaged",
    "chapter": "nova_grid",
@@ -1627,7 +1627,7 @@
   },
   {
    "id": "NVG-MUS-GAMEPLAY-PREP",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_gameplay_prep.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_gameplay_prep.ogg",
    "kind": "loop",
    "use": "Tactical preparation: mission briefing, aiming before the first shot, pause menu",
    "chapter": "nova_grid",
@@ -1667,7 +1667,7 @@
   },
   {
    "id": "NVG-MUS-GAMEPLAY-TENSION",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_gameplay_tension.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_gameplay_tension.ogg",
    "kind": "loop",
    "use": "Standard mission bed (default gameplay intensity)",
    "chapter": "nova_grid",
@@ -1707,7 +1707,7 @@
   },
   {
    "id": "NVG-MUS-INTRO-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_intro_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_intro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 3 introduction cinematic score (narrated stills)",
    "chapter": "nova_grid",
@@ -1742,7 +1742,7 @@
   },
   {
    "id": "NVG-MUS-OUTRO-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_outro_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_outro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 3 ending cinematic score",
    "chapter": "nova_grid",
@@ -1777,7 +1777,7 @@
   },
   {
    "id": "NVG-MUS-THEME-01",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_theme_01.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_theme_01.ogg",
    "kind": "theme",
    "use": "Nova Grid 2096 chapter theme: chapter intro screen, chapter select preview, story archive",
    "chapter": "nova_grid",
@@ -1810,7 +1810,7 @@
   },
   {
    "id": "NVG-MUS-TRANSITION-STINGER",
-   "path": "generated_assets/audio/music/nova_grid/nvg_mus_transition_stinger.ogg",
+   "path": "assets/audio/music/nova_grid/nvg_mus_transition_stinger.ogg",
    "kind": "stinger",
    "use": "Chapter 3 transition stinger / chapter reveal",
    "chapter": "nova_grid",
@@ -1843,7 +1843,7 @@
   },
   {
    "id": "VTA-MUS-BOSS-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_boss_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_boss_01.ogg",
    "kind": "climax",
    "use": "Mission climax / boss track for the chapter finale (level 40) and other hero missions",
    "chapter": "vita",
@@ -1883,7 +1883,7 @@
   },
   {
    "id": "VTA-MUS-COMBAT-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_combat_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_combat_01.ogg",
    "kind": "loop",
    "use": "High-intensity destruction / chain-reaction phase",
    "chapter": "vita",
@@ -1923,7 +1923,7 @@
   },
   {
    "id": "VTA-MUS-CRITICAL_LAYER-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_critical_layer_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_critical_layer_01.ogg",
    "kind": "layer",
    "use": "Critical-asset engagement layer: add on top of the tension or combat loop while a critical target is exposed or damaged",
    "chapter": "vita",
@@ -1963,7 +1963,7 @@
   },
   {
    "id": "VTA-MUS-GAMEPLAY-PREP",
-   "path": "generated_assets/audio/music/vita/vta_mus_gameplay_prep.ogg",
+   "path": "assets/audio/music/vita/vta_mus_gameplay_prep.ogg",
    "kind": "loop",
    "use": "Tactical preparation: mission briefing, aiming before the first shot, pause menu",
    "chapter": "vita",
@@ -2003,7 +2003,7 @@
   },
   {
    "id": "VTA-MUS-GAMEPLAY-TENSION",
-   "path": "generated_assets/audio/music/vita/vta_mus_gameplay_tension.ogg",
+   "path": "assets/audio/music/vita/vta_mus_gameplay_tension.ogg",
    "kind": "loop",
    "use": "Standard mission bed (default gameplay intensity)",
    "chapter": "vita",
@@ -2043,7 +2043,7 @@
   },
   {
    "id": "VTA-MUS-INTRO-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_intro_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_intro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 2 introduction cinematic score (narrated stills)",
    "chapter": "vita",
@@ -2078,7 +2078,7 @@
   },
   {
    "id": "VTA-MUS-OUTRO-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_outro_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_outro_01.ogg",
    "kind": "cinematic",
    "use": "Chapter 2 ending cinematic score",
    "chapter": "vita",
@@ -2113,7 +2113,7 @@
   },
   {
    "id": "VTA-MUS-THEME-01",
-   "path": "generated_assets/audio/music/vita/vta_mus_theme_01.ogg",
+   "path": "assets/audio/music/vita/vta_mus_theme_01.ogg",
    "kind": "theme",
    "use": "VITA Genomics 2092 chapter theme: chapter intro screen, chapter select preview, story archive",
    "chapter": "vita",
@@ -2146,7 +2146,7 @@
   },
   {
    "id": "VTA-MUS-TRANSITION-STINGER",
-   "path": "generated_assets/audio/music/vita/vta_mus_transition_stinger.ogg",
+   "path": "assets/audio/music/vita/vta_mus_transition_stinger.ogg",
    "kind": "stinger",
    "use": "Chapter 2 transition stinger / chapter reveal",
    "chapter": "vita",
@@ -2181,7 +2181,7 @@
  "sfx_and_ambience": [
   {
    "id": "CVT-AMB-CONTROL-01",
-   "path": "generated_assets/audio/ambience/civitas/cvt_amb_control_01.ogg",
+   "path": "assets/audio/ambience/civitas/cvt_amb_control_01.ogg",
    "group": "CVT-AMB-CONTROL-01",
    "variation": 1,
    "variations": 1,
@@ -2224,7 +2224,7 @@
   },
   {
    "id": "CVT-AMB-PLAZA-01",
-   "path": "generated_assets/audio/ambience/civitas/cvt_amb_plaza_01.ogg",
+   "path": "assets/audio/ambience/civitas/cvt_amb_plaza_01.ogg",
    "group": "CVT-AMB-PLAZA-01",
    "variation": 1,
    "variations": 1,
@@ -2267,7 +2267,7 @@
   },
   {
    "id": "CVT-AMB-SPIRE-01",
-   "path": "generated_assets/audio/ambience/civitas/cvt_amb_spire_01.ogg",
+   "path": "assets/audio/ambience/civitas/cvt_amb_spire_01.ogg",
    "group": "CVT-AMB-SPIRE-01",
    "variation": 1,
    "variations": 1,
@@ -2310,7 +2310,7 @@
   },
   {
    "id": "CVT-AMB-STREET-01",
-   "path": "generated_assets/audio/ambience/civitas/cvt_amb_street_01.ogg",
+   "path": "assets/audio/ambience/civitas/cvt_amb_street_01.ogg",
    "group": "CVT-AMB-STREET-01",
    "variation": 1,
    "variations": 1,
@@ -2353,7 +2353,7 @@
   },
   {
    "id": "CVT-SFX-CORE_DESTROYED-01",
-   "path": "generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_01.ogg",
+   "path": "assets/audio/sfx/civitas/cvt_sfx_core_destroyed_01.ogg",
    "group": "CVT-SFX-CORE_DESTROYED",
    "variation": 1,
    "variations": 3,
@@ -2389,7 +2389,7 @@
   },
   {
    "id": "CVT-SFX-CORE_DESTROYED-02",
-   "path": "generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_02.ogg",
+   "path": "assets/audio/sfx/civitas/cvt_sfx_core_destroyed_02.ogg",
    "group": "CVT-SFX-CORE_DESTROYED",
    "variation": 2,
    "variations": 3,
@@ -2425,7 +2425,7 @@
   },
   {
    "id": "CVT-SFX-CORE_DESTROYED-03",
-   "path": "generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_03.ogg",
+   "path": "assets/audio/sfx/civitas/cvt_sfx_core_destroyed_03.ogg",
    "group": "CVT-SFX-CORE_DESTROYED",
    "variation": 3,
    "variations": 3,
@@ -2461,7 +2461,7 @@
   },
   {
    "id": "GAM-SFX-UI_ACHIEVEMENT-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_achievement_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_achievement_01.ogg",
    "group": "GAM-SFX-UI_ACHIEVEMENT",
    "variation": 1,
    "variations": 1,
@@ -2497,7 +2497,7 @@
   },
   {
    "id": "GAM-SFX-UI_BACK-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_back_01.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_back_01.wav",
    "group": "GAM-SFX-UI_BACK",
    "variation": 1,
    "variations": 3,
@@ -2533,7 +2533,7 @@
   },
   {
    "id": "GAM-SFX-UI_BACK-02",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_back_02.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_back_02.wav",
    "group": "GAM-SFX-UI_BACK",
    "variation": 2,
    "variations": 3,
@@ -2569,7 +2569,7 @@
   },
   {
    "id": "GAM-SFX-UI_BACK-03",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_back_03.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_back_03.wav",
    "group": "GAM-SFX-UI_BACK",
    "variation": 3,
    "variations": 3,
@@ -2605,7 +2605,7 @@
   },
   {
    "id": "GAM-SFX-UI_CLICK-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_click_01.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_click_01.wav",
    "group": "GAM-SFX-UI_CLICK",
    "variation": 1,
    "variations": 4,
@@ -2641,7 +2641,7 @@
   },
   {
    "id": "GAM-SFX-UI_CLICK-02",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_click_02.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_click_02.wav",
    "group": "GAM-SFX-UI_CLICK",
    "variation": 2,
    "variations": 4,
@@ -2677,7 +2677,7 @@
   },
   {
    "id": "GAM-SFX-UI_CLICK-03",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_click_03.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_click_03.wav",
    "group": "GAM-SFX-UI_CLICK",
    "variation": 3,
    "variations": 4,
@@ -2713,7 +2713,7 @@
   },
   {
    "id": "GAM-SFX-UI_CLICK-04",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_click_04.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_click_04.wav",
    "group": "GAM-SFX-UI_CLICK",
    "variation": 4,
    "variations": 4,
@@ -2749,7 +2749,7 @@
   },
   {
    "id": "GAM-SFX-UI_CONFIRM-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_confirm_01.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_confirm_01.wav",
    "group": "GAM-SFX-UI_CONFIRM",
    "variation": 1,
    "variations": 3,
@@ -2785,7 +2785,7 @@
   },
   {
    "id": "GAM-SFX-UI_CONFIRM-02",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_confirm_02.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_confirm_02.wav",
    "group": "GAM-SFX-UI_CONFIRM",
    "variation": 2,
    "variations": 3,
@@ -2821,7 +2821,7 @@
   },
   {
    "id": "GAM-SFX-UI_CONFIRM-03",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_confirm_03.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_confirm_03.wav",
    "group": "GAM-SFX-UI_CONFIRM",
    "variation": 3,
    "variations": 3,
@@ -2857,7 +2857,7 @@
   },
   {
    "id": "GAM-SFX-UI_DEFEAT-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_defeat_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_defeat_01.ogg",
    "group": "GAM-SFX-UI_DEFEAT",
    "variation": 1,
    "variations": 1,
@@ -2893,7 +2893,7 @@
   },
   {
    "id": "GAM-SFX-UI_ERROR-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_error_01.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_error_01.wav",
    "group": "GAM-SFX-UI_ERROR",
    "variation": 1,
    "variations": 3,
@@ -2929,7 +2929,7 @@
   },
   {
    "id": "GAM-SFX-UI_ERROR-02",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_error_02.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_error_02.wav",
    "group": "GAM-SFX-UI_ERROR",
    "variation": 2,
    "variations": 3,
@@ -2965,7 +2965,7 @@
   },
   {
    "id": "GAM-SFX-UI_ERROR-03",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_error_03.wav",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_error_03.wav",
    "group": "GAM-SFX-UI_ERROR",
    "variation": 3,
    "variations": 3,
@@ -3001,7 +3001,7 @@
   },
   {
    "id": "GAM-SFX-UI_OBJECTIVE_COMPLETE-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_objective_complete_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_objective_complete_01.ogg",
    "group": "GAM-SFX-UI_OBJECTIVE_COMPLETE",
    "variation": 1,
    "variations": 2,
@@ -3037,7 +3037,7 @@
   },
   {
    "id": "GAM-SFX-UI_OBJECTIVE_COMPLETE-02",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_objective_complete_02.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_objective_complete_02.ogg",
    "group": "GAM-SFX-UI_OBJECTIVE_COMPLETE",
    "variation": 2,
    "variations": 2,
@@ -3073,7 +3073,7 @@
   },
   {
    "id": "GAM-SFX-UI_UNLOCK-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_unlock_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_unlock_01.ogg",
    "group": "GAM-SFX-UI_UNLOCK",
    "variation": 1,
    "variations": 1,
@@ -3109,7 +3109,7 @@
   },
   {
    "id": "GAM-SFX-UI_UPGRADE_T1-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_upgrade_t1_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_upgrade_t1_01.ogg",
    "group": "GAM-SFX-UI_UPGRADE_T1",
    "variation": 1,
    "variations": 1,
@@ -3145,7 +3145,7 @@
   },
   {
    "id": "GAM-SFX-UI_UPGRADE_T2-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_upgrade_t2_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_upgrade_t2_01.ogg",
    "group": "GAM-SFX-UI_UPGRADE_T2",
    "variation": 1,
    "variations": 1,
@@ -3181,7 +3181,7 @@
   },
   {
    "id": "GAM-SFX-UI_UPGRADE_T3-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_upgrade_t3_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_upgrade_t3_01.ogg",
    "group": "GAM-SFX-UI_UPGRADE_T3",
    "variation": 1,
    "variations": 1,
@@ -3217,7 +3217,7 @@
   },
   {
    "id": "GAM-SFX-UI_VICTORY-01",
-   "path": "generated_assets/audio/sfx/shared/gam_sfx_ui_victory_01.ogg",
+   "path": "assets/audio/sfx/shared/gam_sfx_ui_victory_01.ogg",
    "group": "GAM-SFX-UI_VICTORY",
    "variation": 1,
    "variations": 1,
@@ -3253,7 +3253,7 @@
   },
   {
    "id": "HLX-AMB-COOLING-01",
-   "path": "generated_assets/audio/ambience/helix/hlx_amb_cooling_01.ogg",
+   "path": "assets/audio/ambience/helix/hlx_amb_cooling_01.ogg",
    "group": "HLX-AMB-COOLING-01",
    "variation": 1,
    "variations": 1,
@@ -3296,7 +3296,7 @@
   },
   {
    "id": "HLX-AMB-CORE-01",
-   "path": "generated_assets/audio/ambience/helix/hlx_amb_core_01.ogg",
+   "path": "assets/audio/ambience/helix/hlx_amb_core_01.ogg",
    "group": "HLX-AMB-CORE-01",
    "variation": 1,
    "variations": 1,
@@ -3339,7 +3339,7 @@
   },
   {
    "id": "HLX-AMB-LOGISTICS-01",
-   "path": "generated_assets/audio/ambience/helix/hlx_amb_logistics_01.ogg",
+   "path": "assets/audio/ambience/helix/hlx_amb_logistics_01.ogg",
    "group": "HLX-AMB-LOGISTICS-01",
    "variation": 1,
    "variations": 1,
@@ -3382,7 +3382,7 @@
   },
   {
    "id": "HLX-AMB-SERVER_HALL-01",
-   "path": "generated_assets/audio/ambience/helix/hlx_amb_server_hall_01.ogg",
+   "path": "assets/audio/ambience/helix/hlx_amb_server_hall_01.ogg",
    "group": "HLX-AMB-SERVER_HALL-01",
    "variation": 1,
    "variations": 1,
@@ -3425,7 +3425,7 @@
   },
   {
    "id": "HLX-SFX-CORE_DESTROYED-01",
-   "path": "generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_01.ogg",
+   "path": "assets/audio/sfx/helix/hlx_sfx_core_destroyed_01.ogg",
    "group": "HLX-SFX-CORE_DESTROYED",
    "variation": 1,
    "variations": 3,
@@ -3461,7 +3461,7 @@
   },
   {
    "id": "HLX-SFX-CORE_DESTROYED-02",
-   "path": "generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_02.ogg",
+   "path": "assets/audio/sfx/helix/hlx_sfx_core_destroyed_02.ogg",
    "group": "HLX-SFX-CORE_DESTROYED",
    "variation": 2,
    "variations": 3,
@@ -3497,7 +3497,7 @@
   },
   {
    "id": "HLX-SFX-CORE_DESTROYED-03",
-   "path": "generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_03.ogg",
+   "path": "assets/audio/sfx/helix/hlx_sfx_core_destroyed_03.ogg",
    "group": "HLX-SFX-CORE_DESTROYED",
    "variation": 3,
    "variations": 3,
@@ -3533,7 +3533,7 @@
   },
   {
    "id": "MRD-AMB-ANCHOR-01",
-   "path": "generated_assets/audio/ambience/meridian/mrd_amb_anchor_01.ogg",
+   "path": "assets/audio/ambience/meridian/mrd_amb_anchor_01.ogg",
    "group": "MRD-AMB-ANCHOR-01",
    "variation": 1,
    "variations": 1,
@@ -3576,7 +3576,7 @@
   },
   {
    "id": "MRD-AMB-CAVERN-01",
-   "path": "generated_assets/audio/ambience/meridian/mrd_amb_cavern_01.ogg",
+   "path": "assets/audio/ambience/meridian/mrd_amb_cavern_01.ogg",
    "group": "MRD-AMB-CAVERN-01",
    "variation": 1,
    "variations": 1,
@@ -3619,7 +3619,7 @@
   },
   {
    "id": "MRD-AMB-CONVERGENCE-01",
-   "path": "generated_assets/audio/ambience/meridian/mrd_amb_convergence_01.ogg",
+   "path": "assets/audio/ambience/meridian/mrd_amb_convergence_01.ogg",
    "group": "MRD-AMB-CONVERGENCE-01",
    "variation": 1,
    "variations": 1,
@@ -3662,7 +3662,7 @@
   },
   {
    "id": "MRD-AMB-EXCAVATION-01",
-   "path": "generated_assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg",
+   "path": "assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg",
    "group": "MRD-AMB-EXCAVATION-01",
    "variation": 1,
    "variations": 1,
@@ -3705,7 +3705,7 @@
   },
   {
    "id": "MRD-SFX-CORE_DESTROYED-01",
-   "path": "generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_01.ogg",
+   "path": "assets/audio/sfx/meridian/mrd_sfx_core_destroyed_01.ogg",
    "group": "MRD-SFX-CORE_DESTROYED",
    "variation": 1,
    "variations": 3,
@@ -3741,7 +3741,7 @@
   },
   {
    "id": "MRD-SFX-CORE_DESTROYED-02",
-   "path": "generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_02.ogg",
+   "path": "assets/audio/sfx/meridian/mrd_sfx_core_destroyed_02.ogg",
    "group": "MRD-SFX-CORE_DESTROYED",
    "variation": 2,
    "variations": 3,
@@ -3777,7 +3777,7 @@
   },
   {
    "id": "MRD-SFX-CORE_DESTROYED-03",
-   "path": "generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_03.ogg",
+   "path": "assets/audio/sfx/meridian/mrd_sfx_core_destroyed_03.ogg",
    "group": "MRD-SFX-CORE_DESTROYED",
    "variation": 3,
    "variations": 3,
@@ -3813,7 +3813,7 @@
   },
   {
    "id": "NVG-AMB-COOLING-01",
-   "path": "generated_assets/audio/ambience/nova_grid/nvg_amb_cooling_01.ogg",
+   "path": "assets/audio/ambience/nova_grid/nvg_amb_cooling_01.ogg",
    "group": "NVG-AMB-COOLING-01",
    "variation": 1,
    "variations": 1,
@@ -3856,7 +3856,7 @@
   },
   {
    "id": "NVG-AMB-INTAKE-01",
-   "path": "generated_assets/audio/ambience/nova_grid/nvg_amb_intake_01.ogg",
+   "path": "assets/audio/ambience/nova_grid/nvg_amb_intake_01.ogg",
    "group": "NVG-AMB-INTAKE-01",
    "variation": 1,
    "variations": 1,
@@ -3899,7 +3899,7 @@
   },
   {
    "id": "NVG-AMB-REACTOR-01",
-   "path": "generated_assets/audio/ambience/nova_grid/nvg_amb_reactor_01.ogg",
+   "path": "assets/audio/ambience/nova_grid/nvg_amb_reactor_01.ogg",
    "group": "NVG-AMB-REACTOR-01",
    "variation": 1,
    "variations": 1,
@@ -3942,7 +3942,7 @@
   },
   {
    "id": "NVG-AMB-TRANSFORMER-01",
-   "path": "generated_assets/audio/ambience/nova_grid/nvg_amb_transformer_01.ogg",
+   "path": "assets/audio/ambience/nova_grid/nvg_amb_transformer_01.ogg",
    "group": "NVG-AMB-TRANSFORMER-01",
    "variation": 1,
    "variations": 1,
@@ -3985,7 +3985,7 @@
   },
   {
    "id": "NVG-SFX-CORE_DESTROYED-01",
-   "path": "generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_01.ogg",
+   "path": "assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_01.ogg",
    "group": "NVG-SFX-CORE_DESTROYED",
    "variation": 1,
    "variations": 3,
@@ -4021,7 +4021,7 @@
   },
   {
    "id": "NVG-SFX-CORE_DESTROYED-02",
-   "path": "generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_02.ogg",
+   "path": "assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_02.ogg",
    "group": "NVG-SFX-CORE_DESTROYED",
    "variation": 2,
    "variations": 3,
@@ -4057,7 +4057,7 @@
   },
   {
    "id": "NVG-SFX-CORE_DESTROYED-03",
-   "path": "generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_03.ogg",
+   "path": "assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_03.ogg",
    "group": "NVG-SFX-CORE_DESTROYED",
    "variation": 3,
    "variations": 3,
@@ -4093,7 +4093,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_ARM-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_arm_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_arm_01.ogg",
    "group": "OPR-SFX-BREACH_ARM",
    "variation": 1,
    "variations": 3,
@@ -4129,7 +4129,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_ARM-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_arm_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_arm_02.ogg",
    "group": "OPR-SFX-BREACH_ARM",
    "variation": 2,
    "variations": 3,
@@ -4165,7 +4165,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_ARM-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_arm_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_arm_03.ogg",
    "group": "OPR-SFX-BREACH_ARM",
    "variation": 3,
    "variations": 3,
@@ -4201,7 +4201,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_01.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION",
    "variation": 1,
    "variations": 5,
@@ -4237,7 +4237,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_02.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION",
    "variation": 2,
    "variations": 5,
@@ -4273,7 +4273,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_03.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION",
    "variation": 3,
    "variations": 5,
@@ -4309,7 +4309,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_04.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION",
    "variation": 4,
    "variations": 5,
@@ -4345,7 +4345,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-05",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_05.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_05.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION",
    "variation": 5,
    "variations": 5,
@@ -4381,7 +4381,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T1-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_01.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T1",
    "variation": 1,
    "variations": 3,
@@ -4417,7 +4417,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T1-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_02.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T1",
    "variation": 2,
    "variations": 3,
@@ -4453,7 +4453,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T1-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_03.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T1",
    "variation": 3,
    "variations": 3,
@@ -4489,7 +4489,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T2-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_01.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T2",
    "variation": 1,
    "variations": 3,
@@ -4525,7 +4525,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T2-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_02.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T2",
    "variation": 2,
    "variations": 3,
@@ -4561,7 +4561,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T2-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_03.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T2",
    "variation": 3,
    "variations": 3,
@@ -4597,7 +4597,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T3-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_01.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T3",
    "variation": 1,
    "variations": 3,
@@ -4633,7 +4633,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T3-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_02.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T3",
    "variation": 2,
    "variations": 3,
@@ -4669,7 +4669,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION_T3-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_03.ogg",
    "group": "OPR-SFX-BREACH_EXPLOSION_T3",
    "variation": 3,
    "variations": 3,
@@ -4705,7 +4705,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_LAUNCH-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_launch_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_launch_01.ogg",
    "group": "OPR-SFX-BREACH_LAUNCH",
    "variation": 1,
    "variations": 4,
@@ -4741,7 +4741,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_LAUNCH-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_launch_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_launch_02.ogg",
    "group": "OPR-SFX-BREACH_LAUNCH",
    "variation": 2,
    "variations": 4,
@@ -4777,7 +4777,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_LAUNCH-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_launch_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_launch_03.ogg",
    "group": "OPR-SFX-BREACH_LAUNCH",
    "variation": 3,
    "variations": 4,
@@ -4813,7 +4813,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_LAUNCH-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_launch_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_launch_04.ogg",
    "group": "OPR-SFX-BREACH_LAUNCH",
    "variation": 4,
    "variations": 4,
@@ -4849,7 +4849,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_PREP-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_prep_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_prep_01.ogg",
    "group": "OPR-SFX-BREACH_PREP",
    "variation": 1,
    "variations": 3,
@@ -4885,7 +4885,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_PREP-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_prep_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_prep_02.ogg",
    "group": "OPR-SFX-BREACH_PREP",
    "variation": 2,
    "variations": 3,
@@ -4921,7 +4921,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_PREP-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_prep_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_prep_03.ogg",
    "group": "OPR-SFX-BREACH_PREP",
    "variation": 3,
    "variations": 3,
@@ -4957,7 +4957,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_SHOCKWAVE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_shockwave_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_shockwave_01.ogg",
    "group": "OPR-SFX-BREACH_SHOCKWAVE",
    "variation": 1,
    "variations": 3,
@@ -4993,7 +4993,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_SHOCKWAVE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_shockwave_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_shockwave_02.ogg",
    "group": "OPR-SFX-BREACH_SHOCKWAVE",
    "variation": 2,
    "variations": 3,
@@ -5029,7 +5029,7 @@
   },
   {
    "id": "OPR-SFX-BREACH_SHOCKWAVE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_breach_shockwave_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_breach_shockwave_03.ogg",
    "group": "OPR-SFX-BREACH_SHOCKWAVE",
    "variation": 3,
    "variations": 3,
@@ -5065,7 +5065,7 @@
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_equipment_rattle_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_equipment_rattle_01.ogg",
    "group": "OPR-SFX-EQUIPMENT_RATTLE",
    "variation": 1,
    "variations": 4,
@@ -5101,7 +5101,7 @@
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_equipment_rattle_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_equipment_rattle_02.ogg",
    "group": "OPR-SFX-EQUIPMENT_RATTLE",
    "variation": 2,
    "variations": 4,
@@ -5137,7 +5137,7 @@
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_equipment_rattle_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_equipment_rattle_03.ogg",
    "group": "OPR-SFX-EQUIPMENT_RATTLE",
    "variation": 3,
    "variations": 4,
@@ -5173,7 +5173,7 @@
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_equipment_rattle_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_equipment_rattle_04.ogg",
    "group": "OPR-SFX-EQUIPMENT_RATTLE",
    "variation": 4,
    "variations": 4,
@@ -5209,7 +5209,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_charge_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_charge_01.ogg",
    "group": "OPR-SFX-KINETIC_CHARGE",
    "variation": 1,
    "variations": 3,
@@ -5245,7 +5245,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_charge_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_charge_02.ogg",
    "group": "OPR-SFX-KINETIC_CHARGE",
    "variation": 2,
    "variations": 3,
@@ -5281,7 +5281,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_charge_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_charge_03.ogg",
    "group": "OPR-SFX-KINETIC_CHARGE",
    "variation": 3,
    "variations": 3,
@@ -5317,7 +5317,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_01.ogg",
    "group": "OPR-SFX-KINETIC_FIRE",
    "variation": 1,
    "variations": 5,
@@ -5353,7 +5353,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_02.ogg",
    "group": "OPR-SFX-KINETIC_FIRE",
    "variation": 2,
    "variations": 5,
@@ -5389,7 +5389,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_03.ogg",
    "group": "OPR-SFX-KINETIC_FIRE",
    "variation": 3,
    "variations": 5,
@@ -5425,7 +5425,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_04.ogg",
    "group": "OPR-SFX-KINETIC_FIRE",
    "variation": 4,
    "variations": 5,
@@ -5461,7 +5461,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-05",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_05.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_05.ogg",
    "group": "OPR-SFX-KINETIC_FIRE",
    "variation": 5,
    "variations": 5,
@@ -5497,7 +5497,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T1-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_01.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T1",
    "variation": 1,
    "variations": 3,
@@ -5533,7 +5533,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T1-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_02.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T1",
    "variation": 2,
    "variations": 3,
@@ -5569,7 +5569,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T1-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_03.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T1",
    "variation": 3,
    "variations": 3,
@@ -5605,7 +5605,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T2-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_01.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T2",
    "variation": 1,
    "variations": 3,
@@ -5641,7 +5641,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T2-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_02.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T2",
    "variation": 2,
    "variations": 3,
@@ -5677,7 +5677,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T2-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_03.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T2",
    "variation": 3,
    "variations": 3,
@@ -5713,7 +5713,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T3-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_01.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T3",
    "variation": 1,
    "variations": 3,
@@ -5749,7 +5749,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T3-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_02.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T3",
    "variation": 2,
    "variations": 3,
@@ -5785,7 +5785,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE_T3-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_03.ogg",
    "group": "OPR-SFX-KINETIC_FIRE_T3",
    "variation": 3,
    "variations": 3,
@@ -5821,7 +5821,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_impact_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_impact_01.ogg",
    "group": "OPR-SFX-KINETIC_IMPACT",
    "variation": 1,
    "variations": 5,
@@ -5857,7 +5857,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_impact_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_impact_02.ogg",
    "group": "OPR-SFX-KINETIC_IMPACT",
    "variation": 2,
    "variations": 5,
@@ -5893,7 +5893,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_impact_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_impact_03.ogg",
    "group": "OPR-SFX-KINETIC_IMPACT",
    "variation": 3,
    "variations": 5,
@@ -5929,7 +5929,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_impact_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_impact_04.ogg",
    "group": "OPR-SFX-KINETIC_IMPACT",
    "variation": 4,
    "variations": 5,
@@ -5965,7 +5965,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-05",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_impact_05.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_impact_05.ogg",
    "group": "OPR-SFX-KINETIC_IMPACT",
    "variation": 5,
    "variations": 5,
@@ -6001,7 +6001,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_01.ogg",
    "group": "OPR-SFX-KINETIC_TRAVEL_LOOP",
    "variation": 1,
    "variations": 3,
@@ -6045,7 +6045,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_02.ogg",
    "group": "OPR-SFX-KINETIC_TRAVEL_LOOP",
    "variation": 2,
    "variations": 3,
@@ -6089,7 +6089,7 @@
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_kinetic_travel_loop_03.ogg",
    "group": "OPR-SFX-KINETIC_TRAVEL_LOOP",
    "variation": 3,
    "variations": 3,
@@ -6133,7 +6133,7 @@
   },
   {
    "id": "OPR-SFX-RELOAD_READY-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_reload_ready_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_reload_ready_01.ogg",
    "group": "OPR-SFX-RELOAD_READY",
    "variation": 1,
    "variations": 3,
@@ -6169,7 +6169,7 @@
   },
   {
    "id": "OPR-SFX-RELOAD_READY-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_reload_ready_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_reload_ready_02.ogg",
    "group": "OPR-SFX-RELOAD_READY",
    "variation": 2,
    "variations": 3,
@@ -6205,7 +6205,7 @@
   },
   {
    "id": "OPR-SFX-RELOAD_READY-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_reload_ready_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_reload_ready_03.ogg",
    "group": "OPR-SFX-RELOAD_READY",
    "variation": 3,
    "variations": 3,
@@ -6241,7 +6241,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_move_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_move_01.ogg",
    "group": "OPR-SFX-SUIT_MOVE",
    "variation": 1,
    "variations": 5,
@@ -6277,7 +6277,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_move_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_move_02.ogg",
    "group": "OPR-SFX-SUIT_MOVE",
    "variation": 2,
    "variations": 5,
@@ -6313,7 +6313,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_move_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_move_03.ogg",
    "group": "OPR-SFX-SUIT_MOVE",
    "variation": 3,
    "variations": 5,
@@ -6349,7 +6349,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_move_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_move_04.ogg",
    "group": "OPR-SFX-SUIT_MOVE",
    "variation": 4,
    "variations": 5,
@@ -6385,7 +6385,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-05",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_move_05.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_move_05.ogg",
    "group": "OPR-SFX-SUIT_MOVE",
    "variation": 5,
    "variations": 5,
@@ -6421,7 +6421,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_servo_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_servo_01.ogg",
    "group": "OPR-SFX-SUIT_SERVO",
    "variation": 1,
    "variations": 5,
@@ -6457,7 +6457,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_servo_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_servo_02.ogg",
    "group": "OPR-SFX-SUIT_SERVO",
    "variation": 2,
    "variations": 5,
@@ -6493,7 +6493,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_servo_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_servo_03.ogg",
    "group": "OPR-SFX-SUIT_SERVO",
    "variation": 3,
    "variations": 5,
@@ -6529,7 +6529,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_servo_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_servo_04.ogg",
    "group": "OPR-SFX-SUIT_SERVO",
    "variation": 4,
    "variations": 5,
@@ -6565,7 +6565,7 @@
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-05",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_suit_servo_05.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_suit_servo_05.ogg",
    "group": "OPR-SFX-SUIT_SERVO",
    "variation": 5,
    "variations": 5,
@@ -6601,7 +6601,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_handle_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_handle_01.ogg",
    "group": "OPR-SFX-WEAPON_HANDLE",
    "variation": 1,
    "variations": 4,
@@ -6637,7 +6637,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_handle_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_handle_02.ogg",
    "group": "OPR-SFX-WEAPON_HANDLE",
    "variation": 2,
    "variations": 4,
@@ -6673,7 +6673,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_handle_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_handle_03.ogg",
    "group": "OPR-SFX-WEAPON_HANDLE",
    "variation": 3,
    "variations": 4,
@@ -6709,7 +6709,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-04",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_handle_04.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_handle_04.ogg",
    "group": "OPR-SFX-WEAPON_HANDLE",
    "variation": 4,
    "variations": 4,
@@ -6745,7 +6745,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_SWITCH-01",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_switch_01.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_switch_01.ogg",
    "group": "OPR-SFX-WEAPON_SWITCH",
    "variation": 1,
    "variations": 3,
@@ -6781,7 +6781,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_SWITCH-02",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_switch_02.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_switch_02.ogg",
    "group": "OPR-SFX-WEAPON_SWITCH",
    "variation": 2,
    "variations": 3,
@@ -6817,7 +6817,7 @@
   },
   {
    "id": "OPR-SFX-WEAPON_SWITCH-03",
-   "path": "generated_assets/audio/sfx/shared/opr_sfx_weapon_switch_03.ogg",
+   "path": "assets/audio/sfx/shared/opr_sfx_weapon_switch_03.ogg",
    "group": "OPR-SFX-WEAPON_SWITCH",
    "variation": 3,
    "variations": 3,
@@ -6853,7 +6853,7 @@
   },
   {
    "id": "SHR-SFX-ALARM_KLAXON-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_alarm_klaxon_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_alarm_klaxon_01.ogg",
    "group": "SHR-SFX-ALARM_KLAXON",
    "variation": 1,
    "variations": 1,
@@ -6897,7 +6897,7 @@
   },
   {
    "id": "SHR-SFX-ALARM_PULSE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_alarm_pulse_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_alarm_pulse_01.ogg",
    "group": "SHR-SFX-ALARM_PULSE",
    "variation": 1,
    "variations": 1,
@@ -6941,7 +6941,7 @@
   },
   {
    "id": "SHR-SFX-ALARM_SIREN-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_alarm_siren_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_alarm_siren_01.ogg",
    "group": "SHR-SFX-ALARM_SIREN",
    "variation": 1,
    "variations": 1,
@@ -6985,7 +6985,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_heavy_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_heavy_01.ogg",
    "group": "SHR-SFX-DEBRIS_HEAVY",
    "variation": 1,
    "variations": 5,
@@ -7021,7 +7021,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_heavy_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_heavy_02.ogg",
    "group": "SHR-SFX-DEBRIS_HEAVY",
    "variation": 2,
    "variations": 5,
@@ -7057,7 +7057,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_heavy_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_heavy_03.ogg",
    "group": "SHR-SFX-DEBRIS_HEAVY",
    "variation": 3,
    "variations": 5,
@@ -7093,7 +7093,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_heavy_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_heavy_04.ogg",
    "group": "SHR-SFX-DEBRIS_HEAVY",
    "variation": 4,
    "variations": 5,
@@ -7129,7 +7129,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_heavy_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_heavy_05.ogg",
    "group": "SHR-SFX-DEBRIS_HEAVY",
    "variation": 5,
    "variations": 5,
@@ -7165,7 +7165,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_small_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_small_01.ogg",
    "group": "SHR-SFX-DEBRIS_SMALL",
    "variation": 1,
    "variations": 5,
@@ -7201,7 +7201,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_small_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_small_02.ogg",
    "group": "SHR-SFX-DEBRIS_SMALL",
    "variation": 2,
    "variations": 5,
@@ -7237,7 +7237,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_small_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_small_03.ogg",
    "group": "SHR-SFX-DEBRIS_SMALL",
    "variation": 3,
    "variations": 5,
@@ -7273,7 +7273,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_small_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_small_04.ogg",
    "group": "SHR-SFX-DEBRIS_SMALL",
    "variation": 4,
    "variations": 5,
@@ -7309,7 +7309,7 @@
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_debris_small_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_debris_small_05.ogg",
    "group": "SHR-SFX-DEBRIS_SMALL",
    "variation": 5,
    "variations": 5,
@@ -7345,7 +7345,7 @@
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_electric_short_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_electric_short_01.ogg",
    "group": "SHR-SFX-ELECTRIC_SHORT",
    "variation": 1,
    "variations": 5,
@@ -7381,7 +7381,7 @@
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
    "group": "SHR-SFX-ELECTRIC_SHORT",
    "variation": 2,
    "variations": 5,
@@ -7417,7 +7417,7 @@
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_electric_short_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_electric_short_03.ogg",
    "group": "SHR-SFX-ELECTRIC_SHORT",
    "variation": 3,
    "variations": 5,
@@ -7453,7 +7453,7 @@
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg",
    "group": "SHR-SFX-ELECTRIC_SHORT",
    "variation": 4,
    "variations": 5,
@@ -7489,7 +7489,7 @@
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_electric_short_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_electric_short_05.ogg",
    "group": "SHR-SFX-ELECTRIC_SHORT",
    "variation": 5,
    "variations": 5,
@@ -7525,7 +7525,7 @@
   },
   {
    "id": "SHR-SFX-ENERGY_DISCHARGE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_energy_discharge_01.ogg",
    "group": "SHR-SFX-ENERGY_DISCHARGE",
    "variation": 1,
    "variations": 4,
@@ -7561,7 +7561,7 @@
   },
   {
    "id": "SHR-SFX-ENERGY_DISCHARGE-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_energy_discharge_02.ogg",
    "group": "SHR-SFX-ENERGY_DISCHARGE",
    "variation": 2,
    "variations": 4,
@@ -7597,7 +7597,7 @@
   },
   {
    "id": "SHR-SFX-ENERGY_DISCHARGE-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_energy_discharge_03.ogg",
    "group": "SHR-SFX-ENERGY_DISCHARGE",
    "variation": 3,
    "variations": 4,
@@ -7633,7 +7633,7 @@
   },
   {
    "id": "SHR-SFX-ENERGY_DISCHARGE-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_energy_discharge_04.ogg",
    "group": "SHR-SFX-ENERGY_DISCHARGE",
    "variation": 4,
    "variations": 4,
@@ -7669,7 +7669,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_COMPOSITE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
    "group": "SHR-SFX-IMPACT_COMPOSITE",
    "variation": 1,
    "variations": 4,
@@ -7705,7 +7705,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_COMPOSITE-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
    "group": "SHR-SFX-IMPACT_COMPOSITE",
    "variation": 2,
    "variations": 4,
@@ -7741,7 +7741,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_COMPOSITE-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
    "group": "SHR-SFX-IMPACT_COMPOSITE",
    "variation": 3,
    "variations": 4,
@@ -7777,7 +7777,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_COMPOSITE-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg",
    "group": "SHR-SFX-IMPACT_COMPOSITE",
    "variation": 4,
    "variations": 4,
@@ -7813,7 +7813,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_CONCRETE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_concrete_01.ogg",
    "group": "SHR-SFX-IMPACT_CONCRETE",
    "variation": 1,
    "variations": 5,
@@ -7849,7 +7849,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_CONCRETE-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_concrete_02.ogg",
    "group": "SHR-SFX-IMPACT_CONCRETE",
    "variation": 2,
    "variations": 5,
@@ -7885,7 +7885,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_CONCRETE-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_concrete_03.ogg",
    "group": "SHR-SFX-IMPACT_CONCRETE",
    "variation": 3,
    "variations": 5,
@@ -7921,7 +7921,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_CONCRETE-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_concrete_04.ogg",
    "group": "SHR-SFX-IMPACT_CONCRETE",
    "variation": 4,
    "variations": 5,
@@ -7957,7 +7957,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_CONCRETE-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_concrete_05.ogg",
    "group": "SHR-SFX-IMPACT_CONCRETE",
    "variation": 5,
    "variations": 5,
@@ -7993,7 +7993,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_GLASS-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_glass_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_glass_01.ogg",
    "group": "SHR-SFX-IMPACT_GLASS",
    "variation": 1,
    "variations": 5,
@@ -8029,7 +8029,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_GLASS-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_glass_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_glass_02.ogg",
    "group": "SHR-SFX-IMPACT_GLASS",
    "variation": 2,
    "variations": 5,
@@ -8065,7 +8065,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_GLASS-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_glass_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_glass_03.ogg",
    "group": "SHR-SFX-IMPACT_GLASS",
    "variation": 3,
    "variations": 5,
@@ -8101,7 +8101,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_GLASS-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_glass_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_glass_04.ogg",
    "group": "SHR-SFX-IMPACT_GLASS",
    "variation": 4,
    "variations": 5,
@@ -8137,7 +8137,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_GLASS-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_glass_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_glass_05.ogg",
    "group": "SHR-SFX-IMPACT_GLASS",
    "variation": 5,
    "variations": 5,
@@ -8173,7 +8173,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_METAL-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_metal_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_metal_01.ogg",
    "group": "SHR-SFX-IMPACT_METAL",
    "variation": 1,
    "variations": 5,
@@ -8209,7 +8209,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_METAL-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_metal_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_metal_02.ogg",
    "group": "SHR-SFX-IMPACT_METAL",
    "variation": 2,
    "variations": 5,
@@ -8245,7 +8245,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_METAL-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_metal_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_metal_03.ogg",
    "group": "SHR-SFX-IMPACT_METAL",
    "variation": 3,
    "variations": 5,
@@ -8281,7 +8281,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_METAL-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_metal_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_metal_04.ogg",
    "group": "SHR-SFX-IMPACT_METAL",
    "variation": 4,
    "variations": 5,
@@ -8317,7 +8317,7 @@
   },
   {
    "id": "SHR-SFX-IMPACT_METAL-05",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_impact_metal_05.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_impact_metal_05.ogg",
    "group": "SHR-SFX-IMPACT_METAL",
    "variation": 5,
    "variations": 5,
@@ -8353,7 +8353,7 @@
   },
   {
    "id": "SHR-SFX-MACHINE_FAILURE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
    "group": "SHR-SFX-MACHINE_FAILURE",
    "variation": 1,
    "variations": 4,
@@ -8389,7 +8389,7 @@
   },
   {
    "id": "SHR-SFX-MACHINE_FAILURE-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
    "group": "SHR-SFX-MACHINE_FAILURE",
    "variation": 2,
    "variations": 4,
@@ -8425,7 +8425,7 @@
   },
   {
    "id": "SHR-SFX-MACHINE_FAILURE-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
    "group": "SHR-SFX-MACHINE_FAILURE",
    "variation": 3,
    "variations": 4,
@@ -8461,7 +8461,7 @@
   },
   {
    "id": "SHR-SFX-MACHINE_FAILURE-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg",
    "group": "SHR-SFX-MACHINE_FAILURE",
    "variation": 4,
    "variations": 4,
@@ -8497,7 +8497,7 @@
   },
   {
    "id": "SHR-SFX-METAL_STRESS-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_metal_stress_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_metal_stress_01.ogg",
    "group": "SHR-SFX-METAL_STRESS",
    "variation": 1,
    "variations": 4,
@@ -8533,7 +8533,7 @@
   },
   {
    "id": "SHR-SFX-METAL_STRESS-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_metal_stress_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_metal_stress_02.ogg",
    "group": "SHR-SFX-METAL_STRESS",
    "variation": 2,
    "variations": 4,
@@ -8569,7 +8569,7 @@
   },
   {
    "id": "SHR-SFX-METAL_STRESS-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_metal_stress_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_metal_stress_03.ogg",
    "group": "SHR-SFX-METAL_STRESS",
    "variation": 3,
    "variations": 4,
@@ -8605,7 +8605,7 @@
   },
   {
    "id": "SHR-SFX-METAL_STRESS-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_metal_stress_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_metal_stress_04.ogg",
    "group": "SHR-SFX-METAL_STRESS",
    "variation": 4,
    "variations": 4,
@@ -8641,7 +8641,7 @@
   },
   {
    "id": "SHR-SFX-SECONDARY_BLAST-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_secondary_blast_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_secondary_blast_01.ogg",
    "group": "SHR-SFX-SECONDARY_BLAST",
    "variation": 1,
    "variations": 4,
@@ -8677,7 +8677,7 @@
   },
   {
    "id": "SHR-SFX-SECONDARY_BLAST-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_secondary_blast_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_secondary_blast_02.ogg",
    "group": "SHR-SFX-SECONDARY_BLAST",
    "variation": 2,
    "variations": 4,
@@ -8713,7 +8713,7 @@
   },
   {
    "id": "SHR-SFX-SECONDARY_BLAST-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_secondary_blast_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_secondary_blast_03.ogg",
    "group": "SHR-SFX-SECONDARY_BLAST",
    "variation": 3,
    "variations": 4,
@@ -8749,7 +8749,7 @@
   },
   {
    "id": "SHR-SFX-SECONDARY_BLAST-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_secondary_blast_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_secondary_blast_04.ogg",
    "group": "SHR-SFX-SECONDARY_BLAST",
    "variation": 4,
    "variations": 4,
@@ -8785,7 +8785,7 @@
   },
   {
    "id": "SHR-SFX-STRUCTURE_COLLAPSE-01",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_01.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_structure_collapse_01.ogg",
    "group": "SHR-SFX-STRUCTURE_COLLAPSE",
    "variation": 1,
    "variations": 4,
@@ -8821,7 +8821,7 @@
   },
   {
    "id": "SHR-SFX-STRUCTURE_COLLAPSE-02",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_02.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_structure_collapse_02.ogg",
    "group": "SHR-SFX-STRUCTURE_COLLAPSE",
    "variation": 2,
    "variations": 4,
@@ -8857,7 +8857,7 @@
   },
   {
    "id": "SHR-SFX-STRUCTURE_COLLAPSE-03",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_03.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_structure_collapse_03.ogg",
    "group": "SHR-SFX-STRUCTURE_COLLAPSE",
    "variation": 3,
    "variations": 4,
@@ -8893,7 +8893,7 @@
   },
   {
    "id": "SHR-SFX-STRUCTURE_COLLAPSE-04",
-   "path": "generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_04.ogg",
+   "path": "assets/audio/sfx/shared/shr_sfx_structure_collapse_04.ogg",
    "group": "SHR-SFX-STRUCTURE_COLLAPSE",
    "variation": 4,
    "variations": 4,
@@ -8929,7 +8929,7 @@
   },
   {
    "id": "VTA-AMB-ARCHIVE-01",
-   "path": "generated_assets/audio/ambience/vita/vta_amb_archive_01.ogg",
+   "path": "assets/audio/ambience/vita/vta_amb_archive_01.ogg",
    "group": "VTA-AMB-ARCHIVE-01",
    "variation": 1,
    "variations": 1,
@@ -8972,7 +8972,7 @@
   },
   {
    "id": "VTA-AMB-BIOREACTOR-01",
-   "path": "generated_assets/audio/ambience/vita/vta_amb_bioreactor_01.ogg",
+   "path": "assets/audio/ambience/vita/vta_amb_bioreactor_01.ogg",
    "group": "VTA-AMB-BIOREACTOR-01",
    "variation": 1,
    "variations": 1,
@@ -9015,7 +9015,7 @@
   },
   {
    "id": "VTA-AMB-CLEANROOM-01",
-   "path": "generated_assets/audio/ambience/vita/vta_amb_cleanroom_01.ogg",
+   "path": "assets/audio/ambience/vita/vta_amb_cleanroom_01.ogg",
    "group": "VTA-AMB-CLEANROOM-01",
    "variation": 1,
    "variations": 1,
@@ -9058,7 +9058,7 @@
   },
   {
    "id": "VTA-AMB-GROWTH-01",
-   "path": "generated_assets/audio/ambience/vita/vta_amb_growth_01.ogg",
+   "path": "assets/audio/ambience/vita/vta_amb_growth_01.ogg",
    "group": "VTA-AMB-GROWTH-01",
    "variation": 1,
    "variations": 1,
@@ -9101,7 +9101,7 @@
   },
   {
    "id": "VTA-SFX-CORE_DESTROYED-01",
-   "path": "generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_01.ogg",
+   "path": "assets/audio/sfx/vita/vta_sfx_core_destroyed_01.ogg",
    "group": "VTA-SFX-CORE_DESTROYED",
    "variation": 1,
    "variations": 3,
@@ -9137,7 +9137,7 @@
   },
   {
    "id": "VTA-SFX-CORE_DESTROYED-02",
-   "path": "generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_02.ogg",
+   "path": "assets/audio/sfx/vita/vta_sfx_core_destroyed_02.ogg",
    "group": "VTA-SFX-CORE_DESTROYED",
    "variation": 2,
    "variations": 3,
@@ -9173,7 +9173,7 @@
   },
   {
    "id": "VTA-SFX-CORE_DESTROYED-03",
-   "path": "generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_03.ogg",
+   "path": "assets/audio/sfx/vita/vta_sfx_core_destroyed_03.ogg",
    "group": "VTA-SFX-CORE_DESTROYED",
    "variation": 3,
    "variations": 3,

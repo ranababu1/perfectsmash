@@ -1,9 +1,9 @@
 extends SceneTree
 ## Renders every preset under the MissionView camera, environment and light to PNG frames.
 ## xvfb-run -a -s "-screen 0 1280x720x24" godot --path <project> --rendering-driver opengl3 --resolution 1280x720 --fixed-fps 30 \
-##   --script res://generated_assets/vfx/godot/tools/render_presets.gd -- --out=/tmp/tfj-vfx-render
+##   --script res://assets/vfx/godot/tools/render_presets.gd -- --out=/tmp/tfj-vfx-render
 
-const PRESETS := "res://generated_assets/vfx/godot/presets/"
+const PRESETS := "res://assets/vfx/godot/presets/"
 const FRAMES := 36
 
 var out_dir := "/tmp/tfj-vfx-render"

@@ -1,10 +1,10 @@
 extends SceneTree
-## Loads every file listed in generated_assets/asset_manifest.json through Godot's resource
+## Loads every file listed in assets/asset_manifest.json through Godot's resource
 ## loader (after `--import`) and reports what Godot actually made of it. Run headless:
-##   godot --headless --path <project copy> --script res://generated_assets/tools/godot/load_check.gd -- --report=<abs path>
+##   godot --headless --path <project copy> --script res://assets/tools/godot/load_check.gd -- --report=<abs path>
 ## Exit code 0 = every loadable entry loaded; 1 = at least one failure.
 
-const MANIFEST := "res://generated_assets/asset_manifest.json"
+const MANIFEST := "res://assets/asset_manifest.json"
 const LOADABLE := ["glb", "gltf", "png", "webp", "jpg", "jpeg", "svg", "ogg", "wav", "mp3", "ttf", "otf", "woff2", "woff", "ogv", "tscn", "tres"]
 ## Godot scenes and resources shipped by streams (e.g. VFX presets) are loaded even when the
 ## manifest does not list them, and reported with "unlisted": true.
@@ -29,7 +29,7 @@ func _initialize() -> void:
 	var listed := {}
 	for entry: Dictionary in work:
 		listed[entry.get("path", "")] = true
-	for path: String in _scan("res://generated_assets"):
+	for path: String in _scan("res://assets"):
 		var rel := path.trim_prefix("res://")
 		if not listed.has(rel):
 			work.append({"id": "(unlisted)", "path": rel, "unlisted": true})

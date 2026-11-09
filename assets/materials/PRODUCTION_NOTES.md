@@ -69,7 +69,7 @@ Changes, rebuilt in place with the same ids and paths unless marked new:
 
 ## Validation
 
-- `python3 generated_assets/tools/validate_asset_manifest.py` on the fragment: PASS (structure, ids, paths and deep image checks).
+- `python3 assets/tools/validate_asset_manifest.py` on the fragment: PASS (structure, ids, paths and deep image checks).
 - Godot import check: see the stream report; not claimed here unless the report gives the command and output.
 
 ## Rights

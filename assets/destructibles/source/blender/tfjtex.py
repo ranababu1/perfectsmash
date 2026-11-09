@@ -1,4 +1,4 @@
-"""tfjtex: binds the surfaces stream's tileable texture library (generated_assets/materials/) to
+"""tfjtex: binds the surfaces stream's tileable texture library (assets/materials/) to
 kit material slots, and rewrites exported glb files so they reference the library PNGs by
 relative URI instead of embedding copies (ASSET_CONTRACT 7: shared textures; no duplication).
 
@@ -134,7 +134,7 @@ def build(m, paths, tint=(1, 1, 1, 1), normal_strength=1.0, emission=None, emiss
 
 
 # ------------------------------------------------------------------------------------------
-# glb post-process: embedded library images -> relative URIs into generated_assets/materials
+# glb post-process: embedded library images -> relative URIs into assets/materials
 # ------------------------------------------------------------------------------------------
 def _read_glb(path):
     raw = open(path, "rb").read()

@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_dust_collapse_a.png" id="1_ayg1b"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_debris_chip_small_a.png" id="2_ajblk"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_dust_collapse_a.png" id="1_ayg1b"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_debris_chip_small_a.png" id="2_ajblk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7vvh"]
 transparency = 1

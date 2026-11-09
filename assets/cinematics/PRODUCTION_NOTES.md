@@ -18,7 +18,7 @@ Loading art (`<CH>-BG-LOADING-A`), the main menu backdrop (`GAM-BG-MAIN_MENU-A`)
 
 ## Using the sequence file
 
-`cinematic_sequences.json` is a superset of `data/cinematics.json`: same ids, speakers, subtitles, captions and motions, so `CinematicCatalog.from_json_text` loads it as it is (the extra keys are ignored). Image paths are `res://generated_assets/...`. Durations follow the loader's own reading pace (2.5 words per second plus 1.2 s, at least 3.5 s), so they match what the player would compute; override them once VO is recorded. `vo_line` repeats the subtitle as the line to record. Captions such as `2096 / KESTREL ENERGY BASIN` stay in-engine; nothing is baked into any image.
+`cinematic_sequences.json` is a superset of `data/cinematics.json`: same ids, speakers, subtitles, captions and motions, so `CinematicCatalog.from_json_text` loads it as it is (the extra keys are ignored). Image paths are `res://assets/...`. Durations follow the loader's own reading pace (2.5 words per second plus 1.2 s, at least 3.5 s), so they match what the player would compute; override them once VO is recorded. `vo_line` repeats the subtitle as the line to record. Captions such as `2096 / KESTREL ENERGY BASIN` stay in-engine; nothing is baked into any image.
 
 The `teaser_2041` sequence is new and not in `data/cinematics.json`. Its four lines are drafts for the writer to approve or replace.
 

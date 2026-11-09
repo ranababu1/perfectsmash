@@ -3,7 +3,7 @@ extends SceneTree
 ## (constants copied from scripts/mission/view/mission_view.gd, which stays untouched).
 ## Needs a real GL context, so run under Xvfb (software llvmpipe is fine), not --headless:
 ##   xvfb-run -a -s "-screen 0 1280x720x24" godot --path <project copy> --rendering-driver opengl3 \
-##     --resolution 1280x720 --script res://generated_assets/tools/godot/render_previews.gd -- --out=<abs dir>
+##     --resolution 1280x720 --script res://assets/tools/godot/render_previews.gd -- --out=<abs dir>
 ## Outputs PNGs: mission_<chapter>.png (helix_01 layout with that chapter's kit swapped in, greybox
 ## boxes where a kind has no mesh yet), kit_<chapter>.png (every destructible mesh of the chapter in a
 ## row), states_<chapter>.png (intact / light / heavy / debris strip where overlays exist), and
@@ -11,7 +11,7 @@ extends SceneTree
 ## texture sets on 1 m cubes with damage overlays). Greybox fallbacks use the chapter texture set for
 ## the component's physics material, and the floor uses <CH>-MAT-FLOOR-A, when those sets exist.
 
-const MANIFEST := "res://generated_assets/asset_manifest.json"
+const MANIFEST := "res://assets/asset_manifest.json"
 const MISSION := "res://data/missions/helix_01.json"
 const PX := 100.0
 # MissionView constants (code).

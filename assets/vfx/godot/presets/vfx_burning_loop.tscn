@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_fire_loop_a.png" id="1_8cq4p"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_smoke_loop_a.png" id="2_abjq8"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_fire_loop_a.png" id="1_8cq4p"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_smoke_loop_a.png" id="2_abjq8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm6xx"]
 transparency = 1

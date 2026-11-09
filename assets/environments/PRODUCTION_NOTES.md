@@ -98,14 +98,14 @@ Far background cards (`-BG-`) are textures from the surfaces stream; they are no
 
 ### Commands
 
-    cd generated_assets/destructibles/source/blender
+    cd assets/destructibles/source/blender
     TFJ_SAMPLES=32 blender -b --factory-startup --python runenv.py -- kits.env_kits [ID filters] [--no-render]
     python3 sheets.py grid ../../../environments/previews/<ch>_environment_sheet.webp "/workspace/tfj-masters/3d-kits/stats_env/<CH>-*.json" "<title>" 6
 
 Godot test frame (a full chapter set at the exact MissionView camera, sun and environment):
 
     TFJ_LANDMARK=<landmark key, lower case> TFJ_COMPONENTS="<stem>:<h m>:<w m>,..." xvfb-run -a -s "-screen 0 1280x720x24" \
-      godot --path <any project> --rendering-driver opengl3 --script generated_assets/destructibles/source/godot/kit_scene.gd \
+      godot --path <any project> --rendering-driver opengl3 --script assets/destructibles/source/godot/kit_scene.gd \
       -- out.png generated_assets <chapter> <code>
 
 The test frames are in `previews/<ch>_godot_test_frame.webp`.
@@ -118,7 +118,7 @@ This is original procedural work. The scripted Blender code was written by the 3
 
 The 21 Helix environment pieces were rebuilt in place with the same ids.
 
-- **Materials.** Textured slots use the same scheme as the components, with relative URIs to `generated_assets/materials/`. Floor pieces use the chapter floor set with its emission inlays, at a low metallic value.
+- **Materials.** Textured slots use the same scheme as the components, with relative URIs to `assets/materials/`. Floor pieces use the chapter floor set with its emission inlays, at a low metallic value.
 - **Secondary detail** (shared builders, so the other chapters gain it as they are rebuilt):
   - floor: plate bolts and short amber seam inlays;
   - walls: pilaster bolts, a conduit pair with brackets, a status screen and LEDs;

@@ -1,9 +1,9 @@
 extends SceneTree
-## Builds the CPUParticles3D preset scenes in res://generated_assets/vfx/godot/presets/.
-## Run (Godot 4.7.2): godot --headless --path <project> --script res://generated_assets/vfx/godot/tools/build_presets.gd
+## Builds the CPUParticles3D preset scenes in res://assets/vfx/godot/presets/.
+## Run (Godot 4.7.2): godot --headless --path <project> --script res://assets/vfx/godot/tools/build_presets.gd
 
-const V := "res://generated_assets/vfx/"
-const OUT := "res://generated_assets/vfx/godot/presets/"
+const V := "res://assets/vfx/"
+const OUT := "res://assets/vfx/godot/presets/"
 
 
 func _mat(tex_path: String, h: int, v: int, add: bool, loop := false) -> StandardMaterial3D:

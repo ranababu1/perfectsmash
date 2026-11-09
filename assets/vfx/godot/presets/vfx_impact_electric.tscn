@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_impact_electric_a.png" id="1_6nokr"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_impact_electric_a.png" id="1_6nokr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iufrn"]
 transparency = 1

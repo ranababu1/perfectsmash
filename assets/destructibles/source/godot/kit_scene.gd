@@ -2,7 +2,7 @@ extends SceneTree
 ## Assembles a test mission frame from one chapter's kit with the exact MissionView camera, sun and
 ## environment (ASSET_CONTRACT 9 and 10) and saves a screenshot. Loads glb files at runtime with
 ## GLTFDocument. Usage:
-##   godot --path <project> --rendering-driver opengl3 --script kit_scene.gd -- <out.png> <generated_assets dir> <chapter> <code>
+##   godot --path <project> --rendering-driver opengl3 --script kit_scene.gd -- <out.png> <assets dir> <chapter> <code>
 
 var ga: String
 var ch: String

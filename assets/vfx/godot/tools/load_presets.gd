@@ -1,6 +1,6 @@
 extends SceneTree
 ## Loads and instantiates every preset; checks emitters, textures and animation frame counts.
-const PRESETS := "res://generated_assets/vfx/godot/presets/"
+const PRESETS := "res://assets/vfx/godot/presets/"
 
 func _init() -> void:
 	var ok := 0

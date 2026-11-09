@@ -4,7 +4,7 @@ damage-number LabelSettings and motion). Values are for the 1280x720 base viewpo
 import os, sys, json
 sys.path.insert(0, os.path.dirname(__file__))
 from tokens import UI, C, CHAPTERS, TIERS, TYPE, SPACING, SAFE_MARGIN, TOUCH_MIN
-RES = "res://generated_assets"
+RES = "res://assets"
 kit = {e["name"]: e for e in json.load(open(os.path.join(UI, "kit", "kit_index.json")))["components"]}
 
 def sb(name, content=None, expand=0):

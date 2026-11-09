@@ -1,8 +1,8 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_critical_core_destruction_a.png" id="1_mepud"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_energy_discharge_a.png" id="2_53qkc"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_smoke_puff_a.png" id="3_yawwb"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_critical_core_destruction_a.png" id="1_mepud"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_energy_discharge_a.png" id="2_53qkc"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_smoke_puff_a.png" id="3_yawwb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y5y0"]
 transparency = 1

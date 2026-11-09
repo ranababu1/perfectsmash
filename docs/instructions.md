@@ -195,6 +195,6 @@ Update `plan.md`, `currentstate.md` and `changelog.md` when these decisions affe
 
 ### Assets from the `assets` branch
 - `assets` is owned by the asset stream. Never merge it into `main`, never modify or delete it.
-- Integrate only owner-approved files, selected individually (`git checkout origin/assets -- <path>`), at their delivered `generated_assets/...` paths, keeping their manifest ids. Carry the manifest entries (rights, approval status, source) with them.
+- Integrate only owner-approved files, selected individually (`git checkout origin/assets -- <path>`), at their delivered `assets/...` paths, keeping their manifest ids. Carry the manifest entries (rights, approval status, source) with them.
 - Development integration is not commercial clearance: never change `rights_status` or `approval_status` to cleared.
-- The asset contract (`generated_assets/docs/ASSET_CONTRACT.md`) is binding for scale, axes, pivots, depth, material slots and damage-state nodes.
+- The asset contract (`assets/docs/ASSET_CONTRACT.md`) is binding for scale, axes, pivots, depth, material slots and damage-state nodes.

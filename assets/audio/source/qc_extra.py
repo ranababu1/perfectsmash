@@ -44,7 +44,7 @@ for f in sorted(glob.glob(f'{QC}/*.json')):
     out['seams'][d['id']] = s
     print('seam', d['id'], s, flush=True)
 for code in ['HLX', 'VTA', 'NVG', 'CVT', 'MRD']:
-    paths = {p.split('/')[-1]: p for p in glob.glob(f'{REPO}/generated_assets/audio/music/*/{code.lower()}_mus_*.ogg')}
+    paths = {p.split('/')[-1]: p for p in glob.glob(f'{REPO}/assets/audio/music/*/{code.lower()}_mus_*.ogg')}
     lay = paths.get(f'{code.lower()}_mus_critical_layer_01.ogg')
     if not lay:
         continue

@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy.signal import stft
-ROOT = '/workspace/tfj-audio/generated_assets/audio'
+ROOT = '/workspace/tfj-audio/assets/audio'
 def sheet(folder, out, pattern='*'):
     files = sorted(glob.glob(f'{ROOT}/{folder}/{pattern}.wav') + glob.glob(f'{ROOT}/{folder}/{pattern}.ogg'))
     if not files:

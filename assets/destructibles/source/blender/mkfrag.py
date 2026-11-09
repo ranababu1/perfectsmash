@@ -1,4 +1,4 @@
-"""Write generated_assets/manifest_parts/3d-kits.json from build stats (destructibles) plus
+"""Write assets/manifest_parts/3d-kits.json from build stats (destructibles) plus
 extra entry files (environments, weapons, characters, previews) in /workspace/tfj-masters/3d-kits/extra/."""
 import json, glob, os, datetime
 
@@ -9,7 +9,7 @@ CH_CODE = {"helix": "HLX", "vita": "VTA", "nova_grid": "NVG", "civitas": "CVT", 
 LEVELS = {"helix": [1, 20], "vita": [21, 40], "nova_grid": [41, 60], "civitas": [61, 80], "meridian": [81, 100],
           "shared": [1, 100]}
 SRC = ("Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: "
-       "generated_assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/{kit}.py)")
+       "assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/{kit}.py)")
 MATNOTE = ("Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is "
            "the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the "
            "same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt "
@@ -35,7 +35,7 @@ def matnote(ch):
 RIGHTS = ("original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted "
           "authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted "
           "work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo "
-          "(see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)")
+          "(see assets/materials/PRODUCTION_NOTES.md for their rights note)")
 
 
 def rel(p):
@@ -80,7 +80,7 @@ def comp_entries(st):
 
 
 ENV_SRC = ("Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: "
-           "generated_assets/destructibles/source/blender/ ({mod}, tfjenv.py)")
+           "assets/destructibles/source/blender/ ({mod}, tfjenv.py)")
 DESIGN = ("Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); "
           "no concept pixels are used in the mesh.")
 STATS_ENV = "/workspace/tfj-masters/3d-kits/stats_env"
@@ -199,7 +199,7 @@ def main():
     from PIL import Image
     CH_BY = {"hlx": "helix", "vta": "vita", "nvg": "nova_grid", "cvt": "civitas", "mrd": "meridian", "shr": "shared", "opr": "shared"}
     for cat in ("destructibles", "environments", "weapons", "characters"):
-        for p in sorted(glob.glob(f"{REPO}/generated_assets/{cat}/previews/*.webp")):
+        for p in sorted(glob.glob(f"{REPO}/assets/{cat}/previews/*.webp")):
             b = os.path.basename(p)[:-5]
             if not (b.endswith(("_components_sheet", "_environment_sheet", "_godot_test_frame")) or b.startswith("opr_")
                     or "_showcase" in b):
@@ -212,8 +212,8 @@ def main():
                 render_type="reference", format="webp",
                 purpose=("Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)"
                          if godot else "Contact sheet rendered in Blender Cycles at the game camera angle"),
-                source=("generated_assets/destructibles/source/godot/" + ("showcase.gd" if "_showcase" in b else "char_check.gd" if cat == "characters" else "kit_scene.gd")
-                        if godot else "generated_assets/destructibles/source/blender/sheets.py from build tiles (tfjrender.py)"),
+                source=("assets/destructibles/source/godot/" + ("showcase.gd" if "_showcase" in b else "char_check.gd" if cat == "characters" else "kit_scene.gd")
+                        if godot else "assets/destructibles/source/blender/sheets.py from build tiles (tfjrender.py)"),
                 rights_status=RIGHTS, used_by="review only", chapter=ch, dimensions=f"{w}x{h}",
                 approval_status="pending_review"))
     import sys
@@ -222,7 +222,7 @@ def main():
         entries = [e for e in entries if e.get("chapter") in only or e.get("category") in only
                    or f"{e.get('category')}:{e.get('chapter')}" in only]
     frag = {"stream": "3d-kits", "updated": datetime.date.today().isoformat(), "entries": entries}
-    out = f"{REPO}/generated_assets/manifest_parts/3d-kits.json"
+    out = f"{REPO}/assets/manifest_parts/3d-kits.json"
     json.dump(frag, open(out, "w"), indent=1)
     print(out, len(entries), "entries")
 

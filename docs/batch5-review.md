@@ -102,7 +102,7 @@ The model covers 100 missions, 3 optional objectives each, 6 planned weapons × 
 
 ## 7. Audio integration (with the asset agent)
 
-**Finding:** the asset agent (`assets` branch) stages audio in `generated_assets/audio/` with per-clip licence records in `asset_manifest.json`. It has no music or voice synthesis of its own. It leaves `gameplay_bed.ogg` alone.
+**Finding:** the asset agent (`assets` branch) stages audio in `assets/audio/` with per-clip licence records in `asset_manifest.json`. It has no music or voice synthesis of its own. It leaves `gameplay_bed.ogg` alone.
 
 **Proposal (no new audio system):**
 - **Sound effects:** extend `AudioService` with a data map, `data/audio.json`, from sound id to Ogg variants. Example ids: `kinetic_fire`, `breach_launch`, `breach_detonate`, `impact_metal` / `glass` / `electronic`, `component_destroyed`, `core_destroyed`, `reload_ready`, `mission_success` / `fail`. The existing procedural sounds stay as the fallback when a file is missing.

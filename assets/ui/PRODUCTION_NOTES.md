@@ -1,6 +1,6 @@
 # UI, branding and typography: production notes (stream ui-vfx)
 
-Branch `assets` only. Everything here is new staging work under `generated_assets/`; nothing is wired
+Branch `assets` only. Everything here is new staging work under `assets/`; nothing is wired
 into the game. `assets/icon/*` is untouched. Approval status of every file: `pending_review`.
 
 ## What is here
@@ -19,7 +19,7 @@ into the game. `assets/icon/*` is untouched. Approval status of every file: `pen
 | `previews/` | Contact sheets and key screens for review (WebP) | |
 | `_build/` | The generators (Python) that produce all of the above; `build_all.sh` rebuilds everything | |
 
-Fonts are in `generated_assets/fonts/` (see its README): Chakra Petch (display) and Barlow (UI), SIL OFL 1.1, official Google Fonts files with OFL.txt.
+Fonts are in `assets/fonts/` (see its README): Chakra Petch (display) and Barlow (UI), SIL OFL 1.1, official Google Fonts files with OFL.txt.
 
 ## Design language
 
@@ -41,7 +41,7 @@ Fonts are in `generated_assets/fonts/` (see its README): Chakra Petch (display) 
 
 - Foreground / monochrome 432x432 with the mark inside the 66 dp (264 px) safe circle, so circle, squircle and teardrop masks never clip it. Background: graphite gradient with faint diagonal structure lines and a soft cyan centre, rebuilt with float gradients plus 1 LSB dither so it does not band.
 - Godot 4.7 Android export preset fields: `launcher_icons/adaptive_foreground_432x432`, `launcher_icons/adaptive_background_432x432`, `launcher_icons/adaptive_monochrome_432x432`, `launcher_icons/main_192x192` -> the files in `branding/app_icon/`. Project `config/icon` candidate: `gam_logo_app_icon_a_256.png`. All of this needs owner approval before it touches `assets/icon/` or `project.godot`.
-- Note: ASSET_CONTRACT 14 suggests `generated_assets/ui/app_icon/`; this stream's brief put branding under `ui/branding/`, so the icons are in `ui/branding/app_icon/`.
+- Note: ASSET_CONTRACT 14 suggests `assets/ui/app_icon/`; this stream's brief put branding under `ui/branding/`, so the icons are in `ui/branding/app_icon/`.
 
 ## Splash and loading
 
@@ -64,7 +64,7 @@ Text stays dynamic. Use `chapter_titles/game/gam_ui_chapter_title_0N_<key>_deco_
 
 ## Not validated in Godot yet
 
-PNG/SVG/JSON files were checked with the integration validator (`python3 generated_assets/tools/validate_asset_manifest.py`, PASS) and visually inspected here. They have not been imported into Godot by this stream; the integration stream's `tools/godot/run_import_check.sh` covers that. No Theme `.tres` has been written, because it would need the coding agent's control structure to be useful.
+PNG/SVG/JSON files were checked with the integration validator (`python3 assets/tools/validate_asset_manifest.py`, PASS) and visually inspected here. They have not been imported into Godot by this stream; the integration stream's `tools/godot/run_import_check.sh` covers that. No Theme `.tres` has been written, because it would need the coding agent's control structure to be useful.
 
 ## Rights
 
@@ -82,4 +82,4 @@ The exact prompt strings were not logged at generation time; the text below is a
 
 ## Rebuild
 
-`generated_assets/ui/_build/build_all.sh` (Python 3 with Pillow, numpy, fontTools; resvg 0.49 from https://github.com/linebender/resvg/releases, path in `RESVG`).
+`assets/ui/_build/build_all.sh` (Python 3 with Pillow, numpy, fontTools; resvg 0.49 from https://github.com/linebender/resvg/releases, path in `RESVG`).

@@ -1,7 +1,7 @@
 class_name AssetLibrary
 extends RefCounted
 ## Production assets integrated into main (data/integrated_assets.json), indexed for the mission
-## view. Follows generated_assets/docs/ASSET_CONTRACT.md:
+## view. Follows assets/docs/ASSET_CONTRACT.md:
 ## - destructible component meshes by (chapter, component_kind), the variant whose
 ##   reference_size_px needs the least stretch to fit the physics rectangle (section 5);
 ## - meshes are scaled in X and Y to the physics rectangle, depth unchanged (sections 3 and 5);

@@ -93,7 +93,7 @@ def _contract(c):
     c['manifest_chapter'] = chap
     c['music_cue'] = mc
     c['bus'] = 'Music'
-    c['path'] = f'generated_assets/audio/music/{folder}/{cid.lower().replace("-", "_")}.ogg'
+    c['path'] = f'assets/audio/music/{folder}/{cid.lower().replace("-", "_")}.ogg'
 
 
 def run(cue):

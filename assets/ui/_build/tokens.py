@@ -7,7 +7,7 @@ security alarms, violet only for Meridian temporal phenomena.
 """
 import os
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # generated_assets/
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # assets/
 UI = os.path.join(ROOT, "ui")
 FONTS = os.path.join(ROOT, "fonts")
 FONT_DIRS = [os.path.join(FONTS, "chakra_petch"), os.path.join(FONTS, "barlow")]

@@ -2,7 +2,7 @@
 
 **For:** the coding agent that wires art, VFX, UI and audio into the Godot game.
 **Written:** 2026-11-10 against `assets` at `249a49a` (main last merged in: `9f773fd`).
-**Read with:** `generated_assets/docs/ASSET_CONTRACT.md` (v1.7, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
+**Read with:** `assets/docs/ASSET_CONTRACT.md` (v1.7, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
 
 Everything below is checked against the files on `assets`. Anything not yet delivered is marked **PENDING** with what is on disk today.
 
@@ -10,7 +10,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 1. Ground rules
 
-- All generated assets live on the **`assets` branch** under `generated_assets/`. `main` stays untouched until Imran approves the merge. Do not cherry-pick or copy files from `assets` into `main`. Prototype the loader on a branch of your own that is based on `assets`, or in a scratch copy, and keep it out of `main` until Imran approves.
+- All generated assets live on the **`assets` branch** under `assets/`. `main` stays untouched until Imran approves the merge. Do not cherry-pick or copy files from `assets` into `main`. Prototype the loader on a branch of your own that is based on `assets`, or in a scratch copy, and keep it out of `main` until Imran approves.
 - **Every new asset is `approval_status: pending_review`** (1,316 of 1,326 entries at the time of writing; the other 10 are legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
 - **Rights caveats (do not ship as cleared):**
   - AI-generated images are **not commercially cleared**. These are the background plates and texture sources (GenerateImage), the two UI backdrops, and the concepts. Check the `rights_status` text of each entry.
@@ -22,10 +22,10 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 2. How to find and load assets
 
-- **Manifest:** `generated_assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `generated_assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 generated_assets/tools/validate_asset_manifest.py --check` says whether it is current (after integration pass 16 it is: 1,394 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
+- **Manifest:** `assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 assets/tools/validate_asset_manifest.py --check` says whether it is current (after integration pass 16 it is: 1,394 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
 - **Entry fields you need:** `id`, `path` (repo-relative, so prefix it with `res://`), `category`, `render_type` (`mesh`, `texture`, `sprite`, `ui`, `audio`, `font`, `reference`), `chapter` (`helix`, `vita`, `nova_grid`, `civitas`, `meridian`, `shared`), and, where they apply, `component_kind`, `material`, `reference_size_px`, `depth_m`, `scale_range`, `states`, `critical`, `animation`, `blend`, `pivot`, `nine_slice`, `bus`, `loop`, `loop_offset_seconds`, `sound_id`, `music_cue`, `ambience_cue`, `levels`.
 - **Skip** `render_type: reference` entries and ids ending `-MOCK` (concepts, previews, screen mock-ups). They are review material, not game assets.
-- **Ids** are `<CH>-<TYPE>-<NAME>-<VARIANT>` (section 6). `CH` is `HLX`, `VTA`, `NVG`, `CVT`, `MRD`, `SHR`, `OPR` or `GAM`. `TYPE` includes `CMP` (component), `DEB` (debris), `ENV`, `PRP`, `BG`, `MAT`, `DMG`, `DCL`, `VFX`, `UI`, `ICN`, `MUS`, `SFX`, `AMB`, `FNT` and `LOGO`. The file name is the id in lower case with hyphens turned into underscores, for example `HLX-CMP-SERVER_RACK-B` is `generated_assets/destructibles/helix/hlx_cmp_server_rack_b.glb`.
+- **Ids** are `<CH>-<TYPE>-<NAME>-<VARIANT>` (section 6). `CH` is `HLX`, `VTA`, `NVG`, `CVT`, `MRD`, `SHR`, `OPR` or `GAM`. `TYPE` includes `CMP` (component), `DEB` (debris), `ENV`, `PRP`, `BG`, `MAT`, `DMG`, `DCL`, `VFX`, `UI`, `ICN`, `MUS`, `SFX`, `AMB`, `FNT` and `LOGO`. The file name is the id in lower case with hyphens turned into underscores, for example `HLX-CMP-SERVER_RACK-B` is `assets/destructibles/helix/hlx_cmp_server_rack_b.glb`.
 - **Suggested loader:** parse the manifest once at startup, or with a build step that writes a `.tres` lookup. Build these indexes:
   - `(chapter, component_kind)` for `CMP` meshes and for `DEB` meshes
   - `material` for the `SHR-DMG-*` overlays
@@ -33,7 +33,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   - `sound_id`, `music_cue` and `ambience_cue` for audio
 
   **Always fall back to today's greybox** (BoxMesh, procedural sound) when an entry is missing, so missing art never breaks a level.
-- **Per-level choices:** `generated_assets/environments/level_schedule.json` lists, for levels 1 to 100, the far, mid and near background ids, the haze overlay and a `ready` flag. `generated_assets/docs/coverage_matrix.json` maps each level to its kinds, landmark, music and ambience.
+- **Per-level choices:** `assets/environments/level_schedule.json` lists, for levels 1 to 100, the far, mid and near background ids, the haze overlay and a `ready` flag. `assets/docs/coverage_matrix.json` maps each level to its kinds, landmark, music and ambience.
 
 ## 3. 3D: components, debris, environment
 
@@ -93,7 +93,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   - For one-shots, set `lifetime = frames / fps` and `anim_speed = 1`.
   - Flipbooks only advance with `billboard_mode = PARTICLES`.
   - For the variant atlases (`DEBRIS_CHIP_SMALL`, `DEBRIS_FRAGMENT_LARGE`, `GLASS_SHARD`), set anim speed 0 and anim offset 0..1.
-- **11 ready preset scenes** live in `generated_assets/vfx/godot/presets/`. They have no scripts and every emitter starts with `emitting = false`. To use one, instance it, set `emitting = true` on each child (or call `restart()`), and free it after its longest lifetime (1.2 s for the Breach scene). Hook them in like this:
+- **11 ready preset scenes** live in `assets/vfx/godot/presets/`. They have no scripts and every emitter starts with `emitting = false`. To use one, instance it, set `emitting = true` on each child (or call `restart()`), and free it after its longest lifetime (1.2 s for the Breach scene). Hook them in like this:
 
 | MissionView hook | Preset |
 |---|---|
@@ -106,7 +106,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 | burning component | `vfx_burning_loop.tscn` |
 
 - **Keep `_warm_up_effects`.** Add one invisible instance of each preset you use so their shaders compile at load. The stall it fixes was measured on the emulator.
-- **Upgrade tiers** are listed in `generated_assets/vfx/upgrade_tiers.json`:
+- **Upgrade tiers** are listed in `assets/vfx/upgrade_tiers.json`:
   - Base uses the `-A` sheets.
   - Mk I uses `-A` at scale 1.08.
   - Mk II uses the `-T2` sheets (`#5AA9FF`) at 1.12.
@@ -117,14 +117,14 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 5. UI, fonts, branding
 
-- **Theme:** `generated_assets/ui/theme/tfj_theme_spec.json` is a spec, not a `.tres`. Build a `Theme` from it, by script or by hand. It has these keys:
+- **Theme:** `assets/ui/theme/tfj_theme_spec.json` is a spec, not a `.tres`. Build a `Theme` from it, by script or by hand. It has these keys:
   - `colors`, `chapter_accents`, `upgrade_tiers`, `fonts`, `type_roles`, `spacing`, `hud_layout` (matches the current MissionHud placement), `damage_numbers` and `motion`
   - `theme`, with style boxes for Button, PrimaryButton, DangerButton, IconButton, the Panel* types, Chip, TabBar, HSlider, CheckButton, ProgressBar, TextureProgressBar_Cooldown, Label and Tooltip
 
   Replace the colours in `scripts/ui/ui_kit.gd` with the spec values.
 - **9-slice:** in a `StyleBoxTexture`, use the **1x** PNG with its **1x margins**. Both are given per style in the spec, and the margins also appear in the manifest `nine_slice`. A 2x texture with 2x margins draws corners at double size. On phones, prefer the `flat_equivalents` StyleBoxFlat values: chamfer radius 12 (10 for buttons) with `corner_detail = 1` stays sharp at any scale. Use the 2x PNGs for TextureRect icons, and for NinePatchRect drawn at half scale.
 - **Icons:** 87 icons, each at 64 px (1x) and 128 px (2x), with 256 px hero versions for weapons, upgrades and chapter emblems. They are white on transparent, so tint them with `self_modulate`. Weapon icons are silhouettes until the weapon meshes exist.
-- **Fonts:** `generated_assets/fonts/`, OFL 1.1.
+- **Fonts:** `assets/fonts/`, OFL 1.1.
   - Chakra Petch is the display face (titles, numerals).
   - Barlow is the UI and body face.
   - Import the .ttf files directly with LCD antialiasing off, Light hinting and MSDF off.
@@ -164,14 +164,14 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 7. Cinematics
 
-- **PENDING.** No cinematic stills (`*-CIN-*`) have been delivered yet. `generated_assets/cinematics/` holds only its README.
+- **PENDING.** No cinematic stills (`*-CIN-*`) have been delivered yet. `assets/cinematics/` holds only its README.
 - **On `main` now:** `data/cinematics.json` has 11 sequences (opening, `ch01_intro` to `ch05_intro`, `ch01_outro` to `ch04_outro`, and finale). Each slide has `speaker`, `subtitle`, `motion` (`push_in`, `pan_left`, `pull_back`...) and `caption`, and each sequence has an `end_card`. There is no image field yet.
 - **Proposed format:** 1920 x 1080 stills (WebP q90), 16:9, with a quiet lower band for subtitles and no baked text (section 16). They need ids `GAM-CIN-OPENING-*`, `<CH>-CIN-INTRO-*`, `<CH>-CIN-OUTRO-*` and `GAM-CIN-FINALE-*`. Subtitles and captions stay as Godot Labels from the JSON. When stills land, add an image id per slide, for example `"still": "HLX-CIN-INTRO-01"`.
 - **Already delivered:** the cinematic scores (`<CH>-MUS-INTRO-01`, `<CH>-MUS-OUTRO-01`, `GAM-MUS-OPENING-01`, `GAM-MUS-FINALE-01`, `GAM-MUS-ENDING-CREDITS`) and `<CH>-MUS-TRANSITION-STINGER`. They are mixed at -16.5 LUFS to leave room for narration.
 
 ## 8. TODO, in priority order
 
-1. Create a working branch from `assets` (not `main`). Run `python3 generated_assets/tools/validate_asset_manifest.py --quiet` and `generated_assets/tools/godot/run_import_check.sh`. The first headless import has twice segfaulted (exit 139) and passed on retry. Add `.gdignore` to the `previews/` and `source/` folders in your copy, so Godot skips the review files; animated WebP previews fail to import. Leave the generated files themselves alone.
+1. Create a working branch from `assets` (not `main`). Run `python3 assets/tools/validate_asset_manifest.py --quiet` and `assets/tools/godot/run_import_check.sh`. The first headless import has twice segfaulted (exit 139) and passed on retry. Add `.gdignore` to the `previews/` and `source/` folders in your copy, so Godot skips the review files; animated WebP previews fail to import. Leave the generated files themselves alone.
 2. **Manifest loader** (section 2) with greybox fallback.
 3. **Component meshes in `MissionView._add_component`:** instance the glb, scale it to the rectangle, keep the pivot, retype `_meshes` as Node3D, and fall back to the BoxMesh.
 4. **Damage states:** in `_on_component_state_changed`, show one state node and add the overlay `next_pass`. In `_on_component_removed`, hide the component and spawn the debris glb.
@@ -202,4 +202,4 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   **Not done:** any test inside the real `MissionView` scene or on a phone GPU. Your integration is the first in-game test.
 - **Audio:** the hook map lists `ending` for two cues (`GAM-MUS-FINALE-01` and `GAM-MUS-ENDING-CREDITS`). Decide which one plays after the finale and which over the credits. The proposed cue names for prep, critical layer, theme and stingers are only in the entry `notes`.
 - **Repetition:** wide shots show mid and near card repeats. Each chapter has only an `-A` texture set per material.
-- **Repo size:** `generated_assets/` is about 334 MB. Plan export filters so previews, sources and mock-ups stay out of the APK.
+- **Repo size:** `assets/` is about 334 MB. Plan export filters so previews, sources and mock-ups stay out of the APK.

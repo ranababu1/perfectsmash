@@ -1,4 +1,4 @@
-"""Builds generated_assets/manifest_parts/ui-vfx.json from the files actually on disk.
+"""Builds assets/manifest_parts/ui-vfx.json from the files actually on disk.
 Run after any UI, branding, font or VFX rebuild: python manifest_fragment.py"""
 import os, sys, json, glob, datetime
 sys.path.insert(0, os.path.dirname(__file__))
@@ -10,7 +10,7 @@ def rel(p): return os.path.relpath(p, REPO)
 def dims(p):
     with Image.open(p) as im: return f"{im.width}x{im.height}"
 
-SRC_CODE = "hand-authored SVG written by the asset agent (Grok Bot) in generated_assets/ui/_build/*.py, rasterised with resvg 0.49.0"
+SRC_CODE = "hand-authored SVG written by the asset agent (Grok Bot) in assets/ui/_build/*.py, rasterised with resvg 0.49.0"
 RIGHTS_CODE = "original work authored by the asset agent for this project (code-generated vector art, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; no third-party content except OFL fonts outlined in the logo"
 RIGHTS_AI = "AI-generated image (GenerateImage tool, image model); provenance recorded; rights not verified; not commercially cleared"
 RIGHTS_OFL = "SIL Open Font License 1.1 (OFL.txt beside the file); embedding in a commercial game permitted; font may not be sold on its own"
@@ -27,7 +27,7 @@ def fonts():
             add(id=f"GAM-FNT-{fam}-{w}", path=rel(f), category="fonts", render_type="font", format="ttf",
                 purpose=("display face: titles, headings, numerals" if fam == "CHAKRA_PETCH" else "UI and body text face"),
                 source=f"{fam.replace('_', ' ').title()} by {designer}, official Google Fonts repository {url} (accessed 2026-11-09)",
-                rights_status=RIGHTS_OFL, used_by="ui theme (generated_assets/ui/theme/tfj_theme_spec.json); logo wordmark outlines (Chakra Petch Bold)",
+                rights_status=RIGHTS_OFL, used_by="ui theme (assets/ui/theme/tfj_theme_spec.json); logo wordmark outlines (Chakra Petch Bold)",
                 chapter="shared", notes="licence: " + rel(os.path.join(ROOT, "fonts", folder, "OFL.txt")))
 
 def branding():

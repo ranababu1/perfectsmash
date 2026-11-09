@@ -39,10 +39,10 @@ When loaded at runtime with `GLTFDocument`, the root comes back as `<stem>2` bec
 
 ## Commands
 
-    cd generated_assets/destructibles/source/blender
+    cd assets/destructibles/source/blender
     TFJ_SAMPLES=32 blender -b --factory-startup --python runchar.py [-- --no-render]
     xvfb-run -a -s "-screen 0 1280x720x24" godot --path <any project> --rendering-driver opengl3 \
-      --script generated_assets/destructibles/source/godot/char_check.gd -- out.png <operative.glb> <weapon.glb> aim_pose:0.5 ready:0.3 idle:1.0
+      --script assets/destructibles/source/godot/char_check.gd -- out.png <operative.glb> <weapon.glb> aim_pose:0.5 ready:0.3 idle:1.0
 
 `char_check.gd` prints NODES and ANIMS lines and renders the poses with the weapon mounted. The results are in `previews/opr_chr_operative_godot_poses.webp` and `previews/opr_chr_operative_sheet.webp`.
 

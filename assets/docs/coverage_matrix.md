@@ -1,6 +1,6 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1394 entries on disk, 1248 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1394 entries on disk, 1248 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.

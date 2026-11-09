@@ -2,8 +2,8 @@
 """Merge and validate the Temporal: First Jump asset manifest.
 
 Sources:
-  generated_assets/asset_manifest.json          base manifest (schema, integration-owned entries, planned[])
-  generated_assets/manifest_parts/<stream>.json  one fragment per production stream:
+  assets/asset_manifest.json          base manifest (schema, integration-owned entries, planned[])
+  assets/manifest_parts/<stream>.json  one fragment per production stream:
                                                  {"stream": "...", "updated": "YYYY-MM-DD", "entries": [...]}
 
 Modes:
@@ -39,7 +39,7 @@ Checks:
 Exit code is non-zero on any failure.
 
 Usage (any cwd):
-  python3 generated_assets/tools/validate_asset_manifest.py [--merge] [--check] [--report out.json]
+  python3 assets/tools/validate_asset_manifest.py [--merge] [--check] [--report out.json]
 """
 
 from __future__ import annotations

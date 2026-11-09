@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_dust_concrete_a.png" id="1_nctx5"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_dust_concrete_a.png" id="1_nctx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbe3i"]
 transparency = 1

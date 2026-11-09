@@ -1,11 +1,11 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/opr_vfx_breach_debris_a.png" id="1_6jqq7"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/opr_vfx_breach_explosion_a.png" id="2_jx0ll"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/opr_vfx_breach_shockwave_a.png" id="3_1yvjq"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/opr_vfx_breach_activation_a.png" id="4_xrhg5"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_smoke_puff_a.png" id="5_you3s"]
-[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/particles/shr_vfx_particle_spark_a.png" id="6_rjrub"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/opr_vfx_breach_debris_a.png" id="1_6jqq7"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/opr_vfx_breach_explosion_a.png" id="2_jx0ll"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/opr_vfx_breach_shockwave_a.png" id="3_1yvjq"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/opr_vfx_breach_activation_a.png" id="4_xrhg5"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_smoke_puff_a.png" id="5_you3s"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/particles/shr_vfx_particle_spark_a.png" id="6_rjrub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avbhu"]
 transparency = 1

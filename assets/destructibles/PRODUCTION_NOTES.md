@@ -36,7 +36,7 @@ An AO texture on a second UV set was tested. Godot 4.7.2 imports `occlusionTextu
 
 Build a kit (Blender 5.2.3; one Blender job at a time on this box):
 
-    cd generated_assets/destructibles/source/blender
+    cd assets/destructibles/source/blender
     TFJ_SAMPLES=32 blender -b --factory-startup --python runkit.py -- kits.<helix|vita|nova_grid|civitas|meridian|shared> [ID filters] [--no-render]
     python3 sheets.py ../../previews/<ch>_components_sheet.webp "<CH>-CMP-*" "<title>"
     python3 mkfrag.py [chapters or category:chapter ...]   # writes manifest_parts/3d-kits.json
@@ -44,7 +44,7 @@ Build a kit (Blender 5.2.3; one Blender job at a time on this box):
 Godot check (4.7.2, GL Compatibility, runtime glTF load, MissionView camera, sun and environment):
 
     xvfb-run -a -s "-screen 0 1280x720x24" godot --path <any project> --rendering-driver opengl3 \
-      --script generated_assets/destructibles/source/godot/kit_lineup.gd -- out.png lineup <glb files...>
+      --script assets/destructibles/source/godot/kit_lineup.gd -- out.png lineup <glb files...>
     ... kit_lineup.gd -- out.png states <component.glb> <debris.glb>
 
 `kit_lineup.gd` prints one `CHECK OK` line per file, listing nodes, surfaces, materials, `colour0` and the marker count.
@@ -66,7 +66,7 @@ This is original procedural work. The scripted Blender code was written by the 3
 
 Revision of the 22 Helix components and their debris sets in place. File names and manifest ids are unchanged.
 
-- **Materials.** Every zone slot is now textured from the surfaces stream library (`generated_assets/materials/helix/` and `materials/shared/`). The glb files reference the PNGs by relative URI and do not embed them. Godot resolves the URIs to the `res://` library textures on editor import and through runtime GLTFDocument (both tested on the box). `baseColorFactor` is a palette tint over the library albedo, `metallicFactor` is set per zone, and emission textures are masks.
+- **Materials.** Every zone slot is now textured from the surfaces stream library (`assets/materials/helix/` and `materials/shared/`). The glb files reference the PNGs by relative URI and do not embed them. Godot resolves the URIs to the `res://` library textures on editor import and through runtime GLTFDocument (both tested on the box). `baseColorFactor` is a palette tint over the library albedo, `metallicFactor` is set per zone, and emission textures are masks.
 - **Vertex colour.** COLOR_0 now carries baked ambient occlusion only (valid since contract v1.7).
 - **New slots.** `trim_edge_hlx` is a worn edge highlight on the bevel faces. `trim_module_hlx` maps one rack unit of the electronic_module set per blade (fitted UVs), with status lights in its emission mask.
 - **Geometry.** Racks, columns, decks, shields, power cell, blast walls, mast, pod, gantry, cooling stack and crate were rebuilt with real secondary detail: chamfered corner posts with amber caps, panel seams, bolts, louvres, cable looms, status LEDs, top hatches and small screens. Every piece stays within budget (standard 1,500 tris; the AI core is critical at 3,000).

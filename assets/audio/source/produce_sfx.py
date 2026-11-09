@@ -20,7 +20,7 @@ def registry():
             R.append(dict(id=cid, base=f'{ch}-SFX-{name}', folder=folder, gen=gen, args=args, seed=1000 * (len(R) + 1) + v, variation=v,
                           variations=nvar, channels=chans, target=target, description=desc, use=use, loop=loop, tier=tier,
                           sound_id=sound_id, family=family, bus=bus, ext=fmt, manifest_chapter=CHFOLDER[ch],
-                          file=f"generated_assets/audio/{folder}/{cid.lower().replace('-', '_')}.{fmt}"))
+                          file=f"assets/audio/{folder}/{cid.lower().replace('-', '_')}.{fmt}"))
     W = 'weapons and explosions (-14 to -10 LUFS-M)'
     WH = 'weapon handling (UI-like, -18 to -16 LUFS-M)'
     I = 'impacts and debris (-18 to -14 LUFS-M)'
@@ -84,7 +84,7 @@ def registry():
             R.append(dict(id=cid, base=cid, folder=f'ambience/{chk}', gen='amb:' + fn.__name__, args={'sec': sec}, seed=7000 + len(R), variation=1, variations=1,
                           channels=2, target=-24, description=desc, use=f'{chk} mission bed for the {band.lower()} band', loop=True, tier=None, ambience=True,
                           ambience_cue=f'{chk}_{band.lower()}', bus='Ambience', ext='ogg', family='ambience (-24 LUFS integrated)', manifest_chapter=chk, sound_id=None,
-                          file=f"generated_assets/audio/ambience/{chk}/{cid.lower().replace('-', '_')}.ogg"))
+                          file=f"assets/audio/ambience/{chk}/{cid.lower().replace('-', '_')}.ogg"))
     return R
 
 

@@ -49,4 +49,4 @@ f8906f762cb73dca441da034bc363b2d8e2e68bc10d5c05e58717646c20cc4b4  barlow/Barlow-
 
 - Import the .ttf files directly (FontFile). Recommended import: antialiasing LCD off, hinting Light,
   generate mipmaps off, MSDF off for UI text (on only if text is scaled in 3D).
-- See `generated_assets/ui/theme/tfj_theme_spec.json` for sizes and weights per text role.
+- See `assets/ui/theme/tfj_theme_spec.json` for sizes and weights per text role.

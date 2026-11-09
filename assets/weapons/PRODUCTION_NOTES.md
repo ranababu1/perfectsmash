@@ -19,7 +19,7 @@ The weapon set lives in `weapons/shared/` and is built by `destructibles/source/
 
 ## Commands
 
-    cd generated_assets/destructibles/source/blender
+    cd assets/destructibles/source/blender
     TFJ_SAMPLES=32 blender -b --factory-startup --python runenv.py -- kits.weapons [--no-render]
     python3 sheets.py grid ../../../weapons/previews/opr_weapons_sheet.webp "/workspace/tfj-masters/3d-kits/stats_env/OPR-*.json" "<title>" 4
 

@@ -8,7 +8,7 @@ import tfjdamage as D
 import tfjrender as R
 
 REPO = "/workspace/tfj-3d-kits"
-GA = REPO + "/generated_assets"
+GA = REPO + "/assets"
 
 
 def stem(asset_id):
