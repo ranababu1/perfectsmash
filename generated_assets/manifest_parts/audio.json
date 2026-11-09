@@ -2076,9 +2076,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.52,
+   "loudness_lufs": -25.53,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_back_01.wav",
-   "notes": "Falling two-note blip (fourth). Variation 1 of 3 (pick at random). Momentary max -19.99 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.95 dBTP, sample peak -10.96 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Falling two-note blip (fourth). Variation 1 of 3 (pick at random). Momentary max -19.99 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.95 dBTP, sample peak -10.96 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.52 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_back"
   },
   {
@@ -2098,9 +2098,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.52,
+   "loudness_lufs": -25.53,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_back_02.wav",
-   "notes": "Falling two-note blip (fourth). Variation 2 of 3 (pick at random). Momentary max -19.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.02 dBTP, sample peak -11.02 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Falling two-note blip (fourth). Variation 2 of 3 (pick at random). Momentary max -19.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.02 dBTP, sample peak -11.02 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.52 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_back"
   },
   {
@@ -2120,9 +2120,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.52,
+   "loudness_lufs": -25.53,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_back_03.wav",
-   "notes": "Falling two-note blip (fourth). Variation 3 of 3 (pick at random). Momentary max -19.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.38 dBTP, sample peak -11.39 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Falling two-note blip (fourth). Variation 3 of 3 (pick at random). Momentary max -19.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.38 dBTP, sample peak -11.39 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.52 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_back"
   },
   {
@@ -2142,9 +2142,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.02,
+   "loudness_lufs": -24.03,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_click_01.wav",
-   "notes": "Short precise FM blip with a fine tick. Variation 1 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.93 dBTP, sample peak -9.97 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Short precise FM blip with a fine tick. Variation 1 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.93 dBTP, sample peak -9.97 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.02 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_click"
   },
   {
@@ -2164,9 +2164,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.02,
+   "loudness_lufs": -24.03,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_click_02.wav",
-   "notes": "Short precise FM blip with a fine tick. Variation 2 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.11 dBTP, sample peak -10.14 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Short precise FM blip with a fine tick. Variation 2 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.11 dBTP, sample peak -10.14 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.02 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_click"
   },
   {
@@ -2186,9 +2186,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.02,
+   "loudness_lufs": -24.03,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_click_03.wav",
-   "notes": "Short precise FM blip with a fine tick. Variation 3 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.76 dBTP, sample peak -9.79 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Short precise FM blip with a fine tick. Variation 3 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.76 dBTP, sample peak -9.79 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.02 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_click"
   },
   {
@@ -2208,9 +2208,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.02,
+   "loudness_lufs": -24.03,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_click_04.wav",
-   "notes": "Short precise FM blip with a fine tick. Variation 4 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.64 dBTP, sample peak -9.65 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Short precise FM blip with a fine tick. Variation 4 of 4 (pick at random). Momentary max -20.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.64 dBTP, sample peak -9.65 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.02 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_click"
   },
   {
@@ -2230,9 +2230,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.1,
+   "loudness_lufs": -24.11,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_confirm_01.wav",
-   "notes": "Rising two-note blip (fifth). Variation 1 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.5 dBTP, sample peak -11.52 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Rising two-note blip (fifth). Variation 1 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.5 dBTP, sample peak -11.52 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.1 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_confirm"
   },
   {
@@ -2252,9 +2252,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.1,
+   "loudness_lufs": -24.11,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_confirm_02.wav",
-   "notes": "Rising two-note blip (fifth). Variation 2 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.05 dBTP, sample peak -11.07 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Rising two-note blip (fifth). Variation 2 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.05 dBTP, sample peak -11.07 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.1 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_confirm"
   },
   {
@@ -2274,9 +2274,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.1,
+   "loudness_lufs": -24.11,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_confirm_03.wav",
-   "notes": "Rising two-note blip (fifth). Variation 3 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.34 dBTP, sample peak -11.35 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Rising two-note blip (fifth). Variation 3 of 3 (pick at random). Momentary max -18.98 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -11.34 dBTP, sample peak -11.35 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.1 LUFS integrated, which is the value the family targets use.",
    "sound_id": "ui_confirm"
   },
   {
@@ -2318,9 +2318,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.27,
+   "loudness_lufs": -23.28,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_error_01.wav",
-   "notes": "Two soft square-wave pulses, detuned. Variation 1 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.07 dBTP, sample peak -10.08 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Two soft square-wave pulses, detuned. Variation 1 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.07 dBTP, sample peak -10.08 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.27 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "GAM-SFX-UI_ERROR-02",
@@ -2339,9 +2339,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.25,
+   "loudness_lufs": -23.26,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_error_02.wav",
-   "notes": "Two soft square-wave pulses, detuned. Variation 2 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.02 dBTP, sample peak -10.03 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Two soft square-wave pulses, detuned. Variation 2 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -10.02 dBTP, sample peak -10.03 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.25 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "GAM-SFX-UI_ERROR-03",
@@ -2360,9 +2360,9 @@
    "bus": "UI",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.24,
+   "loudness_lufs": -23.25,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/gam_sfx_ui_error_03.wav",
-   "notes": "Two soft square-wave pulses, detuned. Variation 3 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.94 dBTP, sample peak -9.95 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Two soft square-wave pulses, detuned. Variation 3 of 3 (pick at random). Momentary max -19.0 LUFS-M (family UI (-22 to -18 LUFS-M)), true peak -9.94 dBTP, sample peak -9.95 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.24 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "GAM-SFX-UI_OBJECTIVE_COMPLETE-01",
@@ -2993,9 +2993,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.74,
+   "loudness_lufs": -22.75,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_arm_01.wav",
-   "notes": "Rising triple beep and a short electrical build. Variation 1 of 3 (pick at random). Momentary max -16.96 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.76 dBTP, sample peak -9.1 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Rising triple beep and a short electrical build. Variation 1 of 3 (pick at random). Momentary max -16.96 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.76 dBTP, sample peak -9.1 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.74 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_ARM-02",
@@ -3014,9 +3014,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.85,
+   "loudness_lufs": -22.86,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_arm_02.wav",
-   "notes": "Rising triple beep and a short electrical build. Variation 2 of 3 (pick at random). Momentary max -17.05 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -7.0 dBTP, sample peak -7.35 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Rising triple beep and a short electrical build. Variation 2 of 3 (pick at random). Momentary max -17.05 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -7.0 dBTP, sample peak -7.35 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.85 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_ARM-03",
@@ -3035,9 +3035,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.78,
+   "loudness_lufs": -22.79,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_arm_03.wav",
-   "notes": "Rising triple beep and a short electrical build. Variation 3 of 3 (pick at random). Momentary max -17.0 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -7.72 dBTP, sample peak -8.04 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Rising triple beep and a short electrical build. Variation 3 of 3 (pick at random). Momentary max -17.0 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -7.72 dBTP, sample peak -8.04 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.78 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_EXPLOSION-01",
@@ -3364,9 +3364,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.86,
+   "loudness_lufs": -19.87,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_launch_01.wav",
-   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 1 of 4 (pick at random). Momentary max -12.91 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.34 dBTP, sample peak -1.37 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 1 of 4 (pick at random). Momentary max -12.91 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.34 dBTP, sample peak -1.37 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.86 LUFS integrated, which is the value the family targets use.",
    "sound_id": "breach_launch"
   },
   {
@@ -3386,9 +3386,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.94,
+   "loudness_lufs": -19.95,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_launch_02.wav",
-   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 2 of 4 (pick at random). Momentary max -12.94 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.63 dBTP, sample peak -1.68 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 2 of 4 (pick at random). Momentary max -12.94 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.63 dBTP, sample peak -1.68 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.94 LUFS integrated, which is the value the family targets use.",
    "sound_id": "breach_launch"
   },
   {
@@ -3408,9 +3408,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.97,
+   "loudness_lufs": -19.98,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_launch_03.wav",
-   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 3 of 4 (pick at random). Momentary max -13.01 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.52 dBTP, sample peak -1.53 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 3 of 4 (pick at random). Momentary max -13.01 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.52 dBTP, sample peak -1.53 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.97 LUFS integrated, which is the value the family targets use.",
    "sound_id": "breach_launch"
   },
   {
@@ -3430,9 +3430,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.7,
+   "loudness_lufs": -19.71,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_launch_04.wav",
-   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 4 of 4 (pick at random). Momentary max -12.74 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.26 dBTP, sample peak -1.31 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Pneumatic launcher thump, tube resonance and air burst. Variation 4 of 4 (pick at random). Momentary max -12.74 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -1.26 dBTP, sample peak -1.31 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.7 LUFS integrated, which is the value the family targets use.",
    "sound_id": "breach_launch"
   },
   {
@@ -3452,9 +3452,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.19,
+   "loudness_lufs": -21.2,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_prep_01.wav",
-   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 1 of 3 (pick at random). Momentary max -16.97 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.61 dBTP, sample peak -2.62 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 1 of 3 (pick at random). Momentary max -16.97 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.61 dBTP, sample peak -2.62 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.19 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_PREP-02",
@@ -3473,9 +3473,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.18,
+   "loudness_lufs": -21.19,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_prep_02.wav",
-   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 2 of 3 (pick at random). Momentary max -17.01 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.5 dBTP, sample peak -2.55 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 2 of 3 (pick at random). Momentary max -17.01 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.5 dBTP, sample peak -2.55 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.18 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_PREP-03",
@@ -3494,9 +3494,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.12,
+   "loudness_lufs": -21.13,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_breach_prep_03.wav",
-   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 3 of 3 (pick at random). Momentary max -16.98 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -1.97 dBTP, sample peak -1.98 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Canister load clack, servo whirr, latch and two arming beeps. Variation 3 of 3 (pick at random). Momentary max -16.98 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -1.97 dBTP, sample peak -1.98 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.12 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-BREACH_SHOCKWAVE-01",
@@ -3578,9 +3578,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.87,
+   "loudness_lufs": -27.88,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_equipment_rattle_01.wav",
-   "notes": "Small equipment rattles and strap creak. Variation 1 of 4 (pick at random). Momentary max -24.05 LUFS-M (family foley (-24 LUFS-M)), true peak -7.57 dBTP, sample peak -7.58 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small equipment rattles and strap creak. Variation 1 of 4 (pick at random). Momentary max -24.05 LUFS-M (family foley (-24 LUFS-M)), true peak -7.57 dBTP, sample peak -7.58 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.87 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-02",
@@ -3599,9 +3599,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -25.24,
+   "loudness_lufs": -28.25,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_equipment_rattle_02.wav",
-   "notes": "Small equipment rattles and strap creak. Variation 2 of 4 (pick at random). Momentary max -23.9 LUFS-M (family foley (-24 LUFS-M)), true peak -9.57 dBTP, sample peak -9.96 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small equipment rattles and strap creak. Variation 2 of 4 (pick at random). Momentary max -23.9 LUFS-M (family foley (-24 LUFS-M)), true peak -9.57 dBTP, sample peak -9.96 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -25.24 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-03",
@@ -3620,9 +3620,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.23,
+   "loudness_lufs": -27.24,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_equipment_rattle_03.wav",
-   "notes": "Small equipment rattles and strap creak. Variation 3 of 4 (pick at random). Momentary max -24.04 LUFS-M (family foley (-24 LUFS-M)), true peak -7.0 dBTP, sample peak -8.0 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small equipment rattles and strap creak. Variation 3 of 4 (pick at random). Momentary max -24.04 LUFS-M (family foley (-24 LUFS-M)), true peak -7.0 dBTP, sample peak -8.0 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.23 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-EQUIPMENT_RATTLE-04",
@@ -3641,9 +3641,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.79,
+   "loudness_lufs": -27.8,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_equipment_rattle_04.wav",
-   "notes": "Small equipment rattles and strap creak. Variation 4 of 4 (pick at random). Momentary max -24.03 LUFS-M (family foley (-24 LUFS-M)), true peak -10.77 dBTP, sample peak -11.15 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small equipment rattles and strap creak. Variation 4 of 4 (pick at random). Momentary max -24.03 LUFS-M (family foley (-24 LUFS-M)), true peak -10.77 dBTP, sample peak -11.15 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.79 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-01",
@@ -3662,9 +3662,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.76,
+   "loudness_lufs": -21.77,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_charge_01.wav",
-   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 1 of 3 (pick at random). Momentary max -15.99 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.44 dBTP, sample peak -8.58 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 1 of 3 (pick at random). Momentary max -15.99 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.44 dBTP, sample peak -8.58 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.76 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-02",
@@ -3683,9 +3683,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.77,
+   "loudness_lufs": -21.78,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_charge_02.wav",
-   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 2 of 3 (pick at random). Momentary max -16.01 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.37 dBTP, sample peak -8.44 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 2 of 3 (pick at random). Momentary max -16.01 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.37 dBTP, sample peak -8.44 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.77 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_CHARGE-03",
@@ -3704,9 +3704,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.74,
+   "loudness_lufs": -21.75,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_charge_03.wav",
-   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 3 of 3 (pick at random). Momentary max -15.99 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -6.93 dBTP, sample peak -7.41 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Electromagnetic capacitor charge-up with lock click at full charge (0.9 s). Variation 3 of 3 (pick at random). Momentary max -15.99 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -6.93 dBTP, sample peak -7.41 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.74 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_FIRE-01",
@@ -3725,9 +3725,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.44,
+   "loudness_lufs": -18.45,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_01.wav",
-   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 1 of 5 (pick at random). Momentary max -12.01 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.66 dBTP, sample peak -3.67 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 1 of 5 (pick at random). Momentary max -12.01 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.66 dBTP, sample peak -3.67 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.44 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3747,9 +3747,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.41,
+   "loudness_lufs": -18.42,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_02.wav",
-   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 2 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.2 dBTP, sample peak -3.24 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 2 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.2 dBTP, sample peak -3.24 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.41 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3769,9 +3769,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.4,
+   "loudness_lufs": -18.41,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_03.wav",
-   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 3 of 5 (pick at random). Momentary max -11.99 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.49 dBTP, sample peak -3.52 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 3 of 5 (pick at random). Momentary max -11.99 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.49 dBTP, sample peak -3.52 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.4 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3791,9 +3791,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.41,
+   "loudness_lufs": -18.42,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_04.wav",
-   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 4 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.9 dBTP, sample peak -3.9 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 4 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.9 dBTP, sample peak -3.9 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.41 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3813,9 +3813,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.34,
+   "loudness_lufs": -18.35,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_05.wav",
-   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 5 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.87 dBTP, sample peak -3.96 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Magnetic snap, falling rail thwip, body thump, short metallic ring. Variation 5 of 5 (pick at random). Momentary max -12.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.87 dBTP, sample peak -3.96 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.34 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3835,9 +3835,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.91,
+   "loudness_lufs": -18.92,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t1_01.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 1 of 3 (pick at random). Momentary max -11.49 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -2.9 dBTP, sample peak -2.91 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 1 of 3 (pick at random). Momentary max -11.49 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -2.9 dBTP, sample peak -2.91 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.91 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3857,9 +3857,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.95,
+   "loudness_lufs": -18.96,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t1_02.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 2 of 3 (pick at random). Momentary max -11.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.34 dBTP, sample peak -3.45 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 2 of 3 (pick at random). Momentary max -11.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.34 dBTP, sample peak -3.45 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.95 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3879,9 +3879,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -14.71,
+   "loudness_lufs": -17.72,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t1_03.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 3 of 3 (pick at random). Momentary max -11.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.42 dBTP, sample peak -3.43 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 1: heavier sub, longer zap. Variation 3 of 3 (pick at random). Momentary max -11.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.42 dBTP, sample peak -3.43 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -14.71 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3901,9 +3901,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.45,
+   "loudness_lufs": -18.46,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t2_01.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 1 of 3 (pick at random). Momentary max -10.99 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -2.93 dBTP, sample peak -2.95 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 1 of 3 (pick at random). Momentary max -10.99 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -2.93 dBTP, sample peak -2.95 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.45 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3923,9 +3923,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.63,
+   "loudness_lufs": -18.64,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t2_02.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 2 of 3 (pick at random). Momentary max -11.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.35 dBTP, sample peak -3.36 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 2 of 3 (pick at random). Momentary max -11.0 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.35 dBTP, sample peak -3.36 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.63 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3945,9 +3945,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.16,
+   "loudness_lufs": -18.17,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t2_03.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 3 of 3 (pick at random). Momentary max -10.98 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.58 dBTP, sample peak -3.59 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 2: heavier sub, longer zap, crackle and ring. Variation 3 of 3 (pick at random). Momentary max -10.98 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.58 dBTP, sample peak -3.59 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.16 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3967,9 +3967,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -14.91,
+   "loudness_lufs": -17.92,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t3_01.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 1 of 3 (pick at random). Momentary max -10.49 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.11 dBTP, sample peak -3.12 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 1 of 3 (pick at random). Momentary max -10.49 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.11 dBTP, sample peak -3.12 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -14.91 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -3989,9 +3989,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -14.99,
+   "loudness_lufs": -18.0,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t3_02.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 2 of 3 (pick at random). Momentary max -10.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.29 dBTP, sample peak -3.32 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 2 of 3 (pick at random). Momentary max -10.51 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.29 dBTP, sample peak -3.32 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -14.99 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -4011,9 +4011,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -14.94,
+   "loudness_lufs": -17.95,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_fire_t3_03.wav",
-   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 3 of 3 (pick at random). Momentary max -10.5 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.05 dBTP, sample peak -3.06 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Kinetic Accelerator shot, upgrade tier 3: heavier sub, longer zap, crackle and ring, rail resonance. Variation 3 of 3 (pick at random). Momentary max -10.5 LUFS-M (family weapons and explosions (-14 to -10 LUFS-M)), true peak -3.05 dBTP, sample peak -3.06 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -14.94 LUFS integrated, which is the value the family targets use.",
    "sound_id": "kinetic_fire"
   },
   {
@@ -4033,9 +4033,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.96,
+   "loudness_lufs": -21.97,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_impact_01.wav",
-   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 1 of 5 (pick at random). Momentary max -13.86 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.56 dBTP, sample peak -1.72 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 1 of 5 (pick at random). Momentary max -13.86 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.56 dBTP, sample peak -1.72 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.96 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-02",
@@ -4054,9 +4054,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.27,
+   "loudness_lufs": -22.28,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_impact_02.wav",
-   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 2 of 5 (pick at random). Momentary max -14.33 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.59 dBTP, sample peak -1.6 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 2 of 5 (pick at random). Momentary max -14.33 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.59 dBTP, sample peak -1.6 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.27 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-03",
@@ -4075,9 +4075,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.99,
+   "loudness_lufs": -22.0,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_impact_03.wav",
-   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 3 of 5 (pick at random). Momentary max -13.89 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.23 dBTP, sample peak -1.24 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 3 of 5 (pick at random). Momentary max -13.89 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.23 dBTP, sample peak -1.24 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.99 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-04",
@@ -4096,9 +4096,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.67,
+   "loudness_lufs": -22.68,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_impact_04.wav",
-   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 4 of 5 (pick at random). Momentary max -14.34 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.87 dBTP, sample peak -1.87 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 4 of 5 (pick at random). Momentary max -14.34 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.87 dBTP, sample peak -1.87 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.67 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_IMPACT-05",
@@ -4117,9 +4117,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.98,
+   "loudness_lufs": -21.99,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_impact_05.wav",
-   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 5 of 5 (pick at random). Momentary max -13.89 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.55 dBTP, sample peak -1.56 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Hard strike crack, metallic clank, thump and a short descending temporal ripple. Variation 5 of 5 (pick at random). Momentary max -13.89 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.55 dBTP, sample peak -1.56 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.98 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-01",
@@ -4138,9 +4138,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.1,
+   "loudness_lufs": -23.11,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_travel_loop_01.wav",
-   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 1 of 3 (pick at random). Momentary max -19.6 LUFS-M (family loop (integrated -20 LUFS)), true peak -11.79 dBTP, sample peak -11.82 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -16.8 dB vs codec error -15.7 dB, HF delta -0.08 dB. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 1 of 3 (pick at random). Momentary max -19.6 LUFS-M (family loop (integrated -20 LUFS)), true peak -11.79 dBTP, sample peak -11.82 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -16.8 dB vs codec error -15.7 dB, HF delta -0.08 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.1 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-02",
@@ -4159,9 +4159,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.1,
+   "loudness_lufs": -23.11,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_travel_loop_02.wav",
-   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 2 of 3 (pick at random). Momentary max -19.93 LUFS-M (family loop (integrated -20 LUFS)), true peak -13.15 dBTP, sample peak -13.31 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -15.8 dB vs codec error -15.3 dB, HF delta -0.2 dB. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 2 of 3 (pick at random). Momentary max -19.93 LUFS-M (family loop (integrated -20 LUFS)), true peak -13.15 dBTP, sample peak -13.31 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -15.8 dB vs codec error -15.3 dB, HF delta -0.2 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.1 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-KINETIC_TRAVEL_LOOP-03",
@@ -4180,9 +4180,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.13,
+   "loudness_lufs": -23.14,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_kinetic_travel_loop_03.wav",
-   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 3 of 3 (pick at random). Momentary max -19.99 LUFS-M (family loop (integrated -20 LUFS)), true peak -12.95 dBTP, sample peak -12.96 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -15.8 dB vs codec error -15.7 dB, HF delta -0.1 dB. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Projectile flight whine and air rush, 1 s seamless loop. Variation 3 of 3 (pick at random). Momentary max -19.99 LUFS-M (family loop (integrated -20 LUFS)), true peak -12.95 dBTP, sample peak -12.96 dBFS. Seamless loop 0-44100 samples at 44.1 kHz; wrap error -15.8 dB vs codec error -15.7 dB, HF delta -0.1 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.13 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-RELOAD_READY-01",
@@ -4201,9 +4201,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.77,
+   "loudness_lufs": -26.78,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_reload_ready_01.wav",
-   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 1 of 3 (pick at random). Momentary max -19.03 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -9.75 dBTP, sample peak -10.15 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 1 of 3 (pick at random). Momentary max -19.03 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -9.75 dBTP, sample peak -10.15 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -23.77 LUFS integrated, which is the value the family targets use.",
    "sound_id": "reload_ready"
   },
   {
@@ -4223,9 +4223,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.79,
+   "loudness_lufs": -26.8,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_reload_ready_02.wav",
-   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 2 of 3 (pick at random). Momentary max -19.04 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -9.93 dBTP, sample peak -9.94 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 2 of 3 (pick at random). Momentary max -19.04 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -9.93 dBTP, sample peak -9.94 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -23.79 LUFS integrated, which is the value the family targets use.",
    "sound_id": "reload_ready"
   },
   {
@@ -4245,9 +4245,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.78,
+   "loudness_lufs": -26.79,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_reload_ready_03.wav",
-   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 3 of 3 (pick at random). Momentary max -19.0 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.76 dBTP, sample peak -8.76 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Vent hiss, cooling ticks and a two-note ready chime. Variation 3 of 3 (pick at random). Momentary max -19.0 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -8.76 dBTP, sample peak -8.76 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -23.78 LUFS integrated, which is the value the family targets use.",
    "sound_id": "reload_ready"
   },
   {
@@ -4267,9 +4267,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.53,
+   "loudness_lufs": -27.54,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_move_01.wav",
-   "notes": "Tactical suit fabric movement. Variation 1 of 5 (pick at random). Momentary max -24.17 LUFS-M (family foley (-24 LUFS-M)), true peak -11.63 dBTP, sample peak -11.78 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Tactical suit fabric movement. Variation 1 of 5 (pick at random). Momentary max -24.17 LUFS-M (family foley (-24 LUFS-M)), true peak -11.63 dBTP, sample peak -11.78 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.53 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-02",
@@ -4288,9 +4288,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.44,
+   "loudness_lufs": -27.45,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_move_02.wav",
-   "notes": "Tactical suit fabric movement. Variation 2 of 5 (pick at random). Momentary max -24.29 LUFS-M (family foley (-24 LUFS-M)), true peak -12.25 dBTP, sample peak -12.4 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Tactical suit fabric movement. Variation 2 of 5 (pick at random). Momentary max -24.29 LUFS-M (family foley (-24 LUFS-M)), true peak -12.25 dBTP, sample peak -12.4 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.44 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-03",
@@ -4309,9 +4309,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.44,
+   "loudness_lufs": -27.45,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_move_03.wav",
-   "notes": "Tactical suit fabric movement. Variation 3 of 5 (pick at random). Momentary max -24.2 LUFS-M (family foley (-24 LUFS-M)), true peak -11.19 dBTP, sample peak -11.21 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Tactical suit fabric movement. Variation 3 of 5 (pick at random). Momentary max -24.2 LUFS-M (family foley (-24 LUFS-M)), true peak -11.19 dBTP, sample peak -11.21 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.44 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-04",
@@ -4330,9 +4330,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -25.17,
+   "loudness_lufs": -28.18,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_move_04.wav",
-   "notes": "Tactical suit fabric movement. Variation 4 of 5 (pick at random). Momentary max -24.23 LUFS-M (family foley (-24 LUFS-M)), true peak -8.99 dBTP, sample peak -9.43 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Tactical suit fabric movement. Variation 4 of 5 (pick at random). Momentary max -24.23 LUFS-M (family foley (-24 LUFS-M)), true peak -8.99 dBTP, sample peak -9.43 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -25.17 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_MOVE-05",
@@ -4351,9 +4351,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -24.45,
+   "loudness_lufs": -27.46,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_move_05.wav",
-   "notes": "Tactical suit fabric movement. Variation 5 of 5 (pick at random). Momentary max -24.29 LUFS-M (family foley (-24 LUFS-M)), true peak -9.6 dBTP, sample peak -9.84 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Tactical suit fabric movement. Variation 5 of 5 (pick at random). Momentary max -24.29 LUFS-M (family foley (-24 LUFS-M)), true peak -9.6 dBTP, sample peak -9.84 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -24.45 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-01",
@@ -4372,9 +4372,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.63,
+   "loudness_lufs": -25.64,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_servo_01.wav",
-   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 1 of 5 (pick at random). Momentary max -22.08 LUFS-M (family foley (-22 LUFS-M)), true peak -15.66 dBTP, sample peak -15.89 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 1 of 5 (pick at random). Momentary max -22.08 LUFS-M (family foley (-22 LUFS-M)), true peak -15.66 dBTP, sample peak -15.89 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.63 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-02",
@@ -4393,9 +4393,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.51,
+   "loudness_lufs": -25.52,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_servo_02.wav",
-   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 2 of 5 (pick at random). Momentary max -22.05 LUFS-M (family foley (-22 LUFS-M)), true peak -14.71 dBTP, sample peak -14.73 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 2 of 5 (pick at random). Momentary max -22.05 LUFS-M (family foley (-22 LUFS-M)), true peak -14.71 dBTP, sample peak -14.73 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.51 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-03",
@@ -4414,9 +4414,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.02,
+   "loudness_lufs": -26.03,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_servo_03.wav",
-   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 3 of 5 (pick at random). Momentary max -22.08 LUFS-M (family foley (-22 LUFS-M)), true peak -13.39 dBTP, sample peak -13.39 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 3 of 5 (pick at random). Momentary max -22.08 LUFS-M (family foley (-22 LUFS-M)), true peak -13.39 dBTP, sample peak -13.39 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -23.02 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-04",
@@ -4435,9 +4435,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.5,
+   "loudness_lufs": -25.51,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_servo_04.wav",
-   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 4 of 5 (pick at random). Momentary max -22.04 LUFS-M (family foley (-22 LUFS-M)), true peak -14.4 dBTP, sample peak -14.4 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 4 of 5 (pick at random). Momentary max -22.04 LUFS-M (family foley (-22 LUFS-M)), true peak -14.4 dBTP, sample peak -14.4 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.5 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-SUIT_SERVO-05",
@@ -4456,9 +4456,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.47,
+   "loudness_lufs": -25.48,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_suit_servo_05.wav",
-   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 5 of 5 (pick at random). Momentary max -22.07 LUFS-M (family foley (-22 LUFS-M)), true peak -14.77 dBTP, sample peak -14.87 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Small suit or weapon servo whirr (odd = rising, even = falling). Variation 5 of 5 (pick at random). Momentary max -22.07 LUFS-M (family foley (-22 LUFS-M)), true peak -14.77 dBTP, sample peak -14.87 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.47 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-01",
@@ -4477,9 +4477,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.84,
+   "loudness_lufs": -25.85,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_handle_01.wav",
-   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 1 of 4 (pick at random). Momentary max -22.04 LUFS-M (family foley (-22 LUFS-M)), true peak -5.16 dBTP, sample peak -5.29 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 1 of 4 (pick at random). Momentary max -22.04 LUFS-M (family foley (-22 LUFS-M)), true peak -5.16 dBTP, sample peak -5.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.84 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-02",
@@ -4498,9 +4498,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.11,
+   "loudness_lufs": -25.12,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_handle_02.wav",
-   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 2 of 4 (pick at random). Momentary max -22.01 LUFS-M (family foley (-22 LUFS-M)), true peak -5.35 dBTP, sample peak -5.94 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 2 of 4 (pick at random). Momentary max -22.01 LUFS-M (family foley (-22 LUFS-M)), true peak -5.35 dBTP, sample peak -5.94 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.11 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-03",
@@ -4519,9 +4519,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.09,
+   "loudness_lufs": -25.1,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_handle_03.wav",
-   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 3 of 4 (pick at random). Momentary max -22.02 LUFS-M (family foley (-22 LUFS-M)), true peak -6.05 dBTP, sample peak -6.8 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 3 of 4 (pick at random). Momentary max -22.02 LUFS-M (family foley (-22 LUFS-M)), true peak -6.05 dBTP, sample peak -6.8 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.09 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-WEAPON_HANDLE-04",
@@ -4540,9 +4540,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.09,
+   "loudness_lufs": -25.1,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_handle_04.wav",
-   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 4 of 4 (pick at random). Momentary max -22.01 LUFS-M (family foley (-22 LUFS-M)), true peak -4.65 dBTP, sample peak -5.14 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Grip rustle, metal click, soft thump, latch tick. Variation 4 of 4 (pick at random). Momentary max -22.01 LUFS-M (family foley (-22 LUFS-M)), true peak -4.65 dBTP, sample peak -5.14 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -22.09 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "OPR-SFX-WEAPON_SWITCH-01",
@@ -4561,9 +4561,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.74,
+   "loudness_lufs": -20.75,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_switch_01.wav",
-   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 1 of 3 (pick at random). Momentary max -17.05 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.63 dBTP, sample peak -2.64 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 1 of 3 (pick at random). Momentary max -17.05 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -2.63 dBTP, sample peak -2.64 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.74 LUFS integrated, which is the value the family targets use.",
    "sound_id": "weapon_switch"
   },
   {
@@ -4583,9 +4583,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.72,
+   "loudness_lufs": -20.73,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_switch_02.wav",
-   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 2 of 3 (pick at random). Momentary max -17.04 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -3.39 dBTP, sample peak -3.4 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 2 of 3 (pick at random). Momentary max -17.04 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -3.39 dBTP, sample peak -3.4 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.72 LUFS integrated, which is the value the family targets use.",
    "sound_id": "weapon_switch"
   },
   {
@@ -4605,9 +4605,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.71,
+   "loudness_lufs": -20.72,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/opr_sfx_weapon_switch_03.wav",
-   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 3 of 3 (pick at random). Momentary max -17.06 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -1.37 dBTP, sample peak -1.5 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Slide, two latches, servo blip and a confirm blip. Variation 3 of 3 (pick at random). Momentary max -17.06 LUFS-M (family weapon handling (UI-like, -18 to -16 LUFS-M)), true peak -1.37 dBTP, sample peak -1.5 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.71 LUFS integrated, which is the value the family targets use.",
    "sound_id": "weapon_switch"
   },
   {
@@ -4627,9 +4627,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.59,
+   "loudness_lufs": -20.6,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_alarm_klaxon_01.wav",
-   "notes": "Two-tone facility klaxon (740 / 587 Hz), 2.0 s seamless loop. Variation 1 of 1. Momentary max -15.94 LUFS-M (family alarm (-16 LUFS-M)), true peak -9.14 dBTP, sample peak -9.16 dBFS. Seamless loop 0-88200 samples at 44.1 kHz; wrap error -37.8 dB vs codec error -37.3 dB, HF delta 0.03 dB. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Two-tone facility klaxon (740 / 587 Hz), 2.0 s seamless loop. Variation 1 of 1. Momentary max -15.94 LUFS-M (family alarm (-16 LUFS-M)), true peak -9.14 dBTP, sample peak -9.16 dBFS. Seamless loop 0-88200 samples at 44.1 kHz; wrap error -37.8 dB vs codec error -37.3 dB, HF delta 0.03 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.59 LUFS integrated, which is the value the family targets use.",
    "sound_id": "alarm"
   },
   {
@@ -4649,9 +4649,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.97,
+   "loudness_lufs": -20.98,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_alarm_pulse_01.wav",
-   "notes": "Digital triple-pulse warning, 1.2 s seamless loop. Variation 1 of 1. Momentary max -16.95 LUFS-M (family alarm (-16 LUFS-M)), true peak -12.64 dBTP, sample peak -12.69 dBFS. Seamless loop 0-52920 samples at 44.1 kHz; wrap error -33.0 dB vs codec error -36.7 dB, HF delta -0.02 dB. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Digital triple-pulse warning, 1.2 s seamless loop. Variation 1 of 1. Momentary max -16.95 LUFS-M (family alarm (-16 LUFS-M)), true peak -12.64 dBTP, sample peak -12.69 dBFS. Seamless loop 0-52920 samples at 44.1 kHz; wrap error -33.0 dB vs codec error -36.7 dB, HF delta -0.02 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.97 LUFS integrated, which is the value the family targets use.",
    "sound_id": "alarm"
   },
   {
@@ -4671,9 +4671,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.56,
+   "loudness_lufs": -19.57,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_alarm_siren_01.wav",
-   "notes": "Rising siren sweep, 1.6 s seamless loop. Variation 1 of 1. Momentary max -15.95 LUFS-M (family alarm (-16 LUFS-M)), true peak -9.94 dBTP, sample peak -9.95 dBFS. Seamless loop 0-70560 samples at 44.1 kHz; wrap error -38.0 dB vs codec error -37.5 dB, HF delta -0.21 dB. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Rising siren sweep, 1.6 s seamless loop. Variation 1 of 1. Momentary max -15.95 LUFS-M (family alarm (-16 LUFS-M)), true peak -9.94 dBTP, sample peak -9.95 dBFS. Seamless loop 0-70560 samples at 44.1 kHz; wrap error -38.0 dB vs codec error -37.5 dB, HF delta -0.21 dB. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.56 LUFS integrated, which is the value the family targets use.",
    "sound_id": "alarm"
   },
   {
@@ -4693,9 +4693,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.28,
+   "loudness_lufs": -19.29,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_heavy_01.wav",
-   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 1 of 5 (pick at random). Momentary max -14.95 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -3.59 dBTP, sample peak -3.6 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 1 of 5 (pick at random). Momentary max -14.95 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -3.59 dBTP, sample peak -3.6 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.28 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-02",
@@ -4714,9 +4714,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.67,
+   "loudness_lufs": -21.68,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_heavy_02.wav",
-   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 2 of 5 (pick at random). Momentary max -14.99 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.31 dBTP, sample peak -1.31 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 2 of 5 (pick at random). Momentary max -14.99 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.31 dBTP, sample peak -1.31 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.67 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-03",
@@ -4735,9 +4735,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.33,
+   "loudness_lufs": -20.34,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_heavy_03.wav",
-   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 3 of 5 (pick at random). Momentary max -14.95 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -3.53 dBTP, sample peak -3.54 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 3 of 5 (pick at random). Momentary max -14.95 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -3.53 dBTP, sample peak -3.54 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.33 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-04",
@@ -4756,9 +4756,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.48,
+   "loudness_lufs": -20.49,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_heavy_04.wav",
-   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 4 of 5 (pick at random). Momentary max -14.96 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.1 dBTP, sample peak -2.11 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 4 of 5 (pick at random). Momentary max -14.96 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.1 dBTP, sample peak -2.11 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.48 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_HEAVY-05",
@@ -4777,9 +4777,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.55,
+   "loudness_lufs": -19.56,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_heavy_05.wav",
-   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 5 of 5 (pick at random). Momentary max -14.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.62 dBTP, sample peak -4.63 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Bouncing heavy chunks (modal low impacts with accelerating rhythm). Variation 5 of 5 (pick at random). Momentary max -14.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.62 dBTP, sample peak -4.63 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.55 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-01",
@@ -4798,9 +4798,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.8,
+   "loudness_lufs": -24.81,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_small_01.wav",
-   "notes": "Scattered small fragment ticks. Variation 1 of 5 (pick at random). Momentary max -18.26 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.06 dBTP, sample peak -1.11 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Scattered small fragment ticks. Variation 1 of 5 (pick at random). Momentary max -18.26 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.06 dBTP, sample peak -1.11 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.8 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-02",
@@ -4819,9 +4819,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.35,
+   "loudness_lufs": -24.36,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_small_02.wav",
-   "notes": "Scattered small fragment ticks. Variation 2 of 5 (pick at random). Momentary max -18.14 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.12 dBTP, sample peak -1.33 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Scattered small fragment ticks. Variation 2 of 5 (pick at random). Momentary max -18.14 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.12 dBTP, sample peak -1.33 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.35 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-03",
@@ -4840,9 +4840,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -21.22,
+   "loudness_lufs": -24.23,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_small_03.wav",
-   "notes": "Scattered small fragment ticks. Variation 3 of 5 (pick at random). Momentary max -18.49 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.14 dBTP, sample peak -1.15 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Scattered small fragment ticks. Variation 3 of 5 (pick at random). Momentary max -18.49 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.14 dBTP, sample peak -1.15 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -21.22 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-04",
@@ -4861,9 +4861,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.96,
+   "loudness_lufs": -23.97,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_small_04.wav",
-   "notes": "Scattered small fragment ticks. Variation 4 of 5 (pick at random). Momentary max -18.25 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.08 dBTP, sample peak -1.26 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Scattered small fragment ticks. Variation 4 of 5 (pick at random). Momentary max -18.25 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.08 dBTP, sample peak -1.26 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.96 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-DEBRIS_SMALL-05",
@@ -4882,9 +4882,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.16,
+   "loudness_lufs": -22.17,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_debris_small_05.wav",
-   "notes": "Scattered small fragment ticks. Variation 5 of 5 (pick at random). Momentary max -18.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.2 dBTP, sample peak -1.21 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Scattered small fragment ticks. Variation 5 of 5 (pick at random). Momentary max -18.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.2 dBTP, sample peak -1.21 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.16 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-ELECTRIC_SHORT-01",
@@ -4903,9 +4903,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -17.55,
+   "loudness_lufs": -20.56,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_electric_short_01.wav",
-   "notes": "Gated arc buzz, crackle and pop. Variation 1 of 5 (pick at random). Momentary max -15.58 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.09 dBTP, sample peak -1.12 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Gated arc buzz, crackle and pop. Variation 1 of 5 (pick at random). Momentary max -15.58 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.09 dBTP, sample peak -1.12 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -17.55 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_electronic"
   },
   {
@@ -4925,9 +4925,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -16.19,
+   "loudness_lufs": -19.2,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_electric_short_02.wav",
-   "notes": "Gated arc buzz, crackle and pop. Variation 2 of 5 (pick at random). Momentary max -16.15 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.41 dBTP, sample peak -1.42 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Gated arc buzz, crackle and pop. Variation 2 of 5 (pick at random). Momentary max -16.15 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.41 dBTP, sample peak -1.42 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -16.19 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_electronic"
   },
   {
@@ -4947,9 +4947,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.16,
+   "loudness_lufs": -22.17,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_electric_short_03.wav",
-   "notes": "Gated arc buzz, crackle and pop. Variation 3 of 5 (pick at random). Momentary max -15.17 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.08 dBTP, sample peak -1.34 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Gated arc buzz, crackle and pop. Variation 3 of 5 (pick at random). Momentary max -15.17 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.08 dBTP, sample peak -1.34 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.16 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_electronic"
   },
   {
@@ -4969,9 +4969,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -15.77,
+   "loudness_lufs": -18.78,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_electric_short_04.wav",
-   "notes": "Gated arc buzz, crackle and pop. Variation 4 of 5 (pick at random). Momentary max -15.73 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.2 dBTP, sample peak -1.2 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Gated arc buzz, crackle and pop. Variation 4 of 5 (pick at random). Momentary max -15.73 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.2 dBTP, sample peak -1.2 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -15.77 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_electronic"
   },
   {
@@ -4991,9 +4991,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.43,
+   "loudness_lufs": -22.44,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_electric_short_05.wav",
-   "notes": "Gated arc buzz, crackle and pop. Variation 5 of 5 (pick at random). Momentary max -15.71 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.28 dBTP, sample peak -1.84 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Gated arc buzz, crackle and pop. Variation 5 of 5 (pick at random). Momentary max -15.71 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.28 dBTP, sample peak -1.84 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.43 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_electronic"
   },
   {
@@ -5013,9 +5013,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.39,
+   "loudness_lufs": -23.4,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_energy_discharge_01.wav",
-   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 1 of 4 (pick at random). Momentary max -14.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.52 dBTP, sample peak -7.8 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 1 of 4 (pick at random). Momentary max -14.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.52 dBTP, sample peak -7.8 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.39 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5035,9 +5035,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.89,
+   "loudness_lufs": -22.9,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_energy_discharge_02.wav",
-   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 2 of 4 (pick at random). Momentary max -14.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -5.73 dBTP, sample peak -5.73 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 2 of 4 (pick at random). Momentary max -14.31 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -5.73 dBTP, sample peak -5.73 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.89 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5057,9 +5057,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.91,
+   "loudness_lufs": -22.92,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_energy_discharge_03.wav",
-   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 3 of 4 (pick at random). Momentary max -14.35 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -7.64 dBTP, sample peak -8.0 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 3 of 4 (pick at random). Momentary max -14.35 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -7.64 dBTP, sample peak -8.0 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.91 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5079,9 +5079,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.94,
+   "loudness_lufs": -22.95,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_energy_discharge_04.wav",
-   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 4 of 4 (pick at random). Momentary max -14.32 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.33 dBTP, sample peak -7.01 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "FM zap falling into plasma whoosh with plate shimmer. Variation 4 of 4 (pick at random). Momentary max -14.32 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.33 dBTP, sample peak -7.01 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.94 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5101,9 +5101,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.59,
+   "loudness_lufs": -21.6,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_01.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 1 of 4 (pick at random). Momentary max -14.8 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.17 dBTP, sample peak -1.37 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Fibrous crack with plastic resonances. Variation 1 of 4 (pick at random). Momentary max -14.8 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.17 dBTP, sample peak -1.37 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.59 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_composite"
   },
   {
@@ -5123,9 +5123,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.16,
+   "loudness_lufs": -23.17,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_02.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_composite"
   },
   {
@@ -5145,9 +5145,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -20.53,
+   "loudness_lufs": -23.54,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_03.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_composite"
   },
   {
@@ -5167,9 +5167,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.86,
+   "loudness_lufs": -22.87,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_04.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_composite"
   },
   {
@@ -5189,9 +5189,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.05,
+   "loudness_lufs": -22.06,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_concrete_01.wav",
-   "notes": "Dense crackle, thump, crunch and dust. Variation 1 of 5 (pick at random). Momentary max -14.14 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.28 dBTP, sample peak -1.32 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Dense crackle, thump, crunch and dust. Variation 1 of 5 (pick at random). Momentary max -14.14 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.28 dBTP, sample peak -1.32 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.05 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_concrete"
   },
   {
@@ -5211,9 +5211,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.94,
+   "loudness_lufs": -21.95,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_concrete_02.wav",
-   "notes": "Dense crackle, thump, crunch and dust. Variation 2 of 5 (pick at random). Momentary max -14.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.74 dBTP, sample peak -1.75 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Dense crackle, thump, crunch and dust. Variation 2 of 5 (pick at random). Momentary max -14.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.74 dBTP, sample peak -1.75 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.94 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_concrete"
   },
   {
@@ -5233,9 +5233,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.92,
+   "loudness_lufs": -21.93,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_concrete_03.wav",
-   "notes": "Dense crackle, thump, crunch and dust. Variation 3 of 5 (pick at random). Momentary max -14.0 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.88 dBTP, sample peak -1.96 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Dense crackle, thump, crunch and dust. Variation 3 of 5 (pick at random). Momentary max -14.0 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.88 dBTP, sample peak -1.96 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.92 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_concrete"
   },
   {
@@ -5255,9 +5255,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.93,
+   "loudness_lufs": -21.94,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_concrete_04.wav",
-   "notes": "Dense crackle, thump, crunch and dust. Variation 4 of 5 (pick at random). Momentary max -14.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.79 dBTP, sample peak -1.8 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Dense crackle, thump, crunch and dust. Variation 4 of 5 (pick at random). Momentary max -14.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.79 dBTP, sample peak -1.8 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.93 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_concrete"
   },
   {
@@ -5277,9 +5277,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.93,
+   "loudness_lufs": -21.94,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_concrete_05.wav",
-   "notes": "Dense crackle, thump, crunch and dust. Variation 5 of 5 (pick at random). Momentary max -14.2 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.32 dBTP, sample peak -1.32 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Dense crackle, thump, crunch and dust. Variation 5 of 5 (pick at random). Momentary max -14.2 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.32 dBTP, sample peak -1.32 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.93 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_concrete"
   },
   {
@@ -5299,9 +5299,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.08,
+   "loudness_lufs": -22.09,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_glass_01.wav",
-   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 1 of 5 (pick at random). Momentary max -14.61 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.13 dBTP, sample peak -1.65 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 1 of 5 (pick at random). Momentary max -14.61 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.13 dBTP, sample peak -1.65 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.08 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_glass"
   },
   {
@@ -5321,9 +5321,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.51,
+   "loudness_lufs": -22.52,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_glass_02.wav",
-   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 2 of 5 (pick at random). Momentary max -13.93 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.32 dBTP, sample peak -1.9 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 2 of 5 (pick at random). Momentary max -13.93 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.32 dBTP, sample peak -1.9 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.51 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_glass"
   },
   {
@@ -5343,9 +5343,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.58,
+   "loudness_lufs": -22.59,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_glass_03.wav",
-   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 3 of 5 (pick at random). Momentary max -14.16 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.3 dBTP, sample peak -2.38 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 3 of 5 (pick at random). Momentary max -14.16 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.3 dBTP, sample peak -2.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.58 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_glass"
   },
   {
@@ -5365,9 +5365,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.48,
+   "loudness_lufs": -22.49,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_glass_04.wav",
-   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 4 of 5 (pick at random). Momentary max -14.68 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.11 dBTP, sample peak -1.79 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 4 of 5 (pick at random). Momentary max -14.68 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.11 dBTP, sample peak -1.79 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.48 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_glass"
   },
   {
@@ -5387,9 +5387,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.8,
+   "loudness_lufs": -21.81,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_glass_05.wav",
-   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 5 of 5 (pick at random). Momentary max -13.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.3 dBTP, sample peak -1.52 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Crack, 55-85 resonant shards, tinkle tail. Variation 5 of 5 (pick at random). Momentary max -13.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.3 dBTP, sample peak -1.52 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.8 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_glass"
   },
   {
@@ -5409,9 +5409,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.55,
+   "loudness_lufs": -22.56,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_metal_01.wav",
-   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 1 of 5 (pick at random). Momentary max -14.12 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.1 dBTP, sample peak -2.1 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 1 of 5 (pick at random). Momentary max -14.12 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.1 dBTP, sample peak -2.1 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.55 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_metal"
   },
   {
@@ -5431,9 +5431,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.76,
+   "loudness_lufs": -22.77,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_metal_02.wav",
-   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 2 of 5 (pick at random). Momentary max -14.09 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.14 dBTP, sample peak -2.15 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 2 of 5 (pick at random). Momentary max -14.09 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.14 dBTP, sample peak -2.15 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.76 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_metal"
   },
   {
@@ -5453,9 +5453,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.66,
+   "loudness_lufs": -22.67,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_metal_03.wav",
-   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 3 of 5 (pick at random). Momentary max -13.75 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.95 dBTP, sample peak -2.39 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 3 of 5 (pick at random). Momentary max -13.75 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.95 dBTP, sample peak -2.39 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.66 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_metal"
   },
   {
@@ -5475,9 +5475,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.43,
+   "loudness_lufs": -22.44,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_metal_04.wav",
-   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 4 of 5 (pick at random). Momentary max -14.09 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.75 dBTP, sample peak -2.55 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 4 of 5 (pick at random). Momentary max -14.09 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.75 dBTP, sample peak -2.55 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.43 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_metal"
   },
   {
@@ -5497,9 +5497,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.92,
+   "loudness_lufs": -22.93,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_metal_05.wav",
-   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 5 of 5 (pick at random). Momentary max -14.17 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.94 dBTP, sample peak -2.64 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Snap transient, two-stage metallic ring, small tinkles. Variation 5 of 5 (pick at random). Momentary max -14.17 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.94 dBTP, sample peak -2.64 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.92 LUFS integrated, which is the value the family targets use.",
    "sound_id": "impact_metal"
   },
   {
@@ -5519,9 +5519,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.46,
+   "loudness_lufs": -21.47,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_machine_failure_01.wav",
-   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 1 of 4 (pick at random). Momentary max -15.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.71 dBTP, sample peak -4.72 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 1 of 4 (pick at random). Momentary max -15.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.71 dBTP, sample peak -4.72 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.46 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5541,9 +5541,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.49,
+   "loudness_lufs": -21.5,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_machine_failure_02.wav",
-   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 2 of 4 (pick at random). Momentary max -15.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.13 dBTP, sample peak -4.15 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 2 of 4 (pick at random). Momentary max -15.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -4.13 dBTP, sample peak -4.15 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.49 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5563,9 +5563,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.46,
+   "loudness_lufs": -21.47,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_machine_failure_03.wav",
-   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 3 of 4 (pick at random). Momentary max -15.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.83 dBTP, sample peak -2.83 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 3 of 4 (pick at random). Momentary max -15.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.83 dBTP, sample peak -2.83 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.46 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5585,9 +5585,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.48,
+   "loudness_lufs": -21.49,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_machine_failure_04.wav",
-   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 4 of 4 (pick at random). Momentary max -15.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.8 dBTP, sample peak -2.81 dBFS. Master 48 kHz 24-bit WAV (box only).",
+   "notes": "Motor wind-down, gear whine, grinding, final clunk. Variation 4 of 4 (pick at random). Momentary max -15.97 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -2.8 dBTP, sample peak -2.81 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.48 LUFS integrated, which is the value the family targets use.",
    "sound_id": "component_destroyed"
   },
   {
@@ -5607,9 +5607,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.39,
+   "loudness_lufs": -22.4,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_metal_stress_01.wav",
-   "notes": "Stick-slip creak through metal resonances, low groan. Variation 1 of 4 (pick at random). Momentary max -17.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.64 dBTP, sample peak -6.66 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Stick-slip creak through metal resonances, low groan. Variation 1 of 4 (pick at random). Momentary max -17.01 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.64 dBTP, sample peak -6.66 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.39 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-METAL_STRESS-02",
@@ -5628,9 +5628,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -18.07,
+   "loudness_lufs": -21.08,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_metal_stress_02.wav",
-   "notes": "Stick-slip creak through metal resonances, low groan. Variation 2 of 4 (pick at random). Momentary max -16.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.26 dBTP, sample peak -6.28 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Stick-slip creak through metal resonances, low groan. Variation 2 of 4 (pick at random). Momentary max -16.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.26 dBTP, sample peak -6.28 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -18.07 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-METAL_STRESS-03",
@@ -5649,9 +5649,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.5,
+   "loudness_lufs": -22.51,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_metal_stress_03.wav",
-   "notes": "Stick-slip creak through metal resonances, low groan. Variation 3 of 4 (pick at random). Momentary max -17.0 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.8 dBTP, sample peak -6.8 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Stick-slip creak through metal resonances, low groan. Variation 3 of 4 (pick at random). Momentary max -17.0 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -6.8 dBTP, sample peak -6.8 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.5 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-METAL_STRESS-04",
@@ -5670,9 +5670,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -19.75,
+   "loudness_lufs": -22.76,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_metal_stress_04.wav",
-   "notes": "Stick-slip creak through metal resonances, low groan. Variation 4 of 4 (pick at random). Momentary max -16.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -8.1 dBTP, sample peak -8.11 dBFS. Master 48 kHz 24-bit WAV (box only)."
+   "notes": "Stick-slip creak through metal resonances, low groan. Variation 4 of 4 (pick at random). Momentary max -16.98 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -8.1 dBTP, sample peak -8.11 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.75 LUFS integrated, which is the value the family targets use."
   },
   {
    "id": "SHR-SFX-SECONDARY_BLAST-01",

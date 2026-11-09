@@ -89,7 +89,9 @@ def sfx_entries():
                  purpose=d['use'], source=SOURCE_SFX.format(g=d['generator'], d=TODAY), rights_status=RIGHTS_SFX,
                  approval_status='pending_review', used_by=used, chapter=d['manifest_chapter'], duration_seconds=d['seconds'],
                  loop=bool(d.get('loop')), bus=d['bus'], sample_rate=d['sample_rate'], channels=d['channels'],
-                 loudness_lufs=d['lufs_i'], master_path=d['master'], notes=' '.join(notes))
+                 loudness_lufs=(round(d['lufs_i'] - 3.01, 2) if d['channels'] == 1 else d['lufs_i']), master_path=d['master'], notes=' '.join(notes))
+        if d['channels'] == 1:
+            e['notes'] += f" loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures {d['lufs_i']} LUFS integrated, which is the value the family targets use."
         if d.get('sound_id'):
             e['sound_id'] = d['sound_id']
         if amb:
