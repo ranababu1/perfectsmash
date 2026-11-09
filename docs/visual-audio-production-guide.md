@@ -278,3 +278,44 @@ These are art-direction references, not final production sprites or approved in-
 - [ ] Chapter intro/outro scripts locked.
 - [ ] Subtitle safe area and skip UI checked on physical Android devices.
 - [ ] All source prompts, outputs and licences entered in asset manifest.
+
+
+---
+
+# Owner-approved visual direction update: angled tactical destruction (2026-11-09)
+
+This update supersedes visual guidance that assumes a slingshot, a single ball-like projectile as the player's only weapon, or generic block towers as the primary target identity.
+
+## 1. Overall gameplay composition
+
+The gameplay identity is an angled 2.5D / three-quarter tactical destruction game. Use a consistent camera angle and readable front/side faces, layered industrial structures, restrained perspective, clear ground plane and depth cues. The first prototype retains 2D physics, so artwork and composition must not imply unsupported depth-axis collision.
+
+The visible operative stands at a clear firing position. Keep the character anonymous, with a concealed face and a distinctive silhouette. The operative should read clearly at phone scale. Chapter-specific suit changes should be subtle and reusable.
+
+## 2. Weapon visual family
+
+The arsenal contains multiple distinct weapon silhouettes and projectile/effect families. The initial prototype needs only:
+- Kinetic Accelerator: compact electromagnetic launcher, engineered metal, restrained cyan energy detail, direct kinetic projectile.
+- Breach Charge: clearly distinguishable limited-use area-effect weapon/projectile, with readable safety/arming cues and restrained blast visuals.
+
+Later proposed designs include a precision penetrator, Pulse Cannon, Disruptor and Temporal Lance. Do not produce final art for all weapons before their mechanics and visual roles are validated. Each weapon needs a recognizable silhouette and distinct muzzle, projectile, impact and HUD treatment without excessive glow.
+
+The existing Temporal Charge artwork may remain a visual reference for the energy language, but it is no longer the only projectile/weapon identity. Do not assume all weapons share the same physics profile.
+
+## 3. Story-specific target environments
+
+- Helix: AI server halls, data cores, autonomous manufacturing, relay towers and control infrastructure.
+- VITA: clean rooms, bioreactors, containment chambers and genetic storage.
+- Nova Grid: transformers, power cells, reactor housings, cooling and distribution infrastructure.
+- Civitas: surveillance masts, sensor arrays, civic control rooms and automated security systems.
+- Meridian: temporal reactors, quantum stabilizers, timeline anchors and convergence machinery.
+
+Objects should have distinct shapes, silhouettes and visual material identities. Build reusable modular object families rather than one-off decorative towers. Keep destructible foreground structures higher contrast than backgrounds.
+
+## 4. Destruction readability
+
+Use restrained material-specific feedback: metal deformation/impact sparks, glass/polymer fracture, electrical discharge, energy containment failure and controlled debris. Avoid effects that hide remaining structural supports, projectile paths or critical objectives. Visual effects must be profiled on mobile devices.
+
+## 5. Multiplayer art is later-phase work
+
+Temporal Frontlines may eventually need a construction grid, component placement/rotation states, defensive modules, institution status, attack report and replay/reconstruction screens. Do not generate or integrate a large Frontlines asset pack before the single-player greybox and component catalogue are validated.
