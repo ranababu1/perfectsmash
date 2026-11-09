@@ -1,0 +1,60 @@
+{
+	"opening_sequence": "opening",
+	"chapters": [
+		{
+			"id": "ch01",
+			"title": "The Machine That Decided",
+			"organization": "Helix Systems",
+			"year": 2089,
+			"first_level": 1,
+			"last_level": 20,
+			"theme": "helix",
+			"intro_sequence": "ch01_intro",
+			"outro_sequence": "ch01_outro"
+		},
+		{
+			"id": "ch02",
+			"title": "The Price of Perfection",
+			"organization": "VITA Genomics",
+			"year": 2092,
+			"first_level": 21,
+			"last_level": 40,
+			"theme": "vita",
+			"intro_sequence": "ch02_intro",
+			"outro_sequence": "ch02_outro"
+		},
+		{
+			"id": "ch03",
+			"title": "The Energy Beneath",
+			"organization": "Nova Grid",
+			"year": 2096,
+			"first_level": 41,
+			"last_level": 60,
+			"theme": "nova_grid",
+			"intro_sequence": "ch03_intro",
+			"outro_sequence": "ch03_outro"
+		},
+		{
+			"id": "ch04",
+			"title": "The Quiet Cage",
+			"organization": "Civitas",
+			"year": 2100,
+			"first_level": 61,
+			"last_level": 80,
+			"theme": "civitas",
+			"intro_sequence": "ch04_intro",
+			"outro_sequence": "ch04_outro"
+		},
+		{
+			"id": "ch05",
+			"title": "The Convergence",
+			"organization": "Meridian",
+			"year": 2104,
+			"first_level": 81,
+			"last_level": 100,
+			"theme": "meridian",
+			"intro_sequence": "ch05_intro",
+			"outro_sequence": "finale"
+		}
+	]
+}
