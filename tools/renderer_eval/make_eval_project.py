@@ -86,6 +86,8 @@ def main() -> int:
     parser.add_argument("--variant", choices=sorted(VARIANTS), required=True)
     parser.add_argument("--out", required=True, help="output folder (must not be inside the repository)")
     parser.add_argument("--soak-minutes", type=float, default=0.0)
+    parser.add_argument("--main", default="res://tools/renderer_eval/benchmark.tscn",
+                        help="main scene of the isolated copy (e.g. res://tools/regression/score_replay.tscn)")
     args = parser.parse_args()
 
     out = Path(args.out).resolve()
@@ -107,7 +109,7 @@ def main() -> int:
     method, feature = VARIANTS[args.variant]
     project = (out / "project.godot").read_text(encoding="utf-8")
     project = set_setting(project, "application", "config/name", f'"Temporal Eval ({args.variant})"')
-    project = set_setting(project, "application", "run/main_scene", '"res://tools/renderer_eval/benchmark.tscn"')
+    project = set_setting(project, "application", "run/main_scene", f'"{args.main}"')
     project = set_setting(project, "application", "config/custom_user_dir_name", f'"temporal_renderer_eval_{args.variant}"')
     project = set_setting(project, "application", "config/features", f'PackedStringArray("4.7", "{feature}")')
     project = set_setting(project, "rendering", "renderer/rendering_method", f'"{method}"')

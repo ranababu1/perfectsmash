@@ -13,6 +13,15 @@ All meaningful changes, newest first.
 - `f264d81` 100-level coverage matrix (`generated_assets/docs/coverage_matrix.json` and `.md`), generated from the level design spec and the merged manifest.
 - No gameplay code, scenes, data or shipped `assets/` files changed. `assets/audio/music/gameplay_bed.ogg` keeps its unverified rights status.
 
+## 2026-11-09 — Batch 5 pre-work review (findings; rule changes pending approval)
+
+- `33dd17f` Accuracy tests: multi-component blast, chain reaction, shot through a destroyed component, empty detonation, two shots.
+- `8225262` `tools/regression/score_replay.tscn` (scripted, input-free score replay; also runnable on Android via `make_eval_project.py --main`), a golden scoring breakdown test and a physics replay consistency test. Windows vs Android emulator: identical points, structural damage 0.4516 vs 0.4519, +1 physics frame.
+- `1f1a636` Opt-in `blast_occlusion` and `load_aware_push` prototypes (default off) + 6 tests; `tools/regression/tactics_probe.gd` (Breach/Kinetic trajectory sweeps per design variant).
+- `1f417b5` `tools/economy/simulate_research_data.py`.
+- `docs/batch5-review.md`: findings and proposals for record semantics (save v4), occlusion, Helix protection, pricing and audio integration.
+- Results: headless 167 passed / 0 failed / 1 skipped.
+
 ## 2026-11-09 — Batch 4: Mission Points, Research Data, upgrades, save v3
 
 - `d6e5071` `data/scoring.json` + `MissionScoring`: Mission Points and Research Data relative to each mission's recommended shots and target time; time weighted lightly with a 30% floor; accuracy from shots that dealt damage; failure keeps destruction points only. Per-mission `rewards` block; `MissionEngine.effective_shots`. New suite `test_scoring` (8).

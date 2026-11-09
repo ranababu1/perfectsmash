@@ -174,6 +174,19 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Batch 5 pre-work review (2026-11-09, `33dd17f`..`1f417b5`) — awaiting owner decisions
+
+Findings and proposals: `docs/batch5-review.md`. No gameplay or progression rule changed yet.
+- **Committed (no rule change):** 5 accuracy tests; golden pure-scoring test; scripted cross-platform score replay (`tools/regression/score_replay.tscn`) plus a repeatability test; opt-in `blast_occlusion` and `load_aware_push` prototypes in `MissionWorld` (both **off**) with 6 tests; `tools/regression/tactics_probe.gd`; `tools/economy/simulate_research_data.py`; `make_eval_project.py --main`.
+- **Key findings:**
+  - Failed runs can raise `best_points`.
+  - Blasts ignore shielding.
+  - 28% of Breach trajectories one-shot the core, via collapse rather than direct damage.
+  - The Kinetic Accelerator has no useful target from the operative position.
+  - The 3752/3746 score gap came from different inputs; physics also differs slightly across platforms (0.4516 vs 0.4519 damage).
+  - Flat upgrade prices make late weapons trivially affordable.
+- Tests: headless 167 passed / 0 failed / 1 skipped.
+
 ## Batch 4 — mission scoring and progression (implemented 2026-11-09, `d6e5071`..`c469756`)
 
 | Part | Files | Notes |
