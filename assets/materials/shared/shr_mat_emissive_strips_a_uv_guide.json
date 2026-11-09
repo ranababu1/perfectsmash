@@ -1,0 +1,62 @@
+{
+ "id": "SHR-MAT-EMISSIVE_STRIPS-A",
+ "uv_origin": "top-left (glTF and Godot: v=0 is the image top)",
+ "strips": [
+  {
+   "name": "helix_cyan",
+   "colour": "#5fd4e8",
+   "v_top": 0.0,
+   "v_bottom": 0.125,
+   "segmented": false
+  },
+  {
+   "name": "vita_green",
+   "colour": "#7fd8a0",
+   "v_top": 0.125,
+   "v_bottom": 0.25,
+   "segmented": true
+  },
+  {
+   "name": "nova_amber",
+   "colour": "#ffae42",
+   "v_top": 0.25,
+   "v_bottom": 0.375,
+   "segmented": false
+  },
+  {
+   "name": "nova_blue",
+   "colour": "#4aa8ff",
+   "v_top": 0.375,
+   "v_bottom": 0.5,
+   "segmented": true
+  },
+  {
+   "name": "civitas_cold_blue",
+   "colour": "#9fd0ff",
+   "v_top": 0.5,
+   "v_bottom": 0.625,
+   "segmented": false
+  },
+  {
+   "name": "civitas_security_red",
+   "colour": "#ff3b4e",
+   "v_top": 0.625,
+   "v_bottom": 0.75,
+   "segmented": true
+  },
+  {
+   "name": "meridian_violet",
+   "colour": "#8f7cff",
+   "v_top": 0.75,
+   "v_bottom": 0.875,
+   "segmented": false
+  },
+  {
+   "name": "neutral_white",
+   "colour": "#e8eef5",
+   "v_top": 0.875,
+   "v_bottom": 1.0,
+   "segmented": true
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+1
+00:00:00,200 --> 00:00:06,500
+Civitas is offline. The city is uncertain again. That should be a good thing.
+
+2
+00:00:07,000 --> 00:00:15,700
+But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.
+
+3
+00:00:16,200 --> 00:00:24,100
+The forecast was written before the event happened. It was not predicting the future. It was preparing it.
+
+4
+00:00:24,600 --> 00:00:30,900
+All four programmes point to one location. Meridian. 2104. This is the final intervention.
