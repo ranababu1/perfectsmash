@@ -1,11 +1,11 @@
 extends TestCase
 
-const IDS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "energy_component"]
+const IDS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "ai_core_module", "energy_component"]
 
 
 func _material(overrides: Dictionary = {}) -> Dictionary:
 	var m := {"id": "m", "density": 0.001, "friction": 0.5, "bounce": 0.0, "health": 100,
-		"impact_resistance": 0.2, "blast_resistance": 0.1, "min_damage": 2}
+		"impact_resistance": 0.2, "blast_resistance": 0.1, "min_damage": 2, "blast_transmission": 0.5}
 	m.merge(overrides, true)
 	return m
 
@@ -34,6 +34,41 @@ func test_relative_resistances() -> void:
 	assert_true(c.get_material("energy_component").has_secondary_blast(), "energy components explode")
 	assert_false(steel.has_secondary_blast())
 	assert_near(steel.mass_for(Vector2(10, 20)), 200 * steel.density, 0.0001)
+
+
+func test_blast_transmission_comes_from_data() -> void:
+	var c := MaterialCatalog.load_from_file()
+	var steel := c.get_material("reinforced_steel")
+	var glass := c.get_material("glass_polymer")
+	assert_true(steel.blast_transmission < c.get_material("lightweight_alloy").blast_transmission, "steel shields better than alloy")
+	assert_true(c.get_material("concrete").blast_transmission <= steel.blast_transmission, "concrete shields best")
+	assert_true(glass.blast_transmission > steel.blast_transmission)
+	for id: String in IDS:
+		var t := c.get_material(id).blast_transmission
+		assert_true(t >= MaterialCatalog.MIN_BLAST_TRANSMISSION and t <= 1.0, "%s transmission %.2f in range" % [id, t])
+	var custom := _catalog([_material({"id": "screen", "blast_transmission": 0.3})])
+	assert_near(custom.get_material("screen").blast_transmission, 0.3, 0.0001)
+	var bad := _catalog([_material({"id": "low", "blast_transmission": 0.01}), _material({"id": "high", "blast_transmission": 1.5})])
+	assert_eq(bad.errors.size(), 2, ", ".join(bad.errors))
+	var missing := _material({"id": "none"})
+	missing.erase("blast_transmission")
+	assert_false(_catalog([missing]).is_valid(), "blast_transmission is required")
+
+
+func test_structural_resistance_defaults_to_impact_and_can_differ() -> void:
+	var c := MaterialCatalog.load_from_file()
+	var steel := c.get_material("reinforced_steel")
+	assert_near(steel.structural_resistance, steel.impact_resistance, 0.0001, "defaults to impact resistance")
+	var core := c.get_material("ai_core_module")
+	var electronics := c.get_material("electronic_module")
+	assert_near(core.impact_resistance, electronics.impact_resistance, 0.0001, "the core is as soft to weapon fire as other electronics")
+	assert_near(core.blast_resistance, electronics.blast_resistance, 0.0001)
+	assert_true(core.structural_resistance > electronics.structural_resistance, "but its housing survives falls better")
+	assert_near(DamageRules.resistance_for(core, DamageRules.TYPE_STRUCTURAL), core.structural_resistance, 0.0001)
+	assert_near(DamageRules.resistance_for(core, DamageRules.TYPE_IMPACT), core.impact_resistance, 0.0001)
+	var custom := _catalog([_material({"id": "s", "structural_resistance": 0.5})])
+	assert_near(custom.get_material("s").structural_resistance, 0.5, 0.0001)
+	assert_false(_catalog([_material({"id": "t", "structural_resistance": 0.99})]).is_valid())
 
 
 func test_missing_definition_returns_null() -> void:

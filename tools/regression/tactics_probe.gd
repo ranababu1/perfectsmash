@@ -1,16 +1,17 @@
 extends SceneTree
 ## Design-evaluation probe for the Helix layout. Fires real shots from the operative's muzzle
-## across a sweep of trajectories and reports, per design variant, how many single Breach
-## Charges destroy the AI core, how many kinetic shots each aim angle needs, and what the rack
-## cluster and power-cell tactics do. Evidence for balance decisions; not a pass/fail test.
+## across a sweep of trajectories and reports, per design variant, what a single Breach Charge
+## does to the AI core, how many kinetic shots each aim angle needs (aiming at the core itself
+## once a collapse has exposed it), and what the rack cluster and power-cell tactics do.
+## Variants: "shipped" (the data and rules as they are), "pre_batch5" (the layout and rules
+## before the Batch 5 tuning: no occlusion, mass-only knockback, 140 px wall, core 1.5x on
+## electronic_module). Evidence for balance decisions; not a pass/fail test.
 ##
 ##   godot_console --headless --fixed-fps 60 -s tools/regression/tactics_probe.gd [-- --variants=a,b]
 
 const MISSION := "res://data/missions/helix_01.json"
-const HOOD := {"id": "core_hood", "kind": "core_shield", "material": "reinforced_steel",
-	"position": Vector2(885, 360), "size": Vector2(76, 12), "rotation": 0.0, "health_scale": 1.0,
-	"critical_asset": false, "supports": ["aura_core"], "min_supports": -1}
-const VARIANTS := ["baseline", "occlusion", "tough_core", "occlusion_hood", "occlusion_loaded", "occlusion_hood_loaded", "proposal", "proposal_hardened"]
+const ProbeAim := preload("res://tools/regression/probe_aim.gd")
+const VARIANTS := ["shipped", "pre_batch5"]
 const BREACH_ANGLES := [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 const BREACH_POWERS := [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 const KINETIC_ANGLES := [-8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -38,53 +39,70 @@ func _evaluate(variant: String) -> void:
 	# Breach sweep: one charge per trajectory.
 	var one_shot := 0
 	var core_hit := 0
+	var core_critical := 0
 	var landings := []
 	for angle: int in BREACH_ANGLES:
 		for power: float in BREACH_POWERS:
 			var sim := _make(variant)
 			sim.engine.select_weapon("breach_charge")
+			var at := [Vector2.ZERO]
+			sim.world.blast_happened.connect(func(c: Vector2, _r: float) -> void:
+				if at[0] == Vector2.ZERO:
+					at[0] = c)
 			sim.world.fire(Vector2.RIGHT.rotated(-deg_to_rad(angle)), power)
 			await _settle(sim, 360)
 			var state: int = sim.engine.component_state("aura_core")
 			if state == DamageableComponent.State.DESTROYED:
 				one_shot += 1
-				landings.append("%d°/%.1f" % [angle, power])
+				landings.append("%d°/%.1f@(%.0f,%.0f)" % [angle, power, at[0].x, at[0].y])
+			elif state == DamageableComponent.State.CRITICAL:
+				core_critical += 1
 			elif state > DamageableComponent.State.INTACT:
 				core_hit += 1
 			_free(sim)
 	var total := BREACH_ANGLES.size() * BREACH_POWERS.size()
-	# Kinetic: repeat the same aim until the core falls (or the cap).
+	# Kinetic: repeat the same aim until the core is exposed (its body released by a collapse),
+	# then aim at the core itself, as a player would, until it is destroyed (or the cap).
 	var kinetic := []
 	var first_hits := []
+	var exposed_count := 0
 	for angle: int in KINETIC_ANGLES:
 		var sim := _make(variant)
 		var hit := [""]
 		sim.engine.component_state_changed.connect(func(id: String, _p: int, _c: int) -> void:
 			if hit[0] == "":
 				hit[0] = id)
-		var damaged_first := [""]
-		sim.world.impact_happened.connect(func(_at: Vector2, _s: float) -> void: pass)
 		var shots := 0
+		var exposed_at := -1
 		for i in KINETIC_MAX_SHOTS:
 			if not sim.engine.is_active():
 				break
 			while not sim.engine.can_fire():
 				await physics_frame
-			sim.world.fire(Vector2.RIGHT.rotated(-deg_to_rad(angle)))
+			var core: ComponentBody = sim.world.body_for("aura_core")
+			if core != null and not core.freeze and exposed_at < 0:
+				exposed_at = shots
+			if exposed_at >= 0 and core != null:
+				sim.world.fire(_finishing_aim(sim, core))
+			else:
+				sim.world.fire(Vector2.RIGHT.rotated(-deg_to_rad(angle)))
 			shots += 1
 			await _frames(70)
 			if shots == 1:
-				first_hits.append("%d°:%s" % [angle, hit[0] if hit[0] != "" else "miss/no-state-change"])
+				first_hits.append("%d°:%s" % [angle, hit[0] if hit[0] != "" else "no-state-change"])
 		await _settle(sim, 360)
-		kinetic.append([angle, shots if sim.engine.component_state("aura_core") == DamageableComponent.State.DESTROYED else -1])
+		if exposed_at >= 0:
+			exposed_count += 1
+		var done: bool = sim.engine.component_state("aura_core") == DamageableComponent.State.DESTROYED
+		kinetic.append([angle, shots if done else -1, exposed_at])
 		_free(sim)
 	var clears := kinetic.filter(func(k: Array) -> bool: return k[1] > 0)
 	var best := clears.map(func(k: Array) -> int: return k[1])
 	best.sort()
-	print("PROBE %s breach: one-shot core kills %d/%d (%.0f%%), core damaged but alive %d; one-shot trajectories: %s" % [
-		variant, one_shot, total, 100.0 * one_shot / total, core_hit, ", ".join(landings.slice(0, 12))])
-	print("PROBE %s kinetic: angles clearing the core within %d shots: %d/%d; fewest shots %s; per angle %s" % [
-		variant, KINETIC_MAX_SHOTS, clears.size(), kinetic.size(), str(best[0]) if not best.is_empty() else "-", str(kinetic)])
+	print("PROBE %s breach: one-shot core kills %d/%d (%.0f%%), core left critical %d, damaged %d; one-shot trajectories: %s" % [
+		variant, one_shot, total, 100.0 * one_shot / total, core_critical, core_hit, ", ".join(landings.slice(0, 12))])
+	print("PROBE %s kinetic: angles clearing the core within %d shots: %d/%d (core exposed by a collapse on %d); fewest shots %s; [angle, shots, exposed after] %s" % [
+		variant, KINETIC_MAX_SHOTS, clears.size(), kinetic.size(), exposed_count, str(best[0]) if not best.is_empty() else "-", str(kinetic)])
 	# Two-step play: a column breach, then kinetic finishing shots at wherever the core is.
 	var two_step := []
 	for spec: Array in [[45, 0.7], [30, 0.9], [25, 1.0]]:
@@ -100,7 +118,7 @@ func _evaluate(variant: String) -> void:
 				break
 			while not sim.engine.can_fire():
 				await physics_frame
-			sim.world.fire(core.global_position - sim.world.muzzle_position())
+			sim.world.fire(_finishing_aim(sim, core))
 			follow += 1
 			await _frames(70)
 		two_step.append("%d°/%.1f: core %s after breach + %d kinetic" % [spec[0], spec[1], _state(sim, "aura_core"), follow])
@@ -113,7 +131,7 @@ func _evaluate(variant: String) -> void:
 	var cell := _make(variant)
 	cell.engine.apply_damage("power_cell", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	await _settle(cell, 300)
-	if variant == "baseline":
+	if variant == "shipped":
 		print("PROBE %s kinetic first shot (first component to change state): %s" % [variant, ", ".join(first_hits)])
 	print("PROBE %s placed: rack-cluster breach -> racks %s/%s, core %s | power-cell chain -> core %s" % [
 		variant, _state(rack, "rack_1"), _state(rack, "rack_2"), _state(rack, "aura_core"), _state(cell, "aura_core")])
@@ -123,27 +141,35 @@ func _evaluate(variant: String) -> void:
 
 func _make(variant: String) -> Dictionary:
 	var def := MissionDefinition.load_from_file(MISSION, _materials, _weapons)
-	for c in def.components:
-		if c.id == "aura_core" and (variant == "tough_core" or variant == "proposal"):
-			c.health_scale = 3.0
-		if c.id == "aura_core" and variant == "proposal_hardened":
-			c.material = "composite"
-			c.health_scale = 2.0
-		if c.id == "blast_wall" and variant.begins_with("proposal"):
-			c.size = Vector2(30, 90)
-			c.position = Vector2(590, 595)
-	if variant.begins_with("occlusion_hood"):
-		def.components.append(HOOD.duplicate(true))
+	if variant == "pre_batch5":
+		for c in def.components:
+			if c.id == "aura_core":
+				c.material = "electronic_module"
+				c.health_scale = 1.5
+			if c.id == "blast_wall":
+				c.size = Vector2(30, 140)
+				c.position = Vector2(590, 540)
+			if c.id == "rack_1" or c.id == "rack_2":
+				c.size = Vector2(40, 100)
+				c.position = Vector2(c.position.x, 560)
 	var engine := MissionEngine.new(def, _materials, _weapons)
 	var viewport := SubViewport.new()
 	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	root.add_child(viewport)
 	var world := MissionWorld.new()
-	world.blast_occlusion = variant.begins_with("occlusion") or variant.begins_with("proposal")
-	world.load_aware_push = variant.ends_with("loaded") or variant.begins_with("proposal")
+	if variant == "pre_batch5":
+		world.blast_occlusion = false
+		world.load_aware_push = false
 	viewport.add_child(world)
 	world.setup(def, engine, _materials)
 	return {"engine": engine, "world": world, "viewport": viewport}
+
+
+## Aim at the core as a player with the arc preview would; straight at it when nothing clears.
+func _finishing_aim(sim: Dictionary, core: ComponentBody) -> Vector2:
+	var plan: Dictionary = ProbeAim.aim(sim.world, core)
+	var direction: Vector2 = plan.direction
+	return direction if direction != Vector2.ZERO else core.global_position - sim.world.muzzle_position()
 
 
 func _settle(sim: Dictionary, max_frames: int) -> void:
