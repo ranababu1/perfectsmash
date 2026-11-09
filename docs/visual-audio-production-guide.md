@@ -230,8 +230,8 @@ License rules:
 - Check whether the asset may be embedded in a game and distributed as part of the game. Do not redistribute a standalone music pack.
 
 ### AI-generated music
-A first original instrumental background track has been requested through the connected music-generation service. The generation task was accepted but remained in progress at the last check. It is not yet a deliverable, approved master or integrated asset. Once complete:
-1. Listen for loop seams, artefacts, sudden transitions and fatigue.
+An original instrumental gameplay background track was generated successfully through the connected music-generation service (task ID: `0456971a021d4760a1e4771f3f3901a9`). A temporary download URL was returned. The track is a first-pass candidate, not yet listened to, approved, loop-tested or integrated. Before shipping:
+1. Download and listen for loop seams, artefacts, sudden transitions and fatigue.
 2. Confirm the generation service's current commercial-use and redistribution terms for the account and generated asset.
 3. Save the terms/evidence with the asset.
 4. Trim and test a seamless loop or implement a cross-fade in Godot.
