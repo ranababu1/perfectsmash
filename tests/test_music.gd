@@ -6,8 +6,11 @@ func _stream() -> AudioStreamWAV:
 	var wav := AudioStreamWAV.new()
 	wav.format = AudioStreamWAV.FORMAT_16_BITS
 	wav.mix_rate = 8000
-	wav.data = PackedByteArray()
-	wav.data.resize(8000 * 2)
+	# Build the samples first: `wav.data.resize()` would only resize a copy (packed arrays are
+	# returned by value), leaving an empty stream that a real audio driver ends at random.
+	var samples := PackedByteArray()
+	samples.resize(8000 * 2)
+	wav.data = samples
 	wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	wav.loop_end = 8000
 	return wav
