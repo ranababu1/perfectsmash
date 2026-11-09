@@ -161,6 +161,16 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Asset integration: Helix slice A (2026-11-10, `fe828ad`..`88e3ce6`)
+
+- Production library on `main` under `assets/` (owner PRs #2/#3); references updated from `generated_assets/` to `assets/` (`af8a523`); validator PASS (1439 entries); Godot import of the whole library without errors; import metadata committed.
+- Slice A integrated (development use only, rights unchanged): 9 Helix component models, 19 environment/prop models, Helix texture sets, and 21 shared texture files the models reference. `AssetLibrary` + `ComponentVisual` (models follow physics bodies, damage-state nodes switch with component states, greybox fallback), set dressing from `data/environments/helix_01.json`, kit ledge for statics, graphite lighting with reflection sky and fog.
+- Builds ship only integrated assets (`tools/assets/export_filter.py`): APK 74.5 MB (245 MB without the filter).
+- Performance (emulator, Compatibility): draw calls ~120 → ~1,800 → ~600 after batching; worst breach frame 66 ms; restarts ~650 ms and 9-10 s first load still to optimise (slice E). Details and screenshots: `docs/asset-integration-report.md`, `docs/images/assets/`.
+- Playable build: `build/temporal1-debug.apk` (local, from `4e2798a`; rebuild with `godot_console --headless --export-debug "Android Debug" build/temporal1-debug.apk` after `python tools/assets/export_filter.py --apply export_presets.cfg`). Runs on the emulator; **no physical device tested**.
+- Tests: headless 193 passed / 0 failed / 1 skipped.
+- Next: slice B (core damage progression, debris sets, damage overlays, VFX), C (HUD/typography/weapon presentation), D (Helix music, SFX, ambience), E (performance, lighting, polish).
+
 ## Batch 5 — approved changes and validation (2026-11-10, `81fefdc`..`503347c`)
 
 Owner-approved: save v4, blast occlusion with material data, load-aware knockback, blast wall 90 px, core health ×3.0, collapse leaves the core critical and a Kinetic shot generally finishes it, economy direction (prices unchanged), audio data architecture. Not approved as final: the 40 px racks (comparison below).

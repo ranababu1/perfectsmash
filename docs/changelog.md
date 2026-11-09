@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Asset integration slice A: Helix structures, environment, materials
+
+- `bc46f53` Merged the owner's asset-library PRs (#2/#3: library moved to `assets/`) with a normal merge; slice A's own copies under `generated_assets/` were dropped first (`a14d7c8`).
+- `af8a523` Library references `generated_assets/` → `assets/` (manifest, fragments, cue sheets, docs, VFX/UI preset scenes, asset tools); binaries untouched. Validator PASS, 1439 entries.
+- `2968737` Godot import metadata for the library (import: no errors).
+- `fe828ad`, `4e2798a` Slice A: `data/integrated_assets.json` from `tools/assets/integration_selection.json` (55 ids + 21 texture dependencies, rights unchanged); `AssetLibrary`, `ComponentVisual`; `data/environments/helix_01.json`; graphite lighting; `tools/assets/export_filter.py` (APK 245 → 74.5 MB); `tools/capture_helix.gd`; `tests/test_assets.gd` (8).
+- `88e3ce6` Performance: MultiMesh batching of repeated set pieces, damage-state shader warm-up, fewer shadow casters (emulator Compatibility: draw calls ~1,800 → ~600, worst breach frame 1,739 → 66 ms).
+- Results: headless 193 passed / 0 failed / 1 skipped; playable debug APK runs on the Android emulator.
+
 ## 2026-11-10 — Batch 5: approved rules, rack comparison, physics fix, renderer validation
 
 - `81fefdc` Save schema v4: `best_points` from successful runs only, `best_attempt_points` for any run, `attempts`/`completions` (migrated records flagged `counts_since_upgrade`, counts not fabricated). Migration and round-trip tests.

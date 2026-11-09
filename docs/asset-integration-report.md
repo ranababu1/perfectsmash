@@ -28,6 +28,17 @@ Development integration of the production asset library into the playable Helix 
 
 **Tests and import.** Godot import of the whole library: no errors (33 s). `tests/test_assets.gd`: every integrated file loads; rights fields present and not marked cleared; best variant per kind; front face inside the physics rectangle for every helix_01 component; state nodes; slot binding; model texture dependencies integrated; the view uses models and the set.
 
+**Renderer and performance impact** (Android emulator x86_64; logs in `docs/benchmarks/2026-11-10-helix-sliceA/`; not representative of phone GPUs):
+
+| Build | Renderer | fps | Draw calls | Video memory | Viewport CPU render | Worst frame, breach scenario | Restart |
+|---|---|---|---|---|---|---|---|
+| greybox `503347c` | Compatibility | 55-60 | ~120 | 35-37 MB | 2-3.7 ms | 38 ms | 32-63 ms |
+| slice A `4e2798a` | Compatibility | 45-53 | ~1,800 | 94-96 MB | 9-13 ms | 1,739 ms (damage-state meshes compiled mid-play) | 630-950 ms |
+| slice A `4e2798a` | Mobile | 48-55 | ~184 | 141-155 MB | ~4 ms | 660 ms | 210-345 ms |
+| slice A + batching `88e3ce6` | Compatibility | 48-55 | ~540-690 | 94-96 MB | 7.4-8.4 ms | **66 ms** | 550-800 ms |
+
+Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrated assets). Open performance work for slice E: keep the set across restarts (instancing ~70 models costs ~650 ms per restart), fewer component surfaces/shadow casters, physical-device numbers.
+
 **Missing dependencies.** Operative and weapon meshes: the library now contains weapon models (`OPR-WPN-*`) but no operative model; both are for slice C. Debris sets, damage overlays and VFX: slice B.
 
 **Rights / release blockers.** All integrated entries are `pending_review`; rights notes say AI-assisted or AI-generated work is not commercially cleared. Commercial release needs the owner's review of each entry. `assets/audio/music/gameplay_bed.ogg` rights remain unverified (existing blocker).
