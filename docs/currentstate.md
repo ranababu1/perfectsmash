@@ -26,7 +26,8 @@ The project is a 2D physics destruction puzzle targeting Android + iOS (Godot 4.
 | Cinematic playback and Story Archive | Planned | Reusable data-driven player, skippable, subtitle/voice/music controls |
 | Chapter-specific environment and object art | Planned | See `visual-audio-production-guide.md` |
 | Temporal Charge reskin | Planned | Art/audio wrapper only; do not change physics tuning |
-| Continuous gameplay music | In production / pending review | AI music task completed; first-pass candidate is available via the generation service. Not yet listened to, approved, loop-tested, license-verified or integrated |
+| Continuous gameplay music | Candidate on disk, not approved | `assets/music/bg.mp3` (owner-supplied 2026-11-09, **untracked, not integrated**). Metadata says "made with suno" (id `142466df-1693-4ac7-b0ca-3972206ef363`), not the Topview task recorded earlier. Commercial rights depend on the Suno plan at generation time: evidence needed. Objective check: 3:18, 48 kHz stereo MP3 ~181 kbps, −14.8 LUFS integrated, LRA 5.1 LU; 0.7 s silence at start, 0.4 s at end (fade in/out), so it is **not seamless as-is**. Needs a trimmed loop or an engine cross-fade, Ogg Vorbis conversion, and a human listening review |
+| Renderer evaluation harness | Implemented (`cd4cf4c`) | `tools/renderer_eval/`; see `docs/renderer-evaluation.md`. Desktop + emulator smoke results only; physical-device data pending |
 | App identity: Temporal: First Jump / `dev.imrn.temporal1` | Implemented (2026-11-09) | Project name, menu title/tagline, plain charcoal boot splash, stable `user://` dir `temporal_first_jump`; local Android + iOS presets. App icon art is still the Perfect Smash design (pending new art) |
 | iOS export | Not started | iOS preset defined locally (bundle ID only); no iOS export templates installed, no macOS/Xcode available |
 | Season 2 | Planned concept | +50 levels, travel further back to 2041 |
@@ -102,7 +103,9 @@ Existing architecture remains as documented below. Proposed story additions are 
 
 ## Next recommended actions
 
-1. Run the Compatibility-vs-Mobile renderer evaluation on representative physical Android and iOS devices; record Vulkan/Metal support, frame pacing, thermal behavior, memory, battery observations and visual compatibility. Obtain approval before changing production renderer or minimum OS/device support.\n2. Produce a Temporal: First Jump app icon (current icon art is still the Perfect Smash ball-and-core design).
+1. Run `tools/renderer_eval` on physical Android devices (matrix in `docs/renderer-evaluation.md` §4) and, on a Mac, on iPhone/iPad. Preliminary desktop/emulator evidence favours keeping Compatibility; Mobile shows first-use pipeline hitches. Obtain approval before changing production renderer or minimum OS/device support.
+1a. Owner: confirm the music's Suno plan/commercial terms and listen-review it; owner: choose the Chapter I level order (`docs/project-audit.md` §3).
+2. Produce a Temporal: First Jump app icon (current icon art is still the Perfect Smash ball-and-core design).
 3. Review the narrative bible and lock the chapter scripts/story beats.
 4. Review the six initial environment concept references and approve the visual language.
 5. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.

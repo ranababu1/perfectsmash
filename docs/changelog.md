@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — M3 renderer evaluation harness and first results (`cd4cf4c`)
+
+- Added `tools/renderer_eval/benchmark.gd` + `benchmark.tscn`: scripted scenarios (menu, L01, L20, synthetic 72-block stress, parallax/particles+shaders/cinematic proxies) recording frame-interval percentiles, viewport CPU/GPU time, draw calls, memory, startup and per-level load time to JSON and `RENDER_EVAL_*` log lines.
+- Added `tools/renderer_eval/make_eval_project.py`: builds an isolated project copy per renderer outside the repo, with its own user dir and package `dev.imrn.temporal1.rendereval`. Production `project.godot` and presets are unchanged.
+- Ran both variants on Windows desktop (OpenGL3 vs Vulkan) and the `Pixel10Pro` emulator (GLES 3.1 vs Vulkan 1.3 Forward Mobile). All scenarios completed. Mobile showed 120–265 ms first-use pipeline hitches; both renderers hitch at the first subtitle draw. Full tables in `docs/renderer-evaluation.md`. Emulator/desktop numbers are smoke evidence only.
+- Recommendation: keep Compatibility in production until physical-device data and real vertical-slice content exist.
+- Main project tests after adding the tool: headless 50 passed / 0 failed / 1 skipped.
+- Owner-supplied `assets/music/bg.mp3` analysed (not integrated, not committed): Suno provenance in its metadata, −14.8 LUFS, 0.7 s / 0.4 s silent head/tail, so not loop-ready. Licence evidence and a listening review are required.
+
 ## 2026-11-09 — M2 application identity: Temporal: First Jump (`86eb01c`)
 
 - `project.godot`: name "Temporal: First Jump", new description, plain charcoal boot splash (Godot logo hidden), custom user dir `temporal_first_jump` so the save path no longer depends on the display name (which contains `:`).

@@ -230,6 +230,8 @@ License rules:
 - Check whether the asset may be embedded in a game and distributed as part of the game. Do not redistribute a standalone music pack.
 
 ### AI-generated music
+
+**Update 2026-11-09:** The owner placed a candidate at `assets/music/bg.mp3`. Its metadata reads "made with suno" (id `142466df-1693-4ac7-b0ca-3972206ef363`, created 2026-11-09T08:24:39Z), so its provenance differs from the Topview task below. Record which service and plan produced the approved track. For Suno, commercial use depends on the subscription tier active when the track was generated: save that evidence with the asset. Technical check: 198.4 s, −14.8 LUFS, silent head 0.7 s / tail 0.4 s, so trim to a seamless loop or cross-fade in engine, and ship as Ogg Vorbis.
 An original instrumental gameplay background track was generated successfully through the connected music-generation service (task ID: `0456971a021d4760a1e4771f3f3901a9`). A temporary download URL was returned. The track is a first-pass candidate, not yet listened to, approved, loop-tested or integrated. Before shipping:
 1. Download and listen for loop seams, artefacts, sudden transitions and fatigue.
 2. Confirm the generation service's current commercial-use and redistribution terms for the account and generated asset.
