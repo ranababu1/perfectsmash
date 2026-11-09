@@ -139,3 +139,62 @@ func test_fire_spends_ammo_from_muzzle_and_settles() -> void:
 	assert_true(world.is_settled(), "settles after the round leaves or lands")
 	assert_eq(world.projectiles.size(), 0)
 	_free()
+
+
+## --- Accuracy: one fired projectile counts as at most one effective shot ---
+
+func test_multi_component_blast_counts_one_effective_shot() -> void:
+	var world := _world()
+	var e := world.engine
+	var damaged := {}
+	e.component_state_changed.connect(func(id: String, _p: int, _c: int) -> void: damaged[id] = true)
+	_breach(world, Vector2(674, 480), Vector2(0, 300))
+	await wait_physics_frames(120)
+	assert_true(damaged.size() >= 2, "the blast damaged several components: %s" % str(damaged.keys()))
+	assert_eq(e.effective_shots, 1)
+	_free()
+
+
+func test_secondary_chain_reaction_adds_no_effective_shots() -> void:
+	var world := _world()
+	var e := world.engine
+	var chain := []
+	e.secondary_blast_requested.connect(func(id: String, _b: Dictionary) -> void: chain.append(id))
+	_breach(world, Vector2(955, 330), Vector2(0, 150))
+	await wait_physics_frames(180)
+	assert_eq(chain, ["power_cell"], "the power cell exploded as a secondary effect")
+	assert_eq(e.effective_shots, 1, "the chain is credited to the single shot that started it")
+	_free()
+
+
+func test_shot_through_destroyed_component_is_not_effective() -> void:
+	var world := _world()
+	var e := world.engine
+	e.destroy_component("relay_dish", "test")
+	await wait_physics_frames(2)
+	# Fly through where the dish was, above the mast, into open space.
+	_kinetic(world, Vector2(1120, 368))
+	await wait_physics_frames(90)
+	assert_eq(e.effective_shots, 0)
+	_free()
+
+
+func test_detonation_that_damages_nothing_is_not_effective() -> void:
+	var world := _world()
+	var e := world.engine
+	_breach(world, Vector2(330, 560), Vector2(0, 200))
+	await wait_physics_frames(60)
+	assert_true(world.projectiles.is_empty(), "the charge detonated on the ground")
+	assert_eq(e.effective_shots, 0)
+	_free()
+
+
+func test_two_damaging_shots_count_twice() -> void:
+	var world := _world()
+	var e := world.engine
+	_kinetic(world, Vector2(803, 530))
+	await wait_physics_frames(45)
+	_kinetic(world, Vector2(1150, 470))
+	await wait_physics_frames(45)
+	assert_eq(e.effective_shots, 2)
+	_free()
