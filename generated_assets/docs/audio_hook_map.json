@@ -1,0 +1,684 @@
+{
+ "generated_from": {
+  "code": "data/audio.json",
+  "manifest_updated": "2026-11-10"
+ },
+ "note": "Proposal for the coding agent. Paste a row's files into data/audio.json only after the owner approves the assets and their licence records.",
+ "sounds": [
+  {
+   "sound_id": "ui_click",
+   "fallback": "click",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_click_01.wav",
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_click_02.wav",
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_click_03.wav",
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_click_04.wav"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_CLICK-01",
+    "GAM-SFX-UI_CLICK-02",
+    "GAM-SFX-UI_CLICK-03",
+    "GAM-SFX-UI_CLICK-04"
+   ],
+   "pending_approval": 4
+  },
+  {
+   "sound_id": "kinetic_fire",
+   "fallback": "launch",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_04.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_05.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t1_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_03.ogg"
+   ],
+   "asset_ids": [
+    "OPR-SFX-KINETIC_FIRE-01",
+    "OPR-SFX-KINETIC_FIRE-02",
+    "OPR-SFX-KINETIC_FIRE-03",
+    "OPR-SFX-KINETIC_FIRE-04",
+    "OPR-SFX-KINETIC_FIRE-05",
+    "OPR-SFX-KINETIC_FIRE_T1-01",
+    "OPR-SFX-KINETIC_FIRE_T1-02",
+    "OPR-SFX-KINETIC_FIRE_T1-03",
+    "OPR-SFX-KINETIC_FIRE_T2-01",
+    "OPR-SFX-KINETIC_FIRE_T2-02",
+    "OPR-SFX-KINETIC_FIRE_T2-03",
+    "OPR-SFX-KINETIC_FIRE_T3-01",
+    "OPR-SFX-KINETIC_FIRE_T3-02",
+    "OPR-SFX-KINETIC_FIRE_T3-03"
+   ],
+   "pending_approval": 14
+  },
+  {
+   "sound_id": "breach_launch",
+   "fallback": "launch",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_launch_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_launch_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_launch_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_launch_04.ogg"
+   ],
+   "asset_ids": [
+    "OPR-SFX-BREACH_LAUNCH-01",
+    "OPR-SFX-BREACH_LAUNCH-02",
+    "OPR-SFX-BREACH_LAUNCH-03",
+    "OPR-SFX-BREACH_LAUNCH-04"
+   ],
+   "pending_approval": 4
+  },
+  {
+   "sound_id": "breach_detonate",
+   "fallback": "shatter",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_04.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_05.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t1_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t2_03.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_breach_explosion_t3_03.ogg"
+   ],
+   "asset_ids": [
+    "OPR-SFX-BREACH_EXPLOSION-01",
+    "OPR-SFX-BREACH_EXPLOSION-02",
+    "OPR-SFX-BREACH_EXPLOSION-03",
+    "OPR-SFX-BREACH_EXPLOSION-04",
+    "OPR-SFX-BREACH_EXPLOSION-05",
+    "OPR-SFX-BREACH_EXPLOSION_T1-01",
+    "OPR-SFX-BREACH_EXPLOSION_T1-02",
+    "OPR-SFX-BREACH_EXPLOSION_T1-03",
+    "OPR-SFX-BREACH_EXPLOSION_T2-01",
+    "OPR-SFX-BREACH_EXPLOSION_T2-02",
+    "OPR-SFX-BREACH_EXPLOSION_T2-03",
+    "OPR-SFX-BREACH_EXPLOSION_T3-01",
+    "OPR-SFX-BREACH_EXPLOSION_T3-02",
+    "OPR-SFX-BREACH_EXPLOSION_T3-03"
+   ],
+   "pending_approval": 14
+  },
+  {
+   "sound_id": "impact_metal",
+   "fallback": "impact",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_metal_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_metal_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_metal_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_metal_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_metal_05.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-IMPACT_METAL-01",
+    "SHR-SFX-IMPACT_METAL-02",
+    "SHR-SFX-IMPACT_METAL-03",
+    "SHR-SFX-IMPACT_METAL-04",
+    "SHR-SFX-IMPACT_METAL-05"
+   ],
+   "pending_approval": 5
+  },
+  {
+   "sound_id": "impact_glass",
+   "fallback": "shatter",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_glass_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_glass_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_glass_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_glass_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_glass_05.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-IMPACT_GLASS-01",
+    "SHR-SFX-IMPACT_GLASS-02",
+    "SHR-SFX-IMPACT_GLASS-03",
+    "SHR-SFX-IMPACT_GLASS-04",
+    "SHR-SFX-IMPACT_GLASS-05"
+   ],
+   "pending_approval": 5
+  },
+  {
+   "sound_id": "impact_electronic",
+   "fallback": "impact",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/shr_sfx_electric_short_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_electric_short_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_electric_short_05.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-ELECTRIC_SHORT-01",
+    "SHR-SFX-ELECTRIC_SHORT-02",
+    "SHR-SFX-ELECTRIC_SHORT-03",
+    "SHR-SFX-ELECTRIC_SHORT-04",
+    "SHR-SFX-ELECTRIC_SHORT-05"
+   ],
+   "pending_approval": 5
+  },
+  {
+   "sound_id": "impact_generic",
+   "fallback": "impact",
+   "status": "stand_in",
+   "stand_in_ids": [
+    "impact_composite",
+    "impact_concrete"
+   ],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_impact_concrete_05.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-IMPACT_COMPOSITE-01",
+    "SHR-SFX-IMPACT_COMPOSITE-02",
+    "SHR-SFX-IMPACT_COMPOSITE-03",
+    "SHR-SFX-IMPACT_COMPOSITE-04",
+    "SHR-SFX-IMPACT_CONCRETE-01",
+    "SHR-SFX-IMPACT_CONCRETE-02",
+    "SHR-SFX-IMPACT_CONCRETE-03",
+    "SHR-SFX-IMPACT_CONCRETE-04",
+    "SHR-SFX-IMPACT_CONCRETE-05"
+   ],
+   "pending_approval": 9
+  },
+  {
+   "sound_id": "component_destroyed",
+   "fallback": "pop",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_energy_discharge_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_01.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_02.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_03.ogg",
+    "res://generated_assets/audio/sfx/shared/shr_sfx_structure_collapse_04.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-ENERGY_DISCHARGE-01",
+    "SHR-SFX-ENERGY_DISCHARGE-02",
+    "SHR-SFX-ENERGY_DISCHARGE-03",
+    "SHR-SFX-ENERGY_DISCHARGE-04",
+    "SHR-SFX-MACHINE_FAILURE-01",
+    "SHR-SFX-MACHINE_FAILURE-02",
+    "SHR-SFX-MACHINE_FAILURE-03",
+    "SHR-SFX-MACHINE_FAILURE-04",
+    "SHR-SFX-STRUCTURE_COLLAPSE-01",
+    "SHR-SFX-STRUCTURE_COLLAPSE-02",
+    "SHR-SFX-STRUCTURE_COLLAPSE-03",
+    "SHR-SFX-STRUCTURE_COLLAPSE-04"
+   ],
+   "pending_approval": 12
+  },
+  {
+   "sound_id": "core_destroyed",
+   "fallback": "shatter",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_01.ogg",
+    "res://generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_02.ogg",
+    "res://generated_assets/audio/sfx/civitas/cvt_sfx_core_destroyed_03.ogg",
+    "res://generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_01.ogg",
+    "res://generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_02.ogg",
+    "res://generated_assets/audio/sfx/helix/hlx_sfx_core_destroyed_03.ogg",
+    "res://generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_01.ogg",
+    "res://generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_02.ogg",
+    "res://generated_assets/audio/sfx/meridian/mrd_sfx_core_destroyed_03.ogg",
+    "res://generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_01.ogg",
+    "res://generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_02.ogg",
+    "res://generated_assets/audio/sfx/nova_grid/nvg_sfx_core_destroyed_03.ogg",
+    "res://generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_01.ogg",
+    "res://generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_02.ogg",
+    "res://generated_assets/audio/sfx/vita/vta_sfx_core_destroyed_03.ogg"
+   ],
+   "asset_ids": [
+    "CVT-SFX-CORE_DESTROYED-01",
+    "CVT-SFX-CORE_DESTROYED-02",
+    "CVT-SFX-CORE_DESTROYED-03",
+    "HLX-SFX-CORE_DESTROYED-01",
+    "HLX-SFX-CORE_DESTROYED-02",
+    "HLX-SFX-CORE_DESTROYED-03",
+    "MRD-SFX-CORE_DESTROYED-01",
+    "MRD-SFX-CORE_DESTROYED-02",
+    "MRD-SFX-CORE_DESTROYED-03",
+    "NVG-SFX-CORE_DESTROYED-01",
+    "NVG-SFX-CORE_DESTROYED-02",
+    "NVG-SFX-CORE_DESTROYED-03",
+    "VTA-SFX-CORE_DESTROYED-01",
+    "VTA-SFX-CORE_DESTROYED-02",
+    "VTA-SFX-CORE_DESTROYED-03"
+   ],
+   "pending_approval": 15,
+   "per_chapter": {
+    "HLX": [
+     "HLX-SFX-CORE_DESTROYED-01",
+     "HLX-SFX-CORE_DESTROYED-02",
+     "HLX-SFX-CORE_DESTROYED-03"
+    ],
+    "VTA": [
+     "VTA-SFX-CORE_DESTROYED-01",
+     "VTA-SFX-CORE_DESTROYED-02",
+     "VTA-SFX-CORE_DESTROYED-03"
+    ],
+    "NVG": [
+     "NVG-SFX-CORE_DESTROYED-01",
+     "NVG-SFX-CORE_DESTROYED-02",
+     "NVG-SFX-CORE_DESTROYED-03"
+    ],
+    "CVT": [
+     "CVT-SFX-CORE_DESTROYED-01",
+     "CVT-SFX-CORE_DESTROYED-02",
+     "CVT-SFX-CORE_DESTROYED-03"
+    ],
+    "MRD": [
+     "MRD-SFX-CORE_DESTROYED-01",
+     "MRD-SFX-CORE_DESTROYED-02",
+     "MRD-SFX-CORE_DESTROYED-03"
+    ]
+   }
+  },
+  {
+   "sound_id": "reload_ready",
+   "fallback": "click",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/opr_sfx_reload_ready_01.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_reload_ready_02.ogg",
+    "res://generated_assets/audio/sfx/shared/opr_sfx_reload_ready_03.ogg"
+   ],
+   "asset_ids": [
+    "OPR-SFX-RELOAD_READY-01",
+    "OPR-SFX-RELOAD_READY-02",
+    "OPR-SFX-RELOAD_READY-03"
+   ],
+   "pending_approval": 3
+  },
+  {
+   "sound_id": "mission_success",
+   "fallback": "win",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_victory_01.ogg"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_VICTORY-01"
+   ],
+   "pending_approval": 1
+  },
+  {
+   "sound_id": "mission_fail",
+   "fallback": "lose",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://generated_assets/audio/sfx/shared/gam_sfx_ui_defeat_01.ogg"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_DEFEAT-01"
+   ],
+   "pending_approval": 1
+  }
+ ],
+ "music": [
+  {
+   "music_cue": "helix_gameplay",
+   "code_file": "res://assets/audio/music/gameplay_bed.ogg",
+   "status": "code_file_only",
+   "files": [],
+   "asset_ids": []
+  },
+  {
+   "music_cue": "menu",
+   "code_file": "",
+   "status": "missing",
+   "files": [],
+   "asset_ids": []
+  },
+  {
+   "music_cue": "cinematic",
+   "code_file": "",
+   "status": "missing",
+   "files": [],
+   "asset_ids": []
+  }
+ ],
+ "music_cues_delivered_not_in_code": [],
+ "ambience_cues_not_in_code": [
+  {
+   "ambience_cue": "civitas_control",
+   "files": [
+    "res://generated_assets/audio/ambience/civitas/cvt_amb_control_01.ogg"
+   ],
+   "asset_ids": [
+    "CVT-AMB-CONTROL-01"
+   ]
+  },
+  {
+   "ambience_cue": "civitas_plaza",
+   "files": [
+    "res://generated_assets/audio/ambience/civitas/cvt_amb_plaza_01.ogg"
+   ],
+   "asset_ids": [
+    "CVT-AMB-PLAZA-01"
+   ]
+  },
+  {
+   "ambience_cue": "civitas_spire",
+   "files": [
+    "res://generated_assets/audio/ambience/civitas/cvt_amb_spire_01.ogg"
+   ],
+   "asset_ids": [
+    "CVT-AMB-SPIRE-01"
+   ]
+  },
+  {
+   "ambience_cue": "civitas_street",
+   "files": [
+    "res://generated_assets/audio/ambience/civitas/cvt_amb_street_01.ogg"
+   ],
+   "asset_ids": [
+    "CVT-AMB-STREET-01"
+   ]
+  },
+  {
+   "ambience_cue": "helix_cooling",
+   "files": [
+    "res://generated_assets/audio/ambience/helix/hlx_amb_cooling_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-AMB-COOLING-01"
+   ]
+  },
+  {
+   "ambience_cue": "helix_core",
+   "files": [
+    "res://generated_assets/audio/ambience/helix/hlx_amb_core_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-AMB-CORE-01"
+   ]
+  },
+  {
+   "ambience_cue": "helix_logistics",
+   "files": [
+    "res://generated_assets/audio/ambience/helix/hlx_amb_logistics_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-AMB-LOGISTICS-01"
+   ]
+  },
+  {
+   "ambience_cue": "helix_server_hall",
+   "files": [
+    "res://generated_assets/audio/ambience/helix/hlx_amb_server_hall_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-AMB-SERVER_HALL-01"
+   ]
+  },
+  {
+   "ambience_cue": "meridian_anchor",
+   "files": [
+    "res://generated_assets/audio/ambience/meridian/mrd_amb_anchor_01.ogg"
+   ],
+   "asset_ids": [
+    "MRD-AMB-ANCHOR-01"
+   ]
+  },
+  {
+   "ambience_cue": "meridian_cavern",
+   "files": [
+    "res://generated_assets/audio/ambience/meridian/mrd_amb_cavern_01.ogg"
+   ],
+   "asset_ids": [
+    "MRD-AMB-CAVERN-01"
+   ]
+  },
+  {
+   "ambience_cue": "meridian_convergence",
+   "files": [
+    "res://generated_assets/audio/ambience/meridian/mrd_amb_convergence_01.ogg"
+   ],
+   "asset_ids": [
+    "MRD-AMB-CONVERGENCE-01"
+   ]
+  },
+  {
+   "ambience_cue": "meridian_excavation",
+   "files": [
+    "res://generated_assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg"
+   ],
+   "asset_ids": [
+    "MRD-AMB-EXCAVATION-01"
+   ]
+  },
+  {
+   "ambience_cue": "nova_grid_cooling",
+   "files": [
+    "res://generated_assets/audio/ambience/nova_grid/nvg_amb_cooling_01.ogg"
+   ],
+   "asset_ids": [
+    "NVG-AMB-COOLING-01"
+   ]
+  },
+  {
+   "ambience_cue": "nova_grid_intake",
+   "files": [
+    "res://generated_assets/audio/ambience/nova_grid/nvg_amb_intake_01.ogg"
+   ],
+   "asset_ids": [
+    "NVG-AMB-INTAKE-01"
+   ]
+  },
+  {
+   "ambience_cue": "nova_grid_reactor",
+   "files": [
+    "res://generated_assets/audio/ambience/nova_grid/nvg_amb_reactor_01.ogg"
+   ],
+   "asset_ids": [
+    "NVG-AMB-REACTOR-01"
+   ]
+  },
+  {
+   "ambience_cue": "nova_grid_transformer",
+   "files": [
+    "res://generated_assets/audio/ambience/nova_grid/nvg_amb_transformer_01.ogg"
+   ],
+   "asset_ids": [
+    "NVG-AMB-TRANSFORMER-01"
+   ]
+  },
+  {
+   "ambience_cue": "vita_archive",
+   "files": [
+    "res://generated_assets/audio/ambience/vita/vta_amb_archive_01.ogg"
+   ],
+   "asset_ids": [
+    "VTA-AMB-ARCHIVE-01"
+   ]
+  },
+  {
+   "ambience_cue": "vita_bioreactor",
+   "files": [
+    "res://generated_assets/audio/ambience/vita/vta_amb_bioreactor_01.ogg"
+   ],
+   "asset_ids": [
+    "VTA-AMB-BIOREACTOR-01"
+   ]
+  },
+  {
+   "ambience_cue": "vita_cleanroom",
+   "files": [
+    "res://generated_assets/audio/ambience/vita/vta_amb_cleanroom_01.ogg"
+   ],
+   "asset_ids": [
+    "VTA-AMB-CLEANROOM-01"
+   ]
+  },
+  {
+   "ambience_cue": "vita_growth",
+   "files": [
+    "res://generated_assets/audio/ambience/vita/vta_amb_growth_01.ogg"
+   ],
+   "asset_ids": [
+    "VTA-AMB-GROWTH-01"
+   ]
+  }
+ ],
+ "sound_ids_delivered_not_in_code": {
+  "alarm": [
+   "SHR-SFX-ALARM_KLAXON-01",
+   "SHR-SFX-ALARM_PULSE-01",
+   "SHR-SFX-ALARM_SIREN-01"
+  ],
+  "impact_composite": [
+   "SHR-SFX-IMPACT_COMPOSITE-01",
+   "SHR-SFX-IMPACT_COMPOSITE-02",
+   "SHR-SFX-IMPACT_COMPOSITE-03",
+   "SHR-SFX-IMPACT_COMPOSITE-04"
+  ],
+  "impact_concrete": [
+   "SHR-SFX-IMPACT_CONCRETE-01",
+   "SHR-SFX-IMPACT_CONCRETE-02",
+   "SHR-SFX-IMPACT_CONCRETE-03",
+   "SHR-SFX-IMPACT_CONCRETE-04",
+   "SHR-SFX-IMPACT_CONCRETE-05"
+  ],
+  "objective_complete": [
+   "GAM-SFX-UI_OBJECTIVE_COMPLETE-01",
+   "GAM-SFX-UI_OBJECTIVE_COMPLETE-02"
+  ],
+  "secondary_blast": [
+   "SHR-SFX-SECONDARY_BLAST-01",
+   "SHR-SFX-SECONDARY_BLAST-02",
+   "SHR-SFX-SECONDARY_BLAST-03",
+   "SHR-SFX-SECONDARY_BLAST-04"
+  ],
+  "ui_back": [
+   "GAM-SFX-UI_BACK-01",
+   "GAM-SFX-UI_BACK-02",
+   "GAM-SFX-UI_BACK-03"
+  ],
+  "ui_confirm": [
+   "GAM-SFX-UI_CONFIRM-01",
+   "GAM-SFX-UI_CONFIRM-02",
+   "GAM-SFX-UI_CONFIRM-03"
+  ],
+  "weapon_switch": [
+   "OPR-SFX-WEAPON_SWITCH-01",
+   "OPR-SFX-WEAPON_SWITCH-02",
+   "OPR-SFX-WEAPON_SWITCH-03"
+  ]
+ },
+ "proposed_impact_by_material": {
+  "composite": "impact_composite",
+  "concrete": "impact_concrete"
+ },
+ "audio_entries_without_hook_id": [
+  "GAM-SFX-UI_ACHIEVEMENT-01",
+  "GAM-SFX-UI_ERROR-01",
+  "GAM-SFX-UI_ERROR-02",
+  "GAM-SFX-UI_ERROR-03",
+  "GAM-SFX-UI_UNLOCK-01",
+  "GAM-SFX-UI_UPGRADE_T1-01",
+  "GAM-SFX-UI_UPGRADE_T2-01",
+  "GAM-SFX-UI_UPGRADE_T3-01",
+  "MUSIC-GAMEPLAY-BED",
+  "OPR-SFX-BREACH_ARM-01",
+  "OPR-SFX-BREACH_ARM-02",
+  "OPR-SFX-BREACH_ARM-03",
+  "OPR-SFX-BREACH_PREP-01",
+  "OPR-SFX-BREACH_PREP-02",
+  "OPR-SFX-BREACH_PREP-03",
+  "OPR-SFX-BREACH_SHOCKWAVE-01",
+  "OPR-SFX-BREACH_SHOCKWAVE-02",
+  "OPR-SFX-BREACH_SHOCKWAVE-03",
+  "OPR-SFX-EQUIPMENT_RATTLE-01",
+  "OPR-SFX-EQUIPMENT_RATTLE-02",
+  "OPR-SFX-EQUIPMENT_RATTLE-03",
+  "OPR-SFX-EQUIPMENT_RATTLE-04",
+  "OPR-SFX-KINETIC_CHARGE-01",
+  "OPR-SFX-KINETIC_CHARGE-02",
+  "OPR-SFX-KINETIC_CHARGE-03",
+  "OPR-SFX-KINETIC_IMPACT-01",
+  "OPR-SFX-KINETIC_IMPACT-02",
+  "OPR-SFX-KINETIC_IMPACT-03",
+  "OPR-SFX-KINETIC_IMPACT-04",
+  "OPR-SFX-KINETIC_IMPACT-05",
+  "OPR-SFX-KINETIC_TRAVEL_LOOP-01",
+  "OPR-SFX-KINETIC_TRAVEL_LOOP-02",
+  "OPR-SFX-KINETIC_TRAVEL_LOOP-03",
+  "OPR-SFX-SUIT_MOVE-01",
+  "OPR-SFX-SUIT_MOVE-02",
+  "OPR-SFX-SUIT_MOVE-03",
+  "OPR-SFX-SUIT_MOVE-04",
+  "OPR-SFX-SUIT_MOVE-05",
+  "OPR-SFX-SUIT_SERVO-01",
+  "OPR-SFX-SUIT_SERVO-02",
+  "OPR-SFX-SUIT_SERVO-03",
+  "OPR-SFX-SUIT_SERVO-04",
+  "OPR-SFX-SUIT_SERVO-05",
+  "OPR-SFX-WEAPON_HANDLE-01",
+  "OPR-SFX-WEAPON_HANDLE-02",
+  "OPR-SFX-WEAPON_HANDLE-03",
+  "OPR-SFX-WEAPON_HANDLE-04",
+  "SHR-SFX-DEBRIS_HEAVY-01",
+  "SHR-SFX-DEBRIS_HEAVY-02",
+  "SHR-SFX-DEBRIS_HEAVY-03",
+  "SHR-SFX-DEBRIS_HEAVY-04",
+  "SHR-SFX-DEBRIS_HEAVY-05",
+  "SHR-SFX-DEBRIS_SMALL-01",
+  "SHR-SFX-DEBRIS_SMALL-02",
+  "SHR-SFX-DEBRIS_SMALL-03",
+  "SHR-SFX-DEBRIS_SMALL-04",
+  "SHR-SFX-DEBRIS_SMALL-05",
+  "SHR-SFX-METAL_STRESS-01",
+  "SHR-SFX-METAL_STRESS-02",
+  "SHR-SFX-METAL_STRESS-03",
+  "SHR-SFX-METAL_STRESS-04"
+ ]
+}

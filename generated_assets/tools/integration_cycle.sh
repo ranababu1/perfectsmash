@@ -40,4 +40,6 @@ for p in sorted(src.glob("*.png")):
 PY
 echo "== coverage"
 python3 generated_assets/tools/build_coverage_matrix.py; C=$?
-echo "== exit codes: validate=$V godot=$G previews=$P coverage=$C"
+echo "== audio hook map"
+python3 generated_assets/tools/build_audio_hook_map.py; A=$?
+echo "== exit codes: validate=$V godot=$G previews=$P coverage=$C audio_hooks=$A"
