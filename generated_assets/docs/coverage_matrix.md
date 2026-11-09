@@ -1,14 +1,14 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1245 entries on disk, 1125 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1303 entries on disk, 1174 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **20 / 100**; covered with fallbacks: 34; with missing assets: 46.
-- Requirements available: 2886 / 3236 level-requirement slots.
+- Levels fully covered: **21 / 100**; covered with fallbacks: 51; with missing assets: 28.
+- Requirements available: 2970 / 3236 level-requirement slots.
 - Game-wide requirements available: 29 / 36.
 
 | Chapter | Full | Fallback | Missing |
@@ -16,7 +16,7 @@ A level is **full** when every requirement is available, **fallback** when nothi
 | helix | 2 | 16 | 2 |
 | vita | 0 | 18 | 2 |
 | nova_grid | 18 | 0 | 2 |
-| civitas | 0 | 0 | 20 |
+| civitas | 1 | 17 | 2 |
 | meridian | 0 | 0 | 20 |
 
 Layout archetype use across the campaign (variety check): chain_cell 14, arc_over_wall 13, heavy_cap 9, multi_tier 9, linked_bridge 9, ledges 7, glass_screen 6, domino_row 6, twin_towers 6, frame 6, support_bridge 5, topple_line 5, finale 5, mixed_material 5, ring 5, wide_platform 5, glass_roof 4, tall_mast 3, stack_tower 3, chain_towers 3, indirect_shield 3, exposed_target 2, pyramid 1.
@@ -141,26 +141,26 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 61 | A Predictable World | Civitas district gateway | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | 1/2 | missing |
-| 62 | The Profile | Identity processing structure | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 63 | The Forecast | Prediction server array | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 64 | Access Denied | Civic access relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 65 | The Invisible Rule | Policy automation tower | domino_row, arc_over_wall | 3/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 66 | Quiet Signals | Behavioural data exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 67 | The Approved Path | Mobility control structure | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 68 | The Exception | Human review centre | topple_line | 3/3 | n/a | 9/9 | 7/7 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 69 | Public Safety | Emergency prediction node | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 70 | The Mirror | Civic model archive | frame | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 71 | The Model Knows | Forecast compute tower | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 72 | Prewritten | Scenario archive | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 73 | The Shared Signature | Cross-industry relay | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 74 | The Quiet Cage | Central surveillance exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 75 | No Unknowns | Forecast control hall | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 76 | The Future File | Encrypted timeline vault | heavy_cap, topple_line | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 77 | The Missing Year | Timeline indexing structure | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 78 | Source Code | Prediction engine supports | arc_over_wall, ledges | 3/4 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 79 | The Last Forecast | Central Civitas structure | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 80 | The Quiet Cage | Civitas prediction core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 0/3 | ok | -- relay_spire | ok | ok | 0/1 | missing |
+| 61 | A Predictable World | Civitas district gateway | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | 1/2 | missing |
+| 62 | The Profile | Identity processing structure | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
+| 63 | The Forecast | Prediction server array | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
+| 64 | Access Denied | Civic access relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
+| 65 | The Invisible Rule | Policy automation tower | domino_row, arc_over_wall | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok sensor_tower | ok | ok | n/a | fallback |
+| 66 | Quiet Signals | Behavioural data exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok screen_wall | ok | ok | n/a | fallback |
+| 67 | The Approved Path | Mobility control structure | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok screen_wall | ok | ok | n/a | fallback |
+| 68 | The Exception | Human review centre | topple_line | 3/3 | n/a | 9/9 | 7/7 | 3/3 | ok | ok screen_wall | ok | ok | n/a | full |
+| 69 | Public Safety | Emergency prediction node | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok screen_wall | ok | ok | n/a | fallback |
+| 70 | The Mirror | Civic model archive | frame | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok screen_wall | ok | ok | n/a | fallback |
+| 71 | The Model Knows | Forecast compute tower | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok prediction_room | ok | ok | n/a | fallback |
+| 72 | Prewritten | Scenario archive | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok prediction_room | ok | ok | n/a | fallback |
+| 73 | The Shared Signature | Cross-industry relay | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok prediction_room | ok | ok | n/a | fallback |
+| 74 | The Quiet Cage | Central surveillance exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok prediction_room | ok | ok | n/a | fallback |
+| 75 | No Unknowns | Forecast control hall | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok prediction_room | ok | ok | n/a | fallback |
+| 76 | The Future File | Encrypted timeline vault | heavy_cap, topple_line | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok relay_spire | ok | ok | n/a | fallback |
+| 77 | The Missing Year | Timeline indexing structure | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok relay_spire | ok | ok | n/a | fallback |
+| 78 | Source Code | Prediction engine supports | arc_over_wall, ledges | 4/4 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok relay_spire | ok | ok | n/a | fallback |
+| 79 | The Last Forecast | Central Civitas structure | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok relay_spire | ok | ok | n/a | fallback |
+| 80 | The Quiet Cage | Civitas prediction core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 3/3 | ok | ok relay_spire | ok | ok | 0/1 | missing |
 
 ## Chapter 5: Meridian (The Convergence), levels 81-100
 
@@ -191,21 +191,13 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `CVT-ENV-<STRUCTURE>-A` | 20 | 61 |
-| `CVT-ENV-BACK_WALL-A` | 20 | 61 |
-| `CVT-ENV-FLOOR-A` | 20 | 61 |
 | `MRD-ENV-<STRUCTURE>-A` | 20 | 81 |
 | `MRD-ENV-BACK_WALL-A` | 20 | 81 |
 | `MRD-ENV-FLOOR-A` | 20 | 81 |
-| `CVT-PRP-SENSOR_TOWER-A` | 5 | 61 |
-| `CVT-PRP-SCREEN_WALL-A` | 5 | 66 |
-| `CVT-PRP-PREDICTION_ROOM-A` | 5 | 71 |
-| `CVT-PRP-RELAY_SPIRE-A` | 5 | 76 |
 | `MRD-PRP-HYBRID_STACK-A` | 5 | 81 |
 | `MRD-PRP-FOUNDATION_PILLARS-A` | 5 | 86 |
 | `MRD-PRP-TEMPORAL_ANCHOR-A` | 5 | 91 |
 | `MRD-PRP-CONVERGENCE_CHAMBER-A` | 5 | 96 |
-| `CVT-ENV-STATIC_LEDGE-A` | 4 | 63 |
 | `MRD-ENV-STATIC_LEDGE-A` | 4 | 84 |
 | `GAM-CIN-OPENING-01` | 1 | 1 |
 | `HLX-CIN-INTRO-01` | 1 | 1 |
