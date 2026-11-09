@@ -6,7 +6,7 @@
   0.0
  ],
  "zoom": 1.0,
- "exposure": 0.8,
+ "exposure": 0.72,
  "ambient": 0.45,
  "rim": 0.9,
  "fog_begin": 14.0,
@@ -75,7 +75,7 @@
   }
  ],
  "sky_energy": 0.35,
- "asis_exposure": 1.0,
+ "asis_exposure": 0.95,
  "asis_ambient": 0.55,
  "fill": 0.22,
  "items": [

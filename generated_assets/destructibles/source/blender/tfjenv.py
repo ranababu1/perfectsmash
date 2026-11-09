@@ -43,7 +43,8 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
     print("PRE_TRIS", spec["id"], pre)
     ob = P.pack(parts, "mesh_intact", ao=False, budget=budget if pre > budget else None)
     P.bake_ao(ob, dist=spec.get("ao_dist", 0.12), samples=16)
-    scale_value(ob, spec.get("value", 1.0))
+    # layer darkening lives in baseColorFactor only (K.CTX["value"]); scaling COLOR_0 (AO) by it as
+    # well darkened textured pieces twice (fixed 2026-11-10)
     if spec.get("bake"):  # hero assets: one unique baked set (contract 11), no COLOR_0
         import tfjbake
         for c in bpy.data.collections:  # the builder parts overlap the packed mesh: hide them from the bake rays
