@@ -372,3 +372,193 @@ Assumptions:
 - Test clean install and upgrade behavior, including persistence of existing local progress where applicable.
 - A successful Godot export is not proof of a successful Xcode build, signing, TestFlight upload or App Store approval.
 - Obtain explicit owner approval before production release.
+
+
+---
+
+# Owner-approved product revision 5: Tactical destruction, progression and Frontlines
+
+**Approved:** 2026-11-09. This revision supersedes conflicting gameplay, scope and exclusion statements in earlier sections of this document. Earlier text remains in Git history as the prior product baseline.
+
+## 1. Revised product identity
+
+Temporal: First Jump is an **angled 2.5D tactical destruction puzzle** with a visible operative, multiple evolving weapons, story-specific destructible institutions, a hybrid upgrade economy and an optional asynchronous competitive mode.
+
+It is not a slingshot/Angry Birds-style game with a science-fiction reskin.
+
+**Core promise:** Every structure has a weakness. Every weapon has a purpose. Every shot should feel deliberate.
+
+The selected presentation is an angled 2.5D / three-quarter view. The initial technical approach is to retain Godot's existing 2D physics and construct depth through art, layers, perspective-aware composition and controlled transforms. Do not migrate to full 3D physics unless a validated prototype demonstrates that genuine depth-dependent collision is essential and the owner approves the cost and risk.
+
+The operative is visible at the firing position, anonymous, without a fixed face or gender. Character and suit presentation may evolve with chapter technology. Keep the first animation scope small: idle, ready, aim, charge where applicable, fire/recoil, reload/cooldown, and basic mission reactions.
+
+## 2. Revised core gameplay loop
+
+1. Introduce the mission, target institution and objectives.
+2. Let the player inspect the structure and identify critical assets and weaknesses.
+3. Select an unlocked weapon and review ammunition/energy constraints.
+4. Aim using mobile-friendly touch controls and clear trajectory/target feedback.
+5. Fire and resolve the existing physics simulation plus the selected weapon's approved damage behaviour.
+6. Continue attacking where necessary. Complex facilities may require sustained, multi-stage attacks and substantially more than three or four shots.
+7. Evaluate primary and optional objectives, structural destruction, shot efficiency and completion time.
+8. Award regular mission points and bonus Research Data separately.
+9. Offer retry/next mission and relevant weapon upgrade choices.
+
+The recommended shot budget is a performance benchmark, not a universal hard cap. Individual levels may require 15, 25 or more shots where the structure and mission justify it. Do not inflate shot counts artificially: every additional attack must contribute to a readable tactical problem.
+
+## 3. Angled 2.5D and physics boundary
+
+- Use an angled three-quarter visual presentation with readable front/side faces, layered environments, shadows and depth cues.
+- Keep projectile path, target positions, collision and structural relationships understandable at phone scale.
+- Preserve the current 2D physics simulation for the first prototype. Visual depth must not falsely imply collision behaviour the simulation does not support.
+- Create one greybox prototype with an operative, angled facility, distinct object shapes, a critical target and physics destruction before bulk asset production.
+- If the prototype requires true depth-axis movement or overlapping depth-dependent collision, document the limitation and compare alternatives before any physics-engine migration.
+
+## 4. Operative and weapons
+
+The operative is visible, anonymous and equipped with an evolving arsenal. Multiple weapon types are approved. Build a reusable, data-driven weapon framework rather than separate duplicated firing systems.
+
+Proposed chapter unlock progression (specific balance and mechanics require prototype validation):
+
+- **Chapter I / Helix, 2089:** Kinetic Accelerator (direct kinetic impact) and Breach Charge (limited-use area damage).
+- **Chapter II / VITA, 2092:** Precision Accelerator evolution and Penetrator (focused penetration against compatible materials).
+- **Chapter III / Nova Grid, 2096:** Pulse Cannon (energy-focused impact and selected infrastructure interactions).
+- **Chapter IV / Civitas, 2100:** Disruptor (specialized electronic/control-system interactions).
+- **Chapter V / Meridian, 2104:** Temporal Lance (advanced charged impact and temporal-component interactions).
+
+These are design proposals for distinct tactical roles, not permission to implement every effect without validation. Each weapon definition should describe stable ID, display name, unlock, projectile/effect, damage/impact parameters, compatible materials, area/penetration behaviour where relevant, ammunition/energy, cooldown, upgrade compatibility, and visual/audio references.
+
+Start the first prototype with only the Kinetic Accelerator and Breach Charge. Add the remaining weapons incrementally after the framework and level design prove their value. New weapon classes and mechanics are now explicitly approved in principle by the owner, subject to staged implementation, balancing and mobile validation.
+
+## 5. Story-specific destructible institutions
+
+Replace generic block-only presentation with recognizable modular infrastructure while retaining reusable structural physics components.
+
+- **Helix Systems:** AI servers, data cores, control nodes, relay towers, robotic manufacturing and communication infrastructure.
+- **VITA Genomics:** bioreactors, containment chambers, genetic storage, laboratory machinery and research infrastructure.
+- **Nova Grid:** power cells, transformers, reactor housings, cooling systems and distribution infrastructure.
+- **Civitas:** surveillance towers, sensor arrays, control terminals, communication relays and automated enforcement systems.
+- **Meridian:** temporal reactors, quantum stabilizers, timeline anchors, energy containment and convergence machinery.
+
+Introduce a small, reusable material vocabulary such as lightweight alloy, reinforced steel, composite, glass/polymer, concrete, electronic modules and energy components. Actual resistance and damage values must be measured and tuned against the current simulation; visual material labels do not automatically imply realistic physics.
+
+Add critical components and weak points where they create understandable tactical choices. Preserve strong contrast between gameplay objects and low-contrast backgrounds. Destruction effects must not obscure the puzzle.
+
+## 6. Mission scoring and hybrid economy
+
+Use two separate outputs:
+
+**Regular Mission Points** record mission performance and contribute to score/rankings. Award for mission completion, structural damage/destruction, critical asset elimination, primary and optional objectives, and special achievements.
+
+**Bonus Research Data** is the primary upgrade currency. Award for completion, speed relative to a level-specific target time, shots used relative to a recommended benchmark, efficient weapon choice, critical and optional objectives, destruction efficiency and selected multiplayer achievements.
+
+Reward efficiency without making speed the only valuable skill. A player must not be punished simply for taking longer to solve a difficult structure. Use per-level target times and shot benchmarks; do not apply one universal threshold.
+
+Campaign completion must remain possible with reasonable base weapon configurations. Upgrades should make destruction more efficient and open alternate tactics, not erase the need for structural reasoning. Avoid mandatory multiplayer participation or excessive grinding.
+
+Initial upgrade attributes, where compatible with a weapon: impact energy, structural penetration, blast efficiency, energy capacity, targeting assistance and energy efficiency. Start with a base state plus up to three meaningful upgrade levels. Use one primary currency unless a separately justified design is approved.
+
+## 7. Leaderboards
+
+Leaderboards are approved as an online feature after scoring is stable. Planned categories:
+
+- Global.
+- Friends.
+- Chapter.
+- Individual level.
+- Weekly challenge.
+- Multiplayer/Frontlines.
+
+Provide Standard rankings (normal campaign progression and upgrades allowed) and Competitive rankings (standardized loadouts and fixed mission conditions). Store enough context to interpret a result, including player identity/display name, level or challenge ID, score, completion time, shots, applicable loadout/upgrade conditions and submission time.
+
+The backend, not the client, must validate submissions and own authoritative rankings/reward allocation. Do not trust a client-reported score without validation. Protect public display names and account data.
+
+## 8. Asynchronous multiplayer: Temporal Frontlines
+
+**Mode name:** Temporal Frontlines (approved working name).
+
+Frontlines is a persistent, asynchronous, asymmetric build-and-demolish mode. Players do not need to be online simultaneously. Real-time synchronized physics is explicitly out of scope for the initial multiplayer implementation.
+
+### Builder / Defender loop
+
+- Build and expand a persistent institution using a limited construction budget and an approved modular component catalogue.
+- Place and rotate components on a validated grid.
+- Install structural supports, reinforced walls, industrial platforms, server/energy/critical components and approved defensive modules.
+- Protect designated critical assets.
+- Save and publish a versioned institution configuration.
+- Review incoming attack reports, repair damage, redesign and upgrade the institution.
+
+### Attacker / Operative loop
+
+- Discover or receive a matchmaking-selected institution.
+- Attack a stored snapshot of the defender's published institution, not a live session.
+- Select an allowed weapon loadout and attack budget.
+- Identify weaknesses and destroy critical assets efficiently.
+- Receive a validated result and rewards.
+
+### Match and persistence rules
+
+1. Builder submits a structure configuration.
+2. Backend validates component IDs, dimensions, grid positions/rotations, connections, budget, critical assets and defensive configuration.
+3. Backend stores a versioned immutable snapshot for the attack.
+4. Attacker downloads the snapshot and reconstructs it locally using the same approved game rules.
+5. Attack result is submitted and validated against match state, allowed loadout, ammunition and scoring rules.
+6. Defender receives a report/replay reconstruction on next login.
+7. Players may switch roles in a challenge or match format where appropriate.
+
+Do not store a live Godot scene as the authoritative base representation. Store a versioned data definition: component IDs, positions, rotations, material/upgrade levels, structural connections, critical asset IDs, defensive configuration, budget and schema version.
+
+The initial persistent-base mode may use separate attack/defence records and matchmaking. For direct friend challenges, use a two-round role swap and normalized scoring so neither role is inherently advantaged. Do not require simultaneous sessions.
+
+### Fairness and player protection
+
+- Use construction budgets and validated modular placement, not unrestricted free-form drawing.
+- Ensure campaign and essential upgrades do not depend on multiplayer.
+- Limit repeat attacks and introduce repair/recovery windows or shields after attacks.
+- Balance attack and defence through standardized budgets, validated loadouts and normalized outcomes.
+- Provide attack history and a replay/reconstruction report where technically feasible.
+- Protect against duplicate submissions, altered clients, invalid structures, impossible loadouts, reward farming and alternate-account abuse.
+- Backend owns identity, match state, structure versions, result validation, rankings and reward accounting.
+- Do not assume deterministic physics across devices. Define a trusted validation/replay strategy and test it before competitive rewards are significant.
+
+### Staged multiplayer scope
+
+1. Single-player gameplay, scoring and upgrades first.
+2. Online profiles and leaderboards.
+3. Persistent institution construction and validation.
+4. Asynchronous attacks against stored snapshots.
+5. Attack reports, repairs, recovery protection and rewards.
+6. Friends, challenges, leagues and tournaments.
+
+No real-time PvP physics requirement is introduced by this approval.
+
+## 9. Revised delivery order
+
+1. Repository and existing game audit.
+2. Application identity migration and signing safeguards.
+3. Compatibility-vs-Mobile renderer evaluation.
+4. Angled 2.5D greybox prototype with visible operative and existing physics.
+5. Data-driven weapon framework with Kinetic Accelerator and Breach Charge.
+6. Story-specific modular destructible objects and critical assets.
+7. Mission scoring, Research Data and hybrid upgrade economy.
+8. Five-chapter vertical slice (one representative level per chapter).
+9. Full 100-level campaign in validated batches.
+10. Cinematics, art, audio and mobile optimization.
+11. Online profiles and leaderboards.
+12. Temporal Frontlines asynchronous construction/attack mode.
+13. Competitive expansion and release preparation.
+
+Multiplayer is part of the approved product roadmap but must not block the first single-player campaign release. Design data boundaries with future Frontlines compatibility in mind, but do not prematurely add accounts, backend dependencies or networking to the first prototype.
+
+## 10. Revised acceptance principles
+
+- The game reads immediately as an angled 2.5D tactical destruction experience, not a slingshot clone.
+- Operative is visible and weapon choice is meaningful.
+- Complex facilities can require multi-stage, multi-shot attacks.
+- Weapon upgrades improve efficiency without making base campaign content impossible.
+- Story-specific structures, materials and critical components are visually distinct and reusable.
+- Regular points and bonus Research Data have separate, understandable purposes.
+- Speed and shot efficiency are rewarded without overwhelming objective completion or thoughtful play.
+- Leaderboards are fair and validated.
+- Frontlines works asynchronously against persistent versioned institution snapshots.
+- Core mobile performance, stability and campaign quality take priority over online feature breadth.
