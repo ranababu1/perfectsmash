@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="12" viewBox="0 0 64 12" >
+<defs><linearGradient id="lg45" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2A23A" stop-opacity="1"/><stop offset="1" stop-color="#F2A23A" stop-opacity="0.78"/></linearGradient></defs>
+<g id="progress_fill_amber"><rect x="0" y="0" width="64" height="12" fill="url(#lg45)"/><rect x="0" y="0" width="64" height="1" fill="#FFFFFF" fill-opacity="0.35"/></g>
+</svg>
