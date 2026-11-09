@@ -131,3 +131,44 @@ Existing architecture remains as documented below. Proposed story additions are 
 - Narrative direction and 100-level Season 1 plan approved on 2026-11-09.
 
 No gameplay implementation is claimed by this document.
+
+
+## Owner-approved gameplay revision (2026-11-09)
+
+The owner has approved a revised product direction. This is a design decision, not an implementation claim.
+
+**Approved identity:** Angled 2.5D tactical destruction puzzle with a visible anonymous operative, multiple evolving weapons, story-specific destructible institutions, regular mission points, bonus Research Data and hybrid weapon upgrades.
+
+**Physics decision:** Retain the existing Godot 2D physics simulation for the first angled 2.5D prototype. True 3D physics is not approved. Validate the angled presentation with a greybox before bulk asset production.
+
+**Weapon direction:** Multiple distinct tactical weapons are approved in principle. Initial prototype scope is Kinetic Accelerator + Breach Charge. Later proposed unlocks include Penetrator, Pulse Cannon, Disruptor and Temporal Lance. These are planned, not implemented.
+
+**Destruction and scoring:** Complex facilities may require multi-stage attacks and more than 3-4 shots, potentially 15-25+ where justified. Recommended shot budgets are scoring benchmarks rather than universal hard limits. Regular Mission Points and bonus Research Data are separate. Research Data funds player-selected weapon upgrades alongside automatic chapter technology unlocks. Speed and shot efficiency are rewarded relative to level-specific benchmarks, but must not dominate objective completion or thoughtful play.
+
+**Online roadmap:** Leaderboards are approved after scoring stabilizes. Temporal Frontlines is the approved working name for asynchronous asymmetric multiplayer: players build persistent institutions from validated modular grid components; other players attack saved, versioned snapshots while the builder is offline. Real-time synchronized physics is explicitly out of scope for the initial multiplayer design. The backend must validate structures, match state, scores, rankings and rewards. Multiplayer must not block the first single-player campaign release.
+
+## Feature status corrections
+
+| Feature | Status | Notes |
+|---|---|---|
+| Angled 2.5D presentation | Approved / planned | Greybox prototype not yet verified |
+| Visible operative | Approved / planned | Character art and animation not integrated |
+| Multiple weapon framework | Approved / planned | Initial prototype: Kinetic Accelerator + Breach Charge; no implementation claimed |
+| Story-specific destructible institutions | Approved / planned | Reusable component/material design pending prototype |
+| Mission Points + Research Data economy | Approved / planned | Scoring/reward implementation not yet verified |
+| Hybrid weapon upgrades | Approved / planned | Chapter unlocks plus player-selected upgrades; not implemented |
+| Online leaderboards | Approved / planned | Later phase; backend not selected/implemented |
+| Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
+| Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
+
+## Updated next actions
+
+1. Audit existing physics, aiming, projectile, object, level and save architecture against the revised direction.
+2. Build the angled 2.5D Helix greybox with visible operative, two weapons, distinct structures and AI core.
+3. Validate the prototype on representative mobile hardware before bulk art or level conversion.
+4. Design the data-driven weapon and material/component definitions from the verified existing architecture.
+5. Implement Mission Points, Research Data and upgrade economy only after prototype mechanics are stable.
+6. Update level concepts and shot budgets to support multi-stage destruction.
+7. Keep leaderboards and Frontlines in the architecture roadmap, but defer backend implementation until the single-player foundation is stable.
+
+No implementation, test, backend selection or multiplayer validation is claimed by this update.
