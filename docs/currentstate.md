@@ -169,7 +169,14 @@ The owner has approved a revised product direction. This is a design decision, n
 - Performance (emulator, Compatibility): draw calls ~120 → ~1,800 → ~600 after batching; worst breach frame 66 ms; restarts ~650 ms and 9-10 s first load still to optimise (slice E). Details and screenshots: `docs/asset-integration-report.md`, `docs/images/assets/`.
 - Playable build: `build/temporal1-debug.apk` (local, from `4e2798a`; rebuild with `godot_console --headless --export-debug "Android Debug" build/temporal1-debug.apk` after `python tools/assets/export_filter.py --apply export_presets.cfg`). Runs on the emulator; **no physical device tested**.
 - Tests: headless 193 passed / 0 failed / 1 skipped.
-- Next: slice B (core damage progression, debris sets, damage overlays, VFX), C (HUD/typography/weapon presentation), D (Helix music, SFX, ambience), E (performance, lighting, polish).
+- Next: slice B (implemented, unverified; see the section below), C (HUD/typography/weapon presentation), D (Helix music, SFX, ambience), E (performance, lighting, polish).
+
+## Asset integration: Helix slice B (2026-11-10, branch `claude/vigilant-gates-mnfkim`) — implemented, NOT yet verified in Godot
+
+- Debris sets for all nine Helix component kinds replace destroyed components (`DebrisSet`, seeded, visual only); damage overlays (`SHR-DMG-*`) on main surfaces at DAMAGED/CRITICAL; ui-vfx presets for Breach detonations, material impacts, kinetic hit/muzzle, collapse dust, core destruction and the core idle glow (`MissionVfx`, pooled, warmed at load). Procedural effects remain the fallback when an asset is missing.
+- 40 new integrated ids + 10 presets (`data/integrated_assets.json`, 116 entries). Rights unchanged, all `pending_review`.
+- **Verification status:** the Godot test suite, editor import of the new files, Android export and emulator performance were **not run** (no Godot binary in that session). Only a GDScript syntax parse and the Python build tools ran. First steps for the next session: `godot_console --headless --import`, the headless suite (expect 199 tests: 193 + 6), then the `mission_benchmark` breach scenario on the emulator to check the overlay pass and particle presets do not reintroduce hitches or a large draw-call increase.
+- Deferred from slice B: looping sparks from `fx_spark_*` empties at CRITICAL for electronic/energy parts; emission flicker at heavy damage; trails for projectiles (`*_TRAIL-*`); upgrade-tier VFX variants.
 
 ## Batch 5 — approved changes and validation (2026-11-10, `81fefdc`..`503347c`)
 
