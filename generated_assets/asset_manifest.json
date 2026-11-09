@@ -1,6 +1,6 @@
 {
   "project": "Temporal: First Jump",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "branch": "assets",
   "staging_root": "generated_assets/",
   "updated": "2026-11-09",
@@ -11,7 +11,8 @@
     "Owner visual reference pack is external and unverified; see generated_assets/docs/references/README.md.",
     "Style-validation concepts (SV-01..SV-07) are pending_review; native GenerateImage resolution is 1280x720.",
     "AI-generated, not commercially cleared.",
-    "Allowed categories, render_types and approval_statuses are listed in schema and enforced by tools/validate_asset_manifest.py."
+    "Allowed categories, render_types and approval_statuses are listed in schema and enforced by tools/validate_asset_manifest.py.",
+    "Since manifest v2, stream entries live in generated_assets/manifest_parts/<stream>.json and are merged here by tools/validate_asset_manifest.py --merge (entries carry merged_from). Contract: generated_assets/docs/ASSET_CONTRACT.md."
   ],
   "schema": {
     "entry_fields_required": [
@@ -29,7 +30,31 @@
     "entry_fields_optional": [
       "dimensions",
       "duration_seconds",
-      "notes"
+      "notes",
+      "chapter",
+      "pivot",
+      "animation",
+      "loop",
+      "material",
+      "component_kind",
+      "levels",
+      "reference_size_px",
+      "depth_m",
+      "scale_range",
+      "tris",
+      "states",
+      "nine_slice",
+      "blend",
+      "bus",
+      "sample_rate",
+      "channels",
+      "loudness_lufs",
+      "master_path",
+      "loop_offset_seconds",
+      "loop_overlap_seconds",
+      "critical",
+      "requires_alpha",
+      "merged_from"
     ],
     "planned_fields_required": [
       "id",
@@ -72,6 +97,14 @@
     ],
     "planned_statuses": [
       "planned_not_on_disk"
+    ],
+    "chapters": [
+      "helix",
+      "vita",
+      "nova_grid",
+      "civitas",
+      "meridian",
+      "shared"
     ]
   },
   "entries": [
@@ -439,5 +472,6 @@
       "status": "unverified_reference",
       "notes": "AI-generated concept pack; not copied into the repo. See generated_assets/docs/references/README.md."
     }
-  ]
+  ],
+  "fragments": []
 }
