@@ -287,8 +287,31 @@ func _instance(entry: Dictionary) -> Node3D:
 		log_lines.append("LOAD FAIL %s" % entry["path"])
 		return null
 	var n := (res as PackedScene).instantiate() as Node3D
+	_honour_vertex_colours(n)
 	_show_damage_geometry(n, 0)
 	return n
+
+
+## glTF says COLOR_0 multiplies the base colour (Blender shows it that way), but Godot 4.7.2 import
+## enables `vertex_color_use_as_albedo` only on some surfaces. The proposed loader (ASSET_CONTRACT 7)
+## turns it on for every surface that carries vertex colours; the harness does the same.
+func _honour_vertex_colours(n: Node) -> void:
+	var stack: Array[Node] = [n]
+	while not stack.is_empty():
+		var cur: Node = stack.pop_back()
+		stack.append_array(cur.get_children())
+		if not (cur is MeshInstance3D) or (cur as MeshInstance3D).mesh == null:
+			continue
+		var mi := cur as MeshInstance3D
+		for i in mi.mesh.get_surface_count():
+			if (mi.mesh.surface_get_format(i) & Mesh.ARRAY_FORMAT_COLOR) == 0:
+				continue
+			var mat := mi.get_active_material(i) as BaseMaterial3D
+			if mat == null or mat.vertex_color_use_as_albedo:
+				continue
+			var fixed := mat.duplicate() as BaseMaterial3D
+			fixed.vertex_color_use_as_albedo = true
+			mi.set_surface_override_material(i, fixed)
 
 
 func _has_state_geometry(entry: Dictionary) -> bool:

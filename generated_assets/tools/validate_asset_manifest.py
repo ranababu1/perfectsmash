@@ -236,7 +236,15 @@ def check_structure(data: dict, problems: Problems) -> None:
                 problems.error(f"{where}: AI or generated output must not be marked commercially cleared")
         path = item.get("path")
         if path:
-            if path in seen_paths:
+            clip = item.get("animation")
+            if isinstance(clip, str) and clip:
+                # Animation clips inside a character glb share its path (ASSET_CONTRACT 11);
+                # the pair (path, clip) must still be unique.
+                key = f"{path}#{clip}"
+                if key in seen_paths:
+                    problems.error(f"{where}: animation {clip!r} of {path} listed twice (also {seen_paths[key]})")
+                seen_paths[key] = where
+            elif path in seen_paths:
                 problems.error(f"{where}: path listed twice: {path} (also {seen_paths[path]})")
             else:
                 seen_paths[path] = where
@@ -460,6 +468,36 @@ def transform_point(m: list[float], p: tuple[float, float, float]) -> tuple[floa
     )
 
 
+COMPONENT_FORMATS = {5120: ("b", 127.0), 5121: ("B", 255.0), 5122: ("h", 32767.0), 5123: ("H", 65535.0), 5125: ("I", 1.0), 5126: ("f", 1.0)}
+TYPE_SIZES = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4}
+
+
+def accessor_mean(doc: dict, bin_chunk: bytes | None, index: int) -> list[float] | None:
+    """Mean of an accessor's components (normalised integers scaled to 0..1), or None if unreadable."""
+    try:
+        acc = doc["accessors"][index]
+        view = doc["bufferViews"][acc["bufferView"]]
+        if bin_chunk is None or view.get("buffer", 0) != 0:
+            return None
+        fmt, scale = COMPONENT_FORMATS[acc["componentType"]]
+        n = TYPE_SIZES[acc["type"]]
+        item = struct.calcsize("<" + fmt)
+        stride = view.get("byteStride") or item * n
+        base = view.get("byteOffset", 0) + acc.get("byteOffset", 0)
+        count = acc["count"]
+        if count == 0:
+            return None
+        sums = [0.0] * n
+        for i in range(count):
+            vals = struct.unpack_from("<" + fmt * n, bin_chunk, base + i * stride)
+            for k in range(n):
+                sums[k] += vals[k]
+        div = scale if fmt != "f" else 1.0
+        return [x / count / div for x in sums]
+    except (KeyError, IndexError, struct.error, TypeError):
+        return None
+
+
 def gltf_facts(doc: dict, include_names: tuple[str, ...] = ()) -> dict:
     nodes = doc.get("nodes", [])
     meshes = doc.get("meshes", [])
@@ -566,6 +604,11 @@ def check_mesh(item: dict, full: Path, where: str, problems: Problems, facts: di
         problems.error(f"{where}: malformed glTF structure: {exc}")
         return
     facts.update({k: v for k, v in info.items() if k != "node_names"})
+    clips = item.get("animation")
+    clips = [clips] if isinstance(clips, str) else (clips if isinstance(clips, list) else [])
+    for clip in clips:
+        if clip not in info.get("animations", []):
+            problems.error(f"{where}: animation {clip!r} not in {item.get('path')} (has {', '.join(info.get('animations', [])) or 'none'})")
     if info["meshes"] == 0:
         problems.error(f"{where}: glTF contains no meshes")
         return
@@ -578,15 +621,23 @@ def check_mesh(item: dict, full: Path, where: str, problems: Problems, facts: di
         if not MATERIAL_NAME_RE.match(name):
             problems.warn(f"{where}: material slot {name!r} does not follow mat_/trim_/emit_/glass_ naming (ASSET_CONTRACT 7)")
     mats = doc.get("materials", [])
-    vc_slots = sorted({
-        mats[prim["material"]].get("name", "")
-        for mesh in doc.get("meshes", []) for prim in mesh.get("primitives", [])
-        if "COLOR_0" in prim.get("attributes", {}) and isinstance(prim.get("material"), int)
-        and prim["material"] < len(mats) and str(mats[prim["material"]].get("name", "")).startswith(("mat_", "trim_"))
-    })
+    vc_slots = set()
+    for mesh in doc.get("meshes", []):
+        for prim in mesh.get("primitives", []):
+            mi = prim.get("material")
+            if "COLOR_0" not in prim.get("attributes", {}) or not isinstance(mi, int) or mi >= len(mats):
+                continue
+            name = str(mats[mi].get("name", ""))
+            if not name.startswith(("mat_", "trim_")):
+                continue
+            mean = accessor_mean(doc, _binary, prim["attributes"]["COLOR_0"])
+            # Near-white vertex colours change nothing whether Godot applies them or not.
+            if mean is None or min(mean[:3]) < 0.85:
+                vc_slots.add(name)
     if vc_slots:
-        problems.warn(f"{where}: COLOR_0 vertex colours on {', '.join(vc_slots)}; Godot 4.7 import does not reliably use them as albedo, "
-                      "so bake the intended colour into baseColorFactor or an albedo texture (ASSET_CONTRACT 7)")
+        # Not a problem since contract v1.7: the loader honours COLOR_0 as glTF specifies. Recorded
+        # so the coding agent knows which files depend on that loader step.
+        facts["vertex_colour_slots"] = sorted(vc_slots)
     if item.get("tris") is not None and int(item["tris"]) != info["tris"]:
         problems.warn(f"{where}: manifest tris {item['tris']} differ from file {info['tris']}")
 
