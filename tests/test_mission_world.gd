@@ -80,6 +80,7 @@ func test_breach_charge_clears_rack_cluster_without_reaching_core() -> void:
 	_breach(world, Vector2(674, 480), Vector2(0, 300))
 	await wait_physics_frames(120)
 	assert_eq(blasts.size(), 1, "one detonation")
+	assert_eq(e.effective_shots, 1, "a damaging detonation counts as an effective shot")
 	assert_eq(e.component_state("rack_1"), State.DESTROYED, "area damage hits both racks")
 	assert_eq(e.component_state("rack_2"), State.DESTROYED)
 	assert_true(e.component_state("blast_wall") != State.DESTROYED, "reinforced steel survives")

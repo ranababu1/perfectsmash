@@ -95,7 +95,9 @@ func body_for(component_id: String) -> ComponentBody:
 
 
 ## Applies blast damage and knockback to every component whose nearest edge is in range.
-func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_fraction: float, penetration: float = 0.0) -> void:
+## Returns the total damage applied.
+func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_fraction: float, penetration: float = 0.0) -> float:
+	var applied := 0.0
 	blast_happened.emit(center, radius)
 	for id: String in bodies.keys():
 		var body := body_for(id)
@@ -104,7 +106,7 @@ func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_f
 		var distance := DamageRules.distance_to_box(center, body.global_position, body.size / 2.0, body.global_rotation)
 		if distance > radius:
 			continue
-		engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction), DamageRules.TYPE_BLAST, penetration)
+		applied += engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction), DamageRules.TYPE_BLAST, penetration)
 		body = body_for(id)
 		if body == null or body.is_queued_for_deletion():
 			continue
@@ -114,6 +116,7 @@ func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_f
 			body.push(push)
 	_settled = false
 	monitor.reset()
+	return applied
 
 
 ## Hands a component to physics together with everything that rests on it: a frozen piece must
@@ -169,11 +172,14 @@ func _on_projectile_struck(projectile: WeaponProjectile, target: Node, impact_sp
 	var stats := projectile.stats
 	var at := projectile.global_position
 	impact_happened.emit(at, impact_speed)
-	if float(stats.blast_damage) > 0.0:
-		blast(at, float(stats.blast_damage), float(stats.blast_radius), float(stats.blast_impulse), float(stats.blast_edge_falloff), float(stats.penetration))
+	var applied := 0.0
 	if target is ComponentBody and float(stats.impact_damage) > 0.0:
 		var damage := DamageRules.projectile_impact_damage(float(stats.impact_damage), impact_speed, float(stats.launch_speed))
-		engine.apply_damage((target as ComponentBody).component_id, damage, DamageRules.TYPE_IMPACT, float(stats.penetration))
+		applied += engine.apply_damage((target as ComponentBody).component_id, damage, DamageRules.TYPE_IMPACT, float(stats.penetration))
+	if float(stats.blast_damage) > 0.0:
+		applied += blast(at, float(stats.blast_damage), float(stats.blast_radius), float(stats.blast_impulse), float(stats.blast_edge_falloff), float(stats.penetration))
+	if applied > 0.0:
+		engine.record_effective_shot()
 	# Rounds and charges are spent on their first strike.
 	_remove_projectile.call_deferred(projectile)
 
