@@ -45,6 +45,8 @@ var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
 var _time := 0.0
+## Renderer-evaluation switch (tools/renderer_eval): false builds no blast lights at all.
+static var blast_lights_enabled := true
 var _blast_lights: Array[OmniLight3D] = []
 var _next_blast_light := 0
 
@@ -74,6 +76,8 @@ func setup(p_world: MissionWorld) -> void:
 
 
 func _build_blast_lights() -> void:
+	if not blast_lights_enabled:
+		return
 	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
 	for i in BLAST_LIGHTS:
 		var light := OmniLight3D.new()
