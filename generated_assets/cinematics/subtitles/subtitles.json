@@ -236,5 +236,144 @@
     "text": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions."
    }
   ]
+ },
+ "ch04_intro": {
+  "total_seconds": 31.6,
+  "cues": [
+   {
+    "slide_id": "CVT-CIN-INTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 5.7,
+    "text": "People no longer argued with the system. They no longer needed to."
+   },
+   {
+    "slide_id": "CVT-CIN-INTRO-02",
+    "speaker": "narrator",
+    "start": 6.2,
+    "end": 18.1,
+    "text": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller."
+   },
+   {
+    "slide_id": "CVT-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 18.6,
+    "end": 31.3,
+    "text": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future."
+   }
+  ]
+ },
+ "ch04_outro": {
+  "total_seconds": 31.2,
+  "cues": [
+   {
+    "slide_id": "CVT-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 6.5,
+    "text": "Civitas is offline. The city is uncertain again. That should be a good thing."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 7.0,
+    "end": 15.7,
+    "text": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-03",
+    "speaker": "narrator",
+    "start": 16.2,
+    "end": 24.1,
+    "text": "The forecast was written before the event happened. It was not predicting the future. It was preparing it."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-04",
+    "speaker": "control",
+    "start": 24.6,
+    "end": 30.9,
+    "text": "All four programmes point to one location. Meridian. 2104. This is the final intervention."
+   }
+  ]
+ },
+ "ch05_intro": {
+  "total_seconds": 24.8,
+  "cues": [
+   {
+    "slide_id": "MRD-CIN-INTRO-01",
+    "speaker": "control",
+    "start": 0.2,
+    "end": 6.9,
+    "text": "Meridian does not appear in public records. It funded no single invention. It connected them."
+   },
+   {
+    "slide_id": "MRD-CIN-INTRO-02",
+    "speaker": "control",
+    "start": 7.4,
+    "end": 15.7,
+    "text": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines."
+   },
+   {
+    "slide_id": "MRD-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 16.2,
+    "end": 24.5,
+    "text": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence."
+   }
+  ]
+ },
+ "finale": {
+  "total_seconds": 47.2,
+  "cues": [
+   {
+    "slide_id": "GAM-CIN-FINALE-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 6.5,
+    "text": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-02",
+    "speaker": "control",
+    "start": 7.0,
+    "end": 11.7,
+    "text": "Temporal intervention successful. All known extinction pathways have been removed."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-03",
+    "speaker": "control",
+    "start": 12.2,
+    "end": 17.3,
+    "text": "Wait. I'm receiving a new event marker. That is not possible."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-04",
+    "speaker": "narrator",
+    "start": 17.8,
+    "end": 26.1,
+    "text": "You changed the future. You broke every machine they told you to break. And still, the end is coming."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-05",
+    "speaker": "control",
+    "start": 26.6,
+    "end": 34.1,
+    "text": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-06",
+    "speaker": "narrator",
+    "start": 34.6,
+    "end": 40.9,
+    "text": "The first mistake was made long before the world knew it was making one."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-07",
+    "speaker": "control",
+    "start": 41.4,
+    "end": 46.9,
+    "text": "Recalculating temporal coordinates. New destination confirmed. We need to go further back."
+   }
+  ]
  }
 }

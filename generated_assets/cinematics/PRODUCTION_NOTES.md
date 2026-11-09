@@ -29,6 +29,13 @@ The `teaser_2041` sequence is new and not in `data/cinematics.json`. Its four li
 3. Accepted stills were upscaled with Real-ESRGAN x4plus (ONNX, CPU, tiled) and resampled with Lanczos to 1920 x 1080, then saved as WebP quality 90.
 4. Subtitle band check: for each still the script compares edge energy and bright-pixel share in the lower 18% with the rest of the frame. Stills over the threshold get a soft graded darkening across the lower 22% (listed in each manifest entry's notes and in the masters `band_report.json`).
 
+## Delivery status
+
+- Delivered and checked: `opening`, `ch01_intro` to `ch04_outro`, `ch05_intro` and `finale` (11 sequences, 48 stills including the opening and finale end cards). Godot 4.7.2 check (scratch project with a copy of `scripts/`, `godot --headless --script res://check.gd -- cinematic_sequences.json`): 11 sequences, errors 0, missing images 0. Civitas outro, Meridian intro and the finale are new in batch 8.
+- In progress: `teaser_2041` (two of four stills upscaled; the sequence and its `.srt` are written once all four exist), loading art, main menu and transition cards.
+- Subtitle timing fix: cue times are rounded to whole milliseconds first and then split into hours, minutes, seconds and milliseconds, so a start such as 20.9999 s is written `00:00:21,000` (pass 16 report). All `.srt` files were regenerated with it; every timestamp has three millisecond digits and seconds below 60.
+- Band check: four stills with busy lower bands (`CVT-CIN-INTRO-03`, `MRD-CIN-INTRO-03`, `GAM-CIN-FINALE-05`, `-06`) were graded darker; their bands stay textured but dark (band mean 0.06 to 0.09, no bright pixels above the threshold except 1.8% on `FINALE-06`), so white subtitles stay readable. Values are in the masters `band_report.json`.
+
 ## Rights
 
 AI-generated (GenerateImage tool), rights not verified, not commercially cleared. Real-ESRGAN: BSD-3-Clause (xinntao/Real-ESRGAN).

@@ -356,6 +356,212 @@
     "title": "SIGNAL ORIGIN: UNKNOWN",
     "subtitle": "TIMESTAMP: INCONSISTENT"
    }
+  },
+  {
+   "id": "ch04_intro",
+   "title": "A World Without Uncertainty",
+   "theme": "civitas",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "People no longer argued with the system. They no longer needed to.",
+     "motion": "push_in",
+     "caption": "2100  /  CENTRAL GOVERNANCE ZONE",
+     "slide_id": "CVT-CIN-INTRO-01",
+     "image": "res://generated_assets/cinematics/ch04_intro/cvt_cin_intro_01.webp",
+     "duration": 6.0,
+     "vo_line": "People no longer argued with the system. They no longer needed to."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
+     "motion": "pan_right",
+     "slide_id": "CVT-CIN-INTRO-02",
+     "image": "res://generated_assets/cinematics/ch04_intro/cvt_cin_intro_02.webp",
+     "duration": 12.4,
+     "vo_line": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+     "motion": "push_in",
+     "caption": "TARGET: CIVITAS",
+     "slide_id": "CVT-CIN-INTRO-03",
+     "image": "res://generated_assets/cinematics/ch04_intro/cvt_cin_intro_03.webp",
+     "duration": 13.2,
+     "vo_line": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future."
+    }
+   ],
+   "end_card": {
+    "title": "CHAPTER 04",
+    "subtitle": "THE QUIET CAGE"
+   }
+  },
+  {
+   "id": "ch04_outro",
+   "title": "The Model Knows",
+   "theme": "civitas",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+     "motion": "pull_back",
+     "slide_id": "CVT-CIN-OUTRO-01",
+     "image": "res://generated_assets/cinematics/ch04_outro/cvt_cin_outro_01.webp",
+     "duration": 6.8,
+     "vo_line": "Civitas is offline. The city is uncertain again. That should be a good thing."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
+     "motion": "push_in",
+     "slide_id": "CVT-CIN-OUTRO-02",
+     "image": "res://generated_assets/cinematics/ch04_outro/cvt_cin_outro_02.webp",
+     "duration": 9.2,
+     "vo_line": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "The forecast was written before the event happened. It was not predicting the future. It was preparing it.",
+     "motion": "static",
+     "slide_id": "CVT-CIN-OUTRO-03",
+     "image": "res://generated_assets/cinematics/ch04_outro/cvt_cin_outro_03.webp",
+     "duration": 8.4,
+     "vo_line": "The forecast was written before the event happened. It was not predicting the future. It was preparing it."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "All four programmes point to one location. Meridian. 2104. This is the final intervention.",
+     "motion": "static",
+     "caption": "NEXT: 2104  /  MERIDIAN",
+     "slide_id": "CVT-CIN-OUTRO-04",
+     "image": "res://generated_assets/cinematics/ch04_outro/cvt_cin_outro_04.webp",
+     "duration": 6.8,
+     "vo_line": "All four programmes point to one location. Meridian. 2104. This is the final intervention."
+    }
+   ],
+   "end_card": {
+    "title": "FOUR PATHS",
+    "subtitle": "ONE DESTINATION"
+   }
+  },
+  {
+   "id": "ch05_intro",
+   "title": "The Hidden Hand",
+   "theme": "meridian",
+   "slides": [
+    {
+     "speaker": "control",
+     "subtitle": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+     "motion": "push_in",
+     "caption": "2104  /  LOCATION WITHHELD",
+     "slide_id": "MRD-CIN-INTRO-01",
+     "image": "res://generated_assets/cinematics/ch05_intro/mrd_cin_intro_01.webp",
+     "duration": 7.2,
+     "vo_line": "Meridian does not appear in public records. It funded no single invention. It connected them."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+     "motion": "pan_left",
+     "slide_id": "MRD-CIN-INTRO-02",
+     "image": "res://generated_assets/cinematics/ch05_intro/mrd_cin_intro_02.webp",
+     "duration": 8.8,
+     "vo_line": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
+     "motion": "push_in",
+     "caption": "TARGET: MERIDIAN",
+     "slide_id": "MRD-CIN-INTRO-03",
+     "image": "res://generated_assets/cinematics/ch05_intro/mrd_cin_intro_03.webp",
+     "duration": 8.8,
+     "vo_line": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence."
+    }
+   ],
+   "end_card": {
+    "title": "CHAPTER 05",
+    "subtitle": "THE CONVERGENCE"
+   }
+  },
+  {
+   "id": "finale",
+   "title": "The Wrong Future",
+   "theme": "meridian",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising.",
+     "motion": "pull_back",
+     "slide_id": "GAM-CIN-FINALE-01",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_01.webp",
+     "duration": 6.8,
+     "vo_line": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Temporal intervention successful. All known extinction pathways have been removed.",
+     "motion": "static",
+     "caption": "CASCADE RISK: 0.0%",
+     "slide_id": "GAM-CIN-FINALE-02",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_02.webp",
+     "duration": 5.2,
+     "vo_line": "Temporal intervention successful. All known extinction pathways have been removed."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Wait. I'm receiving a new event marker. That is not possible.",
+     "motion": "static",
+     "slide_id": "GAM-CIN-FINALE-03",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_03.webp",
+     "duration": 5.6,
+     "vo_line": "Wait. I'm receiving a new event marker. That is not possible."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+     "motion": "push_in",
+     "slide_id": "GAM-CIN-FINALE-04",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_04.webp",
+     "duration": 8.8,
+     "vo_line": "You changed the future. You broke every machine they told you to break. And still, the end is coming."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history.",
+     "motion": "static",
+     "caption": "ORIGIN EVENT: 2041",
+     "slide_id": "GAM-CIN-FINALE-05",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_05.webp",
+     "duration": 8.0,
+     "vo_line": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "The first mistake was made long before the world knew it was making one.",
+     "motion": "push_in",
+     "slide_id": "GAM-CIN-FINALE-06",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_06.webp",
+     "duration": 6.8,
+     "vo_line": "The first mistake was made long before the world knew it was making one."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Recalculating temporal coordinates. New destination confirmed. We need to go further back.",
+     "motion": "static",
+     "caption": "NEXT COORDINATE: 2041",
+     "slide_id": "GAM-CIN-FINALE-07",
+     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_07.webp",
+     "duration": 6.0,
+     "vo_line": "Recalculating temporal coordinates. New destination confirmed. We need to go further back."
+    }
+   ],
+   "end_card": {
+    "title": "MISSION COMPLETE: THE WRONG FUTURE",
+    "subtitle": "YOU SAVED TOMORROW. NOW FIND OUT WHAT STARTED IT.",
+    "image": "res://generated_assets/cinematics/finale/gam_cin_finale_endcard_01.webp"
+   }
   }
  ]
 }
