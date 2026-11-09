@@ -801,6 +801,84 @@ def check_font(item: dict, full: Path, where: str, problems: Problems, facts: di
         problems.error(f"{where}: no licence file (OFL.txt or LICENSE) beside the font")
 
 
+# ---------------------------------------------------------------- data files (json, srt)
+
+SRT_TIME = re.compile(r"^(\d\d):(\d\d):(\d\d),(\d\d\d) --> (\d\d):(\d\d):(\d\d),(\d\d\d)$")
+
+
+def _srt_seconds(groups: tuple) -> tuple[float, float]:
+    h, m, sec, ms, h2, m2, s2, ms2 = (int(g) for g in groups)
+    return h * 3600 + m * 60 + sec + ms / 1000.0, h2 * 3600 + m2 * 60 + s2 + ms2 / 1000.0
+
+
+def check_srt(item: dict, full: Path, where: str, problems: Problems, facts: dict) -> None:
+    try:
+        text = full.read_text(encoding="utf-8-sig")
+    except UnicodeDecodeError:
+        problems.error(f"{where}: subtitle file is not UTF-8")
+        return
+    blocks = [b for b in re.split(r"\r?\n\s*\r?\n", text.strip()) if b.strip()]
+    last_end = -1.0
+    for n, block in enumerate(blocks, 1):
+        lines = block.splitlines()
+        if len(lines) < 3 or not lines[0].strip().isdigit():
+            problems.error(f"{where}: cue {n} is not index, timing and text")
+            continue
+        if int(lines[0]) != n:
+            problems.warn(f"{where}: cue {n} is numbered {lines[0].strip()}")
+        match = SRT_TIME.match(lines[1].strip())
+        if not match:
+            problems.error(f"{where}: cue {n} timing line {lines[1].strip()!r} is not SRT")
+            continue
+        start, end = _srt_seconds(match.groups())
+        if end <= start:
+            problems.error(f"{where}: cue {n} ends before it starts")
+        if start < last_end:
+            problems.warn(f"{where}: cue {n} overlaps the previous cue")
+        last_end = end
+    facts["srt_cues"] = len(blocks)
+
+
+def check_cinematic_catalogue(item: dict, data: Any, where: str, problems: Problems, facts: dict) -> None:
+    """A CinematicCatalog-compatible copy must keep the game's sequences, slide order and text."""
+    game_path = REPO_ROOT / "data" / "cinematics.json"
+    if not game_path.is_file():
+        return
+    game = {s.get("id"): s for s in json.loads(game_path.read_text()).get("sequences", [])}
+    images = 0
+    for seq in data.get("sequences", []):
+        sid = seq.get("id")
+        ref = game.get(sid)
+        if ref is None:
+            problems.warn(f"{where}: sequence {sid!r} is not in data/cinematics.json")
+            continue
+        slides, ref_slides = seq.get("slides", []), ref.get("slides", [])
+        if len(slides) != len(ref_slides):
+            problems.warn(f"{where}: sequence {sid!r} has {len(slides)} slides, data/cinematics.json has {len(ref_slides)}")
+        for i, (a, b) in enumerate(zip(slides, ref_slides), 1):
+            for key in ("speaker", "subtitle", "caption"):
+                if a.get(key) != b.get(key):
+                    problems.warn(f"{where}: sequence {sid!r} slide {i} {key} differs from data/cinematics.json")
+        for slide in slides + [seq.get("end_card") or {}]:
+            image = slide.get("image") if isinstance(slide, dict) else None
+            if image:
+                images += 1
+                if not (REPO_ROOT / image.removeprefix("res://")).is_file():
+                    problems.error(f"{where}: sequence {sid!r} image {image} does not exist")
+    facts["cinematic_sequences"] = len(data.get("sequences", []))
+    facts["cinematic_images"] = images
+
+
+def check_json(item: dict, full: Path, where: str, problems: Problems, facts: dict) -> None:
+    try:
+        data = json.loads(full.read_text(encoding="utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        problems.error(f"{where}: JSON does not parse ({exc})")
+        return
+    if isinstance(data, dict) and isinstance(data.get("sequences"), list) and item.get("category") == "cinematics":
+        check_cinematic_catalogue(item, data, where, problems, facts)
+
+
 # ---------------------------------------------------------------- deep checks driver
 
 def deep_checks(data: dict, problems: Problems, do_loudness: bool) -> dict:
@@ -827,6 +905,10 @@ def deep_checks(data: dict, problems: Problems, do_loudness: bool) -> dict:
             check_video(item, full, where, problems, facts)
         elif ext in FONT_EXT:
             check_font(item, full, where, problems, facts)
+        elif ext == "json":
+            check_json(item, full, where, problems, facts)
+        elif ext == "srt":
+            check_srt(item, full, where, problems, facts)
         per_entry[item.get("id", f"entry_{index}")] = facts
     return per_entry
 

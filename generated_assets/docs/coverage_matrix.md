@@ -1,19 +1,19 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1351 entries on disk, 1217 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1372 entries on disk, 1232 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **39 / 100**; covered with fallbacks: 51; with missing assets: 10.
-- Requirements available: 3054 / 3236 level-requirement slots.
-- Game-wide requirements available: 35 / 36.
+- Levels fully covered: **39 / 100**; covered with fallbacks: 53; with missing assets: 8.
+- Requirements available: 3057 / 3236 level-requirement slots.
+- Game-wide requirements available: 36 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
-| helix | 2 | 16 | 2 |
+| helix | 2 | 18 | 0 |
 | vita | 0 | 18 | 2 |
 | nova_grid | 18 | 0 | 2 |
 | civitas | 1 | 17 | 2 |
@@ -60,13 +60,13 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | Electrical / machinery SFX | ok | OPR-SFX-SUIT_SERVO-01, OPR-SFX-SUIT_SERVO-02, OPR-SFX-SUIT_SERVO-03 |
 | UI SFX | ok | GAM-SFX-UI_ACHIEVEMENT-01, GAM-SFX-UI_BACK-01, GAM-SFX-UI_BACK-02 |
 | Alarm SFX | ok | SHR-SFX-ALARM_KLAXON-01, SHR-SFX-ALARM_PULSE-01, SHR-SFX-ALARM_SIREN-01 |
-| Opening cinematic | -- |  |
+| Opening cinematic | ok | GAM-CIN-OPENING-01, GAM-CIN-OPENING-02, GAM-CIN-OPENING-03 |
 
 ## Chapter 1: Helix Systems (The Machine That Decided), levels 1-20
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | First Contact | Helix perimeter relay | exposed_target | 1/1 | ok | 3/6 (3 fb) | 7/7 | 3/3 | ok | ok relay_array | ok | ok | 1/3 | missing |
+| 1 | First Contact | Helix perimeter relay | exposed_target | 1/1 | ok | 3/6 (3 fb) | 7/7 | 3/3 | ok | ok relay_array | ok | ok | 3/3 | fallback |
 | 2 | The Welcome System | Automated security gate | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
 | 3 | Traffic of One | Autonomous traffic-control tower | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
 | 4 | Supply Chain | Logistics sorting structure | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
@@ -85,7 +85,7 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | 17 | Last Backup | Cold backup vault | topple_line | 3/3 | n/a | 6/6 | 6/6 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | full |
 | 18 | Cascade | Multi-node operations hall | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | fallback |
 | 19 | Central Logic | AURA central operations structure | domino_row, ledges, chain_cell | 5/5 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | fallback |
-| 20 | The Machine That Decided | Helix central core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 3/3 | ok | ok aura_core_chamber | ok | ok | 0/1 | missing |
+| 20 | The Machine That Decided | Helix central core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 3/3 | ok | ok aura_core_chamber | ok | ok | 1/1 | fallback |
 
 ## Chapter 2: VITA Genomics (The Price of Perfection), levels 21-40
 
@@ -191,9 +191,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `GAM-CIN-OPENING-01` | 1 | 1 |
-| `HLX-CIN-INTRO-01` | 1 | 1 |
-| `HLX-CIN-OUTRO-01` | 1 | 20 |
 | `VTA-CIN-INTRO-01` | 1 | 21 |
 | `VTA-CIN-OUTRO-01` | 1 | 40 |
 | `NVG-CIN-INTRO-01` | 1 | 41 |
