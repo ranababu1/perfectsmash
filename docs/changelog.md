@@ -2,6 +2,16 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Android + iOS mobile rendering architecture approved
+
+- Owner confirmed Android + iOS as target platforms and mobile performance/battery efficiency as the primary priority.
+- Updated `docs/plan.md` to revision 3: Godot 4.7.2 remains the engine; Godot Mobile is the proposed production renderer; Vulkan is the intended Android backend and Metal the intended Apple backend where supported.
+- Added a mandatory Compatibility-vs-Mobile renderer evaluation on representative physical Android and iOS devices before bulk level production. The existing Compatibility renderer remains the known-good baseline until evidence is reviewed.
+- Added iOS export/Xcode/Metal/TestFlight and App Store release requirements. Final iOS build/signing requires macOS with Xcode.
+- Updated `docs/instructions.md` with renderer-change safeguards, physical-device test evidence requirements, Android+iOS validation and clarified push cadence.
+- No renderer setting, export preset, minimum OS version, gameplay code or app identity was changed. Documentation only; no build or tests were run.
+
+
 ## 2026-11-09 — Story-driven 100-level direction and narrative production plan
 
 - Owner approved the direction to turn the existing physics destruction puzzle into a time-travel science-fiction story while preserving the core physics loop.
