@@ -672,6 +672,9 @@ def _zone_material(main, zone, name, value):
     ms, rough = ZONE_FINISH.get(zone, (1.0, None))
     pz.inputs["Metallic"].default_value = pm.inputs["Metallic"].default_value * ms
     pz.inputs["Roughness"].default_value = rough if rough is not None else pm.inputs["Roughness"].default_value
+    if CTX.get("matte"):  # background layers: matte, so the ambient-colour specular does not lift them (no sky in MissionView)
+        pz.inputs["Roughness"].default_value = max(pz.inputs["Roughness"].default_value, CTX["matte"])
+        pz.inputs["Metallic"].default_value *= 0.4
     m["tfj_kind"] = "zone"
     m["tfj_value"] = value
     return m

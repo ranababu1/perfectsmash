@@ -47,3 +47,52 @@ AI-generated plates: rights not verified, not commercially cleared. Procedural o
 ## Godot check
 
 See the section below once renders are complete; nothing is claimed here until the command and its output are recorded.
+
+
+## Environment modules, statics, props and landmarks (3d-kits stream)
+
+These are the modular environment kits per chapter, built in scripted Blender (`destructibles/source/blender/kits/env_*.py`, pipeline `tfjenv.py`, runner `runenv.py`). Each chapter has 21 pieces, with ids from contract section 19:
+
+| Group | Ids |
+|---|---|
+| Floor | `<CH>-ENV-FLOOR_TILE-A` (1 x 1 m), `-FLOOR_TILE-B` (4 x 4 m), `-FLOOR_TRENCH-A` (4 x 4 m with a service trench) |
+| Mid-back walls | `-BACK_WALL-A` (solid), `-BACK_WALL-B` (window), `-LOW_WALL-A`, `-PILLAR-A` |
+| Overhead | `-CATWALK-A`, `-CEILING_TRUSS-A` |
+| Massing | `-MASSING_BLOCK-A`, `-MASSING_TOWER-B` |
+| Statics | `-LEDGE_STATIC-A` (200 x 30 px), `-PLINTH_STATIC-A` (100 x 60 px), depth 1.6 m, centred like components |
+| Near-back props | `<CH>-PRP-CRATE_STACK-A`, `-PIPE_RUN-A`, `-CONSOLE-A`, `-TANK-A` |
+| Band landmarks | Four `<CH>-PRP-<KEY>-A` per chapter (one per five levels, mid-back), at most 3,000 tris |
+
+Far background cards (`-BG-`) are textures from the surfaces stream; they are not in this kit.
+
+### Conventions
+
+- **Origins.**
+  - Floor tiles have their top face at y = 0 and their left edge at x = 0, with depth centred on z = 0, so they tile along +x and in z.
+  - Walls, pillars, props, massing and landmarks have their origin at the bottom centre.
+  - Statics have their origin at the centre of the collision rectangle.
+  - Catwalks and trusses sit at the bottom centre of the piece.
+- **Layer darkening.** Darkening is baked into `baseColorFactor`, giving value relative to gameplay pieces of: floor 0.5, near-back 0.72, mid-back 0.52, landmark 0.62 and statics 1.0. VITA floor, mid-back and landmark pieces get a further 0.72 because the chapter is white. This keeps backgrounds 30-50% below the gameplay band, as section 10 asks.
+- **Materials.** Slots are the same as the destructibles: `mat_<material>_<ch>[_<zone>]`, `trim_<zone>_<ch>`, `emit_<colour>_<ch>` and `glass_<name>_<ch>`. Colour is in the material, with no `COLOR_0`. UV0 is a box projection at 1 UV = 1 m.
+- **Emission.** Emission is restrained: thin strips in the chapter light colour. Landmark cores use white, not red, because red marks critical targets. The Meridian floor inlays are non-emissive rings with one short violet arc. The Nova Grid hazard marking is on the tile corner only, so tiled floors do not read as lane lines.
+- **With the surfaces stream's cards.** The kit walls are 6 m tall, not the greybox's 9 m, so at z -6 under the game camera the near, mid and far cards show above them. Leave wall runs open where a landmark stands (the test frames do), and use `BACK_WALL-B` windows to break up long runs. The massing pieces (10 and 14 m) belong at the frame edges, not in front of a card's focal area.
+- **Budget.** At most 2,000 tris per module and 3,000 per landmark; `tfjenv.py` decimates down to the budget if needed.
+- **Physics.** There is no collision geometry; MissionView keeps its 2D physics.
+
+### Commands
+
+    cd generated_assets/destructibles/source/blender
+    TFJ_SAMPLES=32 blender -b --factory-startup --python runenv.py -- kits.env_kits [ID filters] [--no-render]
+    python3 sheets.py grid ../../../environments/previews/<ch>_environment_sheet.webp "/workspace/tfj-masters/3d-kits/stats_env/<CH>-*.json" "<title>" 6
+
+Godot test frame (a full chapter set at the exact MissionView camera, sun and environment):
+
+    TFJ_LANDMARK=<landmark key, lower case> TFJ_COMPONENTS="<stem>:<h m>:<w m>,..." xvfb-run -a -s "-screen 0 1280x720x24" \
+      godot --path <any project> --rendering-driver opengl3 --script generated_assets/destructibles/source/godot/kit_scene.gd \
+      -- out.png generated_assets <chapter> <code>
+
+The test frames are in `previews/<ch>_godot_test_frame.webp`.
+
+### Rights
+
+This is original procedural work. The scripted Blender code was written by the 3d-kits asset agent (AI-assisted authorship). No third-party meshes or textures are used. Ownership is not legally settled for AI-assisted work, and nothing is marked commercially cleared.

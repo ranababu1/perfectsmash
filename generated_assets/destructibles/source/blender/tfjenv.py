@@ -28,6 +28,7 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
     ch = spec["chapter"]
     K.set_ctx(ch, spec["material"], spec.get("emit"), spec.get("emit2"), spec.get("glass", "clear"))
     K.CTX["value"] = spec.get("value", 1.0)  # layer darkening goes into baseColorFactor
+    K.CTX["matte"] = 0.78 if spec.get("layer") in ("floor", "near", "mid", "landmark") else None
     seed = spec.get("seed", hash(spec["id"]) & 0xffff)
     sid = TB.stem(spec["id"])
     B = K.Builder(sid, seed)

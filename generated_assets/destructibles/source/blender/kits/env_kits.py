@@ -25,7 +25,7 @@ def _spec(ch, typ, name, fn, mat, layer, origin, purpose, **kw):
     e, e2 = EMIT[ch]
     d = dict(id=f"{CODE[ch]}-{typ}-{name}-A" if not name[-2:-1] == "-" else f"{CODE[ch]}-{typ}-{name}",
              chapter=ch, material=mat, category="environments", build=fn, emit=e, emit2=e2, layer=layer,
-             origin=origin, purpose=purpose, kind=name.split("-")[0].lower(), value={"floor": 0.5, "near": 0.72, "mid": 0.52, "static": 1.0, "landmark": 0.62}[layer] * (0.72 if ch == "vita" and layer in ("floor", "mid", "landmark") else 1.0),
+             origin=origin, purpose=purpose, kind=name.split("-")[0].lower(), value={"floor": 0.27, "near": 0.5, "mid": 0.38, "static": 1.0, "landmark": 0.48}[layer] * (0.72 if ch == "vita" and layer in ("floor", "mid", "landmark") else 1.0),
              ao_dist={"floor": 0.15, "near": 0.25, "mid": 0.6, "static": 0.12, "landmark": 0.6}[layer])
     d.update(kw)
     return d
