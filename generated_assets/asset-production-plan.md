@@ -48,6 +48,7 @@ The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environ
 | 2026-11-10 | Integration pass 7 | 3d-kits batch 1 (Helix and shared kits, 140 entries) merged; validator 0 warnings; Godot load 1063 / 1063; coverage 2227 / 3236, 0 / 100 levels complete (Helix gaps: environment kits, landmarks, cinematics) |
 | 2026-11-10 | Integration pass 8 | 3d-kits batch 2 (VITA kit, 17 components) merged; validator 0 warnings; Godot load 1098 / 1098; coverage 2329 / 3236; VITA floor and kit clip to white under game light (fed back to surfaces) |
 | 2026-11-10 | Integration pass 9 | 3d-kits batches 3 to 5 (Nova Grid, Civitas, Meridian) merged; validator 0 warnings; Godot load 1183 / 1183; coverage 2636 / 3236; import retry on segfault added |
+| 2026-11-10 | Integration pass 10 | 3d-kits batch 6 (Helix environment kit, 21 modules) merged; validator 0 warnings; Godot load 1206 / 1206; coverage 2720 / 3236, 2 levels full, 16 fallback |
 
 ## Review status (2026-11-09)
 

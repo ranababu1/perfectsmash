@@ -1,19 +1,19 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1176 entries on disk, 1062 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1199 entries on disk, 1083 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **0 / 100**; covered with fallbacks: 0; with missing assets: 100.
-- Requirements available: 2636 / 3236 level-requirement slots.
+- Levels fully covered: **2 / 100**; covered with fallbacks: 16; with missing assets: 82.
+- Requirements available: 2720 / 3236 level-requirement slots.
 - Game-wide requirements available: 29 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
-| helix | 0 | 0 | 20 |
+| helix | 2 | 16 | 2 |
 | vita | 0 | 0 | 20 |
 | nova_grid | 0 | 0 | 20 |
 | civitas | 0 | 0 | 20 |
@@ -66,26 +66,26 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | First Contact | Helix perimeter relay | exposed_target | 1/1 | ok | 3/6 (3 fb) | 7/7 | 0/3 | ok | -- relay_array | ok | ok | 1/3 | missing |
-| 2 | The Welcome System | Automated security gate | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- relay_array | ok | ok | n/a | missing |
-| 3 | Traffic of One | Autonomous traffic-control tower | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- relay_array | ok | ok | n/a | missing |
-| 4 | Supply Chain | Logistics sorting structure | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- relay_array | ok | ok | n/a | missing |
-| 5 | The Safety Layer | Emergency-response relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- relay_array | ok | ok | n/a | missing |
-| 6 | Cold Storage | Server-cooling array | chain_towers, chain_cell | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- logistics_crane | ok | ok | n/a | missing |
-| 7 | Blind Spot | Surveillance exchange | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- logistics_crane | ok | ok | n/a | missing |
-| 8 | Human Override | Manual control station | domino_row | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- logistics_crane | ok | ok | n/a | missing |
-| 9 | Redundancy | Backup server stacks | topple_line | 3/3 | n/a | 6/6 | 6/6 | 0/3 | ok | -- logistics_crane | ok | ok | n/a | missing |
-| 10 | The Replica | Replication hub | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- logistics_crane | ok | ok | n/a | missing |
-| 11 | Priority One | Resource-allocation centre | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 12 | No Exceptions | Compliance processing facility | pyramid | 2/2 | ok | 3/6 (3 fb) | 7/7 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 13 | The Quiet District | Local control tower | glass_roof | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 14 | Root Access | Core routing structure | indirect_shield | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 15 | The Directive | Directive archive | twin_towers, glass_screen | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 16 | Failsafe | Emergency power structure | ledges | 1/2 | ok | 3/6 (3 fb) | 7/7 | 0/3 | ok | -- aura_core_chamber | ok | ok | n/a | missing |
-| 17 | Last Backup | Cold backup vault | topple_line | 3/3 | n/a | 6/6 | 6/6 | 0/3 | ok | -- aura_core_chamber | ok | ok | n/a | missing |
-| 18 | Cascade | Multi-node operations hall | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- aura_core_chamber | ok | ok | n/a | missing |
-| 19 | Central Logic | AURA central operations structure | domino_row, ledges, chain_cell | 4/5 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- aura_core_chamber | ok | ok | n/a | missing |
-| 20 | The Machine That Decided | Helix central core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 0/3 | ok | -- aura_core_chamber | ok | ok | 0/1 | missing |
+| 1 | First Contact | Helix perimeter relay | exposed_target | 1/1 | ok | 3/6 (3 fb) | 7/7 | 3/3 | ok | ok relay_array | ok | ok | 1/3 | missing |
+| 2 | The Welcome System | Automated security gate | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
+| 3 | Traffic of One | Autonomous traffic-control tower | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
+| 4 | Supply Chain | Logistics sorting structure | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
+| 5 | The Safety Layer | Emergency-response relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok relay_array | ok | ok | n/a | fallback |
+| 6 | Cold Storage | Server-cooling array | chain_towers, chain_cell | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok logistics_crane | ok | ok | n/a | fallback |
+| 7 | Blind Spot | Surveillance exchange | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok logistics_crane | ok | ok | n/a | fallback |
+| 8 | Human Override | Manual control station | domino_row | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok logistics_crane | ok | ok | n/a | fallback |
+| 9 | Redundancy | Backup server stacks | topple_line | 3/3 | n/a | 6/6 | 6/6 | 3/3 | ok | ok logistics_crane | ok | ok | n/a | full |
+| 10 | The Replica | Replication hub | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok logistics_crane | ok | ok | n/a | fallback |
+| 11 | Priority One | Resource-allocation centre | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | fallback |
+| 12 | No Exceptions | Compliance processing facility | pyramid | 2/2 | ok | 3/6 (3 fb) | 7/7 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | fallback |
+| 13 | The Quiet District | Local control tower | glass_roof | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | fallback |
+| 14 | Root Access | Core routing structure | indirect_shield | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | fallback |
+| 15 | The Directive | Directive archive | twin_towers, glass_screen | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | fallback |
+| 16 | Failsafe | Emergency power structure | ledges | 2/2 | ok | 3/6 (3 fb) | 7/7 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | fallback |
+| 17 | Last Backup | Cold backup vault | topple_line | 3/3 | n/a | 6/6 | 6/6 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | full |
+| 18 | Cascade | Multi-node operations hall | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | fallback |
+| 19 | Central Logic | AURA central operations structure | domino_row, ledges, chain_cell | 5/5 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok aura_core_chamber | ok | ok | n/a | fallback |
+| 20 | The Machine That Decided | Helix central core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 3/3 | ok | ok aura_core_chamber | ok | ok | 0/1 | missing |
 
 ## Chapter 2: VITA Genomics (The Price of Perfection), levels 21-40
 
@@ -191,9 +191,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `HLX-ENV-<STRUCTURE>-A` | 20 | 1 |
-| `HLX-ENV-BACK_WALL-A` | 20 | 1 |
-| `HLX-ENV-FLOOR-A` | 20 | 1 |
 | `VTA-ENV-<STRUCTURE>-A` | 20 | 21 |
 | `VTA-ENV-BACK_WALL-A` | 20 | 21 |
 | `VTA-ENV-FLOOR-A` | 20 | 21 |
@@ -206,10 +203,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `MRD-ENV-<STRUCTURE>-A` | 20 | 81 |
 | `MRD-ENV-BACK_WALL-A` | 20 | 81 |
 | `MRD-ENV-FLOOR-A` | 20 | 81 |
-| `HLX-PRP-RELAY_ARRAY-A` | 5 | 1 |
-| `HLX-PRP-LOGISTICS_CRANE-A` | 5 | 6 |
-| `HLX-PRP-COOLING_TOWER-A` | 5 | 11 |
-| `HLX-PRP-AURA_CORE_CHAMBER-A` | 5 | 16 |
 | `VTA-PRP-CLEANROOM_AIRLOCK-A` | 5 | 21 |
 | `VTA-PRP-BIOREACTOR_BANK-A` | 5 | 26 |
 | `VTA-PRP-ARCHIVE_VAULT-A` | 5 | 31 |
@@ -226,7 +219,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `MRD-PRP-FOUNDATION_PILLARS-A` | 5 | 86 |
 | `MRD-PRP-TEMPORAL_ANCHOR-A` | 5 | 91 |
 | `MRD-PRP-CONVERGENCE_CHAMBER-A` | 5 | 96 |
-| `HLX-ENV-STATIC_LEDGE-A` | 4 | 11 |
 | `NVG-ENV-STATIC_LEDGE-A` | 4 | 45 |
 | `CVT-ENV-STATIC_LEDGE-A` | 4 | 63 |
 | `MRD-ENV-STATIC_LEDGE-A` | 4 | 84 |

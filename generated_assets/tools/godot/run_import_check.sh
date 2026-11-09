@@ -21,7 +21,8 @@ IMPORT_RC=$?
 # Godot 4.7.2 headless import has been seen to segfault (139) once on a large first
 # reimport and then pass cleanly on the next, incremental run. Retry once, and say so.
 if [ "$IMPORT_RC" -eq 139 ]; then
-  echo "== import crashed with exit code 139 (segfault); retrying once"
+  cp /tmp/tfj-godot-check/import.log /tmp/tfj-godot-check/import_crash.log
+  echo "== import crashed with exit code 139 (segfault); first log kept at /tmp/tfj-godot-check/import_crash.log; retrying once"
   "$GODOT" --headless --path "$WORK" --import > /tmp/tfj-godot-check/import.log 2>&1
   IMPORT_RC=$?
 fi
