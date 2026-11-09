@@ -21,9 +21,21 @@ import sys, pathlib
 from PIL import Image
 src, dst = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 dst.mkdir(parents=True, exist_ok=True)
+from PIL import ImageChops
 for p in sorted(src.glob("*.png")):
     out = dst / ("harness_" + p.stem + ".webp")
-    Image.open(p).convert("RGB").save(out, quality=86, method=6)
+    new = Image.open(p).convert("RGB")
+    if out.exists():
+        # Software rendering is not bit-exact between runs; keep the committed preview unless
+        # more than 0.1% of pixels really changed, so passes do not churn binary files.
+        old = Image.open(out).convert("RGB")
+        if old.size == new.size:
+            diff = ImageChops.difference(old, new).convert("L").point(lambda v: 255 if v > 24 else 0)
+            changed = sum(diff.histogram()[255:])
+            if changed <= new.size[0] * new.size[1] // 1000:
+                print("preview unchanged", out.name, changed, "px")
+                continue
+    new.save(out, quality=86, method=6)
     print("preview", out.relative_to(dst.parents[2]), out.stat().st_size)
 PY
 echo "== coverage"

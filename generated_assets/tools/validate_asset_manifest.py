@@ -664,15 +664,27 @@ def probe_ffprobe(full: Path) -> dict:
     return res
 
 
-def loudness(full: Path) -> dict | None:
+def loudness(full: Path, duration: float = 0.0) -> dict | None:
+    """EBU R128 integrated loudness and true peak via ffmpeg. Clips shorter than the 400 ms
+    gating block have no defined integrated loudness (ffmpeg reports -70), so they are padded
+    with silence to 400 ms and reported as `padded_400ms_lufs` instead."""
     if not shutil.which("ffmpeg"):
         return None
-    proc = subprocess.run(["ffmpeg", "-nostats", "-hide_banner", "-i", str(full), "-af", "ebur128=peak=true", "-f", "null", "-"],
+    short = 0 < duration < 0.4
+    chain = ("apad=whole_dur=0.4," if short else "") + "ebur128=peak=true"
+    proc = subprocess.run(["ffmpeg", "-nostats", "-hide_banner", "-i", str(full), "-af", chain, "-f", "null", "-"],
                           capture_output=True, text=True)
     text = proc.stderr
     i = re.findall(r"I:\s+(-?[\d.]+) LUFS", text)
     tp = re.findall(r"Peak:\s+(-?[\d.]+) dBFS", text)
-    return {"integrated_lufs": float(i[-1]) if i else None, "true_peak_dbfs": float(tp[-1]) if tp else None}
+    value = float(i[-1]) if i else None
+    out = {"true_peak_dbfs": float(tp[-1]) if tp else None}
+    if short:
+        out["integrated_lufs"] = None
+        out["padded_400ms_lufs"] = value
+    else:
+        out["integrated_lufs"] = value
+    return out
 
 
 def check_audio(item: dict, full: Path, where: str, problems: Problems, facts: dict, do_loudness: bool) -> None:
@@ -700,9 +712,14 @@ def check_audio(item: dict, full: Path, where: str, problems: Problems, facts: d
     if ch and info.get("channels") and int(ch) != int(info["channels"]):
         problems.error(f"{where}: channels {info['channels']} differ from manifest {ch}")
     if do_loudness:
-        lu = loudness(full)
+        lu = loudness(full, dur)
         if lu:
             facts.update(lu)
+            stated = item.get("loudness_lufs")
+            if isinstance(stated, (int, float)) and lu.get("integrated_lufs") is not None and abs(stated - lu["integrated_lufs"]) > 1.0:
+                problems.warn(f"{where}: measured {lu['integrated_lufs']:.1f} LUFS differs from manifest loudness_lufs {stated}")
+            if lu.get("true_peak_dbfs") is not None and lu["true_peak_dbfs"] > -1.0:
+                problems.warn(f"{where}: true peak {lu['true_peak_dbfs']:.1f} dBTP above -1 dBTP (ASSET_CONTRACT 15)")
 
 
 def check_video(item: dict, full: Path, where: str, problems: Problems, facts: dict) -> None:
