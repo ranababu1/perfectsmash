@@ -44,6 +44,7 @@ The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environ
 | 2026-11-10 | Main sync | `main` `abf69fc` merged (`41eec2e`, `462f4ae`, `425dd6a`); contract v1.5 (`ai_core_module`, new `helix_01` sizes); coverage 1903 / 3236, 0 / 100 levels complete |
 | 2026-11-10 | Main sync | `main` `fa9da67` merged (`be095a8`); audio hook map added (13 code sound ids: 12 delivered, 1 stand-in; music cues `menu`, `cinematic` missing); contract v1.6 |
 | 2026-11-10 | Integration pass 5 | audio batches 2 and 3 (55 music cues) and surfaces batch 2 merged; Godot load 857 / 857; music -16.1 LUFS median; coverage 2009 / 3236, game-wide 29 / 36, 0 / 100 levels complete |
+| 2026-11-10 | Integration pass 6 | surfaces batch 3 (backgrounds for Helix, VITA, Nova Grid) merged; Godot load 923 / 923; contract v1.7; coverage 2109 / 3236, game-wide 29 / 36, 0 / 100 levels complete |
 
 ## Review status (2026-11-09)
 
