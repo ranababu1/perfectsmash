@@ -2,16 +2,26 @@ class_name ProgressData
 extends RefCounted
 ## Local player progress and settings with a versioned, validated serialization format.
 
-const SCHEMA_VERSION := 3
+const SCHEMA_VERSION := 4
 ## Older versions that from_dict upgrades in place. v1 had no story or music/voice settings;
-## v2 had no missions, Research Data or weapon upgrades. Nothing is dropped when upgrading.
-const MIGRATABLE_VERSIONS := [1, 2]
+## v2 had no missions, Research Data or weapon upgrades; v3 mixed failed runs into best_points
+## and had no attempt counters. Nothing is dropped when upgrading.
+const MIGRATABLE_VERSIONS := [1, 2, 3]
 const MAX_UPGRADE_LEVEL := 3
 
 ## Legacy level id -> {"stars": int, "best_shots": int}. Kept intact for old saves.
 var level_results := {}
-## mission id -> {completed: bool, best_points: int, best_research_data: int, best_shots: int,
-##                best_time: float, optional_completed: Array[String]}
+## mission id -> {
+##   completed: bool,
+##   best_points: int          best Mission Points of a SUCCESSFUL run (leaderboard-eligible; 0 until a success),
+##   best_attempt_points: int  best Mission Points of ANY run, failures included (progress feedback only),
+##   best_research_data: int, best_shots: int, best_time: float (successful runs only),
+##   optional_completed: Array[String] (successful runs only),
+##   attempts: int, completions: int  runs recorded,
+##   counts_since_upgrade: bool  true when the record was migrated from v3: the counters then only
+##                               cover runs played since the upgrade, because earlier history was
+##                               never stored and is not reconstructed.
+## }
 var mission_results := {}
 ## Spendable upgrade currency and the lifetime total earned.
 var research_data := 0
@@ -92,15 +102,21 @@ func record_mission(mission_id: String, score: Dictionary, shots: int, elapsed: 
 		if success and not optional.has(id):
 			optional.append(id)
 	optional.sort()
+	var points := int(score.mission_points)
 	var record := {
 		"completed": bool(previous.get("completed", false)) or success,
-		"best_points": maxi(int(previous.get("best_points", 0)), int(score.mission_points)),
+		"best_points": int(previous.get("best_points", 0)),
+		"best_attempt_points": maxi(int(previous.get("best_attempt_points", 0)), points),
 		"best_research_data": maxi(best_research, int(score.research_data)),
 		"best_shots": int(previous.get("best_shots", 0)),
 		"best_time": float(previous.get("best_time", 0.0)),
 		"optional_completed": optional,
+		"attempts": int(previous.get("attempts", 0)) + 1,
+		"completions": int(previous.get("completions", 0)) + (1 if success else 0),
+		"counts_since_upgrade": bool(previous.get("counts_since_upgrade", false)),
 	}
 	if success:
+		record.best_points = maxi(record.best_points, points)
 		var old_shots: int = record.best_shots
 		record.best_shots = shots if old_shots == 0 else mini(old_shots, shots)
 		var old_time: float = record.best_time
@@ -249,19 +265,36 @@ func _load_missions(raw: Variant) -> void:
 	for mission_id: Variant in raw:
 		var entry: Variant = raw[mission_id]
 		var ok: bool = mission_id is String and entry is Dictionary 			and entry.get("completed") is bool 			and _is_whole(entry.get("best_points")) and entry.best_points >= 0 			and _is_whole(entry.get("best_research_data")) and entry.best_research_data >= 0 			and _is_whole(entry.get("best_shots")) and entry.best_shots >= 0 			and (entry.get("best_time") is float or entry.get("best_time") is int) and entry.best_time >= 0 			and entry.get("optional_completed") is Array 			and (entry.optional_completed as Array).all(func(v: Variant) -> bool: return v is String)
+		if ok and loaded_version >= 4:
+			ok = _is_whole(entry.get("best_attempt_points")) and entry.best_attempt_points >= entry.best_points 				and _is_whole(entry.get("attempts")) and _is_whole(entry.get("completions")) 				and entry.completions >= 0 and entry.attempts >= entry.completions 				and entry.get("counts_since_upgrade") is bool
 		if not ok:
 			load_warnings.append("dropped invalid mission result '%s'" % str(mission_id))
 			continue
 		var optional: Array[String] = []
 		optional.assign(entry.optional_completed)
-		mission_results[mission_id] = {
+		var record := {
 			"completed": entry.completed,
 			"best_points": int(entry.best_points),
+			"best_attempt_points": int(entry.get("best_attempt_points", 0)),
 			"best_research_data": int(entry.best_research_data),
 			"best_shots": int(entry.best_shots),
 			"best_time": float(entry.best_time),
 			"optional_completed": optional,
+			"attempts": int(entry.get("attempts", 0)),
+			"completions": int(entry.get("completions", 0)),
+			"counts_since_upgrade": bool(entry.get("counts_since_upgrade", false)),
 		}
+		if loaded_version < 4:
+			# v3 -> v4. v3 kept the best points of ANY run. Every success scores at least the
+			# completion and critical-asset bonuses, more than any failure can reach, so a completed
+			# record's best_points came from a successful run and stays leaderboard-eligible. An
+			# uncompleted record only has failed runs: its points become attempt points only.
+			# Counters are not reconstructed: they start at 0 and the record is flagged.
+			record.best_attempt_points = record.best_points
+			if not record.completed:
+				record.best_points = 0
+			record.counts_since_upgrade = true
+		mission_results[mission_id] = record
 
 
 static func _is_whole(value: Variant) -> bool:
