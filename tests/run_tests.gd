@@ -11,6 +11,7 @@ const UNIT_SUITES := [
 	"res://tests/test_rules.gd",
 	"res://tests/test_progress.gd",
 	"res://tests/test_chapters.gd",
+	"res://tests/test_music.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",

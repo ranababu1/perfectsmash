@@ -8,6 +8,7 @@ var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
 var audio: AudioService
+var music: MusicDirector
 var _menu: MenuScreen
 var _game: GameScreen
 var _level_index := -1
@@ -20,6 +21,9 @@ func _ready() -> void:
 	audio = AudioService.new()
 	audio.enabled = progress.sound_enabled
 	add_child(audio)
+	music = MusicDirector.new()
+	music.enabled = progress.music_enabled
+	add_child(music)
 	catalog = LevelCatalog.load_from_file()
 	if not catalog.is_valid():
 		push_error("Level catalog invalid: %s" % ", ".join(catalog.errors))
