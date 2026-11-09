@@ -1,21 +1,21 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1199 entries on disk, 1083 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1245 entries on disk, 1125 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
 
 ## Summary
 
-- Levels fully covered: **2 / 100**; covered with fallbacks: 16; with missing assets: 82.
-- Requirements available: 2720 / 3236 level-requirement slots.
+- Levels fully covered: **20 / 100**; covered with fallbacks: 34; with missing assets: 46.
+- Requirements available: 2886 / 3236 level-requirement slots.
 - Game-wide requirements available: 29 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
 | helix | 2 | 16 | 2 |
-| vita | 0 | 0 | 20 |
-| nova_grid | 0 | 0 | 20 |
+| vita | 0 | 18 | 2 |
+| nova_grid | 18 | 0 | 2 |
 | civitas | 0 | 0 | 20 |
 | meridian | 0 | 0 | 20 |
 
@@ -91,51 +91,51 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 21 | A Longer Life | VITA campus entrance | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | 1/2 | missing |
-| 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 23 | The Sequence | Genomics analysis racks | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 25 | Trial Run | Clinical automation hub | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 26 | Better Than Human | Enhancement lab | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 27 | Cold Chain | Distribution and storage racks | support_bridge, heavy_cap | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 28 | The Dependency | Life-support research infrastructure | indirect_shield | 3/3 | ok | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 29 | Replication Error | Containment support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 30 | Controlled Growth | Production line | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 31 | The Patent Wall | Research archive stacks | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 32 | Patient Zero | Sealed trial wing | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 33 | The Upgrade | Automated treatment platform | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 34 | The Price | Resource and cooling structure | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 35 | No Consent | Data and trial control centre | frame | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 36 | The Black Archive | Encrypted research vault | glass_roof, arc_over_wall | 4/5 | ok | 12/15 (3 fb) | 10/10 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 37 | The Prediction | Forecast computation hall | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 38 | The Last Batch | Production support array | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 40 | The Price of Perfection | VITA research core | finale | 10/10 | ok | 21/24 (3 fb) | 11/11 | 0/3 | ok | -- growth_chamber | ok | ok | 0/1 | missing |
+| 21 | A Longer Life | VITA campus entrance | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | 1/2 | missing |
+| 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 4/4 | ok | 12/15 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
+| 23 | The Sequence | Genomics analysis racks | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
+| 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
+| 25 | Trial Run | Clinical automation hub | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok cleanroom_airlock | ok | ok | n/a | fallback |
+| 26 | Better Than Human | Enhancement lab | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok bioreactor_bank | ok | ok | n/a | fallback |
+| 27 | Cold Chain | Distribution and storage racks | support_bridge, heavy_cap | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok bioreactor_bank | ok | ok | n/a | fallback |
+| 28 | The Dependency | Life-support research infrastructure | indirect_shield | 3/3 | ok | 6/9 (3 fb) | 7/7 | 3/3 | ok | ok bioreactor_bank | ok | ok | n/a | fallback |
+| 29 | Replication Error | Containment support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok bioreactor_bank | ok | ok | n/a | fallback |
+| 30 | Controlled Growth | Production line | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok bioreactor_bank | ok | ok | n/a | fallback |
+| 31 | The Patent Wall | Research archive stacks | arc_over_wall | 3/3 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok archive_vault | ok | ok | n/a | fallback |
+| 32 | Patient Zero | Sealed trial wing | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok archive_vault | ok | ok | n/a | fallback |
+| 33 | The Upgrade | Automated treatment platform | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok archive_vault | ok | ok | n/a | fallback |
+| 34 | The Price | Resource and cooling structure | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 3/3 | ok | ok archive_vault | ok | ok | n/a | fallback |
+| 35 | No Consent | Data and trial control centre | frame | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok archive_vault | ok | ok | n/a | fallback |
+| 36 | The Black Archive | Encrypted research vault | glass_roof, arc_over_wall | 5/5 | ok | 12/15 (3 fb) | 10/10 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
+| 37 | The Prediction | Forecast computation hall | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
+| 38 | The Last Batch | Production support array | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
+| 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 3/3 | ok | ok growth_chamber | ok | ok | n/a | fallback |
+| 40 | The Price of Perfection | VITA research core | finale | 10/10 | ok | 21/24 (3 fb) | 11/11 | 3/3 | ok | ok growth_chamber | ok | ok | 0/1 | missing |
 
 ## Chapter 3: Nova Grid (The Energy Beneath), levels 41-60
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 41 | Endless Power | Nova Grid perimeter | support_bridge | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | 1/2 | missing |
-| 42 | The Intake | Energy capture structure | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 43 | Containment Ring | Reactor support ring | ring | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 44 | Cooling the Future | Cooling tower array | chain_towers | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 45 | The First Pulse | Resonance relay | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 46 | Load Balancing | Distribution tower | support_bridge | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 47 | Deep Storage | Energy storage racks | stack_tower | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 48 | Silent Alarm | Monitoring station | linked_bridge, chain_cell | 4/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 49 | Overload Window | Power conversion array | mixed_material | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 50 | The Resonance | Main containment platform | ring, chain_cell | 4/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 51 | Beyond the Grid | Long-distance relay | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 52 | The Wrong Frequency | Signal processing array | ledges, twin_towers | 4/5 | ok | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 53 | The Deep Core | Reactor service structure | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 54 | Blackout Protocol | Backup power structures | linked_bridge | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 55 | The Echo | Resonance chamber | domino_row, multi_tier, chain_cell | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 56 | Dead Circuit | Transmission relay | glass_roof, arc_over_wall | 4/5 | ok | 15/15 | 10/10 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 57 | Origin Unknown | Data capture structure | indirect_shield | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 58 | The Listening Machine | Research platform | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 5/5 | ok | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 60 | The Energy Beneath | Nova Grid core | finale, ring | 11/11 | ok | 18/18 | 11/11 | 0/3 | ok | -- reactor_ring | ok | ok | 0/1 | missing |
+| 41 | Endless Power | Nova Grid perimeter | support_bridge | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | 1/2 | missing |
+| 42 | The Intake | Energy capture structure | frame | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
+| 43 | Containment Ring | Reactor support ring | ring | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
+| 44 | Cooling the Future | Cooling tower array | chain_towers | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
+| 45 | The First Pulse | Resonance relay | arc_over_wall | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok intake_turbine | ok | ok | n/a | full |
+| 46 | Load Balancing | Distribution tower | support_bridge | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | full |
+| 47 | Deep Storage | Energy storage racks | stack_tower | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | full |
+| 48 | Silent Alarm | Monitoring station | linked_bridge, chain_cell | 4/4 | ok | 9/9 | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | full |
+| 49 | Overload Window | Power conversion array | mixed_material | 4/4 | ok | 12/12 | 9/9 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | full |
+| 50 | The Resonance | Main containment platform | ring, chain_cell | 4/4 | ok | 9/9 | 8/8 | 3/3 | ok | ok cooling_tower | ok | ok | n/a | full |
+| 51 | Beyond the Grid | Long-distance relay | arc_over_wall | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok transformer_yard | ok | ok | n/a | full |
+| 52 | The Wrong Frequency | Signal processing array | ledges, twin_towers | 5/5 | ok | 12/12 | 9/9 | 3/3 | ok | ok transformer_yard | ok | ok | n/a | full |
+| 53 | The Deep Core | Reactor service structure | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 3/3 | ok | ok transformer_yard | ok | ok | n/a | full |
+| 54 | Blackout Protocol | Backup power structures | linked_bridge | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok transformer_yard | ok | ok | n/a | full |
+| 55 | The Echo | Resonance chamber | domino_row, multi_tier, chain_cell | 4/4 | ok | 12/12 | 9/9 | 3/3 | ok | ok transformer_yard | ok | ok | n/a | full |
+| 56 | Dead Circuit | Transmission relay | glass_roof, arc_over_wall | 5/5 | ok | 15/15 | 10/10 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
+| 57 | Origin Unknown | Data capture structure | indirect_shield | 3/3 | ok | 9/9 | 8/8 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
+| 58 | The Listening Machine | Research platform | frame | 3/3 | ok | 12/12 | 9/9 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
+| 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 5/5 | ok | 12/12 | 9/9 | 3/3 | ok | ok reactor_ring | ok | ok | n/a | full |
+| 60 | The Energy Beneath | Nova Grid core | finale, ring | 11/11 | ok | 18/18 | 11/11 | 3/3 | ok | ok reactor_ring | ok | ok | 0/1 | missing |
 
 ## Chapter 4: Civitas (The Quiet Cage), levels 61-80
 
@@ -191,26 +191,12 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | Wanted asset (id pattern) | Levels | First level |
 |---|---:|---:|
-| `VTA-ENV-<STRUCTURE>-A` | 20 | 21 |
-| `VTA-ENV-BACK_WALL-A` | 20 | 21 |
-| `VTA-ENV-FLOOR-A` | 20 | 21 |
-| `NVG-ENV-<STRUCTURE>-A` | 20 | 41 |
-| `NVG-ENV-BACK_WALL-A` | 20 | 41 |
-| `NVG-ENV-FLOOR-A` | 20 | 41 |
 | `CVT-ENV-<STRUCTURE>-A` | 20 | 61 |
 | `CVT-ENV-BACK_WALL-A` | 20 | 61 |
 | `CVT-ENV-FLOOR-A` | 20 | 61 |
 | `MRD-ENV-<STRUCTURE>-A` | 20 | 81 |
 | `MRD-ENV-BACK_WALL-A` | 20 | 81 |
 | `MRD-ENV-FLOOR-A` | 20 | 81 |
-| `VTA-PRP-CLEANROOM_AIRLOCK-A` | 5 | 21 |
-| `VTA-PRP-BIOREACTOR_BANK-A` | 5 | 26 |
-| `VTA-PRP-ARCHIVE_VAULT-A` | 5 | 31 |
-| `VTA-PRP-GROWTH_CHAMBER-A` | 5 | 36 |
-| `NVG-PRP-INTAKE_TURBINE-A` | 5 | 41 |
-| `NVG-PRP-COOLING_TOWER-A` | 5 | 46 |
-| `NVG-PRP-TRANSFORMER_YARD-A` | 5 | 51 |
-| `NVG-PRP-REACTOR_RING-A` | 5 | 56 |
 | `CVT-PRP-SENSOR_TOWER-A` | 5 | 61 |
 | `CVT-PRP-SCREEN_WALL-A` | 5 | 66 |
 | `CVT-PRP-PREDICTION_ROOM-A` | 5 | 71 |
@@ -219,10 +205,8 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `MRD-PRP-FOUNDATION_PILLARS-A` | 5 | 86 |
 | `MRD-PRP-TEMPORAL_ANCHOR-A` | 5 | 91 |
 | `MRD-PRP-CONVERGENCE_CHAMBER-A` | 5 | 96 |
-| `NVG-ENV-STATIC_LEDGE-A` | 4 | 45 |
 | `CVT-ENV-STATIC_LEDGE-A` | 4 | 63 |
 | `MRD-ENV-STATIC_LEDGE-A` | 4 | 84 |
-| `VTA-ENV-STATIC_LEDGE-A` | 2 | 31 |
 | `GAM-CIN-OPENING-01` | 1 | 1 |
 | `HLX-CIN-INTRO-01` | 1 | 1 |
 | `HLX-CIN-OUTRO-01` | 1 | 20 |
