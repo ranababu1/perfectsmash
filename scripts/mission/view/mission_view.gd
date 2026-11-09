@@ -323,7 +323,7 @@ func _on_blast(center: Vector2, radius: float) -> void:
 	light.create_tween().tween_property(light, "light_energy", 0.0, 0.3).finished.connect(light.queue_free)
 
 
-func _on_impact(at: Vector2, strength: float) -> void:
+func _on_impact(at: Vector2, strength: float, _component_id: String) -> void:
 	if strength < 400.0:
 		return
 	_spawn_sparks(ViewMapping.to_3d(at, definition.ground_y, 0.3))

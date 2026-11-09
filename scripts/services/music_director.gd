@@ -5,6 +5,7 @@ extends Node
 ## Streams may be loop-ready (loop enabled on import) or a track with its own fade-in and fade-out:
 ## for the latter, set `loop_overlap` and the director restarts the track on the other player that
 ## many seconds before the end, so the track's own fades overlap into a seamless cycle.
+## Named cues (data/audio.json "music") set the track, bed volume and loop overlap in one call.
 
 const BED_VOLUME_DB := -12.0
 const SILENT_DB := -60.0
@@ -14,6 +15,11 @@ const DEFAULT_FADE := 1.5
 var current_stream: AudioStream
 ## Seconds before the end of a non-looping track at which the next cycle starts (0 = no handoff).
 var loop_overlap := 0.0
+## Music cues; assign before calling play_cue (loaded on first use otherwise).
+var catalog: AudioCatalog
+## The cue last started with play_cue ("" for streams played directly).
+var current_cue := ""
+var _bed_volume_db := BED_VOLUME_DB
 var _enabled := true
 var _duck_db := 0.0
 var _players: Array[AudioStreamPlayer] = []
@@ -61,7 +67,29 @@ func play(stream: AudioStream, fade: float = DEFAULT_FADE) -> void:
 
 
 func stop(fade: float = DEFAULT_FADE) -> void:
+	current_cue = ""
 	play(null, fade)
+
+
+## Starts a named cue from the audio catalog. Returns false (and keeps the current music) when
+## the cue is unknown or has no track yet.
+func play_cue(cue_id: String, fade: float = DEFAULT_FADE) -> bool:
+	if catalog == null:
+		catalog = AudioCatalog.load_from_file()
+	var cue := catalog.get_cue(cue_id)
+	if cue == null:
+		push_warning("MusicDirector: unknown music cue '%s'" % cue_id)
+		return false
+	if cue.file.is_empty() or not ResourceLoader.exists(cue.file):
+		push_warning("MusicDirector: music cue '%s' has no track yet (%s)" % [cue_id, cue.file])
+		return false
+	if cue_id == current_cue:
+		return true
+	current_cue = cue_id
+	loop_overlap = cue.loop_overlap
+	_bed_volume_db = cue.volume_db
+	play(load(cue.file) as AudioStream, fade)
+	return true
 
 
 ## Lowers the bed by `amount_db` (e.g. under narration); duck(0) restores it.
@@ -102,7 +130,7 @@ func loop_handoff() -> void:
 
 
 func target_volume_db() -> float:
-	return BED_VOLUME_DB + _duck_db
+	return _bed_volume_db + _duck_db
 
 
 func active_player() -> AudioStreamPlayer:
