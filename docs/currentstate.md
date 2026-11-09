@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Branch `main` · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Canonical branch `main`; slice B work on `claude/vigilant-gates-mnfkim` (not yet merged) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
 
 M1 audit findings (toolchain, architecture, level mapping, identity/signing, risks): see `docs/project-audit.md`.
 
