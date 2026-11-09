@@ -1,0 +1,116 @@
+{
+ "id": "SHR-MAT-TRIM_SHEET-A",
+ "uv_origin": "top-left (glTF and Godot: v=0 is the image top)",
+ "strips": [
+  {
+   "name": "bolted_steel_band",
+   "v_top": 0.0,
+   "v_bottom": 0.125,
+   "px": [
+    0,
+    128
+   ],
+   "notes": "Heavy bolted steel band, bolts every 0.25 m at 1 tile per metre"
+  },
+  {
+   "name": "rubber_gasket",
+   "v_top": 0.125,
+   "v_bottom": 0.1875,
+   "px": [
+    128,
+    192
+   ],
+   "notes": "Ribbed rubber seal for doors, hatches and glazing"
+  },
+  {
+   "name": "vent_louvres",
+   "v_top": 0.1875,
+   "v_bottom": 0.3125,
+   "px": [
+    192,
+    320
+   ],
+   "notes": "Angled vent louvres in 1/4 m bays; dark slots read as depth"
+  },
+  {
+   "name": "hazard_stripes",
+   "v_top": 0.3125,
+   "v_bottom": 0.375,
+   "px": [
+    320,
+    384
+   ],
+   "notes": "Muted, worn amber and black hazard stripes. Danger edges only; do not use as general decoration"
+  },
+  {
+   "name": "perforated_panel",
+   "v_top": 0.375,
+   "v_bottom": 0.5,
+   "px": [
+    384,
+    512
+   ],
+   "notes": "Perforated sheet, 4 mm-scale holes at 1/16 m pitch"
+  },
+  {
+   "name": "conduit_pipe",
+   "v_top": 0.5,
+   "v_bottom": 0.5625,
+   "px": [
+    512,
+    576
+   ],
+   "notes": "Steel conduit with clamps every 0.25 m; map across a thin box or cylinder"
+  },
+  {
+   "name": "panel_seams",
+   "v_top": 0.5625,
+   "v_bottom": 0.6875,
+   "px": [
+    576,
+    704
+   ],
+   "notes": "Painted panel strip with seams every 1/4 m"
+  },
+  {
+   "name": "brushed_edge",
+   "v_top": 0.6875,
+   "v_bottom": 0.75,
+   "px": [
+    704,
+    768
+   ],
+   "notes": "Brushed steel edge trim with chamfers; for corners and lips"
+  },
+  {
+   "name": "tread_strip",
+   "v_top": 0.75,
+   "v_bottom": 0.875,
+   "px": [
+    768,
+    896
+   ],
+   "notes": "Diamond tread strip for steps and walkway edges"
+  },
+  {
+   "name": "emissive_channel",
+   "v_top": 0.875,
+   "v_bottom": 0.9375,
+   "px": [
+    896,
+    960
+   ],
+   "notes": "Recessed light channel. Emission is neutral white: tint it per chapter in the material (emission colour)"
+  },
+  {
+   "name": "painted_rail",
+   "v_top": 0.9375,
+   "v_bottom": 1.0,
+   "px": [
+    960,
+    1024
+   ],
+   "notes": "Painted handrail or edge cap with worn bare-metal edges"
+  }
+ ]
+}
