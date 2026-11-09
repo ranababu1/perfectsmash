@@ -198,3 +198,32 @@ func test_two_damaging_shots_count_twice() -> void:
 	await wait_physics_frames(45)
 	assert_eq(e.effective_shots, 2)
 	_free()
+
+
+## --- Scoring consistency for fixed scripted input (tools/regression/score_replay.gd) ---
+## Godot 2D physics is deterministic for identical input on one platform, but not bit-identical
+## across platforms: the same sequence measured 0.4516 structural damage on Windows x86_64 and
+## 0.4519 on the Android x86_64 emulator (2026-11-09). Hence: exact within a run, tolerance
+## against the reference.
+
+const ScoreReplay := preload("res://tools/regression/score_replay.gd")
+
+
+func test_scripted_replay_is_repeatable_and_near_reference() -> void:
+	var scoring := MissionScoring.load_from_file()
+	var summaries := []
+	for i in 2:
+		var result: Dictionary = await ScoreReplay.play(tree.root, "kinetic_then_breach")
+		summaries.append(ScoreReplay.summary(scoring, result.engine))
+		tree.root.remove_child(result.viewport)
+		(result.viewport as Node).queue_free()
+	var a: Dictionary = summaries[0]
+	var b: Dictionary = summaries[1]
+	assert_eq(a.mission_points, b.mission_points, "same input, same platform, same score")
+	assert_eq(a.structural_damage, b.structural_damage)
+	assert_eq(a.physics_frames, b.physics_frames)
+	assert_eq(a.phase, MissionEngine.Phase.SUCCEEDED)
+	assert_eq(a.effective_shots, 2)
+	assert_eq(a.research_data, 40)
+	assert_near(float(a.structural_damage), 0.4516, 0.01, "reference structural damage")
+	assert_true(absi(int(a.mission_points) - 3752) <= 15, "within tolerance of the 3752 reference: %d" % a.mission_points)

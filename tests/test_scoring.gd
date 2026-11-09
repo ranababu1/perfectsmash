@@ -128,3 +128,24 @@ func test_rejects_invalid_rewards_and_scoring_files() -> void:
 	var def := MissionDefinition.from_json_text(JSON.stringify({"id": "x", "rewards": {"completion_points": -5}}), _materials, _weapons)
 	assert_true(def.errors.has("rewards.completion_points must be a whole number >= 0"), ", ".join(def.errors))
 	assert_false(MissionScoring.load_from_file("res://data/missing_scoring.json").is_valid())
+
+
+## Cross-platform guard for the pure scoring maths: a fixed engine state must give these exact
+## numbers on every platform (no physics involved). Values derived by hand from data/scoring.json.
+func test_golden_scoring_breakdown() -> void:
+	var e := _engine({"completion_points": 1000, "completion_research_data": 20, "optional_research_data": 5}, 2, 30.0)
+	_shoot(e, 3, 2)  # 3 shots vs 2 recommended, 2 effective
+	e.tick(40.0, false)  # elapsed 4.5 + 40 = 44.5 s vs 30 s target
+	_kill(e, "core")
+	_kill(e, "rack")
+	e.tick(0.0, true)
+	var r := _scoring.score(e)
+	assert_eq(r.points.completion, 1000)
+	assert_eq(r.points.critical_asset, 500)
+	assert_eq(r.points.optional_objective, 300)
+	assert_eq(r.points.shot_efficiency, 400, "3 of 2 recommended: factor 0.5")
+	assert_eq(r.points.time_efficiency, 249, "44.5 s vs 30 s: 300 * (1 - 0.7 * 14.5 / 60) = 249.25")
+	assert_eq(r.points.accuracy, 267, "2 of 3 effective")
+	assert_eq(r.research.efficiency, 9, "15 * (0.7 * 0.5 + 0.3 * 0.83083) = 8.99")
+	assert_eq(r.research_data, 34)
+	assert_eq(r.points.destruction, roundi(1000.0 * e.structural_damage_fraction()))
