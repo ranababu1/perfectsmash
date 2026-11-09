@@ -83,6 +83,50 @@ func test_drops_invalid_entries_keeps_valid() -> void:
 	assert_false(p.vibration_enabled)
 
 
+func test_migrates_v1_save() -> void:
+	var p := ProgressData.from_dict({
+		"version": 1,
+		"levels": {"L01": {"stars": 3, "best_shots": 1}, "L07": {"stars": 1, "best_shots": 2}},
+		"settings": {"sound": false, "vibration": true},
+	})
+	assert_true(p.load_warnings.is_empty(), "clean v1 migrates without warnings: %s" % ", ".join(p.load_warnings))
+	assert_eq(p.loaded_version, 1)
+	assert_eq(p.stars_for("L01"), 3)
+	assert_eq(p.stars_for("L07"), 1)
+	assert_false(p.sound_enabled)
+	assert_true(p.music_enabled, "new settings default on")
+	assert_true(p.voice_enabled)
+	assert_true(p.seen_sequences.is_empty())
+	var saved := p.to_dict()
+	assert_eq(int(saved.version), ProgressData.SCHEMA_VERSION, "re-saved at current version")
+
+
+func test_story_and_audio_settings_round_trip() -> void:
+	var p := ProgressData.new()
+	assert_true(p.mark_sequence_seen("opening"))
+	assert_false(p.mark_sequence_seen("opening"), "second mark is not new")
+	assert_false(p.mark_sequence_seen(""), "empty id ignored")
+	p.mark_sequence_seen("ch01_intro")
+	p.music_enabled = false
+	p.voice_enabled = false
+	var copy := ProgressData.from_dict(JSON.parse_string(JSON.stringify(p.to_dict())))
+	assert_true(copy.load_warnings.is_empty(), "no warnings: %s" % ", ".join(copy.load_warnings))
+	assert_true(copy.has_seen_sequence("opening"))
+	assert_true(copy.has_seen_sequence("ch01_intro"))
+	assert_false(copy.has_seen_sequence("ch02_intro"))
+	assert_false(copy.music_enabled)
+	assert_false(copy.voice_enabled)
+
+
+func test_drops_invalid_story_entries() -> void:
+	var p := ProgressData.from_dict({"version": 2, "levels": {}, "story": {"seen": ["opening", 4, ""]}})
+	assert_true(p.has_seen_sequence("opening"))
+	assert_eq(p.seen_sequences.size(), 1)
+	assert_eq(p.load_warnings.size(), 2)
+	p = ProgressData.from_dict({"version": 2, "levels": {}, "story": "nope"})
+	assert_eq(p.load_warnings.size(), 1)
+
+
 func test_non_dictionary_root() -> void:
 	var p := ProgressData.from_dict("garbage")
 	assert_false(p.load_warnings.is_empty())
