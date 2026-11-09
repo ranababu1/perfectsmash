@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" >
+<defs></defs>
+<g id="attack_report"><path d="M14.00 5.00 L34.00 5.00 L34.00 37.00 L28.00 43.00 L8.00 43.00 L8.00 11.00 Z" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="miter" stroke-miterlimit="10" stroke-linecap="butt"/><path d="M14 14 H28 M14 20 H24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="miter" stroke-miterlimit="10" stroke-linecap="butt"/><path d="M34.00 22.00 L35.95 28.95 L42.60 26.14 L38.39 32.00 L44.72 35.45 L37.52 35.81 L38.77 42.91 L34.00 37.50 L29.23 42.91 L30.48 35.81 L23.28 35.45 L29.61 32.00 L25.40 26.14 L32.05 28.95 Z" fill="#fff"/></g>
+</svg>

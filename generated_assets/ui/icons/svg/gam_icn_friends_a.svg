@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" >
+<defs><mask id="ko" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M24 21 H38 L36.5 24 H25.5 Z" fill="#000"/></mask></defs>
+<g id="friends" mask="url(#ko)"><path d="M15.00 8.00 L23.40 14.40 L25.00 23.60 L19.40 28.00 L10.60 28.00 L5.00 23.60 L6.60 14.40 Z" fill="#fff" opacity="0.6"/><path d="M2 42 C3 35 8 32 15 32 C18 32 20 33 21 34 C17 36 14 39 13 42 Z" fill="#fff" opacity="0.6"/><path d="M31.00 6.00 L41.08 13.68 L43.00 24.72 L36.28 30.00 L25.72 30.00 L19.00 24.72 L20.92 13.68 Z" fill="#fff"/><path d="M16 44 C18 37 24 34 31 34 C38 34 44 37 46 44 Z" fill="#fff"/></g>
+</svg>

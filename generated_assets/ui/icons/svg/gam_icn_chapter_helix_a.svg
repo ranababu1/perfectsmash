@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" >
+<defs><mask id="ko" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M30 14.5 H34 V19.5 H30 Z" fill="#000"/></mask></defs>
+<g id="chapter_helix" mask="url(#ko)"><path d="M24.00 4.00 L41.32 14.00 L41.32 34.00 L24.00 44.00 L6.68 34.00 L6.68 14.00 Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="miter" stroke-miterlimit="10" stroke-linecap="butt"/><path d="M14 15 H34 V19 H14 Z M14 22 H34 V26 H14 Z M14 29 H34 V33 H14 Z" fill="#fff" opacity="0.9"/></g>
+</svg>

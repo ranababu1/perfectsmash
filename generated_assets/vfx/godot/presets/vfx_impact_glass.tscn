@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_impact_glass_a.png" id="1_vo4iw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmgbv"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_vo4iw")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_oqyfa"]
+size = Vector2(1.2, 1.2)
+
+[node name="VfxImpactGlass" type="Node3D" unique_id=1075136314]
+metadata/tfj_note = "Glass impact crack and shards."
+
+[node name="Main" type="CPUParticles3D" parent="." unique_id=973636835]
+material_override = SubResource("StandardMaterial3D_bmgbv")
+emitting = false
+amount = 1
+lifetime = 0.53
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_oqyfa")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+angle_min = -180.0
+angle_max = 180.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0

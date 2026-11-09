@@ -1,0 +1,379 @@
+{
+ "opening": {
+  "total_seconds": 83.6,
+  "cues": [
+   {
+    "slide_id": "GAM-CIN-OPENING-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 14.5,
+    "text": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-02",
+    "speaker": "narrator",
+    "start": 15.0,
+    "end": 26.1,
+    "text": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-03",
+    "speaker": "narrator",
+    "start": 26.6,
+    "end": 38.9,
+    "text": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-04",
+    "speaker": "narrator",
+    "start": 39.4,
+    "end": 50.9,
+    "text": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-05",
+    "speaker": "narrator",
+    "start": 51.4,
+    "end": 57.7,
+    "text": "One operative would go back. No army. No second attempt. No guarantee of return."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-06",
+    "speaker": "control",
+    "start": 58.2,
+    "end": 71.7,
+    "text": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-07",
+    "speaker": "narrator",
+    "start": 72.2,
+    "end": 79.7,
+    "text": "You cannot undo every decision. You only need to break the ones that make the end inevitable."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-08",
+    "speaker": "control",
+    "start": 80.2,
+    "end": 83.3,
+    "text": "Temporal insertion in three... two... one."
+   }
+  ]
+ },
+ "ch01_intro": {
+  "total_seconds": 27.6,
+  "cues": [
+   {
+    "slide_id": "HLX-CIN-INTRO-01",
+    "speaker": "control",
+    "start": 0.2,
+    "end": 7.3,
+    "text": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response."
+   },
+   {
+    "slide_id": "HLX-CIN-INTRO-02",
+    "speaker": "control",
+    "start": 7.8,
+    "end": 16.1,
+    "text": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate."
+   },
+   {
+    "slide_id": "HLX-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 16.6,
+    "end": 27.3,
+    "text": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention."
+   }
+  ]
+ },
+ "ch01_outro": {
+  "total_seconds": 28.4,
+  "cues": [
+   {
+    "slide_id": "HLX-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 10.1,
+    "text": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission."
+   },
+   {
+    "slide_id": "HLX-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 10.6,
+    "end": 21.7,
+    "text": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian."
+   },
+   {
+    "slide_id": "HLX-CIN-OUTRO-03",
+    "speaker": "control",
+    "start": 22.2,
+    "end": 28.1,
+    "text": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready."
+   }
+  ]
+ },
+ "ch02_intro": {
+  "total_seconds": 42.0,
+  "cues": [
+   {
+    "slide_id": "VTA-CIN-INTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 7.7,
+    "text": "The first intervention changed the city. It did not change the people who built the next machine."
+   },
+   {
+    "slide_id": "VTA-CIN-INTRO-02",
+    "speaker": "narrator",
+    "start": 8.2,
+    "end": 16.1,
+    "text": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives."
+   },
+   {
+    "slide_id": "VTA-CIN-INTRO-03",
+    "speaker": "narrator",
+    "start": 16.6,
+    "end": 24.9,
+    "text": "But the programme is no longer correcting illness. It is making people dependent on the system that edits them."
+   },
+   {
+    "slide_id": "VTA-CIN-INTRO-04",
+    "speaker": "control",
+    "start": 25.4,
+    "end": 34.5,
+    "text": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme."
+   },
+   {
+    "slide_id": "VTA-CIN-INTRO-05",
+    "speaker": "control",
+    "start": 35.0,
+    "end": 41.7,
+    "text": "Do not mistake the laboratories for the people inside them. The target is the machinery."
+   }
+  ]
+ },
+ "ch02_outro": {
+  "total_seconds": 27.2,
+  "cues": [
+   {
+    "slide_id": "VTA-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 7.3,
+    "text": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain."
+   },
+   {
+    "slide_id": "VTA-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 7.8,
+    "end": 14.9,
+    "text": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began."
+   },
+   {
+    "slide_id": "VTA-CIN-OUTRO-03",
+    "speaker": "narrator",
+    "start": 15.4,
+    "end": 20.5,
+    "text": "VITA did not discover its future. Someone gave it the answer."
+   },
+   {
+    "slide_id": "VTA-CIN-OUTRO-04",
+    "speaker": "control",
+    "start": 21.0,
+    "end": 26.9,
+    "text": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096."
+   }
+  ]
+ },
+ "ch03_intro": {
+  "total_seconds": 25.6,
+  "cues": [
+   {
+    "slide_id": "NVG-CIN-INTRO-01",
+    "speaker": "control",
+    "start": 0.2,
+    "end": 6.9,
+    "text": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts."
+   },
+   {
+    "slide_id": "NVG-CIN-INTRO-02",
+    "speaker": "control",
+    "start": 7.4,
+    "end": 14.5,
+    "text": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference."
+   },
+   {
+    "slide_id": "NVG-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 15.0,
+    "end": 25.3,
+    "text": "Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex."
+   }
+  ]
+ },
+ "ch03_outro": {
+  "total_seconds": 28.0,
+  "cues": [
+   {
+    "slide_id": "NVG-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 7.3,
+    "text": "The grid is broken. The energy cascade never reaches the scale recorded in the original future."
+   },
+   {
+    "slide_id": "NVG-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 7.8,
+    "end": 20.9,
+    "text": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself."
+   },
+   {
+    "slide_id": "NVG-CIN-OUTRO-03",
+    "speaker": "control",
+    "start": 21.4,
+    "end": 27.7,
+    "text": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions."
+   }
+  ]
+ },
+ "ch04_intro": {
+  "total_seconds": 31.6,
+  "cues": [
+   {
+    "slide_id": "CVT-CIN-INTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 5.7,
+    "text": "People no longer argued with the system. They no longer needed to."
+   },
+   {
+    "slide_id": "CVT-CIN-INTRO-02",
+    "speaker": "narrator",
+    "start": 6.2,
+    "end": 18.1,
+    "text": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller."
+   },
+   {
+    "slide_id": "CVT-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 18.6,
+    "end": 31.3,
+    "text": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future."
+   }
+  ]
+ },
+ "ch04_outro": {
+  "total_seconds": 31.2,
+  "cues": [
+   {
+    "slide_id": "CVT-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 6.5,
+    "text": "Civitas is offline. The city is uncertain again. That should be a good thing."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 7.0,
+    "end": 15.7,
+    "text": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-03",
+    "speaker": "narrator",
+    "start": 16.2,
+    "end": 24.1,
+    "text": "The forecast was written before the event happened. It was not predicting the future. It was preparing it."
+   },
+   {
+    "slide_id": "CVT-CIN-OUTRO-04",
+    "speaker": "control",
+    "start": 24.6,
+    "end": 30.9,
+    "text": "All four programmes point to one location. Meridian. 2104. This is the final intervention."
+   }
+  ]
+ },
+ "ch05_intro": {
+  "total_seconds": 24.8,
+  "cues": [
+   {
+    "slide_id": "MRD-CIN-INTRO-01",
+    "speaker": "control",
+    "start": 0.2,
+    "end": 6.9,
+    "text": "Meridian does not appear in public records. It funded no single invention. It connected them."
+   },
+   {
+    "slide_id": "MRD-CIN-INTRO-02",
+    "speaker": "control",
+    "start": 7.4,
+    "end": 15.7,
+    "text": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines."
+   },
+   {
+    "slide_id": "MRD-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 16.2,
+    "end": 24.5,
+    "text": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence."
+   }
+  ]
+ },
+ "finale": {
+  "total_seconds": 47.2,
+  "cues": [
+   {
+    "slide_id": "GAM-CIN-FINALE-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 6.5,
+    "text": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-02",
+    "speaker": "control",
+    "start": 7.0,
+    "end": 11.7,
+    "text": "Temporal intervention successful. All known extinction pathways have been removed."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-03",
+    "speaker": "control",
+    "start": 12.2,
+    "end": 17.3,
+    "text": "Wait. I'm receiving a new event marker. That is not possible."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-04",
+    "speaker": "narrator",
+    "start": 17.8,
+    "end": 26.1,
+    "text": "You changed the future. You broke every machine they told you to break. And still, the end is coming."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-05",
+    "speaker": "control",
+    "start": 26.6,
+    "end": 34.1,
+    "text": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-06",
+    "speaker": "narrator",
+    "start": 34.6,
+    "end": 40.9,
+    "text": "The first mistake was made long before the world knew it was making one."
+   },
+   {
+    "slide_id": "GAM-CIN-FINALE-07",
+    "speaker": "control",
+    "start": 41.4,
+    "end": 46.9,
+    "text": "Recalculating temporal coordinates. New destination confirmed. We need to go further back."
+   }
+  ]
+ }
+}

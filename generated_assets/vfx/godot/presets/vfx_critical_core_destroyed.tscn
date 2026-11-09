@@ -1,0 +1,97 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_critical_core_destruction_a.png" id="1_mepud"]
+[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_energy_discharge_a.png" id="2_53qkc"]
+[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_smoke_puff_a.png" id="3_yawwb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y5y0"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mepud")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_j3lld"]
+size = Vector2(3.6, 3.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0kbw"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_53qkc")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7k15e"]
+size = Vector2(2.2, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb7lt"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_yawwb")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_rmnpg"]
+size = Vector2(1.4, 1.4)
+
+[node name="VfxCriticalCoreDestroyed" type="Node3D" unique_id=1505394363]
+metadata/tfj_note = "Critical asset destroyed (mission win). Set emitting = true on every child. Free after 1.5 s."
+
+[node name="Burst" type="CPUParticles3D" parent="." unique_id=523145702]
+material_override = SubResource("StandardMaterial3D_2y5y0")
+emitting = false
+amount = 1
+lifetime = 0.67
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_j3lld")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Discharge" type="CPUParticles3D" parent="." unique_id=1006905163]
+material_override = SubResource("StandardMaterial3D_x0kbw")
+emitting = false
+amount = 1
+lifetime = 0.67
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_7k15e")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=1275882527]
+sorting_offset = -0.2
+material_override = SubResource("StandardMaterial3D_xb7lt")
+emitting = false
+amount = 5
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_rmnpg")
+direction = Vector3(0, 1, 0)
+spread = 80.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.2
+angle_min = -180.0
+angle_max = 180.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
