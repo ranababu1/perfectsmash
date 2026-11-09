@@ -119,7 +119,7 @@ def backgrounds():
         add(id=f"GAM-BG-{what}-A", path=rel(p), category="ui", render_type="ui", format="webp", dimensions=dims(p),
             purpose={"MAIN_MENU": "main menu backdrop: temporal chamber ring, operative silhouette, dark left third for the menu column",
                      "LOADING": "loading screen / credits backdrop: sealed facility corridor with temporal distortion, quiet lower band"}[what],
-            source="GenerateImage (cursor image tool), 2026-11-09, prompt recorded in ui/PRODUCTION_NOTES.md; graded (vignette, shadow tint, dither) by the asset agent; raw master /workspace/tfj-masters/ui-vfx/ (box only)",
+            source="GenerateImage (cursor image tool), 2026-11-09, prompt content restated in ui/PRODUCTION_NOTES.md (exact strings not logged); graded (vignette, shadow tint, dither) by the asset agent; raw master /workspace/tfj-masters/ui-vfx/ (box only)",
             rights_status=RIGHTS_AI, used_by="main menu / loading / credits screens (proposed)", chapter="shared",
             notes="1280x720 is the generator's maximum; no upscale applied. No text, logos or watermarks (inspected)")
 

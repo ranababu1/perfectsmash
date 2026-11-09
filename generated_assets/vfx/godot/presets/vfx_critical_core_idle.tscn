@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://generated_assets/vfx/shared/shr_vfx_critical_core_idle_a.png" id="1_o6y7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkg8l"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_o6y7g")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ly1xo"]
+size = Vector2(1.1, 1.1)
+
+[node name="VfxCriticalCoreIdle" type="Node3D" unique_id=771670837]
+metadata/tfj_note = "Looping red core glow; place on the critical asset core until destroyed."
+
+[node name="Glow" type="CPUParticles3D" parent="." unique_id=1769119516]
+material_override = SubResource("StandardMaterial3D_dkg8l")
+emitting = false
+amount = 1
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_ly1xo")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
