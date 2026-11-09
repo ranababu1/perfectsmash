@@ -1,88 +1,96 @@
 # Current State
 
-_Last updated: 2026-11-02 · Version 0.1.0 (unreleased) · Branch `master` · Remote `origin` (github.com/ranababu1/perfectsmash)_
+_Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `master` · Remote `origin` (github.com/ranababu1/perfectsmash)_
 
 ## Purpose and phase
 
-Perfect Smash (originally titled "Smash Theory") is a compact 2D physics destruction puzzle for Android (Godot 4). See `plan.md`.
-**Phase:** M2 (playable prototype) reached on desktop, with M3 content (20 levels) in place.
-M0's "on a physical Android device" criterion is **not yet verified**: no device test or Android export has been done.
+The project is a 2D physics destruction puzzle for Android (Godot 4). The owner has approved a major narrative/product direction: transform the existing puzzle into a story-driven time-travel destruction game, with a skippable opening cinematic, narrated chapter introductions/outros, and 100 levels across five chapters. The physics gameplay remains the foundation.
+
+**Implementation phase:** Existing playable prototype with 20 levels. Narrative and 100-level expansion are documented/planned only. No cinematic player, story archive, chapter art reskin, new projectile art, 100-level content or background music has been integrated yet.
 
 ## Feature status
 
 | Feature | Status | Notes |
 |---|---|---|
-| Level data + validation (`LevelDefinition`, `LevelCatalog`) | Implemented | `data/levels.json`, 20 levels |
-| Physics session (`GameSession`, `LevelLoader`, bodies) | Implemented | Wood, stone, glass blocks; static surfaces; targets |
-| Objectives | Implemented | `destroy_targets`, `topple` (all blocks below a line) |
-| Shot budget / win-loss (`SessionRules`) | Implemented | Evaluated only after settle or timeout |
-| Settling + 10 s hard timeout (`SimulationMonitor`) | Implemented | Thresholds in `GameConfig` |
-| Drag-back aiming + partial trajectory preview | Implemented | 0.3 s preview (plan §5 allows; experiment pending) |
-| Stars (par-based), local progress, unlocks | Implemented | `user://progress.json`, schema v1 |
-| Menu, HUD, pause, results, retry/next | Implemented | Built in code (`scripts/ui`) |
-| Sound (procedural) + vibration settings | Implemented | Vibration untested on device |
-| Pause on app background / Android back | Implemented | Untested on device |
-| Android debug export | Partial | Local gitignored preset; debug-signed APK runs on emulator; no release signing |
-| Analytics | Planned (deliberately absent) | Plan §10: privacy review first |
-| Localization | Not in scope for this milestone | UI strings are hard-coded English |
+| Level data + validation | Implemented | `data/levels.json`, 20 levels |
+| Physics session and objectives | Implemented | Existing 2D physics puzzle; preserve behavior |
+| Drag-back aiming and trajectory preview | Implemented | Existing input and preview |
+| Stars, local progress, unlocks | Implemented | Existing save schema v1 |
+| Menu, HUD, pause, results, retry/next | Implemented | Existing UI |
+| Procedural SFX and vibration settings | Implemented | Device validation still required |
+| Android debug export | Partial | Debug APK runs on emulator; physical-device test still pending |
+| 100-level story arc | Planned | Five chapters of 20; see `narrative-bible.md` |
+| Opening and chapter cinematics | Planned | 11 sequences; scripts in `narrative-bible.md` |
+| Cinematic playback and Story Archive | Planned | Reusable data-driven player, skippable, subtitle/voice/music controls |
+| Chapter-specific environment and object art | Planned | See `visual-audio-production-guide.md` |
+| Temporal Charge reskin | Planned | Art/audio wrapper only; do not change physics tuning |
+| Continuous gameplay music | In production / pending review | AI music task submitted; last status was running. Not yet available, approved, licensed or integrated |
+| Final game name | Pending owner decision | Current app/repository identity remains Perfect Smash. Do not rename package/app before explicit approval |
+| Season 2 | Planned concept | +50 levels, travel further back to 2041 |
+
+## Narrative decisions (owner-approved direction, 2026-11-09)
+
+- Player is an operative sent from a doomed future into the past to destroy the foundations of technologies and institutions that contribute to humanity's extinction.
+- Five first-release chapters: The Machine That Decided (1-20), The Price of Perfection (21-40), The Energy Beneath (41-60), The Quiet Cage (61-80), The Convergence (81-100).
+- Opening cinematic before level 1; each chapter has an intro and outro. All are skippable and should be replayable through a Story Archive.
+- Level 100 ends in an apparent victory, then reveals extinction remains imminent. The new origin timestamp is 2041, setting up a further-past Season 2.
+- Keep Control's identity mysterious. The story is designed for ongoing updates (+50 levels in the next content update).
+- Core physics, scoring, input and level loop remain unchanged during the narrative reskin.
 
 ## Architecture
 
-- `scripts/core/` — pure rules, no nodes: `GameConfig` (tuning), `LevelDefinition`, `LevelCatalog`,
-  `ObjectiveEvaluator`, `SimulationMonitor`, `DestructionRules`, `ScoreRules`, `SessionRules`, `ProgressData`.
-- `scripts/services/` — `SaveService` (temp-file + rename, corrupt file kept as `.corrupt`), `AudioService` (synthesized SFX).
-- `scripts/game/` — `GameSession` (headless-capable level runner), `LevelLoader`, `BlockBody`, `TargetBody`,
-  `ProjectileBody`, `StaticBox`, `AimController`, `BurstEffect`, `Palette`.
-- `scripts/ui/` — `GameScreen`, `Hud`, `MenuScreen`, `StarRow`, `Icon` (vector icons), `UiKit` (theme + widgets). `Backdrop` (scenery) is in `scripts/game/`. `scripts/main.gd` is the app root (`scenes/main.tscn`).
-- Collision layers: 1 static, 2 blocks, 3 targets, 4 projectile; everything collides with everything.
-- Target breaks (only after the first launch "arms" it) on: contact impulse > 220, a direct projectile touch faster than 200 px/s,
-  a velocity change > 400 px/s in one step, or leaving the play area. Glass breaks on impulse > 300.
-- `tools/solve_levels.gd` — design tool: sweeps launch angle × power in parallel isolated worlds, picks a solution
-  that still wins under ±1% power / ±0.6° aim perturbation, and writes it to `levels.json` (`--write`).
+Existing architecture remains as documented below. Proposed story additions are not implemented:
+- `scripts/core/` — gameplay rules, level definitions, objectives, scoring, session rules and progress data.
+- `scripts/services/` — `SaveService`, `AudioService`.
+- `scripts/game/` — `GameSession`, level loader, bodies, aim controller and effects.
+- `scripts/ui/` — `GameScreen`, `Hud`, `MenuScreen`, pause/results and shared UI.
+- `data/levels.json` — current 20-level catalogue.
+- Proposed future modules: `CinematicPlayer`, `CinematicDefinition`, `CinematicCatalog`, `StoryProgressService`, `MusicDirector`, `StoryArchiveScreen`. Names are conceptual; coding agent must inspect project conventions before implementation.
+
+## Documentation added/updated (2026-11-09)
+
+- `docs/plan.md`: owner-approved revision 2 with story-driven 100-level direction and release/expansion requirements.
+- `docs/narrative-bible.md`: complete five-chapter story, opening voiceover, chapter intro/outro scripts, 100-level mission map and Season 2 hook.
+- `docs/visual-audio-production-guide.md`: art direction, chapter art bible, cinematic shot list, prompt templates, asset inventory, narration, music licensing and SFX guidance.
 
 ## Toolchain
 
-- Godot 4.7.2.stable.official (winget `GodotEngine.GodotEngine`), GDScript, GL Compatibility renderer.
-- No third-party dependencies or addons.
+- Godot 4.7.2.stable.official, GDScript, GL Compatibility renderer.
+- No third-party Godot dependencies or addons recorded.
 
-## Build / test status (verified 2026-11-01)
+## Last verified build/test status (2026-11-02)
 
-- Headless: `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 50 passed, 0 failed, 1 skipped.
-- Windowed (adds GUI input-routing check): `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 51 passed, 0 failed.
-- Unit only: append `-- --unit`.
-- App icons: edit the SVGs in `assets/icon/`, then `godot_console --headless -s tools/render_icons.gd`.
-- UI screenshots: `godot_console --resolution 1280x720 -s tools/capture_screens.gd` → `tests/output/screens/`.
-- Re-verify levels after any physics/tuning change: `godot_console --headless --fixed-fps 60 -s tools/solve_levels.gd -- --write`, then run tests.
-- Android debug APK: `godot_console --headless --export-debug "Android Debug" build/perfectsmash-debug.apk` works with a local
-  `export_presets.cfg` (gitignored; arm64-v8a + x86_64, VIBRATE permission, package `dev.imrn.perfectsmash`, the owner's standard `dev.imrn.<app>` scheme).
-  Latest build installed on the `Pixel10Pro` emulator (2856x1280).
-  **No physical-device test yet.**
+- Headless tests: 50 passed, 0 failed, 1 skipped.
+- Windowed tests: 51 passed, 0 failed.
+- Debug APK installed on Pixel10Pro emulator; physical-device validation not yet completed.
+- These results predate the narrative documentation changes. No code changed in this documentation-only update, so no new build/test run was performed.
 
 ## Known issues and risks
 
-- **Physics is not bit-reproducible run to run:** an identical shot from an identical settled layout can occasionally resolve
-  differently (seen with L01 on Godot 4.7.2; most likely contact ordering depending on engine-internal state). Mitigations: tests
-  replay each solution 3× and require ≥2 wins, the solver requires perturbation-robust shots, and a warm-up replay runs first
-  (`tests/physics_warmup.gd`).
-- Solutions are verified on this desktop build only. Plan §2 says not to promise identical physics across devices; levels need device checks.
-- Difficulty curve was reordered by solver win rate (2026-11-02). It still needs human play-testing; the win rate measures how forgiving a level is to aim, not how hard it is to figure out.
-- Godot's headless display server doesn't route mouse events to GUI controls, so the HUD-button test only runs windowed (it reports SKIP when headless).
-- Menu layout is tight vertically at 720px; check on short, wide phones.
+- Physics is not bit-reproducible run to run; see prior notes and tests.
+- Level solutions have only been verified on desktop; device validation remains necessary.
+- Existing 20 levels are not yet assigned to the five new narrative chapters or reskinned.
+- New level target of 100 must not lead to filler or fragile physics puzzles.
+- Cinematic backgrounds must not reduce gameplay structure readability.
+- Generated images/music require commercial-use rights and source/attribution evidence before release.
+- AI music generation task may fail or return a track that is unsuitable for seamless looping; review before adoption.
 
 ## Next recommended actions
 
-1. Test on a physical Android device (M0/M4): touch feel, performance, vibration, pause/resume.
-2. Play-test the new level order and UI on the emulator/device; adjust anything that feels off.
-3. Run the trajectory-preview experiment (plan §10) — the preview length is `GameConfig.PREVIEW_DURATION`.
-4. Investigate the run-to-run physics variance (minimal repro; check the engine issue tracker).
-5. Store assets before closed testing (M5): the app icon is done (`assets/icon/`); screenshots and a feature graphic are still needed.
+1. Decide and clear the final game name before changing app identity, logo or store assets.
+2. Review the narrative bible and lock the chapter scripts/story beats.
+3. Review the six initial environment concept references and approve the visual language.
+4. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.
+5. Obtain and review the generated gameplay music; if unsuitable, choose a verified track under a suitable commercial licence.
+6. Implement a small cinematic vertical slice (opening or Chapter I intro) with skip, subtitles, voiceover, music ducking and replay.
+7. Reskin one existing level per chapter and validate readability on physical Android hardware.
+8. Expand and validate content to 100 levels only after the vertical slice is approved.
 
-## Owner decisions (2026-11-01)
+## Existing owner decisions
 
-- Landscape orientation: approved.
-- Product name "Perfect Smash": approved; `plan.md` revised (rev 1, name only).
-- Package ID `dev.imrn.perfectsmash` (owner domain imrn.dev).
-- Per-shot timer (2026-11-02): not added to the core mode, because time pressure works against deliberate puzzle-solving and
-  touch aiming. A separate timed mode, a speed badge, or a fast-forward during collapse may be considered later as experiments.
+- Landscape orientation approved.
+- Existing product/app name Perfect Smash and package ID `dev.imrn.perfectsmash` remain in place until a new name is explicitly approved.
+- No per-shot timer in core mode.
+- Narrative direction and 100-level Season 1 plan approved on 2026-11-09.
 
-No decisions are currently pending.
+No gameplay implementation is claimed by this document.
