@@ -1,0 +1,21 @@
+{
+	"_note": "Planning inputs for tools/economy/simulate_research_data.py. Not game data: nothing here is read by the game. The owner approved chapter-scaled prices and rewards as the direction (2026-11-10); final values wait for the real campaign rewards and weapon unlock schedule. Change these numbers, rerun the tool, and record the output in docs/currentstate.md.",
+	"missions": 100,
+	"missions_per_chapter": 20,
+	"optional_objectives_per_mission": 3,
+	"weapon_unlocks_by_chapter": {"1": 2, "2": 1, "3": 1, "4": 1, "5": 1},
+	"attributes_per_weapon": 4,
+	"levels_per_attribute": 3,
+	"profiles": {
+		"casual": {"optional": 0.30, "efficiency": 0.45, "replay": 0.00, "replay_optional": 0.0, "replay_efficiency": 0.0},
+		"typical": {"optional": 0.55, "efficiency": 0.65, "replay": 0.20, "replay_optional": 0.85, "replay_efficiency": 0.85},
+		"completionist": {"optional": 0.80, "efficiency": 0.85, "replay": 0.60, "replay_optional": 1.0, "replay_efficiency": 0.95}
+	},
+	"schemes": [
+		{"id": "current", "label": "current prices from data/weapons.json, flat rewards"},
+		{"id": "chapter_scaled_b", "label": "direction (provisional): 25/50/90, +50% cost per later unlock chapter, rewards +25% per chapter",
+			"costs": [25, 50, 90], "cost_chapter_scale": 0.5, "reward_chapter_scale": 0.25},
+		{"id": "flat_low_c", "label": "comparison: 20/40/70 flat", "costs": [20, 40, 70]}
+	],
+	"target_affordability_at_campaign_end": {"casual": 0.65, "typical": 0.80, "completionist": 0.98}
+}
