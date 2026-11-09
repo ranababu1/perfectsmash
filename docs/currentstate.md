@@ -161,6 +161,14 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Greybox design decisions (owner, 2026-11-09)
+
+- **2.5D rendering:** a 3D presentation layer over the existing 2D physics. Each 2D body drives a simple 3D mesh seen through a tilted perspective camera with lighting and shadows; the operative is a 3D greybox. All collision stays in the single 2D physics plane, so depth is visual only. The renderer benchmark must be re-run with 3D content before any renderer decision.
+- **Fire flow:** weapons fire again after a reload cooldown, even while debris is moving. Objectives are evaluated continuously. A mission ends when its critical objectives are met, or when ammunition is exhausted and the scene has settled.
+- **Ammunition:** each mission defines a recommended shot benchmark (scoring) and a higher hard ammunition cap (fail state), with a separate small Breach Charge count.
+- **Cinematic player:** the untested pre-revision draft was deleted. Cinematics will be rebuilt from `data/cinematics.json` in Phase 4.
+- Greybox batch plan: `docs/project-audit.md` (Phase 0/1 re-audit section).
+
 ## Updated next actions
 
 1. Audit existing physics, aiming, projectile, object, level and save architecture against the revised direction.

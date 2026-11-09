@@ -2,6 +2,12 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Phase 0/1 re-audit and greybox design decisions (`fed4919`)
+
+- Re-audited the codebase against plan revision 5 (`docs/project-audit.md`): reusable systems, gaps (no damage model, single hard-coded projectile, 5-shot cap and per-shot settle, stars-only scoring, flat 2D presentation, slingshot aiming) and risks.
+- Owner decisions: 3D presentation layer over 2D physics; reload-cooldown fire flow; per-mission ammo cap + recommended shot benchmark; delete the untested cinematic player draft (done; it was never committed).
+- Tests on `6b75504`: headless 71 passed, 0 failed, 1 skipped.
+
 ## 2026-11-09 — M4 technical foundations (`298a99f`, `f33acf4`, `f8bbcde`, `28372ac`)
 
 - **Save schema v2** (`ProgressData`): `story.seen` sequence ids, `settings.music`, `settings.voice`. v1 saves are migrated (levels, stars and settings kept; new fields default on) and re-saved as v2. Unknown/newer versions are still rejected. New tests: v1 migration, story/audio round trip, invalid story entries.
