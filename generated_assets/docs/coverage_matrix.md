@@ -1,6 +1,6 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1056 entries on disk, 946 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1091 entries on disk, 980 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
@@ -8,7 +8,7 @@ A level is **full** when every requirement is available, **fallback** when nothi
 ## Summary
 
 - Levels fully covered: **0 / 100**; covered with fallbacks: 0; with missing assets: 100.
-- Requirements available: 2227 / 3236 level-requirement slots.
+- Requirements available: 2329 / 3236 level-requirement slots.
 - Game-wide requirements available: 29 / 36.
 
 | Chapter | Full | Fallback | Missing |
@@ -91,26 +91,26 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 21 | A Longer Life | VITA campus entrance | glass_screen | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | 1/2 | missing |
-| 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 0/4 (4 fb) | fb | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 23 | The Sequence | Genomics analysis racks | stack_tower | 1/2 (1 fb) | fb | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 25 | Trial Run | Clinical automation hub | twin_towers | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
-| 26 | Better Than Human | Enhancement lab | multi_tier | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 27 | Cold Chain | Distribution and storage racks | support_bridge, heavy_cap | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 28 | The Dependency | Life-support research infrastructure | indirect_shield | 2/3 (1 fb) | fb | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 29 | Replication Error | Containment support structure | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 30 | Controlled Growth | Production line | glass_screen | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
-| 31 | The Patent Wall | Research archive stacks | arc_over_wall | 0/3 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 32 | Patient Zero | Sealed trial wing | heavy_cap | 0/2 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 33 | The Upgrade | Automated treatment platform | mixed_material | 1/4 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 34 | The Price | Resource and cooling structure | heavy_cap | 0/2 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 35 | No Consent | Data and trial control centre | frame | 1/3 (2 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
-| 36 | The Black Archive | Encrypted research vault | glass_roof, arc_over_wall | 0/5 (4 fb) | fb | 12/15 (3 fb) | 10/10 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 37 | The Prediction | Forecast computation hall | multi_tier | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 38 | The Last Batch | Production support array | twin_towers | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
-| 40 | The Price of Perfection | VITA research core | finale | 1/10 (9 fb) | fb | 21/24 (3 fb) | 11/11 | 0/3 | ok | -- growth_chamber | ok | ok | 0/1 | missing |
+| 21 | A Longer Life | VITA campus entrance | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | 1/2 | missing |
+| 22 | Clean Room | Sterile research structures | glass_screen, chain_towers | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
+| 23 | The Sequence | Genomics analysis racks | stack_tower | 2/2 | ok | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
+| 24 | Growth Chamber | Bioreactor support frame | heavy_cap, glass_roof | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
+| 25 | Trial Run | Clinical automation hub | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- cleanroom_airlock | ok | ok | n/a | missing |
+| 26 | Better Than Human | Enhancement lab | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
+| 27 | Cold Chain | Distribution and storage racks | support_bridge, heavy_cap | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
+| 28 | The Dependency | Life-support research infrastructure | indirect_shield | 3/3 | ok | 6/9 (3 fb) | 7/7 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
+| 29 | Replication Error | Containment support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
+| 30 | Controlled Growth | Production line | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- bioreactor_bank | ok | ok | n/a | missing |
+| 31 | The Patent Wall | Research archive stacks | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
+| 32 | Patient Zero | Sealed trial wing | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
+| 33 | The Upgrade | Automated treatment platform | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
+| 34 | The Price | Resource and cooling structure | heavy_cap | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
+| 35 | No Consent | Data and trial control centre | frame | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- archive_vault | ok | ok | n/a | missing |
+| 36 | The Black Archive | Encrypted research vault | glass_roof, arc_over_wall | 4/5 | ok | 12/15 (3 fb) | 10/10 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
+| 37 | The Prediction | Forecast computation hall | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
+| 38 | The Last Batch | Production support array | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
+| 39 | Dependency Chain | Central VITA support structure | linked_bridge, chain_cell | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- growth_chamber | ok | ok | n/a | missing |
+| 40 | The Price of Perfection | VITA research core | finale | 10/10 | ok | 21/24 (3 fb) | 11/11 | 0/3 | ok | -- growth_chamber | ok | ok | 0/1 | missing |
 
 ## Chapter 3: Nova Grid (The Energy Beneath), levels 41-60
 
@@ -194,7 +194,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `HLX-ENV-<STRUCTURE>-A` | 20 | 1 |
 | `HLX-ENV-BACK_WALL-A` | 20 | 1 |
 | `HLX-ENV-FLOOR-A` | 20 | 1 |
-| `VTA-DEB-GENE_VAULT_CORE-A` | 20 | 21 |
 | `VTA-ENV-<STRUCTURE>-A` | 20 | 21 |
 | `VTA-ENV-BACK_WALL-A` | 20 | 21 |
 | `VTA-ENV-FLOOR-A` | 20 | 21 |
