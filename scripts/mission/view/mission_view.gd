@@ -5,7 +5,9 @@ extends Node3D
 ## greybox boxes: either way the front face is the physics rectangle, so the picture never implies
 ## collisions the 2D simulation does not have. The set dressing comes from
 ## data/environments/<mission id>.json. Owns no game rules: it mirrors bodies each frame and
-## reacts to world/engine signals with VFX.
+## reacts to world/engine signals with VFX: the ui-vfx presets through MissionVfx, debris sets
+## (DebrisSet) for destroyed components, and the procedural sparks/flash/chunks as fallback when
+## an asset is not integrated.
 
 ## Greybox look per component kind: [depth (m), colour, emission colour or null, emission energy].
 ## Depths also apply to production models (ASSET_CONTRACT 3); colours are the greybox fallback.
@@ -63,6 +65,20 @@ var _next_blast_light := 0
 ## detonation cost ~300 ms per blast on GL Compatibility (emulator spike log, lights disabled).
 var _blast_flashes := []
 var _next_blast_flash := 0
+## Preset effects (pools); `has_preset` false -> procedural fallback.
+var vfx: MissionVfx
+## Asset ids of the debris sets spawned so far, for reports and tests.
+var debris_spawned: Array[String] = []
+## component id -> physics material id (selects impact effects).
+var _material_of := {}
+## Point the camera frames (view space).
+var _focus := Vector3.ZERO
+## Debris sets drawn once under the floor while the mission loads (shader warm-up).
+var _warm_nodes: Array[Node3D] = []
+var _warm_frames := 0
+const WARM_FRAMES := 3
+## Hard impacts below this strength (px/s or impulse) show no effect.
+const IMPACT_EFFECT_MIN := 400.0
 
 
 func setup(p_world: MissionWorld) -> void:
@@ -72,6 +88,10 @@ func setup(p_world: MissionWorld) -> void:
 		_library = AssetLibrary.load_from_file()
 	_build_environment()
 	_build_camera()
+	vfx = MissionVfx.new()
+	vfx.name = "MissionVfx"
+	add_child(vfx)
+	vfx.setup(_library, _focus.x)
 	var set_data := _environment_data()
 	for s in definition.statics:
 		if not _add_static_piece(s, set_data):
@@ -133,6 +153,22 @@ func _warm_up_effects() -> void:
 		particles.initial_velocity_min = 0.0
 		particles.initial_velocity_max = 0.0
 		particles.gravity = Vector3.ZERO
+	# One debris set per kind in the mission, motionless under the floor for a few frames.
+	if _library == null:
+		return
+	var warmed := {}
+	for c in definition.components:
+		var entry := _library.debris_entry(chapter, c.kind, c.size)
+		if entry.is_empty() or warmed.has(entry.id):
+			continue
+		warmed[entry.id] = true
+		var model := _library.instance_debris(chapter, c.kind, c.size)
+		if model == null:
+			continue
+		model.position = Vector3(_focus.x, -1.2, 0.0)
+		add_child(model)
+		_warm_nodes.append(model)
+	_warm_frames = WARM_FRAMES
 
 
 ## The point in the 2D physics plane under a screen position (null if the ray misses it).
@@ -168,6 +204,12 @@ func hide_preview() -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
+	if _warm_frames > 0:
+		_warm_frames -= 1
+		if _warm_frames == 0:
+			for node: Node3D in _warm_nodes:
+				node.queue_free()
+			_warm_nodes.clear()
 	for id: String in _markers.keys():
 		var core := world.body_for(id)
 		var marker: MeshInstance3D = _markers[id]
@@ -175,6 +217,7 @@ func _process(delta: float) -> void:
 			continue
 		var top := ViewMapping.to_3d(core.global_position, definition.ground_y)
 		marker.position = top + Vector3(0.0, core.size.y / ViewMapping.PX_PER_METRE / 2.0 + MARKER_HEIGHT + sin(_time * 3.0) * 0.06, 0.0)
+		vfx.move_core_idle(id, top + Vector3(0.0, 0.0, 0.4))
 		marker.rotation.y = _time * 1.5
 	for id: String in _meshes.keys():
 		var body := world.body_for(id)
@@ -372,6 +415,7 @@ func _build_camera() -> void:
 	var left := minf(definition.operative.x, _facility_left())
 	var right := _facility_right()
 	var focus := Vector3((left + right) / 2.0 / ViewMapping.PX_PER_METRE, 1.6, 0.0)
+	_focus = focus
 	camera.position = focus + CAMERA_OFFSET
 	add_child(camera)
 	camera.look_at(focus + Vector3(0.0, -0.4, 0.0), Vector3.UP)
@@ -416,8 +460,10 @@ func _add_component(c: Dictionary) -> void:
 	visual.rotation = ViewMapping.rotation_to_3d(c.rotation)
 	add_child(visual)
 	_meshes[c.id] = visual
+	_material_of[c.id] = str(c.get("material", ""))
 	if c.critical_asset:
 		_markers[c.id] = _add_marker()
+		vfx.start_core_idle(c.id, _library, visual.position + Vector3(0.0, 0.0, 0.4))
 
 
 ## A floating, slowly turning red pointer above a critical asset.
@@ -464,13 +510,33 @@ func _on_component_state_changed(component_id: String, _previous: int, current: 
 func _on_component_removed(component_id: String, at: Vector2) -> void:
 	var visual: ComponentVisual = _meshes.get(component_id)
 	_meshes.erase(component_id)
+	var at_3d := ViewMapping.to_3d(at, definition.ground_y)
 	if _markers.has(component_id):
 		(_markers[component_id] as Node).queue_free()
 		_markers.erase(component_id)
+		vfx.stop_core_idle(component_id)
+		vfx.core_destroyed(at_3d + Vector3(0.0, 0.0, 0.4))
 	if visual == null:
 		return
-	_spawn_debris(ViewMapping.to_3d(at, definition.ground_y), visual.base_color, visual.size_m)
+	vfx.collapse(at_3d, visual.size_m.x)
+	if not _spawn_debris_set(component_id, visual):
+		_spawn_debris(at_3d, visual.base_color, visual.size_m)
 	visual.queue_free()
+
+
+## The library's debris set where the component was, with its last pose. False when none is
+## integrated for the kind (caller falls back to procedural chunks).
+func _spawn_debris_set(component_id: String, visual: ComponentVisual) -> bool:
+	if _library == null:
+		return false
+	var model := _library.instance_debris(chapter, visual.kind, visual.size_px)
+	if model == null:
+		return false
+	var entry := _library.debris_entry(chapter, visual.kind, visual.size_px)
+	var debris := DebrisSet.create(model, visual.position, visual.rotation.z, component_id, str(entry.id))
+	add_child(debris)
+	debris_spawned.append(debris.asset_id)
+	return true
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
@@ -489,6 +555,13 @@ func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
 	mesh.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
 	add_child(mesh)
 	_projectiles[projectile] = mesh
+	if not lobbed:
+		vfx.muzzle(mesh.position, ViewMapping.direction_angle(projectile.linear_velocity))
+		projectile.struck.connect(_on_kinetic_struck)
+
+
+func _on_kinetic_struck(projectile: WeaponProjectile, _target: Node, _impact_speed: float) -> void:
+	vfx.kinetic_hit(ViewMapping.to_3d(projectile.global_position, definition.ground_y, 0.3))
 
 
 func _on_projectile_removed(projectile: WeaponProjectile) -> void:
@@ -499,7 +572,10 @@ func _on_projectile_removed(projectile: WeaponProjectile) -> void:
 
 
 func _on_blast(center: Vector2, radius: float) -> void:
-	_spawn_flash(ViewMapping.to_3d(center, definition.ground_y), radius / ViewMapping.PX_PER_METRE * 2.0, 0.7, 4.0)
+	var at := ViewMapping.to_3d(center, definition.ground_y)
+	# With the preset the fireball replaces the flash sphere; the pooled light still lights the set.
+	var preset := vfx.breach_explosion(at + Vector3(0.0, 0.0, 0.3), radius)
+	_spawn_flash(at, radius / ViewMapping.PX_PER_METRE * 2.0, 0.0 if preset else 0.7, 4.0)
 
 
 func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -> void:
@@ -523,10 +599,12 @@ func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -
 	light.create_tween().tween_property(light, "light_energy", BLAST_LIGHT_IDLE_ENERGY, 0.3)
 
 
-func _on_impact(at: Vector2, strength: float, _component_id: String) -> void:
-	if strength < 400.0:
+func _on_impact(at: Vector2, strength: float, component_id: String) -> void:
+	if strength < IMPACT_EFFECT_MIN:
 		return
-	_spawn_sparks(ViewMapping.to_3d(at, definition.ground_y, 0.3))
+	var at_3d := ViewMapping.to_3d(at, definition.ground_y, 0.3)
+	if not vfx.impact(at_3d, _material_of.get(component_id, "")):
+		_spawn_sparks(at_3d)
 
 
 func _spawn_sparks(at: Vector3) -> CPUParticles3D:
