@@ -1,0 +1,176 @@
+{
+ "version": 1,
+ "notes": "CinematicCatalog-compatible copy of data/cinematics.json with art. Extra keys slide_id, vo_line and end_card.image are ignored by the current loader. Durations use the loader reading pace (2.5 words/s + 1.2 s, min 3.5 s). Captions stay in-engine; nothing is baked into the images.",
+ "sequences": [
+  {
+   "id": "opening",
+   "title": "The Last Transmission",
+   "theme": "meridian",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+     "motion": "push_in",
+     "caption": "2149  /  CIVILISATION STATUS: CRITICAL",
+     "slide_id": "GAM-CIN-OPENING-01",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_01.webp",
+     "duration": 14.8,
+     "vo_line": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop.",
+     "motion": "pan_left",
+     "caption": "CASCADE FAILURE  /  GLOBAL",
+     "slide_id": "GAM-CIN-OPENING-02",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_02.webp",
+     "duration": 11.6,
+     "vo_line": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save.",
+     "motion": "pull_back",
+     "caption": "SURVIVING POPULATION: UNKNOWN",
+     "slide_id": "GAM-CIN-OPENING-03",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_03.webp",
+     "duration": 12.8,
+     "vo_line": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance.",
+     "motion": "push_in",
+     "caption": "TEMPORAL DISPLACEMENT: POSSIBLE",
+     "slide_id": "GAM-CIN-OPENING-04",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_04.webp",
+     "duration": 12.0,
+     "vo_line": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "One operative would go back. No army. No second attempt. No guarantee of return.",
+     "motion": "pan_right",
+     "caption": "OPERATIVE: CLEARED",
+     "slide_id": "GAM-CIN-OPENING-05",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_05.webp",
+     "duration": 6.8,
+     "vo_line": "One operative would go back. No army. No second attempt. No guarantee of return."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
+     "motion": "push_in",
+     "caption": "FIRST DESTINATION: HELIX SYSTEMS  /  2089",
+     "slide_id": "GAM-CIN-OPENING-06",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_06.webp",
+     "duration": 14.0,
+     "vo_line": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "You cannot undo every decision. You only need to break the ones that make the end inevitable.",
+     "motion": "push_in",
+     "slide_id": "GAM-CIN-OPENING-07",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_07.webp",
+     "duration": 8.0,
+     "vo_line": "You cannot undo every decision. You only need to break the ones that make the end inevitable."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Temporal insertion in three... two... one.",
+     "motion": "static",
+     "slide_id": "GAM-CIN-OPENING-08",
+     "image": "res://generated_assets/cinematics/opening/gam_cin_opening_08.webp",
+     "duration": 3.6,
+     "vo_line": "Temporal insertion in three... two... one."
+    }
+   ],
+   "end_card": {
+    "title": "TEMPORAL: FIRST JUMP",
+    "subtitle": "ONE SHOT CAN CHANGE EVERYTHING.",
+    "image": "res://generated_assets/cinematics/opening/gam_cin_opening_endcard_01.webp"
+   }
+  },
+  {
+   "id": "ch01_intro",
+   "title": "A Better World",
+   "theme": "helix",
+   "slides": [
+    {
+     "speaker": "control",
+     "subtitle": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response.",
+     "motion": "push_in",
+     "caption": "2089  /  NEW AVALON",
+     "slide_id": "HLX-CIN-INTRO-01",
+     "image": "res://generated_assets/cinematics/ch01_intro/hlx_cin_intro_01.webp",
+     "duration": 7.6,
+     "vo_line": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+     "motion": "pan_left",
+     "slide_id": "HLX-CIN-INTRO-02",
+     "image": "res://generated_assets/cinematics/ch01_intro/hlx_cin_intro_02.webp",
+     "duration": 8.8,
+     "vo_line": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+     "motion": "push_in",
+     "caption": "TARGET: HELIX SYSTEMS",
+     "slide_id": "HLX-CIN-INTRO-03",
+     "image": "res://generated_assets/cinematics/ch01_intro/hlx_cin_intro_03.webp",
+     "duration": 11.2,
+     "vo_line": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention."
+    }
+   ],
+   "end_card": {
+    "title": "CHAPTER 01",
+    "subtitle": "THE MACHINE THAT DECIDED"
+   }
+  },
+  {
+   "id": "ch01_outro",
+   "title": "The First Correction",
+   "theme": "helix",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+     "motion": "pull_back",
+     "slide_id": "HLX-CIN-OUTRO-01",
+     "image": "res://generated_assets/cinematics/ch01_outro/hlx_cin_outro_01.webp",
+     "duration": 10.4,
+     "vo_line": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+     "motion": "push_in",
+     "caption": "DIRECTIVE SOURCE: MERIDIAN",
+     "slide_id": "HLX-CIN-OUTRO-02",
+     "image": "res://generated_assets/cinematics/ch01_outro/hlx_cin_outro_02.webp",
+     "duration": 11.6,
+     "vo_line": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready.",
+     "motion": "static",
+     "caption": "NEXT: 2092  /  VITA GENOMICS",
+     "slide_id": "HLX-CIN-OUTRO-03",
+     "image": "res://generated_assets/cinematics/ch01_outro/hlx_cin_outro_03.webp",
+     "duration": 6.4,
+     "vo_line": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready."
+    }
+   ],
+   "end_card": {
+    "title": "TIMELINE SHIFT DETECTED",
+    "subtitle": "NEXT: THE PRICE OF PERFECTION"
+   }
+  }
+ ]
+}

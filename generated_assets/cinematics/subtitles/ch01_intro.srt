@@ -1,0 +1,11 @@
+1
+00:00:00,200 --> 00:00:07,300
+Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response.
+
+2
+00:00:07,800 --> 00:00:16,100
+It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.
+
+3
+00:00:16,600 --> 00:00:27,300
+Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.

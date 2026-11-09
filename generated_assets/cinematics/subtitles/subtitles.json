@@ -1,0 +1,115 @@
+{
+ "opening": {
+  "total_seconds": 83.6,
+  "cues": [
+   {
+    "slide_id": "GAM-CIN-OPENING-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 14.5,
+    "text": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-02",
+    "speaker": "narrator",
+    "start": 15.0,
+    "end": 26.1,
+    "text": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-03",
+    "speaker": "narrator",
+    "start": 26.6,
+    "end": 38.9,
+    "text": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-04",
+    "speaker": "narrator",
+    "start": 39.4,
+    "end": 50.9,
+    "text": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-05",
+    "speaker": "narrator",
+    "start": 51.4,
+    "end": 57.7,
+    "text": "One operative would go back. No army. No second attempt. No guarantee of return."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-06",
+    "speaker": "control",
+    "start": 58.2,
+    "end": 71.7,
+    "text": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-07",
+    "speaker": "narrator",
+    "start": 72.2,
+    "end": 79.7,
+    "text": "You cannot undo every decision. You only need to break the ones that make the end inevitable."
+   },
+   {
+    "slide_id": "GAM-CIN-OPENING-08",
+    "speaker": "control",
+    "start": 80.2,
+    "end": 83.3,
+    "text": "Temporal insertion in three... two... one."
+   }
+  ]
+ },
+ "ch01_intro": {
+  "total_seconds": 27.6,
+  "cues": [
+   {
+    "slide_id": "HLX-CIN-INTRO-01",
+    "speaker": "control",
+    "start": 0.2,
+    "end": 7.3,
+    "text": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response."
+   },
+   {
+    "slide_id": "HLX-CIN-INTRO-02",
+    "speaker": "control",
+    "start": 7.8,
+    "end": 16.1,
+    "text": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate."
+   },
+   {
+    "slide_id": "HLX-CIN-INTRO-03",
+    "speaker": "control",
+    "start": 16.6,
+    "end": 27.3,
+    "text": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention."
+   }
+  ]
+ },
+ "ch01_outro": {
+  "total_seconds": 28.4,
+  "cues": [
+   {
+    "slide_id": "HLX-CIN-OUTRO-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 10.1,
+    "text": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission."
+   },
+   {
+    "slide_id": "HLX-CIN-OUTRO-02",
+    "speaker": "narrator",
+    "start": 10.6,
+    "end": 21.7,
+    "text": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian."
+   },
+   {
+    "slide_id": "HLX-CIN-OUTRO-03",
+    "speaker": "control",
+    "start": 22.2,
+    "end": 28.1,
+    "text": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready."
+   }
+  ]
+ }
+}
