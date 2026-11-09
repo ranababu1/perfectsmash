@@ -148,3 +148,10 @@ The 21 Helix environment pieces were rebuilt in place with the same ids.
 - Review note: the Helix MissionView showcase frame was too dark for a phone screen. `showcase.gd` gains two layout opt-ins: `asis_exposure` / `asis_ambient` (presentation lift for the MissionView-camera frame) and `fill` (a soft camera-side fill light, no shadow). Helix uses exposure 1.3, ambient 0.72 and fill 0.42 for that frame, and exposure 1.12, ambient 0.55 for the graded frame. The background stays dark, so the mood holds.
 - `previews/hlx_godot_test_frame.webp` is not regenerated and stays the strict MissionView lighting reference.
 - Re-rendered with the pass-2 operative and Kinetic Accelerator: `previews/hlx_showcase_missionview.webp`, `previews/hlx_showcase_graded.webp`, `previews/hlx_showcase_close.webp`.
+
+## VITA environment premium pass and showcase (2026-11-10, 3d-kits)
+
+- 21 VITA environment pieces rebuilt with the shared premium detail in `env_common.py` (wall pilasters, conduits, screens and LEDs, low wall kick plates, pillar conduits, catwalk grating, massing louvres and ribs; no floor bolts in VITA). Tris 96 to 1,500. Godot `kit_lineup.gd`: 21/21 load.
+- Showcase: `showcase/vita_showcase_layout.json` (generated from the Helix scaffold by `destructibles/source/blender/mk_ch_showcase.py`: VITA kit pieces, a gameplay band of VITA components on a lab deck with the gene vault core, background rows, the operative with the Kinetic Accelerator B). The white lab surfaces clip under the Helix lift, so VITA uses a lower lift: MissionView-camera frame exposure 1.0, ambient 0.55, fill 0.22; graded exposure 0.8.
+- Previews (after): `previews/vta_environment_sheet.webp` (Cycles), `previews/vta_showcase_missionview.webp`, `previews/vta_showcase_graded.webp`, `previews/vta_showcase_close.webp`, and `previews/vta_godot_test_frame.webp` (strict MissionView lighting, `kit_scene.gd`, regenerated with the new pieces). Before: the same paths at commit `9091af3` (the showcase frames are new).
+- There is no VITA concept frame; the check was against the chapter style (white clinical lab, mint glass, red helix accents) and the Helix premium level.

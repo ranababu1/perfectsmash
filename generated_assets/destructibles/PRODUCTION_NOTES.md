@@ -76,3 +76,10 @@ Revision of the 22 Helix components and their debris sets in place. File names a
   - Godot 4.7.2 GL Compatibility lineup: 44 of 44 files load, with COLOR_0 present.
   - Validator: PASS.
   - Previews: `previews/hlx_components_sheet.webp` (Cycles) and `environments/previews/hlx_showcase_*.webp` (Godot).
+
+## Premium uplift, VITA batch (2026-11-10)
+
+- VITA components (17) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_vta` and `trim_module_vta` slots with fit UVs, and secondary detail from `kits/vita.py` (premium block: column caps and seams, deck edge trims, cleanroom panel frames and status LEDs, specimen rack bays, reactor and cryo bands, gene vault core cap and pips). VITA keeps the clean white lab look: no bolts on floors, soft white edges.
+- Tris: 256 to 2,104 intact (the gene vault core is critical, under 3,000). Debris sets stay within 1.5x. IDs unchanged.
+- Godot 4.7.2 `kit_lineup.gd`: 34/34 component and debris files load, COLOR_0 present on all 34.
+- Previews (after): `previews/vta_components_sheet.webp` (Cycles). Before: the same path at commit `9091af3`.

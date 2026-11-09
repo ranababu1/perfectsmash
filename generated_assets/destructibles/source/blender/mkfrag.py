@@ -15,7 +15,7 @@ MATNOTE = ("Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTR
            "same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt "
            "metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and "
            "the 1 tile/m damage overlays line up.")
-PREMIUM = {"helix"}  # chapters rebuilt in the premium uplift pass (textured slots)
+PREMIUM = {"helix", "vita"}  # chapters rebuilt in the premium uplift pass (textured slots)
 MATNOTE_TEX = ("Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references "
                "the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed "
                "them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both "

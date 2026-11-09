@@ -1,0 +1,540 @@
+{
+ "ga": "/workspace/tfj-3d-kits/generated_assets",
+ "focus": [
+  3.88,
+  1.6,
+  0.0
+ ],
+ "zoom": 1.0,
+ "exposure": 0.8,
+ "ambient": 0.45,
+ "rim": 0.9,
+ "fog_begin": 14.0,
+ "fog_end": 40.0,
+ "lights": [
+  {
+   "type": "omni",
+   "p": [
+    2.75,
+    0.9,
+    0.7
+   ],
+   "c": "ffae42",
+   "e": 0.5,
+   "r": 1.2
+  },
+  {
+   "type": "omni",
+   "p": [
+    1.4,
+    1.3,
+    1.0
+   ],
+   "c": "5fd4e8",
+   "e": 0.8,
+   "r": 3.0
+  },
+  {
+   "type": "omni",
+   "p": [
+    7.2,
+    1.5,
+    1.0
+   ],
+   "c": "5fd4e8",
+   "e": 0.6,
+   "r": 3.0
+  },
+  {
+   "type": "omni",
+   "p": [
+    4.0,
+    2.6,
+    -3.6
+   ],
+   "c": "5fd4e8",
+   "e": 0.9,
+   "r": 5.0
+  },
+  {
+   "type": "spot",
+   "p": [
+    -0.6,
+    4.0,
+    4.0
+   ],
+   "look": [
+    -1.4,
+    0.8,
+    0.7
+   ],
+   "c": "cfe6ff",
+   "e": 1.6,
+   "r": 8.0,
+   "angle": 25
+  }
+ ],
+ "sky_energy": 0.35,
+ "asis_exposure": 1.0,
+ "asis_ambient": 0.55,
+ "fill": 0.22,
+ "items": [
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    -6,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    -2,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    2,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    6,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    10,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    14,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_trench_a.glb",
+   "p": [
+    -6,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    -2,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    2,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_trench_a.glb",
+   "p": [
+    6,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    10,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_b.glb",
+   "p": [
+    14,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    -6,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    -2,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    2,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    6,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    10,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_floor_tile_a.glb",
+   "p": [
+    14,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_a.glb",
+   "p": [
+    -6,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_b.glb",
+   "p": [
+    -2,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_a.glb",
+   "p": [
+    10,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_b.glb",
+   "p": [
+    14,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_a.glb",
+   "p": [
+    2,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_back_wall_b.glb",
+   "p": [
+    6,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_pillar_a.glb",
+   "p": [
+    -4,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_pillar_a.glb",
+   "p": [
+    0,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_pillar_a.glb",
+   "p": [
+    8,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_pillar_a.glb",
+   "p": [
+    12,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_catwalk_a.glb",
+   "p": [
+    10,
+    2.8,
+    -4.6
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_catwalk_a.glb",
+   "p": [
+    14,
+    2.8,
+    -4.6
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_massing_block_a.glb",
+   "p": [
+    -7,
+    0,
+    -10
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_massing_tower_b.glb",
+   "p": [
+    17,
+    0,
+    -11
+   ]
+  },
+  {
+   "f": "environments/vita/vta_env_low_wall_a.glb",
+   "p": [
+    -5.0,
+    0,
+    -3.2
+   ]
+  },
+  {
+   "f": "environments/vita/vta_prp_console_a.glb",
+   "p": [
+    9.0,
+    0,
+    -3.0
+   ]
+  },
+  {
+   "f": "environments/vita/vta_prp_crate_stack_a.glb",
+   "p": [
+    1.0,
+    0,
+    -3.3
+   ]
+  },
+  {
+   "f": "environments/vita/vta_prp_pipe_run_a.glb",
+   "p": [
+    12.5,
+    0,
+    -3.6
+   ]
+  },
+  {
+   "f": "environments/vita/vta_prp_tank_a.glb",
+   "p": [
+    -8.5,
+    0,
+    -3.4
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_a.glb",
+   "p": [
+    -0.55,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_b.glb",
+   "p": [
+    0.12,
+    0.7,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_cleanroom_panel_a.glb",
+   "p": [
+    0.61,
+    0.45,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_cleanroom_panel_b.glb",
+   "p": [
+    1.1,
+    0.6,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_containment_cap_a.glb",
+   "p": [
+    2.12,
+    0.15,
+    0.0
+   ],
+   "state": "mesh_light"
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_lab_deck_c.glb",
+   "p": [
+    4.54,
+    0.12,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_gene_vault_core_a.glb",
+   "p": [
+    4.54,
+    0.79,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_containment_cap_b.glb",
+   "p": [
+    6.74,
+    0.2,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_cryo_cell_a.glb",
+   "p": [
+    7.44,
+    0.25,
+    0.0
+   ],
+   "state": "mesh_heavy"
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_lab_column_a.glb",
+   "p": [
+    7.87,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_lab_deck_a.glb",
+   "p": [
+    8.72,
+    0.12,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_specimen_rack_a.glb",
+   "p": [
+    9.64,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_b.glb",
+   "p": [
+    -4.6,
+    0.7,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_cleanroom_panel_b.glb",
+   "p": [
+    -3.9,
+    0.6,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_a.glb",
+   "p": [
+    2.6,
+    0.5,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_b.glb",
+   "p": [
+    3.3,
+    0.7,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_cleanroom_panel_b.glb",
+   "p": [
+    11.4,
+    0.6,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/vita/vta_cmp_bioreactor_a.glb",
+   "p": [
+    12.1,
+    0.5,
+    -2.6
+   ]
+  },
+  {
+   "f": "characters/shared/opr_chr_operative_a.glb",
+   "p": [
+    -1.45,
+    0.0,
+    0.7
+   ],
+   "r": 0,
+   "anim": "aim_pose",
+   "t": 0.5,
+   "mount": {
+    "f": "weapons/shared/opr_wpn_kinetic_accelerator_b.glb",
+    "socket": "weapon_socket"
+   }
+  }
+ ]
+}
