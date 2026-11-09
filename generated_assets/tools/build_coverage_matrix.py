@@ -75,19 +75,19 @@ ROLE_KIND = {
 # Physics material per kind (ASSET_CONTRACT section 5, data/materials.json ids).
 KIND_MATERIAL = {
     "server_rack": "electronic_module", "support_column": "lightweight_alloy", "service_deck": "composite",
-    "ai_core": "electronic_module", "core_shield": "reinforced_steel", "power_cell": "energy_component",
+    "ai_core": "ai_core_module", "core_shield": "reinforced_steel", "power_cell": "energy_component",
     "blast_wall": "reinforced_steel", "relay_mast": "lightweight_alloy", "relay_dish": "glass_polymer",
     "control_pod_glass": "glass_polymer", "logistics_gantry": "lightweight_alloy", "cooling_stack": "composite",
     "data_crate": "composite",
     "lab_column": "lightweight_alloy", "lab_deck": "composite", "cleanroom_panel": "glass_polymer",
     "specimen_rack": "electronic_module", "bioreactor": "glass_polymer", "containment_cap": "concrete",
-    "cryo_cell": "energy_component", "gene_vault_core": "electronic_module",
+    "cryo_cell": "energy_component", "gene_vault_core": "ai_core_module",
     "grid_pylon": "reinforced_steel", "cable_bridge": "composite", "transformer": "electronic_module",
     "cooling_tower_segment": "concrete", "containment_ring_segment": "reinforced_steel",
     "capacitor_cell": "energy_component", "containment_wall": "concrete", "reactor_core": "energy_component",
     "civic_column": "concrete", "relay_bridge": "composite", "sensor_mast": "lightweight_alloy",
     "sensor_array": "glass_polymer", "civic_screen": "glass_polymer", "data_exchange_rack": "electronic_module",
-    "security_wall": "reinforced_steel", "surveillance_core": "electronic_module",
+    "security_wall": "reinforced_steel", "surveillance_core": "ai_core_module",
     "anchor_column": "reinforced_steel", "convergence_deck": "composite", "phase_shield": "glass_polymer",
     "quantum_stabilizer": "electronic_module", "temporal_cell": "energy_component", "monolith_slab": "concrete",
     "timeline_relay": "lightweight_alloy", "convergence_core": "energy_component",
@@ -99,7 +99,11 @@ GENERIC_FOR_MATERIAL = {
     "lightweight_alloy": "generic_block_alloy", "reinforced_steel": "generic_block_steel", "concrete": "generic_block_concrete",
     "glass_polymer": "generic_panel_glass", "composite": "generic_beam_composite",
     "electronic_module": "generic_block_alloy", "energy_component": "generic_block_alloy",
+    "ai_core_module": "generic_block_alloy",
 }
+# Physics materials without their own texture set or damage overlay yet borrow a related one
+# (counted as fallback): the critical core housing reads as an electronic module.
+MATERIAL_FALLBACK = {"ai_core_module": "electronic_module"}
 
 ARCHETYPE_ROLES = {
     "exposed_target": ["deck", "core"],
@@ -187,6 +191,7 @@ AMBIENCE_BANDS = {
 MATERIAL_VFX = {
     "glass_polymer": ("glass shards", r"-VFX-.*(GLASS|SHARD)"),
     "electronic_module": ("electrical arcs", r"-VFX-.*(ARC|ELECTRIC)"),
+    "ai_core_module": ("electrical arcs", r"-VFX-.*(ARC|ELECTRIC)"),
     "energy_component": ("energy discharge", r"-VFX-.*(ENERGY|DISCHARGE|PLASMA)"),
     "concrete": ("concrete dust", r"-VFX-.*(DUST|CONCRETE)"),
     "reinforced_steel": ("metal sparks", r"-VFX-.*SPARK"),
@@ -369,10 +374,15 @@ def build(manifest: dict) -> dict:
                     materials.append(ck["material"])
             mats = []
             for m in materials:
-                mats.append(dict(req(f"{m} texture set", idx.by_regex(rf"-MAT-{m.upper()}", [code]), idx.by_regex(rf"-MAT-{m.upper()}", ["SHR"]),
+                alt = MATERIAL_FALLBACK.get(m)
+                fb = idx.by_regex(rf"-MAT-{m.upper()}", ["SHR"])
+                if alt:
+                    fb = fb + idx.by_regex(rf"-MAT-{alt.upper()}", [code, "SHR"])
+                mats.append(dict(req(f"{m} texture set", idx.by_regex(rf"-MAT-{m.upper()}", [code]), fb,
                                      wanted=f"{code}-MAT-{m.upper()}-A"), material=m))
                 for state in ("LIGHT", "HEAVY"):
-                    mats.append(dict(req(f"{m} damage {state.lower()}", idx.by_regex(rf"-DMG-{m.upper()}-{state}", [code, "SHR"]),
+                    fb_dmg = idx.by_regex(rf"-DMG-{alt.upper()}-{state}", [code, "SHR"]) if alt else None
+                    mats.append(dict(req(f"{m} damage {state.lower()}", idx.by_regex(rf"-DMG-{m.upper()}-{state}", [code, "SHR"]), fb_dmg,
                                          wanted=f"SHR-DMG-{m.upper()}-{state}"), material=m))
             vfx = [req(label, idx.by_regex(rx, [code, "SHR", "OPR"]), wanted=f"SHR-VFX-{label.upper().replace(' ', '_')}-A") for label, rx in WEAPON_VFX]
             seen_vfx = set()

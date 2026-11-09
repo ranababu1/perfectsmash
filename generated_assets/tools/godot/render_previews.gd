@@ -39,7 +39,9 @@ const ROLE_MAP := {
 }
 const CHAPTERS := ["helix", "vita", "nova_grid", "civitas", "meridian"]
 const CODES := {"helix": "HLX", "vita": "VTA", "nova_grid": "NVG", "civitas": "CVT", "meridian": "MRD", "shared": "SHR"}
-const PHYSICS_MATERIALS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "energy_component"]
+const PHYSICS_MATERIALS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "ai_core_module", "energy_component"]
+## Materials without their own overlay borrow a related one (ASSET_CONTRACT 7).
+const MATERIAL_FALLBACK := {"ai_core_module": "electronic_module"}
 
 var out_dir := "/tmp/tfj-previews"
 var only := ""
@@ -133,10 +135,13 @@ func _debris_entry(chapter: String, kind: String) -> Variant:
 
 
 func _overlay(material_id: String, state: String) -> Texture2D:
-	var want := "-DMG-%s-%s" % [material_id.to_upper(), state.to_upper()]
-	for e: Dictionary in entries:
-		if String(e.get("id", "")).contains(want) and String(e.get("path", "")).get_extension() in ["png", "webp"]:
-			return load("res://" + e["path"])
+	for m: String in [material_id, str(MATERIAL_FALLBACK.get(material_id, ""))]:
+		if m == "":
+			continue
+		var want := "-DMG-%s-%s" % [m.to_upper(), state.to_upper()]
+		for e: Dictionary in entries:
+			if String(e.get("id", "")).contains(want) and String(e.get("path", "")).get_extension() in ["png", "webp"]:
+				return load("res://" + e["path"])
 	return null
 
 
