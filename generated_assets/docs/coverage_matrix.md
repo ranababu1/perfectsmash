@@ -1,6 +1,6 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-09, 17 entries on disk). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 280 entries on disk, 242 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
@@ -9,7 +9,7 @@ A level is **full** when every requirement is available, **fallback** when nothi
 
 - Levels fully covered: **0 / 100**; covered with fallbacks: 0; with missing assets: 100.
 - Requirements available: 0 / 3176 level-requirement slots.
-- Game-wide requirements available: 0 / 30.
+- Game-wide requirements available: 16 / 36.
 
 | Chapter | Full | Fallback | Missing |
 |---|---:|---:|---:|
@@ -31,17 +31,23 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | Breach Charge launcher | -- |  |
 | Kinetic projectile | -- |  |
 | Breach canister projectile | -- |  |
-| HUD kit | -- |  |
-| Weapon icons | -- |  |
-| Objective icons | -- |  |
-| Menu screens | -- |  |
-| Mission result screen | -- |  |
-| Progression / chapter map | -- |  |
+| HUD elements (weapon slots, ammo, cooldown, reticle, trajectory) | ok | GAM-UI-AIM_RETICLE-A, GAM-UI-AMMO_PIP_BREACH_EMPTY-A, GAM-UI-AMMO_PIP_BREACH_FULL-A |
+| Critical asset target marker | ok | GAM-UI-CRITICAL_MARKER_ALL-A, GAM-UI-CRITICAL_MARKER_BRACKETS-A, GAM-UI-CRITICAL_MARKER_DIAMOND-A |
+| Objective markers | ok | GAM-UI-OBJECTIVE_MARKER_COMPLETE-A, GAM-UI-OBJECTIVE_MARKER_FAILED-A, GAM-UI-OBJECTIVE_MARKER_OPTIONAL-A |
+| Weapon icons | ok | GAM-ICN-WEAPON_BREACH_CHARGE-A, GAM-ICN-WEAPON_DISRUPTOR-A, GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A |
+| Objective icons | ok | GAM-ICN-OBJECTIVE_COMPLETE-A, GAM-ICN-OBJECTIVE_FAILED-A, GAM-ICN-OBJECTIVE_OPTIONAL-A |
+| Panels and buttons (9-slice kit) | ok | GAM-UI-BUTTON_DANGER_DISABLED-A, GAM-UI-BUTTON_DANGER_HOVER-A, GAM-UI-BUTTON_DANGER_NORMAL-A |
+| Main menu backdrop | ok | GAM-BG-MAIN_MENU-A |
+| Loading backdrop | ok | GAM-BG-LOADING-A |
+| Chapter cards and upgrade tier badges | ok | GAM-UI-CARD_CHAPTER_CIVITAS_LOCKED-A, GAM-UI-CARD_CHAPTER_CIVITAS_NORMAL-A, GAM-UI-CARD_CHAPTER_CIVITAS_SELECTED-A |
+| Chapter title treatments | ok | GAM-UI-CHAPTER_TITLE_DECO-01_1X, GAM-UI-CHAPTER_TITLE_DECO-01_2X, GAM-UI-CHAPTER_TITLE_DECO-02_1X |
+| Screen layout references (menus, HUD, results, map, upgrades) | ok | GAM-UI-SCREEN_CHAPTER_MAP_01_HELIX-MOCK, GAM-UI-SCREEN_CHAPTER_MAP_02_VITA-MOCK, GAM-UI-SCREEN_CHAPTER_MAP_03_NOVA_GRID-MOCK |
+| Godot theme spec | ok | GAM-UI-THEME_SPEC-A |
 | Topple threshold marker | -- |  |
-| Game logo | -- |  |
-| App icon | -- |  |
-| Splash screen | -- |  |
-| UI font | -- |  |
+| Game logo | ok | GAM-LOGO-COMPACT-COLOUR, GAM-LOGO-COMPACT-COLOUR_ON_LIGHT, GAM-LOGO-COMPACT-LIGHT_ON_DARK |
+| App icon | ok | GAM-LOGO-APP_ICON-192, GAM-LOGO-APP_ICON-256, GAM-LOGO-APP_ICON-48 |
+| Splash screen | ok | GAM-UI-SPLASH-1280X720, GAM-UI-SPLASH-2560X1440, GAM-UI-SPLASH-LOGO_TRANSPARENT |
+| UI font | ok | GAM-FNT-BARLOW-BOLD, GAM-FNT-BARLOW-MEDIUM, GAM-FNT-BARLOW-REGULAR |
 | Menu music | -- |  |
 | Victory stinger | -- |  |
 | Defeat stinger | -- |  |

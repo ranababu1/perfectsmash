@@ -19,7 +19,7 @@ set +e
 "$GODOT" --headless --path "$WORK" --import > /tmp/tfj-godot-check/import.log 2>&1
 IMPORT_RC=$?
 set -e
-grep -E "ERROR|SCRIPT ERROR|Failed|failed" /tmp/tfj-godot-check/import.log | grep -v -E "^\s*$" | sort | uniq -c | sort -rn | head -40 || true
+sed "s/\x1b\[[0-9;]*m//g" /tmp/tfj-godot-check/import.log | grep -E "^(ERROR|SCRIPT ERROR|WARNING)" | sort | uniq -c | sort -rn | head -40 || true
 echo "== import exit code $IMPORT_RC"
 echo "== load: $GODOT --headless --path $WORK --script res://generated_assets/tools/godot/load_check.gd -- --report=$REPORT"
 set +e

@@ -200,36 +200,43 @@ WEAPON_VFX = [
     ("smoke", r"-VFX-.*SMOKE"),
 ]
 GAME_WIDE = [
-    ("Operative character mesh", r"^OPR-CHR-OPERATIVE", "characters"),
-    ("Operative animations", r"^OPR-(ANM|CHR)-OPERATIVE.*", "characters"),
-    ("Kinetic Accelerator weapon", r"^OPR-WPN-KINETIC", "weapons"),
-    ("Breach Charge launcher", r"^OPR-WPN-BREACH", "weapons"),
-    ("Kinetic projectile", r"^OPR-PRJ-KINETIC", "weapons"),
-    ("Breach canister projectile", r"^OPR-PRJ-BREACH", "weapons"),
-    ("HUD kit", r"-(UI)-.*HUD", "ui"),
-    ("Weapon icons", r"-ICN-.*(KINETIC|BREACH|WEAPON)", "ui"),
-    ("Objective icons", r"-ICN-.*(OBJECTIVE|TARGET|CORE)", "ui"),
-    ("Menu screens", r"-UI-.*(MENU|TITLE)", "ui"),
-    ("Mission result screen", r"-UI-.*(RESULT|DEBRIEF)", "ui"),
-    ("Progression / chapter map", r"-UI-.*(PROGRESS|CHAPTER|MAP|UPGRADE)", "ui"),
-    ("Topple threshold marker", r"-(UI|VFX)-.*(THRESHOLD|TOPPLE)", "ui"),
-    ("Game logo", r"^GAM-LOGO-", "ui"),
-    ("App icon", r"(APP_ICON|-ICN-APP)", "ui"),
-    ("Splash screen", r"SPLASH", "ui"),
-    ("UI font", r"-FNT-", "fonts"),
-    ("Menu music", r"^GAM-MUS-(MENU|TITLE|MAIN)", "audio"),
-    ("Victory stinger", r"-(MUS|SFX)-.*(VICTORY|SUCCESS|WIN)", "audio"),
-    ("Defeat stinger", r"-(MUS|SFX)-.*(DEFEAT|FAIL|LOSE)", "audio"),
-    ("Ending music", r"^GAM-MUS-(ENDING|CREDITS)", "audio"),
-    ("Kinetic fire SFX", r"-SFX-.*KINETIC", "audio"),
-    ("Breach launch / detonation SFX", r"-SFX-.*(BREACH|EXPLOSION|BLAST)", "audio"),
-    ("Metal impact SFX", r"-SFX-.*(IMPACT|HIT).*METAL|-SFX-.*METAL", "audio"),
-    ("Glass break SFX", r"-SFX-.*GLASS", "audio"),
-    ("Concrete break SFX", r"-SFX-.*(CONCRETE|STONE|RUBBLE)", "audio"),
-    ("Electrical / machinery SFX", r"-SFX-.*(ELECTRIC|ARC|MACHINE|SERVO|HUM)", "audio"),
-    ("UI SFX", r"-SFX-.*(UI|CLICK|CONFIRM|SELECT)", "audio"),
-    ("Alarm SFX", r"-SFX-.*ALARM", "audio"),
-    ("Opening cinematic", r"^GAM-CIN-.*OPENING|-CIN-OPENING", "cinematics"),
+    # (label, id regex, category, accept reference/mock entries)
+    ("Operative character mesh", r"^OPR-CHR-OPERATIVE", "characters", False),
+    ("Operative animations", r"^OPR-(ANM|CHR)-OPERATIVE.*", "characters", False),
+    ("Kinetic Accelerator weapon", r"^OPR-WPN-KINETIC", "weapons", False),
+    ("Breach Charge launcher", r"^OPR-WPN-BREACH", "weapons", False),
+    ("Kinetic projectile", r"^OPR-PRJ-KINETIC", "weapons", False),
+    ("Breach canister projectile", r"^OPR-PRJ-BREACH", "weapons", False),
+    ("HUD elements (weapon slots, ammo, cooldown, reticle, trajectory)", r"-UI-(WEAPON_SLOT|AMMO_PIP|COOLDOWN_RING|AIM_RETICLE|TRAJECTORY_DOT|HUD)", "ui", False),
+    ("Critical asset target marker", r"-UI-CRITICAL_MARKER", "ui", False),
+    ("Objective markers", r"-UI-OBJECTIVE_MARKER", "ui", False),
+    ("Weapon icons", r"-ICN-.*(KINETIC|BREACH|WEAPON)", "ui", False),
+    ("Objective icons", r"-ICN-.*(OBJECTIVE|TARGET|CORE)", "ui", False),
+    ("Panels and buttons (9-slice kit)", r"-UI-(PANEL|BUTTON)", "ui", False),
+    ("Main menu backdrop", r"-BG-.*MAIN_MENU", "ui", False),
+    ("Loading backdrop", r"-BG-.*LOADING", "ui", False),
+    ("Chapter cards and upgrade tier badges", r"-UI-(CARD_CHAPTER|TIER_BADGE|PROGRESS)", "ui", False),
+    ("Chapter title treatments", r"-UI-CHAPTER_TITLE_DECO", "ui", False),
+    ("Screen layout references (menus, HUD, results, map, upgrades)", r"-UI-SCREEN_.*MOCK", "ui", True),
+    ("Godot theme spec", r"-UI-THEME", "ui", False),
+    ("Topple threshold marker", r"-(UI|VFX)-.*(THRESHOLD|TOPPLE)", "ui", False),
+    ("Game logo", r"^GAM-LOGO-(?!APP_ICON)", "ui", False),
+    ("App icon", r"(APP_ICON|-ICN-APP)", "ui", False),
+    ("Splash screen", r"SPLASH", "ui", False),
+    ("UI font", r"-FNT-", "fonts", False),
+    ("Menu music", r"^GAM-MUS-(MENU|TITLE|MAIN)", "audio", False),
+    ("Victory stinger", r"-(MUS|SFX)-.*(VICTORY|SUCCESS|WIN)", "audio", False),
+    ("Defeat stinger", r"-(MUS|SFX)-.*(DEFEAT|FAIL|LOSE)", "audio", False),
+    ("Ending music", r"^GAM-MUS-(ENDING|CREDITS)", "audio", False),
+    ("Kinetic fire SFX", r"-SFX-.*KINETIC", "audio", False),
+    ("Breach launch / detonation SFX", r"-SFX-.*(BREACH|EXPLOSION|BLAST)", "audio", False),
+    ("Metal impact SFX", r"-SFX-.*METAL", "audio", False),
+    ("Glass break SFX", r"-SFX-.*GLASS", "audio", False),
+    ("Concrete break SFX", r"-SFX-.*(CONCRETE|STONE|RUBBLE)", "audio", False),
+    ("Electrical / machinery SFX", r"-SFX-.*(ELECTRIC|ARC|MACHINE|SERVO|HUM)", "audio", False),
+    ("UI SFX", r"-SFX-.*(UI|CLICK|CONFIRM|SELECT)", "audio", False),
+    ("Alarm SFX", r"-SFX-.*ALARM", "audio", False),
+    ("Opening cinematic", r"^GAM-CIN-.*OPENING|-CIN-OPENING", "cinematics", False),
 ]
 
 
@@ -258,14 +265,23 @@ def parse_narrative() -> dict[int, dict]:
     return out
 
 
+REFERENCE_RE = re.compile(r"(MOCK|CONCEPT|EDITABLE_SOURCE|STYLEFRAME|^SV-)")
+
+
+def is_reference(e: dict) -> bool:
+    """Concepts, mock layouts and editable sources do not count as production coverage."""
+    return e.get("render_type") == "reference" or bool(REFERENCE_RE.search(str(e.get("id", ""))))
+
+
 class Index:
     def __init__(self, entries: list[dict]) -> None:
-        self.entries = [e for e in entries if isinstance(e, dict) and e.get("path") and (REPO / e["path"]).is_file()]
+        self.all = [e for e in entries if isinstance(e, dict) and e.get("path") and (REPO / e["path"]).is_file()]
+        self.entries = [e for e in self.all if not is_reference(e)]
 
-    def by_regex(self, pattern: str, codes: list[str] | None = None) -> list[str]:
+    def by_regex(self, pattern: str, codes: list[str] | None = None, include_refs: bool = False) -> list[str]:
         rx = re.compile(pattern)
         out = []
-        for e in self.entries:
+        for e in (self.all if include_refs else self.entries):
             eid = str(e.get("id", ""))
             if codes and not any(eid.startswith(c + "-") for c in codes):
                 continue
@@ -416,7 +432,7 @@ def build(manifest: dict) -> dict:
                 "status": status, "missing": missing, "fallbacks": fallbacks,
                 "requirements": len(hard), "available": sum(1 for h in hard if h["status"] == "available"),
             })
-    game_wide = [dict(req(label, idx.by_regex(rx)), category=cat) for label, rx, cat in GAME_WIDE]
+    game_wide = [dict(req(label, idx.by_regex(rx, include_refs=refs)), category=cat) for label, rx, cat, refs in GAME_WIDE]
     miss_count: dict[str, list[int]] = {}
     for lv in levels:
         for m in lv["missing"]:
@@ -433,7 +449,7 @@ def build(manifest: dict) -> dict:
     return {
         "generated": datetime.date.today().isoformat(),
         "manifest_updated": manifest.get("updated"),
-        "manifest_entries": len(idx.entries),
+        "manifest_entries": len(idx.all), "production_entries": len(idx.entries),
         "summary": {
             "levels": len(levels),
             "fully_covered": sum(1 for x in levels if x["status"] == "full"),
@@ -475,7 +491,7 @@ def to_md(data: dict) -> str:
         "# 100-level asset coverage matrix",
         "",
         f"Generated {data['generated']} by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest "
-        f"(updated {data['manifest_updated']}, {data['manifest_entries']} entries on disk). Do not edit by hand; re-run the script.",
+        f"(updated {data['manifest_updated']}, {data['manifest_entries']} entries on disk, {data['production_entries']} production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.",
         "",
         "Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.",
         "A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.",

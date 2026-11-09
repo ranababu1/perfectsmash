@@ -1,7 +1,8 @@
 {
  "generated": "2026-11-10",
- "manifest_updated": "2026-11-09",
- "manifest_entries": 17,
+ "manifest_updated": "2026-11-10",
+ "manifest_entries": 280,
+ "production_entries": 242,
  "summary": {
   "levels": 100,
   "fully_covered": 0,
@@ -36,8 +37,8 @@
     "missing": 20
    }
   },
-  "game_wide_available": 0,
-  "game_wide_total": 30,
+  "game_wide_available": 16,
+  "game_wide_total": 36,
   "archetype_use": {
    "chain_cell": 14,
    "arc_over_wall": 13,
@@ -108,45 +109,139 @@
    "category": "weapons"
   },
   {
-   "label": "HUD kit",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "label": "HUD elements (weapon slots, ammo, cooldown, reticle, trajectory)",
+   "status": "available",
+   "assets": [
+    "GAM-UI-AIM_RETICLE-A",
+    "GAM-UI-AMMO_PIP_BREACH_EMPTY-A",
+    "GAM-UI-AMMO_PIP_BREACH_FULL-A",
+    "GAM-UI-AMMO_PIP_KINETIC_EMPTY-A",
+    "GAM-UI-AMMO_PIP_KINETIC_FULL-A",
+    "GAM-UI-COOLDOWN_RING_OVER-A"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Critical asset target marker",
+   "status": "available",
+   "assets": [
+    "GAM-UI-CRITICAL_MARKER_ALL-A",
+    "GAM-UI-CRITICAL_MARKER_BRACKETS-A",
+    "GAM-UI-CRITICAL_MARKER_DIAMOND-A",
+    "GAM-UI-CRITICAL_MARKER_RING-A"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Objective markers",
+   "status": "available",
+   "assets": [
+    "GAM-UI-OBJECTIVE_MARKER_COMPLETE-A",
+    "GAM-UI-OBJECTIVE_MARKER_FAILED-A",
+    "GAM-UI-OBJECTIVE_MARKER_OPTIONAL-A",
+    "GAM-UI-OBJECTIVE_MARKER_PRIMARY-A"
+   ],
    "category": "ui"
   },
   {
    "label": "Weapon icons",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-ICN-WEAPON_BREACH_CHARGE-A",
+    "GAM-ICN-WEAPON_DISRUPTOR-A",
+    "GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A",
+    "GAM-ICN-WEAPON_PENETRATOR-A",
+    "GAM-ICN-WEAPON_PRECISION_ACCELERATOR-A",
+    "GAM-ICN-WEAPON_PULSE_CANNON-A"
+   ],
    "category": "ui"
   },
   {
    "label": "Objective icons",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-ICN-OBJECTIVE_COMPLETE-A",
+    "GAM-ICN-OBJECTIVE_FAILED-A",
+    "GAM-ICN-OBJECTIVE_OPTIONAL-A",
+    "GAM-ICN-OBJECTIVE_PRIMARY-A",
+    "GAM-ICN-UPGRADE_TARGETING_ASSISTANCE-A"
+   ],
    "category": "ui"
   },
   {
-   "label": "Menu screens",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "label": "Panels and buttons (9-slice kit)",
+   "status": "available",
+   "assets": [
+    "GAM-UI-BUTTON_DANGER_DISABLED-A",
+    "GAM-UI-BUTTON_DANGER_HOVER-A",
+    "GAM-UI-BUTTON_DANGER_NORMAL-A",
+    "GAM-UI-BUTTON_DANGER_PRESSED-A",
+    "GAM-UI-BUTTON_ICON_DISABLED-A",
+    "GAM-UI-BUTTON_ICON_HOVER-A"
+   ],
    "category": "ui"
   },
   {
-   "label": "Mission result screen",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "label": "Main menu backdrop",
+   "status": "available",
+   "assets": [
+    "GAM-BG-MAIN_MENU-A"
+   ],
    "category": "ui"
   },
   {
-   "label": "Progression / chapter map",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "label": "Loading backdrop",
+   "status": "available",
+   "assets": [
+    "GAM-BG-LOADING-A"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Chapter cards and upgrade tier badges",
+   "status": "available",
+   "assets": [
+    "GAM-UI-CARD_CHAPTER_CIVITAS_LOCKED-A",
+    "GAM-UI-CARD_CHAPTER_CIVITAS_NORMAL-A",
+    "GAM-UI-CARD_CHAPTER_CIVITAS_SELECTED-A",
+    "GAM-UI-CARD_CHAPTER_HELIX_LOCKED-A",
+    "GAM-UI-CARD_CHAPTER_HELIX_NORMAL-A",
+    "GAM-UI-CARD_CHAPTER_HELIX_SELECTED-A"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Chapter title treatments",
+   "status": "available",
+   "assets": [
+    "GAM-UI-CHAPTER_TITLE_DECO-01_1X",
+    "GAM-UI-CHAPTER_TITLE_DECO-01_2X",
+    "GAM-UI-CHAPTER_TITLE_DECO-02_1X",
+    "GAM-UI-CHAPTER_TITLE_DECO-02_2X",
+    "GAM-UI-CHAPTER_TITLE_DECO-03_1X",
+    "GAM-UI-CHAPTER_TITLE_DECO-03_2X"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Screen layout references (menus, HUD, results, map, upgrades)",
+   "status": "available",
+   "assets": [
+    "GAM-UI-SCREEN_CHAPTER_MAP_01_HELIX-MOCK",
+    "GAM-UI-SCREEN_CHAPTER_MAP_02_VITA-MOCK",
+    "GAM-UI-SCREEN_CHAPTER_MAP_03_NOVA_GRID-MOCK",
+    "GAM-UI-SCREEN_CHAPTER_MAP_04_CIVITAS-MOCK",
+    "GAM-UI-SCREEN_CHAPTER_MAP_05_MERIDIAN-MOCK",
+    "GAM-UI-SCREEN_CHAPTER_SELECT-MOCK"
+   ],
+   "category": "ui"
+  },
+  {
+   "label": "Godot theme spec",
+   "status": "available",
+   "assets": [
+    "GAM-UI-THEME_SPEC-A"
+   ],
    "category": "ui"
   },
   {
@@ -158,30 +253,51 @@
   },
   {
    "label": "Game logo",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-LOGO-COMPACT-COLOUR",
+    "GAM-LOGO-COMPACT-COLOUR_ON_LIGHT",
+    "GAM-LOGO-COMPACT-LIGHT_ON_DARK",
+    "GAM-LOGO-COMPACT-MONO_DARK",
+    "GAM-LOGO-COMPACT-MONO_LIGHT",
+    "GAM-LOGO-HORIZONTAL-COLOUR"
+   ],
    "category": "ui"
   },
   {
    "label": "App icon",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-LOGO-APP_ICON-192",
+    "GAM-LOGO-APP_ICON-256",
+    "GAM-LOGO-APP_ICON-48",
+    "GAM-LOGO-APP_ICON-512",
+    "GAM-LOGO-APP_ICON-ADAPTIVE_BACKGROUND",
+    "GAM-LOGO-APP_ICON-ADAPTIVE_FOREGROUND"
+   ],
    "category": "ui"
   },
   {
    "label": "Splash screen",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-UI-SPLASH-1280X720",
+    "GAM-UI-SPLASH-2560X1440",
+    "GAM-UI-SPLASH-LOGO_TRANSPARENT"
+   ],
    "category": "ui"
   },
   {
    "label": "UI font",
-   "status": "missing",
-   "assets": [],
-   "wanted": "",
+   "status": "available",
+   "assets": [
+    "GAM-FNT-BARLOW-BOLD",
+    "GAM-FNT-BARLOW-MEDIUM",
+    "GAM-FNT-BARLOW-REGULAR",
+    "GAM-FNT-BARLOW-SEMIBOLD",
+    "GAM-FNT-CHAKRA_PETCH-BOLD",
+    "GAM-FNT-CHAKRA_PETCH-MEDIUM"
+   ],
    "category": "fonts"
   },
   {

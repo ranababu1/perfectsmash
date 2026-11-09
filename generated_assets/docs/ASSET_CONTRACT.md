@@ -151,11 +151,11 @@ Standard component 200-1,500 tris; hero and critical assets <= 3,000; debris set
 
 ## 14. UI and 9-slice
 
-- Base viewport 1280 x 720, stretched with `canvas_items` / `expand` to phones (for example 2856 x 1280, about 1.8x). **Author UI at 2x the base size** (a 64 px icon at base is a 128 px file) and display at base size with linear filtering and mipmaps.
-- 9-slice panels and buttons: PNG RGBA, corners designed to survive any stretch, manifest block `"nine_slice": {"left": L, "top": T, "right": R, "bottom": B}` in file pixels (so the coding agent sets `StyleBoxTexture` texture margins or `NinePatchRect` patch margins to these values and `axis_stretch` to stretch or tile as given in `notes`).
+- Base viewport 1280 x 720, stretched with `canvas_items` / `expand` to phones (for example 2856 x 1280, about 1.8x). **Deliver UI at 1x and 2x** (a 64 px icon at base also ships as a 128 px file). Icons and TextureRects use the 2x file displayed at base size with linear filtering and mipmaps.
+- 9-slice panels and buttons: PNG RGBA, corners designed to survive any stretch, manifest block `"nine_slice": {"left": L, "top": T, "right": R, "bottom": B}` in file pixels. `StyleBoxTexture` draws margins at texel size, so use the **1x** texture with its 1x margins in StyleBoxes (or the `StyleBoxFlat` equivalents in `ui/theme/tfj_theme_spec.json`, which stay sharp at any scale); the 2x file is for `NinePatchRect` drawn at half scale.
 - Icons: square, 128 x 128 (64 base) or 256 x 256 for hero icons, centred, 8 px safe margin, white or chapter-neutral on transparent so the code can tint with `modulate`; coloured icons say so in `notes`.
 - No baked text in any UI image. Text is rendered by Godot with the shipped fonts (fonts need an OFL or similar licence text saved beside them).
-- App icon and splash: Android adaptive icon layers 432 x 432 (foreground inside the 288 px safe zone), monochrome layer, Play Store 512 x 512, project icon 256; splash 1280 x 720 minimum and 2560 x 1440 master. Existing legacy files in `assets/icon/` stay untouched; replacements live under `generated_assets/ui/app_icon/` until the owner approves integration.
+- App icon and splash: Android adaptive icon layers 432 x 432 (foreground inside the 288 px safe zone), monochrome layer, Play Store 512 x 512, project icon 256; splash 1280 x 720 minimum and 2560 x 1440 master. Existing legacy files in `assets/icon/` stay untouched; replacements live under `generated_assets/ui/branding/app_icon/` until the owner approves integration.
 
 ## 15. Audio
 
@@ -204,4 +204,5 @@ Standard component 200-1,500 tris; hero and critical assets <= 3,000; debris set
 
 - v1 (2026-11-09): first version.
 - v1.1 (2026-11-10): section 19, ids the coverage matrix resolves. No breaking change.
+- v1.3 (2026-11-10): section 14 aligned with the ui-vfx kit: 1x and 2x deliveries, 1x textures in StyleBoxTexture, app icon under `ui/branding/app_icon/`. Coverage ignores concept, mock and editable-source entries.
 - v1.2 (2026-11-10): section 15 game hook ids (`sound_id`, `music_cue`, `ambience_cue`) aligned with the coding agent's Batch 5 audio proposal. No breaking change.
