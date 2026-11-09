@@ -1,7 +1,9 @@
-# Perfect Smash: Product and Engineering Plan
+# Temporal: First Jump: Product and Engineering Plan
 
-**Document status:** Owner-approved revision 3 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
-**Working product name:** Perfect Smash (existing store/app identity; rename is a separate pending owner decision)  
+**Document status:** Owner-approved revision 4 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
+**Product name:** Temporal: First Jump (owner-approved 2026-11-09)  
+**Application ID / bundle ID:** `dev.imrn.temporal1` (Android and iOS)  
+**Repository:** github.com/ranababu1/temporal-chapter1, branch `main`  
 **Product type:** Story-driven 2D physics destruction puzzle  
 **Target platforms:** Android + iOS  
 **Engine:** Godot 4.7.2 + GDScript + built-in 2D physics  
@@ -12,6 +14,7 @@
 
 ## Revision history
 
+- **Rev 4 (2026-11-09, owner-approved via the project execution brief):** Product renamed from "Perfect Smash" to **Temporal: First Jump**; Android application ID and iOS bundle identifier set to `dev.imrn.temporal1`. The new ID is treated as a new store identity: it cannot update any listing created under `dev.imrn.perfectsmash` (none is recorded). Existing signing keys are preserved and kept out of Git. No release or store submission is authorized. Body text referring to "Perfect Smash" below is historical. No other plan content changed.
 - **Rev 3 (2026-11-09, owner-approved):** Expanded target platforms from Android to Android + iOS; confirmed mobile performance and battery efficiency as the primary quality priorities; selected Godot 4.7.2 as the engine; and designated the Godot Mobile renderer as the proposed production renderer, subject to a documented Compatibility-vs-Mobile evaluation on representative physical Android and iOS devices. Vulkan is the intended Android backend and Metal the intended Apple backend where supported. Added renderer validation, device compatibility, and iOS/Xcode release requirements. No renderer switch or minimum OS/device support change is authorized until evaluation evidence is reviewed.
 - **Rev 2 (2026-11-09, owner-approved):** Reframed the game as a time-travel science-fiction destruction puzzle. Added a skippable opening cinematic, narrated chapter introductions and endings, a five-chapter/100-level narrative plan, a cliffhanger at level 100, a reusable cinematic/content pipeline, and a visual/audio production direction. Core physics puzzle gameplay remains the foundation. Added companion documents: `docs/narrative-bible.md` and `docs/visual-audio-production-guide.md`.
 - **Rev 1 (2026-11-01, owner-approved):** Product renamed from "Smash Theory" to "Perfect Smash". No other content changed in that revision.

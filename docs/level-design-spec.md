@@ -1,7 +1,8 @@
 # Temporal: First Jump - 100-Level Design Specification
 
 **Status:** Production design draft for owner review  
-**Game identity:** Temporal: First Jump (working title; store/package identity remains unchanged until separately approved)  
+**Game identity:** Temporal: First Jump (owner-approved 2026-11-09; application ID `dev.imrn.temporal1`)  
+**Chapter I mapping:** see `docs/project-audit.md` §3 for how the existing 20 level IDs map onto levels 1-20 below.  
 **Gameplay contract:** Preserve the current aim, launch, 2D physics, objective evaluation, scoring, retry and progression systems. This document defines level content and presentation, not new physics mechanics.
 
 ## 1. Design principles

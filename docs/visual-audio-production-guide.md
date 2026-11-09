@@ -1,6 +1,6 @@
 # Visual & Audio Production Guide
 
-**Project:** Perfect Smash (working title; final name pending owner approval)  
+**Project:** Temporal: First Jump (owner-approved 2026-11-09; application ID `dev.imrn.temporal1`)  
 **Narrative:** The Wrong Future  
 **Initial content:** 100 levels / five chapters  
 **Purpose:** A handoff guide for the art, audio and coding agents. This document defines the asset language and production requirements. It does not imply that assets are integrated into Godot.

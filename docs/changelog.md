@@ -2,6 +2,16 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — M2 application identity: Temporal: First Jump (`86eb01c`)
+
+- `project.godot`: name "Temporal: First Jump", new description, plain charcoal boot splash (Godot logo hidden), custom user dir `temporal_first_jump` so the save path no longer depends on the display name (which contains `:`).
+- Menu title "TEMPORAL: FIRST JUMP", tagline "One shot can change everything."
+- Local (gitignored) `export_presets.cfg`: Android package `dev.imrn.temporal1`, label "Temporal: First Jump", APK `build/temporal1-debug.apk`; iOS preset with bundle ID `dev.imrn.temporal1`. Signing keys untouched; only the Godot debug keystore exists.
+- `plan.md` revision 4 records the rename; spec and production-guide headers updated.
+- Migration: new Android ID = new app (no update path from `dev.imrn.perfectsmash`, side-by-side install, no save carry-over). Old desktop dev saves are not migrated. No store impact recorded, since the old ID was never released.
+- Tests: headless 50 passed / 0 failed / 1 skipped; windowed 51 passed / 0 failed. Debug APK exported and verified with `aapt2`/`apksigner`, installed and launched on the `Pixel10Pro` emulator.
+- Outstanding: the app icon is still Perfect Smash art; no iOS templates or Mac for iOS validation.
+
 ## 2026-11-09 — M1 repository and project audit
 
 - Added `docs/project-audit.md`: toolchain/device inventory, architecture review, supported level vocabulary, mapping of the existing 20 levels to Chapter I, identity/signing audit, store-migration implications, renderer/export baseline, risks and recommended sequence.

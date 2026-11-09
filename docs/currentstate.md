@@ -27,7 +27,8 @@ The project is a 2D physics destruction puzzle targeting Android + iOS (Godot 4.
 | Chapter-specific environment and object art | Planned | See `visual-audio-production-guide.md` |
 | Temporal Charge reskin | Planned | Art/audio wrapper only; do not change physics tuning |
 | Continuous gameplay music | In production / pending review | AI music task completed; first-pass candidate is available via the generation service. Not yet listened to, approved, loop-tested, license-verified or integrated |
-| Final game name | Pending owner decision | Current app/repository identity remains Perfect Smash. Do not rename package/app before explicit approval |
+| App identity: Temporal: First Jump / `dev.imrn.temporal1` | Implemented (2026-11-09) | Project name, menu title/tagline, plain charcoal boot splash, stable `user://` dir `temporal_first_jump`; local Android + iOS presets. App icon art is still the Perfect Smash design (pending new art) |
+| iOS export | Not started | iOS preset defined locally (bundle ID only); no iOS export templates installed, no macOS/Xcode available |
 | Season 2 | Planned concept | +50 levels, travel further back to 2041 |
 
 ## Narrative decisions (owner-approved direction, 2026-11-09)
@@ -70,12 +71,24 @@ Existing architecture remains as documented below. Proposed story additions are 
 - Godot 4.7.2.stable.official, GDScript, current project renderer: GL Compatibility.
 - No third-party Godot dependencies or addons recorded.
 
-## Last verified build/test status (2026-11-02)
+## Last verified build/test status (2026-11-09, commit `86eb01c`)
 
-- Headless tests: 50 passed, 0 failed, 1 skipped.
-- Windowed tests: 51 passed, 0 failed.
-- Debug APK installed on Pixel10Pro emulator; physical-device validation not yet completed.
-- These results predate the narrative documentation changes. No code changed in this documentation-only update, so no new build/test run was performed.
+- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 50 passed, 0 failed, 1 skipped (GUI routing needs a window).
+- `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 51 passed, 0 failed, 0 skipped.
+- `godot_console --headless --export-debug "Android Debug" build/temporal1-debug.apk` → built. `aapt2 dump badging`: package `dev.imrn.temporal1`, label "Temporal: First Jump", versionCode 1, versionName 0.1.0, minSdk 24, targetSdk 36, permission VIBRATE only. `apksigner verify`: signed with the Godot debug keystore.
+- Installed and launched on the `Pixel10Pro` emulator (2856×1280): menu renders with the new title; logcat reports OpenGL ES 3.1 / Compatibility. Physical-device validation not yet done (no device attached).
+
+## Export presets (local, gitignored) — required values
+
+`export_presets.cfg` is gitignored, so set these on any new machine:
+- **Android Debug:** `package/unique_name="dev.imrn.temporal1"`, `package/name="Temporal: First Jump"`, arm64-v8a + x86_64, `screen/immersive_mode=true`, `permissions/vibrate=true`, `launcher_icons/*` → the four PNGs in `assets/icon/`, export path `build/temporal1-debug.apk`. Debug signing uses the editor's debug keystore (`%APPDATA%\Godot\keystores\debug.keystore`).
+- **iOS:** `application/bundle_identifier="dev.imrn.temporal1"`; team ID, provisioning and signing to be set on macOS/Xcode. Requires installing the 4.7.2 iOS export templates.
+- No release keystore exists yet. When created, keep it outside the repo; Godot 4 stores keystore passwords in `.godot/export_credentials.cfg` (ignored), not in the preset.
+
+## Identity migration notes
+
+- `dev.imrn.temporal1` is a new application identity. It cannot update a Play listing created under `dev.imrn.perfectsmash`, and installs side by side with the old debug build (confirmed on the emulator: both packages present). Repository records show the old ID was never released; owner to confirm no store upload ever happened.
+- Desktop `user://` moved to the custom dir `temporal_first_jump` (Windows: `%APPDATA%\temporal_first_jump`), independent of the display name. Old desktop dev saves under "Perfect Smash" are not migrated.
 
 ## Known issues and risks
 
@@ -89,7 +102,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 
 ## Next recommended actions
 
-1. Run the Compatibility-vs-Mobile renderer evaluation on representative physical Android and iOS devices; record Vulkan/Metal support, frame pacing, thermal behavior, memory, battery observations and visual compatibility. Obtain approval before changing production renderer or minimum OS/device support.\n2. Decide and clear the final game name before changing app identity, logo or store assets.
+1. Run the Compatibility-vs-Mobile renderer evaluation on representative physical Android and iOS devices; record Vulkan/Metal support, frame pacing, thermal behavior, memory, battery observations and visual compatibility. Obtain approval before changing production renderer or minimum OS/device support.\n2. Produce a Temporal: First Jump app icon (current icon art is still the Perfect Smash ball-and-core design).
 3. Review the narrative bible and lock the chapter scripts/story beats.
 4. Review the six initial environment concept references and approve the visual language.
 5. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.
@@ -105,7 +118,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 - Production renderer and minimum supported OS/device versions remain unchanged pending test evidence and owner approval.
 
 - Landscape orientation approved.
-- Existing product/app name Perfect Smash and package ID `dev.imrn.perfectsmash` remain in place until a new name is explicitly approved.
+- Product renamed to Temporal: First Jump; Android/iOS ID `dev.imrn.temporal1` (approved 2026-11-09, replaces Perfect Smash / `dev.imrn.perfectsmash`). No store publication authorized.
 - No per-shot timer in core mode.
 - Narrative direction and 100-level Season 1 plan approved on 2026-11-09.
 
