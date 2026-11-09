@@ -1,0 +1,26 @@
+--------- beginning of main
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Failed to load cached shader, recompiling.
+   at: _load_from_cache (drivers/gles3/shader_gles3.cpp:615)
+OpenGL API OpenGL ES 3.1 (4.5.0 NVIDIA 616.56) - Compatibility - Using Device: Google (NVIDIA Corporation) - Android Emulator OpenGL ES Translator (NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2)
+
+RENDER_EVAL_ENV {"benchmark":"mission_benchmark (real Helix 3D gameplay scene)","godot":"4.7.2-stable (official)","model":"sdk_gphone16k_x86_64","os":"Android","os_version":"37.16418371","processor":"","processor_count":4,"refresh_rate":60.0000038146973,"rendering_driver_active":"opengl3","rendering_method_active":"gl_compatibility","rendering_method_setting":"gl_compatibility","screen_size":"(2856, 1280)","variant":"mission_compatibility","video_adapter":"Android Emulator OpenGL ES Translator (NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2)","video_api_version":"OpenGL ES 3.1 (4.5.0 NVIDIA 616.56)","video_vendor":"Google (NVIDIA Corporation)","vsync_mode":1,"window_size":"(2856, 1280)"}
+RENDER_EVAL_SPIKE 8293.0 ms at f1 after []
+RENDER_EVAL_SCENARIO {"avg_fps":52.8,"cpu_physics_ms_avg":1.665,"draw_calls_avg":1799.0,"draw_calls_max":1799.0,"duration_s":6.0,"frame_ms_avg":18.94,"frame_ms_max":42.14,"frame_ms_p50":17.64,"frame_ms_p95":31.71,"frame_ms_p99":34.79,"frames":316,"frames_over_18_3ms_pct":44.94,"frames_over_33_3ms":8,"kind":"real","name":"mission_idle","static_memory_mb":49.5,"video_memory_mb":94.0,"viewport_cpu_render_ms_avg":9.429,"viewport_gpu_render_ms_avg":0.0}
+RENDER_EVAL_SCENARIO {"avg_fps":51.4,"cpu_physics_ms_avg":1.981,"draw_calls_avg":1802.0,"draw_calls_max":1802.0,"duration_s":6.0,"frame_ms_avg":19.45,"frame_ms_max":40.92,"frame_ms_p50":17.83,"frame_ms_p95":31.57,"frame_ms_p99":38.64,"frames":308,"frames_over_18_3ms_pct":46.75,"frames_over_33_3ms":10,"kind":"real","name":"mission_aiming_preview","static_memory_mb":49.5,"video_memory_mb":94.0,"viewport_cpu_render_ms_avg":10.079,"viewport_gpu_render_ms_avg":0.0}
+RENDER_EVAL_SPIKE 167.8 ms at f679 after ["f670 spawn kinetic_accelerator"]
+RENDER_EVAL_SCENARIO {"avg_fps":51.4,"cpu_physics_ms_avg":6.798,"draw_calls_avg":1754.8,"draw_calls_max":1801.0,"duration_s":10.0,"frame_ms_avg":19.44,"frame_ms_max":167.82,"frame_ms_p50":17.77,"frame_ms_p95":32.02,"frame_ms_p99":36.23,"frames":516,"frames_over_18_3ms_pct":44.57,"frames_over_33_3ms":15,"kind":"real","name":"mission_kinetic_collapse_finish","static_memory_mb":57.0,"video_memory_mb":95.7,"viewport_cpu_render_ms_avg":10.187,"viewport_gpu_render_ms_avg":0.0}
+RENDER_EVAL_SPIKE 857.1 ms at f1188 after ["f929 driver aim search (excluded)", "f929 spawn kinetic_accelerator", "f946 impact aura_core 1653", "f946 state aura_core 3", "f946 removed aura_core", "f1187 restart"]
+RENDER_EVAL_SPIKE 142.5 ms at f1208 after ["f1208 state rack_3 3", "f1208 removed rack_3", "f1208 state rack_4 3", "f1208 removed rack_4", "f1208 state relay_mast 1", "f1208 impact relay_mast 414"]
+RENDER_EVAL_SPIKE 1738.9 ms at f1290 after ["f1289 state power_cell 3", "f1289 removed power_cell", "f1289 blast", "f1289 state deck 2", "f1289 state aura_core 2", "f1290 impact aura_core 334"]
+RENDER_EVAL_SCENARIO {"avg_fps":44.7,"cpu_physics_ms_avg":7.587,"draw_calls_avg":1653.2,"draw_calls_max":1750.0,"duration_s":10.0,"frame_ms_avg":22.37,"frame_ms_max":1738.92,"frame_ms_p50":17.43,"frame_ms_p95":31.86,"frame_ms_p99":36.72,"frames":513,"frames_over_18_3ms_pct":41.91,"frames_over_33_3ms":19,"kind":"real","name":"mission_breach_blasts_chain","static_memory_mb":57.0,"video_memory_mb":95.7,"viewport_cpu_render_ms_avg":12.955,"viewport_gpu_render_ms_avg":0.0}
+RENDER_EVAL_SPIKE 630.3 ms at f1722 after ["f1389 impact core_shield 287", "f1425 impact core_shield 635", "f1425 state core_shield 1", "f1453 impact core_shield 1398", "f1454 impact core_shield 1585", "f1721 restart"]
+RENDER_EVAL_SPIKE 701.6 ms at f1732 after ["f1425 impact core_shield 635", "f1425 state core_shield 1", "f1453 impact core_shield 1398", "f1454 impact core_shield 1585", "f1721 restart", "f1731 restart"]
+RENDER_EVAL_SPIKE 696.0 ms at f1742 after ["f1425 state core_shield 1", "f1453 impact core_shield 1398", "f1454 impact core_shield 1585", "f1721 restart", "f1731 restart", "f1741 restart"]
+RENDER_EVAL_SPIKE 870.6 ms at f1752 after ["f1453 impact core_shield 1398", "f1454 impact core_shield 1585", "f1721 restart", "f1731 restart", "f1741 restart", "f1751 restart"]
+RENDER_EVAL_SPIKE 809.3 ms at f1762 after ["f1454 impact core_shield 1585", "f1721 restart", "f1731 restart", "f1741 restart", "f1751 restart", "f1761 restart"]
+RENDER_EVAL_SPIKE 946.6 ms at f1772 after ["f1721 restart", "f1731 restart", "f1741 restart", "f1751 restart", "f1761 restart", "f1771 restart"]
+RENDER_EVAL_SPIKE 696.1 ms at f1783 after ["f1731 restart", "f1741 restart", "f1751 restart", "f1761 restart", "f1771 restart", "f1782 restart"]
+RENDER_EVAL_SPIKE 718.4 ms at f1793 after ["f1741 restart", "f1751 restart", "f1761 restart", "f1771 restart", "f1782 restart", "f1792 restart"]
+RENDER_EVAL_RESTARTS [629.93,701.33,695.72,870.27,809.13,946.34,695.83,718.11]
+RENDER_EVAL_DONE /data/data/dev.imrn.temporal1.rendereval/files/renderer_eval/mission_compatibility_20261109T222017.json

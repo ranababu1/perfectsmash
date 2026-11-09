@@ -17,6 +17,10 @@ var asset_id := ""
 var _model: Node3D
 var _box_material: StandardMaterial3D
 var _pulse := false
+var _state := 0
+## Frames left showing every state node (shader warm-up), then the real state is applied.
+var _warm_frames := 0
+const WARM_FRAMES := 2
 
 
 ## look = [depth m, colour, emission colour or null, emission energy] (MissionView.KINDS).
@@ -33,14 +37,23 @@ static func create(component: Dictionary, look: Array, library: AssetLibrary, ch
 		visual.asset_id = str(library.component_entry(chapter, component.kind, size_px).id)
 		visual._model = model
 		visual.add_child(model)
+		# Draw every state node for the first frames so their shaders compile while the mission
+		# loads; first showing mesh_light/mesh_heavy mid-play stalled 1.7 s on the emulator.
+		for node_name: String in ["mesh_intact", "mesh_light", "mesh_heavy"]:
+			var node := model.find_child(node_name, true, false) as Node3D
+			if node != null:
+				node.visible = true
+		visual._warm_frames = WARM_FRAMES
 	else:
 		visual._build_box(look)
 	return visual
 
 
 func set_state(state: int) -> void:
+	_state = state
 	if uses_model:
-		AssetLibrary.set_state_nodes(_model, state)
+		if _warm_frames <= 0:
+			AssetLibrary.set_state_nodes(_model, state)
 		return
 	match state:
 		DamageableComponent.State.DAMAGED:
@@ -53,6 +66,10 @@ func set_state(state: int) -> void:
 
 ## Per-frame emphasis for critical assets (greybox: pulsing emission).
 func animate(time: float) -> void:
+	if _warm_frames > 0:
+		_warm_frames -= 1
+		if _warm_frames == 0:
+			AssetLibrary.set_state_nodes(_model, _state)
 	if _pulse and _box_material != null:
 		_box_material.emission_energy_multiplier = 1.0 + sin(time * 4.0) * 0.4
 

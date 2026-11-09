@@ -271,17 +271,72 @@ func _build_set() -> bool:
 				x += float(r.step)
 		else:
 			xs.append(float(piece.get("x", 0.0)))
+		var transforms: Array[Transform3D] = []
 		for x: float in xs:
-			var node := _library.instance_piece(str(piece.id), chapter)
-			if node == null:
-				continue
-			node.position = Vector3(x, float(piece.get("y", 0.0)), float(piece.get("z", 0.0)))
-			node.rotation_degrees.y = float(piece.get("rot", 0.0))
-			node.scale = Vector3.ONE * float(piece.get("scale", 1.0))
-			add_child(node)
+			var basis := Basis(Vector3.UP, deg_to_rad(float(piece.get("rot", 0.0)))).scaled(Vector3.ONE * float(piece.get("scale", 1.0)))
+			transforms.append(Transform3D(basis, Vector3(x, float(piece.get("y", 0.0)), float(piece.get("z", 0.0)))))
+		var shadows: bool = piece.get("shadows", true)
+		var count := _place_piece(str(piece.id), transforms, shadows)
+		for i in count:
 			placed_pieces.append(str(piece.id))
-			placed += 1
+		placed += count
 	return placed > 0
+
+
+## Places one set piece at each transform. Repeated pieces become one MultiMeshInstance3D per
+## mesh in the piece, so a row of 11 floor tiles costs its surface count in draw calls instead
+## of 11 times that (slice A measured ~1,800 draw calls with one node per piece). Returns the
+## number placed.
+func _place_piece(asset_id: String, transforms: Array[Transform3D], shadows: bool) -> int:
+	var template := _library.instance_piece(asset_id, chapter)
+	if template == null:
+		return 0
+	var cast := GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	if transforms.size() == 1:
+		template.transform = transforms[0]
+		add_child(template)
+		for mesh_instance: MeshInstance3D in template.find_children("*", "MeshInstance3D", true, false):
+			mesh_instance.cast_shadow = cast
+		return 1
+	for mesh_instance: MeshInstance3D in template.find_children("*", "MeshInstance3D", true, false):
+		if not mesh_instance.visible or mesh_instance.mesh == null:
+			continue
+		var local := _relative_transform(template, mesh_instance)
+		var mesh := mesh_instance.mesh
+		# Bake per-surface overrides into a copy of the mesh so the MultiMesh draws them.
+		var overridden := false
+		for surface in mesh.get_surface_count():
+			if mesh_instance.get_surface_override_material(surface) != null:
+				overridden = true
+		if overridden:
+			mesh = mesh.duplicate()
+			for surface in mesh.get_surface_count():
+				var material := mesh_instance.get_surface_override_material(surface)
+				if material != null:
+					mesh.surface_set_material(surface, material)
+		var multimesh := MultiMesh.new()
+		multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.mesh = mesh
+		multimesh.instance_count = transforms.size()
+		for i in transforms.size():
+			multimesh.set_instance_transform(i, transforms[i] * local)
+		var batch := MultiMeshInstance3D.new()
+		batch.name = "%s_batch" % asset_id
+		batch.multimesh = multimesh
+		batch.cast_shadow = cast
+		add_child(batch)
+	template.free()
+	return transforms.size()
+
+
+static func _relative_transform(root: Node3D, node: Node3D) -> Transform3D:
+	var t := Transform3D.IDENTITY
+	var current: Node = node
+	while current != null and current != root:
+		if current is Node3D:
+			t = (current as Node3D).transform * t
+		current = current.get_parent()
+	return t
 
 
 ## A static ledge or plinth from the set's kit, scaled to the static rectangle (statics use the
