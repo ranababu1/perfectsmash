@@ -49,6 +49,10 @@ var _time := 0.0
 static var blast_lights_enabled := true
 var _blast_lights: Array[OmniLight3D] = []
 var _next_blast_light := 0
+## Pooled blast flashes [MeshInstance3D, StandardMaterial3D]: creating a transparent flash per
+## detonation cost ~300 ms per blast on GL Compatibility (emulator spike log, lights disabled).
+var _blast_flashes := []
+var _next_blast_flash := 0
 
 
 func setup(p_world: MissionWorld) -> void:
@@ -76,9 +80,24 @@ func setup(p_world: MissionWorld) -> void:
 
 
 func _build_blast_lights() -> void:
+	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.5
+	sphere.height = 1.0
+	for i in BLAST_LIGHTS:
+		var flash := MeshInstance3D.new()
+		flash.mesh = sphere
+		var material := StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.albedo_color = Color(1.0, 0.72, 0.35, 0.0)
+		flash.material_override = material
+		flash.position = centre
+		flash.scale = Vector3.ONE * 0.2
+		add_child(flash)
+		_blast_flashes.append([flash, material])
 	if not blast_lights_enabled:
 		return
-	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
 	for i in BLAST_LIGHTS:
 		var light := OmniLight3D.new()
 		light.light_color = BLAST_LIGHT_COLOR
@@ -89,13 +108,11 @@ func _build_blast_lights() -> void:
 		_blast_lights.append(light)
 
 
-## The blast flash is alpha-blended, a shader variant nothing else in the scene uses; compiling
-## it on the first detonation stalled that frame by 0.5-1.1 s on the Android emulator (renderer
-## evaluation, 2026-11-10). Show it once at zero alpha while the mission loads, so that cost is
-## paid up front. Debris and sparks warm up the same way. (Blast lights are a persistent pool.)
+## Effects first used mid-play compiled shaders then: 0.5-1.1 s on the first detonation on the
+## Android emulator (renderer evaluation, 2026-11-10). Blast flashes and lights are persistent
+## pools (always drawn, so compiled with the mission); debris and sparks are shown once here,
+## hidden, while the mission loads.
 func _warm_up_effects() -> void:
-	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
-	_spawn_flash(centre, 4.0, 0.0, 0.0)
 	# Particles just under the ground surface: drawn (so compiled) but hidden, and not moving.
 	var hidden := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y + 60.0), definition.ground_y)
 	for particles: CPUParticles3D in [_spawn_sparks(hidden), _spawn_debris(hidden, Color.BLACK, Vector3.ONE * 0.1)]:
@@ -343,22 +360,16 @@ func _on_blast(center: Vector2, radius: float) -> void:
 
 
 func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -> void:
-	var flash := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = 0.5
-	sphere.height = 1.0
-	flash.mesh = sphere
-	var material := StandardMaterial3D.new()
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(1.0, 0.72, 0.35, alpha)
-	flash.material_override = material
-	flash.position = at
-	add_child(flash)
-	var tween := flash.create_tween().set_parallel()
-	tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
-	tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
-	tween.chain().tween_callback(flash.queue_free)
+	if not _blast_flashes.is_empty():
+		var entry: Array = _blast_flashes[_next_blast_flash]
+		_next_blast_flash = (_next_blast_flash + 1) % _blast_flashes.size()
+		var flash: MeshInstance3D = entry[0]
+		var material: StandardMaterial3D = entry[1]
+		flash.position = at
+		material.albedo_color.a = alpha
+		var tween := flash.create_tween().set_parallel()
+		tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
+		tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
 	if light_energy <= 0.0 or _blast_lights.is_empty():
 		return
 	var light := _blast_lights[_next_blast_light]
