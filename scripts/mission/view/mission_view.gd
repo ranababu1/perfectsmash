@@ -1,11 +1,14 @@
 class_name MissionView
 extends Node3D
-## Greybox 3D presentation of a MissionWorld, seen through a tilted three-quarter camera.
-## Every component is its physics rectangle extruded in depth (front face = collision shape), so
-## the picture never implies collisions the 2D simulation does not have. Owns no game rules:
-## it mirrors bodies each frame and reacts to world/engine signals with simple VFX.
+## 3D presentation of a MissionWorld, seen through a tilted three-quarter camera. Components use
+## the integrated production models (AssetLibrary, data/integrated_assets.json) and fall back to
+## greybox boxes: either way the front face is the physics rectangle, so the picture never implies
+## collisions the 2D simulation does not have. The set dressing comes from
+## data/environments/<mission id>.json. Owns no game rules: it mirrors bodies each frame and
+## reacts to world/engine signals with VFX.
 
 ## Greybox look per component kind: [depth (m), colour, emission colour or null, emission energy].
+## Depths also apply to production models (ASSET_CONTRACT 3); colours are the greybox fallback.
 ## The AI core is the only white/red object so the critical asset reads instantly.
 const KINDS := {
 	"server_rack": [0.8, Color("39424c"), Color("2f8fa3"), 0.25],
@@ -33,14 +36,21 @@ const PREVIEW_DOTS := 14
 const BLAST_LIGHTS := 2
 const BLAST_LIGHT_IDLE_ENERGY := 0.01
 const BLAST_LIGHT_COLOR := Color("ffb060")
+const ENVIRONMENT_DIR := "res://data/environments"
 
 var world: MissionWorld
 var definition: MissionDefinition
 var camera: Camera3D
 var operative: OperativeRig
+## component id -> ComponentVisual
 var _meshes := {}
-var _materials := {}
 var _projectiles := {}
+## Integrated production assets, loaded once and shared by every mission view.
+static var _library: AssetLibrary
+## Chapter key of the mission's set ("" when the mission has no environment file).
+var chapter := ""
+## Asset ids placed by the environment file (set dressing and statics), for reports and tests.
+var placed_pieces: Array[String] = []
 var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
@@ -58,10 +68,14 @@ var _next_blast_flash := 0
 func setup(p_world: MissionWorld) -> void:
 	world = p_world
 	definition = world.definition
+	if _library == null:
+		_library = AssetLibrary.load_from_file()
 	_build_environment()
 	_build_camera()
+	var set_data := _environment_data()
 	for s in definition.statics:
-		_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
+		if not _add_static_piece(s, set_data):
+			_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
 	for c in definition.components:
 		_add_component(c)
 	operative = OperativeRig.new()
@@ -162,21 +176,21 @@ func _process(delta: float) -> void:
 		var top := ViewMapping.to_3d(core.global_position, definition.ground_y)
 		marker.position = top + Vector3(0.0, core.size.y / ViewMapping.PX_PER_METRE / 2.0 + MARKER_HEIGHT + sin(_time * 3.0) * 0.06, 0.0)
 		marker.rotation.y = _time * 1.5
-		var material: StandardMaterial3D = _materials[id][0]
-		material.emission_energy_multiplier = 1.0 + sin(_time * 4.0) * 0.4
 	for id: String in _meshes.keys():
 		var body := world.body_for(id)
-		var mesh: MeshInstance3D = _meshes[id]
+		var visual: ComponentVisual = _meshes[id]
 		if body == null:
 			continue
-		mesh.position = ViewMapping.to_3d(body.global_position, definition.ground_y)
-		mesh.rotation = ViewMapping.rotation_to_3d(body.global_rotation)
+		visual.position = ViewMapping.to_3d(body.global_position, definition.ground_y)
+		visual.rotation = ViewMapping.rotation_to_3d(body.global_rotation)
+		visual.animate(_time)
 	for projectile: WeaponProjectile in _projectiles.keys():
 		if is_instance_valid(projectile):
 			(_projectiles[projectile] as Node3D).position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
 
 
 func _build_environment() -> void:
+	var has_set := not _environment_data().is_empty()
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
 	env.background_color = Color("15191e")
@@ -184,20 +198,40 @@ func _build_environment() -> void:
 	env.ambient_light_color = Color("8090a0")
 	env.ambient_light_energy = 0.55
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	if has_set:
+		# Production set (dark graphite hall): lower fill, a reflection-only sky so metals read
+		# as metal (ASSET_CONTRACT 9, proposed source), and depth fog so the back recedes.
+		env.ambient_light_color = Color("6c7a88")
+		env.ambient_light_energy = 0.32
+		var sky_material := ProceduralSkyMaterial.new()
+		sky_material.sky_top_color = Color("4a5866")
+		sky_material.sky_horizon_color = Color("8090a0")
+		sky_material.ground_horizon_color = Color("3a4048")
+		sky_material.ground_bottom_color = Color("1b2026")
+		var sky := Sky.new()
+		sky.sky_material = sky_material
+		env.sky = sky
+		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+		env.fog_enabled = true
+		env.fog_light_color = Color("121820")
+		env.fog_density = 0.035
+		env.fog_sky_affect = 0.0
 	var world_env := WorldEnvironment.new()
 	world_env.environment = env
 	add_child(world_env)
 
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-52.0, -38.0, 0.0)
-	sun.light_energy = 1.15
+	sun.light_energy = 0.85 if has_set else 1.15
 	sun.light_color = Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
 	add_child(sun)
 
+	if _build_set():
+		return
 	var width_m := definition.width / ViewMapping.PX_PER_METRE
-	# Floor: a slab whose top is the physics ground line.
+	# Greybox fallback. Floor: a slab whose top is the physics ground line.
 	_add_box(Vector3(width_m + 30.0, 0.4, 14.0), _flat(Color("23282e")), Vector3(width_m / 2.0, -0.2, -2.0), 0.0)
 	# Low-contrast facility backdrop: back wall and a few distant blocks.
 	_add_box(Vector3(width_m + 30.0, 9.0, 0.4), _flat(Color("1b2026")), Vector3(width_m / 2.0, 4.5, -6.0), 0.0)
@@ -207,6 +241,74 @@ func _build_environment() -> void:
 		var w := rng.randf_range(1.2, 3.0)
 		var h := rng.randf_range(2.0, 6.5)
 		_add_box(Vector3(w, h, 1.0), _flat(Color("20262c")), Vector3(rng.randf_range(-2.0, width_m + 2.0), h / 2.0, -5.0), 0.0)
+
+
+func _environment_data() -> Dictionary:
+	var path := "%s/%s.json" % [ENVIRONMENT_DIR, definition.id]
+	if not FileAccess.file_exists(path):
+		return {}
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return data if data is Dictionary else {}
+
+
+## Places the mission's set dressing from data/environments/<id>.json. Returns false (greybox
+## backdrop instead) when there is no file or none of its pieces is integrated.
+func _build_set() -> bool:
+	var data := _environment_data()
+	if data.is_empty() or _library == null:
+		return false
+	chapter = str(data.get("chapter", ""))
+	var placed := 0
+	for piece: Variant in data.get("pieces", []):
+		if not piece is Dictionary:
+			continue
+		var xs: Array = []
+		if piece.has("repeat"):
+			var r: Dictionary = piece.repeat
+			var x := float(r.x_from)
+			while x <= float(r.x_to) + 0.001:
+				xs.append(x)
+				x += float(r.step)
+		else:
+			xs.append(float(piece.get("x", 0.0)))
+		for x: float in xs:
+			var node := _library.instance_piece(str(piece.id), chapter)
+			if node == null:
+				continue
+			node.position = Vector3(x, float(piece.get("y", 0.0)), float(piece.get("z", 0.0)))
+			node.rotation_degrees.y = float(piece.get("rot", 0.0))
+			node.scale = Vector3.ONE * float(piece.get("scale", 1.0))
+			add_child(node)
+			placed_pieces.append(str(piece.id))
+			placed += 1
+	return placed > 0
+
+
+## A static ledge or plinth from the set's kit, scaled to the static rectangle (statics use the
+## component pivot: centre of the rectangle, z = 0).
+func _add_static_piece(s: Dictionary, data: Dictionary) -> bool:
+	var kit: Dictionary = data.get("statics", {})
+	if kit.is_empty() or _library == null:
+		return false
+	var low: bool = s.size.y / ViewMapping.PX_PER_METRE <= float(kit.get("low_max_height_m", 0.45))
+	var asset_id := str(kit.get("low" if low else "tall", ""))
+	var node := _library.instance_piece(asset_id, chapter)
+	if node == null:
+		return false
+	var dims := _piece_size_m(asset_id)
+	node.scale = Vector3(s.size.x / ViewMapping.PX_PER_METRE / dims.x, s.size.y / ViewMapping.PX_PER_METRE / dims.y, 1.0)
+	node.position = ViewMapping.to_3d(s.position, definition.ground_y)
+	node.rotation = ViewMapping.rotation_to_3d(s.rotation)
+	add_child(node)
+	placed_pieces.append(asset_id)
+	return true
+
+
+## Width and height in metres from a manifest entry's "dimensions" ("2.00 x 0.30 x 1.60 m").
+func _piece_size_m(asset_id: String) -> Vector2:
+	var text := str(_library.entries.get(asset_id, {}).get("dimensions", "1 x 1 x 1"))
+	var parts := text.replace(" m", "").split(" x ")
+	return Vector2(float(parts[0]), float(parts[1])) if parts.size() >= 2 else Vector2.ONE
 
 
 func _build_camera() -> void:
@@ -254,15 +356,11 @@ func _build_preview() -> void:
 
 func _add_component(c: Dictionary) -> void:
 	var look: Array = KINDS.get(c.kind, DEFAULT_KIND)
-	var material := _flat(look[1])
-	# Emission stays enabled (black when unlit) so turning CRITICAL later only changes values,
-	# not the shader variant: a variant switch mid-play costs a shader compile.
-	material.emission_enabled = true
-	material.emission = look[2] if look[2] != null else Color.BLACK
-	material.emission_energy_multiplier = look[3] if look[2] != null else 0.0
-	var mesh := _add_box(ViewMapping.size_to_3d(c.size, look[0]), material, ViewMapping.to_3d(c.position, definition.ground_y), c.rotation)
-	_meshes[c.id] = mesh
-	_materials[c.id] = [material, look[1]]
+	var visual := ComponentVisual.create(c, look, _library, chapter)
+	visual.position = ViewMapping.to_3d(c.position, definition.ground_y)
+	visual.rotation = ViewMapping.rotation_to_3d(c.rotation)
+	add_child(visual)
+	_meshes[c.id] = visual
 	if c.critical_asset:
 		_markers[c.id] = _add_marker()
 
@@ -303,31 +401,21 @@ static func _flat(color: Color) -> StandardMaterial3D:
 
 
 func _on_component_state_changed(component_id: String, _previous: int, current: int) -> void:
-	if not _materials.has(component_id):
-		return
-	var material: StandardMaterial3D = _materials[component_id][0]
-	var base: Color = _materials[component_id][1]
-	match current:
-		DamageableComponent.State.DAMAGED:
-			material.albedo_color = base.darkened(0.25)
-		DamageableComponent.State.CRITICAL:
-			material.albedo_color = base.darkened(0.45)
-			material.emission_enabled = true
-			material.emission = Color("ff4a30")
-			material.emission_energy_multiplier = 0.8
+	var visual: ComponentVisual = _meshes.get(component_id)
+	if visual != null:
+		visual.set_state(current)
 
 
 func _on_component_removed(component_id: String, at: Vector2) -> void:
-	var mesh: MeshInstance3D = _meshes.get(component_id)
+	var visual: ComponentVisual = _meshes.get(component_id)
 	_meshes.erase(component_id)
 	if _markers.has(component_id):
 		(_markers[component_id] as Node).queue_free()
 		_markers.erase(component_id)
-	if mesh == null:
+	if visual == null:
 		return
-	var color: Color = _materials[component_id][1]
-	_spawn_debris(ViewMapping.to_3d(at, definition.ground_y), color, (mesh.mesh as BoxMesh).size)
-	mesh.queue_free()
+	_spawn_debris(ViewMapping.to_3d(at, definition.ground_y), visual.base_color, visual.size_m)
+	visual.queue_free()
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:

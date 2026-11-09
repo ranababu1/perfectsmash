@@ -23,6 +23,7 @@ const UNIT_SUITES := [
 	"res://tests/test_scoring.gd",
 	"res://tests/test_progression.gd",
 	"res://tests/test_audio.gd",
+	"res://tests/test_assets.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",
