@@ -212,3 +212,64 @@ Follow docs/instructions.md exactly. Work on the existing intended branch unless
 - The existing 20-level save data migrates safely.
 - Chapter intros/outros and the level-100 finale unlock and replay correctly.
 - currentstate.md states exactly what is implemented and what remains outstanding.
+
+
+---
+
+# Owner-approved gameplay revision: level design implications (2026-11-09)
+
+This section supersedes earlier level-design constraints that assume a single temporal charge, a three/four-shot ceiling, generic wood/stone/glass-only objects, or prohibit new weapon classes. It does not authorize arbitrary new physics mechanics without staged design and implementation validation.
+
+## 1. Tactical 2.5D presentation
+
+- Present levels in an angled 2.5D / three-quarter visual composition with a visible anonymous operative and a readable firing position.
+- The initial simulation remains Godot 2D physics. Do not design puzzles that secretly depend on depth-axis collision or occlusion the simulation cannot represent.
+- Validate a greybox Helix facility before redesigning all existing levels.
+
+## 2. Weapon-aware puzzle design
+
+The game supports multiple distinct weapons. The initial prototype uses:
+- **Kinetic Accelerator:** direct kinetic impact and structural displacement.
+- **Breach Charge:** limited-use area damage.
+
+Later proposed chapter weapons include a precision/penetration weapon, Pulse Cannon, Disruptor and Temporal Lance. Add a level dependency on a later weapon only after its mechanic is implemented, explained and validated. Levels must remain completable with the expected base loadout and reasonable upgrades.
+
+Every weapon-dependent puzzle must explain its tactical purpose through the structure, target and feedback. Do not make a weapon mandatory merely to sell an upgrade.
+
+## 3. Story-specific structure vocabulary
+
+Design targets as recognizable institutional components, not anonymous stacks of blocks. Chapter families include Helix AI servers/data cores/control nodes; VITA bioreactors/containment/genetic storage; Nova Grid transformers/reactor/cooling/distribution; Civitas surveillance/sensor/control relays; and Meridian temporal anchors/reactors/convergence machinery.
+
+Use reusable structural physics components beneath the chapter-specific art. A visual object may be composed of several reusable collision/damage parts where the existing engine supports this cleanly.
+
+Initial material categories may include lightweight alloy, reinforced steel, composite, glass/polymer, concrete, electronic modules and energy components. These are design categories, not pre-approved physics constants. Validate actual resistance, mass, friction and damage values empirically.
+
+## 4. Multi-stage destruction and shot budgets
+
+- Complex institutions may require sustained attacks, several stages and more than 3-4 shots. Some missions may reasonably require 15, 25 or more shots.
+- The shot budget shown to the player is a recommended efficiency benchmark unless a level explicitly defines a tactical ammunition limit.
+- Do not inflate shot count artificially. Each shot should contribute to a readable decision: remove a support, expose a core, disable a relay, break containment or exploit a chain reaction.
+- Mix direct damage, area damage, precision and structural collapse opportunities as weapons become available.
+- Provide clear critical asset states and objective feedback so players understand progress across a longer mission.
+- Retry must restore the same validated initial structure and mission conditions.
+
+## 5. Scoring-aware level design
+
+Levels should provide meaningful opportunities to earn:
+- Regular Mission Points for completion, destruction, critical assets and objectives.
+- Bonus Research Data for efficient completion, time relative to target, shots relative to recommended budget, weapon choice and optional objectives.
+
+Avoid scoring designs where raw speed dominates puzzle reasoning. Establish per-level target times and shot benchmarks through playtesting. Ensure a slower but thoughtful completion can still earn useful progression rewards.
+
+## 6. Frontlines future compatibility
+
+Temporal Frontlines is a later asynchronous multiplayer mode, not part of the first campaign level-production dependency. Its construction/attack arenas should reuse the same validated modular structural component catalogue where possible.
+
+For future compatibility:
+- Prefer stable component IDs and versioned data definitions.
+- Keep structure composition separate from decorative background art.
+- Identify critical assets explicitly in data.
+- Keep grid placement, rotation, connections and construction costs representable in structured data.
+- Do not build arbitrary level-editor or backend functionality into the campaign prototype prematurely.
+
+The level-design team must not claim Frontlines is implemented. The immediate content priority remains the single-player vertical slice and five representative chapter levels.
