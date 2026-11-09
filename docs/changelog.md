@@ -2,6 +2,17 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Asset integration slice B: debris sets, damage overlays, gameplay VFX
+
+- Integration selection: slice `B_helix_debris_damage_vfx` (40 ids): the nine Helix debris sets matching the integrated component variants (`HLX-DEB-*`), light/heavy damage overlays for the seven physics materials used by `helix_01` (`SHR-DMG-*`), and the 17 VFX sheets/textures the presets reference. Rights and approval fields copied unchanged (all `pending_review`).
+- `build_integration_manifest.py`: `godot_presets` in the selection become `presets` in `data/integrated_assets.json` (10 ui-vfx CPUParticles3D presets); the build fails if a preset references a file that is not integrated. `export_filter.py` ships the listed presets.
+- `AssetLibrary`: `instance_debris` (scaled like the component), `damage_overlay`, `damaged_material` (darkened copy with the overlay as an object-space triplanar transparent `next_pass`, shared per source surface and level, contract 8), `preset_scene`.
+- `ComponentVisual`: main-material surfaces switch to the light overlay at DAMAGED and heavy at CRITICAL; the heavy overlay is drawn during the existing two-frame load warm-up.
+- New `DebrisSet`: the debris set replaces the destroyed component in its last pose; fragments are thrown outward and up (seeded by component id), land on the floor, shrink away after 2.2 s. Visual only, no 3D physics. Procedural chunks remain the fallback.
+- New `MissionVfx`: fixed pools of the presets (breach explosion scaled by blast radius, material impacts, kinetic hit and muzzle, collapse dust scaled by width, core destruction) plus the looping core glow that follows the AI core. Each preset and each debris set is drawn once, motionless under the floor, while the mission loads. The flash sphere is hidden when the explosion preset exists; the pooled blast lights stay.
+- Tests: 6 new in `tests/test_assets.gd` (debris per component, seeded debris motion and floor landing, overlays per material, shared overlay materials, presets load, view spawns debris/overlays/effects).
+- **Not run:** no Godot binary was available in this session (running a downloaded engine was not permitted), so the Godot test suite, import of the new files, export and emulator benchmarks were **not run**. Only a GDScript syntax parse (gdtoolkit 4) of the changed scripts and the Python build tools were executed. Run the suite and an emulator benchmark before treating slice B as verified.
+
 ## 2026-11-10 — Asset integration slice A: Helix structures, environment, materials
 
 - `bc46f53` Merged the owner's asset-library PRs (#2/#3: library moved to `assets/`) with a normal merge; slice A's own copies under `generated_assets/` were dropped first (`a14d7c8`).

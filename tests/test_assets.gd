@@ -123,3 +123,94 @@ func test_textures_referenced_by_models_are_integrated() -> void:
 			for model_id: String in entry.required_by:
 				assert_true(_library.has_entry(model_id), "%s is required by an integrated model" % entry.id)
 	assert_true(paths.has("assets/materials/shared/shr_mat_gunmetal_a_albedo.png"), "shared sets used by the kits ship with them")
+
+
+func test_every_helix_component_has_a_debris_set() -> void:
+	var def := MissionDefinition.load_from_file(HELIX, _materials, _weapons)
+	for c in def.components:
+		var entry := _library.debris_entry("helix", c.kind, c.size)
+		assert_false(entry.is_empty(), "debris set for %s (%s)" % [c.id, c.kind])
+		assert_eq(str(entry.get("component_kind", "")), c.kind, "%s debris matches its kind" % c.id)
+		var model := _library.instance_debris("helix", c.kind, c.size)
+		var fragments := model.find_children("*", "MeshInstance3D", true, false).size()
+		# Contract 8: 4-10 closed fragments (the husk counts as one).
+		assert_true(fragments >= 4 and fragments <= 11, "%s: %d fragments" % [entry.id, fragments])
+		model.free()
+	assert_eq(_library.debris_entry("helix", "server_rack", Vector2(40, 100)).id, "HLX-DEB-SERVER_RACK-B")
+
+
+func test_debris_motion_is_seeded_and_lands_on_the_floor() -> void:
+	var holder := Node3D.new()
+	tree.root.add_child(holder)
+	var first := DebrisSet.create(_library.instance_debris("helix", "server_rack", Vector2(40, 100)), Vector3(10.0, 0.5, 0.0), 0.2, "rack_1", "HLX-DEB-SERVER_RACK-B")
+	var second := DebrisSet.create(_library.instance_debris("helix", "server_rack", Vector2(40, 100)), Vector3(10.0, 0.5, 0.0), 0.2, "rack_1", "HLX-DEB-SERVER_RACK-B")
+	holder.add_child(first)
+	holder.add_child(second)
+	assert_true(first.fragment_count() >= 4)
+	for i in first.fragment_count():
+		assert_eq(first._fragments[i].velocity, second._fragments[i].velocity, "same component, same throw (%d)" % i)
+	# Step well past the landing time (not past REST_TIME, so nothing shrinks yet).
+	for step in 90:
+		first._process(1.0 / 60.0)
+	for fragment: Dictionary in first._fragments:
+		var node: MeshInstance3D = fragment.node
+		assert_true(node.global_position.y >= float(fragment.rest_y) - 0.001, "%s rests on or above the floor" % node.name)
+		assert_true(absf(node.global_position.z) < 1.2, "%s stays near the physics plane" % node.name)
+	holder.free()
+
+
+func test_damage_overlays_cover_every_helix_material() -> void:
+	var def := MissionDefinition.load_from_file(HELIX, _materials, _weapons)
+	for c in def.components:
+		for level in [1, 2]:
+			assert_true(_library.damage_overlay(c.material, level) != null, "%s overlay level %d for %s" % [c.material, level, c.id])
+	assert_true(_library.damage_overlay("unknown_material", 1) == null)
+
+
+func test_damaged_material_adds_a_shared_overlay_pass() -> void:
+	var source := StandardMaterial3D.new()
+	source.resource_name = "mat_electronic_module_hlx"
+	source.albedo_color = Color(0.8, 0.8, 0.8)
+	assert_eq(_library.damaged_material(source, "electronic_module", 0), source, "intact keeps the source")
+	var light := _library.damaged_material(source, "electronic_module", 1)
+	var heavy := _library.damaged_material(source, "electronic_module", 2)
+	assert_true(light != source and heavy != light)
+	assert_eq(_library.damaged_material(source, "electronic_module", 1), light, "shared per source and level")
+	var overlay := light.next_pass as StandardMaterial3D
+	assert_true(overlay != null, "overlay as next pass")
+	assert_true(overlay.uv1_triplanar and not overlay.uv1_world_triplanar, "object-space triplanar (contract 8)")
+	assert_eq(overlay.transparency, BaseMaterial3D.TRANSPARENCY_ALPHA)
+	assert_true(heavy.albedo_color.r < light.albedo_color.r and light.albedo_color.r < source.albedo_color.r, "darker with damage")
+	assert_eq(_library.damaged_material(source, "no_overlay_material", 2), source, "no overlay: unchanged")
+
+
+func test_vfx_presets_load_with_their_textures() -> void:
+	for preset: String in MissionVfx.POOLS:
+		var scene := _library.preset_scene(preset)
+		assert_true(scene != null, "preset %s integrated" % preset)
+		var node := scene.instantiate()
+		assert_true(node.find_children("*", "CPUParticles3D", true, false).size() > 0, "%s has particles" % preset)
+		node.free()
+	assert_true(_library.preset_scene(MissionVfx.CORE_IDLE) != null)
+	for material_id: String in MissionVfx.IMPACT_BY_MATERIAL:
+		assert_true(MissionVfx.POOLS.has(MissionVfx.IMPACT_BY_MATERIAL[material_id]), "%s impact preset is pooled" % material_id)
+
+
+func test_mission_view_spawns_debris_overlays_and_effects() -> void:
+	var screen := MissionScreen.new()
+	tree.root.add_child(screen)
+	await wait_physics_frames(4)
+	var view := screen.view
+	for preset: String in MissionVfx.POOLS:
+		assert_true(view.vfx.has_preset(preset), "pool %s" % preset)
+	assert_true(view.vfx._idle.has("aura_core"), "the critical core carries its idle glow")
+	var rack: ComponentVisual = view._meshes["rack_1"]
+	assert_eq(rack.overlay_level, 0, "intact rack after warm-up has no overlay")
+	screen.engine.apply_damage("rack_1", 30.0, DamageRules.TYPE_IMPACT)
+	await wait_physics_frames(1)
+	assert_eq(rack.overlay_level, 1, "damaged rack shows the light overlay")
+	screen.engine.destroy_component("rack_1", "test")
+	await wait_physics_frames(2)
+	assert_true(view.debris_spawned.has("HLX-DEB-SERVER_RACK-B"), "destroyed rack leaves its debris set")
+	screen.queue_free()
+	await wait_physics_frames(1)

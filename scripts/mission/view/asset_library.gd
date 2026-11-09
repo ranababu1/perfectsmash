@@ -9,7 +9,11 @@ extends RefCounted
 ## - main surfaces `mat_<material>_<ch>[_zone]` without textures of their own get the chapter
 ##   texture set's normal and ORM maps by slot name (section 7); surfaces the model already
 ##   textures (external glTF images, current kit exports) keep the authored binding;
-## - environment pieces by asset id.
+## - environment pieces by asset id;
+## - debris sets (`<CH>-DEB-<KIND>`) for the destroyed state, scaled like their component;
+## - damage overlays `SHR-DMG-<MATERIAL>-LIGHT|HEAVY` as a transparent object-space triplanar
+##   next pass on the main surfaces (section 8), one shared material per source surface and level;
+## - the ui-vfx CPUParticles3D presets by name (`presets` in the integration manifest).
 ## Anything missing returns null so the caller falls back to the greybox (section 17).
 
 const DEFAULT_PATH := "res://data/integrated_assets.json"
@@ -26,6 +30,19 @@ var _material_sets := {}
 var _scenes := {}
 var _textures := {}
 var _bound_materials := {}
+## "material_id/light|heavy" -> overlay texture path
+var _overlays := {}
+## preset name -> res:// path of the .tscn
+var presets := {}
+var _overlay_materials := {}
+var _damaged_materials := {}
+
+## Albedo multiplier for the damaged and critical surface (contract 8: about 15% darker when
+## damaged; critical darker still so the state reads at phone size).
+const DAMAGE_DARKEN := [1.0, 0.85, 0.72]
+## Overlay tiling: one tile per metre in object space (contract 8). Models are authored in
+## metres, so an object-space scale of 1 is one tile per metre before the X/Y fit.
+const OVERLAY_TILES_PER_METRE := 1.0
 
 
 static func load_from_file(path: String = DEFAULT_PATH) -> AssetLibrary:
@@ -40,6 +57,10 @@ static func load_from_file(path: String = DEFAULT_PATH) -> AssetLibrary:
 	for entry: Variant in data.entries:
 		if entry is Dictionary and entry.get("id") is String and entry.get("path") is String:
 			library._index(entry)
+	var preset_paths: Variant = data.get("presets", {})
+	if preset_paths is Dictionary:
+		for name: Variant in preset_paths:
+			library.presets[str(name)] = "res://" + str(preset_paths[name])
 	return library
 
 
@@ -74,6 +95,84 @@ func instance_component(chapter: String, kind: String, size_px: Vector2) -> Node
 	set_state_nodes(root, 0)
 	bind_materials(root, chapter)
 	return root
+
+
+## Instantiates the debris set for `kind` sized like the component it replaces, or null. Fragments
+## sit around the root in their intact positions (contract 4), so placing the root where the
+## component was reads as the component breaking apart.
+func instance_debris(chapter: String, kind: String, size_px: Vector2) -> Node3D:
+	var entry := debris_entry(chapter, kind, size_px)
+	if entry.is_empty():
+		return null
+	var root := _instance(entry)
+	if root == null:
+		return null
+	var reference: Vector2 = Vector2(entry.reference_size_px[0], entry.reference_size_px[1])
+	root.scale = Vector3(size_px.x / reference.x, size_px.y / reference.y, 1.0)
+	bind_materials(root, chapter)
+	return root
+
+
+## A CPUParticles3D preset scene by name (see data/integrated_assets.json `presets`), or null.
+func preset_scene(name: String) -> PackedScene:
+	var path: String = presets.get(name, "")
+	if path.is_empty():
+		return null
+	if not _scenes.has(path):
+		_scenes[path] = load(path) if ResourceLoader.exists(path) else null
+	return _scenes[path]
+
+
+## Overlay texture for a physics material at a damage level (1 light, 2 heavy), or null. The core
+## housing falls back to the electronics overlays when it has none of its own (contract 7).
+func damage_overlay(material_id: String, level: int) -> Texture2D:
+	var suffix := "light" if level <= 1 else "heavy"
+	var path: String = _overlays.get(material_id + "/" + suffix, "")
+	if path.is_empty() and material_id == "ai_core_module":
+		path = _overlays.get("electronic_module/" + suffix, "")
+	return _texture(path)
+
+
+## The surface material to show at a damage level: `source` itself when intact, otherwise a
+## darkened copy with the material's overlay as next pass. Shared per (source, material, level),
+## so every rack of the same model uses one material per state. Returns `source` when no overlay
+## is integrated for the material.
+func damaged_material(source: BaseMaterial3D, material_id: String, level: int) -> BaseMaterial3D:
+	if level <= 0 or source == null:
+		return source
+	level = mini(level, 2)
+	var key := "%s|%s|%d" % [source.get_instance_id(), material_id, level]
+	if _damaged_materials.has(key):
+		return _damaged_materials[key]
+	var overlay := _overlay_material(material_id, level)
+	if overlay == null:
+		_damaged_materials[key] = source
+		return source
+	var material := source.duplicate() as BaseMaterial3D
+	material.albedo_color = Color(source.albedo_color * float(DAMAGE_DARKEN[level]), source.albedo_color.a)
+	material.next_pass = overlay
+	_damaged_materials[key] = material
+	return material
+
+
+func _overlay_material(material_id: String, level: int) -> StandardMaterial3D:
+	var key := "%s/%d" % [material_id, level]
+	if _overlay_materials.has(key):
+		return _overlay_materials[key]
+	var texture := damage_overlay(material_id, level)
+	var overlay: StandardMaterial3D = null
+	if texture != null:
+		overlay = StandardMaterial3D.new()
+		overlay.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		overlay.albedo_texture = texture
+		overlay.uv1_triplanar = true
+		overlay.uv1_world_triplanar = false
+		overlay.uv1_scale = Vector3.ONE * OVERLAY_TILES_PER_METRE
+		overlay.roughness = 0.9
+		# Drawn over the surface it decorates, never hidden by it.
+		overlay.render_priority = 1
+	_overlay_materials[key] = overlay
+	return overlay
 
 
 ## Instantiates an environment or prop piece by asset id (unscaled), or null.
@@ -214,6 +313,11 @@ func _index(entry: Dictionary) -> void:
 		if not bucket.has(key):
 			bucket[key] = []
 		bucket[key].append(entry)
+	if id.begins_with("SHR-DMG-") and str(entry.path).ends_with(".png"):
+		# SHR-DMG-REINFORCED_STEEL-LIGHT
+		var dmg := id.split("-")
+		if dmg.size() == 4:
+			_overlays[dmg[2].to_lower() + "/" + dmg[3].to_lower()] = "res://" + str(entry.path)
 	if "-MAT-" in id and str(entry.path).ends_with(".png"):
 		# HLX-MAT-REINFORCED_STEEL-A, ...-A-NORMAL, -A-ORM, -A-EMISSION
 		var parts := id.split("-")

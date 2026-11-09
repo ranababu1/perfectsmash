@@ -39,6 +39,16 @@ Development integration of the production asset library into the playable Helix 
 
 Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrated assets). Open performance work for slice E: keep the set across restarts (instancing ~70 models costs ~650 ms per restart), fewer component surfaces/shadow casters, physical-device numbers.
 
-**Missing dependencies.** Operative and weapon meshes: the library now contains weapon models (`OPR-WPN-*`) but no operative model; both are for slice C. Debris sets, damage overlays and VFX: slice B.
+**Missing dependencies.** Operative and weapon meshes: the library now contains weapon models (`OPR-WPN-*`) but no operative model; both are for slice C. Debris sets, damage overlays and VFX: slice B (below).
 
 **Rights / release blockers.** All integrated entries are `pending_review`; rights notes say AI-assisted or AI-generated work is not commercially cleared. Commercial release needs the owner's review of each entry. `assets/audio/music/gameplay_bed.ogg` rights remain unverified (existing blocker).
+
+## Slice B: debris sets, damage overlays and gameplay VFX
+
+**Implemented, not yet verified in Godot** (no engine binary in the session that built it; see `currentstate.md`).
+
+- **Debris** (`HLX-DEB-{AI_CORE-A, BLAST_WALL-A, CORE_SHIELD-A, POWER_CELL-A, RELAY_DISH-A, RELAY_MAST-B, SERVER_RACK-B, SERVICE_DECK-B, SUPPORT_COLUMN-B}`, 4-7 fragments each): `AssetLibrary.instance_debris` picks the set by kind and size like components; `DebrisSet` places it in the destroyed body's last pose and animates the fragments (seeded throw, gravity, floor bounce, shrink after 2.2 s). Contract 8 allows visual-only rigid bodies or particles; a scripted throw was chosen so no 3D physics is added.
+- **Damage overlays** (`SHR-DMG-<MATERIAL>-LIGHT/HEAVY` for ai_core_module, composite, electronic_module, energy_component, glass_polymer, lightweight_alloy, reinforced_steel): surfaces in `mat_<material>_<ch>[_zone]` slots get a darkened copy (×0.85 damaged, ×0.72 critical) with the overlay as a transparent object-space triplanar `next_pass`, one tile per metre. Materials are shared per source surface and level. The overlay is chosen by the component's physics material.
+- **VFX presets** (ui-vfx, `assets/vfx/godot/presets/`): `breach_explosion`, `impact_metal/glass/electric/concrete` (by physics material), `kinetic_impact`, `kinetic_muzzle`, `component_collapse`, `critical_core_destroyed`, `critical_core_idle`. Pools of 1-3 per preset, restarted on use; every preset and debris set is drawn once under the floor during load. Textures integrated: `OPR-VFX-BREACH_{ACTIVATION,DEBRIS,EXPLOSION,SHOCKWAVE}-A`, `OPR-VFX-KINETIC_{IMPACT,MUZZLE}-A`, `SHR-VFX-{CRITICAL_CORE_DESTRUCTION, CRITICAL_CORE_IDLE, DEBRIS_CHIP_SMALL, DUST_COLLAPSE, DUST_CONCRETE, ENERGY_DISCHARGE, IMPACT_ELECTRIC, IMPACT_GLASS, IMPACT_METAL, PARTICLE_SPARK, SMOKE_PUFF}-A`.
+- **Performance risk to measure:** the overlay `next_pass` adds a transparent draw per damaged main surface; particle quads are alpha-blended or additive. Measure with `mission_benchmark` (breach scenario) on the emulator and a physical device before approving.
+- **Deferred:** CRITICAL sparking loops from `fx_spark_*` empties, emission flicker, projectile trails, upgrade-tier VFX.

@@ -1873,6 +1873,1290 @@
 			"required_by": []
 		},
 		{
+			"id": "HLX-DEB-AI_CORE-A",
+			"path": "assets/destructibles/helix/hlx_deb_ai_core_a.glb",
+			"purpose": "Destroyed state for HLX-CMP-AI_CORE-A: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "ai_core_module",
+			"component_kind": "ai_core",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				60,
+				60
+			],
+			"depth_m": 0.7,
+			"tris": 1998,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1998 tris total, <= 1.5x intact). Same material slot convention as the component. glb 116 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-BLAST_WALL-A",
+			"path": "assets/destructibles/helix/hlx_deb_blast_wall_a.glb",
+			"purpose": "Destroyed state for HLX-CMP-BLAST_WALL-A: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "reinforced_steel",
+			"component_kind": "blast_wall",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				30,
+				90
+			],
+			"depth_m": 1.2,
+			"tris": 870,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 870 tris total, <= 1.5x intact). Same material slot convention as the component. glb 57 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-CORE_SHIELD-A",
+			"path": "assets/destructibles/helix/hlx_deb_core_shield_a.glb",
+			"purpose": "Destroyed state for HLX-CMP-CORE_SHIELD-A: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "reinforced_steel",
+			"component_kind": "core_shield",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				16,
+				80
+			],
+			"depth_m": 0.9,
+			"tris": 864,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 864 tris total, <= 1.5x intact). Same material slot convention as the component. glb 53 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-POWER_CELL-A",
+			"path": "assets/destructibles/helix/hlx_deb_power_cell_a.glb",
+			"purpose": "Destroyed state for HLX-CMP-POWER_CELL-A: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "energy_component",
+			"component_kind": "power_cell",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				36,
+				40
+			],
+			"depth_m": 0.5,
+			"tris": 1495,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1495 tris total, <= 1.5x intact). Same material slot convention as the component. glb 68 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-RELAY_DISH-A",
+			"path": "assets/destructibles/helix/hlx_deb_relay_dish_a.glb",
+			"purpose": "Destroyed state for HLX-CMP-RELAY_DISH-A: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "glass_polymer",
+			"component_kind": "relay_dish",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				70,
+				24
+			],
+			"depth_m": 0.8,
+			"tris": 1394,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 1394 tris total, <= 1.5x intact). Same material slot convention as the component. glb 52 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-RELAY_MAST-B",
+			"path": "assets/destructibles/helix/hlx_deb_relay_mast_b.glb",
+			"purpose": "Destroyed state for HLX-CMP-RELAY_MAST-B: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "lightweight_alloy",
+			"component_kind": "relay_mast",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				22,
+				220
+			],
+			"depth_m": 0.3,
+			"tris": 1042,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1042 tris total, <= 1.5x intact). Same material slot convention as the component. glb 75 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-SERVER_RACK-B",
+			"path": "assets/destructibles/helix/hlx_deb_server_rack_b.glb",
+			"purpose": "Destroyed state for HLX-CMP-SERVER_RACK-B: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "electronic_module",
+			"component_kind": "server_rack",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				40,
+				100
+			],
+			"depth_m": 0.8,
+			"tris": 1552,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1552 tris total, <= 1.5x intact). Same material slot convention as the component. glb 97 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-SERVICE_DECK-B",
+			"path": "assets/destructibles/helix/hlx_deb_service_deck_b.glb",
+			"purpose": "Destroyed state for HLX-CMP-SERVICE_DECK-B: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "composite",
+			"component_kind": "service_deck",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				200,
+				24
+			],
+			"depth_m": 1.4,
+			"tris": 729,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 729 tris total, <= 1.5x intact). Same material slot convention as the component. glb 50 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "HLX-DEB-SUPPORT_COLUMN-B",
+			"path": "assets/destructibles/helix/hlx_deb_support_column_b.glb",
+			"purpose": "Destroyed state for HLX-CMP-SUPPORT_COLUMN-B: collapsed husk plus loose fragments (visual only, no collision)",
+			"category": "destructibles",
+			"render_type": "mesh",
+			"format": "glb",
+			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"approval_status": "pending_review",
+			"chapter": "helix",
+			"material": "lightweight_alloy",
+			"component_kind": "support_column",
+			"levels": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			],
+			"used_by": "MissionView destroyed state (proposed: spawn at the removed body; fragments as short-lived visual-only bodies)",
+			"pivot": "each node at its own centre, laid out around the component centre in intact positions; husk rests on the bottom edge of the rectangle",
+			"reference_size_px": [
+				26,
+				160
+			],
+			"depth_m": 0.5,
+			"tris": 661,
+			"states": [
+				"destroyed"
+			],
+			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 661 tris total, <= 1.5x intact). Same material slot convention as the component. glb 48 KB.",
+			"merged_from": "3d-kits",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-AI_CORE_MODULE-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_ai_core_module_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "ai_core_module",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 14% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-AI_CORE_MODULE-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_ai_core_module_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "ai_core_module",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 66% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-COMPOSITE-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_composite_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "composite",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 8% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-COMPOSITE-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_composite_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "composite",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 68% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-ELECTRONIC_MODULE-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_electronic_module_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "electronic_module",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 11% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-ELECTRONIC_MODULE-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_electronic_module_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "electronic_module",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 71% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-ENERGY_COMPONENT-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_energy_component_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "energy_component",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 13% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-ENERGY_COMPONENT-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_energy_component_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "energy_component",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 66% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-GLASS_POLYMER-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_glass_polymer_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "glass_polymer",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 6% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-GLASS_POLYMER-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_glass_polymer_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "glass_polymer",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 22% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-LIGHTWEIGHT_ALLOY-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_lightweight_alloy_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "lightweight_alloy",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 12% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-LIGHTWEIGHT_ALLOY-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_lightweight_alloy_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "lightweight_alloy",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 62% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-REINFORCED_STEEL-LIGHT",
+			"path": "assets/materials/shared/shr_dmg_reinforced_steel_light.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, light state, straight alpha, 1 tile per metre",
+			"material": "reinforced_steel",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 10% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-DMG-REINFORCED_STEEL-HEAVY",
+			"path": "assets/materials/shared/shr_dmg_reinforced_steel_heavy.png",
+			"category": "materials",
+			"render_type": "texture",
+			"format": "png",
+			"purpose": "tileable damage overlay, heavy state, straight alpha, 1 tile per metre",
+			"material": "reinforced_steel",
+			"source": "wrap-stamped decals (from generated sources) plus procedural periodic noise (dmg.py)",
+			"rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
+			"used_by": "material.next_pass transparent StandardMaterial3D, object-space triplanar (ASSET_CONTRACT 8); chapter tint via albedo colour",
+			"chapter": "shared",
+			"requires_alpha": true,
+			"notes": "Alpha coverage 71% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
+			"dimensions": "512x512",
+			"approval_status": "pending_review",
+			"merged_from": "surfaces",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-BREACH_ACTIVATION-A",
+			"path": "assets/vfx/shared/opr_vfx_breach_activation_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				512
+			],
+			"purpose": "Breach Charge activation flash at detonation (first 0.27 s), plays on top of the explosion.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView._on_blast (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 8,
+				"columns": 4,
+				"rows": 2,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 8 frames (4x2), 30 fps, one-shot (0.27 s). Straight alpha, 3 px empty frame border.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-BREACH_DEBRIS-A",
+			"path": "assets/vfx/shared/opr_vfx_breach_debris_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				2048,
+				2048
+			],
+			"purpose": "Blast debris burst: rubble chunks (some still glowing amber) and grit flung radially, slight downward drift.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView._on_blast (proposed)",
+			"chapter": "shared",
+			"blend": "mix",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 24,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 512x512 px, 16 frames (4x4), 24 fps, one-shot (0.67 s). Straight alpha, 3 px empty frame border. Draw behind the explosion (sorting offset -0.1). Supplements mesh debris from the destructibles stream.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-BREACH_EXPLOSION-A",
+			"path": "assets/vfx/shared/opr_vfx_breach_explosion_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				2048,
+				2048
+			],
+			"purpose": "Breach Charge detonation fireball: white flash, turbulent amber fireball, radial hot streaks; follow with SHR-VFX-SMOKE_PUFF-A and the shockwave.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView._on_blast (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 24,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 512x512 px, 16 frames (4x4), 24 fps, one-shot (0.67 s). Straight alpha, 3 px empty frame border. Scale so the frame width = 2.2 x blast_radius (Breach base 140 px = 1.4 m -> billboard about 3.1 m). Pivot centre at the blast point.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-BREACH_SHOCKWAVE-A",
+			"path": "assets/vfx/shared/opr_vfx_breach_shockwave_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				2048,
+				2048
+			],
+			"purpose": "Breach Charge shockwave ring, expands to 0.88 of the frame half-width.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView._on_blast (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 512x512 px, 16 frames (4x4), 30 fps, one-shot (0.53 s). Straight alpha, 3 px empty frame border. Camera-facing quad (the camera looks down -Z, so billboard on or off both work). Frame width = 2 x blast_radius / 0.88.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-KINETIC_IMPACT-A",
+			"path": "assets/vfx/shared/opr_vfx_kinetic_impact_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Kinetic slug direct hit: cyan-white flash, ring, radial needles and sparks (any material, layered under the material impact).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 30 fps, one-shot (0.53 s). Straight alpha, 3 px empty frame border. About 0.8 m at impact strength 1; scale with impact strength 0.6-1.4.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "OPR-VFX-KINETIC_MUZZLE-A",
+			"path": "assets/vfx/shared/opr_vfx_kinetic_muzzle_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				512
+			],
+			"purpose": "Kinetic Accelerator muzzle flash, cyan-white, fires toward +u (right).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.16,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 8,
+				"columns": 4,
+				"rows": 2,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 8 frames (4x2), 30 fps, one-shot (0.27 s). Straight alpha, 3 px empty frame border. Pivot: barrel tip at u = 0.16, v = 0.5. Rotate the quad to the aim angle. About 0.5 m wide in game. Play once per shot (0.27 s).",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-CRITICAL_CORE_DESTRUCTION-A",
+			"path": "assets/vfx/shared/shr_vfx_critical_core_destruction_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				2048,
+				2048
+			],
+			"purpose": "Critical asset destroyed: red implosion, white flash, red shockwave and white shards (mission-winning moment).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 24,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 512x512 px, 16 frames (4x4), 24 fps, one-shot (0.67 s). Straight alpha, 3 px empty frame border. Red #FF3B4E family matches the critical-asset marker. Layer with SHR-VFX-ENERGY_DISCHARGE-A and the Breach explosion for big cores.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-CRITICAL_CORE_IDLE-A",
+			"path": "assets/vfx/shared/shr_vfx_critical_core_idle_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Critical asset idle glow loop (red pulse with rotating bracket ring) on the core until it is destroyed.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 16,
+				"loop": true
+			},
+			"loop": true,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 16 fps, looping (1.00 s). Straight alpha, 3 px empty frame border.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-DEBRIS_CHIP_SMALL-A",
+			"path": "assets/vfx/shared/shr_vfx_debris_chip_small_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				512,
+				512
+			],
+			"purpose": "Small concrete / stone debris chips, 16 variants (not an animation: pick one cell per particle).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "mix",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 1,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 128x128 px, 16 frames (4x4), 1 fps, one-shot (16.00 s). Straight alpha, 3 px empty frame border. Variant atlas. Godot: particles_anim_h_frames = 4, v_frames = 4, anim_speed 0, anim_offset_min 0, max 1 for a random variant. Tint per material.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-DUST_COLLAPSE-A",
+			"path": "assets/vfx/shared/shr_vfx_dust_collapse_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				2048,
+				2048
+			],
+			"purpose": "Component collapse dust: heavy ground-hugging billow rolling outward (pivot bottom centre, ground at v = 0.86).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "mix",
+			"pivot": [
+				0.5,
+				0.86
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 16,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 512x512 px, 16 frames (4x4), 16 fps, one-shot (1.00 s). Straight alpha, 3 px empty frame border. Frame width = 2.5 x the collapsed component width. Play when a component topples or is removed at ground level.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-DUST_CONCRETE-A",
+			"path": "assets/vfx/shared/shr_vfx_dust_concrete_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Concrete / composite impact dust: pale grit puff and falling specks.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "mix",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 20,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 20 fps, one-shot (0.80 s). Straight alpha, 3 px empty frame border.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-ENERGY_DISCHARGE-A",
+			"path": "assets/vfx/shared/shr_vfx_energy_discharge_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Energy discharge (cells, capacitors, power cores): implosion then cyan plasma burst with tendrils.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 24,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 24 fps, one-shot (0.67 s). Straight alpha, 3 px empty frame border. Tintable: Nova Grid uses the dedicated overload sheet; for VITA multiply by #7FD9A8.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-IMPACT_ELECTRIC-A",
+			"path": "assets/vfx/shared/shr_vfx_impact_electric_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Electronic / electrical impact: blue-white arcs jumping from the hit point, flicker, small sparks.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 30 fps, one-shot (0.53 s). Straight alpha, 3 px empty frame border.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-IMPACT_GLASS-A",
+			"path": "assets/vfx/shared/shr_vfx_impact_glass_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Glass impact: crack star flash and glinting shards thrown out (cold white).",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 30 fps, one-shot (0.53 s). Straight alpha, 3 px empty frame border. Pair with mesh glass shards from destructibles where present; this sheet carries the read at phone scale.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-IMPACT_METAL-A",
+			"path": "assets/vfx/shared/shr_vfx_impact_metal_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Metal impact: hot white sparks sprayed off the surface, falling embers, short flash. Doubles as SPARK_BURST for the sparking damage state.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.65
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 30,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 30 fps, one-shot (0.53 s). Straight alpha, 3 px empty frame border. Origin at u = 0.5, v = 0.65 (frame up = surface normal); rotate to the hit normal. Contains SPARK keyword use: sparking state may loop it with random rotation every 0.6-1.2 s.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-PARTICLE_SPARK-A",
+			"path": "assets/vfx/shared/particles/shr_vfx_particle_spark_a.png",
+			"category": "vfx",
+			"render_type": "texture",
+			"format": "png",
+			"dimensions": [
+				128,
+				32
+			],
+			"purpose": "Spark streak 128x32, head at the right. Use with billboard mode 'particles' and velocity-aligned (particle_flag_align_y) or as a stretched quad.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "add",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"notes": "Particle texture (not animated). Power-of-two, straight alpha, 2 px empty border.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
+			"id": "SHR-VFX-SMOKE_PUFF-A",
+			"path": "assets/vfx/shared/shr_vfx_smoke_puff_a.png",
+			"category": "vfx",
+			"render_type": "sprite",
+			"format": "png",
+			"dimensions": [
+				1024,
+				1024
+			],
+			"purpose": "Grey smoke puff that billows, rises and fades; follow-up after blasts and component destruction.",
+			"source": "procedural, assets/vfx/_build (Python numpy/scipy/Pillow), authored by the ui-vfx asset stream",
+			"rights_status": "original procedural work generated by code written with AI assistance; ownership of AI-assisted output not legally settled; not commercially cleared",
+			"approval_status": "pending_review",
+			"used_by": "MissionView VFX (proposed)",
+			"chapter": "shared",
+			"blend": "mix",
+			"pivot": [
+				0.5,
+				0.5
+			],
+			"requires_alpha": true,
+			"animation": {
+				"frames": 16,
+				"columns": 4,
+				"rows": 4,
+				"fps": 16,
+				"loop": false
+			},
+			"loop": false,
+			"notes": "Frame 256x256 px, 16 frames (4x4), 16 fps, one-shot (1.00 s). Straight alpha, 3 px empty frame border. 1 s at 16 fps. Spawn 3-6 as CPUParticles3D with random rotation and scale 1-2.5 m; lit from upper left.",
+			"merged_from": "ui-vfx",
+			"slice": "B_helix_debris_damage_vfx"
+		},
+		{
 			"id": "SHR-MAT-FROSTED_POLYMER-A-NORMAL",
 			"path": "assets/materials/shared/shr_mat_frosted_polymer_a_normal.png",
 			"category": "materials",
@@ -1898,7 +3182,12 @@
 				"HLX-CMP-RELAY_MAST-B",
 				"HLX-CMP-SERVER_RACK-B",
 				"HLX-CMP-SERVICE_DECK-B",
-				"HLX-CMP-SUPPORT_COLUMN-B"
+				"HLX-CMP-SUPPORT_COLUMN-B",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -1927,7 +3216,12 @@
 				"HLX-CMP-RELAY_MAST-B",
 				"HLX-CMP-SERVER_RACK-B",
 				"HLX-CMP-SERVICE_DECK-B",
-				"HLX-CMP-SUPPORT_COLUMN-B"
+				"HLX-CMP-SUPPORT_COLUMN-B",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -1956,7 +3250,12 @@
 				"HLX-CMP-RELAY_MAST-B",
 				"HLX-CMP-SERVER_RACK-B",
 				"HLX-CMP-SERVICE_DECK-B",
-				"HLX-CMP-SUPPORT_COLUMN-B"
+				"HLX-CMP-SUPPORT_COLUMN-B",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2004,7 +3303,15 @@
 				"HLX-PRP-CRATE_STACK-A",
 				"HLX-PRP-PIPE_RUN-A",
 				"HLX-PRP-RELAY_ARRAY-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2052,7 +3359,15 @@
 				"HLX-PRP-CRATE_STACK-A",
 				"HLX-PRP-PIPE_RUN-A",
 				"HLX-PRP-RELAY_ARRAY-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2100,7 +3415,15 @@
 				"HLX-PRP-CRATE_STACK-A",
 				"HLX-PRP-PIPE_RUN-A",
 				"HLX-PRP-RELAY_ARRAY-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2136,7 +3459,10 @@
 				"HLX-ENV-MASSING_TOWER-B",
 				"HLX-ENV-PILLAR-A",
 				"HLX-PRP-COOLING_TOWER-A",
-				"HLX-PRP-RELAY_ARRAY-A"
+				"HLX-PRP-RELAY_ARRAY-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B"
 			]
 		},
 		{
@@ -2172,7 +3498,10 @@
 				"HLX-ENV-MASSING_TOWER-B",
 				"HLX-ENV-PILLAR-A",
 				"HLX-PRP-COOLING_TOWER-A",
-				"HLX-PRP-RELAY_ARRAY-A"
+				"HLX-PRP-RELAY_ARRAY-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B"
 			]
 		},
 		{
@@ -2208,7 +3537,10 @@
 				"HLX-ENV-MASSING_TOWER-B",
 				"HLX-ENV-PILLAR-A",
 				"HLX-PRP-COOLING_TOWER-A",
-				"HLX-PRP-RELAY_ARRAY-A"
+				"HLX-PRP-RELAY_ARRAY-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B"
 			]
 		},
 		{
@@ -2254,7 +3586,16 @@
 				"HLX-PRP-CONSOLE-A",
 				"HLX-PRP-COOLING_TOWER-A",
 				"HLX-PRP-PIPE_RUN-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2300,7 +3641,16 @@
 				"HLX-PRP-CONSOLE-A",
 				"HLX-PRP-COOLING_TOWER-A",
 				"HLX-PRP-PIPE_RUN-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2346,7 +3696,16 @@
 				"HLX-PRP-CONSOLE-A",
 				"HLX-PRP-COOLING_TOWER-A",
 				"HLX-PRP-PIPE_RUN-A",
-				"HLX-PRP-TANK-A"
+				"HLX-PRP-TANK-A",
+				"HLX-DEB-AI_CORE-A",
+				"HLX-DEB-BLAST_WALL-A",
+				"HLX-DEB-CORE_SHIELD-A",
+				"HLX-DEB-POWER_CELL-A",
+				"HLX-DEB-RELAY_DISH-A",
+				"HLX-DEB-RELAY_MAST-B",
+				"HLX-DEB-SERVER_RACK-B",
+				"HLX-DEB-SERVICE_DECK-B",
+				"HLX-DEB-SUPPORT_COLUMN-B"
 			]
 		},
 		{
@@ -2381,7 +3740,8 @@
 				"HLX-ENV-CATWALK-A",
 				"HLX-ENV-CEILING_TRUSS-A",
 				"HLX-ENV-FLOOR_TRENCH-A",
-				"HLX-PRP-COOLING_TOWER-A"
+				"HLX-PRP-COOLING_TOWER-A",
+				"HLX-DEB-CORE_SHIELD-A"
 			]
 		},
 		{
@@ -2416,7 +3776,8 @@
 				"HLX-ENV-CATWALK-A",
 				"HLX-ENV-CEILING_TRUSS-A",
 				"HLX-ENV-FLOOR_TRENCH-A",
-				"HLX-PRP-COOLING_TOWER-A"
+				"HLX-PRP-COOLING_TOWER-A",
+				"HLX-DEB-CORE_SHIELD-A"
 			]
 		},
 		{
@@ -2451,7 +3812,8 @@
 				"HLX-ENV-CATWALK-A",
 				"HLX-ENV-CEILING_TRUSS-A",
 				"HLX-ENV-FLOOR_TRENCH-A",
-				"HLX-PRP-COOLING_TOWER-A"
+				"HLX-PRP-COOLING_TOWER-A",
+				"HLX-DEB-CORE_SHIELD-A"
 			]
 		},
 		{
@@ -2661,5 +4023,17 @@
 				"HLX-CMP-RELAY_MAST-B"
 			]
 		}
-	]
+	],
+	"presets": {
+		"breach_explosion": "assets/vfx/godot/presets/vfx_breach_explosion.tscn",
+		"component_collapse": "assets/vfx/godot/presets/vfx_component_collapse.tscn",
+		"critical_core_destroyed": "assets/vfx/godot/presets/vfx_critical_core_destroyed.tscn",
+		"critical_core_idle": "assets/vfx/godot/presets/vfx_critical_core_idle.tscn",
+		"impact_concrete": "assets/vfx/godot/presets/vfx_impact_concrete.tscn",
+		"impact_electric": "assets/vfx/godot/presets/vfx_impact_electric.tscn",
+		"impact_glass": "assets/vfx/godot/presets/vfx_impact_glass.tscn",
+		"impact_metal": "assets/vfx/godot/presets/vfx_impact_metal.tscn",
+		"kinetic_impact": "assets/vfx/godot/presets/vfx_kinetic_impact.tscn",
+		"kinetic_muzzle": "assets/vfx/godot/presets/vfx_kinetic_muzzle.tscn"
+	}
 }

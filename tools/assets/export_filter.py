@@ -26,7 +26,7 @@ KEEP = ["assets/icon", "assets/audio/music/gameplay_bed.ogg"]
 
 def kept_paths():
     data = json.loads((REPO / "data/integrated_assets.json").read_text(encoding="utf-8"))
-    return {e["path"] for e in data["entries"]}
+    return {e["path"] for e in data["entries"]} | set(data.get("presets", {}).values())
 
 
 def is_kept(rel, kept):
