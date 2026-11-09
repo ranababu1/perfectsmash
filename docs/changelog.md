@@ -11,7 +11,7 @@ All meaningful changes, newest first.
 - Updated `docs/currentstate.md` to distinguish implemented prototype features from planned narrative work.
 - No gameplay code, scenes, level data, physics, app identity or assets were changed in this documentation update. No build/test was run; prior verified test evidence remains dated 2026-11-02.
 - Initial six-panel environment concept reference and a generated planning poster were created in the conversation workspace. They are not yet imported into the Godot project and should be treated as concept references, not final game assets.
-- An original instrumental dark sci-fi ambient music generation task was submitted. At the latest status check it was still running; no audio file was returned or approved. Commercial-use terms must be verified before shipping.
+- An original instrumental dark sci-fi ambient gameplay music task completed successfully (Topview task ID `0456971a021d4760a1e4771f3f3901a9`; one generation credit). The first-pass track is available at the temporary generated-asset URL shared in the conversation. It has not yet been listened to, loop-tested, license-verified or integrated.
 - Final game name remains pending owner approval. Existing app identity remains Perfect Smash.
 
 ## 2026-11-02 — App icon (0.1.0, unreleased)
