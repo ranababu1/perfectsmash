@@ -126,3 +126,50 @@ Other level observations:
 3. **M4 foundations:** save schema v2 + migration; chapter metadata; `MusicDirector` and split audio settings; reskin hooks in `Palette`/`Backdrop` per chapter.
 4. **M5 vertical slice:** reskinned Chapter I level plus first levels of chapters II–V (21, 41, 61, 81), cinematic player with the opening sequence.
 5. **M6–M9** as in the brief.
+
+---
+
+# Phase 0/1 re-audit against plan revision 5 (2026-11-09, `6b75504`)
+
+Re-run after the owner pushed the tactical-destruction direction (6 doc commits, `812cd1f`..`6b75504`). Working tree: clean apart from two untracked local items: `assets/music/bg.mp3` (unapproved candidate) and `scripts/ui/cinematic_player.gd` (written before the plan change; untested, not wired in).
+Tests on `6b75504`: `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **71 passed, 0 failed, 1 skipped** (GUI routing, needs a window).
+
+## What carries over unchanged
+
+| System | Files | Fit for revision 5 |
+|---|---|---|
+| Headless-capable physics session, settle detection, 10 s timeout | `game_session.gd`, `simulation_monitor.gd` | Reuse; per-shot settle needs rethinking for long missions (below) |
+| 2D rigid-body physics, CCD projectile, material density/friction | `block_body.gd`, `projectile_body.gd`, `game_config.gd` | Reuse as the simulation plane under the 2.5D view |
+| Data-driven, validated level loading | `level_definition.gd`, `level_catalog.gd`, `level_loader.gd` | Pattern reused for missions/components/weapons |
+| Versioned save with migration (v2) | `progress_data.gd`, `save_service.gd` | Extend to v3 for mission points, Research Data, upgrades |
+| Chapters, chapter scenery themes, cinematic data, MusicDirector | `chapter_catalog.gd`, `chapter_theme.gd`, `cinematic_catalog.gd`, `music_director.gd` | Still valid (Phase 4) |
+| Test runner, solver, screenshot tool, renderer benchmark | `tests/`, `tools/` | Reuse; solver needs a weapon-aware variant later |
+| Identity, export presets, Android debug pipeline | `project.godot`, local presets | Unchanged |
+
+## Gaps against revision 5
+
+1. **No damage model.** Breakage is binary: glass breaks above impulse 300, targets break on impulse > 220, a fast projectile touch, a velocity jolt or leaving the world. Wood and stone never break. Needs per-component integrity, per-material resistance and damage types (kinetic, blast).
+2. **One projectile type, hard-coded.** `ProjectileBody` + `GameConfig` constants; no weapon definitions, ammunition, cooldown or area effects.
+3. **Hard shot cap of 5** (`LevelDefinition.MAX_SHOTS`) and a turn flow that waits for the whole world to settle after every shot (`SessionRules`). 15-25 shot missions at 1-10 s settle per shot would drag.
+4. **Scoring is stars by par only** (`ScoreRules`). No Mission Points, Research Data, target time or optional objectives.
+5. **Objectives**: only `destroy_targets` (circular cores) and `topple`. No critical-asset components, multi-part objects, or structural dependencies beyond plain gravity.
+6. **Presentation is flat 2D canvas drawing** (`_draw` per body). No camera angle, operative, depth cues or shadows.
+7. **Aiming is slingshot drag-back** (`aim_controller.gd`): the exact interaction revision 5 wants to move away from.
+8. Docs: `plan.md` header still says revision 4 although revision 5 is appended; the original level table (wood/stone/glass, ≤3 shots) is superseded by the appended section. Not edited by this audit.
+
+## Technical risks
+
+- **Depth honesty**: every collision happens in one 2D plane. The 2.5D view must place all destructible parts on that plane; depth is decoration only.
+- **Physics cost of large facilities**: 15-25 shot institutions mean many bodies. Recommend that components stay frozen until a support they depend on breaks (authored dependencies), which is cheaper, more readable and more repeatable than simulating everything all the time.
+- **Non-determinism** (already documented) matters more for long missions and for future Frontlines validation. Keep solver and replay tests tolerant; never rely on bit-exact replays.
+- **Renderer**: a 3D presentation layer would change the renderer evaluation; re-run `tools/renderer_eval` with a 3D proxy before deciding.
+- **Keep the existing 20 levels playable** while the prototype is built (separate mission entry, no breaking schema changes).
+
+## Proposed greybox implementation (pending owner decisions)
+
+- **Batch 1 (rules + data, headless):** `data/materials.json`, `data/weapons.json` (Kinetic Accelerator, Breach Charge), `MaterialCatalog`, `WeaponDefinition`/`WeaponCatalog`, `DamageRules` (kinetic damage from impact energy × material resistance; blast damage and impulse with distance falloff), upgrade-modifier hooks (base + 3 levels, no UI). Tests.
+- **Batch 2 (destructible components + mission session, headless):** `ComponentBody` (integrity, material, critical flag, `depends_on` anchors), `MissionDefinition` (components, critical assets, objectives, ammunition, recommended shots, target time), `MissionSession` (weapon selection, cooldown/reload, ammo, continuous objective evaluation), legacy `GameSession` untouched. Tests.
+- **Batch 3 (presentation):** angled camera/projection, greybox operative with idle/ready/aim/fire/reload/react states, weapon-specific aim, weapon-switch HUD, Helix greybox mission (server racks, relay mast, control node, AI core) reachable from the menu next to the legacy levels. Screenshots, emulator run.
+- **Batch 4 (scoring):** Mission Points and Research Data per level-specific benchmarks; save v3 migration. Tests.
+
+Likely files: new `scripts/core/{material_catalog,weapon_catalog,damage_rules,mission_definition,mission_scoring}.gd`, `scripts/game/{component_body,mission_session,kinetic_round,breach_charge,operative}.gd`, `scripts/ui/mission_screen.gd`, `data/{materials,weapons}.json`, `data/missions/helix_greybox.json`, small edits to `main.gd`, `menu_screen.gd`, `progress_data.gd` (v3), `tests/run_tests.gd`, new test suites.
