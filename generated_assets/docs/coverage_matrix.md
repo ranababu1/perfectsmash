@@ -1,6 +1,6 @@
 # 100-level asset coverage matrix
 
-Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1091 entries on disk, 980 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
+Generated 2026-11-10 by `generated_assets/tools/build_coverage_matrix.py` from the merged manifest (updated 2026-11-10, 1176 entries on disk, 1062 production entries; concepts and mock layouts do not count). Do not edit by hand; re-run the script.
 
 Status: `ok` available, `fb` shared fallback only, `--` missing. Group columns show available/required.
 A level is **full** when every requirement is available, **fallback** when nothing is missing but shared substitutes are used.
@@ -8,7 +8,7 @@ A level is **full** when every requirement is available, **fallback** when nothi
 ## Summary
 
 - Levels fully covered: **0 / 100**; covered with fallbacks: 0; with missing assets: 100.
-- Requirements available: 2329 / 3236 level-requirement slots.
+- Requirements available: 2636 / 3236 level-requirement slots.
 - Game-wide requirements available: 29 / 36.
 
 | Chapter | Full | Fallback | Missing |
@@ -116,76 +116,76 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 41 | Endless Power | Nova Grid perimeter | support_bridge | 0/2 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | 1/2 | missing |
-| 42 | The Intake | Energy capture structure | frame | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 43 | Containment Ring | Reactor support ring | ring | 0/3 (3 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 44 | Cooling the Future | Cooling tower array | chain_towers | 0/2 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 45 | The First Pulse | Resonance relay | arc_over_wall | 0/3 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
-| 46 | Load Balancing | Distribution tower | support_bridge | 0/2 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 47 | Deep Storage | Energy storage racks | stack_tower | 1/2 (1 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 48 | Silent Alarm | Monitoring station | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 49 | Overload Window | Power conversion array | mixed_material | 3/4 (1 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 50 | The Resonance | Main containment platform | ring, chain_cell | 0/4 (4 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
-| 51 | Beyond the Grid | Long-distance relay | arc_over_wall | 0/3 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 52 | The Wrong Frequency | Signal processing array | ledges, twin_towers | 1/5 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 53 | The Deep Core | Reactor service structure | heavy_cap | 1/2 (1 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 54 | Blackout Protocol | Backup power structures | linked_bridge | 0/3 (3 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 55 | The Echo | Resonance chamber | domino_row, multi_tier, chain_cell | 0/4 (4 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
-| 56 | Dead Circuit | Transmission relay | glass_roof, arc_over_wall | 1/5 (3 fb) | fb | 15/15 | 10/10 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 57 | Origin Unknown | Data capture structure | indirect_shield | 1/3 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 58 | The Listening Machine | Research platform | frame | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 0/5 (5 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
-| 60 | The Energy Beneath | Nova Grid core | finale, ring | 1/11 (10 fb) | fb | 18/18 | 11/11 | 0/3 | ok | -- reactor_ring | ok | ok | 0/1 | missing |
+| 41 | Endless Power | Nova Grid perimeter | support_bridge | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | 1/2 | missing |
+| 42 | The Intake | Energy capture structure | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
+| 43 | Containment Ring | Reactor support ring | ring | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
+| 44 | Cooling the Future | Cooling tower array | chain_towers | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
+| 45 | The First Pulse | Resonance relay | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- intake_turbine | ok | ok | n/a | missing |
+| 46 | Load Balancing | Distribution tower | support_bridge | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
+| 47 | Deep Storage | Energy storage racks | stack_tower | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
+| 48 | Silent Alarm | Monitoring station | linked_bridge, chain_cell | 4/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
+| 49 | Overload Window | Power conversion array | mixed_material | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
+| 50 | The Resonance | Main containment platform | ring, chain_cell | 4/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- cooling_tower | ok | ok | n/a | missing |
+| 51 | Beyond the Grid | Long-distance relay | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
+| 52 | The Wrong Frequency | Signal processing array | ledges, twin_towers | 4/5 | ok | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
+| 53 | The Deep Core | Reactor service structure | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
+| 54 | Blackout Protocol | Backup power structures | linked_bridge | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
+| 55 | The Echo | Resonance chamber | domino_row, multi_tier, chain_cell | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- transformer_yard | ok | ok | n/a | missing |
+| 56 | Dead Circuit | Transmission relay | glass_roof, arc_over_wall | 4/5 | ok | 15/15 | 10/10 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
+| 57 | Origin Unknown | Data capture structure | indirect_shield | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
+| 58 | The Listening Machine | Research platform | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
+| 59 | Final Containment | Central energy supports | wide_platform, chain_cell | 5/5 | ok | 12/12 | 9/9 | 0/3 | ok | -- reactor_ring | ok | ok | n/a | missing |
+| 60 | The Energy Beneath | Nova Grid core | finale, ring | 11/11 | ok | 18/18 | 11/11 | 0/3 | ok | -- reactor_ring | ok | ok | 0/1 | missing |
 
 ## Chapter 4: Civitas (The Quiet Cage), levels 61-80
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 61 | A Predictable World | Civitas district gateway | tall_mast | 0/2 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | 1/2 | missing |
-| 62 | The Profile | Identity processing structure | tall_mast | 0/2 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 63 | The Forecast | Prediction server array | arc_over_wall | 0/3 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 64 | Access Denied | Civic access relay | glass_screen | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 65 | The Invisible Rule | Policy automation tower | domino_row, arc_over_wall | 0/4 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
-| 66 | Quiet Signals | Behavioural data exchange | wide_platform | 0/4 (4 fb) | fb | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 67 | The Approved Path | Mobility control structure | support_bridge | 0/2 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 68 | The Exception | Human review centre | topple_line | 1/3 (2 fb) | n/a | 9/9 | 7/7 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 69 | Public Safety | Emergency prediction node | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 70 | The Mirror | Civic model archive | frame | 0/3 (3 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
-| 71 | The Model Knows | Forecast compute tower | multi_tier | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 72 | Prewritten | Scenario archive | arc_over_wall | 0/3 (2 fb) | fb | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 73 | The Shared Signature | Cross-industry relay | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 74 | The Quiet Cage | Central surveillance exchange | wide_platform | 0/4 (4 fb) | fb | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 75 | No Unknowns | Forecast control hall | mixed_material | 2/4 (2 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
-| 76 | The Future File | Encrypted timeline vault | heavy_cap, topple_line | 2/4 (2 fb) | fb | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 77 | The Missing Year | Timeline indexing structure | twin_towers | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 78 | Source Code | Prediction engine supports | arc_over_wall, ledges | 1/4 (2 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 79 | The Last Forecast | Central Civitas structure | multi_tier | 0/3 (3 fb) | fb | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
-| 80 | The Quiet Cage | Civitas prediction core | finale | 0/10 (10 fb) | fb | 18/21 (3 fb) | 10/10 | 0/3 | ok | -- relay_spire | ok | ok | 0/1 | missing |
+| 61 | A Predictable World | Civitas district gateway | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | 1/2 | missing |
+| 62 | The Profile | Identity processing structure | tall_mast | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
+| 63 | The Forecast | Prediction server array | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
+| 64 | Access Denied | Civic access relay | glass_screen | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
+| 65 | The Invisible Rule | Policy automation tower | domino_row, arc_over_wall | 3/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- sensor_tower | ok | ok | n/a | missing |
+| 66 | Quiet Signals | Behavioural data exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
+| 67 | The Approved Path | Mobility control structure | support_bridge | 2/2 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
+| 68 | The Exception | Human review centre | topple_line | 3/3 | n/a | 9/9 | 7/7 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
+| 69 | Public Safety | Emergency prediction node | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
+| 70 | The Mirror | Civic model archive | frame | 3/3 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- screen_wall | ok | ok | n/a | missing |
+| 71 | The Model Knows | Forecast compute tower | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
+| 72 | Prewritten | Scenario archive | arc_over_wall | 2/3 | ok | 6/9 (3 fb) | 8/8 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
+| 73 | The Shared Signature | Cross-industry relay | linked_bridge, chain_cell | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
+| 74 | The Quiet Cage | Central surveillance exchange | wide_platform | 4/4 | ok | 12/15 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
+| 75 | No Unknowns | Forecast control hall | mixed_material | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- prediction_room | ok | ok | n/a | missing |
+| 76 | The Future File | Encrypted timeline vault | heavy_cap, topple_line | 4/4 | ok | 9/12 (3 fb) | 9/9 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
+| 77 | The Missing Year | Timeline indexing structure | twin_towers | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
+| 78 | Source Code | Prediction engine supports | arc_over_wall, ledges | 3/4 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
+| 79 | The Last Forecast | Central Civitas structure | multi_tier | 3/3 | ok | 9/12 (3 fb) | 8/8 | 0/3 | ok | -- relay_spire | ok | ok | n/a | missing |
+| 80 | The Quiet Cage | Civitas prediction core | finale | 10/10 | ok | 18/21 (3 fb) | 10/10 | 0/3 | ok | -- relay_spire | ok | ok | 0/1 | missing |
 
 ## Chapter 5: Meridian (The Convergence), levels 81-100
 
 | L | Name | Story target | Archetypes | Struct | Core | Mat+dmg | VFX | Env | BG | Landmark | Music | Amb | Cine | Status |
 |---:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 81 | No Public Record | Meridian outer access | exposed_target | 0/1 (1 fb) | fb | 6/6 | 7/7 | 0/3 | ok | -- hybrid_stack | ok | ok | 1/2 | missing |
-| 82 | Beneath the City | Underground support structures | multi_tier | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 83 | Four Foundations | Combined server, lab and reactor structures | wide_platform | 0/4 (4 fb) | fb | 15/15 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 84 | The Common Model | Shared prediction array | arc_over_wall, ledges | 1/4 (2 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 85 | The Hidden Budget | Resource and power hub | heavy_cap | 0/2 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
-| 86 | The First Directive | Directive relay | domino_row, ledges | 1/4 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 87 | The Operator | Central control structure | frame | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 88 | The Convergence Engine | Multi-support core | multi_tier | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 89 | The Failsafe Network | Redundant relay structures | linked_bridge | 0/3 (3 fb) | fb | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 90 | The Other Timeline | Simulation chamber | linked_bridge, ledges, chain_cell | 1/6 (4 fb) | fb | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
-| 91 | The Chosen Outcome | Forecast selection array | ring, chain_cell | 0/4 (4 fb) | fb | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 92 | The Human Variable | Human oversight structure | topple_line, mixed_material | 1/5 (4 fb) | n/a | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 93 | The Last Safeguard | Containment supports | heavy_cap, frame | 0/4 (4 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 94 | Break the Chain | Linked infrastructure | domino_row, chain_cell | 0/3 (3 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 95 | The Core Directive | Main directive chamber | multi_tier | 0/3 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
-| 96 | Before the Beginning | Historical archive structure | arc_over_wall | 0/3 (2 fb) | fb | 9/9 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 97 | The Final Relay | Temporal relay structure | linked_bridge, chain_cell | 0/4 (4 fb) | fb | 12/12 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 98 | No Return Path | Time-synchronisation supports | mixed_material | 1/4 (3 fb) | fb | 12/12 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 99 | The Last Structure | Final support array | multi_tier, wide_platform | 0/4 (4 fb) | fb | 15/15 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
-| 100 | The Wrong Future | Meridian central core | finale, ring | 0/11 (11 fb) | fb | 21/21 | 11/11 | 0/3 | ok | -- convergence_chamber | ok | ok | 1/2 | missing |
+| 81 | No Public Record | Meridian outer access | exposed_target | 1/1 | ok | 6/6 | 7/7 | 0/3 | ok | -- hybrid_stack | ok | ok | 1/2 | missing |
+| 82 | Beneath the City | Underground support structures | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
+| 83 | Four Foundations | Combined server, lab and reactor structures | wide_platform | 4/4 | ok | 15/15 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
+| 84 | The Common Model | Shared prediction array | arc_over_wall, ledges | 3/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
+| 85 | The Hidden Budget | Resource and power hub | heavy_cap | 2/2 | ok | 9/9 | 8/8 | 0/3 | ok | -- hybrid_stack | ok | ok | n/a | missing |
+| 86 | The First Directive | Directive relay | domino_row, ledges | 3/4 | ok | 9/9 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
+| 87 | The Operator | Central control structure | frame | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
+| 88 | The Convergence Engine | Multi-support core | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
+| 89 | The Failsafe Network | Redundant relay structures | linked_bridge | 3/3 | ok | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
+| 90 | The Other Timeline | Simulation chamber | linked_bridge, ledges, chain_cell | 5/6 | ok | 12/12 | 8/8 | 0/3 | ok | -- foundation_pillars | ok | ok | n/a | missing |
+| 91 | The Chosen Outcome | Forecast selection array | ring, chain_cell | 4/4 | ok | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
+| 92 | The Human Variable | Human oversight structure | topple_line, mixed_material | 5/5 | n/a | 12/12 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
+| 93 | The Last Safeguard | Containment supports | heavy_cap, frame | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
+| 94 | Break the Chain | Linked infrastructure | domino_row, chain_cell | 3/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
+| 95 | The Core Directive | Main directive chamber | multi_tier | 3/3 | ok | 12/12 | 9/9 | 0/3 | ok | -- temporal_anchor | ok | ok | n/a | missing |
+| 96 | Before the Beginning | Historical archive structure | arc_over_wall | 2/3 | ok | 9/9 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
+| 97 | The Final Relay | Temporal relay structure | linked_bridge, chain_cell | 4/4 | ok | 12/12 | 8/8 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
+| 98 | No Return Path | Time-synchronisation supports | mixed_material | 4/4 | ok | 12/12 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
+| 99 | The Last Structure | Final support array | multi_tier, wide_platform | 4/4 | ok | 15/15 | 9/9 | 0/3 | ok | -- convergence_chamber | ok | ok | n/a | missing |
+| 100 | The Wrong Future | Meridian central core | finale, ring | 11/11 | ok | 21/21 | 11/11 | 0/3 | ok | -- convergence_chamber | ok | ok | 1/2 | missing |
 
 ## Missing assets ranked by levels affected
 
@@ -197,7 +197,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `VTA-ENV-<STRUCTURE>-A` | 20 | 21 |
 | `VTA-ENV-BACK_WALL-A` | 20 | 21 |
 | `VTA-ENV-FLOOR-A` | 20 | 21 |
-| `NVG-DEB-REACTOR_CORE-A` | 20 | 41 |
 | `NVG-ENV-<STRUCTURE>-A` | 20 | 41 |
 | `NVG-ENV-BACK_WALL-A` | 20 | 41 |
 | `NVG-ENV-FLOOR-A` | 20 | 41 |
@@ -207,8 +206,6 @@ Layout archetype use across the campaign (variety check): chain_cell 14, arc_ove
 | `MRD-ENV-<STRUCTURE>-A` | 20 | 81 |
 | `MRD-ENV-BACK_WALL-A` | 20 | 81 |
 | `MRD-ENV-FLOOR-A` | 20 | 81 |
-| `CVT-DEB-SURVEILLANCE_CORE-A` | 19 | 61 |
-| `MRD-DEB-CONVERGENCE_CORE-A` | 19 | 81 |
 | `HLX-PRP-RELAY_ARRAY-A` | 5 | 1 |
 | `HLX-PRP-LOGISTICS_CRANE-A` | 5 | 6 |
 | `HLX-PRP-COOLING_TOWER-A` | 5 | 11 |

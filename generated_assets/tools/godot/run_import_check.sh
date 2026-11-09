@@ -18,6 +18,13 @@ echo "== import: $GODOT --headless --path $WORK --import"
 set +e
 "$GODOT" --headless --path "$WORK" --import > /tmp/tfj-godot-check/import.log 2>&1
 IMPORT_RC=$?
+# Godot 4.7.2 headless import has been seen to segfault (139) once on a large first
+# reimport and then pass cleanly on the next, incremental run. Retry once, and say so.
+if [ "$IMPORT_RC" -eq 139 ]; then
+  echo "== import crashed with exit code 139 (segfault); retrying once"
+  "$GODOT" --headless --path "$WORK" --import > /tmp/tfj-godot-check/import.log 2>&1
+  IMPORT_RC=$?
+fi
 set -e
 sed "s/\x1b\[[0-9;]*m//g" /tmp/tfj-godot-check/import.log | grep -E "^(ERROR|SCRIPT ERROR|WARNING)" | sort | uniq -c | sort -rn | head -40 || true
 echo "== import exit code $IMPORT_RC"
