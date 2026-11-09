@@ -550,6 +550,12 @@ No real-time PvP physics requirement is introduced by this approval.
 
 Multiplayer is part of the approved product roadmap but must not block the first single-player campaign release. Design data boundaries with future Frontlines compatibility in mind, but do not prematurely add accounts, backend dependencies or networking to the first prototype.
 
+## 9a. Owner clarification: legacy levels and batch sequence (2026-11-09)
+
+The original 20 slingshot/block levels and their mechanics (pull-back aiming, single projectile, five-shot cap, all-or-nothing destruction, stars-only scoring) are retired. They remain temporarily for regression/reference only and do not constrain the new architecture or menus. The Helix Systems prototype is the first playable experience. Preserved: physics simulation, data-driven loading, saves/migrations, services, audio, tests, solver utilities, renderer benchmark and reusable UI/platform code.
+
+Implementation batches for the prototype: (1) materials, weapons, damage, damageable components, structural dependencies; (2) mission architecture; (3) first playable Helix prototype; (4) Mission Points, Research Data, upgrade calculation, save v3 migration; (5) polish, tuning and device validation. Proceed to the five-chapter campaign only after prototype review and approval.
+
 ## 10. Revised acceptance principles
 
 - The game reads immediately as an angled 2.5D tactical destruction experience, not a slingshot clone.

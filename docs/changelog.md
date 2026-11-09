@@ -2,6 +2,12 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Owner clarifications: legacy levels retired, Batch 1 approved
+
+- Recorded owner clarifications in `currentstate.md` and `plan.md` (§9a): the 20 original levels and slingshot mechanics are legacy (regression/reference only); the Helix prototype becomes the first playable experience; responsibility split (MaterialCatalog, WeaponCatalog, DamageRules, DamageableComponent, StructuralDependencySystem, MissionEngine); progressive damage; data-driven upgrades (base + 3); no universal shot cap; five-batch sequence.
+- Corrected `project-audit.md` and `level-design-spec.md` where they suggested keeping or mapping the old 20 levels into the campaign.
+- Owner instructed that the shared `bg.mp3` be used as background music; licence evidence remains a release blocker.
+
 ## 2026-11-09 — Phase 0/1 re-audit and greybox design decisions (`fed4919`)
 
 - Re-audited the codebase against plan revision 5 (`docs/project-audit.md`): reusable systems, gaps (no damage model, single hard-coded projectile, 5-shot cap and per-shot settle, stars-only scoring, flat 2D presentation, slingshot aiming) and risks.

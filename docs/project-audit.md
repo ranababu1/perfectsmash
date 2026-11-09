@@ -129,6 +129,8 @@ Other level observations:
 
 ---
 
+> **Superseded note (2026-11-09):** §3 above maps the legacy 20 levels onto Chapter I. That mapping no longer applies; the old levels are retired legacy content.
+
 # Phase 0/1 re-audit against plan revision 5 (2026-11-09, `6b75504`)
 
 Re-run after the owner pushed the tactical-destruction direction (6 doc commits, `812cd1f`..`6b75504`). Working tree: clean apart from two untracked local items: `assets/music/bg.mp3` (unapproved candidate) and `scripts/ui/cinematic_player.gd` (written before the plan change; untested, not wired in).
@@ -163,13 +165,13 @@ Tests on `6b75504`: `godot_console --headless --fixed-fps 60 -s tests/run_tests.
 - **Physics cost of large facilities**: 15-25 shot institutions mean many bodies. Recommend that components stay frozen until a support they depend on breaks (authored dependencies), which is cheaper, more readable and more repeatable than simulating everything all the time.
 - **Non-determinism** (already documented) matters more for long missions and for future Frontlines validation. Keep solver and replay tests tolerant; never rely on bit-exact replays.
 - **Renderer**: a 3D presentation layer would change the renderer evaluation; re-run `tools/renderer_eval` with a 3D proxy before deciding.
-- **Keep the existing 20 levels playable** while the prototype is built (separate mission entry, no breaking schema changes).
+- ~~Keep the existing 20 levels playable~~ **Corrected by the owner:** the 20 levels are legacy (regression/reference only). They do not shape the new architecture and will not be the primary menu; the Helix prototype becomes the first playable experience.
 
 ## Proposed greybox implementation (pending owner decisions)
 
 - **Batch 1 (rules + data, headless):** `data/materials.json`, `data/weapons.json` (Kinetic Accelerator, Breach Charge), `MaterialCatalog`, `WeaponDefinition`/`WeaponCatalog`, `DamageRules` (kinetic damage from impact energy × material resistance; blast damage and impulse with distance falloff), upgrade-modifier hooks (base + 3 levels, no UI). Tests.
-- **Batch 2 (destructible components + mission session, headless):** `ComponentBody` (integrity, material, critical flag, `depends_on` anchors), `MissionDefinition` (components, critical assets, objectives, ammunition, recommended shots, target time), `MissionSession` (weapon selection, cooldown/reload, ammo, continuous objective evaluation), legacy `GameSession` untouched. Tests.
-- **Batch 3 (presentation):** angled camera/projection, greybox operative with idle/ready/aim/fire/reload/react states, weapon-specific aim, weapon-switch HUD, Helix greybox mission (server racks, relay mast, control node, AI core) reachable from the menu next to the legacy levels. Screenshots, emulator run.
+- **Batch 2 (destructible components + mission session, headless):** `ComponentBody` (integrity, material, critical flag, `depends_on` anchors), `MissionDefinition` (components, critical assets, objectives, ammunition, recommended shots, target time), `MissionSession` (weapon selection, cooldown/reload, ammo, continuous objective evaluation), no dependency on the legacy five-shot cap. Tests.
+- **Batch 3 (presentation):** angled camera/projection, greybox operative with idle/ready/aim/fire/reload/react states, weapon-specific aim, weapon-switch HUD, Helix greybox mission (server racks, relay mast, control node, AI core) as the game's primary entry point. Screenshots, emulator run.
 - **Batch 4 (scoring):** Mission Points and Research Data per level-specific benchmarks; save v3 migration. Tests.
 
 Likely files: new `scripts/core/{material_catalog,weapon_catalog,damage_rules,mission_definition,mission_scoring}.gd`, `scripts/game/{component_body,mission_session,kinetic_round,breach_charge,operative}.gd`, `scripts/ui/mission_screen.gd`, `data/{materials,weapons}.json`, `data/missions/helix_greybox.json`, small edits to `main.gd`, `menu_screen.gd`, `progress_data.gd` (v3), `tests/run_tests.gd`, new test suites.

@@ -161,6 +161,21 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Owner clarifications to revision 5 (2026-11-09)
+
+- **The old gameplay is retired.** Slingshot pull-back aiming, generic blocks and targets, the single projectile, the five-shot cap, all-or-nothing destruction and stars-only scoring are not part of Temporal: First Jump. The existing 20 levels are **legacy**: kept temporarily for regression and reference only, never maintained as a parallel campaign, never made compatible with new systems and never the primary menu. Remove them later only after checking references.
+- **Preserved technology:** physics simulation, data-driven loading, save/migration infrastructure, services, audio, the test runner and tests, useful solver utilities, the renderer benchmark, and reusable UI/platform code.
+- **The Helix Systems prototype becomes the first playable experience.**
+- **Responsibility split:** MaterialCatalog (load/validate materials), WeaponCatalog (load/validate weapons and upgrade data), DamageRules (impact, blast, falloff, impulse maths), DamageableComponent (health, damage states, destruction), StructuralDependencySystem (supports, connections, instability cascades), MissionEngine (objectives, ammunition, weapon state, completion). No combined controller. Material behaviour is data; visuals are separate from physics.
+- **Progressive damage:** intact → damaged → critical/unstable → destroyed, with direct and blast damage, distance falloff, knockback, material resistance, dependencies, secondary effects and a separate critical-asset objective state. Deterministic calculations where practical; explicit structural relationships rather than a full structural solver.
+- **Upgrades:** base + 3 levels per attribute, defined in data, applied through one effective-stats layer. No upgrade UI or economy in Batch 1. Mission Points (performance/rankings) and Research Data (upgrades) stay separate.
+- **2.5D:** angled three-quarter presentation (3D-rendered view) over the existing 2D physics. No 3D physics.
+- **No universal shot cap** in the new mission system. Missions define recommended shot budget, target time, critical assets, mandatory/optional objectives, weapon availability, ammunition, Mission Points and Research Data rules.
+- **Approved batch sequence:** (1) foundation: materials, weapons, damage, damageable component, structural dependencies, tests; (2) mission architecture: mission data, objectives, critical asset state, weapon state, ammunition/cooldown, continuous evaluation, no five-shot dependency; (3) first playable Helix prototype; (4) Mission Points, Research Data, rewards, upgrade calculation, save v3 migration (no save resets); (5) polish and validation: tuning, balance, animation, audio, mobile performance, emulator and physical-device testing. Each batch is reported before the next starts.
+- **Renderer:** repeat the Compatibility vs Mobile evaluation with representative 2.5D content and large-facility physics workloads before any decision. Watch body counts from the start.
+- **Background music:** the owner instructed (2026-11-09) that the shared track (`assets/music/bg.mp3`) be used as the background music. Integrated as a trimmed Ogg loop. **Licence evidence (Suno plan/terms at generation time) is still outstanding and is a release blocker.**
+- Frontlines stays later-phase: structured, versioned component data, no backend/accounts/networking now.
+
 ## Greybox design decisions (owner, 2026-11-09)
 
 - **2.5D rendering:** a 3D presentation layer over the existing 2D physics. Each 2D body drives a simple 3D mesh seen through a tilted perspective camera with lighting and shadows; the operative is a 3D greybox. All collision stays in the single 2D physics plane, so depth is visual only. The renderer benchmark must be re-run with 3D content before any renderer decision.
