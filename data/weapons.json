@@ -1,0 +1,63 @@
+{
+	"_note": "Weapon behaviour and upgrade data. Speeds in px/s, radii in px, cooldown in seconds. 'ammunition' is the weapon's default per-mission allowance; missions may override it. Upgrade levels are 1-3 (0 = base). Values are tuning starting points.",
+	"weapons": [
+		{
+			"id": "kinetic_accelerator",
+			"display_name": "Kinetic Accelerator",
+			"unlock_chapter": 1,
+			"delivery": "direct",
+			"stats": {
+				"launch_speed": 1700,
+				"min_launch_speed": 1700,
+				"gravity_scale": 0.25,
+				"projectile_radius": 9,
+				"projectile_mass": 4,
+				"impact_damage": 90,
+				"penetration": 0.0,
+				"blast_damage": 0,
+				"blast_radius": 0,
+				"blast_impulse": 0,
+				"blast_edge_falloff": 0,
+				"fuse_seconds": 0,
+				"ammunition": 24,
+				"cooldown": 1.0,
+				"aim_preview_seconds": 0.6
+			},
+			"upgrades": {
+				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5]},
+				"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.3]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.15, 0.3, 0.45]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7]}
+			}
+		},
+		{
+			"id": "breach_charge",
+			"display_name": "Breach Charge",
+			"unlock_chapter": 1,
+			"delivery": "lobbed",
+			"stats": {
+				"launch_speed": 950,
+				"min_launch_speed": 350,
+				"gravity_scale": 1.0,
+				"projectile_radius": 13,
+				"projectile_mass": 3,
+				"impact_damage": 10,
+				"penetration": 0.0,
+				"blast_damage": 160,
+				"blast_radius": 140,
+				"blast_impulse": 900,
+				"blast_edge_falloff": 0.25,
+				"fuse_seconds": 0,
+				"ammunition": 3,
+				"cooldown": 2.2,
+				"aim_preview_seconds": 0.35
+			},
+			"upgrades": {
+				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.1, 0.2, 0.3]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7]}
+			}
+		}
+	]
+}
