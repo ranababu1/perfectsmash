@@ -25,6 +25,7 @@ const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",
 	"res://tests/test_level_playthrough.gd",
 	"res://tests/test_ui_flow.gd",
+	"res://tests/test_mission_world.gd",
 ]
 
 
