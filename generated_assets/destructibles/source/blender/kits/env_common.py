@@ -6,6 +6,7 @@ statics are centred on their collision rectangle like components."""
 import math
 from mathutils import Vector
 import tfjkit as K
+import tfjdetail as Dt
 
 STYLE = {
     "helix": dict(corner="chamfer", plate=1.0, rib=0.5, mat_floor="reinforced_steel", mat_wall="reinforced_steel"),
@@ -79,7 +80,20 @@ def floor_tile(B, ch, sx, sz, variant="plain"):
                     B.zprism(K.round_rect(sx / nx - gap, sz / ny - gap, 0.04, 2, x, y), -0.04, 0.0, "light", "cover", 0.0)
                 else:
                     B.box((x, y, -0.02), (sx / nx - gap, sz / ny - gap, 0.04), slot, "cover", 0.006)
+        if ch != "vita":  # premium pass: bolt heads at alternate plate corners
+            for i in range(nx):
+                for j in range(ny):
+                    x = (i + 0.5) * sx / nx
+                    y = -sz / 2 + (j + 0.5) * sz / ny
+                    if trench and abs(y) < sz / ny * 0.6:
+                        continue
+                    hx, hy = sx / nx / 2 - 0.06, sz / ny / 2 - 0.06
+                    for bx, by in ((-hx, -hy), (hx, hy)) if (i + j) % 2 == 0 else ((hx, -hy), (-hx, hy)):
+                        B.box((x + bx, y + by, 0.002), (0.026, 0.026, 0.006), "trim", "greeble", 0.0)
         if ch == "helix" and sx >= 2:
+            for i in range(nx):  # short amber seam inlays (SV-04 floor read), warning colour only as accents
+                if i % 2 == 0:
+                    B.light_strip(((i + 0.5) * sx / nx, -sz * 0.05, -0.001), (sx / nx * 0.5, 0.018, 0.004), "emit2")
             B.light_strip((sx / 2, -sz * 0.3, -0.001), (sx, 0.025, 0.004), "emit")
             for i in range(nx):
                 B.box(((i + 0.5) * sx / nx, sz * 0.3, -0.001), (0.3, 0.06, 0.006), "trim", "greeble", 0.0)
@@ -132,6 +146,7 @@ def wall(B, ch, w=4.0, h=6.0, t=0.5, kind="solid"):
             B.box((x, t * 0.15, wz0 + (wz1 - wz0) * 0.3), (iw / 4, 0.1, (wz1 - wz0) * 0.6), "dark", "internal", 0.0)
         return
     B.box((0, 0, (z0 + z1) / 2), (iw, t, z1 - z0), "frame", "frame", 0.0)
+    _wall_detail(B, ch, w, h, t, pil, z0, z1)
     if ch == "helix":
         nx, nz = 2, 4
         for i in range(nx):
@@ -189,6 +204,23 @@ def wall(B, ch, w=4.0, h=6.0, t=0.5, kind="solid"):
         B.ring((0, fy - 0.075, h * 0.55), 0.78, 0.76, 0.02, "Y", 32, "emit", "emit", 0.0, arc=(20, 160))
 
 
+def _wall_detail(B, ch, w, h, t, pil, z0, z1):
+    """Premium pass: pilaster bolt rows, a cable loom down the right pilaster, a status screen and LEDs."""
+    fy = -t / 2 - 0.04
+    for sx in (-1, 1):
+        xp = sx * (w / 2 - pil / 2)
+        Dt.bolts(B, [(xp + dx, z) for z in (z0 + 0.25, z1 - 0.25, (z0 + z1) / 2) for dx in (-pil * 0.3, pil * 0.3)], fy, 0.02)
+        B.box((xp, fy - 0.004, z0 + 0.6), (pil * 0.8, 0.012, 0.06), "dark", "greeble", 0.0)
+    xr = w / 2 - pil - 0.06
+    for zz in (z0 + 0.5, (z0 + z1) / 2, z1 - 0.5):
+        B.box((xr, -t / 2 - 0.05, zz), (0.1, 0.1, 0.05), "trim", "greeble", 0.0)
+    B.cyl((xr - 0.02, -t / 2 - 0.07, (z0 + z1) / 2), 0.03, z1 - z0 - 0.2, "Z", 6, "cable", "cable", 0.0)
+    B.cyl((xr + 0.03, -t / 2 - 0.065, (z0 + z1) / 2), 0.022, z1 - z0 - 0.2, "Z", 6, "cable", "cable", 0.0)
+    if ch not in ("meridian",):
+        Dt.screen(B, -w / 2 + pil + 0.45, z0 + 1.55, 0.42, 0.26, -t / 2 - 0.05, "emit", lines=3, rng=B.rng)
+        Dt.status_leds(B, -w / 2 + pil + 0.3, z0 + 1.3, -t / 2 - 0.05, 4, 0.04, (0.022, 0.01), "emit", "emit2", B.rng)
+
+
 def low_wall(B, ch, w=4.0, h=1.1, t=0.4):
     """Near-back low wall with railing and a console face (props layer, no collision)."""
     fy = -t / 2
@@ -203,6 +235,10 @@ def low_wall(B, ch, w=4.0, h=1.1, t=0.4):
         B.box((x, fy - 0.015, h * 0.45), (w * 0.3, 0.03, h * 0.4), "panel", "cover", 0.004)
         B.light_strip((x - w * 0.08, fy - 0.032, h * 0.55), (w * 0.08, 0.004, 0.02), "emit")
         B.light_strip((x + w * 0.1, fy - 0.032, h * 0.4), (0.03, 0.004, 0.03), "emit2")
+        Dt.bolts(B, [(x - w * 0.14, h * 0.27), (x + w * 0.14, h * 0.27), (x - w * 0.14, h * 0.63), (x + w * 0.14, h * 0.63)],
+                 fy - 0.03, 0.016)
+    Dt.screen(B, w * 0.42, h * 0.45, 0.3, 0.2, fy, "emit", lines=2, rng=B.rng)
+    B.box((0, fy - 0.01, 0.06), (w, 0.03, 0.12), "dark", "frame", 0.0)  # kick plate
 
 
 def pillar(B, ch, w=0.8, h=6.0):
@@ -216,6 +252,11 @@ def pillar(B, ch, w=0.8, h=6.0):
         B.box((0, -w / 2 - 0.015, z), (w * 0.7, 0.03, (h - 0.65) / n - 0.1), "panel", "cover", 0.006)
     B.box((0, -w / 2 - 0.032, h / 2), (0.04, 0.006, h * 0.7), "internal", "greeble", 0.0)
     B.light_strip((0, -w / 2 - 0.036, h / 2 + 0.5), (0.012, 0.004, h * 0.3), "emit")
+    Dt.bolts(B, [(x, 0.18) for x in (-w * 0.45, -w * 0.15, w * 0.15, w * 0.45)], -w * 0.6, 0.026)
+    xc = w / 2 + 0.03
+    B.cyl((xc, -w * 0.25, h / 2), 0.035, h - 0.8, "Z", 6, "trim", "greeble", 0.0)
+    for zz in (0.8, h / 2, h - 0.8):
+        B.box((xc - 0.02, -w * 0.25, zz), (0.07, 0.09, 0.06), "dark", "greeble", 0.0)
 
 
 def catwalk(B, ch, w=4.0, d=1.2):
@@ -233,6 +274,10 @@ def catwalk(B, ch, w=4.0, d=1.2):
         B.box((0, y, 1.1), (w, 0.03, 0.03), "trim", "frame", 0.0)
     B.light_strip((0, -d / 2 - 0.002, 0.55), (w * 0.96, 0.004, 0.015), "emit")
     B.cyl((0, 0.2, 0.32), 0.05, w, "X", 8, "cable", "cable", 0.0)
+    for k in range(int(w / 0.12)):  # grating bars on the deck
+        B.box((-w / 2 + (k + 0.5) * 0.12, 0, 0.578), (0.03, d - 0.12, 0.006), "dark", "greeble", 0.0)
+    for y in (-d / 2 + 0.03, d / 2 - 0.03):
+        B.box((0, y, 0.64), (w, 0.012, 0.08), "frame", "frame", 0.0)
 
 
 def truss(B, ch, w=8.0, h=0.8, d=0.8):
@@ -267,6 +312,10 @@ def massing(B, ch, w=6.0, h=8.0, d=4.0, tiers=3):
     for k in range(3):
         x = (k - 1) * w * 0.22
         B.box((x, 0, z + 0.3), (w * 0.15, d * 0.3, 0.6), "dark", "greeble", 0.0)
+        Dt.louvre(B, x, 0, w * 0.12, d * 0.24, z + 0.6, 4, "trim", "internal", normal="+Z")
+    for k in range(5):  # vertical structural ribs on the front of the lowest tier
+        x = (k - 2) * w * 0.2
+        B.box((x, -d / 2 - 0.03, h * 0.19), (0.12, 0.06, h * 0.38), "dark", "frame", 0.0)
     B.cyl((w * 0.3, 0, z + 1.0), 0.05, 2.0, "Z", 6, "trim", "greeble", 0.0)
 
 

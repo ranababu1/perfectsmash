@@ -43,135 +43,172 @@ def limb(a, b, r0, r1, slot, verts=8):
     return B._new_obj(bm, "frame", None, [slot])
 
 
-# ---------------------------------------------------------------- legs (thigh + shin + boot per side)
+# ---------------------------------------------------------------- premium pass (SV-01): layered tactical suit
+def plate(center, size, slot="panel", rx=0.0, ry=0.0, rz=0.0, bevel=0.006, taper=None):
+    ob = B.box(center, size, slot, "cover", bevel, taper=taper)
+    for ang, ax in ((rx, "X"), (ry, "Y"), (rz, "Z")):
+        if ang:
+            K.rotate(ob, ang, ax, center)
+    return ob
+
+
+def strap(a, b, w=0.032, slot="rubber"):
+    return B.strut(a, b, w, slot, "greeble")
+
+
 HIP_Z, KNEE_Z, ANKLE_Z = 0.93, 0.5, 0.1
 for side, sy in (("r", -1), ("l", 1)):
     y = sy * 0.1
     d = grp(f"leg_{side}")
-    limb((0, y, HIP_Z), (0.01, y, KNEE_Z + 0.03), 0.092, 0.068, "frame")
-    B.box((0.05, y, HIP_Z - 0.2), (0.06, 0.13, 0.2), "panel", "cover", 0.012)  # thigh plate
-    B.box((0.0, y + sy * 0.09, HIP_Z - 0.12), (0.11, 0.04, 0.13), "accent", "cover", 0.008)  # holster pouch
+    limb((0, y, HIP_Z), (0.012, y, KNEE_Z + 0.03), 0.094, 0.07, "key", 10)                 # suit thigh
+    plate((0.058, y, HIP_Z - 0.2), (0.05, 0.135, 0.22), "panel", ry=-4, taper=(0.9, 0.9))     # thigh armour
+    B.light_strip((0.085, y + sy * 0.035, HIP_Z - 0.2), (0.004, 0.008, 0.12), "emit")
+    plate((0.0, y + sy * 0.098, HIP_Z - 0.15), (0.12, 0.045, 0.14), "accent", bevel=0.008)   # thigh pouch
+    strap((0.04, y + sy * 0.1, HIP_Z - 0.09), (-0.04, y + sy * 0.1, HIP_Z - 0.09), 0.018)
+    strap((0.06, y + sy * 0.09, HIP_Z - 0.29), (-0.06, y + sy * 0.09, HIP_Z - 0.29), 0.016)
     d()
     d = grp(f"shin_{side}")
-    limb((0.01, y, KNEE_Z), (0.0, y, ANKLE_Z + 0.04), 0.07, 0.055, "frame")
-    B.box((0.065, y, KNEE_Z - 0.0), (0.07, 0.13, 0.12), "panel", "cover", 0.014)  # knee pad
-    B.light_strip((0.102, y - 0.03, KNEE_Z - 0.01), (0.004, 0.012, 0.05), "emit")
-    B.box((0.055, y, KNEE_Z - 0.2), (0.05, 0.12, 0.22), "panel", "cover", 0.01)  # shin guard
-    B.zprism(K.chamfer_rect(0.27, 0.13, 0.03, 0.05, y), 0.0, 0.04, "rubber", "frame", 0.0)  # sole
-    B.zprism(K.chamfer_rect(0.24, 0.12, 0.035, 0.04, y), 0.04, 0.13, "dark", "frame", 0.006, top_scale=0.85)
-    B.box((0.0, y, 0.16), (0.13, 0.13, 0.09), "panel", "cover", 0.01)
+    limb((0.012, y, KNEE_Z), (0.0, y, ANKLE_Z + 0.06), 0.072, 0.056, "key", 10)
+    plate((0.07, y, KNEE_Z + 0.01), (0.06, 0.13, 0.13), "panel", ry=-10, taper=(0.85, 0.9))   # knee guard
+    plate((0.092, y, KNEE_Z + 0.07), (0.03, 0.1, 0.05), "frame", ry=-30)
+    B.light_strip((0.103, y, KNEE_Z - 0.01), (0.004, 0.05, 0.006), "emit")
+    plate((0.058, y, KNEE_Z - 0.21), (0.045, 0.115, 0.24), "panel", ry=3, taper=(0.9, 0.85))  # shin guard
+    # boot: tread sole, toe cap, ankle cuff, strap
+    B.zprism(K.chamfer_rect(0.29, 0.135, 0.035, 0.05, y), 0.0, 0.035, "rubber", "frame", 0.0)
+    B.zprism(K.chamfer_rect(0.26, 0.125, 0.04, 0.045, y), 0.035, 0.12, "dark", "frame", 0.0, top_scale=0.82)
+    plate((0.15, y, 0.07), (0.07, 0.12, 0.07), "panel", ry=-25)
+    B.zprism(K.chamfer_rect(0.14, 0.135, 0.03, 0.0, y), 0.12, 0.2, "dark", "frame", 0.0)
+    strap((0.07, y - 0.068, 0.15), (0.07, y + 0.068, 0.15), 0.02, "frame")
     d()
 
 # ---------------------------------------------------------------- torso
 d = grp("torso")
-B.zprism(K.chamfer_rect(0.23, 0.33, 0.05), HIP_Z - 0.06, 1.12, "frame", "frame", 0.0, top_scale=1.04)  # abdomen
-B.zprism(K.chamfer_rect(0.27, 0.44, 0.08), 1.12, 1.46, "frame", "frame", 0.0, top_scale=0.84)  # chest
-B.zprism(K.chamfer_rect(0.22, 0.32, 0.05), HIP_Z - 0.08, HIP_Z + 0.06, "dark", "frame", 0.0)  # pelvis
-# chest armour: angled plates facing the camera side and the front
+B.zprism(K.chamfer_rect(0.22, 0.32, 0.06), HIP_Z - 0.06, 1.13, "key", "frame", 0.0, top_scale=1.06)   # abdomen
+B.zprism(K.chamfer_rect(0.27, 0.43, 0.09), 1.13, 1.46, "key", "frame", 0.0, top_scale=0.86)          # chest
+B.zprism(K.chamfer_rect(0.23, 0.33, 0.06), HIP_Z - 0.09, HIP_Z + 0.06, "dark", "frame", 0.0)         # pelvis
+for k in range(3):  # quilted abdomen segments
+    B.box((0.112, 0, HIP_Z + 0.1 + k * 0.05), (0.012, 0.2, 0.036), "frame", "cover", 0.004)
+# chest armour: chevron plates on the front, wrapping the camera side
 for sy in (-1, 1):
-    ob = B.box((0.085, sy * 0.1, 1.33), (0.08, 0.17, 0.19), "panel", "cover", 0.012)
-    K.rotate(ob, sy * 12, "X", (0.085, sy * 0.1, 1.33))
-B.light_strip((0.126, -0.12, 1.33), (0.004, 0.07, 0.012), "emit")
-B.light_strip((0.126, 0.12, 1.33), (0.004, 0.07, 0.012), "emit")
-B.box((0.0, -0.215, 1.3), (0.18, 0.03, 0.22), "panel", "cover", 0.01)  # side plate (camera side)
-B.light_strip((0.0, -0.232, 1.33), (0.1, 0.004, 0.012), "emit")
-# cross straps
+    plate((0.12, sy * 0.1, 1.33), (0.05, 0.18, 0.2), "panel", rx=sy * 14, ry=-6, taper=(1.0, 0.8))
+    B.light_strip((0.148, sy * 0.13, 1.35), (0.004, 0.07, 0.01), "emit")
+plate((0.13, 0, 1.2), (0.04, 0.2, 0.08), "frame", ry=-8)
+plate((0.0, -0.215, 1.3), (0.18, 0.03, 0.22), "panel")                                            # camera-side plate
+B.light_strip((0.0, -0.232, 1.33), (0.1, 0.004, 0.01), "emit")
+plate((-0.13, 0, 1.25), (0.06, 0.24, 0.3), "panel")                                               # back plate
+plate((-0.16, 0, 1.1), (0.05, 0.18, 0.14), "accent")                                              # back pack
+# cross straps with a centre buckle
 for sy in (-1, 1):
-    B.strut((0.125, sy * 0.15, 1.44), (0.12, -sy * 0.12, 1.05), 0.03, "rubber", "greeble")
-B.box((0.118, 0, 1.25), (0.02, 0.05, 0.05), "trim", "greeble", 0.0)
-# belt, buckle, pouches
-B.zprism(K.chamfer_rect(0.25, 0.34, 0.06), HIP_Z + 0.02, HIP_Z + 0.08, "rubber", "frame", 0.0)
-B.box((0.128, 0, HIP_Z + 0.05), (0.016, 0.07, 0.05), "trim", "greeble", 0.0)
-for sy, x in ((-1, 0.06), (-1, -0.06), (1, 0.06)):
-    B.box((x, sy * 0.18, HIP_Z - 0.02), (0.08, 0.05, 0.1), "accent", "cover", 0.008)
-B.box((-0.12, 0, 1.1), (0.06, 0.2, 0.22), "panel", "cover", 0.01)  # back pack plate
-# short cape: curved sheet hanging from the shoulders at the back, ragged hem at mid-thigh
-bm = bmesh.new()
-rows, cols = 5, 7
-vs = []
-for j in range(rows + 1):
-    t = j / rows
-    z = 1.44 - t * 0.78
-    row = []
-    for i in range(cols + 1):
-        u = i / cols
-        yy = (u - 0.5) * (0.4 + 0.18 * t)
-        xx = -0.15 - 0.06 * t - 0.05 * math.cos((u - 0.5) * math.pi) * (0.4 + t)
-        hem = (0.05 * math.sin(i * 2.1 + 0.4)) if j == rows else 0.0
-        row.append(bm.verts.new((xx, yy, z + hem)))
-    vs.append(row)
-for j in range(rows):
-    for i in range(cols):
-        bm.faces.new((vs[j][i], vs[j][i + 1], vs[j + 1][i + 1], vs[j + 1][i]))
-res = bmesh.ops.solidify(bm, geom=bm.faces[:], thickness=0.012)
-bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-cape = B._new_obj(bm, "frame", "cape_mesh", ["dark"])
+    strap((0.15, sy * 0.17, 1.45), (0.135, -sy * 0.13, 1.05), 0.034)
+B.box((0.15, 0, 1.25), (0.02, 0.05, 0.05), "trim", "greeble", 0.0)
+# belt, buckle, pouches, holster
+B.zprism(K.chamfer_rect(0.25, 0.35, 0.07), HIP_Z + 0.02, HIP_Z + 0.085, "rubber", "frame", 0.0)
+B.box((0.128, 0, HIP_Z + 0.052), (0.02, 0.08, 0.055), "trim", "greeble", 0.0)
+for sy, x in ((-1, 0.07), (-1, -0.05), (1, 0.07), (1, -0.05)):
+    plate((x, sy * 0.185, HIP_Z - 0.01), (0.08, 0.05, 0.1), "accent", bevel=0.008)
+    B.box((x, sy * 0.212, HIP_Z + 0.02), (0.06, 0.006, 0.02), "frame", "greeble", 0.0)
+# cowl and scarf: thick cloth ring around the neck draping onto chest and back
+B.ring((0.0, 0, 1.47), 0.175, 0.07, 0.1, "Z", 14, "cloth", "frame", 0.0)
+K.scale(B.parts[-1], (0.95, 1.08, 1.0), (0, 0, 1.47))
+B.prism([(0.08, 1.52), (0.19, 1.47), (0.16, 1.36), (0.05, 1.4)], 0.22, 0.0, "cloth", "frame", 0.0)     # scarf drape
 d()
 
-# ---------------------------------------------------------------- head and hood
+# ---------------------------------------------------------------- head: faceless visor helmet inside a deep hood
 NECK = Vector((0.0, 0.0, 1.48))
 d = grp("head")
-B.cyl((0.0, 0, 1.52), 0.05, 0.08, "Z", 8, "frame", "frame", 0.0)
-B.uvsphere((0.02, 0, 1.64), 0.112, 12, 8, "internal", "frame", (1.0, 0.92, 1.15))  # faceless helmet
-B.uvsphere((0.065, 0, 1.635), 0.075, 12, 6, "dark", "frame", (0.65, 1.0, 0.9))  # visor shell
-B.light_strip((0.112, -0.03, 1.645), (0.006, 0.026, 0.006), "emit")
-B.light_strip((0.112, 0.03, 1.645), (0.006, 0.026, 0.006), "emit")
-ob = B.light_strip((0.105, 0, 1.6), (0.006, 0.02, 0.004), "emit")
+B.cyl((0.0, 0, 1.53), 0.052, 0.08, "Z", 8, "dark", "frame", 0.0)
+B.uvsphere((0.015, 0, 1.645), 0.112, 14, 9, "dark", "frame", (1.0, 0.9, 1.12))                   # helmet
+B.uvsphere((0.075, 0, 1.635), 0.082, 14, 8, "visor", "frame", (0.72, 0.98, 0.98))                  # glossy faceplate
+for sy in (-1, 1):  # angled cyan eye slits
+    ob = B.light_strip((0.13, sy * 0.034, 1.652), (0.008, 0.03, 0.006), "emit")
+    K.rotate(ob, sy * 18, "X", (0.13, sy * 0.034, 1.652))
+B.box((0.124, 0, 1.6), (0.012, 0.03, 0.006), "frame", "greeble", 0.0)
 d()
 d = grp("hood")
-hood = B.uvsphere((-0.015, 0, 1.665), 0.15, 14, 9, "dark", "frame", (1.08, 1.0, 1.1))
+hood = B.uvsphere((-0.02, 0, 1.67), 0.158, 16, 10, "cloth", "frame", (1.1, 1.02, 1.12))
 bmh = bmesh.new()
 bmh.from_mesh(hood.data)
-bmesh.ops.delete(bmh, geom=[v for v in bmh.verts if v.co.x > 0.075 and v.co.z < 1.75 and v.co.z > 1.55], context="VERTS")
-for v in bmh.verts:  # drape the back and sides of the hood down onto the shoulders
-    if v.co.z < 1.64:
-        t = (1.64 - v.co.z) / 0.16
-        v.co.z -= 0.09 * t
-        v.co.x -= 0.03 * t * (1.0 if v.co.x < 0.03 else 0.0)
-        v.co.y *= 1.0 + 0.25 * t
-    if v.co.x < -0.05 and v.co.z > 1.7:
-        v.co.x -= 0.03 * (v.co.z - 1.7) / 0.13
+bmesh.ops.delete(bmh, geom=[v for v in bmh.verts if v.co.x > 0.06 and 1.53 < v.co.z < 1.78], context="VERTS")
+for v in bmh.verts:  # drape the back and sides onto the shoulders, deepen the opening
+    if v.co.z < 1.66:
+        t = (1.66 - v.co.z) / 0.16
+        v.co.z -= 0.1 * t
+        v.co.y *= 1.0 + 0.3 * t
+        if v.co.x < 0.02:
+            v.co.x -= 0.035 * t
+    if v.co.x < -0.05 and v.co.z > 1.72:
+        v.co.x -= 0.04 * (v.co.z - 1.72) / 0.12
+        v.co.z += 0.02 * (v.co.z - 1.72) / 0.12
 bmesh.ops.recalc_face_normals(bmh, faces=bmh.faces[:])
-bmesh.ops.solidify(bmh, geom=bmh.faces[:], thickness=0.012)
+bmesh.ops.solidify(bmh, geom=bmh.faces[:], thickness=0.014)
 bmesh.ops.recalc_face_normals(bmh, faces=bmh.faces[:])
 bmh.to_mesh(hood.data)
 bmh.free()
-B.prism([(0.05, 1.82), (0.16, 1.74), (0.13, 1.7), (0.02, 1.78)], 0.2, 0.0, "dark", "frame", 0.0)  # hood peak
-# cowl around the neck
-B.ring((0.0, 0, 1.49), 0.16, 0.06, 0.08, "Z", 12, "dark", "frame", 0.0)
-K.scale(B.parts[-1], (0.95, 1.05, 1.0), (0, 0, 1.49))
+B.prism([(0.04, 1.84), (0.165, 1.75), (0.14, 1.71), (0.02, 1.79)], 0.21, 0.0, "cloth", "frame", 0.0)      # hood peak
+for sy in (-1, 1):  # hood rim folds framing the visor
+    ob = B.box((0.1, sy * 0.115, 1.65), (0.06, 0.03, 0.2), "cloth", "frame", 0.008)
+    K.rotate(ob, sy * -10, "X", (0.1, sy * 0.115, 1.65))
 d()
 
 # ---------------------------------------------------------------- weapon arm (right, camera side), rest = aiming along +X
 SH_R = Vector((0.0, -0.25, 1.4))
 d = grp("arm_weapon")
-B.uvsphere(SH_R + Vector((0.0, -0.01, 0.025)), 0.1, 12, 6, "panel", "cover", (1.05, 1.0, 0.85))  # shoulder pad
-limb(SH_R, SH_R + Vector((0.2, 0, -0.2)), 0.065, 0.056, "frame", 10)
-ob = B.box(SH_R + Vector((0.1, -0.055, -0.1)), (0.15, 0.025, 0.075), "panel", "cover", 0.006)
+plate(SH_R + Vector((0.0, -0.03, 0.04)), (0.17, 0.08, 0.1), "panel", rx=-20)                   # layered pauldron
+plate(SH_R + Vector((0.0, -0.06, -0.015)), (0.15, 0.06, 0.07), "frame", rx=-30)
+B.light_strip(SH_R + Vector((0.075, -0.075, 0.04)), (0.004, 0.03, 0.03), "emit")
+limb(SH_R, SH_R + Vector((0.2, 0, -0.2)), 0.066, 0.056, "key", 10)
+ob = plate(SH_R + Vector((0.1, -0.055, -0.1)), (0.15, 0.025, 0.075), "panel")
 K.rotate(ob, 45, "Y", SH_R + Vector((0.1, -0.055, -0.1)))
-ob = B.light_strip(SH_R + Vector((0.1, -0.069, -0.1)), (0.09, 0.004, 0.01), "emit")
-K.rotate(ob, 45, "Y", SH_R + Vector((0.1, -0.069, -0.1)))
 d()
 EL_R = SH_R + Vector((0.2, 0, -0.2))
 d = grp("forearm_weapon")
-limb(EL_R, EL_R + Vector((0.25, 0, 0)), 0.056, 0.047, "frame", 10)
-B.box(EL_R + Vector((0.13, -0.035, 0.0)), (0.17, 0.04, 0.085), "panel", "cover", 0.008)  # bracer
-B.light_strip(EL_R + Vector((0.13, -0.057, 0.01)), (0.08, 0.004, 0.01), "emit")
-B.box(EL_R + Vector((0.29, 0, -0.01)), (0.09, 0.075, 0.085), "rubber", "frame", 0.01)  # glove
+limb(EL_R, EL_R + Vector((0.25, 0, 0)), 0.056, 0.046, "key", 10)
+plate(EL_R + Vector((0.13, -0.03, 0.0)), (0.18, 0.045, 0.09), "panel", taper=(1.0, 0.9))          # bracer
+B.light_strip(EL_R + Vector((0.13, -0.055, 0.012)), (0.1, 0.004, 0.008), "emit")
+B.box(EL_R + Vector((0.29, 0, -0.01)), (0.09, 0.08, 0.085), "rubber", "frame", 0.012)              # glove
+plate(EL_R + Vector((0.31, -0.035, 0.0)), (0.05, 0.02, 0.06), "frame")                             # knuckle plate
 d()
 HAND_R = EL_R + Vector((0.29, 0, -0.03))
 
 # support arm (left, far side): reaches toward the fore-grip in the rest (aim) pose
 SH_L = Vector((0.0, 0.25, 1.4))
 d = grp("arm_support")
-B.uvsphere(SH_L + Vector((0.0, 0.01, 0.025)), 0.1, 12, 6, "panel", "cover", (1.05, 1.0, 0.85))
-limb(SH_L, SH_L + Vector((0.2, -0.1, -0.2)), 0.062, 0.054, "frame")
+plate(SH_L + Vector((0.0, 0.03, 0.04)), (0.17, 0.08, 0.1), "panel", rx=20)
+limb(SH_L, SH_L + Vector((0.2, -0.1, -0.2)), 0.062, 0.054, "key", 10)
 d()
 EL_L = SH_L + Vector((0.2, -0.1, -0.2))
 d = grp("forearm_support")
-limb(EL_L, EL_L + Vector((0.25, -0.13, 0.0)), 0.054, 0.046, "frame")
-B.box(EL_L + Vector((0.28, -0.15, 0.0)), (0.08, 0.07, 0.08), "rubber", "frame", 0.01)
+limb(EL_L, EL_L + Vector((0.25, -0.13, 0.0)), 0.054, 0.046, "key", 10)
+plate(EL_L + Vector((0.12, -0.06, 0.0)), (0.16, 0.05, 0.08), "panel")
+B.box(EL_L + Vector((0.28, -0.15, 0.0)), (0.08, 0.075, 0.08), "rubber", "frame", 0.012)
 d()
+
+
+# ---------------------------------------------------------------- short cloth cape (skinned to a 3 x 3 bone grid)
+def cape_mesh():
+    bm = bmesh.new()
+    rows, cols = 8, 6
+    vs = []
+    for j in range(rows + 1):
+        t = j / rows
+        z = 1.45 - t * 0.82                                  # shoulders to just above the knee
+        row = []
+        for i in range(cols + 1):
+            u = i / cols
+            yy = (u - 0.5) * (0.42 + 0.26 * t)
+            xx = -0.16 - 0.07 * t - 0.06 * math.cos((u - 0.5) * math.pi) * (0.3 + t) - 0.012 * math.sin(u * 9.0) * t
+            hem = (0.045 * math.sin(i * 2.3 + 0.5) - 0.02) if j == rows else 0.0
+            row.append(bm.verts.new((xx, yy, z + hem)))
+        vs.append(row)
+    for j in range(rows):
+        for i in range(cols):
+            bm.faces.new((vs[j][i], vs[j][i + 1], vs[j + 1][i + 1], vs[j + 1][i]))
+    bmesh.ops.solidify(bm, geom=bm.faces[:], thickness=0.012)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    return B._new_obj(bm, "frame", "cape_mesh", ["cloth"])
+
+
+CAPE_PART = cape_mesh()
 
 # ---------------------------------------------------------------- pack groups into nodes
 PIVOTS = {
@@ -213,6 +250,57 @@ bpy.context.scene.collection.objects.link(sock)
 sock.parent = NODES["forearm_weapon"]
 sock.location = HAND_R - EL_R
 NODES["weapon_socket"] = sock
+
+# cape: skinned cloth on a 3 x 3 bone grid under cape_root, the rig parented to the torso node
+cape = P.pack([CAPE_PART], "cape", smooth_angle=50)
+arm_d = bpy.data.armatures.new("cape_rig")
+rig = bpy.data.objects.new("cape_rig", arm_d)
+bpy.context.scene.collection.objects.link(rig)
+bpy.context.view_layer.objects.active = rig
+bpy.ops.object.mode_set(mode="EDIT")
+eb = arm_d.edit_bones
+rootb = eb.new("cape_root")
+rootb.head, rootb.tail = Vector((-0.17, 0, 1.47)), Vector((-0.17, 0, 1.42))
+CHAIN_Y = (-0.2, 0.0, 0.2)
+CHAIN_Z = (1.42, 1.15, 0.9, 0.62)
+for ci, cy in enumerate(CHAIN_Y):
+    par = rootb
+    for k in range(3):
+        b = eb.new(f"cape_{ci}_{k}")
+        t0, t1 = k / 3, (k + 1) / 3
+        b.head = Vector((-0.17 - 0.08 * t0 - 0.04 * abs(cy), cy * (1 + 0.6 * t0), CHAIN_Z[k]))
+        b.tail = Vector((-0.17 - 0.08 * t1 - 0.04 * abs(cy), cy * (1 + 0.6 * t1), CHAIN_Z[k + 1]))
+        b.parent = par
+        b.use_connect = k > 0
+        par = b
+bpy.ops.object.mode_set(mode="OBJECT")
+groups = {n: cape.vertex_groups.new(name=n) for n in [b.name for b in arm_d.bones]}
+for v in cape.data.vertices:
+    co = v.co
+    span = (co.y / (0.21 + 0.13 * max(0.0, (1.45 - co.z) / 0.82)))  # -1 .. 1 across the cape
+    fy = (max(-1.0, min(1.0, span)) + 1.0)  # 0 .. 2
+    c0 = min(1, int(fy))
+    wy1 = fy - c0
+    tz = max(0.0, min(2.999, (1.42 - co.z) / (1.42 - 0.62) * 3.0))
+    k0 = int(tz)
+    wz1 = tz - k0
+    k1 = min(2, k0 + 1)
+    top = max(0.0, 1.0 - (1.45 - co.z) / 0.08)
+    if top > 0:
+        groups["cape_root"].add([v.index], top, "ADD")
+    for ci, wy in ((c0, 1.0 - wy1), (c0 + 1, wy1)):
+        for kk, wz in ((k0, 1.0 - wz1), (k1, wz1)):
+            w = wy * wz * (1.0 - top)
+            if w > 0.001:
+                groups[f"cape_{ci}_{kk}"].add([v.index], w, "ADD")
+cape.parent = rig
+mod = cape.modifiers.new("skin", "ARMATURE")
+mod.object = rig
+rig.parent = NODES["torso"]
+rig.matrix_parent_inverse = NODES["torso"].matrix_world.inverted()
+NODES["cape_rig"] = rig
+CAPE_BONES = [b.name for b in arm_d.bones if b.name != "cape_root"]
+total += K.tri_count(cape)
 print("TRIS", total)
 
 # ---------------------------------------------------------------- animation
@@ -266,11 +354,40 @@ def pose(frame, p, extra=None, hips_dz=0.0, leg=(0, 0), shin=(0, 0)):
 ANIMS = {}
 
 
+CAPE_MOTION = {  # clip -> (amplitude deg, cycles over the clip, back-lift deg)
+    "idle": (2.0, 1, 0.0), "ready": (2.5, 1, 2.0), "aim_pose": (2.0, 1, 3.0), "fire_recoil": (6.0, 1, 4.0),
+    "reload": (3.0, 1, 2.0), "weapon_switch": (4.0, 1, 2.0), "victory": (3.0, 2, 0.0), "defeat": (5.0, 1, -6.0),
+    "reposition": (8.0, 2, 12.0),
+}
+
+
+def cape_keys(name, frames, loop):
+    amp, cyc, lift = CAPE_MOTION.get(name, (2.0, 1, 0.0))
+    step = 3 if frames <= 25 else 5
+    fr = list(range(1, frames + 1, step))
+    if fr[-1] != frames:
+        fr.append(frames)
+    for pb in rig.pose.bones:
+        pb.rotation_mode = "XYZ"
+    for f in fr:
+        t = (f - 1) / max(1, frames - 1)
+        for bn in CAPE_BONES:
+            ci, k = int(bn.split("_")[1]), int(bn.split("_")[2])
+            ph = 2 * math.pi * cyc * t - k * 0.9 - ci * 0.5
+            env = 1.0 if loop else math.sin(math.pi * t) ** 0.7
+            a = math.radians(amp * (0.5 + 0.5 * k) * math.sin(ph) * env + lift * (k + 1) / 3 * (env if not loop else 1.0))
+            tw = math.radians(amp * 0.4 * math.sin(ph + 1.3) * env)
+            pb = rig.pose.bones[bn]
+            pb.rotation_euler = (a, 0.0, tw)
+            pb.keyframe_insert("rotation_euler", frame=f)
+
+
 def anim(name, frames, loop, fn):
     for ob in NODES.values():
         if ob.animation_data:
             ob.animation_data.action = None
     fn()
+    cape_keys(name, frames, loop)
     actions = []
     for n, ob in NODES.items():
         ad = ob.animation_data
@@ -356,11 +473,25 @@ anim("defeat", 49, False, a_defeat)
 anim("reposition", 25, True, a_reposition)
 for ob in NODES.values():
     ob.rotation_euler = (0, 0, 0)
+for pb in rig.pose.bones:
+    pb.rotation_euler = (0, 0, 0)
 NODES["hips"].location = REST["hips"]
 sc.frame_start, sc.frame_end = 1, 61
+sc.frame_set(1)
 
-objs = [root] + list(NODES.values())
-K.materialise(objs)  # zone colours into material slots, no COLOR_0 (ASSET_CONTRACT 7, v1.4)
+objs = [root] + list(NODES.values()) + [cape]
+K.CTX["baking"] = True
+K.materialise(objs)  # textured zone slots (Blender side only), then one baked 1024 set (contract 11)
+import tfjbake
+mesh_nodes = [o for o in objs if o.type == "MESH"]
+for pb in rig.pose.bones:
+    pb.rotation_euler = (0, 0, 0)
+cape.modifiers["skin"].show_viewport = False
+cape.modifiers["skin"].show_render = False
+tfjbake.bake(mesh_nodes, SID, 1024, high_bevel=0.003, cage=0.008, emit_strength=1.6, slot="chr_operative_a",
+             samples=16, ao_mix=0.5)
+cape.modifiers["skin"].show_viewport = True
+cape.modifiers["skin"].show_render = True
 for o in bpy.context.view_layer.objects:
     o.select_set(False)
 for o in objs:
@@ -372,7 +503,7 @@ bpy.ops.export_scene.gltf(filepath=OUT, export_format="GLB", use_selection=True,
                           export_vertex_color="NONE", export_all_vertex_colors=False,
                           export_active_vertex_color_when_no_material=False, export_animations=True,
                           export_animation_mode="NLA_TRACKS", export_force_sampling=True, export_frame_step=1,
-                          export_anim_slide_to_zero=True, export_optimize_animation_size=False,
+                          export_anim_slide_to_zero=True, export_optimize_animation_size=False, export_skins=True,
                           export_optimize_animation_keep_anim_object=True,
                           export_extras=False, export_cameras=False, export_lights=False)
 size = os.path.getsize(OUT)
@@ -387,7 +518,7 @@ if RENDER:
     poses = [("rest_aim", None), ("idle", ("idle", 31)), ("ready", ("ready", 1)), ("fire_recoil", ("fire_recoil", 3)),
              ("reload", ("reload", 18)), ("victory", ("victory", 30)), ("defeat", ("defeat", 30)), ("reposition", ("reposition", 7))]
     cam = R.setup((420, 420), int(os.environ.get("TFJ_SAMPLES", "32")), floor=True, floor_z=0.0)
-    meshes = [o for o in NODES.values() if o.type == "MESH"]
+    meshes = [o for o in NODES.values() if o.type == "MESH"] + [cape]
     for label, pa in poses:
         for o in NODES.values():
             if o.animation_data:

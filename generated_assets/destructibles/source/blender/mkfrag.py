@@ -15,9 +15,27 @@ MATNOTE = ("Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTR
            "same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt "
            "metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and "
            "the 1 tile/m damage overlays line up.")
+PREMIUM = {"helix"}  # chapters rebuilt in the premium uplift pass (textured slots)
+MATNOTE_TEX = ("Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references "
+               "the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed "
+               "them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both "
+               "tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, "
+               "emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only "
+               "(valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, "
+               "trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per "
+               "blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt "
+               "metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module "
+               "faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit).")
+
+
+def matnote(ch):
+    return MATNOTE_TEX if ch in PREMIUM else MATNOTE
+
+
 RIGHTS = ("original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted "
           "authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted "
-          "work; not marked commercially cleared")
+          "work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo "
+          "(see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)")
 
 
 def rel(p):
@@ -44,7 +62,7 @@ def comp_entries(st):
         dimensions=f"{st['reference_size_px'][0] / 100:.2f} x {st['reference_size_px'][1] / 100:.2f} x {st['depth_m']} m",
         notes=(f"Nodes: mesh_intact ({t['intact']} tris), mesh_light ({t['light']}), mesh_heavy ({t['heavy']}); show one "
                f"at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: "
-               f"{', '.join(st['fx'])}. Material slots: {', '.join(st['materials'])}. " + MATNOTE + " Heavy state switches "
+               f"{', '.join(st['fx'])}. Material slots: {', '.join(st['materials'])}. " + matnote(st["chapter"]) + " Heavy state switches "
                f"some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed "
                f"internals for spark VFX. Destroyed state: see "
                f"{st['debris_id']}. glb {st['bytes'] / 1024:.0f} KB."))
@@ -115,7 +133,7 @@ def env_entries(st):
         e["depth_m"] = st["depth_m"]
     notes = [f"Single node mesh_intact ({t} tris) under a root named after the file.",
              f"Material slots: {', '.join(st['materials'])}.",
-             MATNOTE, "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
+             matnote(ch), "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
              DESIGN]
     if st.get("fx"):
         notes.insert(1, f"Marker empties: {', '.join(st['fx'])}.")
@@ -183,17 +201,18 @@ def main():
     for cat in ("destructibles", "environments", "weapons", "characters"):
         for p in sorted(glob.glob(f"{REPO}/generated_assets/{cat}/previews/*.webp")):
             b = os.path.basename(p)[:-5]
-            if not (b.endswith(("_components_sheet", "_environment_sheet", "_godot_test_frame")) or b.startswith("opr_")):
+            if not (b.endswith(("_components_sheet", "_environment_sheet", "_godot_test_frame")) or b.startswith("opr_")
+                    or "_showcase" in b):
                 continue  # other streams' previews share these folders
             ch = CH_BY.get(b.split("_")[0], "shared")
             w, h = Image.open(p).size
-            godot = "godot" in b
+            godot = "godot" in b or "_showcase" in b
             entries.append(dict(
                 id=f"{b.split('_')[0].upper()}-PRV-{cat.upper()}-{b.upper()}", path=rel(p), category=cat,
                 render_type="reference", format="webp",
                 purpose=("Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)"
                          if godot else "Contact sheet rendered in Blender Cycles at the game camera angle"),
-                source=("generated_assets/destructibles/source/godot/" + ("char_check.gd" if cat == "characters" else "kit_scene.gd")
+                source=("generated_assets/destructibles/source/godot/" + ("showcase.gd" if "_showcase" in b else "char_check.gd" if cat == "characters" else "kit_scene.gd")
                         if godot else "generated_assets/destructibles/source/blender/sheets.py from build tiles (tfjrender.py)"),
                 rights_status=RIGHTS, used_by="review only", chapter=ch, dimensions=f"{w}x{h}",
                 approval_status="pending_review"))

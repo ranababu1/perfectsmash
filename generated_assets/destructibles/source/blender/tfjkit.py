@@ -10,6 +10,7 @@ covers, frames, glass, internals and emissive strips differently. Export joins p
 mesh per state (multi-surface, one material per slot name).
 """
 import bpy, bmesh, math, random, os, json
+import tfjtex as TX
 from mathutils import Vector, Matrix, Euler, noise
 
 # --------------------------------------------------------------------------------------------
@@ -26,9 +27,11 @@ CH_CODE = {"helix": "hlx", "vita": "vta", "nova_grid": "nvg", "civitas": "cvt", 
 
 PALETTES = {
     # key: colour that COLOR_0 = 1 maps to; zones are absolute sRGB colours
-    "helix": dict(hazard="c2a640", key="c2c9cf", frame="5b6470", panel="788390", trim="aeb6be", internal="1f2428",
-                  rubber="22252a", cable="2a2f34", light="e2e7ea", dark="4a535d", scorch="151617",
-                  concrete="7c8085", polymer="d4d9dd", accent="94a0ac", metal=0.16, rough=0.42,
+    # Helix premium pass (SV-04): graphite and cold steel, light worn edges, amber accents kept small
+    "helix": dict(hazard="b8902e", key="56606b", frame="3e4650", panel="4c5661", trim="8d98a3", internal="131619",
+                  rubber="222529", cable="1c1f23", light="8f9aa5", dark="2d3239", scorch="0f1011",
+                  concrete="6a7078", polymer="d4d9dd", accent="c0782f", edge="b4bec8", module="3a4048",
+                  floor="2a3038", tread="3a414a", metal=0.16, rough=0.42,
                   emit={"cyan": "35d6f2", "orange": "ff8a24", "red": "ff3b4e", "white": "dff6ff"}),
     "vita": dict(hazard="e8c860", key="eef1f2", frame="9aa2aa", panel="dfe4e7", trim="eef1f2", internal="1b1f22",
                  rubber="2a2d30", cable="30353a", light="f4f6f7", dark="6b737a", scorch="141414",
@@ -47,13 +50,15 @@ PALETTES = {
                      concrete="6a6b74", polymer="dcdee6", accent="6c6a86", metal=0.28, rough=0.32,
                      emit={"violet": "8f7cff", "cyan": "7fe8ff", "white": "f0f0ff", "red": "ff3b4e"}),
 }
-PALETTES["arsenal"] = dict(hazard="d9a838", key="dfe3e7", frame="4a4f56", panel="70767e", trim="b5bbc2",
-                           internal="17191c", rubber="1f2023", cable="26292d", light="d0d5da", dark="2e3238",
-                           scorch="101011", concrete="70747a", polymer="d8dce0", accent="8a96a4", metal=0.22,
+PALETTES["arsenal"] = dict(hazard="8a7440", key="5f666f", frame="3c4249", panel="6a727b", trim="a7afb7",
+                           internal="15171a", rubber="202226", cable="23262a", light="b8c0c8", dark="282c31",
+                           scorch="101011", concrete="70747a", polymer="d8dce0", accent="2f3338", edge="c2cad2",
+                           metal=0.22,
                            rough=0.38, emit={"cyan": "35d6f2", "amber": "ffae42", "white": "e6f6ff", "red": "ff3b4e"})
-PALETTES["operative"] = dict(hazard="d9a838", key="c8ccd2", frame="545961", panel="868d96", trim="b0b7bf",
-                             internal="17191c", rubber="3a3d42", cable="2f3236", light="c0c6cc", dark="5a5f67",
-                             scorch="0e0e0f", concrete="5a5e63", polymer="60656c", accent="4a5058", metal=0.12,
+PALETTES["operative"] = dict(hazard="d9a838", key="262a32", frame="353a42", panel="474e58", trim="8e96a0",
+                             internal="111216", rubber="1d1f23", cable="22252a", light="9aa2ac", dark="1c1f24",
+                             scorch="0e0e0f", concrete="5a5e63", polymer="60656c", accent="2b2f35", edge="aab2bc",
+                             cloth="1b1d22", visor="0b0c0e", metal=0.12,
                              rough=0.62, emit={"cyan": "35d6f2", "white": "e6f6ff", "amber": "ffae42", "red": "ff3b4e"})
 PALETTES["shared"] = dict(PALETTES["helix"])
 PALETTES["shared"]["emit"] = {"cyan": "5fd4e8", "orange": "ff8a24", "red": "ff3b4e", "white": "e6f2ff"}
@@ -72,7 +77,7 @@ def set_ctx(chapter, material, emit=None, emit2=None, glass="clear"):
     pal = PALETTES[chapter]
     names = list(pal["emit"].keys())
     CTX.update(chapter=chapter, material=material, emit=emit or names[0], emit2=emit2 or names[-1],
-               glass=glass, value=1.0, main_zone=None)
+               glass=glass, value=1.0, main_zone=None, vcol=True, textures=True, floor_layer=False, matte=None)
 
 
 def hexcol(h, a=1.0):
@@ -185,6 +190,7 @@ class Builder:
 
     # ---- raw part creation -----------------------------------------------------------------
     def _new_obj(self, bm, role, name=None, mats=()):
+        bm.loops.layers.uv.verify()  # every part carries UVMap so authored (fit) UVs survive join()
         me = bpy.data.meshes.new(name or f"{self.name}_{role}_{len(self.parts)}")
         bm.to_mesh(me)
         bm.free()
@@ -539,11 +545,20 @@ def center_of(ob):
 TILE_M = 1.0  # 1 UV unit = 1 metre; tileable surfaces textures repeat every metre
 
 
+ZONE_TILE = {"concrete": 2.0, "floor": 2.0, "tread": 1.0, "cable": 0.5, "rubber": 0.5}
+FIT_ZONES = {"module"}  # parts author their own UVs (one rack unit per blade face)
+
+
 def box_uv(me, tile=TILE_M):
     if not me.uv_layers:
         me.uv_layers.new(name="UVMap")
     uv = me.uv_layers.active.data
+    za = me.attributes.get("zid")
     for poly in me.polygons:
+        z = ZONES[za.data[poly.index].value] if za and za.data[poly.index].value < len(ZONES) else ""
+        if z in FIT_ZONES and abs(poly.normal.y) > 0.7:
+            continue
+        t = ZONE_TILE.get(z, tile)
         n = poly.normal
         ax = max(range(3), key=lambda i: abs(n[i]))
         for li in poly.loop_indices:
@@ -554,7 +569,7 @@ def box_uv(me, tile=TILE_M):
                 u, v = co.x * (-1 if n.y > 0 else 1), co.z
             else:
                 u, v = co.x, co.y * (1 if n.z > 0 else -1)
-            uv[li].uv = (u / tile, v / tile)
+            uv[li].uv = (u / t, v / t)
 
 
 def join(parts, name):
@@ -643,12 +658,28 @@ def finalize(ob, smooth_angle=35):
 # Zones -> material slots (ASSET_CONTRACT 7, v1.4: colour lives in the material, not COLOR_0)
 # --------------------------------------------------------------------------------------------
 ZONES = ["", "frame", "panel", "light", "key", "polymer", "concrete", "accent",
-         "trim", "dark", "internal", "cable", "rubber", "hazard", "scorch", "burnt"]
-STRUCTURAL = {"", "frame", "panel", "light", "key", "polymer", "concrete", "accent"}
+         "trim", "dark", "internal", "cable", "rubber", "hazard", "scorch", "burnt", "edge", "module", "floor",
+         "tread", "cloth", "visor"]
+STRUCTURAL = {"", "frame", "panel", "light", "key", "polymer", "concrete", "accent", "module", "floor", "tread",
+              "cloth", "visor"}
+EDGE_ZONES = {"", "key", "frame", "panel", "light", "accent", "polymer"}  # bevels on these catch a worn edge
+EDGE_WIDTH = 0.024  # m: narrow diagonal faces (bevel chamfers) below this width become the edge slot
 ZONE_FINISH = {  # zone -> (metallic scale, roughness override or None)
     "trim": (1.0, None), "dark": (0.7, 0.55), "internal": (0.5, 0.6), "cable": (0.0, 0.7),
     "rubber": (0.0, 0.85), "hazard": (0.0, 0.5), "scorch": (0.0, 0.92), "burnt": (0.3, 0.8),
+    "edge": (1.0, 0.3),
 }
+
+
+def _is_edge_face(me, poly):
+    n = poly.normal
+    if max(abs(n.x), abs(n.y), abs(n.z)) > 0.985:
+        return False  # axis-aligned: a main face, not a chamfer
+    per = 0.0
+    vs = [me.vertices[i].co for i in poly.vertices]
+    for i in range(len(vs)):
+        per += (vs[i] - vs[i - 1]).length
+    return per > 0 and 2.0 * poly.area / per < EDGE_WIDTH * 0.5 and per > 0.08
 
 
 def zone_id(zone):
@@ -677,6 +708,23 @@ def _zone_material(main, zone, name, value):
         pz.inputs["Metallic"].default_value *= 0.4
     m["tfj_kind"] = "zone"
     m["tfj_value"] = value
+    m.use_backface_culling = True
+    if CTX.get("matte"):
+        m["tfj_matte_layer"] = True
+    if CTX.get("textures", True):
+        if CTX.get("baking"):
+            m["tfj_allow_bright"] = True
+        if zone == "module":
+            m["tfj_emit_col"] = hexcol(pal["emit"][CTX["emit"]])
+            m["tfj_emit_strength"] = CTX.get("module_emit", 1.0)
+        fl = None
+        if CTX.get("floor_layer"):
+            fl = dict(value=min(1.0, CTX.get("value", 1.0) * 2.6), emit=hexcol(pal["emit"][CTX["emit"]]),
+                      emit_strength=0.8)
+        TX.texture_zone(m, CTX["chapter"], zone or "key", CTX["material"], pz.inputs["Base Color"].default_value,
+                        CTX.get("normal_strength", 1.0), floor=fl)
+        if CTX.get("matte"):
+            m["tfj_matte"] = True
     return m
 
 
@@ -713,6 +761,8 @@ def materialise(objs, value=None):
             if m is None or m.get("tfj_kind") != "main":
                 continue
             z = ZONES[za.data[poly.index].value] if za else ""
+            if CTX.get("edges", True) and z in EDGE_ZONES and _is_edge_face(me, poly):
+                z = "edge"
             if z in ("", "key"):
                 z = "key"
             if z == CTX["main_zone"] or (z == "key" and CTX["main_zone"] in ("", "key")):
@@ -763,11 +813,20 @@ def export_glb(objs, path, animations=False):
                 renamed[m.name] = m
     kw = dict(filepath=path, export_format="GLB", use_selection=True, export_apply=True,
               export_yup=True, export_texcoords=True, export_normals=True, export_materials="EXPORT",
-              export_animations=animations, export_vertex_color="NONE",
+              export_animations=animations, export_vertex_color="ACTIVE" if CTX.get("vcol", True) else "NONE",
               export_all_vertex_colors=False, export_active_vertex_color_when_no_material=False,
               export_extras=False, export_cameras=False, export_lights=False)
+    for o in objs:  # COLOR_0 = baked occlusion (grey, <= 1): contract v1.7 lets the loader honour it
+        if o.type == "MESH" and o.data.color_attributes.get("Col") is not None:
+            o.data.color_attributes.active_color = o.data.color_attributes.get("Col")
     with slot_names(renamed.values()):
         bpy.ops.export_scene.gltf(**kw)
+    factors = {}
+    for o in objs:
+        for m in (o.data.materials if o.type == "MESH" else []):
+            if m and m.get("tfj_metal") is not None:
+                factors[m.name.split("@")[0]] = {"metallicFactor": round(float(m["tfj_metal"]), 3)}
+    TX.externalise(path, factors=factors)
     return os.path.getsize(path)
 
 

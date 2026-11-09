@@ -113,3 +113,22 @@ The test frames are in `previews/<ch>_godot_test_frame.webp`.
 ### Rights
 
 This is original procedural work. The scripted Blender code was written by the 3d-kits asset agent (AI-assisted authorship). No third-party meshes or textures are used. Ownership is not legally settled for AI-assisted work, and nothing is marked commercially cleared.
+
+## Premium uplift pass, batch 1: Helix environment (3d-kits stream, 2026-11-10)
+
+The 21 Helix environment pieces were rebuilt in place with the same ids.
+
+- **Materials.** Textured slots use the same scheme as the components, with relative URIs to `generated_assets/materials/`. Floor pieces use the chapter floor set with its emission inlays, at a low metallic value.
+- **Secondary detail** (shared builders, so the other chapters gain it as they are rebuilt):
+  - floor: plate bolts and short amber seam inlays;
+  - walls: pilaster bolts, a conduit pair with brackets, a status screen and LEDs;
+  - low wall: bolts, a screen and a kick plate;
+  - pillar: base bolts and a conduit;
+  - catwalk: deck grating and kick plates;
+  - massing: ribs and roof louvres.
+- **Showcase.** `showcase/helix_showcase_layout.json` is a Helix scene for `destructibles/source/godot/showcase.gd`. It holds floor, walls, background rack rows and the gameplay band of every Helix component, plus the operative with a weapon on `weapon_socket`. Frames:
+  - `previews/hlx_showcase_missionview.webp` is the MissionView camera and lighting exactly as the game sets them today. `hlx_godot_test_frame.webp` is the same frame.
+  - `previews/hlx_showcase_graded.webp` adds what GL Compatibility allows: reflection sky, ACES tonemap, glow, depth fog, a cool rim light and local amber and cyan omni lights.
+  - `previews/hlx_showcase_close.webp` is a closer graded view of the core deck.
+  - These are honest engine frames. They do not reach the SV-04 painting: SV-04 uses a much higher camera, painted bounce light and AO, and GL Compatibility has no SSAO, SDFGI or volumetric fog.
+- **Checks.** Godot lineup: 21 of 21 files load.

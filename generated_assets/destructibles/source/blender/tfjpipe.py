@@ -47,7 +47,7 @@ def paint_parts(parts):
     for p in parts:
         me = p.data
         zone = p.get("zone", "")
-        col = K.zone_ratio(zone) if zone else (1.0, 1.0, 1.0, 1.0)
+        col = (1.0, 1.0, 1.0, 1.0)  # colour lives in the zone slots; COLOR_0 carries occlusion only
         if p.get("scorched"):
             col = tuple(c * p["scorched"] for c in col[:3]) + (1.0,)
         a = me.color_attributes.get("Col") or me.color_attributes.new("Col", "FLOAT_COLOR", "CORNER")

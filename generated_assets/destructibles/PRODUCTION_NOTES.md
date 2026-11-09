@@ -61,3 +61,18 @@ Godot check (4.7.2, GL Compatibility, runtime glTF load, MissionView camera, sun
 ## Rights
 
 This is original procedural work. The scripted Blender code was written by the 3d-kits asset agent (AI-assisted authorship). No third-party meshes, textures or concept pixels are used. Form language follows the project concept frames. Ownership is not legally settled for AI-assisted work, and nothing is marked commercially cleared.
+
+## Premium uplift pass, batch 1: Helix (2026-11-10)
+
+Revision of the 22 Helix components and their debris sets in place. File names and manifest ids are unchanged.
+
+- **Materials.** Every zone slot is now textured from the surfaces stream library (`generated_assets/materials/helix/` and `materials/shared/`). The glb files reference the PNGs by relative URI and do not embed them. Godot resolves the URIs to the `res://` library textures on editor import and through runtime GLTFDocument (both tested on the box). `baseColorFactor` is a palette tint over the library albedo, `metallicFactor` is set per zone, and emission textures are masks.
+- **Vertex colour.** COLOR_0 now carries baked ambient occlusion only (valid since contract v1.7).
+- **New slots.** `trim_edge_hlx` is a worn edge highlight on the bevel faces. `trim_module_hlx` maps one rack unit of the electronic_module set per blade (fitted UVs), with status lights in its emission mask.
+- **Geometry.** Racks, columns, decks, shields, power cell, blast walls, mast, pod, gantry, cooling stack and crate were rebuilt with real secondary detail: chamfered corner posts with amber caps, panel seams, bolts, louvres, cable looms, status LEDs, top hatches and small screens. Every piece stays within budget (standard 1,500 tris; the AI core is critical at 3,000).
+- **Sizes.** Contract v1.9 makes 40 x 100 the shipped Helix rack size: that is `HLX-CMP-SERVER_RACK-B`. `-A` (40 x 40) stays as the probe size and `-C` (50 x 160) as the tall variant.
+- **Emission.** Per v1.9, loader-built materials should keep emission enabled on every surface (black when unlit) and change state by value.
+- **Checks.**
+  - Godot 4.7.2 GL Compatibility lineup: 44 of 44 files load, with COLOR_0 present.
+  - Validator: PASS.
+  - Previews: `previews/hlx_components_sheet.webp` (Cycles) and `environments/previews/hlx_showcase_*.webp` (Godot).

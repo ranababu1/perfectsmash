@@ -10,6 +10,7 @@ from mathutils import Vector
 GAME_DIR = Vector((-2.2, -10.5, 2.7)).normalized()   # from look target toward camera (Blender)
 SUN_DIR = Vector((0.379, 0.485, -0.788)).normalized()  # light travel direction (Blender)
 FOV_V = 40.0
+LOOK = os.environ.get("TFJ_LOOK", "showcase")  # "showcase" (proposed reflection sky + rim) or "asis"
 
 
 def srgb(h):
@@ -73,6 +74,31 @@ def setup(res=(640, 640), samples=48, engine="CYCLES", bg="15191e", ambient=("80
     nt.links.new(bgn.outputs[0], mix.inputs[1])
     nt.links.new(bg2.outputs[0], mix.inputs[2])
     nt.links.new(mix.outputs[0], out.inputs[0])
+    if LOOK == "showcase":
+        # ASSET_CONTRACT 9 proposed reflection source: a dark procedural sky seen only by glossy rays
+        # (top #4a5866, horizon #8090a0, ground horizon #3a4048, ground bottom #1b2026)
+        geo = nt.nodes.new("ShaderNodeTexCoord")
+        sep = nt.nodes.new("ShaderNodeSeparateXYZ")
+        nt.links.new(geo.outputs["Generated"], sep.inputs[0])
+        ramp = nt.nodes.new("ShaderNodeValToRGB")
+        mr = nt.nodes.new("ShaderNodeMapRange")
+        mr.inputs[1].default_value, mr.inputs[2].default_value = -1.0, 1.0
+        nt.links.new(sep.outputs[2], mr.inputs[0])
+        nt.links.new(mr.outputs[0], ramp.inputs[0])
+        el = ramp.color_ramp.elements
+        el[0].position, el[0].color = 0.0, (*srgb("1b2026"), 1)
+        el[1].position, el[1].color = 1.0, (*srgb("4a5866"), 1)
+        e = el.new(0.47); e.color = (*srgb("3a4048"), 1)
+        e = el.new(0.53); e.color = (*srgb("8090a0"), 1)
+        sky = nt.nodes.new("ShaderNodeBackground")
+        sky.inputs[1].default_value = 1.0
+        nt.links.new(ramp.outputs[0], sky.inputs[0])
+        mix2 = nt.nodes.new("ShaderNodeMixShader")
+        nt.links.new(lp.outputs["Is Glossy Ray"], mix2.inputs[0])
+        nt.links.new(mix.outputs[0], mix2.inputs[1])
+        nt.links.new(sky.outputs[0], mix2.inputs[2])
+        nt.links.new(mix2.outputs[0], out.inputs[0])
+        rim = True
 
     sun_d = bpy.data.lights.new("sun", "SUN")
     sun_d.energy = 1.15 * 3.14159

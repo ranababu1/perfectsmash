@@ -29,6 +29,7 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
     K.set_ctx(ch, spec["material"], spec.get("emit"), spec.get("emit2"), spec.get("glass", "clear"))
     K.CTX["value"] = spec.get("value", 1.0)  # layer darkening goes into baseColorFactor
     K.CTX["matte"] = 0.78 if spec.get("layer") in ("floor", "near", "mid", "landmark") else None
+    K.CTX["floor_layer"] = spec.get("layer") == "floor" and spec.get("kind", "").startswith("floor")
     seed = spec.get("seed", hash(spec["id"]) & 0xffff)
     sid = TB.stem(spec["id"])
     B = K.Builder(sid, seed)
@@ -42,6 +43,12 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
     ob = P.pack(parts, "mesh_intact", ao=False, budget=budget if pre > budget else None)
     P.bake_ao(ob, dist=spec.get("ao_dist", 0.12), samples=16)
     scale_value(ob, spec.get("value", 1.0))
+    if spec.get("bake"):  # hero assets: one unique baked set (contract 11), no COLOR_0
+        import tfjbake
+        K.materialise([ob])
+        tfjbake.bake(ob, sid, spec["bake"], emit_strength=spec.get("emit_strength", 1.6),
+                     high_bevel=spec.get("high_bevel", 0.0025), cage=spec.get("cage", 0.006))
+        K.CTX["vcol"] = False
     for c in bpy.data.collections:
         c.hide_render = True
         c.hide_viewport = True

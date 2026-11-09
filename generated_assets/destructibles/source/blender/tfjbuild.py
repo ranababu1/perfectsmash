@@ -218,7 +218,31 @@ def fit_envelope(parts, w, h, d, sid, tol=0.004):
 def preview_materials():
     """Preview-only shading: multiply base colour by COLOR_0 (as Godot does with vertex colours)."""
     for m in bpy.data.materials:
-        if m.get("tfj_kind") != "main" or m.get("preview_done"):
+        if m.get("preview_done") or m.get("tfj_kind") == "baked":
+            continue
+        if m.get("tfj_textured"):  # textured slot: put COLOR_0 after the tint multiply
+            nt = m.node_tree
+            p = nt.nodes.get("Principled BSDF")
+            src = p.inputs["Base Color"].links[0].from_socket
+            attr = nt.nodes.new("ShaderNodeVertexColor")
+            attr.layer_name = "Col"
+            mix = nt.nodes.new("ShaderNodeMix")
+            mix.data_type = "RGBA"
+            mix.blend_type = "MULTIPLY"
+            mix.inputs[0].default_value = 1.0
+            nt.links.new(src, mix.inputs[6])
+            nt.links.new(attr.outputs[0], mix.inputs[7])
+            nt.links.new(mix.outputs[2], p.inputs["Base Color"])
+            if p.inputs["Metallic"].links and m.get("tfj_metal") is not None:  # same metallicFactor as the glb
+                msrc = p.inputs["Metallic"].links[0].from_socket
+                mm = nt.nodes.new("ShaderNodeMath")
+                mm.operation = "MULTIPLY"
+                mm.inputs[1].default_value = float(m["tfj_metal"])
+                nt.links.new(msrc, mm.inputs[0])
+                nt.links.new(mm.outputs[0], p.inputs["Metallic"])
+            m["preview_done"] = True
+            continue
+        if m.get("tfj_kind") != "main":
             continue
         nt = m.node_tree
         p = nt.nodes.get("Principled BSDF")
