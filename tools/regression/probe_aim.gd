@@ -16,6 +16,7 @@ static func aim(world: MissionWorld, target: ComponentBody) -> Dictionary:
 	var muzzle := world.muzzle_position()
 	var blocker := ""
 	var trace := []
+	var clearable := []
 	for lift: int in LIFTS:
 		var direction := (target.global_position + Vector2(0, lift)) - muzzle
 		var hit := first_hit(world, muzzle, weapon.launch_velocity(direction, 1.0), gravity, float(weapon.stats.projectile_radius))
@@ -24,6 +25,11 @@ static func aim(world: MissionWorld, target: ComponentBody) -> Dictionary:
 			return {"direction": direction, "blocker": "", "trace": trace}
 		if lift == 0:
 			blocker = (hit as ComponentBody).component_id if hit is ComponentBody else ("static" if hit != null else "")
+		# A player clears the softest thing in the way: prefer a non-steel component.
+		if hit is ComponentBody and (hit as ComponentBody).material_id != "reinforced_steel" and not clearable.has((hit as ComponentBody).component_id):
+			clearable.append((hit as ComponentBody).component_id)
+	if not clearable.is_empty():
+		blocker = clearable[0]
 	return {"direction": Vector2.ZERO, "blocker": blocker, "trace": trace}
 
 
