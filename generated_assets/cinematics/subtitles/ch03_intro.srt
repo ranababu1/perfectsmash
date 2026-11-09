@@ -1,0 +1,11 @@
+1
+00:00:00,200 --> 00:00:06,900
+Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.
+
+2
+00:00:07,400 --> 00:00:14,500
+The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.
+
+3
+00:00:15,000 --> 00:00:25,300
+Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex.

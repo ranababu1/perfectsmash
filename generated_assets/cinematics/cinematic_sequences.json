@@ -171,6 +171,191 @@
     "title": "TIMELINE SHIFT DETECTED",
     "subtitle": "NEXT: THE PRICE OF PERFECTION"
    }
+  },
+  {
+   "id": "ch02_intro",
+   "title": "The Perfect Human",
+   "theme": "vita",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "The first intervention changed the city. It did not change the people who built the next machine.",
+     "motion": "push_in",
+     "caption": "2092  /  ARCLIGHT BIO-DISTRICT",
+     "slide_id": "VTA-CIN-INTRO-01",
+     "image": "res://generated_assets/cinematics/ch02_intro/vta_cin_intro_01.webp",
+     "duration": 8.0,
+     "vo_line": "The first intervention changed the city. It did not change the people who built the next machine."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+     "motion": "pan_right",
+     "slide_id": "VTA-CIN-INTRO-02",
+     "image": "res://generated_assets/cinematics/ch02_intro/vta_cin_intro_02.webp",
+     "duration": 8.4,
+     "vo_line": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "But the programme is no longer correcting illness. It is making people dependent on the system that edits them.",
+     "motion": "push_in",
+     "slide_id": "VTA-CIN-INTRO-03",
+     "image": "res://generated_assets/cinematics/ch02_intro/vta_cin_intro_03.webp",
+     "duration": 8.8,
+     "vo_line": "But the programme is no longer correcting illness. It is making people dependent on the system that edits them."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+     "motion": "push_in",
+     "caption": "TARGET: VITA GENOMICS",
+     "slide_id": "VTA-CIN-INTRO-04",
+     "image": "res://generated_assets/cinematics/ch02_intro/vta_cin_intro_04.webp",
+     "duration": 9.6,
+     "vo_line": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
+     "motion": "static",
+     "slide_id": "VTA-CIN-INTRO-05",
+     "image": "res://generated_assets/cinematics/ch02_intro/vta_cin_intro_05.webp",
+     "duration": 7.2,
+     "vo_line": "Do not mistake the laboratories for the people inside them. The target is the machinery."
+    }
+   ],
+   "end_card": {
+    "title": "CHAPTER 02",
+    "subtitle": "THE PRICE OF PERFECTION"
+   }
+  },
+  {
+   "id": "ch02_outro",
+   "title": "The Same Signature",
+   "theme": "vita",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+     "motion": "pull_back",
+     "slide_id": "VTA-CIN-OUTRO-01",
+     "image": "res://generated_assets/cinematics/ch02_outro/vta_cin_outro_01.webp",
+     "duration": 7.6,
+     "vo_line": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+     "motion": "push_in",
+     "slide_id": "VTA-CIN-OUTRO-02",
+     "image": "res://generated_assets/cinematics/ch02_outro/vta_cin_outro_02.webp",
+     "duration": 7.6,
+     "vo_line": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "VITA did not discover its future. Someone gave it the answer.",
+     "motion": "static",
+     "slide_id": "VTA-CIN-OUTRO-03",
+     "image": "res://generated_assets/cinematics/ch02_outro/vta_cin_outro_03.webp",
+     "duration": 5.6,
+     "vo_line": "VITA did not discover its future. Someone gave it the answer."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+     "motion": "static",
+     "caption": "NEXT: 2096  /  NOVA GRID",
+     "slide_id": "VTA-CIN-OUTRO-04",
+     "image": "res://generated_assets/cinematics/ch02_outro/vta_cin_outro_04.webp",
+     "duration": 6.4,
+     "vo_line": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096."
+    }
+   ],
+   "end_card": {
+    "title": "TWO SYSTEMS",
+    "subtitle": "ONE UNKNOWN SOURCE"
+   }
+  },
+  {
+   "id": "ch03_intro",
+   "title": "Power Without Limits",
+   "theme": "nova_grid",
+   "slides": [
+    {
+     "speaker": "control",
+     "subtitle": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
+     "motion": "pan_left",
+     "caption": "2096  /  KESTREL ENERGY BASIN",
+     "slide_id": "NVG-CIN-INTRO-01",
+     "image": "res://generated_assets/cinematics/ch03_intro/nvg_cin_intro_01.webp",
+     "duration": 7.2,
+     "vo_line": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.",
+     "motion": "push_in",
+     "slide_id": "NVG-CIN-INTRO-02",
+     "image": "res://generated_assets/cinematics/ch03_intro/nvg_cin_intro_02.webp",
+     "duration": 7.6,
+     "vo_line": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+     "motion": "push_in",
+     "caption": "TARGET: NOVA GRID",
+     "slide_id": "NVG-CIN-INTRO-03",
+     "image": "res://generated_assets/cinematics/ch03_intro/nvg_cin_intro_03.webp",
+     "duration": 10.8,
+     "vo_line": "Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex."
+    }
+   ],
+   "end_card": {
+    "title": "CHAPTER 03",
+    "subtitle": "THE ENERGY BENEATH"
+   }
+  },
+  {
+   "id": "ch03_outro",
+   "title": "A Message in the Noise",
+   "theme": "nova_grid",
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+     "motion": "pull_back",
+     "slide_id": "NVG-CIN-OUTRO-01",
+     "image": "res://generated_assets/cinematics/ch03_outro/nvg_cin_outro_01.webp",
+     "duration": 7.6,
+     "vo_line": "The grid is broken. The energy cascade never reaches the scale recorded in the original future."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+     "motion": "push_in",
+     "slide_id": "NVG-CIN-OUTRO-02",
+     "image": "res://generated_assets/cinematics/ch03_outro/nvg_cin_outro_02.webp",
+     "duration": 13.6,
+     "vo_line": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions.",
+     "motion": "static",
+     "caption": "NEXT: 2100  /  CIVITAS",
+     "slide_id": "NVG-CIN-OUTRO-03",
+     "image": "res://generated_assets/cinematics/ch03_outro/nvg_cin_outro_03.webp",
+     "duration": 6.8,
+     "vo_line": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions."
+    }
+   ],
+   "end_card": {
+    "title": "SIGNAL ORIGIN: UNKNOWN",
+    "subtitle": "TIMESTAMP: INCONSISTENT"
+   }
   }
  ]
 }
