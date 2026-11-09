@@ -4,7 +4,7 @@ _Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `master` · Re
 
 ## Purpose and phase
 
-The project is a 2D physics destruction puzzle for Android (Godot 4). The owner has approved a major narrative/product direction: transform the existing puzzle into a story-driven time-travel destruction game, with a skippable opening cinematic, narrated chapter introductions/outros, and 100 levels across five chapters. The physics gameplay remains the foundation.
+The project is a 2D physics destruction puzzle targeting Android + iOS (Godot 4.7.2). The owner has approved a major narrative/product direction: transform the existing puzzle into a story-driven time-travel destruction game, with a skippable opening cinematic, narrated chapter introductions/outros, and 100 levels across five chapters. The physics gameplay remains the foundation.
 
 **Implementation phase:** Existing playable prototype with 20 levels. Narrative and 100-level expansion are documented/planned only. A production-level design specification now defines all 100 puzzle concepts, intended reasoning, shot budgets and validation gates. No cinematic player, story archive, chapter art reskin, new projectile art, 100-level content or background music has been integrated yet.
 
@@ -53,9 +53,19 @@ Existing architecture remains as documented below. Proposed story additions are 
 - `docs/narrative-bible.md`: complete five-chapter story, opening voiceover, chapter intro/outro scripts, 100-level mission map and Season 2 hook.\n- `docs/level-design-spec.md`: production design for all 100 levels, including intended puzzle layouts, skill progression, shot budgets and coding-agent acceptance criteria.
 - `docs/visual-audio-production-guide.md`: art direction, chapter art bible, cinematic shot list, prompt templates, asset inventory, narration, music licensing and SFX guidance.
 
+## Platform and renderer decision (owner-approved, 2026-11-09)
+
+- Target platforms: Android + iOS.
+- Primary quality priority: mobile performance, stable frame pacing and battery efficiency.
+- Engine: Godot 4.7.2 with GDScript and built-in 2D physics.
+- Proposed production renderer: Godot Mobile, pending a documented Compatibility-vs-Mobile evaluation.
+- Intended backend: Vulkan on supported Android devices; Metal on supported Apple devices.
+- Existing project remains on GL Compatibility until the renderer evaluation is completed and the owner approves any production renderer change.
+- No minimum Android/iOS version, device support policy, renderer setting or export preset has been changed.
+
 ## Toolchain
 
-- Godot 4.7.2.stable.official, GDScript, GL Compatibility renderer.
+- Godot 4.7.2.stable.official, GDScript, current project renderer: GL Compatibility.
 - No third-party Godot dependencies or addons recorded.
 
 ## Last verified build/test status (2026-11-02)
@@ -77,16 +87,20 @@ Existing architecture remains as documented below. Proposed story additions are 
 
 ## Next recommended actions
 
-1. Decide and clear the final game name before changing app identity, logo or store assets.
-2. Review the narrative bible and lock the chapter scripts/story beats.
-3. Review the six initial environment concept references and approve the visual language.
-4. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.
-5. Download and review the generated gameplay music; verify commercial-use terms and loop quality. If unsuitable, choose a verified track under a suitable commercial licence.
-6. Implement a small cinematic vertical slice (opening or Chapter I intro) with skip, subtitles, voiceover, music ducking and replay.
-7. Reskin one existing level per chapter and validate readability on physical Android hardware.
-8. Expand and validate content to 100 levels only after the vertical slice is approved.
+1. Run the Compatibility-vs-Mobile renderer evaluation on representative physical Android and iOS devices; record Vulkan/Metal support, frame pacing, thermal behavior, memory, battery observations and visual compatibility. Obtain approval before changing production renderer or minimum OS/device support.\n2. Decide and clear the final game name before changing app identity, logo or store assets.
+3. Review the narrative bible and lock the chapter scripts/story beats.
+4. Review the six initial environment concept references and approve the visual language.
+5. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.
+6. Download and review the generated gameplay music; verify commercial-use terms and loop quality. If unsuitable, choose a verified track under a suitable commercial licence.
+7. Implement a small cinematic vertical slice (opening or Chapter I intro) with skip, subtitles, voiceover, music ducking and replay.
+8. Reskin one existing level per chapter and validate readability on physical Android and iOS hardware where available.
+9. Expand and validate content to 100 levels only after the vertical slice is approved.
 
 ## Existing owner decisions
+
+- Android + iOS target platforms approved on 2026-11-09; mobile performance and battery efficiency are the primary priorities.
+- Godot 4.7.2 remains the engine. Godot Mobile is the proposed production renderer, pending physical-device evaluation against the existing Compatibility renderer. Intended backends are Vulkan on supported Android devices and Metal on supported Apple devices.
+- Production renderer and minimum supported OS/device versions remain unchanged pending test evidence and owner approval.
 
 - Landscape orientation approved.
 - Existing product/app name Perfect Smash and package ID `dev.imrn.perfectsmash` remain in place until a new name is explicitly approved.
