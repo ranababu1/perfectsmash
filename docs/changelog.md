@@ -2,6 +2,18 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Story-driven 100-level direction and narrative production plan
+
+- Owner approved the direction to turn the existing physics destruction puzzle into a time-travel science-fiction story while preserving the core physics loop.
+- Revised `docs/plan.md` to revision 2. The original baseline remains preserved in Git history.
+- Added `docs/narrative-bible.md`: opening cinematic script, five chapter introductions and endings, full 100-level mission map, level-100 cliffhanger and Season 2 (+50 levels) expansion spine.
+- Added `docs/visual-audio-production-guide.md`: visual identity, five chapter art directions, Temporal Charge concept, cinematic shot list, image prompt templates, asset naming, voiceover workflow, music licensing guidance and SFX inventory.
+- Updated `docs/currentstate.md` to distinguish implemented prototype features from planned narrative work.
+- No gameplay code, scenes, level data, physics, app identity or assets were changed in this documentation update. No build/test was run; prior verified test evidence remains dated 2026-11-02.
+- Initial six-panel environment concept reference and a generated planning poster were created in the conversation workspace. They are not yet imported into the Godot project and should be treated as concept references, not final game assets.
+- An original instrumental dark sci-fi ambient music generation task was submitted. At the latest status check it was still running; no audio file was returned or approved. Commercial-use terms must be verified before shipping.
+- Final game name remains pending owner approval. Existing app identity remains Perfect Smash.
+
 ## 2026-11-02 — App icon (0.1.0, unreleased)
 
 - Replaced the placeholder icon with a real app icon, designed from common mobile-game icon guidance: one bold subject taken
