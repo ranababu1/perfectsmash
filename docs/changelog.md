@@ -167,3 +167,18 @@ All meaningful changes, newest first.
 - Added dependency-free headless test runner (`tests/run_tests.gd`) and unit suites.
 - Tests: `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd -- --unit` → 39 passed, 1 failed
   (expected: `test_shipped_catalog_is_valid` — `data/levels.json` not yet authored).
+
+
+## 2026-11-09 — Owner-approved tactical destruction, progression and asynchronous Frontlines direction
+
+- Replaced the slingshot-style product direction with an angled 2.5D tactical destruction puzzle featuring a visible anonymous operative.
+- Approved retaining the existing 2D physics architecture for the first prototype; full 3D physics is not approved.
+- Approved multiple distinct weapons and a staged data-driven weapon framework. Initial prototype scope: Kinetic Accelerator and Breach Charge; later chapter weapons remain planned.
+- Approved story-specific destructible institutions, varied structural shapes/material categories, critical components and weak points.
+- Approved longer, multi-stage destruction missions. Levels may require 15-25+ shots where justified; recommended shot budgets are performance benchmarks, not universal hard caps.
+- Approved separate regular Mission Points and bonus Research Data, with Research Data funding player-selected weapon upgrades alongside automatic chapter technology progression.
+- Approved speed and shot-efficiency bonuses relative to level-specific targets, balanced against objective completion and thoughtful play.
+- Approved online leaderboards for a later phase, including fair Standard and Competitive categories.
+- Approved **Temporal Frontlines** as the working name for asynchronous asymmetric multiplayer: persistent modular institution construction, offline snapshot attacks, defensive systems, attack reports, repairs/recovery protection and competitive rankings.
+- Explicitly excluded real-time synchronized multiplayer physics from the initial multiplayer scope. Frontlines must not block the first single-player campaign release.
+- Documentation-only decision update. No gameplay implementation, backend integration, build, test or device validation is claimed in this entry.
