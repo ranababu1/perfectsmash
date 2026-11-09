@@ -39,18 +39,20 @@ def kinetic_accelerator(B, rng, spec):
     B.light_strip((0.0, -0.0395, 0.112), (0.05, 0.002, 0.016), "emit")                  # ammo readout
     for k in range(3):
         B.box((0.05 + k * 0.016, -0.0395, 0.112), (0.008, 0.002, 0.012), "light", "greeble", 0.0)
-    B.box((0.02, 0, 0.165), (0.1, 0.03, 0.014), "dark", "greeble", 0.0)                 # optic block
-    B.light_strip((0.06, 0, 0.1725), (0.012, 0.014, 0.002), "emit")
+    B.box((0.02, 0, 0.183), (0.1, 0.03, 0.014), "dark", "greeble", 0.0)                 # optic block
+    B.light_strip((0.06, 0, 0.1905), (0.012, 0.014, 0.002), "emit")
     # skeletal thumbhole stock: top bar, lower bar, butt plate
-    B.prism([(-0.13, 0.13), (-0.13, 0.095), (-0.4, 0.09), (-0.42, 0.12)], 0.05, 0.0, "frame", "frame", 0.0)
-    B.prism([(-0.06, -0.03), (-0.06, -0.06), (-0.4, -0.05), (-0.4, -0.02)], 0.04, 0.0, "frame", "frame", 0.0)
+    B.prism([(-0.13, 0.158), (-0.13, 0.1), (-0.4, 0.078), (-0.42, 0.122)], 0.052, 0.0, "panel", "frame", 0.0)
+    B.prism([(-0.4, -0.085), (-0.37, -0.085), (-0.04, 0.0), (-0.07, 0.028), (-0.4, -0.04)], 0.044, 0.0, "frame", "frame", 0.0)
+    B.box((-0.22, -0.023, 0.095), (0.14, 0.004, 0.012), "dark", "greeble", 0.0)           # stock seam
     B.prism([(-0.4, 0.13), (-0.375, 0.13), (-0.375, -0.07), (-0.4, -0.08), (-0.44, -0.08), (-0.44, 0.125)], 0.055,
             0.0, "panel", "frame", 0.0)
     B.box((-0.445, 0, 0.02), (0.012, 0.05, 0.19), "rubber", "frame", 0.0)
     B.box((-0.26, -0.026, 0.104), (0.1, 0.003, 0.005), "emit", "emit", 0.0)
     # upper spine rail and lower rail run past the coils to the bracket
-    B.prism([(0.15, 0.158), (0.15, 0.124), (xr, 0.118), (xr, 0.136), (xr - 0.04, 0.148), (0.2, 0.158)], 0.06, 0.0,
-            "panel", "frame", 0.0)
+    B.prism([(0.14, 0.172), (0.15, 0.124), (xr, 0.114), (xr + 0.012, 0.126), (xr - 0.03, 0.15), (0.24, 0.17)], 0.062, 0.0,
+            "panel", "frame", 0.0)                                                         # sweeping upper spine
+    B.prism([(-0.1, 0.158), (0.15, 0.158), (0.2, 0.172), (-0.06, 0.176)], 0.058, 0.0, "panel", "frame", 0.0)  # receiver hump
     B.prism([(0.15, 0.02), (xr, 0.034), (xr, 0.054), (0.15, 0.052)], 0.058, 0.0, "frame", "frame", 0.0)
     B.light_strip(((0.15 + xr) / 2, -0.03, 0.043), (xr - 0.19, 0.002, 0.005), "emit")
     for k in range(int((xr - 0.2) / 0.05)):
@@ -60,17 +62,17 @@ def kinetic_accelerator(B, rng, spec):
     n = max(10, int((xc1 - xc0) / 0.011))
     prof = [(0.0, 0.0)]
     for i in range(n + 1):
-        prof.append((0.031 if i % 2 == 0 else 0.025, i * (xc1 - xc0) / n))
+        prof.append((0.037 if i % 2 == 0 else 0.03, i * (xc1 - xc0) / n))
     prof.append((0.0, xc1 - xc0))
-    B.lathe(prof, (xc0, 0, zc), 10, "accent", "internal", axis="X")
+    B.lathe(prof, (xc0, 0, zc), 10, "trim", "internal", axis="X")
     for xx in (xc0, xc1, (xc0 + xc1) / 2):
-        B.cyl((xx, 0, zc), 0.035, 0.012, "X", 10, "trim", "greeble", 0.0)
+        B.cyl((xx, 0, zc), 0.041, 0.014, "X", 10, "frame", "greeble", 0.0)
     B.ring((xc0 + 0.012, 0, zc), 0.033, 0.026, 0.004, "X", 12, "emit", "emit", 0.0)
     B.box(((xc0 + xc1) / 2, 0.026, zc), (xc1 - xc0, 0.006, 0.07), "internal", "internal", 0.0)   # back plate
     # forward bracket and ported muzzle
     B.prism([(xr - 0.035, 0.02), (xr, 0.034), (xr, 0.146), (xr - 0.035, 0.158)], 0.064, 0.0, "frame", "frame", 0.0)
-    B.cyl((xr + 0.035, 0, zc), 0.02, 0.07, "X", 10, "dark", "frame", 0.0)
-    B.cyl((xr + 0.075, 0, zc), 0.025, 0.03, "X", 10, "frame", "frame", 0.0)
+    B.cyl((xr + 0.035, 0, zc), 0.025, 0.07, "X", 10, "dark", "frame", 0.0)
+    B.cyl((xr + 0.075, 0, zc), 0.03, 0.035, "X", 10, "frame", "frame", 0.0)
     for k in range(3):
         B.box((xr + 0.022 + k * 0.016, -0.019, zc), (0.007, 0.004, 0.022), "internal", "greeble", 0.0)
     B.ring((xr + 0.09, 0, zc), 0.016, 0.009, 0.004, "X", 10, "emit", "emit", 0.0)
@@ -80,7 +82,7 @@ def kinetic_accelerator(B, rng, spec):
         B.cable_run((0.06, -0.03, 0.006), (0.16, -0.026, 0.04), 0.01, 0.005, 5)
     if tier >= 3:
         for k in range(6):
-            B.box((0.22 + k * 0.035, 0, 0.165), (0.008, 0.056, 0.016), "trim", "greeble", 0.0)  # heat sinks
+            B.box((0.24 + k * 0.035, 0, 0.172), (0.008, 0.056, 0.016), "trim", "greeble", 0.0)  # heat sinks
         B.box(((0.15 + xr) / 2, -0.036, zc), (xr - 0.16, 0.008, 0.01), "frame", "frame", 0.0)    # third rail
         B.light_strip(((0.15 + xr) / 2, -0.0405, zc), (xr - 0.2, 0.002, 0.003), "emit")
         B.box((-0.2, 0, 0.0), (0.12, 0.044, 0.03), "panel", "cover", 0.0)
@@ -157,10 +159,10 @@ def breach_canister(B, rng, spec):
     small amber eye, a dark-and-brass banded middle (muted, not orange), and two amber ring slits."""
     L, r = 0.2, 0.058
     B.lathe([(0, -L / 2), (r * 0.6, -L / 2), (r * 0.9, -L / 2 + 0.015), (r, -L / 2 + 0.035), (r, -0.045),
-             (r * 0.94, -0.04), (0, -0.04)], (0, 0, 0), 12, "frame", "frame", axis="X")
+             (r * 0.94, -0.04), (0, -0.04)], (0, 0, 0), 12, "dark", "frame", axis="X")
     B.lathe([(0, 0.04), (r * 0.94, 0.04), (r, 0.045), (r, L / 2 - 0.035), (r * 0.9, L / 2 - 0.015),
-             (r * 0.6, L / 2), (0, L / 2)], (0, 0, 0), 12, "frame", "frame", axis="X")
-    B.cyl((0, 0, 0), r * 0.96, 0.08, "X", 12, "dark", "cover", 0.0)
+             (r * 0.6, L / 2), (0, L / 2)], (0, 0, 0), 12, "dark", "frame", axis="X")
+    B.cyl((0, 0, 0), r * 0.96, 0.08, "X", 12, "internal", "cover", 0.0)
     for k in range(3):
         ob = B.cyl((-0.026 + k * 0.026, 0, 0), r * 0.975, 0.01, "X", 12, "hazard", "cover", 0.0)
         K.rotate(ob, 18, "Z", (-0.026 + k * 0.026, 0, 0))
@@ -171,7 +173,7 @@ def breach_canister(B, rng, spec):
     for k in range(4):
         a = k * math.pi / 2 + math.pi / 4
         for x in (-0.072, 0.072):
-            B.box((x, r * math.cos(a) * 0.98, r * math.sin(a) * 0.98), (0.034, 0.014, 0.014), "panel", "greeble", 0.0)
+            B.box((x, r * math.cos(a) * 0.98, r * math.sin(a) * 0.98), (0.034, 0.014, 0.014), "frame", "greeble", 0.0)
 
 
 # ---------- concept-level blockouts (simple massing only) ----------

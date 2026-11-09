@@ -54,6 +54,52 @@ def _bake(kind, pairs, im, cage, margin=4, pass_filter=None):
         bpy.ops.object.bake(**kw)
 
 
+def _route_bake(mats, socket, use_factor, pairs, im, cage):
+    saved = []
+    for m in mats:
+        nt = m.node_tree
+        p = nt.nodes.get("Principled BSDF")
+        if p is None:
+            continue
+        st = dict(m=m, ec=tuple(p.inputs["Emission Color"].default_value), es=p.inputs["Emission Strength"].default_value,
+                  links=[(l.from_socket, l.to_socket) for l in nt.links if l.to_node == p and l.to_socket.name == "Emission Color"])
+        for l in list(nt.links):
+            if l.to_node == p and l.to_socket.name == "Emission Color":
+                nt.links.remove(l)
+        fac = float(m.get("tfj_metal", 1.0)) if use_factor else 1.0
+        src = p.inputs[socket]
+        if src.links:
+            mm = nt.nodes.new("ShaderNodeMix")
+            mm.name = "__route__"
+            mm.data_type = "RGBA"
+            mm.blend_type = "MULTIPLY"
+            mm.inputs["Factor"].default_value = 1.0
+            nt.links.new(src.links[0].from_socket, mm.inputs[6])
+            mm.inputs[7].default_value = (fac, fac, fac, 1.0)
+            nt.links.new(mm.outputs[2], p.inputs["Emission Color"])
+        else:
+            v = src.default_value
+            col = (v * fac, v * fac, v * fac, 1.0) if isinstance(v, float) else tuple(c * fac for c in v[:3]) + (1.0,)
+            p.inputs["Emission Color"].default_value = col
+        p.inputs["Emission Strength"].default_value = 1.0
+        saved.append(st)
+    _bake("EMIT", pairs, im, cage)
+    for st in saved:
+        m = st["m"]
+        nt = m.node_tree
+        p = nt.nodes.get("Principled BSDF")
+        for l in list(nt.links):
+            if l.to_node == p and l.to_socket.name == "Emission Color":
+                nt.links.remove(l)
+        n = nt.nodes.get("__route__")
+        if n:
+            nt.nodes.remove(n)
+        for a, b in st["links"]:
+            nt.links.new(a, b)
+        p.inputs["Emission Color"].default_value = st["ec"]
+        p.inputs["Emission Strength"].default_value = st["es"]
+
+
 def _px(im):
     a = np.empty(len(im.pixels), dtype=np.float32)
     im.pixels.foreach_get(a)
@@ -61,7 +107,7 @@ def _px(im):
 
 
 def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=0.006, emit_strength=1.0,
-         samples=16, ao_mix=0.55, slot=None, use_high=True):
+         samples=16, ao_mix=0.55, slot=None, use_high=True, ao_dist=None, keep=None):
     """lows: one object or a list sharing one atlas (the operative's rigid nodes)."""
     if not isinstance(lows, (list, tuple)):
         lows = [lows]
@@ -74,6 +120,11 @@ def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=
     # world needed for AO / diffuse
     if sc.world is None:
         sc.world = bpy.data.worlds.new("bake_world")
+    # AO reach scaled to the asset (default 1 m darkened small hero assets almost to black)
+    if ao_dist is None:
+        ext = max(max(o.dimensions) for o in lows)
+        ao_dist = max(0.02, min(0.25, ext * 0.06))
+    sc.world.light_settings.distance = ao_dist
     pairs = []
     for low in lows:
         if not use_high:
@@ -123,8 +174,6 @@ def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=
                 mats.append(m)
     ims = {}
     # ---- passes
-    ims["col"] = _new_image(stem + "_col", size)
-    _bake("DIFFUSE", pairs, ims["col"], cage, pass_filter={"COLOR"})
     ims["nrm"] = _new_image(stem + "_nrm", size, colour=False)
     _bake("NORMAL", pairs, ims["nrm"], cage)
     ims["rgh"] = _new_image(stem + "_rgh", size, colour=False)
@@ -135,49 +184,15 @@ def bake(lows, stem, size=512, out_dir="/tmp/tfj_bake", high_bevel=0.0025, cage=
     sc.cycles.samples = samples
     ims["emi"] = _new_image(stem + "_emi", size)
     _bake("EMIT", pairs, ims["emi"], cage)
-    # metallic: route the (factored) metallic signal into emission for one EMIT bake
-    saved = []
-    for m in mats:
-        nt = m.node_tree
-        p = nt.nodes.get("Principled BSDF")
-        if p is None:
-            continue
-        st = dict(m=m, ec=tuple(p.inputs["Emission Color"].default_value), es=p.inputs["Emission Strength"].default_value,
-                  links=[(l.from_socket, l.to_socket) for l in nt.links if l.to_node == p and l.to_socket.name == "Emission Color"])
-        for l in list(nt.links):
-            if l.to_node == p and l.to_socket.name == "Emission Color":
-                nt.links.remove(l)
-        fac = float(m.get("tfj_metal", 1.0))
-        if p.inputs["Metallic"].links:
-            mm = nt.nodes.new("ShaderNodeMath")
-            mm.name = "__metal__"
-            mm.operation = "MULTIPLY"
-            mm.inputs[1].default_value = fac
-            nt.links.new(p.inputs["Metallic"].links[0].from_socket, mm.inputs[0])
-            nt.links.new(mm.outputs[0], p.inputs["Emission Color"])
-        else:
-            v = p.inputs["Metallic"].default_value
-            p.inputs["Emission Color"].default_value = (v, v, v, 1.0)
-        p.inputs["Emission Strength"].default_value = 1.0
-        saved.append(st)
+    # metallic and base colour: route the signal into emission for an EMIT bake each (Cycles' DIFFUSE COLOR
+    # pass is base colour x (1 - metallic), which darkened every metal surface)
     ims["met"] = _new_image(stem + "_met", size, colour=False)
-    _bake("EMIT", pairs, ims["met"], cage)
-    for st in saved:
-        m = st["m"]
-        nt = m.node_tree
-        p = nt.nodes.get("Principled BSDF")
-        for l in list(nt.links):
-            if l.to_node == p and l.to_socket.name == "Emission Color":
-                nt.links.remove(l)
-        n = nt.nodes.get("__metal__")
-        if n:
-            nt.nodes.remove(n)
-        for a, b in st["links"]:
-            nt.links.new(a, b)
-        p.inputs["Emission Color"].default_value = st["ec"]
-        p.inputs["Emission Strength"].default_value = st["es"]
+    _route_bake(mats, "Metallic", True, pairs, ims["met"], cage)
+    ims["col"] = _new_image(stem + "_col2", size)
+    _route_bake(mats, "Base Color", False, pairs, ims["col"], cage)
     # ---- compose the output set
     col, ao = _px(ims["col"]), _px(ims["ao"])[..., 0]
+    print("BAKE_STATS", stem, "ao_dist", round(ao_dist, 3), "col_mean", float(col[..., :3].mean()), "ao_mean", float(ao.mean()))
     rgh, met = _px(ims["rgh"])[..., 0], _px(ims["met"])[..., 0]
     emi = _px(ims["emi"])
     albedo = col.copy()

@@ -3279,8 +3279,8 @@
    "pivot": "centre of the projectile, travel along +X",
    "material": "lightweight_alloy",
    "tris": 582,
-   "dimensions": "0.20 x 0.13 x 0.13 m (w x h x d)",
-   "notes": "Single node mesh_intact (582 tris) under a root named after the file. Material slots: emit_amber_opr, mat_lightweight_alloy_opr, trim_dark_opr, trim_hazard_opr, trim_rubber_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 33 KB."
+   "dimensions": "0.20 x 0.12 x 0.12 m (w x h x d)",
+   "notes": "Single node mesh_intact (582 tris) under a root named after the file. Material slots: wpn_opr_prj_breach_canister_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 293 KB."
   },
   {
    "id": "OPR-PRJ-KINETIC_SLUG-A",
@@ -3400,7 +3400,7 @@
    "material": "lightweight_alloy",
    "tris": 152,
    "dimensions": "0.07 x 0.04 x 0.04 m (w x h x d)",
-   "notes": "Single node mesh_intact (152 tris) under a root named after the file. Material slots: emit_cyan_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 11 KB."
+   "notes": "Single node mesh_intact (152 tris) under a root named after the file. Material slots: wpn_opr_prj_kinetic_slug_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 117 KB."
   },
   {
    "id": "OPR-WPN-BREACH_CHARGE-A",
@@ -3518,9 +3518,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 896,
-   "dimensions": "0.80 x 0.35 x 0.16 m (w x h x d)",
-   "notes": "Single node mesh_intact (896 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_amber_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_panel, trim_dark_opr, trim_hazard_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 60 KB."
+   "tris": 1064,
+   "dimensions": "0.81 x 0.35 x 0.17 m (w x h x d)",
+   "notes": "Single node mesh_intact (1064 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_breach_charge_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 686 KB."
   },
   {
    "id": "OPR-WPN-BREACH_CHARGE-B",
@@ -3638,9 +3638,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 952,
-   "dimensions": "0.80 x 0.35 x 0.16 m (w x h x d)",
-   "notes": "Single node mesh_intact (952 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_amber_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_dark_opr, trim_hazard_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 64 KB."
+   "tris": 1088,
+   "dimensions": "0.81 x 0.35 x 0.17 m (w x h x d)",
+   "notes": "Single node mesh_intact (1088 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_breach_charge_b. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 706 KB."
   },
   {
    "id": "OPR-WPN-BREACH_CHARGE-C",
@@ -3758,9 +3758,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1104,
-   "dimensions": "0.80 x 0.35 x 0.16 m (w x h x d)",
-   "notes": "Single node mesh_intact (1104 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_amber_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_dark_opr, trim_hazard_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 72 KB."
+   "tris": 1208,
+   "dimensions": "0.81 x 0.35 x 0.17 m (w x h x d)",
+   "notes": "Single node mesh_intact (1208 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_breach_charge_c. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 733 KB."
   },
   {
    "id": "OPR-WPN-DISRUPTOR-A",
@@ -3878,9 +3878,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 160,
+   "tris": 248,
    "dimensions": "0.51 x 0.27 x 0.07 m (w x h x d)",
-   "notes": "Single node mesh_intact (160 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_white_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 17 KB."
+   "notes": "Single node mesh_intact (248 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_disruptor_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 320 KB."
   },
   {
    "id": "OPR-WPN-KINETIC_ACCELERATOR-A",
@@ -3998,9 +3998,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1380,
-   "dimensions": "0.91 x 0.28 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1380 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_cyan_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_accent, mat_lightweight_alloy_opr_frame, trim_dark_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 82 KB."
+   "tris": 1460,
+   "dimensions": "0.97 x 0.30 x 0.08 m (w x h x d)",
+   "notes": "Single node mesh_intact (1460 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 817 KB."
   },
   {
    "id": "OPR-WPN-KINETIC_ACCELERATOR-B",
@@ -4118,9 +4118,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1528,
-   "dimensions": "0.95 x 0.28 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1528 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_cyan_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_accent, mat_lightweight_alloy_opr_frame, trim_dark_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 90 KB."
+   "tris": 1664,
+   "dimensions": "1.02 x 0.30 x 0.08 m (w x h x d)",
+   "notes": "Single node mesh_intact (1664 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_b. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 849 KB."
   },
   {
    "id": "OPR-WPN-KINETIC_ACCELERATOR-C",
@@ -4238,9 +4238,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 1760,
-   "dimensions": "0.99 x 0.29 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (1760 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_cyan_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_accent, mat_lightweight_alloy_opr_frame, trim_cable_opr, trim_dark_opr, trim_internal_opr, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 103 KB."
+   "tris": 1916,
+   "dimensions": "1.08 x 0.30 x 0.08 m (w x h x d)",
+   "notes": "Single node mesh_intact (1916 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_kinetic_accelerator_c. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 910 KB."
   },
   {
    "id": "OPR-WPN-PENETRATOR-A",
@@ -4358,9 +4358,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 152,
-   "dimensions": "1.05 x 0.22 x 0.06 m (w x h x d)",
-   "notes": "Single node mesh_intact (152 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_cyan_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 15 KB."
+   "tris": 240,
+   "dimensions": "1.05 x 0.21 x 0.06 m (w x h x d)",
+   "notes": "Single node mesh_intact (240 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_penetrator_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 339 KB."
   },
   {
    "id": "OPR-WPN-PULSE_CANNON-A",
@@ -4478,9 +4478,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 576,
+   "tris": 664,
    "dimensions": "0.53 x 0.28 x 0.16 m (w x h x d)",
-   "notes": "Single node mesh_intact (576 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_cyan_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 31 KB."
+   "notes": "Single node mesh_intact (664 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_pulse_cannon_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 810 KB."
   },
   {
    "id": "OPR-WPN-TEMPORAL_LANCE-A",
@@ -4598,9 +4598,9 @@
    ],
    "pivot": "weapon grip (hand contact); barrel along +X; muzzle empty at the bore exit",
    "material": "lightweight_alloy",
-   "tris": 640,
-   "dimensions": "1.10 x 0.22 x 0.08 m (w x h x d)",
-   "notes": "Single node mesh_intact (640 tris) under a root named after the file. Marker empties: muzzle. Material slots: emit_white_opr, mat_lightweight_alloy_opr, mat_lightweight_alloy_opr_frame, trim_rubber_opr, trim_trim_opr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 35 KB."
+   "tris": 728,
+   "dimensions": "1.10 x 0.21 x 0.08 m (w x h x d)",
+   "notes": "Single node mesh_intact (728 tris) under a root named after the file. Marker empties: muzzle. Material slots: wpn_opr_wpn_temporal_lance_a. Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 551 KB."
   },
   {
    "id": "VTA-ENV-BACK_WALL-A",
@@ -27726,6 +27726,34 @@
    "used_by": "review only",
    "chapter": "shared",
    "dimensions": "1280x1102",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "OPR-PRV-WEAPONS-OPR_WEAPONS_SHOWCASE_GRADED",
+   "path": "generated_assets/weapons/previews/opr_weapons_showcase_graded.webp",
+   "category": "weapons",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "shared",
+   "dimensions": "1152x648",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "OPR-PRV-WEAPONS-OPR_WEAPONS_SHOWCASE_MISSIONVIEW",
+   "path": "generated_assets/weapons/previews/opr_weapons_showcase_missionview.webp",
+   "category": "weapons",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "shared",
+   "dimensions": "1152x648",
    "approval_status": "pending_review"
   },
   {

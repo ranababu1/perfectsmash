@@ -28,6 +28,12 @@ MATNOTE_TEX = ("Premium pass (2026-11-10): every slot is textured from the surfa
                "faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit).")
 
 
+WPNNOTE = ("Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: "
+           "albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone "
+           "surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); "
+           "per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket).")
+
+
 def matnote(ch):
     return MATNOTE_TEX if ch in PREMIUM else MATNOTE
 
@@ -133,7 +139,7 @@ def env_entries(st):
         e["depth_m"] = st["depth_m"]
     notes = [f"Single node mesh_intact ({t} tris) under a root named after the file.",
              f"Material slots: {', '.join(st['materials'])}.",
-             matnote(ch), "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
+             (WPNNOTE if cat == "weapons" else matnote(ch)), "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
              DESIGN]
     if st.get("fx"):
         notes.insert(1, f"Marker empties: {', '.join(st['fx'])}.")

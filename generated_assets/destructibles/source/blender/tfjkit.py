@@ -50,7 +50,7 @@ PALETTES = {
                      concrete="6a6b74", polymer="dcdee6", accent="6c6a86", metal=0.28, rough=0.32,
                      emit={"violet": "8f7cff", "cyan": "7fe8ff", "white": "f0f0ff", "red": "ff3b4e"}),
 }
-PALETTES["arsenal"] = dict(hazard="8a7440", key="5f666f", frame="3c4249", panel="6a727b", trim="a7afb7",
+PALETTES["arsenal"] = dict(hazard="8a7440", key="40464d", frame="2d3137", panel="474e56", trim="7d858d",
                            internal="15171a", rubber="202226", cable="23262a", light="b8c0c8", dark="282c31",
                            scorch="101011", concrete="70747a", polymer="d8dce0", accent="2f3338", edge="c2cad2",
                            metal=0.22,
@@ -77,7 +77,8 @@ def set_ctx(chapter, material, emit=None, emit2=None, glass="clear"):
     pal = PALETTES[chapter]
     names = list(pal["emit"].keys())
     CTX.update(chapter=chapter, material=material, emit=emit or names[0], emit2=emit2 or names[-1],
-               glass=glass, value=1.0, main_zone=None, vcol=True, textures=True, floor_layer=False, matte=None)
+               glass=glass, value=1.0, main_zone=None, vcol=True, textures=True, floor_layer=False, matte=None,
+               baking=False)
 
 
 def hexcol(h, a=1.0):

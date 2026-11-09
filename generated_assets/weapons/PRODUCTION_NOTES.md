@@ -28,3 +28,32 @@ The Godot mount check is `characters/PRODUCTION_NOTES.md` (`char_check.gd`).
 ## Rights
 
 This is original procedural work. The scripted Blender code was written by the 3d-kits asset agent (AI-assisted authorship). The form language follows the project concept frames SV-02 and SV-03; no concept pixels are used. Ownership is not legally settled, and nothing is marked commercially cleared.
+
+## Premium uplift pass (2026-11-10)
+
+All 12 weapon and projectile files were rebuilt in place. Ids and file names are unchanged.
+
+- **Kinetic Accelerator A to C (SV-02).** A coilgun silhouette rather than a rifle:
+  - a sweeping upper spine with a receiver hump, an optic block and a side ammo readout;
+  - an exposed, larger ribbed coil stack between collars, with a glowing feed ring;
+  - a lower rail with a cyan line, a forward bracket and a thicker ported muzzle;
+  - a thumbhole stock with a real triangular opening.
+  - Tier B adds a capacitor pack and cable. Tier C adds heat sinks, a third rail and a second capacitor.
+- **Breach Charge A to C (SV-03).**
+  - Layered gunmetal plates, an octagonal side drum with a bolted bezel and an amber-ringed core, and a loop bracket with amber slots.
+  - The muted hazard inlay is shorter, and there is a carry handle and belly louvres.
+  - Amber is limited to slots, rings and small lights.
+  - The canister has dark end caps with panel blocks, three muted diagonal hazard bands and two amber ring slits.
+- **Grip.** One shared grip on every weapon: raked, with finger ridges, a trigger guard, a trigger and a thumb rest. The grip origin is unchanged, so weapon_socket mounting is the same.
+- **Materials.**
+  - Each file embeds one baked set (512 for weapons, 256 for projectiles) in a single slot, `wpn_<stem>`.
+  - The bake routes base colour and metallic through emission bakes, because Cycles' diffuse colour pass darkens metals. AO is baked at an asset-scaled distance.
+  - The palette was tuned against the Godot MissionView frame, not the Cycles preview. Godot shows these greys lighter than Cycles does.
+- **Budgets.** Every file is within budget: KA 1,460 / 1,664 / 1,916 tris, Breach 1,064 / 1,088 / 1,208, canister 582, slug 152. The glbs are 0.1 to 0.9 MB.
+- **Checks.** The Godot 4.7.2 GL Compatibility lineup loads 12 of 12 files.
+- **Previews.**
+  - `previews/opr_weapons_showcase_missionview.webp`: MissionView lighting, the honest in-game read.
+  - `previews/opr_weapons_showcase_graded.webp`: the showcase grade. Its reflection sky lifts the metals.
+  - `previews/opr_weapons_sheet.webp`: Cycles.
+  - The layout is `environments/showcase/weapons_showcase_layout.json`.
+- **Limit.** The self-bake keeps the zone surfaces but not the library normal detail: the normal map is close to flat. Real normal detail would need a high-poly sculpt pass.

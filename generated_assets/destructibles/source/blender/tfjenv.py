@@ -45,9 +45,14 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
     scale_value(ob, spec.get("value", 1.0))
     if spec.get("bake"):  # hero assets: one unique baked set (contract 11), no COLOR_0
         import tfjbake
+        for c in bpy.data.collections:  # the builder parts overlap the packed mesh: hide them from the bake rays
+            c.hide_render = True
+            c.hide_viewport = True
+        K.CTX["baking"] = True
         K.materialise([ob])
         tfjbake.bake(ob, sid, spec["bake"], emit_strength=spec.get("emit_strength", 1.6),
-                     high_bevel=spec.get("high_bevel", 0.0025), cage=spec.get("cage", 0.006))
+                     high_bevel=spec.get("high_bevel", 0.0025), cage=spec.get("cage", 0.006),
+                     use_high=spec.get("bake_high", False), ao_mix=spec.get("ao_mix", 0.4))
         K.CTX["vcol"] = False
     for c in bpy.data.collections:
         c.hide_render = True
