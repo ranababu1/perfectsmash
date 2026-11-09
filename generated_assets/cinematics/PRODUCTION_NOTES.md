@@ -14,7 +14,7 @@ All entries are `pending_review`. Masters (1920 x 1080 PNG) and the source log a
 | `subtitles/` | One `.srt` per sequence and `subtitles.json` (cue start and end per slide) |
 | `previews/` | Contact sheets; the yellow line on each frame marks the top of the subtitle band (lower 18%) |
 
-Loading art (`<CH>-BG-LOADING-A`), the main menu backdrop (`GAM-BG-MAIN_MENU-A`) and the five chapter transition cards (`<CH>-BG-TRANSITION-A`) are in `../environments/screens/`. Sequences without their own end card plate use the chapter transition card behind the in-engine end title.
+Loading art (`<CH>-BG-LOADING-A`), an alternative main menu backdrop (`GAM-BG-MAIN_MENU-B`; `-A` is the ui-vfx stream's backdrop, so this one took `-B` to keep ids unique) and the five chapter transition cards (`<CH>-BG-TRANSITION-A`) are in `../environments/screens/`. Sequences without their own end card plate use the chapter transition card behind the in-engine end title.
 
 ## Using the sequence file
 
@@ -32,7 +32,7 @@ The `teaser_2041` sequence is new and not in `data/cinematics.json`. Its four li
 ## Delivery status
 
 - Delivered and checked: `opening`, `ch01_intro` to `ch04_outro`, `ch05_intro` and `finale` (11 sequences, 48 stills including the opening and finale end cards). Godot 4.7.2 check (scratch project with a copy of `scripts/`, `godot --headless --script res://check.gd -- cinematic_sequences.json`): 11 sequences, errors 0, missing images 0. Civitas outro, Meridian intro and the finale are new in batch 8.
-- In progress: `teaser_2041` (two of four stills upscaled; the sequence and its `.srt` are written once all four exist), loading art, main menu and transition cards.
+- Batch 9: `teaser_2041` (four stills, sequence and `.srt`), the five loading screens, the main menu backdrop and the five transition cards. All 63 planned stills and screens are now delivered (12 sequences). Godot check rerun: 12 sequences, errors 0, missing images 0 (teaser 4 slides, 23.6 s). The VITA loading screen and transition card are bright in the lower band (white architecture, light streaks, in the VITA palette); put loading text or a progress bar on a dark scrim there. Screens carry no subtitle band rule, so they were not graded.
 - Subtitle timing fix: cue times are rounded to whole milliseconds first and then split into hours, minutes, seconds and milliseconds, so a start such as 20.9999 s is written `00:00:21,000` (pass 16 report). All `.srt` files were regenerated with it; every timestamp has three millisecond digits and seconds below 60.
 - Band check: four stills with busy lower bands (`CVT-CIN-INTRO-03`, `MRD-CIN-INTRO-03`, `GAM-CIN-FINALE-05`, `-06`) were graded darker; their bands stay textured but dark (band mean 0.06 to 0.09, no bright pixels above the threshold except 1.8% on `FINALE-06`), so white subtitles stay readable. Values are in the masters `band_report.json`.
 

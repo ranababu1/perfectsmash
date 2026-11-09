@@ -129,7 +129,8 @@
    ],
    "end_card": {
     "title": "CHAPTER 01",
-    "subtitle": "THE MACHINE THAT DECIDED"
+    "subtitle": "THE MACHINE THAT DECIDED",
+    "image": "res://generated_assets/environments/screens/hlx_bg_transition_a.webp"
    }
   },
   {
@@ -169,7 +170,8 @@
    ],
    "end_card": {
     "title": "TIMELINE SHIFT DETECTED",
-    "subtitle": "NEXT: THE PRICE OF PERFECTION"
+    "subtitle": "NEXT: THE PRICE OF PERFECTION",
+    "image": "res://generated_assets/environments/screens/hlx_bg_transition_a.webp"
    }
   },
   {
@@ -227,7 +229,8 @@
    ],
    "end_card": {
     "title": "CHAPTER 02",
-    "subtitle": "THE PRICE OF PERFECTION"
+    "subtitle": "THE PRICE OF PERFECTION",
+    "image": "res://generated_assets/environments/screens/vta_bg_transition_a.webp"
    }
   },
   {
@@ -275,7 +278,8 @@
    ],
    "end_card": {
     "title": "TWO SYSTEMS",
-    "subtitle": "ONE UNKNOWN SOURCE"
+    "subtitle": "ONE UNKNOWN SOURCE",
+    "image": "res://generated_assets/environments/screens/vta_bg_transition_a.webp"
    }
   },
   {
@@ -315,7 +319,8 @@
    ],
    "end_card": {
     "title": "CHAPTER 03",
-    "subtitle": "THE ENERGY BENEATH"
+    "subtitle": "THE ENERGY BENEATH",
+    "image": "res://generated_assets/environments/screens/nvg_bg_transition_a.webp"
    }
   },
   {
@@ -354,7 +359,8 @@
    ],
    "end_card": {
     "title": "SIGNAL ORIGIN: UNKNOWN",
-    "subtitle": "TIMESTAMP: INCONSISTENT"
+    "subtitle": "TIMESTAMP: INCONSISTENT",
+    "image": "res://generated_assets/environments/screens/nvg_bg_transition_a.webp"
    }
   },
   {
@@ -394,7 +400,8 @@
    ],
    "end_card": {
     "title": "CHAPTER 04",
-    "subtitle": "THE QUIET CAGE"
+    "subtitle": "THE QUIET CAGE",
+    "image": "res://generated_assets/environments/screens/cvt_bg_transition_a.webp"
    }
   },
   {
@@ -442,7 +449,8 @@
    ],
    "end_card": {
     "title": "FOUR PATHS",
-    "subtitle": "ONE DESTINATION"
+    "subtitle": "ONE DESTINATION",
+    "image": "res://generated_assets/environments/screens/cvt_bg_transition_a.webp"
    }
   },
   {
@@ -482,7 +490,8 @@
    ],
    "end_card": {
     "title": "CHAPTER 05",
-    "subtitle": "THE CONVERGENCE"
+    "subtitle": "THE CONVERGENCE",
+    "image": "res://generated_assets/environments/screens/mrd_bg_transition_a.webp"
    }
   },
   {
@@ -562,6 +571,55 @@
     "subtitle": "YOU SAVED TOMORROW. NOW FIND OUT WHAT STARTED IT.",
     "image": "res://generated_assets/cinematics/finale/gam_cin_finale_endcard_01.webp"
    }
+  },
+  {
+   "id": "teaser_2041",
+   "title": "The First Mistake",
+   "theme": "meridian",
+   "end_card": {
+    "title": "",
+    "subtitle": "",
+    "image": "res://generated_assets/environments/screens/mrd_bg_transition_a.webp"
+   },
+   "slides": [
+    {
+     "speaker": "narrator",
+     "subtitle": "2041. An ordinary morning. Nobody knows what is about to begin.",
+     "motion": "pull_back",
+     "slide_id": "GAM-CIN-TEASER_2041-01",
+     "image": "res://generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_01.webp",
+     "duration": 5.6,
+     "vo_line": "2041. An ordinary morning. Nobody knows what is about to begin."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "In a university laboratory, a small machine is switched on for the first time.",
+     "motion": "push_in",
+     "slide_id": "GAM-CIN-TEASER_2041-02",
+     "image": "res://generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_02.webp",
+     "duration": 6.8,
+     "vo_line": "In a university laboratory, a small machine is switched on for the first time."
+    },
+    {
+     "speaker": "control",
+     "subtitle": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+     "motion": "static",
+     "slide_id": "GAM-CIN-TEASER_2041-03",
+     "image": "res://generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_03.webp",
+     "duration": 5.6,
+     "vo_line": "Temporal arrival confirmed. You are earlier than anyone has ever gone."
+    },
+    {
+     "speaker": "narrator",
+     "subtitle": "Every future you saved began here. Season two: The First Mistake.",
+     "motion": "push_in",
+     "slide_id": "GAM-CIN-TEASER_2041-04",
+     "image": "res://generated_assets/cinematics/teaser_2041/gam_cin_teaser_2041_04.webp",
+     "duration": 5.6,
+     "vo_line": "Every future you saved began here. Season two: The First Mistake."
+    }
+   ],
+   "notes": "Proposed teaser; subtitle and VO lines are drafts pending writer review."
   }
  ]
 }

@@ -65,6 +65,16 @@ What the renders show, for review:
 - Meridian excavation (band 1 and V1) is the brightest set and competes most with the greybox blocks. If it is too strong once real components are in, lower the card `albedo_color` to about 0.8.
 - The Meridian convergence mid and near cards were regenerated after review (the first pair read as clay renders and did not sit in the night light).
 
+## Helix review (batch 9)
+
+Every Helix set was checked against the chapter brief (Helix Systems AI infrastructure: server halls, data-centre architecture, cooling, cold steel and cyan with orange warnings) and the SV-04 style frame. Changes, same ids and paths:
+
+- Band 2 logistics: the first far, mid and near plates read as a cargo port (container cranes over water, grab claws, shipping containers). All three were regenerated as data-centre logistics: a server-hall campus with an enclosed rack conveyor and lit dock doors on the far plate, a rack storage tower and a conveyor bridge into a dock on the mid card, and an overhead rack carrier, sealed server crates on a pallet mover and a cable column on the near card.
+- Band 3 cooling: the far plate showed round power-station cooling towers and solar fields, and the near card had a smokestack, so the set read as a power plant (and too close to Nova Grid). Regenerated: the far plate is a server-hall cooling yard with rooftop dry coolers and square evaporative towers; the near card is an insulated coolant manifold and a dry-cooler unit. The mid card (chillers and pipe bridge) was kept. A second far attempt was rejected because its high camera put the ground edge well below the horizon.
+- Band 4 core: contract 10 asks for a quiet band behind the critical asset. The near card was regenerated with an empty low middle third (the earlier card had a tall tower in the centre and a red beacon mast). The mid card, the band 4 far and the V2 far now get a quiet-centre pass in `bg.py`: across the middle 30 % of the card (8 % feather) local contrast is reduced, red light is desaturated and bright emission is pulled down. The far plates keep their detail (a lighter pass); the cyan core tower on the far plate is dimmed, not removed.
+- Bands 1, V1 and V2 were in brief and were kept.
+- `bg_godot.py HLX_1 HLX_2 HLX_3 HLX_4 HLX_V1 HLX_V2` was rerun: import rc 0, six `BGRENDER game_hlx_*` lines, render rc 0, no ERROR lines. `previews/godot_helix_sets.webp` and `previews/contact_helix_sets.webp` were regenerated.
+
 
 ## Environment modules, statics, props and landmarks (3d-kits stream)
 
