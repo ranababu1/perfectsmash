@@ -176,3 +176,25 @@ The owner has explicitly approved a major gameplay revision. This section and th
 
 ### Documentation and status discipline
 Update `plan.md`, `currentstate.md` and `changelog.md` when these decisions affect implementation. Update `level-design-spec.md` for weapon, shot-budget, target and scoring constraints. Update visual/art guidance for the angled operative/weapon/institution identity. Describing an approved feature does not mean it is implemented; mark it planned until code and tests prove otherwise.
+
+## 11. Batch 5 working rules (2026-11-10)
+
+### Physics tolerances
+- Pure scoring maths is deterministic: exact-value tests (`test_scoring.gd` golden breakdown).
+- Godot 2D physics is repeatable for identical input on one platform but not bit-identical across platforms (Windows vs Android emulator: 0.4516 vs 0.4519 structural damage, +1 physics frame). Physics tests assert damage-state categories, exact equality only within one run, and the scripted replay within ±0.01 structural damage and ±15 Mission Points of the Windows reference (`tests/test_mission_world.gd`).
+- Do not force bit-identical physics at the cost of gameplay. Future leaderboard validation uses plausibility bounds per score term, not server re-simulation.
+- Re-measure the replay reference (`tools/regression/score_replay.tscn`) whenever physics, materials or the Helix layout change, and record the commit in the test comment.
+
+### Balance evidence
+- Gameplay tuning must be backed by the probes: `tools/regression/tactics_probe.gd` (Breach/Kinetic sweeps), `collapse_probe.gd` (core damage by cause), `rack_comparison.gd --sweep` (layout variants, kinetic-only finish aimed with the arc preview). Layout variants live in `probe_layouts.gd`; the shipped data is never edited by a probe.
+- Report what the probe measured, including results that contradict a proposal.
+
+### Renderer and device benchmarks
+- Build eval copies with `tools/renderer_eval/make_eval_project.py --main res://tools/renderer_eval/mission_benchmark.tscn`. Record the source commit, check that `adb install` printed `Success`, and record the package `lastUpdateTime`. A run on a stale install is not evidence.
+- Keep logs and JSON reports under `docs/benchmarks/<date>-<topic>/`. Emulator results are smoke tests; never report them as physical-device validation.
+
+### Assets from the `assets` branch
+- `assets` is owned by the asset stream. Never merge it into `main`, never modify or delete it.
+- Integrate only owner-approved files, selected individually (`git checkout origin/assets -- <path>`), at their delivered `generated_assets/...` paths, keeping their manifest ids. Carry the manifest entries (rights, approval status, source) with them.
+- Development integration is not commercial clearance: never change `rights_status` or `approval_status` to cleared.
+- The asset contract (`generated_assets/docs/ASSET_CONTRACT.md`) is binding for scale, axes, pivots, depth, material slots and damage-state nodes.

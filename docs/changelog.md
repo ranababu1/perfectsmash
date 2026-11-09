@@ -2,6 +2,20 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Batch 5: approved rules, rack comparison, physics fix, renderer validation
+
+- `81fefdc` Save schema v4: `best_points` from successful runs only, `best_attempt_points` for any run, `attempts`/`completions` (migrated records flagged `counts_since_upgrade`, counts not fabricated). Migration and round-trip tests.
+- `77a9fb5` Blast occlusion on, `blast_transmission` per material in data; load-aware knockback on; `structural_resistance` (optional) and the `ai_core_module` core housing; blast wall 90 px, core ×3.0; collapse probe, preview-style aim helper; replay sequences re-measured.
+- `9beb178` Economy simulation driven by `tools/economy/economy_assumptions.json` (prices unchanged).
+- `71f8946` `data/audio.json` + `AudioCatalog`; `AudioService` file variants with procedural fallback and material-aware impacts; `MusicDirector.play_cue`; `impact_happened` carries the component id.
+- `c97d4c1` Renderer benchmark on the real Helix 3D scene (`mission_benchmark`).
+- `9f773fd`, `6ce8c8e`, `503347c` Hitch fixes: effects warmed at load, component emission always enabled, pooled blast lights and flash meshes. Compatibility worst frame in the breach scenario 1113 ms → 38 ms; Mobile 971 ms → ≤103 ms (emulator).
+- `7e42a91` Rack comparison (5 layouts × 112 Breach trajectories + kinetic angles, screenshots); `9cfee96`/`2a2c935` chosen layout: racks 3-4 beside the right column, 1-2 at full height beyond the relay mast.
+- `2a2c935` Physics: resting contacts no longer count as impacts (a resting released blast wall reported 154 per frame and blocked settling); core `structural_resistance` 0.5 → 0.42; single-charge core kills 0/112, every collapse leaves the core critical, one kinetic round finishes it. Regression test.
+- `6219946` Benchmark spike log with recent gameplay events; switch to run without blast lights.
+- Git: the six commits after `44a4664` were rewritten (by the owner's request) to remove AI co-author trailers; no force push was made from this session.
+- Results: headless 185 passed / 0 failed / 1 skipped; emulator benchmarks from freshly installed builds of `503347c` (logs in `docs/benchmarks/2026-11-10-helix-mission/`). Physical-device validation still pending.
+
 ## 2026-11-09 — Batch 5 pre-work review (findings; rule changes pending approval)
 
 - `33dd17f` Accuracy tests: multi-component blast, chain reaction, shot through a destroyed component, empty detonation, two shots.
