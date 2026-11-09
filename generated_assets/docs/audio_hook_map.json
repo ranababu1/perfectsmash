@@ -367,26 +367,64 @@
   {
    "music_cue": "helix_gameplay",
    "code_file": "res://assets/audio/music/gameplay_bed.ogg",
-   "status": "code_file_only",
-   "files": [],
-   "asset_ids": []
+   "status": "delivered",
+   "files": [
+    "res://generated_assets/audio/music/helix/hlx_mus_gameplay_tension.ogg"
+   ],
+   "asset_ids": [
+    "HLX-MUS-GAMEPLAY-TENSION"
+   ]
   },
   {
    "music_cue": "menu",
    "code_file": "",
-   "status": "missing",
-   "files": [],
-   "asset_ids": []
+   "status": "delivered",
+   "files": [
+    "res://generated_assets/audio/music/shared/gam_mus_menu_01.ogg"
+   ],
+   "asset_ids": [
+    "GAM-MUS-MENU-01"
+   ]
   },
   {
    "music_cue": "cinematic",
    "code_file": "",
-   "status": "missing",
-   "files": [],
-   "asset_ids": []
+   "status": "delivered",
+   "files": [
+    "res://generated_assets/audio/music/shared/gam_mus_opening_01.ogg"
+   ],
+   "asset_ids": [
+    "GAM-MUS-OPENING-01"
+   ]
   }
  ],
- "music_cues_delivered_not_in_code": [],
+ "music_cues_delivered_not_in_code": [
+  "civitas_boss",
+  "civitas_combat",
+  "civitas_gameplay",
+  "civitas_intro",
+  "civitas_outro",
+  "ending",
+  "helix_boss",
+  "helix_combat",
+  "helix_intro",
+  "helix_outro",
+  "meridian_boss",
+  "meridian_combat",
+  "meridian_gameplay",
+  "meridian_intro",
+  "meridian_outro",
+  "nova_grid_boss",
+  "nova_grid_combat",
+  "nova_grid_gameplay",
+  "nova_grid_intro",
+  "nova_grid_outro",
+  "vita_boss",
+  "vita_combat",
+  "vita_gameplay",
+  "vita_intro",
+  "vita_outro"
+ ],
  "ambience_cues_not_in_code": [
   {
    "ambience_cue": "civitas_control",
@@ -619,6 +657,16 @@
   "concrete": "impact_concrete"
  },
  "audio_entries_without_hook_id": [
+  "CVT-MUS-CRITICAL_LAYER-01",
+  "CVT-MUS-GAMEPLAY-PREP",
+  "CVT-MUS-THEME-01",
+  "CVT-MUS-TRANSITION-STINGER",
+  "GAM-MUS-DEFEAT-MISSION",
+  "GAM-MUS-MAIN_THEME-01",
+  "GAM-MUS-TEASER-01",
+  "GAM-MUS-TRANSITION-TIMELINE_SHIFT",
+  "GAM-MUS-VICTORY-CHAPTER",
+  "GAM-MUS-VICTORY-MISSION",
   "GAM-SFX-UI_ACHIEVEMENT-01",
   "GAM-SFX-UI_ERROR-01",
   "GAM-SFX-UI_ERROR-02",
@@ -627,7 +675,19 @@
   "GAM-SFX-UI_UPGRADE_T1-01",
   "GAM-SFX-UI_UPGRADE_T2-01",
   "GAM-SFX-UI_UPGRADE_T3-01",
+  "HLX-MUS-CRITICAL_LAYER-01",
+  "HLX-MUS-GAMEPLAY-PREP",
+  "HLX-MUS-THEME-01",
+  "HLX-MUS-TRANSITION-STINGER",
+  "MRD-MUS-CRITICAL_LAYER-01",
+  "MRD-MUS-GAMEPLAY-PREP",
+  "MRD-MUS-THEME-01",
+  "MRD-MUS-TRANSITION-STINGER",
   "MUSIC-GAMEPLAY-BED",
+  "NVG-MUS-CRITICAL_LAYER-01",
+  "NVG-MUS-GAMEPLAY-PREP",
+  "NVG-MUS-THEME-01",
+  "NVG-MUS-TRANSITION-STINGER",
   "OPR-SFX-BREACH_ARM-01",
   "OPR-SFX-BREACH_ARM-02",
   "OPR-SFX-BREACH_ARM-03",
@@ -679,6 +739,10 @@
   "SHR-SFX-METAL_STRESS-01",
   "SHR-SFX-METAL_STRESS-02",
   "SHR-SFX-METAL_STRESS-03",
-  "SHR-SFX-METAL_STRESS-04"
+  "SHR-SFX-METAL_STRESS-04",
+  "VTA-MUS-CRITICAL_LAYER-01",
+  "VTA-MUS-GAMEPLAY-PREP",
+  "VTA-MUS-THEME-01",
+  "VTA-MUS-TRANSITION-STINGER"
  ]
 }
