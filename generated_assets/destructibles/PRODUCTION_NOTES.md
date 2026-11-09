@@ -83,3 +83,11 @@ Revision of the 22 Helix components and their debris sets in place. File names a
 - Tris: 256 to 2,104 intact (the gene vault core is critical, under 3,000). Debris sets stay within 1.5x. IDs unchanged.
 - Godot 4.7.2 `kit_lineup.gd`: 34/34 component and debris files load, COLOR_0 present on all 34.
 - Previews (after): `previews/vta_components_sheet.webp` (Cycles). Before: the same path at commit `9091af3`.
+
+## Premium uplift, Nova Grid batch (2026-11-10)
+
+- Nova Grid components (13) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_nvg` and `trim_module_nvg` slots with fit UVs, and heavy-industrial secondary detail from the new premium block in `kits/nova_grid.py`: flange bolts and a cable run on the pylons, a cable loom along the bridge tops, bolts and amber status pips on the transformers, roof louvres on the cooling towers, ring bolts, capacitor top hatches and pips, wall hatches and looms, and base bolts on the reactor core.
+- The cable bridge loom first hung below the collision rectangle (validator: origin not centred); it now runs along the top and both bridges pass.
+- Tris: 532 to 1,612 intact (reactor core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 26/26 component and debris files load, COLOR_0 on all 26.
+- Previews (after): `previews/nvg_components_sheet.webp` (Cycles). Before: the same path at commit `023939a`.

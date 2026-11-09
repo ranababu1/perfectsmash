@@ -2408,9 +2408,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 664,
+   "tris": 1016,
    "dimensions": "4 x 6 x 0.6 m (w x h x d)",
-   "notes": "Single node mesh_intact (664 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, trim_dark_nvg, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 52 KB."
+   "notes": "Single node mesh_intact (1016 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, glass_smoked_nvg, mat_concrete_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 100 KB."
   },
   {
    "id": "NVG-ENV-BACK_WALL-B",
@@ -2450,7 +2450,7 @@
    "material": "concrete",
    "tris": 276,
    "dimensions": "4 x 6 x 0.6 m (w x h x d)",
-   "notes": "Single node mesh_intact (276 tris) under a root named after the file. Material slots: emit_amber_nvg, glass_smoked_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 25 KB."
+   "notes": "Single node mesh_intact (276 tris) under a root named after the file. Material slots: emit_amber_nvg, glass_smoked_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_dark_nvg, trim_edge_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 34 KB."
   },
   {
    "id": "NVG-ENV-CATWALK-A",
@@ -2488,9 +2488,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "reinforced_steel",
-   "tris": 792,
+   "tris": 1212,
    "dimensions": "4 x 1.6 x 1.2 m (w x h x d)",
-   "notes": "Single node mesh_intact (792 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_frame, trim_cable_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 60 KB."
+   "notes": "Single node mesh_intact (1212 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_frame, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 113 KB."
   },
   {
    "id": "NVG-ENV-CEILING_TRUSS-A",
@@ -2530,7 +2530,7 @@
    "material": "reinforced_steel",
    "tris": 1116,
    "dimensions": "8 x 0.88 x 0.8 m (w x h x d)",
-   "notes": "Single node mesh_intact (1116 tris) under a root named after the file. Material slots: emit_white_nvg, mat_reinforced_steel_nvg, trim_cable_nvg, trim_dark_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 81 KB."
+   "notes": "Single node mesh_intact (1116 tris) under a root named after the file. Material slots: emit_white_nvg, mat_reinforced_steel_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 102 KB."
   },
   {
    "id": "NVG-ENV-FLOOR_TILE-A",
@@ -2570,7 +2570,7 @@
    "material": "reinforced_steel",
    "tris": 116,
    "dimensions": "1 x 0.3 x 1 m (w x h x d)",
-   "notes": "Single node mesh_intact (116 tris) under a root named after the file. Material slots: mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 11 KB."
+   "notes": "Single node mesh_intact (116 tris) under a root named after the file. Material slots: mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_edge_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 17 KB."
   },
   {
    "id": "NVG-ENV-FLOOR_TILE-B",
@@ -2610,7 +2610,7 @@
    "material": "reinforced_steel",
    "tris": 1724,
    "dimensions": "4 x 0.3 x 4 m (w x h x d)",
-   "notes": "Single node mesh_intact (1724 tris) under a root named after the file. Material slots: mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_hazard_nvg, trim_rubber_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 127 KB."
+   "notes": "Single node mesh_intact (1724 tris) under a root named after the file. Material slots: mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_rubber_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 159 KB."
   },
   {
    "id": "NVG-ENV-FLOOR_TRENCH-A",
@@ -2650,7 +2650,7 @@
    "material": "reinforced_steel",
    "tris": 1180,
    "dimensions": "4 x 0.3 x 4 m (w x h x d)",
-   "notes": "Single node mesh_intact (1180 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 90 KB."
+   "notes": "Single node mesh_intact (1180 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 115 KB."
   },
   {
    "id": "NVG-ENV-LEDGE_STATIC-A",
@@ -2695,7 +2695,7 @@
     30
    ],
    "depth_m": 1.6,
-   "notes": "Single node mesh_intact (232 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 21 KB."
+   "notes": "Single node mesh_intact (232 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 27 KB."
   },
   {
    "id": "NVG-ENV-LOW_WALL-A",
@@ -2733,9 +2733,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 376,
+   "tris": 532,
    "dimensions": "4 x 1.1 x 0.46 m (w x h x d)",
-   "notes": "Single node mesh_intact (376 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_panel, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 29 KB."
+   "notes": "Single node mesh_intact (532 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, glass_smoked_nvg, mat_concrete_nvg, mat_concrete_nvg_panel, trim_dark_nvg, trim_edge_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 54 KB."
   },
   {
    "id": "NVG-ENV-MASSING_BLOCK-A",
@@ -2773,9 +2773,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 284,
+   "tris": 524,
    "dimensions": "6 x 10 x 4 m (w x h x d)",
-   "notes": "Single node mesh_intact (284 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 23 KB."
+   "notes": "Single node mesh_intact (524 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 50 KB."
   },
   {
    "id": "NVG-ENV-MASSING_TOWER-B",
@@ -2813,9 +2813,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 360,
+   "tris": 600,
    "dimensions": "3 x 14 x 3 m (w x h x d)",
-   "notes": "Single node mesh_intact (360 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 28 KB."
+   "notes": "Single node mesh_intact (600 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 57 KB."
   },
   {
    "id": "NVG-ENV-PILLAR-A",
@@ -2853,9 +2853,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 412,
+   "tris": 516,
    "dimensions": "0.96 x 6 x 0.96 m (w x h x d)",
-   "notes": "Single node mesh_intact (412 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_panel, trim_dark_nvg, trim_internal_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 29 KB."
+   "notes": "Single node mesh_intact (516 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_panel, trim_dark_nvg, trim_edge_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 49 KB."
   },
   {
    "id": "NVG-ENV-PLINTH_STATIC-A",
@@ -2900,7 +2900,7 @@
     60
    ],
    "depth_m": 1.6,
-   "notes": "Single node mesh_intact (268 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 18 KB."
+   "notes": "Single node mesh_intact (268 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_edge_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 25 KB."
   },
   {
    "id": "NVG-PRP-CONSOLE-A",
@@ -2940,7 +2940,7 @@
    "material": "electronic_module",
    "tris": 124,
    "dimensions": "1.6 x 1.35 x 0.8 m (w x h x d)",
-   "notes": "Single node mesh_intact (124 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_panel, trim_dark_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 13 KB."
+   "notes": "Single node mesh_intact (124 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_panel, trim_dark_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 17 KB."
   },
   {
    "id": "NVG-PRP-COOLING_TOWER-A",
@@ -2965,7 +2965,7 @@
    "material": "concrete",
    "tris": 1444,
    "dimensions": "7.31 x 9.03 x 3.14 m (w x h x d)",
-   "notes": "Single node mesh_intact (1444 tris) under a root named after the file. Material slots: emit_blue_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 56 KB."
+   "notes": "Single node mesh_intact (1444 tris) under a root named after the file. Material slots: emit_blue_nvg, mat_concrete_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 83 KB."
   },
   {
    "id": "NVG-PRP-CRATE_STACK-A",
@@ -3005,7 +3005,7 @@
    "material": "composite",
    "tris": 324,
    "dimensions": "2.2 x 1.4 x 0.9 m (w x h x d)",
-   "notes": "Single node mesh_intact (324 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 20 KB."
+   "notes": "Single node mesh_intact (324 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_edge_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 30 KB."
   },
   {
    "id": "NVG-PRP-INTAKE_TURBINE-A",
@@ -3030,7 +3030,7 @@
    "material": "concrete",
    "tris": 1244,
    "dimensions": "8.00 x 7.80 x 2.67 m (w x h x d)",
-   "notes": "Single node mesh_intact (1244 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_panel, trim_dark_nvg, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 72 KB."
+   "notes": "Single node mesh_intact (1244 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_panel, trim_dark_nvg, trim_hazard_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 102 KB."
   },
   {
    "id": "NVG-PRP-PIPE_RUN-A",
@@ -3070,7 +3070,7 @@
    "material": "reinforced_steel",
    "tris": 468,
    "dimensions": "3 x 1.2 x 0.5 m (w x h x d)",
-   "notes": "Single node mesh_intact (468 tris) under a root named after the file. Material slots: emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 28 KB."
+   "notes": "Single node mesh_intact (468 tris) under a root named after the file. Material slots: emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_panel, trim_dark_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 39 KB."
   },
   {
    "id": "NVG-PRP-REACTOR_RING-A",
@@ -3095,7 +3095,7 @@
    "material": "concrete",
    "tris": 804,
    "dimensions": "9.20 x 6.62 x 2.28 m (w x h x d)",
-   "notes": "Single node mesh_intact (804 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_frame, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 46 KB."
+   "notes": "Single node mesh_intact (804 tris) under a root named after the file. Material slots: emit_amber_nvg, emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_frame, trim_dark_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 72 KB."
   },
   {
    "id": "NVG-PRP-TANK-A",
@@ -3135,7 +3135,7 @@
    "material": "reinforced_steel",
    "tris": 572,
    "dimensions": "1.3 x 2.2 x 1.3 m (w x h x d)",
-   "notes": "Single node mesh_intact (572 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 27 KB."
+   "notes": "Single node mesh_intact (572 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_reinforced_steel_nvg, trim_dark_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 41 KB."
   },
   {
    "id": "NVG-PRP-TRANSFORMER_YARD-A",
@@ -3160,7 +3160,7 @@
    "material": "concrete",
    "tris": 2476,
    "dimensions": "11.80 x 7.01 x 3.00 m (w x h x d)",
-   "notes": "Single node mesh_intact (2476 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_panel, mat_concrete_nvg_polymer, trim_cable_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 150 KB."
+   "notes": "Single node mesh_intact (2476 tris) under a root named after the file. Material slots: emit_amber_nvg, mat_concrete_nvg, mat_concrete_nvg_concrete, mat_concrete_nvg_panel, mat_concrete_nvg_polymer, trim_cable_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 188 KB."
   },
   {
    "id": "OPR-PRJ-BREACH_CANISTER-A",
@@ -11889,7 +11889,7 @@
     0.8,
     1.25
    ],
-   "tris": 2288,
+   "tris": 2944,
    "states": [
     "intact",
     "light",
@@ -11898,7 +11898,7 @@
    ],
    "critical": false,
    "dimensions": "1.60 x 0.24 x 1.2 m",
-   "notes": "Nodes: mesh_intact (632 tris), mesh_light (696), mesh_heavy (960); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CABLE_BRIDGE-A. glb 162 KB."
+   "notes": "Nodes: mesh_intact (872 tris), mesh_light (896), mesh_heavy (1176); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CABLE_BRIDGE-A. glb 264 KB."
   },
   {
    "id": "NVG-DEB-CABLE_BRIDGE-A",
@@ -11942,11 +11942,11 @@
     24
    ],
    "depth_m": 1.2,
-   "tris": 907,
+   "tris": 1250,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 907 tris total, <= 1.5x intact). Same material slot convention as the component. glb 67 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1250 tris total, <= 1.5x intact). Same material slot convention as the component. glb 111 KB."
   },
   {
    "id": "NVG-CMP-CABLE_BRIDGE-B",
@@ -11994,7 +11994,7 @@
     0.8,
     1.25
    ],
-   "tris": 3002,
+   "tris": 3640,
    "states": [
     "intact",
     "light",
@@ -12003,7 +12003,7 @@
    ],
    "critical": false,
    "dimensions": "2.40 x 0.30 x 1.2 m",
-   "notes": "Nodes: mesh_intact (840 tris), mesh_light (960), mesh_heavy (1202); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CABLE_BRIDGE-B. glb 208 KB."
+   "notes": "Nodes: mesh_intact (1080 tris), mesh_light (1168), mesh_heavy (1392); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_composite_nvg, mat_composite_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CABLE_BRIDGE-B. glb 320 KB."
   },
   {
    "id": "NVG-DEB-CABLE_BRIDGE-B",
@@ -12047,11 +12047,11 @@
     30
    ],
    "depth_m": 1.2,
-   "tris": 1210,
+   "tris": 1564,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1210 tris total, <= 1.5x intact). Same material slot convention as the component. glb 93 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1564 tris total, <= 1.5x intact). Same material slot convention as the component. glb 161 KB."
   },
   {
    "id": "NVG-CMP-CAPACITOR_CELL-A",
@@ -12099,7 +12099,7 @@
     0.8,
     1.25
    ],
-   "tris": 2480,
+   "tris": 3018,
    "states": [
     "intact",
     "light",
@@ -12108,7 +12108,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 0.60 x 0.5 m",
-   "notes": "Nodes: mesh_intact (736 tris), mesh_light (832), mesh_heavy (912); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_energy_component_nvg, mat_energy_component_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CAPACITOR_CELL-A. glb 132 KB."
+   "notes": "Nodes: mesh_intact (820 tris), mesh_light (976), mesh_heavy (1222); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_energy_component_nvg, mat_energy_component_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CAPACITOR_CELL-A. glb 264 KB."
   },
   {
    "id": "NVG-DEB-CAPACITOR_CELL-A",
@@ -12152,11 +12152,11 @@
     60
    ],
    "depth_m": 0.5,
-   "tris": 1062,
+   "tris": 1182,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1062 tris total, <= 1.5x intact). Same material slot convention as the component. glb 59 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1182 tris total, <= 1.5x intact). Same material slot convention as the component. glb 104 KB."
   },
   {
    "id": "NVG-CMP-CONTAINMENT_RING_SEGMENT-A",
@@ -12204,7 +12204,7 @@
     0.8,
     1.25
    ],
-   "tris": 2048,
+   "tris": 2424,
    "states": [
     "intact",
     "light",
@@ -12213,7 +12213,7 @@
    ],
    "critical": false,
    "dimensions": "1.20 x 0.50 x 0.6 m",
-   "notes": "Nodes: mesh_intact (556 tris), mesh_light (680), mesh_heavy (812); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_RING_SEGMENT-A. glb 116 KB."
+   "notes": "Nodes: mesh_intact (580 tris), mesh_light (916), mesh_heavy (928); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_RING_SEGMENT-A. glb 224 KB."
   },
   {
    "id": "NVG-DEB-CONTAINMENT_RING_SEGMENT-A",
@@ -12257,11 +12257,11 @@
     50
    ],
    "depth_m": 0.6,
-   "tris": 802,
+   "tris": 836,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 802 tris total, <= 1.5x intact). Same material slot convention as the component. glb 47 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 836 tris total, <= 1.5x intact). Same material slot convention as the component. glb 74 KB."
   },
   {
    "id": "NVG-CMP-CONTAINMENT_WALL-A",
@@ -12309,7 +12309,7 @@
     0.8,
     1.25
    ],
-   "tris": 2102,
+   "tris": 2772,
    "states": [
     "intact",
     "light",
@@ -12318,7 +12318,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 1.60 x 1.0 m",
-   "notes": "Nodes: mesh_intact (492 tris), mesh_light (596), mesh_heavy (1014); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, mat_concrete_nvg_panel, trim_burnt_nvg, trim_cable_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_WALL-A. glb 138 KB."
+   "notes": "Nodes: mesh_intact (700 tris), mesh_light (900), mesh_heavy (1172); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, mat_concrete_nvg_panel, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_WALL-A. glb 246 KB."
   },
   {
    "id": "NVG-DEB-CONTAINMENT_WALL-A",
@@ -12362,11 +12362,11 @@
     160
    ],
    "depth_m": 1.0,
-   "tris": 705,
+   "tris": 1010,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 705 tris total, <= 1.5x intact). Same material slot convention as the component. glb 47 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1010 tris total, <= 1.5x intact). Same material slot convention as the component. glb 91 KB."
   },
   {
    "id": "NVG-CMP-CONTAINMENT_WALL-B",
@@ -12414,7 +12414,7 @@
     0.8,
     1.25
    ],
-   "tris": 1514,
+   "tris": 2118,
    "states": [
     "intact",
     "light",
@@ -12423,7 +12423,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 1.20 x 1.0 m",
-   "notes": "Nodes: mesh_intact (324 tris), mesh_light (384), mesh_heavy (806); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, mat_concrete_nvg_panel, trim_burnt_nvg, trim_cable_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_WALL-B. glb 104 KB."
+   "notes": "Nodes: mesh_intact (532 tris), mesh_light (720), mesh_heavy (866); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, mat_concrete_nvg_panel, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-CONTAINMENT_WALL-B. glb 185 KB."
   },
   {
    "id": "NVG-DEB-CONTAINMENT_WALL-B",
@@ -12467,11 +12467,11 @@
     120
    ],
    "depth_m": 1.0,
-   "tris": 463,
+   "tris": 766,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 463 tris total, <= 1.5x intact). Same material slot convention as the component. glb 34 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 766 tris total, <= 1.5x intact). Same material slot convention as the component. glb 67 KB."
   },
   {
    "id": "NVG-CMP-COOLING_TOWER_SEGMENT-A",
@@ -12519,7 +12519,7 @@
     0.8,
     1.25
    ],
-   "tris": 3786,
+   "tris": 3934,
    "states": [
     "intact",
     "light",
@@ -12528,7 +12528,7 @@
    ],
    "critical": false,
    "dimensions": "0.80 x 1.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1120 tris), mesh_light (1212), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-COOLING_TOWER_SEGMENT-A. glb 157 KB."
+   "notes": "Nodes: mesh_intact (1192 tris), mesh_light (1288), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-COOLING_TOWER_SEGMENT-A. glb 318 KB."
   },
   {
    "id": "NVG-DEB-COOLING_TOWER_SEGMENT-A",
@@ -12572,11 +12572,11 @@
     120
    ],
    "depth_m": 0.8,
-   "tris": 1620,
+   "tris": 1727,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1620 tris total, <= 1.5x intact). Same material slot convention as the component. glb 76 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1727 tris total, <= 1.5x intact). Same material slot convention as the component. glb 118 KB."
   },
   {
    "id": "NVG-CMP-COOLING_TOWER_SEGMENT-B",
@@ -12624,7 +12624,7 @@
     0.8,
     1.25
    ],
-   "tris": 3958,
+   "tris": 3982,
    "states": [
     "intact",
     "light",
@@ -12633,7 +12633,7 @@
    ],
    "critical": false,
    "dimensions": "1.20 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1120 tris), mesh_light (1340), mesh_heavy (1498); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-COOLING_TOWER_SEGMENT-B. glb 162 KB."
+   "notes": "Nodes: mesh_intact (1192 tris), mesh_light (1336), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_blue_nvg, mat_concrete_nvg, mat_concrete_nvg_frame, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-COOLING_TOWER_SEGMENT-B. glb 301 KB."
   },
   {
    "id": "NVG-DEB-COOLING_TOWER_SEGMENT-B",
@@ -12677,11 +12677,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 1618,
+   "tris": 1726,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1618 tris total, <= 1.5x intact). Same material slot convention as the component. glb 75 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1726 tris total, <= 1.5x intact). Same material slot convention as the component. glb 129 KB."
   },
   {
    "id": "NVG-CMP-GRID_PYLON-A",
@@ -12729,7 +12729,7 @@
     0.8,
     1.25
    ],
-   "tris": 2780,
+   "tris": 3008,
    "states": [
     "intact",
     "light",
@@ -12738,7 +12738,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 2.00 x 0.5 m",
-   "notes": "Nodes: mesh_intact (828 tris), mesh_light (908), mesh_heavy (1044); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_concrete, mat_reinforced_steel_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-GRID_PYLON-A. glb 187 KB."
+   "notes": "Nodes: mesh_intact (896 tris), mesh_light (944), mesh_heavy (1168); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_concrete, mat_reinforced_steel_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-GRID_PYLON-A. glb 265 KB."
   },
   {
    "id": "NVG-DEB-GRID_PYLON-A",
@@ -12782,11 +12782,11 @@
     200
    ],
    "depth_m": 0.5,
-   "tris": 1058,
+   "tris": 1092,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1058 tris total, <= 1.5x intact). Same material slot convention as the component. glb 71 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1092 tris total, <= 1.5x intact). Same material slot convention as the component. glb 100 KB."
   },
   {
    "id": "NVG-CMP-GRID_PYLON-B",
@@ -12834,7 +12834,7 @@
     0.8,
     1.25
    ],
-   "tris": 2852,
+   "tris": 2960,
    "states": [
     "intact",
     "light",
@@ -12843,7 +12843,7 @@
    ],
    "critical": false,
    "dimensions": "0.50 x 2.60 x 0.6 m",
-   "notes": "Nodes: mesh_intact (864 tris), mesh_light (952), mesh_heavy (1036); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_concrete, mat_reinforced_steel_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-GRID_PYLON-B. glb 188 KB."
+   "notes": "Nodes: mesh_intact (932 tris), mesh_light (964), mesh_heavy (1064); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_reinforced_steel_nvg, mat_reinforced_steel_nvg_concrete, mat_reinforced_steel_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-GRID_PYLON-B. glb 260 KB."
   },
   {
    "id": "NVG-DEB-GRID_PYLON-B",
@@ -12887,11 +12887,11 @@
     260
    ],
    "depth_m": 0.6,
-   "tris": 1016,
+   "tris": 1008,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1016 tris total, <= 1.5x intact). Same material slot convention as the component. glb 69 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1008 tris total, <= 1.5x intact). Same material slot convention as the component. glb 96 KB."
   },
   {
    "id": "NVG-CMP-REACTOR_CORE-A",
@@ -12939,7 +12939,7 @@
     0.8,
     1.25
    ],
-   "tris": 5320,
+   "tris": 5516,
    "states": [
     "intact",
     "light",
@@ -12948,7 +12948,7 @@
    ],
    "critical": true,
    "dimensions": "0.80 x 1.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1564 tris), mesh_light (1740), mesh_heavy (2016); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_red_nvg, glass_smoked_nvg, mat_energy_component_nvg, mat_energy_component_nvg_frame, mat_energy_component_nvg_key, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-REACTOR_CORE-A. glb 247 KB."
+   "notes": "Nodes: mesh_intact (1612 tris), mesh_light (1868), mesh_heavy (2036); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_red_nvg, glass_smoked_nvg, mat_energy_component_nvg, mat_energy_component_nvg_frame, mat_energy_component_nvg_key, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-REACTOR_CORE-A. glb 435 KB."
   },
   {
    "id": "NVG-DEB-REACTOR_CORE-A",
@@ -12992,11 +12992,11 @@
     120
    ],
    "depth_m": 0.8,
-   "tris": 2178,
+   "tris": 1962,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 2178 tris total, <= 1.5x intact). Same material slot convention as the component. glb 104 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1962 tris total, <= 1.5x intact). Same material slot convention as the component. glb 142 KB."
   },
   {
    "id": "NVG-CMP-TRANSFORMER-A",
@@ -13044,7 +13044,7 @@
     0.8,
     1.25
    ],
-   "tris": 4261,
+   "tris": 4460,
    "states": [
     "intact",
     "light",
@@ -13053,7 +13053,7 @@
    ],
    "critical": false,
    "dimensions": "0.80 x 1.00 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1340 tris), mesh_light (1468), mesh_heavy (1453); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_concrete, mat_electronic_module_nvg_panel, mat_electronic_module_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-TRANSFORMER-A. glb 258 KB."
+   "notes": "Nodes: mesh_intact (1424 tris), mesh_light (1518), mesh_heavy (1518); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_concrete, mat_electronic_module_nvg_panel, mat_electronic_module_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-TRANSFORMER-A. glb 482 KB."
   },
   {
    "id": "NVG-DEB-TRANSFORMER-A",
@@ -13097,11 +13097,11 @@
     100
    ],
    "depth_m": 0.8,
-   "tris": 1962,
+   "tris": 1912,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1962 tris total, <= 1.5x intact). Same material slot convention as the component. glb 112 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1912 tris total, <= 1.5x intact). Same material slot convention as the component. glb 151 KB."
   },
   {
    "id": "NVG-CMP-TRANSFORMER-B",
@@ -13149,7 +13149,7 @@
     0.8,
     1.25
    ],
-   "tris": 4242,
+   "tris": 4384,
    "states": [
     "intact",
     "light",
@@ -13158,7 +13158,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1316 tris), mesh_light (1436), mesh_heavy (1490); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_concrete, mat_electronic_module_nvg_panel, mat_electronic_module_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-TRANSFORMER-B. glb 252 KB."
+   "notes": "Nodes: mesh_intact (1400 tris), mesh_light (1492), mesh_heavy (1492); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_amber_nvg, emit_blue_nvg, mat_electronic_module_nvg, mat_electronic_module_nvg_concrete, mat_electronic_module_nvg_panel, mat_electronic_module_nvg_polymer, trim_burnt_nvg, trim_cable_nvg, trim_dark_nvg, trim_edge_nvg, trim_hazard_nvg, trim_internal_nvg, trim_rubber_nvg, trim_trim_nvg. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see NVG-DEB-TRANSFORMER-B. glb 480 KB."
   },
   {
    "id": "NVG-DEB-TRANSFORMER-B",
@@ -13202,11 +13202,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 1768,
+   "tris": 1918,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1768 tris total, <= 1.5x intact). Same material slot convention as the component. glb 98 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1918 tris total, <= 1.5x intact). Same material slot convention as the component. glb 138 KB."
   },
   {
    "id": "SHR-CMP-CIRCUIT_MODULE-A",
@@ -27837,6 +27837,48 @@
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "used_by": "review only",
    "chapter": "vita",
+   "dimensions": "1152x648",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "NVG-PRV-ENVIRONMENTS-NVG_SHOWCASE_CLOSE",
+   "path": "generated_assets/environments/previews/nvg_showcase_close.webp",
+   "category": "environments",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "nova_grid",
+   "dimensions": "1152x648",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "NVG-PRV-ENVIRONMENTS-NVG_SHOWCASE_GRADED",
+   "path": "generated_assets/environments/previews/nvg_showcase_graded.webp",
+   "category": "environments",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "nova_grid",
+   "dimensions": "1152x648",
+   "approval_status": "pending_review"
+  },
+  {
+   "id": "NVG-PRV-ENVIRONMENTS-NVG_SHOWCASE_MISSIONVIEW",
+   "path": "generated_assets/environments/previews/nvg_showcase_missionview.webp",
+   "category": "environments",
+   "render_type": "reference",
+   "format": "webp",
+   "purpose": "Godot 4.7.2 GL Compatibility check frame (runtime GLTFDocument load, MissionView camera, sun and environment)",
+   "source": "generated_assets/destructibles/source/godot/showcase.gd",
+   "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
+   "used_by": "review only",
+   "chapter": "nova_grid",
    "dimensions": "1152x648",
    "approval_status": "pending_review"
   }

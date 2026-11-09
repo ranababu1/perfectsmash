@@ -27,7 +27,7 @@ deck = next((i for i in ids if "DECK" in i and i.endswith("-C")), next((i for i 
 x = -0.8
 row = [i for i in ids if i not in crit and i != deck]
 def span(r):
-    return sum(dims(i)[0] + 0.12 for i in r) + (dims(deck)[0] + 0.3 if deck else 0)
+    return sum(dims(i)[0] + 0.12 for i in r) + (dims(deck)[0] + 0.3 if deck else sum(dims(i)[0] + 0.42 for i in crit))
 for suffix in ("-C", "-B"):
     while span(row) > 11.0 and any(i.endswith(suffix) for i in row):
         row.remove([i for i in row if i.endswith(suffix)][-1])
@@ -49,6 +49,9 @@ if deck:
         w, h = dims(i)
         items.append(dict(f=f"destructibles/{ch}/{stem(i)}.glb", p=[round(dx + dw / 2, 3), round(dh + h / 2, 3), 0.0]))
     x = dx + dw + 0.2
+else:
+    for i in crit:
+        x = put(i, x + 0.15) + 0.15
 for k, i in enumerate(right):
     x = put(i, x, state="mesh_heavy" if k == 1 else None)
 tall = sorted(row, key=lambda i: -dims(i)[1])[:3]
@@ -60,6 +63,7 @@ op = next(it for it in H["items"] if "opr_chr_operative" in it["f"])
 items.append(op)
 L = {k: v for k, v in H.items() if k != "items"}
 L["items"] = items
+L.update(json.loads(sys.argv[3]) if len(sys.argv) > 3 else {})
 L["focus"] = [round((x - 2.2) / 2, 2), 1.6, 0.0]
 json.dump(L, open(f"{GA}/environments/showcase/{ch}_showcase_layout.json", "w"), indent=1)
 print("LAYOUT", ch, len(items), "row end x", round(x, 2), "focus", L["focus"])
