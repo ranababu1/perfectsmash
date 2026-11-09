@@ -18,6 +18,7 @@ var session: GameSession
 var aim: AimController
 var hud: Hud
 var _effects: Node2D
+var _backdrop: Backdrop
 var _has_next := false
 ## Incremented on every (re)start so delayed result popups from a previous attempt are ignored.
 var _attempt := 0
@@ -34,7 +35,8 @@ func _ready() -> void:
 	var camera := Camera2D.new()
 	camera.position = Vector2(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT) / 2.0
 	add_child(camera)
-	add_child(Backdrop.new())
+	_backdrop = Backdrop.new()
+	add_child(_backdrop)
 
 	session = GameSession.new()
 	add_child(session)
@@ -70,12 +72,16 @@ func _ready() -> void:
 		b.connect(func() -> void: audio.play("click"))
 
 
-func start(def: LevelDefinition, number: int, has_next: bool) -> void:
+## `theme` and `chapter_line` are presentation only (scenery colours and a HUD caption).
+func start(def: LevelDefinition, number: int, has_next: bool, theme: ChapterTheme = null, chapter_line: String = "") -> void:
 	_has_next = has_next
 	_attempt += 1
 	get_tree().paused = false
+	var scenery := theme if theme != null else ChapterTheme.new()
+	_backdrop.set_theme(scenery)
+	session.theme = scenery
 	session.setup(def)
-	hud.set_level(def, number)
+	hud.set_level(def, number, chapter_line)
 	aim.cancel()
 	_clear_effects()
 

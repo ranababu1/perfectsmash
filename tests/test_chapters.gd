@@ -64,3 +64,30 @@ func _chapter(id: String, first: int, last: int, intro: String, outro: String) -
 		"id": id, "title": "T", "organization": "O", "year": 2089, "theme": "t",
 		"first_level": first, "last_level": last, "intro_sequence": intro, "outro_sequence": outro,
 	}
+
+
+func test_every_chapter_theme_exists() -> void:
+	for chapter in ChapterCatalog.load_from_file().chapters:
+		assert_true(ChapterTheme.has_key(chapter.theme), "missing theme '%s'" % chapter.theme)
+		assert_eq(ChapterTheme.for_key(chapter.theme).key, chapter.theme)
+	assert_eq(ChapterTheme.for_key("nope").key, ChapterTheme.DEFAULT_KEY, "unknown key falls back")
+
+
+## Readability rule: scenery stays dark so blocks, targets and the projectile stand out.
+func test_scenery_is_darker_than_gameplay_pieces() -> void:
+	var pieces := [Palette.WOOD, Palette.STONE, Palette.TARGET, Palette.PROJECTILE]
+	var darkest_piece := 1.0
+	for c: Color in pieces:
+		darkest_piece = minf(darkest_piece, c.get_luminance())
+	for key: String in ChapterTheme.THEMES:
+		var t := ChapterTheme.for_key(key)
+		for c: Color in [t.sky_top, t.sky_bottom, t.hills_far, t.hills_near, t.ground]:
+			assert_true(c.get_luminance() < 0.25, "%s scenery too bright: %s" % [key, c])
+			assert_true(darkest_piece - c.get_luminance() > 0.2, "%s scenery too close to piece colours" % key)
+
+
+func test_chapter_caption() -> void:
+	var main_script := preload("res://scripts/main.gd")
+	var chapter := ChapterCatalog.load_from_file().chapter_for_level(41)
+	assert_eq(main_script.chapter_caption(chapter), "CHAPTER III  ·  NOVA GRID  ·  2096")
+	assert_eq(main_script.chapter_caption(null), "")

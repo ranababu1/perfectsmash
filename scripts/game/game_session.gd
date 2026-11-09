@@ -19,6 +19,8 @@ var rules: SessionRules
 var monitor := SimulationMonitor.new()
 var targets_remaining := 0
 var _world: Node2D
+## Scenery colours for the ground; presentation only.
+var theme := ChapterTheme.new()
 var _projectile: ProjectileBody
 
 
@@ -33,7 +35,7 @@ func restart() -> void:
 		remove_child(_world)
 		_world.queue_free()
 	_projectile = null
-	_world = LevelLoader.build(definition)
+	_world = LevelLoader.build(definition, theme.ground, theme.ground_edge)
 	add_child(_world)
 	targets_remaining = 0
 	for node in _world.get_children():

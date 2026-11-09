@@ -7,19 +7,27 @@ extends Node2D
 const OVERSCAN := 800.0
 const TOP := -400.0
 
+var theme := ChapterTheme.new()
+
+
+func set_theme(p_theme: ChapterTheme) -> void:
+	theme = p_theme if p_theme != null else ChapterTheme.new()
+	queue_redraw()
+
 
 func _draw() -> void:
 	var rect := Rect2(-OVERSCAN, TOP, GameConfig.WORLD_WIDTH + OVERSCAN * 2.0, GameConfig.GROUND_TOP - TOP)
-	paint(self, rect, GameConfig.GROUND_TOP)
+	paint(self, rect, GameConfig.GROUND_TOP, theme)
 
 
-## Shared with the menu so both screens sit on the same scenery.
-static func paint(canvas: CanvasItem, rect: Rect2, horizon_y: float) -> void:
-	_gradient(canvas, rect, Palette.SKY_TOP, Palette.SKY_BOTTOM)
+## Shared with the menu so both screens sit on the same scenery. A null theme uses the default.
+static func paint(canvas: CanvasItem, rect: Rect2, horizon_y: float, p_theme: ChapterTheme = null) -> void:
+	var t := p_theme if p_theme != null else ChapterTheme.new()
+	_gradient(canvas, rect, t.sky_top, t.sky_bottom)
 	var glow := Rect2(rect.position.x, horizon_y - 260.0, rect.size.x, 260.0)
-	_gradient(canvas, glow, Color(Palette.HORIZON_GLOW, 0.0), Palette.HORIZON_GLOW)
-	_hills(canvas, rect, horizon_y, 120.0, 0.004, 1.3, Palette.HILLS_FAR)
-	_hills(canvas, rect, horizon_y, 70.0, 0.007, 4.1, Palette.HILLS_NEAR)
+	_gradient(canvas, glow, Color(t.horizon_glow, 0.0), t.horizon_glow)
+	_hills(canvas, rect, horizon_y, 120.0, 0.004, 1.3, t.hills_far)
+	_hills(canvas, rect, horizon_y, 70.0, 0.007, 4.1, t.hills_near)
 
 
 static func _gradient(canvas: CanvasItem, rect: Rect2, top: Color, bottom: Color) -> void:

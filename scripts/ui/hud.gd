@@ -17,6 +17,7 @@ const MARGIN := 20.0
 
 var _number: Label
 var _title: Label
+var _chapter: Label
 var _objective: Label
 var _shots: ShotPips
 var _hint: Label
@@ -44,6 +45,9 @@ func _ready() -> void:
 	heading.add_child(_title)
 	_objective = _left_label(17, Palette.TEXT_DIM)
 	_shots = ShotPips.new()
+	_chapter = _left_label(13, Palette.TEXT_FAINT)
+	_chapter.visible = false
+	info.add_child(_chapter)
 	info.add_child(heading)
 	info.add_child(_objective)
 	info.add_child(_shots)
@@ -80,7 +84,9 @@ func _ready() -> void:
 	hint_row.add_child(_hint_chip)
 
 
-func set_level(def: LevelDefinition, number: int) -> void:
+func set_level(def: LevelDefinition, number: int, chapter_line: String = "") -> void:
+	_chapter.text = chapter_line
+	_chapter.visible = chapter_line != ""
 	_number.text = str(number)
 	_title.text = def.name
 	if def.objective_type == LevelDefinition.OBJECTIVE_TOPPLE:

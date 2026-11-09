@@ -11,11 +11,12 @@ const GROUND_MARGIN := 600.0
 const GROUND_DEPTH := 400.0
 
 
-static func build(def: LevelDefinition) -> Node2D:
+## `ground_fill`/`ground_edge` only change the ground's colours (chapter scenery), never its shape.
+static func build(def: LevelDefinition, ground_fill: Color = Palette.GROUND, ground_edge: Color = Palette.GROUND_EDGE) -> Node2D:
 	var world := Node2D.new()
 	world.name = "World"
 	var ground_width := GameConfig.WORLD_WIDTH + GROUND_MARGIN * 2.0
-	var ground := StaticBox.new(Vector2(ground_width, GROUND_DEPTH), Palette.GROUND, Palette.GROUND_EDGE)
+	var ground := StaticBox.new(Vector2(ground_width, GROUND_DEPTH), ground_fill, ground_edge)
 	ground.name = "Ground"
 	ground.position = Vector2(GameConfig.WORLD_WIDTH / 2.0, GameConfig.GROUND_TOP + GROUND_DEPTH / 2.0)
 	world.add_child(ground)

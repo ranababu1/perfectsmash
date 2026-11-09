@@ -7,6 +7,7 @@ const FADE_TIME := 0.22
 var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
+var chapters: ChapterCatalog
 var audio: AudioService
 var music: MusicDirector
 var _menu: MenuScreen
@@ -31,6 +32,10 @@ func _ready() -> void:
 		message.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(message)
 		return
+	chapters = ChapterCatalog.load_from_file()
+	if not chapters.is_valid():
+		# Chapters only drive presentation, so the game stays playable with default scenery.
+		push_error("Chapter catalog invalid: %s" % ", ".join(chapters.errors))
 	_add_fade_layer()
 	_show_menu()
 
@@ -99,8 +104,20 @@ func _start_level(index: int) -> void:
 		_game.vibration_toggled.connect(_set_vibration)
 		add_child(_game)
 	_level_index = index
-	_game.start(catalog.levels[index], index + 1, index + 1 < catalog.levels.size())
+	var chapter := chapters.chapter_for_level(index + 1) if chapters.is_valid() else null
+	var theme := ChapterTheme.for_key(chapter.theme) if chapter != null else ChapterTheme.new()
+	var caption := chapter_caption(chapter)
+	_game.start(catalog.levels[index], index + 1, index + 1 < catalog.levels.size(), theme, caption)
 	_reveal()
+
+
+## e.g. "CHAPTER I  ·  HELIX SYSTEMS  ·  2089"
+static func chapter_caption(chapter: ChapterCatalog.Chapter) -> String:
+	if chapter == null:
+		return ""
+	const NUMERALS := ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+	var numeral: String = NUMERALS[chapter.number] if chapter.number < NUMERALS.size() else str(chapter.number)
+	return "CHAPTER %s  ·  %s  ·  %d" % [numeral, chapter.organization.to_upper(), chapter.year]
 
 
 func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
