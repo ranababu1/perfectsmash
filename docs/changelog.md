@@ -2,6 +2,17 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 - Asset branch: full-scale asset production set-up (branch `assets` only)
+
+- Owner authorised full-scale production of the whole asset library for all five chapters and 100 levels, with `main` untouched until the owner approves integration. Five parallel streams: integration, 3d-kits, surfaces, ui-vfx, audio.
+- `84a34fd` merged the latest `main` (Batches 3 and 4) into `assets` with a normal merge commit; no conflicts, nothing outside `generated_assets/` differs from `main`.
+- Tools on the asset box: Godot 4.7.2 stable (matches `config/features` 4.7) and Blender 5.2.3 LTS, official downloads with checksums verified, in `/opt/tfj-tools`.
+- `8eaebdf` `generated_assets/docs/ASSET_CONTRACT.md` v1: scale, axes, pivots, depth band, kind catalogue for all chapters, naming, material ids, damage states, camera and light, texture, VFX, UI, audio and loading rules, all derived from the current code.
+- `c089817` manifest validator v2: merges `generated_assets/manifest_parts/*.json` fragments, cross-fragment duplicate checks, deep checks of images (size, alpha, sprite-sheet grids, 9-slice), glb (nodes, tris, bounds, pivot and silhouette contract), audio (duration, sample rate) and fonts (licence file).
+- `9ce5a6b` Godot harness `generated_assets/tools/godot/`: headless import and load check of every manifest asset, and previews rendered under the MissionView camera and light (Xvfb, software OpenGL); calibrated against the game's own capture tool.
+- `f264d81` 100-level coverage matrix (`generated_assets/docs/coverage_matrix.json` and `.md`), generated from the level design spec and the merged manifest.
+- No gameplay code, scenes, data or shipped `assets/` files changed. `assets/audio/music/gameplay_bed.ogg` keeps its unverified rights status.
+
 ## 2026-11-09 — Batch 4: Mission Points, Research Data, upgrades, save v3
 
 - `d6e5071` `data/scoring.json` + `MissionScoring`: Mission Points and Research Data relative to each mission's recommended shots and target time; time weighted lightly with a 30% floor; accuracy from shots that dealt damage; failure keeps destruction points only. Per-mission `rewards` block; `MissionEngine.effective_shots`. New suite `test_scoring` (8).

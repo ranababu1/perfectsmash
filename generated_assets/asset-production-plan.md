@@ -4,9 +4,39 @@
 **Repository:** `ranababu1/temporal-chapter1`  
 **Branch for this work:** `assets`  
 **Staging root:** `generated_assets/`  
-**Date:** 2026-11-09 (Asia/Calcutta)  
+**Date:** 2026-11-09 (Asia/Calcutta); full-scale production section added 2026-11-10  
 **Brief:** Master Art, Animation, Video and Audio Production Brief §26 first response.  
 **Rendering decision (owner):** Option B - Godot 3D rendering with a tilted three-quarter camera over retained Godot 2D physics. No 3D physics.
+
+## Full-scale production (owner authorised 2026-11-09, supersedes the Helix-only gate)
+
+The owner authorised production of the complete library for all five chapters and 100 levels across every workstream in parallel, with these standing rules: quality over speed, `main` untouched, all work on `assets`, AI output never marked commercially cleared, the existing music file preserved with rights unverified, and no change to the 2.5D presentation over 2D physics. The "no bulk production before greybox validation" gate in sections 4, 15 and the Helix milestone below is superseded: the Batch 3 greybox now exists on `main` (merged into `assets` at `84a34fd`), and the asset contract is derived from it.
+
+### Streams
+
+| Stream | Owns (under `generated_assets/`) | Manifest fragment |
+|---|---|---|
+| integration | `asset_manifest.json`, `tools/`, `docs/` (contract, coverage matrix, previews), this plan, `docs/changelog.md` and `docs/currentstate.md` on `assets` | merges all fragments |
+| 3d-kits | destructible component kits and debris for five chapters, environment kits, props and landmarks, operative and weapons | `manifest_parts/3d-kits.json` |
+| surfaces | material texture sets, damage overlays, decals | `manifest_parts/surfaces.json` |
+| ui-vfx | VFX sprite sheets, HUD, menus, progression and mission screens, icons, logo, app icon, splash, fonts, cinematic stills | `manifest_parts/ui-vfx.json` |
+| audio | soundtrack (chapter, menu, gameplay, combat, boss, transitions, ending), SFX, ambience | `manifest_parts/audio.json` |
+
+### Shared contract and validation
+
+- Contract: `docs/ASSET_CONTRACT.md` (v1.1). Units, axes, pivots, depth band, kind catalogue for all chapters, naming, materials, damage states, camera and light, texture, VFX, UI, audio and loading rules, and the ids the coverage matrix resolves.
+- Tools: Godot 4.7.2 stable and Blender 5.2.3 LTS in `/opt/tfj-tools` on the asset box (official builds, checksums verified).
+- Validation per batch: `tools/validate_asset_manifest.py --merge` (structure and deep file checks), `tools/godot/run_import_check.sh` (Godot import and load of every asset), `tools/godot/render_previews.sh` (game-camera previews into `docs/previews/`), `tools/build_coverage_matrix.py` (100-level matrix).
+
+### Coverage targets
+
+The coverage matrix (`docs/coverage_matrix.md`) lists for each level its environment kit, background layer, structural components (from the level's layout archetypes), critical asset and debris, material sets and damage overlays, VFX, music, ambience, cinematics and its band landmark. Variety comes from 23 layout archetypes across the campaign, one landmark per band of five levels (20 landmarks), four far-background variants per chapter and a rotating dressing-prop pool.
+
+### Production log
+
+| Date | Batch | Result |
+|---|---|---|
+| 2026-11-10 | Integration set-up | `main` merged into `assets` (`84a34fd`); contract v1 (`8eaebdf`), validator v2 (`c089817`), Godot harness (`9ce5a6b`), coverage matrix (`f264d81`). Coverage before stream deliveries: 0 / 100 levels |
 
 ## Review status (2026-11-09)
 
@@ -16,7 +46,7 @@
 - Gameplay music (`gameplay_bed.ogg`): preserved, rights unverified, not commercially cleared.
 - Merge: do not merge `assets` yet. It is behind `main`; reconcile with the latest mainline before integration.
 
-This plan does not start bulk production. It records understanding, audit findings, Helix prototype scope, coding-agent dependencies and open owner decisions. Proposed notes for `docs/changelog.md` and `docs/currentstate.md` are at the end so mainline docs stay untouched until the owner merges.
+This first-response plan (below) did not start bulk production; see the full-scale section above for the current state. It records understanding, audit findings, Helix prototype scope, coding-agent dependencies and open owner decisions. Proposed notes for `docs/changelog.md` and `docs/currentstate.md` are at the end so mainline docs stay untouched until the owner merges.
 
 ---
 
