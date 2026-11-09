@@ -1,6 +1,6 @@
 # Perfect Smash: Product and Engineering Plan
 
-**Document status:** Owner-approved revision 2 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
+**Document status:** Owner-approved revision 3 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
 **Working product name:** Perfect Smash (existing store/app identity; rename is a separate pending owner decision)  
 **Product type:** Story-driven 2D physics destruction puzzle  
 **Target platforms:** Android + iOS  
@@ -300,14 +300,14 @@ Preserve the existing physics, rules, save and UI acceptance criteria. Re-verify
 - Produce and review opening cinematic frames.
 - Implement a small cinematic prototype with skip, subtitles, voiceover, music ducking and replay.
 - Reskin one existing level in each of the five chapter environments before bulk production.
-- Validate gameplay readability on a physical Android device.
+- Validate gameplay readability on physical Android and iOS devices where available; record any platform validation still pending.
 
 ### M7: 100-level content build
 - Author 100 levels in five 20-level chapters.
 - Reuse current 20 level definitions where suitable; retain stable IDs or implement an explicit, tested migration if IDs change.
 - Verify every new or modified level with solver tooling and human play-testing.
 - Add chapter intros/outros and level-100 ending.
-- Verify asset sizes, loading, memory and Android export.
+- Verify asset sizes, loading, memory, Android export and iOS/Xcode export workflow.
 
 ### M8: Audio and cinematic integration
 - Record/generate final narration.
