@@ -54,7 +54,10 @@
       "loop_overlap_seconds",
       "critical",
       "requires_alpha",
-      "merged_from"
+      "merged_from",
+      "sound_id",
+      "music_cue",
+      "ambience_cue"
     ],
     "planned_fields_required": [
       "id",
