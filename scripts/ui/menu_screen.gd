@@ -85,10 +85,10 @@ func _top_bar() -> Control:
 	titles.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	titles.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	titles.add_theme_constant_override("separation", 0)
-	var title := UiKit.label("PERFECT SMASH", 40, Palette.TEXT)
+	var title := UiKit.label("TEMPORAL: FIRST JUMP", 40, Palette.TEXT)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	title.add_theme_font_override("font", _spaced_font(4))
-	var tagline := UiKit.label("One smart hit. A spectacular chain reaction.", 18, Palette.TEXT_DIM)
+	var tagline := UiKit.label("One shot can change everything.", 18, Palette.TEXT_DIM)
 	tagline.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	titles.add_child(title)
 	titles.add_child(tagline)

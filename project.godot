@@ -10,12 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Perfect Smash"
-config/description="A compact 2D physics destruction puzzle."
+config/name="Temporal: First Jump"
+config/description="A cinematic time-travel physics destruction puzzle."
 config/version="0.1.0"
 run/main_scene="res://scenes/main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="temporal_first_jump"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.0705882, 0.0862745, 0.14902, 1)
+boot_splash/show_image=false
 config/icon="res://assets/icon/project_256.png"
 
 [display]
