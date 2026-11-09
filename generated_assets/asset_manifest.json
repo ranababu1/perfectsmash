@@ -1,0 +1,281 @@
+{
+  "project": "Temporal: First Jump",
+  "manifest_version": 1,
+  "branch": "asset",
+  "staging_root": "generated_assets/",
+  "updated": "2026-11-09",
+  "notes": [
+    "entries[] lists ONLY assets that exist on disk at the given path (relative to repo root).",
+    "planned[] is inventory only; those paths must not be treated as present.",
+    "render_type is one of: mesh, sprite, ui, audio, video, texture, font, reference.",
+    "AI-generated work is never marked commercially_cleared.",
+    "Owner visual reference pack is external and unverified; see generated_assets/docs/references/README.md."
+  ],
+  "schema": {
+    "entry_fields": [
+      "id",
+      "path",
+      "category",
+      "render_type",
+      "format",
+      "purpose",
+      "source",
+      "rights_status",
+      "used_by",
+      "dimensions",
+      "duration_seconds",
+      "notes"
+    ]
+  },
+  "entries": [
+    {
+      "id": "ICON-ADAPTIVE-BG-432",
+      "path": "assets/icon/adaptive_background_432.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Android adaptive icon background",
+      "source": "Original vector art via tools/render_icons.gd (Perfect Smash era)",
+      "rights_status": "original_work",
+      "used_by": "Android launcher icons",
+      "dimensions": "432x432",
+      "duration_seconds": null,
+      "notes": "To be replaced with Temporal branding."
+    },
+    {
+      "id": "ICON-ADAPTIVE-FG-432",
+      "path": "assets/icon/adaptive_foreground_432.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Android adaptive icon foreground",
+      "source": "Original vector art via tools/render_icons.gd (Perfect Smash era)",
+      "rights_status": "original_work",
+      "used_by": "Android launcher icons",
+      "dimensions": "432x432",
+      "duration_seconds": null,
+      "notes": "To be replaced with Temporal branding."
+    },
+    {
+      "id": "ICON-ADAPTIVE-MONO-432",
+      "path": "assets/icon/adaptive_monochrome_432.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Android adaptive monochrome icon",
+      "source": "Original vector art via tools/render_icons.gd (Perfect Smash era)",
+      "rights_status": "original_work",
+      "used_by": "Android launcher icons",
+      "dimensions": "432x432",
+      "duration_seconds": null,
+      "notes": "To be replaced with Temporal branding."
+    },
+    {
+      "id": "ICON-BG-SVG",
+      "path": "assets/icon/icon_background.svg",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "svg",
+      "purpose": "Icon background source vector",
+      "source": "Original work in repo",
+      "rights_status": "original_work",
+      "used_by": "tools/render_icons.gd",
+      "dimensions": null,
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "ICON-FG-SVG",
+      "path": "assets/icon/icon_foreground.svg",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "svg",
+      "purpose": "Icon foreground source vector",
+      "source": "Original work in repo",
+      "rights_status": "original_work",
+      "used_by": "tools/render_icons.gd",
+      "dimensions": null,
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "ICON-MONO-SVG",
+      "path": "assets/icon/icon_monochrome.svg",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "svg",
+      "purpose": "Icon monochrome source vector",
+      "source": "Original work in repo",
+      "rights_status": "original_work",
+      "used_by": "tools/render_icons.gd",
+      "dimensions": null,
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "ICON-MAIN-192",
+      "path": "assets/icon/main_192.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Main/launcher icon 192",
+      "source": "Rendered from repo vectors",
+      "rights_status": "original_work",
+      "used_by": "project icon / exports",
+      "dimensions": "192x192",
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "ICON-PLAYSTORE-512",
+      "path": "assets/icon/play_store_512.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Store listing icon",
+      "source": "Rendered from repo vectors",
+      "rights_status": "original_work",
+      "used_by": "store listing (when published)",
+      "dimensions": "512x512",
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "ICON-PROJECT-256",
+      "path": "assets/icon/project_256.png",
+      "category": "app_icon",
+      "render_type": "ui",
+      "format": "png",
+      "purpose": "Godot project icon",
+      "source": "Rendered from repo vectors",
+      "rights_status": "original_work",
+      "used_by": "project.godot",
+      "dimensions": "256x256",
+      "duration_seconds": null,
+      "notes": "Perfect Smash design; replace later."
+    },
+    {
+      "id": "MUSIC-GAMEPLAY-BED",
+      "path": "assets/audio/music/gameplay_bed.ogg",
+      "category": "music",
+      "render_type": "audio",
+      "format": "ogg",
+      "purpose": "Gameplay/menu music bed",
+      "source": "Owner-supplied bg.mp3 (Suno metadata id 142466df-1693-4ac7-b0ca-3972206ef363, 2026-11-09); trimmed/converted with ffmpeg",
+      "rights_status": "unverified",
+      "used_by": "MusicDirector / main.gd (owner instruction)",
+      "dimensions": null,
+      "duration_seconds": 197.9,
+      "notes": "Release blocker until Suno plan/terms evidence is saved. Do not delete or replace from the asset branch without owner approval. Master stays gitignored under assets/music/."
+    }
+  ],
+  "planned": [
+    {
+      "id": "PLAN-HELIX-KIT",
+      "category": "destructibles",
+      "render_type": "mesh",
+      "proposed_path_prefix": "generated_assets/destructibles/helix/",
+      "purpose": "Eight Helix component kinds from helix_01.json as modular glTF",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype_after_greybox"
+    },
+    {
+      "id": "PLAN-MATERIAL-TEXTURES",
+      "category": "materials",
+      "render_type": "texture",
+      "proposed_path_prefix": "generated_assets/materials/",
+      "purpose": "Tileable albedo/normal/ORM + damage decals for seven materials",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype_after_greybox"
+    },
+    {
+      "id": "PLAN-OPERATIVE-PLACEHOLDER",
+      "category": "characters",
+      "render_type": "mesh",
+      "proposed_path_prefix": "generated_assets/characters/operative/",
+      "purpose": "Greybox operative placeholder; final model after visual test",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype"
+    },
+    {
+      "id": "PLAN-WEAPONS-CH1",
+      "category": "weapons",
+      "render_type": "mesh",
+      "proposed_path_prefix": "generated_assets/weapons/",
+      "purpose": "Kinetic Accelerator + Breach Charge placeholders and projectile presentation",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype"
+    },
+    {
+      "id": "PLAN-VFX-HELIX",
+      "category": "vfx",
+      "render_type": "sprite",
+      "proposed_path_prefix": "generated_assets/vfx/",
+      "purpose": "Muzzle, impact, blast, sparks, arcs, shockwave, debris textures",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype_after_greybox"
+    },
+    {
+      "id": "PLAN-UI-HUD",
+      "category": "ui",
+      "render_type": "ui",
+      "proposed_path_prefix": "generated_assets/ui/",
+      "purpose": "Basic HUD weapon/objective icons",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype"
+    },
+    {
+      "id": "PLAN-HELIX-ENV",
+      "category": "environments",
+      "render_type": "mesh",
+      "proposed_path_prefix": "generated_assets/environments/helix/",
+      "purpose": "Helix backdrop / set dressing cards",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype_after_greybox"
+    },
+    {
+      "id": "PLAN-CINEMATICS-STILLS",
+      "category": "cinematics",
+      "render_type": "sprite",
+      "proposed_path_prefix": "generated_assets/cinematics/",
+      "purpose": "Narrated stills library (~40-50 campaign)",
+      "status": "planned_not_on_disk",
+      "milestone": "after_style_lock"
+    },
+    {
+      "id": "PLAN-SFX",
+      "category": "audio",
+      "render_type": "audio",
+      "proposed_path_prefix": "generated_assets/audio/sfx/",
+      "purpose": "Weapon and material SFX with recorded licences",
+      "status": "planned_not_on_disk",
+      "milestone": "helix_prototype_or_later"
+    },
+    {
+      "id": "PLAN-MUSIC-RIGHTS",
+      "category": "audio",
+      "render_type": "audio",
+      "proposed_path_prefix": "generated_assets/audio/music/",
+      "purpose": "Licence evidence and any replacement beds; do not ship unverified AI music",
+      "status": "planned_not_on_disk",
+      "milestone": "release_blocker_for_current_bed"
+    },
+    {
+      "id": "PLAN-FONTS",
+      "category": "fonts",
+      "render_type": "font",
+      "proposed_path_prefix": "generated_assets/fonts/",
+      "purpose": "Redistributable UI fonts",
+      "status": "planned_not_on_disk",
+      "milestone": "ui_pass"
+    }
+  ],
+  "external_references": [
+    {
+      "id": "REF-OWNER-PACK",
+      "location": "external:/workspace/temporal-ref/temporal_first_jump_reference_pack/",
+      "status": "unverified_reference",
+      "notes": "AI-generated concept pack; not copied into the repo. See generated_assets/docs/references/README.md."
+    }
+  ]
+}
