@@ -2,6 +2,12 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Slice B verified and merged
+
+- `380cd10` uid files for the new view scripts; `b649204` integrated textures import VRAM-compressed with mipmaps (emulator video memory ~265 MB → ~95 MB).
+- Verification of the cloud-built slice B: Godot import clean; headless 199 passed / 0 failed / 1 skipped; captures; emulator benchmark (Compatibility, `b649204`): 52-55 fps, worst breach frame 68 ms. Logs in `docs/benchmarks/2026-11-10-helix-sliceB/`.
+- `96596ab` merged into `main` (normal merge).
+
 ## 2026-11-10 — Asset integration slice B: debris sets, damage overlays, gameplay VFX
 
 - Integration selection: slice `B_helix_debris_damage_vfx` (40 ids): the nine Helix debris sets matching the integrated component variants (`HLX-DEB-*`), light/heavy damage overlays for the seven physics materials used by `helix_01` (`SHR-DMG-*`), and the 17 VFX sheets/textures the presets reference. Rights and approval fields copied unchanged (all `pending_review`).

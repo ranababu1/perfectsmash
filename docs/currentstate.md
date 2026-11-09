@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Canonical branch `main`; slice B work on `claude/vigilant-gates-mnfkim` (not yet merged) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Branch `main` (slice B merged from `claude/vigilant-gates-mnfkim`) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
 
 M1 audit findings (toolchain, architecture, level mapping, identity/signing, risks): see `docs/project-audit.md`.
 
@@ -160,6 +160,13 @@ The owner has approved a revised product direction. This is a design decision, n
 | Online leaderboards | Approved / planned | Later phase; backend not selected/implemented |
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
+
+## Asset integration: Helix slice B (verified 2026-11-10, merged `96596ab`)
+
+- Built in a cloud session without Godot (`b69196c`..`a411ef9`); verified here: Godot import clean, headless 199 passed / 0 failed / 1 skipped, gameplay captures show debris sets, light/heavy damage overlays, breach explosion, material impacts, core idle glow and core destruction effects.
+- Fix on verification (`b649204`): the 79 integrated textures now import VRAM-compressed with mipmaps. Uncompressed VFX sheets had raised emulator video memory from ~95 MB to ~265 MB; after the fix 93-97 MB.
+- Emulator (Compatibility, `b649204`): 52-55 fps, ~610-690 draw calls, 8 ms viewport CPU, worst breach frame 68 ms, restarts 720-820 ms, first load ~12 s. Eval APK 126 MB (ETC2 + ASTC textures both shipped; texture-format split is slice E).
+- Open: a ~170 ms spike on the first kinetic shot (first effect use), restart cost, first load; physical-device numbers.
 
 ## Asset integration: Helix slice A (2026-11-10, `fe828ad`..`88e3ce6`)
 

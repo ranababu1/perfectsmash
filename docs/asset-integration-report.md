@@ -45,7 +45,7 @@ Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrat
 
 ## Slice B: debris sets, damage overlays and gameplay VFX
 
-**Implemented, not yet verified in Godot** (no engine binary in the session that built it; see `currentstate.md`).
+**Implemented in a session without Godot; verified 2026-11-10** (import clean, 199 tests pass, captures `docs/images/assets/sliceB_*`). Textures now import VRAM-compressed; emulator Compatibility at `b649204`: 52-55 fps, 610-690 draw calls, video memory 93-97 MB, worst breach frame 68 ms, restarts 720-820 ms, eval APK 126 MB.
 
 - **Debris** (`HLX-DEB-{AI_CORE-A, BLAST_WALL-A, CORE_SHIELD-A, POWER_CELL-A, RELAY_DISH-A, RELAY_MAST-B, SERVER_RACK-B, SERVICE_DECK-B, SUPPORT_COLUMN-B}`, 4-7 fragments each): `AssetLibrary.instance_debris` picks the set by kind and size like components; `DebrisSet` places it in the destroyed body's last pose and animates the fragments (seeded throw, gravity, floor bounce, shrink after 2.2 s). Contract 8 allows visual-only rigid bodies or particles; a scripted throw was chosen so no 3D physics is added.
 - **Damage overlays** (`SHR-DMG-<MATERIAL>-LIGHT/HEAVY` for ai_core_module, composite, electronic_module, energy_component, glass_polymer, lightweight_alloy, reinforced_steel): surfaces in `mat_<material>_<ch>[_zone]` slots get a darkened copy (×0.85 damaged, ×0.72 critical) with the overlay as a transparent object-space triplanar `next_pass`, one tile per metre. Materials are shared per source surface and level. The overlay is chosen by the component's physics material.
