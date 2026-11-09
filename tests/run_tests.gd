@@ -18,6 +18,7 @@ const UNIT_SUITES := [
 	"res://tests/test_damage.gd",
 	"res://tests/test_structure.gd",
 	"res://tests/test_mission_definition.gd",
+	"res://tests/test_weapon_state.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",
