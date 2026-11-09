@@ -1,6 +1,6 @@
 # Style-validation package (pending owner review)
 
-Created 2026-11-09 on branch `asset` for brief section 26.
+Created 2026-11-09 on branch `assets` for brief section 26.
 
 ## Images
 

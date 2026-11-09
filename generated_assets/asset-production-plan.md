@@ -2,7 +2,7 @@
 
 **Role:** Art / asset lead (images, modular meshes + textures, VFX, UI, cinematics stills; audio via external services).  
 **Repository:** `ranababu1/temporal-chapter1`  
-**Branch for this work:** `asset`  
+**Branch for this work:** `assets`  
 **Staging root:** `generated_assets/`  
 **Date:** 2026-11-09 (Asia/Calcutta)  
 **Brief:** Master Art, Animation, Video and Audio Production Brief §26 first response.  
@@ -32,7 +32,7 @@ Owner reference pack (external, unverified AI provenance) reinforces the hooded 
 
 ## 2. Repository asset audit
 
-Inspected on `main` at `19b0de2` (then branched to `asset`).
+Inspected on `main` at `19b0de2` (work committed on the existing `assets` branch).
 
 | Area | Finding |
 |---|---|
@@ -306,7 +306,7 @@ Gate: no bulk production until Batch 3 greybox is played and visually validated.
 ```
 ## 2026-11-09 - Asset branch: production plan and generated_assets scaffold
 
-- Branch `asset`: added `generated_assets/` with category folders, asset production plan (brief §26, Option B), machine-readable `asset_manifest.json` (existing paths only + planned inventory), and `tools/validate_asset_manifest.py`.
+- Branch `assets`: added `generated_assets/` with category folders, asset production plan (brief §26, Option B), machine-readable `asset_manifest.json` (existing paths only + planned inventory), and `tools/validate_asset_manifest.py`.
 - No gameplay code or shipped `assets/` files changed. Owner reference pack kept external (unverified AI provenance).
 - Helix prototype scoped to a small mesh+texture kit gated on Batch 3 greybox validation.
 ```
@@ -314,7 +314,7 @@ Gate: no bulk production until Batch 3 greybox is played and visually validated.
 ## Proposed currentstate note (for `docs/currentstate.md` when merging)
 
 ```
-## Asset production (branch `asset`, 2026-11-09)
+## Asset production (branch `assets`, 2026-11-09)
 
 - Staging tree: `generated_assets/` (plan, manifest, category READMEs). See `generated_assets/asset-production-plan.md`.
 - Rendering alignment: Option B (3D presentation over 2D physics); first milestone = small Helix prototype after greybox validation.
