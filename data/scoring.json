@@ -1,0 +1,22 @@
+{
+	"_note": "Global scoring formula. Missions supply their own completion values, recommended shots and target time (see data/missions/*.json 'rewards'). Mission Points rank performance; Research Data funds upgrades. Weights keep speed a minor factor.",
+	"mission_points": {
+		"critical_asset": 500,
+		"destruction": 1000,
+		"optional_objective": 300,
+		"shot_efficiency": 800,
+		"time_efficiency": 300,
+		"accuracy": 400
+	},
+	"research_data": {
+		"efficiency_max": 15,
+		"efficiency_shot_weight": 0.7
+	},
+	"shot_factor": {
+		"zero_at_multiple": 2.0
+	},
+	"time_factor": {
+		"floor": 0.3,
+		"floor_at_multiple": 3.0
+	}
+}

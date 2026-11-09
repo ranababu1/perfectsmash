@@ -2,12 +2,22 @@ class_name ProgressData
 extends RefCounted
 ## Local player progress and settings with a versioned, validated serialization format.
 
-const SCHEMA_VERSION := 2
-## Older versions that from_dict upgrades in place. v1 had no story or music/voice settings.
-const MIGRATABLE_VERSIONS := [1]
+const SCHEMA_VERSION := 3
+## Older versions that from_dict upgrades in place. v1 had no story or music/voice settings;
+## v2 had no missions, Research Data or weapon upgrades. Nothing is dropped when upgrading.
+const MIGRATABLE_VERSIONS := [1, 2]
+const MAX_UPGRADE_LEVEL := 3
 
-## level id -> {"stars": int, "best_shots": int}
+## Legacy level id -> {"stars": int, "best_shots": int}. Kept intact for old saves.
 var level_results := {}
+## mission id -> {completed: bool, best_points: int, best_research_data: int, best_shots: int,
+##                best_time: float, optional_completed: Array[String]}
+var mission_results := {}
+## Spendable upgrade currency and the lifetime total earned.
+var research_data := 0
+var research_data_earned := 0
+## weapon id -> {attribute: level 1-3}
+var weapon_upgrades := {}
 var sound_enabled := true
 var vibration_enabled := true
 var music_enabled := true
@@ -60,6 +70,64 @@ func record_win(level_id: String, stars: int, shots_used: int) -> bool:
 	return improved
 
 
+func mission_result(mission_id: String) -> Dictionary:
+	return mission_results.get(mission_id, {})
+
+
+func is_mission_completed(mission_id: String) -> bool:
+	return bool(mission_result(mission_id).get("completed", false))
+
+
+## Records a finished mission from a MissionScoring breakdown. Bests only improve. Research Data
+## is granted only for improvement over this mission's previous best, so replaying a mission
+## cannot farm currency. Returns the Research Data granted.
+func record_mission(mission_id: String, score: Dictionary, shots: int, elapsed: float, optional_completed: Array[String]) -> int:
+	var previous: Dictionary = mission_results.get(mission_id, {})
+	var best_research := int(previous.get("best_research_data", 0))
+	var granted := maxi(0, int(score.research_data) - best_research)
+	var success := bool(score.success)
+	var optional: Array[String] = []
+	optional.assign(previous.get("optional_completed", []))
+	for id in optional_completed:
+		if success and not optional.has(id):
+			optional.append(id)
+	optional.sort()
+	var record := {
+		"completed": bool(previous.get("completed", false)) or success,
+		"best_points": maxi(int(previous.get("best_points", 0)), int(score.mission_points)),
+		"best_research_data": maxi(best_research, int(score.research_data)),
+		"best_shots": int(previous.get("best_shots", 0)),
+		"best_time": float(previous.get("best_time", 0.0)),
+		"optional_completed": optional,
+	}
+	if success:
+		var old_shots: int = record.best_shots
+		record.best_shots = shots if old_shots == 0 else mini(old_shots, shots)
+		var old_time: float = record.best_time
+		record.best_time = elapsed if old_time == 0.0 else minf(old_time, elapsed)
+	mission_results[mission_id] = record
+	research_data += granted
+	research_data_earned += granted
+	return granted
+
+
+func spend_research_data(amount: int) -> bool:
+	if amount <= 0 or amount > research_data:
+		return false
+	research_data -= amount
+	return true
+
+
+func upgrade_level(weapon_id: String, attribute: String) -> int:
+	return int(weapon_upgrades.get(weapon_id, {}).get(attribute, 0))
+
+
+func set_upgrade_level(weapon_id: String, attribute: String, level: int) -> void:
+	if not weapon_upgrades.has(weapon_id):
+		weapon_upgrades[weapon_id] = {}
+	weapon_upgrades[weapon_id][attribute] = clampi(level, 0, MAX_UPGRADE_LEVEL)
+
+
 func has_seen_sequence(sequence_id: String) -> bool:
 	return seen_sequences.has(sequence_id)
 
@@ -87,6 +155,9 @@ func to_dict() -> Dictionary:
 			"voice": voice_enabled,
 		},
 		"story": {"seen": seen},
+		"missions": mission_results.duplicate(true),
+		"research": {"balance": research_data, "earned": research_data_earned},
+		"upgrades": weapon_upgrades.duplicate(true),
 	}
 
 
@@ -140,7 +211,57 @@ static func from_dict(data: Variant) -> ProgressData:
 				progress.load_warnings.append("dropped invalid story sequence id '%s'" % str(entry))
 	else:
 		progress.load_warnings.append("'story' is not a valid object")
+
+	progress._load_missions(data.get("missions", {}))
+	var research: Variant = data.get("research", {})
+	if research is Dictionary:
+		var balance: Variant = research.get("balance", 0)
+		var earned: Variant = research.get("earned", 0)
+		if _is_whole(balance) and _is_whole(earned) and balance >= 0 and earned >= balance:
+			progress.research_data = int(balance)
+			progress.research_data_earned = int(earned)
+		else:
+			progress.load_warnings.append("invalid Research Data totals; reset to 0")
+	else:
+		progress.load_warnings.append("'research' is not an object")
+	var upgrades: Variant = data.get("upgrades", {})
+	if upgrades is Dictionary:
+		for weapon_id: Variant in upgrades:
+			var weapon_levels: Variant = upgrades[weapon_id]
+			if not weapon_id is String or not weapon_levels is Dictionary:
+				progress.load_warnings.append("dropped invalid upgrades for '%s'" % str(weapon_id))
+				continue
+			for attribute: Variant in weapon_levels:
+				var level: Variant = weapon_levels[attribute]
+				if attribute is String and _is_whole(level) and level >= 0 and level <= MAX_UPGRADE_LEVEL:
+					progress.set_upgrade_level(weapon_id, attribute, int(level))
+				else:
+					progress.load_warnings.append("dropped invalid upgrade %s.%s" % [weapon_id, str(attribute)])
+	else:
+		progress.load_warnings.append("'upgrades' is not an object")
 	return progress
+
+
+func _load_missions(raw: Variant) -> void:
+	if not raw is Dictionary:
+		load_warnings.append("'missions' is not an object")
+		return
+	for mission_id: Variant in raw:
+		var entry: Variant = raw[mission_id]
+		var ok: bool = mission_id is String and entry is Dictionary 			and entry.get("completed") is bool 			and _is_whole(entry.get("best_points")) and entry.best_points >= 0 			and _is_whole(entry.get("best_research_data")) and entry.best_research_data >= 0 			and _is_whole(entry.get("best_shots")) and entry.best_shots >= 0 			and (entry.get("best_time") is float or entry.get("best_time") is int) and entry.best_time >= 0 			and entry.get("optional_completed") is Array 			and (entry.optional_completed as Array).all(func(v: Variant) -> bool: return v is String)
+		if not ok:
+			load_warnings.append("dropped invalid mission result '%s'" % str(mission_id))
+			continue
+		var optional: Array[String] = []
+		optional.assign(entry.optional_completed)
+		mission_results[mission_id] = {
+			"completed": entry.completed,
+			"best_points": int(entry.best_points),
+			"best_research_data": int(entry.best_research_data),
+			"best_shots": int(entry.best_shots),
+			"best_time": float(entry.best_time),
+			"optional_completed": optional,
+		}
 
 
 static func _is_whole(value: Variant) -> bool:

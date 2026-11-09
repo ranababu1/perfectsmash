@@ -1,5 +1,7 @@
 extends Node
-## App root: owns persistence, audio and the level catalog; switches between menu and game.
+## App root: owns persistence, audio and the level catalogs; boots into the Helix tactical
+## mission (the new game). The legacy menu/levels remain reachable only through their old code
+## paths, for regression reference.
 ## Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
@@ -16,6 +18,7 @@ var audio: AudioService
 var music: MusicDirector
 var _menu: MenuScreen
 var _game: GameScreen
+var _mission: MissionScreen
 var _level_index := -1
 var _fade: ColorRect
 
@@ -43,7 +46,7 @@ func _ready() -> void:
 		# Chapters only drive presentation, so the game stays playable with default scenery.
 		push_error("Chapter catalog invalid: %s" % ", ".join(chapters.errors))
 	_add_fade_layer()
-	_show_menu()
+	_show_mission()
 
 
 ## A full-screen veil that fades out after every screen change. It never takes input.
@@ -72,6 +75,8 @@ func _notification(what: int) -> void:
 		NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT:
 			if _game != null:
 				_game.pause()
+			if _mission != null:
+				_mission.pause()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -81,10 +86,20 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _handle_back() -> void:
-	if _game != null:
+	if _mission != null:
+		_mission.handle_back()
+	elif _game != null:
 		_game.handle_back()
 	elif OS.get_name() == "Android":
 		get_tree().quit()
+
+
+func _show_mission() -> void:
+	_clear_screens()
+	_mission = MissionScreen.new(audio, progress, save)
+	_mission.restart_requested.connect(_show_mission)
+	add_child(_mission)
+	_reveal()
 
 
 func _show_menu() -> void:
@@ -154,9 +169,10 @@ func _set_vibration(enabled: bool) -> void:
 
 func _clear_screens() -> void:
 	get_tree().paused = false
-	for screen: Node in [_menu, _game]:
+	for screen: Node in [_menu, _game, _mission]:
 		if screen != null:
 			remove_child(screen)
 			screen.queue_free()
 	_menu = null
 	_game = null
+	_mission = null

@@ -36,7 +36,7 @@ func test_helix_mission_is_valid() -> void:
 	assert_eq(def.component("deck").supports, ["pillar_l", "pillar_r"] as Array[String])
 	var structure := StructuralDependencySystem.from_entries(def.structure_entries())
 	assert_true(structure.is_valid())
-	assert_eq(structure.fail("pillar_l"), ["deck", "aura_core", "power_cell"] as Array[String])
+	assert_eq(structure.fail("pillar_l"), ["deck", "core_shield", "aura_core", "power_cell"] as Array[String])
 
 
 func test_minimal_mission_is_valid() -> void:

@@ -28,6 +28,10 @@ var ground_y := 640.0
 var operative := Vector2.ZERO
 var recommended_shots := 1
 var target_time := 60.0
+## Rewards (optional "rewards" block; defaults below). Formula weights live in data/scoring.json.
+var completion_points := 1000
+var completion_research_data := 20
+var optional_research_data := 5
 ## weapon id -> mission ammunition allowance (hard cap before upgrades)
 var weapon_ammunition := {}
 var weapon_order: Array[String] = []
@@ -102,6 +106,13 @@ func _parse(data: Dictionary) -> void:
 	operative = _vector(data, "operative")
 	recommended_shots = _whole(data, "recommended_shots", 1)
 	target_time = _number(data, "target_time")
+	var rewards: Variant = data.get("rewards", {})
+	if rewards is Dictionary:
+		completion_points = _reward(rewards, "completion_points", completion_points)
+		completion_research_data = _reward(rewards, "completion_research_data", completion_research_data)
+		optional_research_data = _reward(rewards, "optional_research_data", optional_research_data)
+	else:
+		errors.append("'rewards' must be an object")
 
 	var raw_weapons: Variant = data.get("weapons")
 	if raw_weapons is Dictionary and not raw_weapons.is_empty():
@@ -286,6 +297,16 @@ func _whole(data: Dictionary, key: String, fallback: int) -> int:
 	if (value is float or value is int) and value == floorf(value):
 		return int(value)
 	errors.append("'%s' must be a whole number" % key)
+	return fallback
+
+
+func _reward(rewards: Dictionary, key: String, fallback: int) -> int:
+	if not rewards.has(key):
+		return fallback
+	var value: Variant = rewards[key]
+	if (value is float or value is int) and value >= 0 and value == floorf(value):
+		return int(value)
+	errors.append("rewards.%s must be a whole number >= 0" % key)
 	return fallback
 
 

@@ -78,7 +78,7 @@ func test_damage_cascade_and_secondary_blast() -> void:
 	assert_eq(e.component_state("pillar_l"), DamageableComponent.State.DAMAGED)
 	assert_eq(released.size(), 0)
 	_kill(e, "pillar_l")
-	assert_eq(released, ["deck", "aura_core", "power_cell"])
+	assert_eq(released, ["deck", "core_shield", "aura_core", "power_cell"])
 	assert_eq(e.component_state("aura_core"), DamageableComponent.State.INTACT, "released, not destroyed")
 	_kill(e, "power_cell")
 	assert_eq(blasts, [["power_cell", 110.0]])

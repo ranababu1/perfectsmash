@@ -161,6 +161,48 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Batch 4 — mission scoring and progression (implemented 2026-11-09, `d6e5071`..`c469756`)
+
+| Part | Files | Notes |
+|---|---|---|
+| Scoring formula | `data/scoring.json`, `scripts/core/mission_scoring.gd` | **Mission Points** = completion (per mission) + 500 per critical asset destroyed + up to 1000 for structural destruction + 300 per optional objective + up to 800 shot efficiency + up to 300 time efficiency + up to 400 accuracy (shots that damaged something). Shot credit is full at or under the mission's recommended shots and reaches 0 at 2×; time credit is full at or under the target time and never drops below 30% (floor at 3×). Time is ~6% of the maximum. Failure keeps destruction/critical/accuracy points but earns no completion, efficiency or Research Data. **Research Data** = mission completion + per optional objective + up to 15 efficiency (70% shots / 30% time) |
+| Mission rewards | `data/missions/*.json` `rewards` | `completion_points`, `completion_research_data`, `optional_research_data` (defaults 1000 / 20 / 5) |
+| Accuracy | `MissionEngine.effective_shots`, `MissionWorld` | A shot counts as effective when its hit or blast applied damage |
+| Save schema v3 | `scripts/core/progress_data.gd` | Adds `missions` (completed, best points, best Research Data, best shots, best time, optional objectives done), `research` (balance, lifetime earned) and `upgrades` (weapon → attribute → level). v1 and v2 migrate in place; legacy level results, settings and story are kept. Invalid fields are dropped with warnings; balance above lifetime earnings is rejected |
+| Anti-farming | `ProgressData.record_mission` | Research Data granted = improvement over this mission's previous best Research Data; bests only improve; failed runs never replace bests or grant optional credit |
+| Upgrades | `data/weapons.json` `costs`, `scripts/core/upgrade_rules.gd` | Costs 30/60/100 Research Data per level (placeholder values); purchase/affordability rules; levels filtered against the catalog before reaching MissionEngine. No upgrade UI yet |
+| Integration | `mission_screen.gd`, `mission_hud.gd`, `main.gd` | Missions start with the player's upgrades; results are scored, recorded and saved on finish; result panel shows Mission Points (with breakdown), Research Data gained and balance |
+
+**Verification (2026-11-09, `c469756`):** headless 155 passed / 0 failed / 1 skipped; windowed 156 / 0 / 0. On the `Pixel10Pro` emulator a real **v1 save** (5 legacy level results from an earlier session) loaded without warnings and, after a mission won with one touch-aimed Breach lob, was rewritten as **v3** with the legacy results and settings intact plus `helix_01` (3746 points, 40 Research Data, balance 40).
+
+**Open points:** upgrade UI and pricing balance; Standard vs. Competitive ranking conditions are not modelled yet (leaderboards are a later phase); the one-shot Breach-lob clear scores nearly maximum points, which makes the Helix layout balance (Batch 5) more pressing.
+
+## Batch 3 — first playable Helix prototype (implemented 2026-11-09, `33cd669`..`1109b8a`)
+
+**The app now boots straight into the Helix greybox mission (`helix_01`, Relay Node).** The legacy menu/levels are no longer shown (code kept for regression tests/reference).
+
+| Part | Files | Notes |
+|---|---|---|
+| 2D physics world | `scripts/mission/mission_world.gd`, `component_body.gd`, `weapon_projectile.gd` | Components start frozen; released to physics on support loss, CRITICAL state or blast push, together with everything resting on them. Collision damage from impact jolts (gravity removed, so resting contacts deal none). Kinetic rounds deal speed-scaled direct damage; Breach Charges detonate on first contact (area damage to nearest edges + knockback). Secondary blasts (power cell) chain. Settle detection gates mission success |
+| 3D presentation | `scripts/mission/view/mission_view.gd`, `view_mapping.gd`, `operative_rig.gd` | Godot 3D, tilted three-quarter `Camera3D` (FOV 40), directional light + shadows, greybox facility backdrop. Each component = its physics rectangle extruded in depth (front face = collision shape). Damage tint per state; red floating marker + white/red housing identify the AI core; projectile meshes; blast flash + light, sparks, debris. Touch picking via camera ray onto the z = 0 physics plane |
+| Operative | `operative_rig.gd` | Placeholder primitives, anonymous helmet/visor. States: idle, ready, aim (arm tracks aim), fire recoil, reload (weapon lowered during cooldown), victory, defeat. Visible weapon swap (rail vs. launcher) |
+| Screen, input, HUD | `scripts/mission/mission_screen.gd`, `mission_hud.gd`, `scripts/main.gd` | Touch-and-hold to aim at a point (not pull-back), release to fire, release near the operative to cancel; Breach power = finger distance. Weapon buttons with ammo + reload bar, objectives with progress, shots vs. recommended, time vs. target, pause, restart, result panel. Android back pauses; app backgrounding pauses |
+| Tooling | `tools/capture_mission.gd` | Writes 9 review screenshots to `tests/output/mission/` |
+
+**Helix layout tuning (measured with a physics probe, then locked into tests):** blast wall and racks moved left so a rack-cluster Breach no longer topples the deck; a reinforced-steel `core_shield` in front of the core blocks direct kinetic sniping; recommended shots 6 → 4. Verified tactics: 2 precise kinetic hits on the left column collapse the deck and destroy the core; a Breach lobbed over the shield destroys the core; a Breach on the rack cluster clears two racks without reaching the core; destroying the power cell chains damage into the core.
+
+**Verification (2026-11-09, `1109b8a`):** headless 138 passed / 0 failed / 1 skipped; windowed 139 / 0 / 0. Android debug APK (60.4 MB) installed on the `Pixel10Pro` emulator (2856×1280): boots into the mission on Compatibility/OpenGL ES 3.1 without log errors; `adb input swipe` touch aiming fired the Kinetic Accelerator, a tap switched to Breach, a swipe threw a charge that destroyed one rack and left the next critical.
+
+**Known issues / not yet done:**
+- Not tested on a physical device; no frame-time data for the 3D scene yet. The renderer benchmark still uses the old 2D proxies: re-run Compatibility vs Mobile with this 3D scene and a larger facility (Batch 5).
+- Aim picking uses the z = 0 physics plane, while visible front faces sit half a component depth in front of it, so touching the visible top edge of a piece can aim slightly off; kinetic rounds also drop a little (gravity × 0.25). The preview shows the true path. Candidate fix: snap/assist toward the touched component (Batch 5 or the targeting-assistance upgrade).
+- Balance is first-pass: the mission can be won in 1-2 well-placed shots against a recommended 4. Needs hands-on play-testing.
+- Operative and weapons are placeholders with procedural animation only.
+
+## Production pipeline alignment (owner, 2026-11-09)
+
+Option B is the planned architecture: Godot 3D rendering + tilted three-quarter camera over the existing 2D physics, with a placeholder 3D operative (Batch 3). Gameplay objects are 3D modular geometry with textures (no per-object PNG sprites); 2D art is for textures, decals, damage variants, VFX, UI and narrated-still cinematics (no video dependency). The first asset milestone is concepts, material references, textures and specs; bulk asset production waits for the validated Batch 3 greybox. See `plan.md` §9b and the guide's “3D-ready production pipeline”.
+
 ## Batch 2 — mission architecture (implemented 2026-11-09, `db82117`..`d7a3738`)
 
 | System | Files | Status |

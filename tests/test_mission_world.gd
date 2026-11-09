@@ -1,0 +1,141 @@
+extends TestCase
+## MissionWorld + MissionEngine on the real 2D physics with the Helix greybox (helix_01).
+## Shots are placed directly at known positions so each test checks one tactic. Assertions use
+## damage-state categories, not exact health, because Godot 2D contact resolution is not
+## bit-reproducible run to run.
+
+const HELIX := "res://data/missions/helix_01.json"
+const State := DamageableComponent.State
+
+var _materials := MaterialCatalog.load_from_file()
+var _weapons := WeaponCatalog.load_from_file()
+var _viewport: SubViewport
+
+
+func _world() -> MissionWorld:
+	var def := MissionDefinition.load_from_file(HELIX, _materials, _weapons)
+	var engine := MissionEngine.new(def, _materials, _weapons)
+	_viewport = SubViewport.new()
+	_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	tree.root.add_child(_viewport)
+	var world := MissionWorld.new()
+	_viewport.add_child(world)
+	world.setup(def, engine, _materials)
+	return world
+
+
+func _free() -> void:
+	tree.root.remove_child(_viewport)
+	_viewport.queue_free()
+
+
+func _kinetic(world: MissionWorld, from: Vector2) -> void:
+	world.spawn_projectile("kinetic_accelerator", world.engine.weapons.kinetic_accelerator.stats, from, Vector2(1700, 0))
+
+
+func _breach(world: MissionWorld, from: Vector2, velocity: Vector2) -> void:
+	world.spawn_projectile("breach_charge", world.engine.weapons.breach_charge.stats, from, velocity)
+
+
+## Waits until `condition` holds or `seconds` of physics time pass.
+func _until(condition: Callable, seconds: float) -> void:
+	var frames := int(seconds * 60.0)
+	for i in frames:
+		if condition.call():
+			return
+		await tree.physics_frame
+
+
+func test_facility_stands_until_attacked() -> void:
+	var world := _world()
+	await wait_physics_frames(120)
+	for id: String in world.bodies:
+		assert_eq(world.engine.component_state(id), State.INTACT, id)
+		assert_true(world.body_for(id).freeze, "%s stays frozen" % id)
+	assert_true(world.is_settled())
+	assert_true(world.engine.is_active())
+	_free()
+
+
+func test_two_kinetic_hits_collapse_support_and_destroy_core() -> void:
+	var world := _world()
+	var e := world.engine
+	_kinetic(world, Vector2(803, 530))
+	await wait_physics_frames(45)
+	assert_eq(e.component_state("pillar_l"), State.DAMAGED, "first hit weakens the column")
+	assert_true(world.body_for("deck").freeze, "deck still held")
+	_kinetic(world, Vector2(803, 530))
+	await _until(func() -> bool: return not e.is_active(), 8.0)
+	assert_eq(e.component_state("pillar_l"), State.DESTROYED)
+	assert_eq(e.component_state("aura_core"), State.DESTROYED, "core falls with the deck")
+	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED)
+	_free()
+
+
+func test_breach_charge_clears_rack_cluster_without_reaching_core() -> void:
+	var world := _world()
+	var e := world.engine
+	var blasts := []
+	world.blast_happened.connect(func(c: Vector2, r: float) -> void: blasts.append(r))
+	_breach(world, Vector2(674, 480), Vector2(0, 300))
+	await wait_physics_frames(120)
+	assert_eq(blasts.size(), 1, "one detonation")
+	assert_eq(e.effective_shots, 1, "a damaging detonation counts as an effective shot")
+	assert_eq(e.component_state("rack_1"), State.DESTROYED, "area damage hits both racks")
+	assert_eq(e.component_state("rack_2"), State.DESTROYED)
+	assert_true(e.component_state("blast_wall") != State.DESTROYED, "reinforced steel survives")
+	assert_eq(e.component_state("aura_core"), State.INTACT)
+	assert_true(e.is_active())
+	assert_eq(e.objectives.get_objective("racks").progress, 0.5)
+	_free()
+
+
+func test_breach_lobbed_onto_core_destroys_it() -> void:
+	var world := _world()
+	var e := world.engine
+	_breach(world, Vector2(885, 300), Vector2(0, 200))
+	await wait_physics_frames(60)
+	assert_eq(e.component_state("aura_core"), State.DESTROYED)
+	assert_eq(e.objectives.get_objective("core").status, MissionObjectives.Status.COMPLETE)
+	await _until(func() -> bool: return not e.is_active(), 10.0)
+	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED, "succeeds once the debris settles")
+	_free()
+
+
+func test_core_shield_absorbs_kinetic_fire() -> void:
+	var world := _world()
+	var e := world.engine
+	for i in 3:
+		_kinetic(world, Vector2(810, 390))
+		await wait_physics_frames(45)
+	assert_true(e.component_state("core_shield") <= State.DAMAGED, "steel shield holds")
+	assert_eq(e.component_state("aura_core"), State.INTACT, "core protected from the front")
+	_free()
+
+
+func test_power_cell_secondary_blast_damages_core() -> void:
+	var world := _world()
+	var e := world.engine
+	var removed := []
+	world.component_removed.connect(func(id: String, _at: Vector2) -> void: removed.append(id))
+	e.apply_damage("power_cell", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
+	await wait_physics_frames(30)
+	assert_eq(removed, ["power_cell"])
+	assert_true(world.body_for("power_cell") == null, "destroyed body removed")
+	assert_true(e.component_state("aura_core") >= State.DAMAGED, "chain reaction reached the core")
+	_free()
+
+
+func test_fire_spends_ammo_from_muzzle_and_settles() -> void:
+	var world := _world()
+	var e := world.engine
+	var shot := world.fire(Vector2(0.3, -1.0))
+	assert_true(shot != null)
+	assert_eq(shot.position, world.muzzle_position())
+	assert_eq(e.weapons.kinetic_accelerator.ammo, 13)
+	assert_true(world.fire(Vector2(0.3, -1.0)) == null, "reloading")
+	assert_false(world.is_settled(), "a projectile is in flight")
+	await _until(func() -> bool: return world.is_settled(), 8.0)
+	assert_true(world.is_settled(), "settles after the round leaves or lands")
+	assert_eq(world.projectiles.size(), 0)
+	_free()

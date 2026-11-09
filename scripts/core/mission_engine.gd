@@ -30,6 +30,8 @@ enum Phase { ACTIVE, SUCCEEDED, FAILED }
 var definition: MissionDefinition
 var phase := Phase.ACTIVE
 var elapsed := 0.0
+## Shots whose impact or blast damaged at least one component (accuracy for scoring).
+var effective_shots := 0
 var weapons := {}
 var weapon_order: Array[String] = []
 var selected_weapon_id := ""
@@ -98,6 +100,11 @@ func fire(direction: Vector2, power: float = 1.0) -> Vector2:
 	ammo_changed.emit(weapon.id(), weapon.ammo, weapon.ammo_capacity)
 	_evaluate(false)
 	return velocity
+
+
+func record_effective_shot() -> void:
+	if is_active():
+		effective_shots += 1
 
 
 func shots_fired() -> int:

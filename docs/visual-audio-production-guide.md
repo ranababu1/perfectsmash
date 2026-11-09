@@ -55,7 +55,7 @@ Design:
 - Impact: brief compression ripple, sharp energy crack and debris response.
 - Idle animation: slow core pulse, not continuous particle spray.
 
-Deliverables:
+Deliverables *(Superseded 2026-11-09 — see “3D-ready production pipeline” at the end of this guide.)*
 - Main projectile sprite, transparent PNG.
 - Optional separate core/glow layer if the existing renderer can animate it cheaply.
 - Small HUD icon.
@@ -107,13 +107,13 @@ Use these templates as a base. Replace bracketed fields and retain the style anc
 ### Cinematic environment plate
 "Wide 16:9 cinematic science-fiction environment concept art for a grounded near-future thriller. [CHAPTER LOCATION AND SCENE]. Believable industrial architecture, physically plausible materials, immense scale, atmospheric haze, carefully controlled practical lighting, charcoal and cold-steel palette with restrained cyan temporal energy and small amber warning lights. Strong depth layers, clear focal point, visually quiet lower 18 percent for subtitles. No characters unless specified. No text, letters, numbers, logos, interface, watermark or signature. High-detail production concept art, realistic matte-painting finish."
 
-### Gameplay background plate
+### Gameplay background plate *(Superseded 2026-11-09 — see “3D-ready production pipeline” at the end of this guide.)*
 "Landscape 16:9 background environment for a 2D physics destruction puzzle. [CHAPTER ENVIRONMENT]. Simplified readable architecture, low-contrast distant scenery, soft atmospheric depth, large open negative space behind the playable structure. Keep foreground gameplay area visually uncluttered. Dark grounded sci-fi industrial art, charcoal/steel palette and restrained chapter accent. No destructible objects, no text, no UI, no logo, no watermark."
 
-### Destructible object sprite
+### Destructible object sprite *(Superseded 2026-11-09 — see “3D-ready production pipeline” at the end of this guide.)*
 "Single isolated [OBJECT] designed as a destructible object in a polished 2D physics puzzle game. Side-on orthographic view, clean silhouette, consistent scale, believable near-future industrial construction, clear material identity, restrained highlights, transparent background, centred with padding. No cast shadow beyond a subtle contact shadow if requested. No text, logo, watermark or extra objects."
 
-### Temporal Charge sprite
+### Temporal Charge sprite *(Superseded 2026-11-09 — see “3D-ready production pipeline” at the end of this guide.)*
 "Single compact futuristic temporal impact charge, dark engineered metal shell, contained cyan-blue energy core, segmented stabiliser ring, strong circular silhouette, readable at small mobile-game scale, side-on 2D game sprite, transparent background, centred, consistent studio lighting. No text, no logo, no smoke cloud, no watermark."
 
 ### Chapter key art
@@ -168,7 +168,7 @@ Naming rules:
 - lowercase snake_case.
 - Stable sequence and slide IDs. Never use display titles as save keys.
 - Keep source prompt and rights metadata in a manifest.
-- Prefer WebP for opaque backgrounds if quality is adequate; PNG for transparency and crisp sprites.
+- Prefer WebP for opaque cinematic stills if quality is adequate; PNG for transparency (decals, VFX, UI). 3D models as glTF 2.0 (`.glb`); see the 3D-ready pipeline section.
 - Do not commit source video, enormous uncompressed masters or unused generation variants into the game repository.
 
 ## 7. Narration production
@@ -270,8 +270,8 @@ These are art-direction references, not final production sprites or approved in-
 
 - [ ] Final title and logo direction approved.
 - [ ] Temporal Charge design approved.
-- [ ] One representative gameplay background per chapter approved.
-- [ ] One destructible-object set per chapter approved.
+- [ ] One representative 3D environment kit per chapter approved (after the Batch 3 greybox is validated).
+- [ ] One modular destructible component kit (concepts, textures, specs) per chapter approved.
 - [ ] Opening cinematic storyboard approved.
 - [ ] Narrator and Control voice tests approved.
 - [ ] Gameplay music master and commercial-use rights approved.
@@ -319,3 +319,65 @@ Use restrained material-specific feedback: metal deformation/impact sparks, glas
 ## 5. Multiplayer art is later-phase work
 
 Temporal Frontlines may eventually need a construction grid, component placement/rotation states, defensive modules, institution status, attack report and replay/reconstruction screens. Do not generate or integrate a large Frontlines asset pack before the single-player greybox and component catalogue are validated.
+
+---
+
+# 3D-ready production pipeline (owner-aligned, 2026-11-09)
+
+**Authority:** This section supersedes earlier guidance in this guide that assumes transparent PNG sprites for gameplay objects, side-on 2D object art or 2D gameplay background plates. It matches the planned architecture: **Godot 3D rendering with a tilted three-quarter camera over the existing 2D physics** (Option B; implemented in Batch 3).
+
+## 1. What gets made in 3D vs 2D
+
+| Asset family | Form | Notes |
+|---|---|---|
+| Buildings and destructible components (racks, columns, decks, cores, cells, masts, walls...) | **3D modular geometry** with textures | Never a PNG sprite per object |
+| Environment set (floor, back walls, distant structures) | 3D modular pieces + textured cards for far background | Low contrast behind gameplay |
+| Operative and weapons | **Placeholder primitives** for now | No detailed models until the greybox is validated |
+| Projectiles and impact/blast VFX | Simple meshes + particle/sprite VFX | 2D VFX textures (flipbooks, glows, sparks) are fine here |
+| Material textures, decals, damage variants | **2D generated/painted art** | Tileable texture sets, scorch/crack/impact decals, damage overlays |
+| UI, icons, HUD | 2D | |
+| Cinematics | **Narrated stills** (2D frames, subtle zoom/parallax, subtitles, music) | Video production is not a dependency |
+
+## 2. Geometry rules (match the physics)
+
+- Each damageable component is one physics rectangle in the 2D plane. Its 3D model is that rectangle extruded in depth: **front face = physics shape**. Visual overhangs may not extend the collision silhouette in the plane.
+- **Scale:** 100 physics px = 1 Godot 3D unit (1 m). A 40 × 100 px server rack is 0.4 m × 1.0 m on its front face; depth per component kind (e.g. rack 0.8 m).
+- **Pivot** at the geometric centre, so the mesh follows the body's position and rotation directly.
+- All gameplay components share one depth band. Do not model or place pieces that look like they sit in front of or behind each other in a way the 2D simulation cannot represent.
+- Modular kit, not unique buildings: a small set of reusable pieces per chapter (column, beam/deck, panel/wall, rack/cabinet, core/housing, cell/canister, mast/dish) recombined by level data.
+- **Formats and budgets (initial, revisit after renderer evaluation):** glTF 2.0 (`.glb`); ~200-1,500 triangles per component, ≤ 3,000 for hero pieces such as the AI core; one material per component where practical; textures 512² (standard) to 1024² (hero), mobile-compressed on import (ETC2/ASTC).
+- **Damage states:** intact → damaged → critical → destroyed are shown first with material/decal swaps, emissive changes and VFX; pre-fractured mesh variants only where gameplay benefits and performance allows.
+- Lighting: real-time directional light + simple shadows tuned for mobile; no dependency on baked lightmaps for gameplay pieces.
+
+## 3. 2D art inside the 3D pipeline
+
+- **Material texture sets** (tileable, flat-lit, no perspective, no baked shadows): albedo, normal, roughness/metallic (or ORM). One set per gameplay material category (lightweight alloy, reinforced steel, composite, glass/polymer, concrete, electronic module, energy component) plus chapter variants via tint/trim.
+- **Decals:** scorch marks, impact cracks, warning stripes, panel seams, chapter insignia without real-world logos.
+- **Damage variations:** crack/char overlays per material at damaged and critical levels.
+- **VFX textures:** sparks, debris chips, blast flash, electrical arcs, temporal-energy accents (restrained; no excessive glow).
+- **UI and cinematic stills** as before (16:9 frames, clean plates, subtitles added in Godot).
+
+## 4. First asset milestone (before and during Batch 3)
+
+Deliverables are **concepts, references, textures and specifications**, not finished models:
+1. Helix component concept sheet: orthographic front/side views of each Helix kit piece (column, deck, server rack, AI core, power cell, blast wall, relay mast/dish), with dimensions taken from `data/missions/helix_01.json`.
+2. Material reference boards for the seven gameplay materials (what each reads as in-game, and how damage looks).
+3. Tileable texture sets for those seven materials (mobile resolutions).
+4. Decal and damage-overlay set for Helix.
+5. A written spec per kit piece: dimensions, depth, pivot, triangle budget, material, damage-state treatment.
+6. Operative silhouette concept (anonymous, readable at phone scale) for later modelling; **the prototype uses a placeholder**.
+
+**Gate:** No bulk model or texture production for other chapters until the coding agent's Batch 3 greybox has been played and visually validated (camera angle, readability at phone size, depth honesty, performance).
+
+## 5. Prompt templates for the 3D pipeline
+
+### Component concept sheet
+"Orthographic concept sheet of a [COMPONENT] for a grounded near-future [CHAPTER INSTITUTION] facility. Front view and side view on a neutral grey background, consistent scale, believable industrial construction, clear material identity ([MATERIAL]), simple readable silhouette suitable for a low-poly mobile 3D game, restrained cyan accent lights only where functional. No perspective, no dramatic lighting, no text, labels, logos or watermark."
+
+### Tileable material texture
+"Seamless tileable texture of [MATERIAL DESCRIPTION] for a mobile 3D game, viewed perfectly flat and head-on, even diffuse lighting, no shadows, no perspective, no vignette, subtle wear appropriate to a near-future industrial facility, no text or logos."
+
+### Damage decal / overlay
+"[DAMAGE TYPE: impact crack / scorch mark / torn metal edge] decal on a transparent background, flat head-on view, even lighting, designed to overlay [MATERIAL] surfaces in a mobile 3D game, restrained and readable, no text or logos."
+
+Transparent PNG output is appropriate for **decals, VFX and UI only**, not for gameplay objects.

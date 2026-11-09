@@ -71,7 +71,7 @@ func test_upgrade_levels_are_clamped_and_reported() -> void:
 
 
 func test_penetration_is_capped() -> void:
-	var c := _catalog([_weapon({"stats": {"penetration": 0.8}, "upgrades": {"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.5]}}})])
+	var c := _catalog([_weapon({"stats": {"penetration": 0.8}, "upgrades": {"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.5], "costs": [1, 2, 3]}}})])
 	assert_true(c.is_valid(), ", ".join(c.errors))
 	assert_near(c.get_weapon("w").effective_stats({"penetration": 3}).penetration, WeaponCatalog.MAX_PENETRATION, 0.001)
 
@@ -91,11 +91,12 @@ func test_rejects_invalid_weapons() -> void:
 
 func test_rejects_invalid_upgrades_and_roots() -> void:
 	var c := _catalog([_weapon({"upgrades": {
-		"luck": {"stat": "impact_damage", "op": "add", "levels": [1, 2, 3]},
+		"luck": {"stat": "impact_damage", "op": "add", "levels": [1, 2, 3], "costs": [1, 2, 3]},
 		"impact_energy": {"stat": "charisma", "op": "power", "levels": [1, 2]},
-		"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0, 0.7]},
+		"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0, 0.7], "costs": [1, 2, 3]},
 	}})])
-	assert_eq(c.errors.size(), 5, ", ".join(c.errors))
+	# luck: unknown attribute; impact_energy: stat, op, levels, missing costs; energy_efficiency: zero multiplier.
+	assert_eq(c.errors.size(), 6, ", ".join(c.errors))
 	assert_false(_catalog([_weapon(), _weapon()]).is_valid(), "duplicate id")
 	assert_false(_catalog([{"display_name": "x"}]).is_valid(), "missing id")
 	assert_false(_catalog([_weapon({"stats": {"launch_speed": "fast"}})]).is_valid())

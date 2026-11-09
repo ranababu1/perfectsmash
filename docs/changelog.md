@@ -2,6 +2,26 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Batch 4: Mission Points, Research Data, upgrades, save v3
+
+- `d6e5071` `data/scoring.json` + `MissionScoring`: Mission Points and Research Data relative to each mission's recommended shots and target time; time weighted lightly with a 30% floor; accuracy from shots that dealt damage; failure keeps destruction points only. Per-mission `rewards` block; `MissionEngine.effective_shots`. New suite `test_scoring` (8).
+- `edb98bc` Save schema v3 (missions, Research Data balance/lifetime, weapon upgrades) with v1/v2 migration; anti-farming (only improvement over the mission's best Research Data is granted); upgrade costs in `weapons.json`; `UpgradeRules`. New suite `test_progression` (8).
+- `c469756` Mission results scored, stored and saved on finish; result panel shows Mission Points breakdown and Research Data; missions use purchased upgrades. +1 screen test (score, save, no farming on replay).
+- Results: headless 155 / 0 / 1 skipped; windowed 156 / 0 / 0; emulator: v1 save migrated to v3 on a real device-style install after a touch-played win.
+
+## 2026-11-09 — Batch 3: first playable Helix prototype
+
+- `33cd669` 2D physics mission world (`ComponentBody`, `WeaponProjectile`, `MissionWorld`): frozen-until-released components, impact-jolt collision damage, direct kinetic damage, Breach detonation with area damage and knockback, secondary-blast chains, settle detection; release propagates to everything resting on a released body. Helix layout tuned from a physics probe (wall/racks moved, core shield added, recommended shots 4). New suite `test_mission_world` (7).
+- `874c88c` 3D presentation and play: tilted three-quarter camera over the 2D physics plane, extruded greybox components with damage tints, critical-asset marker, placeholder operative with aim/fire/reload/victory/defeat states, touch-and-hold aiming with 3D trajectory preview, weapon switching, mission HUD, pause/result panels; the app boots into the mission. New suite `test_mission_screen` (5) and `tools/capture_mission.gd`.
+- `1109b8a` Fix: objective progress in the HUD now refreshes when components are destroyed (found on the emulator); +1 test.
+- Results: headless 138 passed / 0 failed / 1 skipped; windowed 139 / 0 / 0; Android debug APK runs on the emulator with touch aiming verified via `adb input swipe`.
+
+## 2026-11-09 — Production pipeline aligned with the 3D-over-2D-physics architecture
+
+- `plan.md` §9b and a new “3D-ready production pipeline” section in `visual-audio-production-guide.md`: 3D modular components whose front face matches the 2D physics rectangle (100 px = 1 m, centre pivots, glTF, mobile triangle/texture budgets); 2D art for textures, decals, damage variants, VFX, UI and cinematic stills; placeholder operative/weapons; first asset milestone = concepts, material references, texture sets, specs; bulk production gated on the validated Batch 3 greybox; narrated stills, no video dependency.
+- Marked the sprite-based guidance (Temporal Charge sprite, object sprite and gameplay-background templates, sprite format rules, approval checklist items) as superseded where it stands; updated plan §6 rendering principles and §9.
+- Documentation only; no code changed.
+
 ## 2026-11-09 — Batch 2: mission architecture
 
 - `db82117` MissionDefinition + `data/missions/helix_01.json` (Relay Node greybox: blast wall, 4 server racks, 2 support columns, service deck, AURA core (critical), power cell, relay mast + dish; objectives: core (mandatory), racks, relay dish, ≤8 shots).
