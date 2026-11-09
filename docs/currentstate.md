@@ -27,6 +27,10 @@ The project is a 2D physics destruction puzzle targeting Android + iOS (Godot 4.
 | Chapter-specific environment and object art | Planned | See `visual-audio-production-guide.md` |
 | Temporal Charge reskin | Planned | Art/audio wrapper only; do not change physics tuning |
 | Continuous gameplay music | Candidate on disk, not approved | `assets/music/bg.mp3` (owner-supplied 2026-11-09, **untracked, not integrated**). Metadata says "made with suno" (id `142466df-1693-4ac7-b0ca-3972206ef363`), not the Topview task recorded earlier. Commercial rights depend on the Suno plan at generation time: evidence needed. Objective check: 3:18, 48 kHz stereo MP3 ~181 kbps, −14.8 LUFS integrated, LRA 5.1 LU; 0.7 s silence at start, 0.4 s at end (fade in/out), so it is **not seamless as-is**. Needs a trimmed loop or an engine cross-fade, Ogg Vorbis conversion, and a human listening review |
+| Save schema v2 | Implemented (`298a99f`) | Adds `story.seen` (watched sequence ids) and `settings.music` / `settings.voice`; v1 saves migrate in place without warnings and re-save as v2 |
+| Chapter catalog | Implemented (`f33acf4`) | `data/chapters.json` + `ChapterCatalog`: 5 chapters, contiguous level ranges 1-100, 11 story sequence ids (`opening`, `chNN_intro`, `chNN_outro`, `finale`) |
+| MusicDirector | Implemented, no track (`f8bbcde`) | Two-player cross-fade, ducking, keeps playing while paused, follows `music_enabled`. Created by `main.gd`; nothing plays until an approved track is assigned. No music toggle in the UI yet |
+| Chapter scenery themes | Implemented (`28372ac`) | `ChapterTheme` (helix, vita, nova_grid, civitas, meridian): sky/hills/ground colours only; pieces keep shared colours. HUD shows "CHAPTER I · HELIX SYSTEMS · 2089". Menu keeps the default theme |
 | Renderer evaluation harness | Implemented (`cd4cf4c`) | `tools/renderer_eval/`; see `docs/renderer-evaluation.md`. Desktop + emulator smoke results only; physical-device data pending |
 | App identity: Temporal: First Jump / `dev.imrn.temporal1` | Implemented (2026-11-09) | Project name, menu title/tagline, plain charcoal boot splash, stable `user://` dir `temporal_first_jump`; local Android + iOS presets. App icon art is still the Perfect Smash design (pending new art) |
 | iOS export | Not started | iOS preset defined locally (bundle ID only); no iOS export templates installed, no macOS/Xcode available |
@@ -49,7 +53,8 @@ Existing architecture remains as documented below. Proposed story additions are 
 - `scripts/game/` — `GameSession`, level loader, bodies, aim controller and effects.
 - `scripts/ui/` — `GameScreen`, `Hud`, `MenuScreen`, pause/results and shared UI.
 - `data/levels.json` — current 20-level catalogue.
-- Proposed future modules: `CinematicPlayer`, `CinematicDefinition`, `CinematicCatalog`, `StoryProgressService`, `MusicDirector`, `StoryArchiveScreen`. Names are conceptual; coding agent must inspect project conventions before implementation.
+- Added in M4: `scripts/core/chapter_catalog.gd` (+ `data/chapters.json`), `scripts/game/chapter_theme.gd`, `scripts/services/music_director.gd`; story state lives in `ProgressData` v2 (no separate StoryProgressService needed).
+- Still planned: `CinematicPlayer`, cinematic definitions/catalog, `StoryArchiveScreen`.
 
 ## Documentation added/updated (2026-11-09)
 

@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — M4 technical foundations (`298a99f`, `f33acf4`, `f8bbcde`, `28372ac`)
+
+- **Save schema v2** (`ProgressData`): `story.seen` sequence ids, `settings.music`, `settings.voice`. v1 saves are migrated (levels, stars and settings kept; new fields default on) and re-saved as v2. Unknown/newer versions are still rejected. New tests: v1 migration, story/audio round trip, invalid story entries.
+- **Chapter catalog**: `data/chapters.json` (titles, organisations, years, level ranges, theme keys, intro/outro sequence ids) validated by `ChapterCatalog` (contiguous ranges from 1, unique ids and sequences). Presentation only; unlocks still follow level order.
+- **MusicDirector**: cross-fading music bed at −12 dB with ducking for narration, runs while paused, follows the saved music setting. No track assigned (candidate not approved).
+- **Chapter scenery**: `ChapterTheme` palettes per the art bible; `Backdrop`, the level ground and a HUD chapter caption now follow the level's chapter. Gameplay pieces are unchanged. A test enforces that scenery stays at least 0.2 luminance darker than every piece colour.
+- `LevelLoader.build`, `GameScreen.start` and `Hud.set_level` gained optional presentation parameters; existing call sites are unchanged.
+- Tests: headless 66 passed / 0 failed / 1 skipped. Visual check: L20 under the Helix theme (`tools/capture_screens.gd`).
+
 ## 2026-11-09 — M3 renderer evaluation harness and first results (`cd4cf4c`)
 
 - Added `tools/renderer_eval/benchmark.gd` + `benchmark.tscn`: scripted scenarios (menu, L01, L20, synthetic 72-block stress, parallax/particles+shaders/cinematic proxies) recording frame-interval percentiles, viewport CPU/GPU time, draw calls, memory, startup and per-level load time to JSON and `RENDER_EVAL_*` log lines.
