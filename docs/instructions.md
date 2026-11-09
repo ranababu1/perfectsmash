@@ -138,3 +138,41 @@ A task is done only when:
 - Diff and staged diff have been reviewed.
 - No secrets or excluded artifacts are included.
 - A focused commit has been created and the configured push has been verified, or the exact reason pushing could not be completed is reported.
+
+
+## 10. Owner-approved gameplay direction (2026-11-09)
+
+The owner has explicitly approved a major gameplay revision. This section and the latest owner-approved revision in `docs/plan.md` supersede older instructions that describe a slingshot/one-projectile game, prohibit new weapon classes, or exclude multiplayer from the product roadmap.
+
+### Product direction
+- Product: Temporal: First Jump.
+- Repository: `https://github.com/ranababu1/temporal-chapter1`.
+- Canonical branch: `main`.
+- Application ID / bundle ID: `dev.imrn.temporal1`.
+- Engine: Godot 4.7.2; Android + iOS.
+- Gameplay: angled 2.5D tactical destruction puzzle, visible anonymous operative, multiple weapons, story-specific structures, hybrid upgrades.
+- Preserve the existing 2D physics architecture for the initial prototype. Do not convert to full 3D physics without a validated technical case and explicit owner approval.
+
+### Approved implementation priorities
+1. Greybox an angled 2.5D Helix facility with a visible operative, one Kinetic Accelerator, one Breach Charge, distinct structural objects and a critical AI core.
+2. Validate readability, aiming, physics and mobile performance before bulk asset production.
+3. Build a reusable data-driven weapon framework. New weapon classes are approved in principle, but implement incrementally and validate each tactical role.
+4. Replace generic block presentation with reusable story-specific institutional components and a small material vocabulary. Calibrate actual physics values; do not infer them from visual labels.
+5. Support complex multi-stage facilities that may require 15, 25 or more shots where justified. Recommended shot budgets are scoring benchmarks, not universal hard caps.
+6. Separate regular Mission Points from bonus Research Data. Research Data funds weapon upgrades. Reward speed and shot efficiency relative to level-specific targets without making speed the only scoring factor.
+7. Use automatic chapter technology unlocks plus player-controlled weapon upgrades. Keep base campaign content reasonably completable without upgrades and do not require multiplayer for campaign progression.
+
+### Leaderboards and Temporal Frontlines
+- Leaderboards are approved for a later online phase, after scoring and upgrades are stable. Include global, friends, chapter, level, weekly challenge and multiplayer categories as appropriate.
+- Provide Standard and Competitive conditions so progression upgrades do not make every ranking incomparable.
+- Temporal Frontlines is the approved working name for asynchronous asymmetric multiplayer.
+- Builders create persistent institutions using predefined modular components on a validated grid, construction budgets and defensive modules.
+- Attackers attack a versioned saved snapshot while the builder is offline. No simultaneous online session is required.
+- Persist structured, versioned institution data, not a live Godot scene.
+- Backend authority is required for accounts, structure validation, match state, results, rankings and rewards. Do not trust client-reported scores.
+- Plan attack reports/replay reconstruction, repair/recovery windows and limits against repeated raids.
+- Real-time synchronized multiplayer physics is not part of the approved initial scope.
+- Multiplayer must not block the first single-player campaign release. Do not add backend SDKs, accounts or networking to the greybox prototype without the appropriate implementation milestone and owner approval.
+
+### Documentation and status discipline
+Update `plan.md`, `currentstate.md` and `changelog.md` when these decisions affect implementation. Update `level-design-spec.md` for weapon, shot-budget, target and scoring constraints. Update visual/art guidance for the angled operative/weapon/institution identity. Describing an approved feature does not mean it is implemented; mark it planned until code and tests prove otherwise.
