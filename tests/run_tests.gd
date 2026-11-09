@@ -12,6 +12,7 @@ const UNIT_SUITES := [
 	"res://tests/test_progress.gd",
 	"res://tests/test_chapters.gd",
 	"res://tests/test_music.gd",
+	"res://tests/test_cinematics.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",
@@ -34,7 +35,9 @@ func _run() -> void:
 	var start := Time.get_ticks_msec()
 	for path: String in suites:
 		var script: GDScript = load(path)
-		if script == null:
+		# A suite with a parse error still loads as a non-null script that cannot be instantiated;
+		# count it as a failure rather than silently running zero tests.
+		if script == null or not script.can_instantiate():
 			printerr("FAIL could not load suite %s" % path)
 			failed += 1
 			continue
