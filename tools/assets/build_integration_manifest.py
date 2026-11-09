@@ -1,41 +1,32 @@
 #!/usr/bin/env python3
-"""Build data/integrated_assets.json: the manifest of production assets integrated into `main`.
+"""Build data/integrated_assets.json: the production assets the game actually uses.
 
-Assets are delivered on the `assets` branch (never merged). The coding agent checks out the
-owner-approved files one by one at their delivered `generated_assets/...` paths. This tool then
-copies, verbatim, the asset-branch manifest entry of every such file (id, source, rights_status,
-approval_status, contract fields...) so provenance and rights travel with the file, and adds:
+The production library lives under assets/ on main (owner PRs #2/#3, 2026-11-10), with its
+manifest at assets/asset_manifest.json and stream fragments in assets/manifest_parts/. Paths
+were rewritten from the delivery root `generated_assets/` to `assets/` after the move; any
+entry still using the old root is mapped to `assets/` here.
 
-- `source_branch` / `source_commit`: where the entries came from.
-- per texture set (`<CH>-MAT-*` albedo entries): `albedo_mean_linear`, the mean linear albedo,
-  which the game uses to keep a model's authored slot colour when it binds the tileable set.
-
-Entries are read from generated_assets/asset_manifest.json on the assets branch, with the
-manifest_parts fragments as a fallback for files delivered after the last merge pass.
+Only ids listed in tools/assets/integration_selection.json (per vertical slice) are
+integrated. Each entry is copied verbatim (source, rights_status, approval_status, contract
+fields), with:
+- `path`: the file's location in this repository (assets/...);
+- `slice`: the vertical slice that integrated it;
+- `albedo_mean_linear` for texture-set albedo maps.
 Nothing here changes rights or approval status: development integration is not clearance.
 
-    python tools/assets/build_integration_manifest.py [--ref origin/assets]
+    python tools/assets/build_integration_manifest.py
 """
 
-import argparse
 import json
 import subprocess
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
+LIBRARY = REPO / "assets"
+SELECTION = REPO / "tools/assets/integration_selection.json"
 OUT = REPO / "data/integrated_assets.json"
 FRAGMENTS = ["3d-kits", "surfaces", "ui-vfx", "audio"]
-
-
-def git(*args):
-    return subprocess.run(["git", *args], cwd=REPO, check=True, capture_output=True).stdout
-
-
-def read_ref_json(ref, path):
-    try:
-        return json.loads(git("show", f"{ref}:{path}").decode("utf-8"))
-    except subprocess.CalledProcessError:
-        return None
+DELIVERY_ROOT = "generated_assets/"
 
 
 def srgb_to_linear(c):
@@ -43,48 +34,54 @@ def srgb_to_linear(c):
 
 
 def albedo_mean_linear(path):
-    from PIL import Image  # only needed for texture sets
+    from PIL import Image
     img = Image.open(path).convert("RGB").resize((64, 64))
-    pixels = list(img.getdata())
-    n = len(pixels)
-    return [round(sum(srgb_to_linear(p[i] / 255.0) for p in pixels) / n, 4) for i in range(3)]
+    pixels = list(img.get_flattened_data()) if hasattr(img, "get_flattened_data") else list(img.getdata())
+    return [round(sum(srgb_to_linear(p[i] / 255.0) for p in pixels) / len(pixels), 4) for i in range(3)]
+
+
+def repo_path(delivered):
+    return "assets/" + delivered[len(DELIVERY_ROOT):] if delivered.startswith(DELIVERY_ROOT) else delivered
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--ref", default="origin/assets")
-    args = parser.parse_args()
-    commit = git("rev-parse", "--short", args.ref).decode().strip()
-    by_path = {}
+    by_id = {}
     for name in FRAGMENTS:
-        fragment = read_ref_json(args.ref, f"generated_assets/manifest_parts/{name}.json")
-        for entry in (fragment or {}).get("entries", []):
-            by_path[entry["path"]] = entry
-    merged = read_ref_json(args.ref, "generated_assets/asset_manifest.json") or {"entries": []}
-    for entry in merged["entries"]:
-        by_path[entry["path"]] = entry  # the merged manifest wins over fragments
-    present = sorted(p.relative_to(REPO).as_posix() for p in (REPO / "generated_assets").rglob("*")
-                     if p.is_file() and not p.name.endswith(".import") and p.suffix != ".md")
-    entries, missing = [], []
-    for path in present:
-        entry = by_path.get(path)
-        if entry is None:
-            missing.append(path)
-            continue
-        entry = dict(entry)
-        if "-MAT-" in entry["id"] and path.endswith("_albedo.png"):
-            entry["albedo_mean_linear"] = albedo_mean_linear(REPO / path)
-        entries.append(entry)
+        fragment = LIBRARY / "manifest_parts" / f"{name}.json"
+        if fragment.exists():
+            for entry in json.loads(fragment.read_text(encoding="utf-8")).get("entries", []):
+                by_id[entry["id"]] = entry
+    for entry in json.loads((LIBRARY / "asset_manifest.json").read_text(encoding="utf-8"))["entries"]:
+        by_id[entry["id"]] = entry  # the merged manifest wins over fragments
+    selection = json.loads(SELECTION.read_text(encoding="utf-8"))["slices"]
+    library_commit = subprocess.run(["git", "log", "-1", "--format=%h", "--", "assets/asset_manifest.json"],
+                                    cwd=REPO, capture_output=True, text=True).stdout.strip()
+    entries, problems = [], []
+    for slice_name, ids in selection.items():
+        for asset_id in ids:
+            entry = by_id.get(asset_id)
+            if entry is None:
+                problems.append(f"{asset_id}: not in the library manifest")
+                continue
+            entry = dict(entry)
+            entry["path"] = repo_path(entry["path"])
+            entry["slice"] = slice_name
+            if not (REPO / entry["path"]).exists():
+                problems.append(f"{asset_id}: file missing at {entry['path']}")
+                continue
+            if "-MAT-" in asset_id and entry["path"].endswith("_albedo.png"):
+                entry["albedo_mean_linear"] = albedo_mean_linear(REPO / entry["path"])
+            entries.append(entry)
     out = {
-        "_note": "Production assets integrated into main for development use (owner approval 2026-11-10). Entries are copied verbatim from the assets branch manifest; rights_status and approval_status are unchanged: this is not commercial release clearance. Generated by tools/assets/build_integration_manifest.py.",
-        "source_branch": "assets",
-        "source_commit": commit,
+        "_note": "Production assets the game uses, for development (owner approval 2026-11-10). Entries are copied verbatim from assets/asset_manifest.json (and stream fragments); rights_status and approval_status are unchanged: this is not commercial release clearance. Generated by tools/assets/build_integration_manifest.py from tools/assets/integration_selection.json.",
+        "library": "assets/asset_manifest.json",
+        "library_commit": library_commit,
         "entries": entries,
     }
     OUT.write_text(json.dumps(out, indent="\t", ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    print(f"{len(entries)} entries from assets@{commit} -> {OUT.relative_to(REPO)}")
-    if missing:
-        print("NO MANIFEST ENTRY (not integrated until resolved):", *missing, sep="\n  ")
+    print(f"{len(entries)} entries ({', '.join(f'{k}: {len(v)}' for k, v in selection.items())}) -> {OUT.relative_to(REPO)}")
+    if problems:
+        print("NOT INTEGRATED:", *problems, sep="\n  ")
         raise SystemExit(1)
 
 

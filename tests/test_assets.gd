@@ -27,10 +27,11 @@ func test_every_integrated_file_loads() -> void:
 
 func test_rights_metadata_travels_unchanged() -> void:
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(AssetLibrary.DEFAULT_PATH))
-	assert_eq(data.source_branch, "assets")
-	assert_false(str(data.source_commit).is_empty())
+	assert_eq(data.library, "assets/asset_manifest.json")
+	assert_false(str(data.library_commit).is_empty())
 	for entry: Dictionary in data.entries:
-		for key: String in ["id", "path", "source", "rights_status", "approval_status"]:
+		assert_true(str(entry.path).begins_with("assets/"), "%s lives in the consolidated library" % entry.id)
+		for key: String in ["id", "path", "source", "rights_status", "approval_status", "slice"]:
 			assert_true(entry.has(key), "%s has %s" % [entry.get("id", "?"), key])
 		assert_true(str(entry.approval_status) != "approved", "%s: development integration is not approval" % entry.id)
 		assert_false(str(entry.rights_status).to_lower().begins_with("cleared"), "%s rights not marked cleared" % entry.id)
