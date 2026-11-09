@@ -1,0 +1,41 @@
+{
+	"_note": "Physical behaviour only. Visual appearance lives in presentation code. Initial values are tuning starting points, to be calibrated in play (Batch 5). Units: density = mass per square pixel; health = damage points; resistances = fraction of damage absorbed (0-0.95); min_damage = per-hit damage (after resistance) below which a hit is ignored.",
+	"materials": [
+		{
+			"id": "lightweight_alloy",
+			"density": 0.0012, "friction": 0.6, "bounce": 0.05,
+			"health": 120, "impact_resistance": 0.2, "blast_resistance": 0.1, "min_damage": 6
+		},
+		{
+			"id": "reinforced_steel",
+			"density": 0.0035, "friction": 0.7, "bounce": 0.02,
+			"health": 400, "impact_resistance": 0.6, "blast_resistance": 0.4, "min_damage": 15
+		},
+		{
+			"id": "composite",
+			"density": 0.0018, "friction": 0.7, "bounce": 0.05,
+			"health": 220, "impact_resistance": 0.4, "blast_resistance": 0.3, "min_damage": 8
+		},
+		{
+			"id": "glass_polymer",
+			"density": 0.0009, "friction": 0.4, "bounce": 0.1,
+			"health": 50, "impact_resistance": 0.0, "blast_resistance": 0.0, "min_damage": 3
+		},
+		{
+			"id": "concrete",
+			"density": 0.0028, "friction": 0.9, "bounce": 0.0,
+			"health": 300, "impact_resistance": 0.35, "blast_resistance": 0.55, "min_damage": 10
+		},
+		{
+			"id": "electronic_module",
+			"density": 0.0015, "friction": 0.6, "bounce": 0.05,
+			"health": 80, "impact_resistance": 0.1, "blast_resistance": 0.0, "min_damage": 4
+		},
+		{
+			"id": "energy_component",
+			"density": 0.0016, "friction": 0.6, "bounce": 0.05,
+			"health": 90, "impact_resistance": 0.15, "blast_resistance": 0.0, "min_damage": 4,
+			"on_destroyed": {"blast_damage": 70, "blast_radius": 110, "blast_impulse": 260}
+		}
+	]
+}
