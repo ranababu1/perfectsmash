@@ -24,7 +24,7 @@ The project is a 2D physics destruction puzzle for Android (Godot 4). The owner 
 | Cinematic playback and Story Archive | Planned | Reusable data-driven player, skippable, subtitle/voice/music controls |
 | Chapter-specific environment and object art | Planned | See `visual-audio-production-guide.md` |
 | Temporal Charge reskin | Planned | Art/audio wrapper only; do not change physics tuning |
-| Continuous gameplay music | In production / pending review | AI music task submitted; last status was running. Not yet available, approved, licensed or integrated |
+| Continuous gameplay music | In production / pending review | AI music task completed; first-pass candidate is available via the generation service. Not yet listened to, approved, loop-tested, license-verified or integrated |
 | Final game name | Pending owner decision | Current app/repository identity remains Perfect Smash. Do not rename package/app before explicit approval |
 | Season 2 | Planned concept | +50 levels, travel further back to 2041 |
 
@@ -73,7 +73,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 - New level target of 100 must not lead to filler or fragile physics puzzles.
 - Cinematic backgrounds must not reduce gameplay structure readability.
 - Generated images/music require commercial-use rights and source/attribution evidence before release.
-- AI music generation task may fail or return a track that is unsuitable for seamless looping; review before adoption.
+- Generated AI music may be unsuitable for seamless looping; listen, check quality and verify commercial-use terms before adoption.
 
 ## Next recommended actions
 
@@ -81,7 +81,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 2. Review the narrative bible and lock the chapter scripts/story beats.
 3. Review the six initial environment concept references and approve the visual language.
 4. Finalise the Temporal Charge design and one representative gameplay reskin per chapter.
-5. Obtain and review the generated gameplay music; if unsuitable, choose a verified track under a suitable commercial licence.
+5. Download and review the generated gameplay music; verify commercial-use terms and loop quality. If unsuitable, choose a verified track under a suitable commercial licence.
 6. Implement a small cinematic vertical slice (opening or Chapter I intro) with skip, subtitles, voiceover, music ducking and replay.
 7. Reskin one existing level per chapter and validate readability on physical Android hardware.
 8. Expand and validate content to 100 levels only after the vertical slice is approved.
