@@ -22,6 +22,7 @@ const UNIT_SUITES := [
 	"res://tests/test_mission_engine.gd",
 	"res://tests/test_scoring.gd",
 	"res://tests/test_progression.gd",
+	"res://tests/test_audio.gd",
 ]
 const PHYSICS_SUITES := [
 	"res://tests/test_game_session.gd",

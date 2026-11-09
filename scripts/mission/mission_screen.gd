@@ -84,7 +84,7 @@ func _ready() -> void:
 	engine.objective_changed.connect(func(_id: String, _s: int) -> void: hud.update_objectives(engine.objectives))
 	engine.mission_finished.connect(_on_mission_finished)
 	engine.component_destroyed.connect(_on_component_destroyed)
-	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("shatter"))
+	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("breach_detonate"))
 	world.impact_happened.connect(_on_impact)
 	hud.update_objectives.call_deferred(engine.objectives)
 	view.operative.set_weapon(engine.selected_weapon_id)
@@ -94,7 +94,7 @@ func _ready() -> void:
 func select_weapon(weapon_id: String) -> void:
 	if engine.select_weapon(weapon_id):
 		view.operative.set_weapon(weapon_id)
-		_play("click")
+		_play("ui_click")
 		_cancel_aim()
 		_update_hint()
 
@@ -164,7 +164,7 @@ func release_aim() -> bool:
 	if projectile == null:
 		return false
 	view.operative.fire()
-	_play("launch")
+	_play("breach_launch" if engine.selected_weapon().spec.is_lobbed() else "kinetic_fire")
 	_update_hint()
 	return true
 
@@ -219,7 +219,7 @@ func _update_hint() -> void:
 
 func _on_mission_finished(success: bool) -> void:
 	_cancel_aim()
-	_play("win" if success else "lose")
+	_play("mission_success" if success else "mission_fail")
 	_record_result()
 	await get_tree().create_timer(RESULT_DELAY).timeout
 	if is_inside_tree() and not _result_shown:
@@ -246,14 +246,14 @@ func _record_result() -> void:
 
 
 ## Destruction moves goal progress without changing objective status, so refresh here too.
-func _on_component_destroyed(_component_id: String) -> void:
-	_play("pop")
+func _on_component_destroyed(component_id: String) -> void:
+	_play("core_destroyed" if engine.definition.critical_asset_ids().has(component_id) else "component_destroyed")
 	hud.update_objectives.call_deferred(engine.objectives)
 
 
-func _on_impact(_at: Vector2, strength: float) -> void:
+func _on_impact(_at: Vector2, strength: float, component_id: String) -> void:
 	if audio != null:
-		audio.play_impact(strength)
+		audio.play_impact(strength, str(engine.definition.component(component_id).get("material", "")))
 
 
 func _play(sound: String) -> void:

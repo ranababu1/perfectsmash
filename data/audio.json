@@ -1,0 +1,34 @@
+{
+	"_note": "Sound and music ids used by the game. Each sound plays a random variant from 'files' when any exist, otherwise its procedural 'fallback' (synthesized at startup by AudioService, no asset files). Files are added only after the owner approves the asset and its licence record (docs/asset-manifest.md); until then 'files' stays empty. Music cues name one track with its bed volume and loop overlap (seconds before the end at which the next cycle starts; 0 = the stream loops by itself).",
+	"sounds": {
+		"ui_click": {"fallback": "click", "volume_db": 0.0, "pitch_variance": 0.0, "files": []},
+		"kinetic_fire": {"fallback": "launch", "volume_db": 0.0, "pitch_variance": 0.05, "files": []},
+		"breach_launch": {"fallback": "launch", "volume_db": -3.0, "pitch_variance": 0.05, "files": []},
+		"breach_detonate": {"fallback": "shatter", "volume_db": 0.0, "pitch_variance": 0.08, "files": []},
+		"impact_metal": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
+		"impact_glass": {"fallback": "shatter", "volume_db": -4.0, "pitch_variance": 0.15, "files": []},
+		"impact_electronic": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
+		"impact_generic": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
+		"component_destroyed": {"fallback": "pop", "volume_db": 0.0, "pitch_variance": 0.1, "files": []},
+		"core_destroyed": {"fallback": "shatter", "volume_db": 2.0, "pitch_variance": 0.0, "files": []},
+		"reload_ready": {"fallback": "click", "volume_db": -8.0, "pitch_variance": 0.0, "files": []},
+		"mission_success": {"fallback": "win", "volume_db": 0.0, "pitch_variance": 0.0, "files": []},
+		"mission_fail": {"fallback": "lose", "volume_db": 0.0, "pitch_variance": 0.0, "files": []}
+	},
+	"impact_by_material": {
+		"reinforced_steel": "impact_metal",
+		"lightweight_alloy": "impact_metal",
+		"glass_polymer": "impact_glass",
+		"electronic_module": "impact_electronic",
+		"ai_core_module": "impact_electronic",
+		"energy_component": "impact_electronic",
+		"composite": "impact_generic",
+		"concrete": "impact_generic"
+	},
+	"default_impact": "impact_generic",
+	"music": {
+		"helix_gameplay": {"file": "res://assets/audio/music/gameplay_bed.ogg", "volume_db": -12.0, "loop_overlap": 4.5},
+		"menu": {"file": "", "volume_db": -12.0, "loop_overlap": 0.0},
+		"cinematic": {"file": "", "volume_db": -14.0, "loop_overlap": 0.0}
+	}
+}
