@@ -1,251 +1,305 @@
 # Perfect Smash: Product and Engineering Plan
 
-**Document status:** Original project baseline, revision 1 (see revision history below)  
-**Product type:** 2D physics destruction puzzle  
+**Document status:** Owner-approved revision 2 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
+**Working product name:** Perfect Smash (existing store/app identity; rename is a separate pending owner decision)  
+**Product type:** Story-driven 2D physics destruction puzzle  
 **Initial platform:** Android  
-**Default engine direction:** Godot 4.x + GDScript with built-in 2D physics
+**Engine:** Godot 4.x + GDScript + built-in 2D physics  
+**Initial content target:** 100 levels across five chapters
 
-**Revision history**
-- Rev 1 (2026-11-01, owner-approved): product renamed from "Smash Theory" to "Perfect Smash". No other content changed.
-  The original baseline text is preserved in git history (commit `e26dd91`).
+## Revision history
+
+- **Rev 2 (2026-11-09, owner-approved):** Reframed the game as a time-travel science-fiction destruction puzzle. Added a skippable opening cinematic, narrated chapter introductions and endings, a five-chapter/100-level narrative plan, a cliffhanger at level 100, a reusable cinematic/content pipeline, and a visual/audio production direction. Core physics puzzle gameplay remains the foundation. Added companion documents: `docs/narrative-bible.md` and `docs/visual-audio-production-guide.md`.
+- **Rev 1 (2026-11-01, owner-approved):** Product renamed from "Smash Theory" to "Perfect Smash". No other content changed in that revision.
+- The original baseline text is preserved in Git history (commit `e26dd91`).
 
 ## 1. Product vision and target audience
 
-Perfect Smash is a compact destruction puzzle where the player has a limited number of actions to destabilize a structure, trigger a satisfying collapse, and meet a clear objective. The fun should come from understanding cause and effect, not from random explosions alone.
+The game is a short-session, story-driven physics destruction puzzle. The player is an operative sent from a doomed future into the past to destroy critical infrastructure and research installations that enabled a chain of decisions leading to humanity's extinction.
+
+The player studies a structure, chooses a launch angle and power, and uses a limited number of temporal charges to trigger a satisfying collapse or complete a clear objective. The story gives each target meaning, while the puzzle remains the main interaction.
+
+**Product promise:** "One shot can change everything."
 
 Primary audience:
-- Casual players who enjoy physics toys and destruction.
-- Puzzle players who like limited moves and clever solutions.
-- Players attracted to short, visually rewarding sessions.
+- Casual players who enjoy physics toys and satisfying destruction.
+- Puzzle players who like limited actions, clever solutions and cause-and-effect.
+- Players attracted to short sessions, sci-fi mystery and episodic progression.
 
-Product promise: “One smart hit. A spectacular chain reaction.” This is a positioning hypothesis to validate, not a guarantee of engagement.
+The story must be understandable without requiring players to watch every cinematic. All cinematics are skippable and replayable from a Story Archive.
 
-## 2. Core gameplay loop and mechanics
+## 2. Narrative premise and canon
 
-1. Show a structure, a target condition, and the available action budget.
-2. Player selects an allowed action, such as launching one projectile at a target point.
-3. Physics simulates collision, momentum, gravity, and structural response.
-4. The level waits for the simulation to settle or reaches a bounded timeout.
-5. Evaluate the objective: target objects destroyed/removed, target zone reached, or structure reduced below a threshold.
-6. Award a result based on objective completion, actions used, and optional score.
+### 2.1 The premise
+
+In 2149, humanity is approaching extinction. The catastrophe was not caused by one war or one invention. It emerged from several technologies and institutions that became dangerously interconnected: autonomous intelligence, biological engineering, energy extraction and predictive control.
+
+The surviving population discovers a way to send one operative into the past. The operative is equipped with a compact temporal impact device. The mission is to destroy specific facilities and critical prototypes before their research paths converge.
+
+The operative's sponsor and the full origin of the time-travel signal remain unidentified during the first release. The player receives instructions from an anonymous control channel. This mystery is intentional.
+
+### 2.2 First-release timeline
+
+- **2149:** The future is collapsing. The Continuity mission is initiated.
+- **2089:** The operative's first intervention begins at Helix Systems.
+- **2092:** Bioengineering research is targeted at VITA Genomics.
+- **2096:** The Nova Grid energy programme is targeted.
+- **2100:** The Civitas predictive-governance network is targeted.
+- **2104:** The Meridian convergence facility is discovered and destroyed.
+- **After level 100:** The revised timeline still contains an extinction event. Its origin traces to an earlier event in **2041**. The next season travels further into the past.
+
+Dates are narrative anchors, not a requirement to show exact calendar dates in every level.
+
+### 2.3 Five chapters
+
+| Chapter | Levels | Era / location | Primary target | Narrative discovery |
+|---|---:|---|---|---|
+| I. The Machine That Decided | 1-20 | 2089, Helix Systems | Autonomous civic intelligence | A system designed to reduce human suffering begins treating human choice as instability. |
+| II. The Price of Perfection | 21-40 | 2092, VITA Genomics | Human enhancement and bioengineering | A programme meant to eliminate disease creates a dependency humanity cannot reverse. |
+| III. The Energy Beneath | 41-60 | 2096, Nova Grid | Revolutionary energy infrastructure | The energy source carries a repeating signal that predates the facility. |
+| IV. The Quiet Cage | 61-80 | 2100, Civitas | Predictive governance and behavioural systems | Different institutions are following the same hidden predictions. |
+| V. The Convergence | 81-100 | 2104, Meridian | The network connecting all four programmes | The player destroys the visible cause, but the extinction event survives. Its first trace is in 2041. |
+
+The chapter concepts are fictional. Do not depict real companies, real institutions or real people as responsible for the fictional catastrophe.
+
+### 2.4 Story rules
+
+- The player is an operative, not a superhero. Keep the character mostly unseen and without a fixed face or gender.
+- The anonymous Control voice is calm, precise and increasingly uncertain. Do not reveal who or what it is in release one.
+- The temporal charge is the consistent in-world explanation for the projectile. It should remain visually recognisable across chapters.
+- The player destroys key infrastructure, not entire cities or populations. Targets should be understandable, fictional and non-graphic.
+- The story must not claim that real-world scientific disciplines are inherently evil. The antagonist is unchecked power, bad incentives, secrecy and systems that remove accountability.
+- Do not make the AI a cartoon villain. The frightening part is a reasonable objective taken to an inhuman extreme.
+- Every chapter should reveal one answer and raise a larger question.
+- Level 100 is a genuine cliffhanger, not a fake-out that invalidates the player's effort. The player saves one version of the future, but discovers the underlying cause remains.
+
+## 3. Core gameplay loop and mechanics
+
+The existing gameplay loop remains:
+1. Show a structure, objective and available action budget.
+2. Player aims and launches the temporal charge using the existing drag-back input.
+3. Built-in 2D physics simulates collision, momentum, gravity and structural response.
+4. The level waits for simulation settling or reaches the existing bounded timeout.
+5. Objective evaluation determines success or failure.
+6. Award score/stars based on the existing rules.
 7. Offer retry or next level.
 
-MVP recommendation: use a limited projectile-launch mechanic with simple destructible targets and static/dynamic blocks. Do not start with freeform weapons, complex materials, or multiple projectile classes.
+**No narrative feature may require changing physics rules or introducing a new weapon class.** A temporal charge is a visual and narrative wrapper for the existing projectile. It may receive new art, trail, impact VFX and sound, but its physics and tuning must remain unchanged unless separately approved and tested.
 
-Physics must be deterministic enough for repeatable local play where possible, but do not promise bit-identical results across all devices/engine versions. Daily reproducibility can rely on fixed level setups and rules, not remote physics simulation.
-
-## 3. Unique selling proposition and differentiation
-
-Potential differentiators:
-- Short, readable levels with clear cause-and-effect.
-- A restrained visual style that makes motion and impact easy to follow.
-- Cleverly authored puzzles with multiple plausible approaches.
-- Replays that make a satisfying collapse easy to watch or share later.
-- A strong “few actions, big result” identity.
-
-Avoid building a generic sandbox with no clear objective. The MVP should teach players to predict structure behavior and reward experimentation.
-
-## 4. MVP scope and explicit exclusions
+## 4. First-release content scope
 
 ### Included
-- Godot 2D physics.
-- Portrait or landscape decision validated in the first prototype; default to landscape only if aiming mechanics require more horizontal space, otherwise portrait.
-- Aiming and launching one simple projectile.
-- A small set of blocks, static surfaces, and target objects.
-- Limited action count per level.
-- Win/loss evaluation after the physics simulation settles.
-- Retry, next level, basic score/medal, local progress.
-- Approximately 20 handcrafted levels for the first public validation build.
-- Settings for sound and vibration if included.
-- Offline-first play.
+- 100 curated levels, grouped into five chapters of 20.
+- Five chapter-specific gameplay environments and visual themes.
+- One skippable opening cinematic, five chapter introductions and five chapter endings.
+- Narrated still-image / parallax cinematics with subtitles and music.
+- Reusable cinematic player and data-driven cinematic definitions.
+- A Story Archive / replay entry point for unlocked cinematics.
+- Chapter-level narrative milestones and a final level-100 cliffhanger.
+- A persistent, seamless or cross-faded gameplay background-music bed, with audio settings respected.
+- New projectile, target, block and environmental art consistent with the chapter.
+- Offline-first play. Cinematic media must be bundled locally; no streaming dependency.
 
-### Explicitly excluded
-- 3D physics.
-- Multiplayer, PvP, clans, chat, accounts, cloud saves.
-- User-generated levels, level editor, workshop, or replay sharing in MVP.
-- Complex damage/material simulation, deformable meshes, fluids, ragdolls, vehicles, or large-scale destruction.
-- Live-service events and backend.
-- Monetization until core level completion and retention are validated.
-- Unbounded debris counts or expensive per-frame custom physics.
+### Explicitly excluded from this release
+- Branching story choices or multiple endings.
+- Dialogue trees, voiced NPCs or a large cast of visible characters.
+- Real-time rendered 3D cutscenes.
+- New physics mechanics, projectile classes or material simulation.
+- Multiplayer, PvP, accounts, cloud saves or a backend.
+- Procedural generation of shipped puzzle layouts.
+- User-generated levels or level editor.
+- Monetization changes tied to story progression.
 
-## 5. Progression and difficulty balancing
+## 5. Level progression and difficulty
 
-Progression sequence:
-1. One projectile, one obvious weak point.
-2. Introduce support blocks and gravity.
-3. Require a chain reaction across two or three objects.
-4. Add limited-action efficiency goals.
-5. Combine previously taught elements in expert levels.
+Each chapter contains four five-level teaching groups:
+1. Establish the environment and introduce the chapter's target language.
+2. Combine two previously introduced structural ideas.
+3. Increase structural complexity and chain-reaction reasoning.
+4. Deliver a multi-step challenge and a chapter finale at levels 20, 40, 60, 80 and 100.
 
-Difficulty factors:
-- Number of interactions required.
-- Visibility of the weak point.
-- Number of plausible shot choices.
-- Sensitivity to aim precision.
-- Simulation time and readability.
-- Action budget and penalty for failure.
+Difficulty should be authored from puzzle reasoning, not merely from solver win rate. Continue using the existing solver as a robustness signal, not as a substitute for human play-testing.
 
-Avoid requiring pixel-perfect aiming on touchscreens. Use forgiving aim assistance or a visible trajectory preview only if it does not trivialize the puzzle. A preview can be a later experiment.
+### Level acceptance
+- Every level is solvable within its stated action budget.
+- The objective is visually and textually clear.
+- The structure and target art communicate the objective without excessive UI explanation.
+- Failure is understandable and retry restores the exact initial layout.
+- Physics settling does not declare a win while objects are still moving.
+- No softlock or unbounded body count.
+- Test on different frame rates, aspect ratios and Android device classes.
+- The narrative wrapper must not obscure aiming, projectile trajectory, destructible objects or objective targets.
 
-Level acceptance:
-- Objective can be achieved with the stated action budget.
-- Failure states are understandable and recoverable via retry.
-- Physics settling logic does not falsely declare a win while objects are still moving.
-- No softlock; restart restores the exact initial setup.
-- Test on different frame rates and device classes.
+The detailed 100-level mission map is in `docs/narrative-bible.md`.
 
-## 6. Technical architecture and recommended stack
+## 6. Technical architecture and content pipeline
 
-### Default stack
-- Godot 4.x stable and GDScript.
-- Godot 2D physics bodies/shapes, using built-in physics unless a measured limitation justifies an alternative.
-- Native Android export.
-- No external physics engine in MVP.
+### Existing architecture
 
-### Suggested modules
-- `LevelDefinition`: level layout, object types, goals, action budget, tuning values.
-- `LevelLoader`: validates and instantiates level content.
-- `AimController`: touch aiming, launch direction and power.
-- `ProjectileController`: launch state, collision response, lifecycle.
-- `DestructionRules`: object removal/damage rules and objective state.
-- `SimulationMonitor`: detects physics settling using bounded velocity/time checks and a hard timeout.
-- `ObjectiveEvaluator`: evaluates completion and score from stable game state.
-- `ProgressService` / `SaveService`: local completion and settings persistence.
-- UI scenes: aim, HUD, result, retry, settings.
+Retain the established separation:
+- `scripts/core/`: gameplay rules and data validation.
+- `scripts/game/`: physics session, level loading, bodies, aiming and effects.
+- `scripts/services/`: persistence and audio.
+- `scripts/ui/`: menu, HUD, pause, results and navigation.
+- `data/levels.json`: level definitions.
+- `tests/` and `tools/`: automated validation and level-solving tools.
 
-Keep objective evaluation separate from the physics engine and scene presentation. Prefer explicit object groups/types over brittle node-name checks. Use collision layers/masks deliberately and document them.
+### New recommended modules (planned, not implemented)
 
-### Physics guardrails
-- Set sensible body counts and collision shape complexity.
-- Avoid creating hundreds of debris bodies.
-- Reuse or pool only if profiling shows allocation spikes.
-- Keep simulation settling thresholds configurable and covered by tests.
-- Use a fixed, documented timeout so a level cannot hang forever.
-- If physics outcomes vary, design objectives with tolerances rather than fragile exact positions.
+- `CinematicPlayer`: one reusable scene/controller for all narrated sequences.
+- `CinematicDefinition`: validated data model for slides, timing, voiceover, subtitles, image references, transitions and optional motion.
+- `CinematicCatalog`: loads opening and chapter sequences by stable IDs.
+- `StoryProgressService`: records unlocked/watched story sequences, using the existing safe save approach.
+- `MusicDirector`: selects and cross-fades the menu, chapter and cinematic music beds while respecting mute/volume settings.
+- `StoryArchiveScreen`: replay unlocked cinematics without affecting level progression.
+
+These modules must not own or alter gameplay physics. Keep cinematic definitions in data/resources rather than hard-coding story text into scene scripts.
+
+### Cinematic playback requirements
+- 16:9 landscape composition, designed for the existing landscape game.
+- Skippable from the first frame with a clear, comfortable touch target.
+- Subtitles always available; narration and music can be independently muted.
+- Continue automatically after the last slide, with a short transition to gameplay.
+- Skipping must not skip or corrupt level unlocks, stars or save state.
+- A sequence can be replayed from the Story Archive after it is unlocked.
+- Resume/interrupt behavior must be deliberate if the app is backgrounded.
+- Images and audio are compressed and packaged locally. No remote media request during gameplay.
+- Use a single consistent narrator identity. Control transmissions may use a lightly processed secondary voice, but avoid an expensive cast.
+
+### Data-driven sequence shape (conceptual)
+
+A cinematic sequence contains:
+- Stable ID, chapter ID and sequence type (opening / chapter intro / chapter outro / finale).
+- Ordered slides.
+- Per slide: image resource, voiceover audio resource, subtitle text, minimum duration, transition and optional camera movement.
+- Sequence-level music cue and end action.
+
+The coding agent must inspect the actual Godot project before choosing final resource paths or script names. Do not implement this conceptual schema blindly.
 
 ## 7. UI/UX and visual direction
 
-- Bold, clean 2D shapes and high-contrast targets.
-- Make the objective and remaining actions visible before the player acts.
-- Use a clear drag/aim/launch gesture with a visible affordance.
-- Distinguish background, structural pieces, projectile, and objective objects.
-- Use impact effects sparingly; readability and perceived weight matter more than screen-filling particles.
-- Offer immediate retry after failure and a fast route to the next level after success.
-- Keep camera motion restrained and ensure UI remains usable on common aspect ratios.
-- Support pause/resume and avoid accidentally firing when a user touches UI controls.
+### Gameplay
+- Preserve high-contrast, readable structures and targets.
+- Replace the generic ball with a compact, recognisable temporal charge.
+- Replace generic scenery with chapter-specific fictional facilities.
+- Keep destructible objects legible against the background. Foreground structures must have stronger contrast and sharper edges than scenery.
+- Use controlled impact effects. No full-screen flashes that hide the puzzle.
+- Preserve objective and remaining-action visibility.
+- Maintain the current landscape orientation and validate common phone aspect ratios and safe areas.
 
-## 8. AI-assisted development opportunities
+### Cinematic art direction
+- Grounded, cinematic science fiction rather than neon cyberpunk.
+- Dark charcoal, cold steel, muted blue/cyan temporal energy, restrained amber warning accents.
+- Architectural scale, environmental storytelling, believable industrial design.
+- 16:9 wide frames with clear subject placement and negative space for subtitles.
+- No text, UI, logos, watermarks or fake readable signage baked into generated artwork.
+- Generate clean plates. Add all titles, dates, subtitles and HUD graphics in Godot.
+- Keep the operative as a silhouette or partial figure. Avoid a fixed face to preserve player projection.
+- Avoid purple/pink gradients, excessive bloom, random floating glyphs and generic AI-art visual noise.
 
-- Generate candidate level layouts and weak-point hypotheses, then simulate and manually validate them.
-- Draft test matrices for collision groups, settling, scoring, and restart behavior.
-- Generate placeholder textures and sound concepts with licensing and consistency checks.
-- Use AI to help inspect anonymized play-test results for levels with high retry/abandonment rates.
-- Use code assistants for small, tested GDScript changes and documentation.
+See `docs/visual-audio-production-guide.md` for prompt templates, image inventory and audio guidance.
 
-Never accept an AI-proposed physics formula, level, or success condition without tests and play-testing. Do not expose secrets or personal player data to AI tools. Review commercial-use rights for generated assets.
+## 8. Audio and music direction
 
-## 9. Monetization strategy
+- Continuous gameplay music should be restrained dark sci-fi ambient: slow evolving synth pads, low drones, subtle rhythmic pulses and sparse mechanical texture.
+- Music must support long puzzle sessions and must not compete with impact SFX or narration.
+- Use one main gameplay bed with seamless looping/cross-fade, plus optional chapter variations that share a common motif.
+- Cinematics can use a separate restrained score with a beginning and end.
+- Narration must remain intelligible on phone speakers. Duck music under voiceover.
+- All audio must have documented commercial-game rights. Keep the original license file and source URL in the asset pack and project credits where required.
+- Do not use a track just because it is described as "no copyright". Verify the exact asset license, attribution, redistribution and Content ID terms before release.
+- A commissioned or generated original score is preferred for long-term identity, provided the generation service's commercial-use terms are checked and retained.
 
-Do not monetize the first prototype. Validate the satisfaction of the destruction loop first.
+Initial research candidates are listed in the audio guide. They are candidates only, not approved or integrated game assets.
 
-Possible future options:
-- Rewarded ad for an optional extra attempt after a level failure.
-- One-time ad removal.
-- Cosmetic projectile trails or block themes.
-- Optional curated level packs.
+## 9. AI-assisted development and asset production
 
-Avoid forced ads during a collapse or immediately before a retry. Test the effect of any ad placement on retry rate, session length, D1/D7 retention, and store reviews.
+- Use AI to produce consistent environment concept art, cinematic frames, object concepts and music prototypes.
+- Generate chapter art from a locked style reference and chapter-specific prompt templates.
+- Generate separate foreground/gameplay assets with transparent backgrounds when needed; cinematic background images are not substitutes for clean gameplay sprites.
+- Review every generated asset for consistency, unwanted text, artefacts, visual clarity and commercial-use rights.
+- Keep source prompts, output IDs/files, license evidence and intended use in the asset manifest.
+- Do not create 100 unique full-screen backgrounds. Use five chapter environment families, reusable props and a small number of cinematic keyframes.
+- Never ship an image with accidental text, logos, watermarks or legible brand marks.
 
-## 10. Analytics, retention, and viral growth
+## 10. Monetization, analytics and retention
 
-Potential events:
-- `tutorial_started`, `tutorial_completed`
-- `level_started`, `level_completed`, `level_failed`
-- `attempt_used`, `retry_used`, `simulation_timeout`
-- `session_length_bucket`, `levels_per_session`
-- `share_sheet_opened` if replay/result sharing is later introduced
+The narrative direction does not change the existing monetization decision: do not monetize until core level completion and retention are validated.
 
-Keep measurement minimal and privacy-reviewed. The initial prototype can use consented play-test observations without a third-party SDK.
+Potential future options remain optional rewarded attempts, one-time ad removal and cosmetic themes. No forced ad may interrupt a cinematic, a collapse or an immediate retry.
 
-Metrics and proposed hypothesis gates:
-- Store listing conversion: installs / listing visitors; target initial test ≥20% with traffic source reported.
-- Tutorial completion: target ≥80% in a usability cohort.
-- D1 retention: initial hypothesis ≥25%; D7 ≥8%, interpreted with sample size and traffic source.
-- Engagement: median session length, levels per session, retries per level, successful completion rate.
-- Sharing: later measure share-sheet opens per eligible user; do not treat opening the Android share sheet as proof a share was sent.
+Keep analytics minimal and privacy-reviewed. Useful measurements include:
+- Cinematic started / completed / skipped.
+- Chapter intro completion and chapter-finale reach.
+- Level started / completed / failed / retried.
+- Session length and levels per session.
+- Crash, ANR and simulation timeout.
 
-Experiments:
-1. Compare “clever destruction puzzle” store creative against “spectacular chain reaction” creative.
-2. Test whether a trajectory preview improves completion without reducing perceived skill.
-3. Compare objective clarity variants in the first three levels.
-4. Later test short replay cards or clips only if capture/export is reliable and privacy-safe.
+Do not treat a cinematic skip as a negative engagement event by itself. Track it to understand player preference, not to punish skipping.
 
 ## 11. Development milestones and acceptance criteria
 
-### M0: Physics spike
-- A projectile can be aimed and launched on a physical Android device.
-- Physics runs smoothly on a low-to-mid-range target device.
-- Input cannot accidentally launch when interacting with UI.
+### M0-M4: Existing core
+Preserve the existing physics, rules, save and UI acceptance criteria. Re-verify before adding content.
 
-### M1: Rules and objective model
-- Unit tests cover action budget, target condition, win/loss state, and repeated evaluation.
-- Simulation settling and timeout behavior are defined.
-- Restart restores the same level definition and initial state.
+### M5: Narrative and visual vertical slice
+- Approve final game name separately.
+- Lock one visual style reference and temporal-charge design.
+- Produce and review opening cinematic frames.
+- Implement a small cinematic prototype with skip, subtitles, voiceover, music ducking and replay.
+- Reskin one existing level in each of the five chapter environments before bulk production.
+- Validate gameplay readability on a physical Android device.
 
-### M2: Playable prototype
-- At least five test levels demonstrate the core loop.
-- Success/failure is clear and repeatable enough for intended gameplay.
-- No physics body or timer can leave a level permanently stuck.
+### M6: 100-level content build
+- Author 100 levels in five 20-level chapters.
+- Reuse current 20 level definitions where suitable; retain stable IDs or implement an explicit, tested migration if IDs change.
+- Verify every new or modified level with solver tooling and human play-testing.
+- Add chapter intros/outros and level-100 ending.
+- Verify asset sizes, loading, memory and Android export.
 
-### M3: Content and progression
-- Initial curated levels load through validated definitions.
-- Every level is manually checked and automated checks cover objective/configuration consistency.
-- Progress persists safely across app restarts.
+### M7: Audio and cinematic integration
+- Record/generate final narration.
+- Integrate the approved continuous gameplay music bed and cinematic cues.
+- Confirm all licenses and credits.
+- Test mute, volume, pause, backgrounding, skip and replay.
 
-### M4: Usability and performance
-- Aiming is usable on multiple screen sizes.
-- Collision and target visuals remain legible during chain reactions.
-- Pause/resume, audio settings, retry, and app backgrounding are tested.
-- No known blocker prevents a complete play-through.
+### M8: Closed testing and release candidate
+- Test all 100 levels end-to-end on representative physical Android devices.
+- Verify clean install, upgrade path, save integrity, level unlocks and cinematic archive.
+- Check crashes/ANRs, memory, frame pacing, loading, audio loops and touch targets.
+- Prepare store assets, privacy disclosures, release notes and signing.
+- Obtain explicit release approval before production rollout.
 
-### M5: Closed testing
-- Test across representative Android devices and frame-rate conditions.
-- Record level completion, retries, session engagement, tutorial completion, D1/D7, and store conversion.
-- Review crash/ANR and simulation timeout reports.
-
-### M6: Release candidate
-- Clean install and upgrade paths verified.
-- Google Play listing, privacy, content rating, permissions, signing, release notes, and current platform requirements reviewed.
-- Explicit release approval recorded.
-
-## 12. Risks, assumptions, and validation experiments
+## 12. Risks, assumptions and validation
 
 Risks:
-- Physics may feel random rather than skill-based.
-- Small device screens can make aiming difficult.
-- Physics settling logic may trigger wins too early or too late.
-- Excessive debris or effects can hurt performance.
-- The core mechanic may not differentiate in a crowded category.
+- Story slides may slow players who only want puzzles. Mitigation: skippable, short, replayable.
+- Background art may reduce gameplay readability. Mitigation: separate art layers and contrast tests.
+- Generated art may drift between chapters. Mitigation: locked style reference and asset review.
+- Long music loops may fatigue players. Mitigation: restrained arrangement, seamless cross-fades and chapter variants.
+- The 100-level target may dilute puzzle quality. Mitigation: chapter-level play-test gates; do not ship filler levels.
+- The level-100 cliffhanger may frustrate players if the first release feels incomplete. Mitigation: make the first 100 levels a complete intervention arc with a meaningful apparent victory before revealing the deeper cause.
 
 Assumptions:
-- A limited action budget creates meaningful decisions.
-- Players enjoy watching consequences of their own choices.
-- Short, curated levels are more useful for initial validation than a sandbox.
+- The existing physics puzzle remains enjoyable with a narrative wrapper.
+- Players accept brief narrated story sequences between chapters.
+- A consistent visual identity and satisfying destruction are more important than elaborate cutscenes.
 
-Experiments:
-- Observe five to ten players aiming without explanation.
-- Compare objective-completion reliability on low-, mid-, and high-range devices.
-- Measure retries and abandonment by level.
-- Run performance profiling before increasing body counts or particle complexity.
+## 13. Expansion strategy
 
-## 13. Google Play release strategy
+- **Release 1:** 100 levels, five chapters, ends with the discovery that the first extinction trigger originated in 2041.
+- **Update 1:** +50 levels, Season 2 / "The First Mistake", travelling further into the past to investigate the 2041 event.
+- **Future updates:** Add 25-50 level story arcs as production capacity allows. Each arc must have its own local objective, chapter reveal and forward hook.
+- Do not make the story dependent on an exact number of future updates. Keep the mystery expandable and avoid revealing the ultimate cause until the narrative has earned it.
+
+## 14. Google Play release strategy
 
 - Check current Play Console target API and policy requirements at release time.
 - Use internal testing, then closed testing before production.
-- Prepare icon, screenshots, store copy, privacy policy, Data safety answers, content rating, ads declaration, and support details.
-- Confirm all third-party assets and audio are licensed for distribution.
-- Test app lifecycle, physics behavior, clean install, upgrade, and save persistence on physical Android devices.
+- Prepare icon, screenshots, feature graphic, store copy, privacy policy, Data safety answers, content rating, ads declaration, support details and credits.
+- Confirm all generated and third-party art/audio are licensed for commercial distribution.
+- Test app lifecycle, physics behavior, clean install, upgrade, save persistence and all 100 levels on physical Android devices.
 - Use an Android App Bundle unless current Play guidance says otherwise.
 - Keep signing material out of Git; use Play App Signing where appropriate.
-- Roll out gradually if available and monitor crashes/ANRs, level failure, timeouts, conversion, tutorial completion, and D1/D7.
-- Never use deceptive destruction claims, fake reviews, or unverified performance statements.
+- Roll out gradually if available and monitor crashes/ANRs, level failures, timeouts, conversion, tutorial completion and retention.
+- Obtain explicit owner approval before production release.
