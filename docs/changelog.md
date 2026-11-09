@@ -2,6 +2,13 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Batch 3: first playable Helix prototype
+
+- `33cd669` 2D physics mission world (`ComponentBody`, `WeaponProjectile`, `MissionWorld`): frozen-until-released components, impact-jolt collision damage, direct kinetic damage, Breach detonation with area damage and knockback, secondary-blast chains, settle detection; release propagates to everything resting on a released body. Helix layout tuned from a physics probe (wall/racks moved, core shield added, recommended shots 4). New suite `test_mission_world` (7).
+- `874c88c` 3D presentation and play: tilted three-quarter camera over the 2D physics plane, extruded greybox components with damage tints, critical-asset marker, placeholder operative with aim/fire/reload/victory/defeat states, touch-and-hold aiming with 3D trajectory preview, weapon switching, mission HUD, pause/result panels; the app boots into the mission. New suite `test_mission_screen` (5) and `tools/capture_mission.gd`.
+- `1109b8a` Fix: objective progress in the HUD now refreshes when components are destroyed (found on the emulator); +1 test.
+- Results: headless 138 passed / 0 failed / 1 skipped; windowed 139 / 0 / 0; Android debug APK runs on the emulator with touch aiming verified via `adb input swipe`.
+
 ## 2026-11-09 — Production pipeline aligned with the 3D-over-2D-physics architecture
 
 - `plan.md` §9b and a new “3D-ready production pipeline” section in `visual-audio-production-guide.md`: 3D modular components whose front face matches the 2D physics rectangle (100 px = 1 m, centre pivots, glTF, mobile triangle/texture budgets); 2D art for textures, decals, damage variants, VFX, UI and cinematic stills; placeholder operative/weapons; first asset milestone = concepts, material references, texture sets, specs; bulk production gated on the validated Batch 3 greybox; narrated stills, no video dependency.
