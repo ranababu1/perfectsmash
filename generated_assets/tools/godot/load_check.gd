@@ -5,7 +5,10 @@ extends SceneTree
 ## Exit code 0 = every loadable entry loaded; 1 = at least one failure.
 
 const MANIFEST := "res://generated_assets/asset_manifest.json"
-const LOADABLE := ["glb", "gltf", "png", "webp", "jpg", "jpeg", "svg", "ogg", "wav", "mp3", "ttf", "otf", "woff2", "woff", "ogv"]
+const LOADABLE := ["glb", "gltf", "png", "webp", "jpg", "jpeg", "svg", "ogg", "wav", "mp3", "ttf", "otf", "woff2", "woff", "ogv", "tscn", "tres"]
+## Godot scenes and resources shipped by streams (e.g. VFX presets) are loaded even when the
+## manifest does not list them, and reported with "unlisted": true.
+const SCAN_EXTS := ["tscn", "tres"]
 
 
 func _initialize() -> void:
@@ -22,13 +25,23 @@ func _initialize() -> void:
 	var results := []
 	var failures := 0
 	var counts := {}
-	for entry: Dictionary in data.get("entries", []):
+	var work: Array = data.get("entries", []).duplicate()
+	var listed := {}
+	for entry: Dictionary in work:
+		listed[entry.get("path", "")] = true
+	for path: String in _scan("res://generated_assets"):
+		var rel := path.trim_prefix("res://")
+		if not listed.has(rel):
+			work.append({"id": "(unlisted)", "path": rel, "unlisted": true})
+	for entry: Dictionary in work:
 		var path: String = entry.get("path", "")
 		var ext := path.get_extension().to_lower()
 		if path == "" or not LOADABLE.has(ext):
 			continue
 		var res_path := "res://" + path
 		var r := {"id": entry.get("id", ""), "path": path, "ok": false}
+		if entry.get("unlisted", false):
+			r["unlisted"] = true
 		var t0 := Time.get_ticks_usec()
 		var resource: Resource = ResourceLoader.load(res_path)
 		r["load_ms"] = (Time.get_ticks_usec() - t0) / 1000.0
@@ -43,12 +56,27 @@ func _initialize() -> void:
 		if not r["ok"]:
 			failures += 1
 			printerr("LOADCHECK FAIL: %s %s: %s" % [r["id"], path, r.get("error", "?")])
-	print("LOADCHECK loaded %d entries, %d failed, by type %s" % [results.size(), failures, JSON.stringify(counts)])
+	var unlisted := results.filter(func(x: Dictionary) -> bool: return x.get("unlisted", false)).size()
+	print("LOADCHECK loaded %d entries (%d unlisted scenes/resources), %d failed, by type %s" % [results.size(), unlisted, failures, JSON.stringify(counts)])
 	if report_path != "":
 		var f := FileAccess.open(report_path, FileAccess.WRITE)
 		f.store_string(JSON.stringify({"engine": Engine.get_version_info().string, "failures": failures, "counts": counts, "results": results}, "\t"))
 		f.close()
 	quit(1 if failures > 0 else 0)
+
+
+func _scan(dir: String) -> Array[String]:
+	var out: Array[String] = []
+	var d := DirAccess.open(dir)
+	if d == null:
+		return out
+	for sub in d.get_directories():
+		if not sub.begins_with(".") and not sub.begins_with("_"):
+			out.append_array(_scan(dir.path_join(sub)))
+	for f in d.get_files():
+		if SCAN_EXTS.has(f.get_extension().to_lower()):
+			out.append(dir.path_join(f))
+	return out
 
 
 func _describe(resource: Resource, r: Dictionary) -> void:
@@ -65,10 +93,15 @@ func _describe(resource: Resource, r: Dictionary) -> void:
 		var first := true
 		var stack: Array[Node] = [node]
 		var players := []
+		var particles := 0
+		var node_count := 0
 		while not stack.is_empty():
 			var n: Node = stack.pop_back()
+			node_count += 1
 			for c in n.get_children():
 				stack.append(c)
+			if n is CPUParticles3D or n is GPUParticles3D or n is CPUParticles2D or n is GPUParticles2D:
+				particles += 1
 			if n is AnimationPlayer:
 				players.append_array((n as AnimationPlayer).get_animation_list())
 			if n is MeshInstance3D and (n as MeshInstance3D).mesh != null:
@@ -97,9 +130,12 @@ func _describe(resource: Resource, r: Dictionary) -> void:
 		r["animations"] = players
 		r["aabb_position"] = [snappedf(aabb.position.x, 0.001), snappedf(aabb.position.y, 0.001), snappedf(aabb.position.z, 0.001)]
 		r["aabb_size"] = [snappedf(aabb.size.x, 0.001), snappedf(aabb.size.y, 0.001), snappedf(aabb.size.z, 0.001)]
+		r["particle_systems"] = particles
+		r["nodes"] = node_count
 		node.free()
-		if meshes == 0:
-			r["error"] = "scene has no MeshInstance3D"
+		var is_model := String(r["path"]).get_extension().to_lower() in ["glb", "gltf"]
+		if is_model and meshes == 0:
+			r["error"] = "model has no MeshInstance3D"
 			return
 		r["ok"] = true
 	elif resource is Texture2D:
