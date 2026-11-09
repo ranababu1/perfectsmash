@@ -5,15 +5,15 @@ extends Node
 ## Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
-const GAMEPLAY_MUSIC := "res://assets/audio/music/gameplay_bed.ogg"
-## The track fades in over ~3 s and out over ~5 s; starting the next cycle 4.5 s before the end
-## lets those fades overlap (measured with ffmpeg astats, see changelog).
-const GAMEPLAY_MUSIC_OVERLAP := 4.5
+## Music cue for the Helix mission (data/audio.json). Its track fades in over ~3 s and out over
+## ~5 s; the cue's 4.5 s loop overlap lets those fades overlap (measured with ffmpeg astats).
+const GAMEPLAY_CUE := "helix_gameplay"
 
 var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
 var chapters: ChapterCatalog
+var audio_catalog: AudioCatalog
 var audio: AudioService
 var music: MusicDirector
 var _menu: MenuScreen
@@ -26,12 +26,16 @@ var _fade: ColorRect
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	progress = save.load_progress()
+	audio_catalog = AudioCatalog.load_from_file()
+	if not audio_catalog.is_valid():
+		push_error("Audio catalog invalid: %s" % ", ".join(audio_catalog.errors))
 	audio = AudioService.new()
+	audio.catalog = audio_catalog
 	audio.enabled = progress.sound_enabled
 	add_child(audio)
 	music = MusicDirector.new()
+	music.catalog = audio_catalog
 	music.enabled = progress.sound_enabled and progress.music_enabled
-	music.loop_overlap = GAMEPLAY_MUSIC_OVERLAP
 	add_child(music)
 	_start_music()
 	catalog = LevelCatalog.load_from_file()
@@ -147,10 +151,7 @@ func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
 
 
 func _start_music() -> void:
-	if not ResourceLoader.exists(GAMEPLAY_MUSIC):
-		push_warning("Music track missing: %s" % GAMEPLAY_MUSIC)
-		return
-	music.play(load(GAMEPLAY_MUSIC) as AudioStream, 2.5)
+	music.play_cue(GAMEPLAY_CUE, 2.5)
 
 
 ## Until the new HUD has its own music control, the sound toggle mutes music too;

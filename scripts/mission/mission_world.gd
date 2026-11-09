@@ -10,7 +10,9 @@ signal projectile_spawned(projectile: WeaponProjectile)
 signal projectile_removed(projectile: WeaponProjectile)
 signal component_removed(component_id: String, at: Vector2)
 signal blast_happened(center: Vector2, radius: float)
-signal impact_happened(at: Vector2, strength: float)
+## A hard hit: a projectile strike or a structural collision. `component_id` is the component
+## that was hit ("" for the ground and static geometry), so feedback can follow its material.
+signal impact_happened(at: Vector2, strength: float, component_id: String)
 
 ## Where the weapon muzzle sits relative to the operative's feet (px; y up is negative).
 const MUZZLE_OFFSET := Vector2(46.0, -128.0)
@@ -239,7 +241,7 @@ func _physics_process(delta: float) -> void:
 func _on_projectile_struck(projectile: WeaponProjectile, target: Node, impact_speed: float) -> void:
 	var stats := projectile.stats
 	var at := projectile.global_position
-	impact_happened.emit(at, impact_speed)
+	impact_happened.emit(at, impact_speed, (target as ComponentBody).component_id if target is ComponentBody else "")
 	var applied := 0.0
 	if target is ComponentBody and float(stats.impact_damage) > 0.0:
 		var damage := DamageRules.projectile_impact_damage(float(stats.impact_damage), impact_speed, float(stats.launch_speed))
@@ -256,7 +258,7 @@ func _on_component_impacted(body: ComponentBody, impulse: float, others: Array) 
 	var damage := DamageRules.collision_damage(impulse)
 	if damage <= 0.0:
 		return
-	impact_happened.emit(body.global_position, impulse)
+	impact_happened.emit(body.global_position, impulse, body.component_id)
 	engine.apply_damage(body.component_id, damage, DamageRules.TYPE_STRUCTURAL)
 	for other: Variant in others:
 		if other is ComponentBody and is_instance_valid(other) and (other as ComponentBody).freeze:

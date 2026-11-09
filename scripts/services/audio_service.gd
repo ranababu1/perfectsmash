@@ -1,6 +1,9 @@
 class_name AudioService
 extends Node
-## Plays short sound effects synthesized at startup (no audio asset files, so no licensing risk).
+## Plays the game's sound effects. Sound ids, their file variants and their procedural fallbacks
+## come from data/audio.json (AudioCatalog): a sound plays a random approved file variant when
+## one exists, otherwise a sound synthesized at startup (no asset files, so no licensing risk).
+## The procedural names ("click", "launch", ...) remain playable directly for the legacy screens.
 ## Noise uses a fixed seed so the generated sounds are identical every run.
 
 const MIX_RATE := 22050
@@ -9,7 +12,11 @@ const IMPACT_MIN_INTERVAL_MS := 70
 const NOISE_SEED := 1337
 
 var enabled := true
+## Sound ids, variants and fallbacks. Loaded in _ready unless assigned before.
+var catalog: AudioCatalog
 var _streams := {}
+## sound id -> Array[AudioStream] of the file variants that exist.
+var _variants := {}
 var _players: Array[AudioStreamPlayer] = []
 var _next_voice := 0
 var _last_impact_ms := -1000
@@ -32,30 +39,80 @@ func _ready() -> void:
 		var player := AudioStreamPlayer.new()
 		add_child(player)
 		_players.append(player)
+	if catalog == null:
+		catalog = AudioCatalog.load_from_file()
+	if not catalog.is_valid():
+		push_error("AudioService: audio catalog invalid: %s" % ", ".join(catalog.errors))
+	_load_variants()
 
 
+## Plays a catalog sound id (file variant or its procedural fallback) or, for the legacy
+## screens, a procedural sound by name. `volume_db` is added to the sound's own volume.
 func play(sound: String, volume_db: float = 0.0, pitch: float = 1.0) -> void:
 	if not enabled:
+		return
+	var spec := catalog.get_sound(sound) if catalog != null else null
+	if spec != null:
+		var variants: Array = _variants.get(sound, [])
+		var stream: AudioStream = variants.pick_random() if not variants.is_empty() else _streams.get(spec.fallback)
+		var spread := randf_range(-spec.pitch_variance, spec.pitch_variance)
+		_play_stream(stream, spec.volume_db + volume_db, pitch * (1.0 + spread))
 		return
 	if not _streams.has(sound):
 		push_error("AudioService: unknown sound '%s'" % sound)
 		return
-	var player := _players[_next_voice]
-	_next_voice = (_next_voice + 1) % _players.size()
-	player.stream = _streams[sound]
-	player.volume_db = volume_db
-	player.pitch_scale = pitch
-	player.play()
+	_play_stream(_streams[sound], volume_db, pitch)
 
 
-## Throttled so a collapsing structure does not stack dozens of overlapping sounds.
-func play_impact(strength: float) -> void:
+## What `sound` currently plays: "file" when an approved variant is loaded, "procedural:<name>"
+## for a fallback or a legacy name, "" when unknown.
+func source_for(sound: String) -> String:
+	var spec := catalog.get_sound(sound) if catalog != null else null
+	if spec != null:
+		return "file" if not (_variants.get(sound, []) as Array).is_empty() else "procedural:" + spec.fallback
+	return "procedural:" + sound if _streams.has(sound) else ""
+
+
+## Throttled so a collapsing structure does not stack dozens of overlapping sounds. The sound
+## follows the material that was hit (data/audio.json impact_by_material).
+func play_impact(strength: float, material_id: String = "") -> void:
 	var now := Time.get_ticks_msec()
 	if now - _last_impact_ms < IMPACT_MIN_INTERVAL_MS:
 		return
 	_last_impact_ms = now
 	var loudness := clampf(strength / 1500.0, 0.0, 1.0)
-	play("impact", lerpf(-18.0, 0.0, loudness), randf_range(0.85, 1.15))
+	play(impact_sound_for(material_id), lerpf(-18.0, 0.0, loudness), randf_range(0.92, 1.08))
+
+
+func impact_sound_for(material_id: String) -> String:
+	return catalog.impact_sound_for(material_id) if catalog != null and catalog.is_valid() else "impact"
+
+
+func _play_stream(stream: AudioStream, volume_db: float, pitch: float) -> void:
+	if stream == null:
+		return
+	var player := _players[_next_voice]
+	_next_voice = (_next_voice + 1) % _players.size()
+	player.stream = stream
+	player.volume_db = volume_db
+	player.pitch_scale = maxf(pitch, 0.05)
+	player.play()
+
+
+func _load_variants() -> void:
+	_variants.clear()
+	if catalog == null:
+		return
+	for spec: AudioCatalog.SoundSpec in catalog.sounds.values():
+		var loaded: Array[AudioStream] = []
+		for path in spec.files:
+			if ResourceLoader.exists(path):
+				var stream := load(path) as AudioStream
+				if stream != null:
+					loaded.append(stream)
+			else:
+				push_warning("AudioService: '%s' file missing, using the procedural fallback: %s" % [spec.id, path])
+		_variants[spec.id] = loaded
 
 
 func _synth(duration: float, sample: Callable) -> AudioStreamWAV:
