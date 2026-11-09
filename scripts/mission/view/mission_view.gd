@@ -26,6 +26,13 @@ const CAMERA_FOV := 40.0
 ## Camera placement relative to the framed point: slightly left, raised, pulled back.
 const CAMERA_OFFSET := Vector3(-2.2, 2.3, 10.5)
 const PREVIEW_DOTS := 14
+## Blast lights are a fixed pool created with the view and reused: adding or freeing an
+## OmniLight3D per detonation cost about 300 ms per blast on GL Compatibility (Android emulator,
+## spike log 2026-11-10). Idle lights keep a tiny energy so they are never culled and the set of
+## lights the renderer sees never changes.
+const BLAST_LIGHTS := 2
+const BLAST_LIGHT_IDLE_ENERGY := 0.01
+const BLAST_LIGHT_COLOR := Color("ffb060")
 
 var world: MissionWorld
 var definition: MissionDefinition
@@ -38,6 +45,8 @@ var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
 var _time := 0.0
+var _blast_lights: Array[OmniLight3D] = []
+var _next_blast_light := 0
 
 
 func setup(p_world: MissionWorld) -> void:
@@ -60,38 +69,35 @@ func setup(p_world: MissionWorld) -> void:
 	world.blast_happened.connect(_on_blast)
 	world.impact_happened.connect(_on_impact)
 	world.engine.component_state_changed.connect(_on_component_state_changed)
+	_build_blast_lights()
 	_warm_up_effects()
 
 
-## The first blast flash (alpha-blended) and its omni light need shader variants that nothing
-## else in the scene uses; compiling them on the first detonation stalled that frame by
-## 0.5-1.1 s on the Android emulator (renderer evaluation, 2026-11-10). Show both once while
-## the mission loads, so that cost is paid up front: the flash at zero alpha, and a real light
-## (a near-zero energy light is culled and compiled nothing on GL Compatibility) that lives for
-## two frames. Debris and sparks warm up the same way.
+func _build_blast_lights() -> void:
+	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
+	for i in BLAST_LIGHTS:
+		var light := OmniLight3D.new()
+		light.light_color = BLAST_LIGHT_COLOR
+		light.light_energy = BLAST_LIGHT_IDLE_ENERGY
+		light.omni_range = 4.0
+		light.position = centre + Vector3(0, 0, 0.8)
+		add_child(light)
+		_blast_lights.append(light)
+
+
+## The blast flash is alpha-blended, a shader variant nothing else in the scene uses; compiling
+## it on the first detonation stalled that frame by 0.5-1.1 s on the Android emulator (renderer
+## evaluation, 2026-11-10). Show it once at zero alpha while the mission loads, so that cost is
+## paid up front. Debris and sparks warm up the same way. (Blast lights are a persistent pool.)
 func _warm_up_effects() -> void:
 	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
 	_spawn_flash(centre, 4.0, 0.0, 0.0)
-	var light := OmniLight3D.new()
-	light.light_color = Color("ffb060")
-	light.light_energy = 1.0
-	light.omni_range = 6.0
-	light.position = centre + Vector3(0, 0, 0.8)
-	add_child(light)
-	_free_after_frames(light, 2)
 	# Particles just under the ground surface: drawn (so compiled) but hidden, and not moving.
 	var hidden := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y + 60.0), definition.ground_y)
 	for particles: CPUParticles3D in [_spawn_sparks(hidden), _spawn_debris(hidden, Color.BLACK, Vector3.ONE * 0.1)]:
 		particles.initial_velocity_min = 0.0
 		particles.initial_velocity_max = 0.0
 		particles.gravity = Vector3.ZERO
-
-
-func _free_after_frames(node: Node, frames: int) -> void:
-	for i in frames:
-		await get_tree().process_frame
-	if is_instance_valid(node):
-		node.queue_free()
 
 
 ## The point in the 2D physics plane under a screen position (null if the ray misses it).
@@ -349,13 +355,14 @@ func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -
 	tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
 	tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
 	tween.chain().tween_callback(flash.queue_free)
-	var light := OmniLight3D.new()
-	light.light_color = Color("ffb060")
-	light.light_energy = light_energy
+	if light_energy <= 0.0 or _blast_lights.is_empty():
+		return
+	var light := _blast_lights[_next_blast_light]
+	_next_blast_light = (_next_blast_light + 1) % _blast_lights.size()
 	light.omni_range = size * 1.5
 	light.position = at + Vector3(0, 0, 0.8)
-	add_child(light)
-	light.create_tween().tween_property(light, "light_energy", 0.0, 0.3).finished.connect(light.queue_free)
+	light.light_energy = light_energy
+	light.create_tween().tween_property(light, "light_energy", BLAST_LIGHT_IDLE_ENERGY, 0.3)
 
 
 func _on_impact(at: Vector2, strength: float, _component_id: String) -> void:

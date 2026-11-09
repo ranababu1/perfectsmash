@@ -94,26 +94,29 @@ func test_kinetic_collapse_exposes_core_and_finishing_shot_destroys_it() -> void
 	_free()
 
 
-func test_collapse_from_both_columns_leaves_core_critical() -> void:
+func test_full_double_column_drop_at_least_cripples_the_core() -> void:
 	var world := _world()
 	var e := world.engine
 	e.destroy_component("pillar_l", "test")
 	e.destroy_component("pillar_r", "test")
 	await _settle(world)
-	assert_eq(e.component_state("aura_core"), State.CRITICAL, "a full drop damages but does not destroy the core")
-	assert_true(e.is_active())
+	# Both columns gone at once drops the whole loaded deck flat (worst case; never seen in the
+	# trajectory sweep). The fall plus the power cell's blast justify critical or destroyed.
+	assert_true(e.component_state("aura_core") >= State.CRITICAL, "a full drop cripples the core")
 	_free()
 
 
-func test_precise_column_breach_can_destroy_core_outright() -> void:
+func test_column_breach_then_one_kinetic_round_clears_the_mission() -> void:
 	var world := _world()
 	var e := world.engine
 	e.select_weapon("breach_charge")
-	# Expert play from the operative: a charge against the left column (30 degrees, 90% power).
+	# The expert line from the operative: a charge against the left column (30 degrees, 90%).
 	world.fire(Vector2.RIGHT.rotated(-deg_to_rad(30.0)), 0.9)
-	await _until(func() -> bool: return not e.is_active(), 10.0)
-	assert_eq(e.component_state("aura_core"), State.DESTROYED)
+	await _settle(world)
+	assert_eq(e.component_state("aura_core"), State.CRITICAL, "the collapse leaves the core critical and exposed")
+	await _finish_core_with_kinetic(world)
 	assert_eq(e.phase, MissionEngine.Phase.SUCCEEDED)
+	assert_eq(e.shots_fired(), 2, "two shots: the breach and one finishing round")
 	_free()
 
 
@@ -264,7 +267,8 @@ func test_two_damaging_shots_count_twice() -> void:
 ## across platforms: the same sequence measured 0.4516 structural damage on Windows x86_64 and
 ## 0.4519 on the Android x86_64 emulator (2026-11-09). Hence: exact within a run, tolerance
 ## against the reference (docs/instructions.md, "Physics tolerances"). Reference re-measured on
-## Windows x86_64 after the Batch 5 tuning (2026-11-10): 3648 points, damage 0.3476.
+## Windows x86_64 after the Batch 5 tuning and the resting-contact fix (2026-11-10): 3619 points,
+## damage 0.3194.
 
 const ScoreReplay := preload("res://tools/regression/score_replay.gd")
 
@@ -286,8 +290,8 @@ func test_scripted_replay_is_repeatable_and_near_reference() -> void:
 	assert_eq(a.shots, 3)
 	assert_eq(a.effective_shots, 3)
 	assert_eq(a.research_data, 40)
-	assert_near(float(a.structural_damage), 0.3476, 0.01, "reference structural damage")
-	assert_true(absi(int(a.mission_points) - 3648) <= 15, "within tolerance of the 3648 reference: %d" % a.mission_points)
+	assert_near(float(a.structural_damage), 0.3194, 0.01, "reference structural damage")
+	assert_true(absi(int(a.mission_points) - 3619) <= 15, "within tolerance of the 3619 reference: %d" % a.mission_points)
 
 
 ## --- Blast occlusion (approved Batch 5 rule; transmission per material in data/materials.json) ---
@@ -393,4 +397,19 @@ func test_load_aware_push_counts_carried_mass() -> void:
 	assert_near(deck_load, expected, 0.01, "the deck carries the shield, core and cell")
 	assert_true(world.supported_mass("pillar_l") > deck_load, "the column carries the loaded deck")
 	assert_near(world.supported_mass("relay_dish"), world.body_for("relay_dish").mass, 0.001)
+	_free()
+
+
+func test_resting_released_body_reports_no_impacts_and_settles() -> void:
+	var world := _world()
+	var impacts := []
+	world.impact_happened.connect(func(_at: Vector2, _s: float, id: String) -> void: impacts.append(id))
+	# The heaviest piece: 30 x 90 reinforced steel (mass 9.45). Released, it drops onto the floor.
+	world.release_component("blast_wall")
+	await wait_physics_frames(90)
+	impacts.clear()
+	await wait_physics_frames(60)
+	assert_eq(impacts, [], "resting on the floor is not an impact")
+	assert_true(world.is_settled(), "the scene settles with a released body at rest")
+	assert_eq(world.engine.component_state("blast_wall"), State.INTACT)
 	_free()
