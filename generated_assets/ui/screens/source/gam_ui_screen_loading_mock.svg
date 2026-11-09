@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" >
+<defs><linearGradient id="lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05080B" stop-opacity="0"/><stop offset="1" stop-color="#05080B" stop-opacity="0.9"/></linearGradient><linearGradient id="lg114" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3CC8E6" stop-opacity="1"/><stop offset="1" stop-color="#3CC8E6" stop-opacity="0.78"/></linearGradient></defs>
+<image href="../../backgrounds/ui_bg_loading_1280x720.webp" x="0" y="0" width="1280" height="720" preserveAspectRatio="xMidYMid slice"/>
+<rect y="520" width="1280" height="200" fill="url(#lf)"/>
+<text x="64" y="600" font-family="Chakra Petch" font-weight="600" font-size="16" letter-spacing="3" fill="#3CC8E6" fill-opacity="1.0" text-anchor="start">CHAPTER I  ·  MISSION 02</text>
+<text x="64" y="640" font-family="Chakra Petch" font-weight="600" font-size="32" letter-spacing="2" fill="#E7EDF2" fill-opacity="1.0" text-anchor="start">COLD STORAGE</text>
+<rect x="64" y="664" width="520" height="6" fill="#070C10" fill-opacity="0.9"/><rect x="64.5" y="664.5" width="519" height="5" fill="none" stroke="#2A3846" stroke-width="1"/>
+<rect x="64" y="664" width="322.4" height="6" fill="url(#lg114)"/><rect x="64" y="664" width="322.4" height="1" fill="#FFFFFF" fill-opacity="0.35"/>
+<text x="1216" y="640" font-family="Barlow" font-weight="500" font-size="18" letter-spacing="0" fill="#97A7B4" fill-opacity="1.0" text-anchor="end">Placeholder tip: energy cells detonate when destroyed.</text>
+<g transform="translate(662,620) scale(0.5417)" opacity="1.0"><path d="M16.00 6.00 L38.00 6.00 L38.00 36.00 L32.00 42.00 L10.00 42.00 L10.00 12.00 Z" fill="none" stroke="#97A7B4" stroke-width="3" stroke-linejoin="miter" stroke-miterlimit="10" stroke-linecap="butt"/><path d="M16 16 H32 M16 22 H32 M16 28 H26" fill="none" stroke="#97A7B4" stroke-width="2.5" stroke-linejoin="miter" stroke-miterlimit="10" stroke-linecap="butt"/><path d="M31.00 30.50 L34.50 34.00 L31.00 37.50 L27.50 34.00 Z" fill="#97A7B4"/></g>
+<g id="mock_tag"><path d="M17.00 692.00 L212.00 692.00 L212.00 707.00 L207.00 712.00 L12.00 712.00 L12.00 697.00 Z" fill="#F2A23A" fill-opacity="0.92"/><text x="112" y="706" font-family="Chakra Petch" font-weight="700" font-size="12" letter-spacing="2" fill="#140C02" text-anchor="middle">MOCK · PLACEHOLDER</text></g>
+</svg>

@@ -1,0 +1,641 @@
+{
+ "ga": "/workspace/tfj-3d-kits/generated_assets",
+ "focus": [
+  4.0,
+  1.6,
+  0.0
+ ],
+ "zoom": 1.0,
+ "exposure": 0.95,
+ "ambient": 0.42,
+ "rim": 0.9,
+ "fog_begin": 14.0,
+ "fog_end": 40.0,
+ "items": [
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    -6,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    -2,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    2,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    6,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    10,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    14,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_trench_a.glb",
+   "p": [
+    -6,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    -2,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    2,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_trench_a.glb",
+   "p": [
+    6,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    10,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_b.glb",
+   "p": [
+    14,
+    0,
+    -1
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    -6,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    -2,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    2,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    6,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    10,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_floor_tile_a.glb",
+   "p": [
+    14,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_a.glb",
+   "p": [
+    -6,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_b.glb",
+   "p": [
+    -2,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_a.glb",
+   "p": [
+    10,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_b.glb",
+   "p": [
+    14,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_a.glb",
+   "p": [
+    2,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_back_wall_b.glb",
+   "p": [
+    6,
+    0,
+    -6.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_pillar_a.glb",
+   "p": [
+    -4,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_pillar_a.glb",
+   "p": [
+    0,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_pillar_a.glb",
+   "p": [
+    8,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_pillar_a.glb",
+   "p": [
+    12,
+    0,
+    -5.4
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_catwalk_a.glb",
+   "p": [
+    10,
+    2.8,
+    -4.6
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_catwalk_a.glb",
+   "p": [
+    14,
+    2.8,
+    -4.6
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_massing_block_a.glb",
+   "p": [
+    -7,
+    0,
+    -10
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_massing_tower_b.glb",
+   "p": [
+    17,
+    0,
+    -11
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_env_low_wall_a.glb",
+   "p": [
+    -5.0,
+    0,
+    -3.2
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_prp_console_a.glb",
+   "p": [
+    9.0,
+    0,
+    -3.0
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_prp_crate_stack_a.glb",
+   "p": [
+    1.0,
+    0,
+    -3.3
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_prp_pipe_run_a.glb",
+   "p": [
+    12.5,
+    0,
+    -3.6
+   ]
+  },
+  {
+   "f": "environments/helix/hlx_prp_tank_a.glb",
+   "p": [
+    -8.5,
+    0,
+    -3.4
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_cooling_stack_a.glb",
+   "p": [
+    -0.55,
+    0.6,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_support_column_b.glb",
+   "p": [
+    -0.05,
+    0.8,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_blast_wall_b.glb",
+   "p": [
+    0.45,
+    0.7,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    1.0,
+    0.8,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_b.glb",
+   "p": [
+    1.55,
+    0.5,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_b.glb",
+   "p": [
+    2.0,
+    0.5,
+    0
+   ],
+   "state": "mesh_light"
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_service_deck_c.glb",
+   "p": [
+    4.0,
+    0.12,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_power_cell_a.glb",
+   "p": [
+    2.75,
+    0.44,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_core_shield_a.glb",
+   "p": [
+    3.35,
+    0.64,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_ai_core_a.glb",
+   "p": [
+    4.0,
+    0.54,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_core_shield_a.glb",
+   "p": [
+    4.65,
+    0.64,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_data_crate_a.glb",
+   "p": [
+    5.25,
+    0.49,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_control_pod_glass_a.glb",
+   "p": [
+    6.05,
+    0.4,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_relay_dish_a.glb",
+   "p": [
+    6.9,
+    0.12,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_a.glb",
+   "p": [
+    6.9,
+    0.44,
+    0
+   ],
+   "state": "mesh_heavy"
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_blast_wall_c.glb",
+   "p": [
+    7.55,
+    1.0,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_relay_mast_b.glb",
+   "p": [
+    8.05,
+    1.1,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_logistics_gantry_a.glb",
+   "p": [
+    9.1,
+    0.5,
+    0
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_support_column_a.glb",
+   "p": [
+    9.95,
+    0.5,
+    0
+   ]
+  },
+  {
+   "f": "characters/shared/opr_chr_operative_a.glb",
+   "p": [
+    -2.1,
+    0.0,
+    0.4
+   ],
+   "r": 90,
+   "anim": "aim_pose",
+   "t": 0.5,
+   "mount": {
+    "f": "weapons/shared/opr_wpn_kinetic_accelerator_b.glb",
+    "socket": "weapon_socket"
+   }
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    -4.6,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    -4.0,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_b.glb",
+   "p": [
+    -3.4,
+    0.5,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    2.6,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    3.2,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_cooling_stack_a.glb",
+   "p": [
+    3.8,
+    0.6,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_b.glb",
+   "p": [
+    5.0,
+    0.5,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    5.6,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_c.glb",
+   "p": [
+    11.4,
+    0.8,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_server_rack_b.glb",
+   "p": [
+    12.0,
+    0.5,
+    -2.6
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_data_crate_a.glb",
+   "p": [
+    -1.2,
+    0.49,
+    -2.2
+   ]
+  },
+  {
+   "f": "destructibles/helix/hlx_cmp_data_crate_a.glb",
+   "p": [
+    7.6,
+    0.49,
+    -2.2
+   ]
+  }
+ ],
+ "lights": [
+  {
+   "type": "omni",
+   "p": [
+    2.75,
+    0.9,
+    0.7
+   ],
+   "c": "ffae42",
+   "e": 0.5,
+   "r": 1.2
+  },
+  {
+   "type": "omni",
+   "p": [
+    1.4,
+    1.3,
+    1.0
+   ],
+   "c": "5fd4e8",
+   "e": 0.8,
+   "r": 3.0
+  },
+  {
+   "type": "omni",
+   "p": [
+    7.2,
+    1.5,
+    1.0
+   ],
+   "c": "5fd4e8",
+   "e": 0.6,
+   "r": 3.0
+  },
+  {
+   "type": "omni",
+   "p": [
+    4.0,
+    2.6,
+    -3.6
+   ],
+   "c": "5fd4e8",
+   "e": 0.9,
+   "r": 5.0
+  },
+  {
+   "type": "spot",
+   "p": [
+    -1.0,
+    4.0,
+    4.0
+   ],
+   "look": [
+    -2.0,
+    0.8,
+    0.4
+   ],
+   "c": "cfe6ff",
+   "e": 1.6,
+   "r": 8.0,
+   "angle": 25
+  }
+ ],
+ "sky_energy": 0.35
+}

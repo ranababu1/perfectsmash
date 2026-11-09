@@ -1,0 +1,58 @@
+{
+  "_note": "Weapon upgrade tiers for VFX. Base and Mk I use the base sheets (Mk I adds scale only); Mk II and Mk III use the -T2 / -T3 remapped sheets. Tier is the highest upgrade level owned for that weapon (data/weapons.json levels 1-3). Colours match ui/_build/tokens.py TIERS and the HUD tier badges.",
+  "tiers": {
+    "tier0": {
+      "label": "Base",
+      "sheets": "-A",
+      "scale": 1.0,
+      "modulate": "#FFFFFF",
+      "badge_colour": "#9AA9B5"
+    },
+    "tier1": {
+      "label": "Mk I",
+      "sheets": "-A",
+      "scale": 1.08,
+      "modulate": "#FFFFFF",
+      "badge_colour": "#3CC8E6"
+    },
+    "tier2": {
+      "label": "Mk II",
+      "sheets": "-T2",
+      "scale": 1.12,
+      "modulate": "#FFFFFF",
+      "badge_colour": "#5AA9FF"
+    },
+    "tier3": {
+      "label": "Mk III",
+      "sheets": "-T3",
+      "scale": 1.22,
+      "modulate": "#FFFFFF",
+      "badge_colour": "#B9F2FF",
+      "extra": "add one SHR-VFX-PARTICLE_GLOW-A ember trail (amount 6, lifetime 0.25 s) behind the slug"
+    }
+  },
+  "weapons": {
+    "kinetic_accelerator": [
+      "OPR-VFX-KINETIC_TRAIL",
+      "OPR-VFX-KINETIC_MUZZLE",
+      "OPR-VFX-KINETIC_IMPACT"
+    ],
+    "breach_charge": [
+      "OPR-VFX-BREACH_TRAIL",
+      "OPR-VFX-BREACH_EXPLOSION",
+      "OPR-VFX-BREACH_SHOCKWAVE"
+    ]
+  },
+  "cooldown_modulate": {
+    "kinetic_accelerator": "#3CC8E6",
+    "breach_charge": "#F2A23A"
+  },
+  "chapter_tints": {
+    "_note": "Optional modulate for shared neutral sheets (PARTICLE_GLOW, PARTICLE_RING, COOLDOWN) when used as chapter accents. Do not tint fire, smoke or critical-asset red.",
+    "helix": "#3CC8E6",
+    "vita": "#7FD9A8",
+    "nova_grid": "#4AA8FF",
+    "civitas": "#8EB6DA",
+    "meridian": "#A592FF"
+  }
+}

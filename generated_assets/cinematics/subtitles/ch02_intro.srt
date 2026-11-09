@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:07,700
+The first intervention changed the city. It did not change the people who built the next machine.
+
+2
+00:00:08,200 --> 00:00:16,100
+In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.
+
+3
+00:00:16,600 --> 00:00:24,900
+But the programme is no longer correcting illness. It is making people dependent on the system that edits them.
+
+4
+00:00:25,400 --> 00:00:34,500
+Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme.
+
+5
+00:00:35,000 --> 00:00:41,700
+Do not mistake the laboratories for the people inside them. The target is the machinery.
