@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-09 — Batch 2: mission architecture
+
+- `db82117` MissionDefinition + `data/missions/helix_01.json` (Relay Node greybox: blast wall, 4 server racks, 2 support columns, service deck, AURA core (critical), power cell, relay mast + dish; objectives: core (mandatory), racks, relay dish, ≤8 shots).
+- `e9b763d` WeaponState: ammunition, reload cooldown, delivery-specific launch velocity.
+- `d7a3738` MissionObjectives + MissionEngine: continuous evaluation, independent weapon cooldowns, structural release and secondary-blast signals, critical-asset state, success after settle, failure on mandatory constraint or settled ammo exhaustion. No five-shot dependency (25-attack test).
+- Repository: archived the unmerged branch `claude/quirky-bardeen-xmkcnl` (28 commits) as tag `archive/quirky-bardeen-xmkcnl` → `1826028`, verified on the remote, then deleted the branch (owner request).
+- New suites: `test_mission_definition` (6), `test_weapon_state` (5), `test_mission_engine` (10).
+- Results: headless 125 passed / 0 failed / 1 skipped; windowed 126 / 0 / 0; Android debug export OK.
+
 ## 2026-11-09 — Batch 1: materials, weapons, damage, components, structural dependencies
 
 - `99dbd6c` MaterialCatalog + `data/materials.json` (7 materials; physical behaviour only).

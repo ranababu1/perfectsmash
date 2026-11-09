@@ -161,6 +161,19 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Batch 2 — mission architecture (implemented 2026-11-09, `db82117`..`d7a3738`)
+
+| System | Files | Status |
+|---|---|---|
+| MissionDefinition | `scripts/core/mission_definition.gd`, `data/missions/helix_01.json` | Implemented. Facility statics + damageable components (material, geometry, health scale, critical-asset flag, supports), operative position, weapon allowances, recommended shots, target time, objectives. Cross-validated against materials, weapons, structure graph and objective targets; every critical asset must have a destroy_critical objective; at least one mandatory goal |
+| WeaponState | `scripts/core/weapon_state.gd` | Implemented. Per-mission ammunition (mission allowance + capacity upgrades), reload cooldown, shots fired; direct = fixed speed, lobbed = power maps to the speed range |
+| MissionObjectives | `scripts/core/mission_objectives.gd` | Implemented. Goals: destroy_critical, destroy_components (N of M), structural_damage (fraction). Constraints: protect, max_shots, within_time. Mandatory/optional, progress, finalize |
+| MissionEngine | `scripts/core/mission_engine.gd` | Implemented. Weapon selection and firing with independent cooldowns; damage routing; structural releases and secondary-blast requests as signals; critical-asset state signal; continuous evaluation; success = mandatory goals complete + scene settled; failure = broken mandatory constraint, or no ammunition once settled. No shot cap |
+
+The Helix greybox layout (`helix_01`) is data-valid but not yet physics-verified; that happens in Batch 3 with the playable scene.
+
+Last verified (2026-11-09, `d7a3738`): headless 125 passed / 0 failed / 1 skipped; windowed 126 / 0 / 0; Android debug export includes `data/missions/helix_01.json`.
+
 ## Batch 1 — tactical foundation (implemented 2026-11-09, `99dbd6c`..`1c844e0`)
 
 Node-free core systems under `scripts/core/`, each with its own test suite. Nothing in the running game uses them yet; Batch 2 (mission architecture) and Batch 3 (Helix prototype) wire them in.
@@ -172,7 +185,7 @@ Node-free core systems under `scripts/core/`, each with its own test suite. Noth
 | DamageRules | `damage_rules.gd` | Implemented. Speed-scaled projectile damage, collision damage above an impulse floor, resistance with penetration and per-hit minimum, linear blast falloff, radial knockback, distance to rotated boxes |
 | DamageableComponent | `damageable_component.gd` | Implemented. Health with INTACT → DAMAGED (<75%) → CRITICAL/unstable (<35%) → DESTROYED; signals; critical-asset flag; secondary blast on destruction |
 | StructuralDependencySystem | `structural_dependency_system.gd` | Implemented. Explicit "rests on" graph, all-or-minimum support rules, deterministic cascades, validation (unknown, self, duplicate, range, cycles) |
-| MissionEngine | — | Batch 2 |
+| MissionEngine | see Batch 2 below | Implemented |
 
 Legacy note: the old `GameSession`/levels are untouched and still run (legacy, reference only).
 Music: `assets/audio/music/gameplay_bed.ogg` plays from startup (owner instruction); the sound toggle mutes it; licence evidence is a release blocker (`docs/asset-manifest.md`).
