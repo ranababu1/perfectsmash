@@ -19,8 +19,8 @@
 	],
 	"components": [
 		{"id": "blast_wall", "kind": "blast_wall", "material": "reinforced_steel", "x": 590, "y": 595, "w": 30, "h": 90},
-		{"id": "rack_1", "kind": "server_rack", "material": "electronic_module", "x": 650, "y": 590, "w": 40, "h": 40},
-		{"id": "rack_2", "kind": "server_rack", "material": "electronic_module", "x": 698, "y": 590, "w": 40, "h": 40},
+		{"id": "rack_1", "kind": "server_rack", "material": "electronic_module", "x": 1262, "y": 590, "w": 40, "h": 100},
+		{"id": "rack_2", "kind": "server_rack", "material": "electronic_module", "x": 1304, "y": 590, "w": 40, "h": 100},
 		{"id": "pillar_l", "kind": "support_column", "material": "lightweight_alloy", "x": 830, "y": 530, "w": 26, "h": 160},
 		{"id": "pillar_r", "kind": "support_column", "material": "lightweight_alloy", "x": 970, "y": 530, "w": 26, "h": 160},
 		{"id": "deck", "kind": "service_deck", "material": "composite", "x": 900, "y": 438, "w": 200, "h": 24, "supports": ["pillar_l", "pillar_r"]},

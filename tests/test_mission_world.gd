@@ -133,13 +133,14 @@ func test_breach_charge_clears_rack_cluster_without_reaching_core() -> void:
 	var e := world.engine
 	var blasts := []
 	world.blast_happened.connect(func(c: Vector2, r: float) -> void: blasts.append(r))
-	_breach(world, Vector2(674, 480), Vector2(0, 300))
+	# Between racks 3 and 4 beside the right column.
+	_breach(world, Vector2(1055, 480), Vector2(0, 300))
 	await wait_physics_frames(120)
 	assert_eq(blasts.size(), 1, "one detonation")
 	assert_eq(e.effective_shots, 1, "a damaging detonation counts as an effective shot")
-	assert_eq(e.component_state("rack_1"), State.DESTROYED, "area damage hits both racks")
-	assert_eq(e.component_state("rack_2"), State.DESTROYED)
-	assert_true(e.component_state("blast_wall") != State.DESTROYED, "reinforced steel survives")
+	assert_eq(e.component_state("rack_3"), State.DESTROYED, "area damage hits both racks")
+	assert_eq(e.component_state("rack_4"), State.DESTROYED)
+	assert_eq(e.component_state("rack_1"), State.INTACT, "the far pair beyond the mast is out of reach")
 	assert_eq(e.component_state("aura_core"), State.INTACT)
 	assert_true(e.is_active())
 	assert_eq(e.objectives.get_objective("racks").progress, 0.5)
@@ -206,7 +207,7 @@ func test_multi_component_blast_counts_one_effective_shot() -> void:
 	var e := world.engine
 	var damaged := {}
 	e.component_state_changed.connect(func(id: String, _p: int, _c: int) -> void: damaged[id] = true)
-	_breach(world, Vector2(674, 480), Vector2(0, 300))
+	_breach(world, Vector2(1055, 480), Vector2(0, 300))
 	await wait_physics_frames(120)
 	assert_true(damaged.size() >= 2, "the blast damaged several components: %s" % str(damaged.keys()))
 	assert_eq(e.effective_shots, 1)
@@ -326,15 +327,16 @@ func test_penetration_lets_blast_through_blockers() -> void:
 func test_blockers_compound() -> void:
 	var world := _world()
 	await wait_physics_frames(2)
-	# Right of the blast wall, aiming at rack_2 through rack_1 (electronics pass 0.5).
-	var through_one := world.blast_transmission(Vector2(622, 590), world.body_for("rack_2"))
-	assert_near(through_one, 0.5, 0.001)
-	# From left of the blast wall: steel wall (0.1) then rack_1 (0.5).
-	var through_two := world.blast_transmission(Vector2(560, 590), world.body_for("rack_2"))
-	assert_near(through_two, 0.05, 0.001)
+	# Left of the relay mast, at rack_1 through the alloy mast (0.4).
+	var from := Vector2(1170, 590)
+	var through_one := world.blast_transmission(from, world.body_for("rack_1"))
+	assert_near(through_one, 0.4, 0.001)
+	# At rack_2: the mast (0.4) then rack_1 (electronics 0.5).
+	var through_two := world.blast_transmission(from, world.body_for("rack_2"))
+	assert_near(through_two, 0.2, 0.001)
 	# Penetration applies to each blocker before compounding.
 	var p := 0.5
-	assert_near(world.blast_transmission(Vector2(560, 590), world.body_for("rack_2"), p), (0.1 + 0.9 * p) * (0.5 + 0.5 * p), 0.001)
+	assert_near(world.blast_transmission(from, world.body_for("rack_2"), p), (0.4 + 0.6 * p) * (0.5 + 0.5 * p), 0.001)
 	_free()
 
 
@@ -359,13 +361,13 @@ func test_occlusion_reduces_blast_damage_with_falloff() -> void:
 func test_static_geometry_blocks_blasts() -> void:
 	var world := _world()
 	var screen := StaticBox.new(Vector2(20, 120))
-	screen.position = Vector2(1300, 560)
+	screen.position = Vector2(400, 580)
 	world.add_child(screen)
 	await wait_physics_frames(2)
-	var mast := world.body_for("relay_mast")
-	# From right of the static screen, the ray to the mast crosses it.
-	assert_near(world.blast_transmission(Vector2(1340, 560), mast), MaterialCatalog.MIN_BLAST_TRANSMISSION, 0.001, "statics pass the minimum")
-	assert_near(world.blast_transmission(Vector2(1340, 560), mast, 0.5), 0.05 + 0.95 * 0.5, 0.001, "penetration still works through statics")
+	var wall := world.body_for("blast_wall")
+	# From left of the static screen, the ray to the blast wall crosses it.
+	assert_near(world.blast_transmission(Vector2(360, 600), wall), MaterialCatalog.MIN_BLAST_TRANSMISSION, 0.001, "statics pass the minimum")
+	assert_near(world.blast_transmission(Vector2(360, 600), wall, 0.5), 0.05 + 0.95 * 0.5, 0.001, "penetration still works through statics")
 	_free()
 
 
