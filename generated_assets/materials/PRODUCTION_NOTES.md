@@ -47,6 +47,16 @@ Scorch (radial 1024 and directional 512), soot plume, two crack decals with norm
 4. Height is derived from albedo with a multi-scale band-pass; normals are calibrated to a target mean tilt per set (satin metals about 1 degree, plate and tread up to 9 degrees); AO from height.
 5. Checks: a seam-crossing 2x2 crop of every set was inspected at full size (albedo and lit), plus the 3x3 previews. Weak sets were rebuilt: Helix, VITA and Civitas alloys (too saturated, cast-looking normals: now satin), VITA composite and floor (blotchy normals: now micro detail only), VITA bio-glass (green toned down), Nova Grid heat alloy (added brushed grain), Nova Grid composite (weave was blocky), Nova Grid and Civitas concrete streaks (read as dashes), Meridian glass (iridescence was blotchy), damage overlay scorch (star-shaped stamps replaced with soft procedural scorch).
 
+## Revision 2 (readability in the as-is MissionView)
+
+Integration reported that metal sets read near black in the current MissionView, which has no reflection probe or sky to reflect, and that the Meridian steel and composite were too dark. Changes, rebuilt in place with the same ids and paths:
+
+- `LIGHTWEIGHT_ALLOY`, `REINFORCED_STEEL` and `ENERGY_COMPONENT` for all five chapters: metallic capped at 0.75 in the ORM blue channel, and the metal-masked albedo lifted towards a mean of 0.32 (0.24 for Meridian), at most x2.4. The exact factor per set is in each manifest entry's notes.
+- `MRD-MAT-COMPOSITE-A`: albedo lifted (tint 1.6, 1.6, 1.7 and gamma 0.85) so it separates from the floor.
+- Emission maps were already masks, as integration asked; unchanged.
+- Shared sets are unchanged. If a reflection probe or sky is added to MissionView later, the cap can be removed by rebuilding with the tools in the masters folder.
+- Tile previews and the five chapter contact sheets were regenerated.
+
 ## Validation
 
 - `python3 generated_assets/tools/validate_asset_manifest.py` on the fragment: PASS (structure, ids, paths and deep image checks).
