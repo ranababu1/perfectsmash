@@ -3,6 +3,10 @@ extends Node
 ## Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
+const GAMEPLAY_MUSIC := "res://assets/audio/music/gameplay_bed.ogg"
+## The track fades in over ~3 s and out over ~5 s; starting the next cycle 4.5 s before the end
+## lets those fades overlap (measured with ffmpeg astats, see changelog).
+const GAMEPLAY_MUSIC_OVERLAP := 4.5
 
 var save := SaveService.new()
 var progress: ProgressData
@@ -23,8 +27,10 @@ func _ready() -> void:
 	audio.enabled = progress.sound_enabled
 	add_child(audio)
 	music = MusicDirector.new()
-	music.enabled = progress.music_enabled
+	music.enabled = progress.sound_enabled and progress.music_enabled
+	music.loop_overlap = GAMEPLAY_MUSIC_OVERLAP
 	add_child(music)
+	_start_music()
 	catalog = LevelCatalog.load_from_file()
 	if not catalog.is_valid():
 		push_error("Level catalog invalid: %s" % ", ".join(catalog.errors))
@@ -125,9 +131,19 @@ func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
 		save.save_progress(progress)
 
 
+func _start_music() -> void:
+	if not ResourceLoader.exists(GAMEPLAY_MUSIC):
+		push_warning("Music track missing: %s" % GAMEPLAY_MUSIC)
+		return
+	music.play(load(GAMEPLAY_MUSIC) as AudioStream, 2.5)
+
+
+## Until the new HUD has its own music control, the sound toggle mutes music too;
+## the separate `music_enabled` setting is kept for that future control.
 func _set_sound(enabled: bool) -> void:
 	progress.sound_enabled = enabled
 	audio.enabled = enabled
+	music.enabled = enabled and progress.music_enabled
 	save.save_progress(progress)
 
 

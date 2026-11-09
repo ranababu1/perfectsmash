@@ -2,7 +2,9 @@ class_name MusicDirector
 extends Node
 ## Background music bed: cross-fades between two players, ducks under narration and respects the
 ## player's music setting. Keeps playing while the game is paused. Owns no gameplay state.
-## Streams are expected to be loop-ready (Ogg Vorbis with loop enabled in its import settings).
+## Streams may be loop-ready (loop enabled on import) or a track with its own fade-in and fade-out:
+## for the latter, set `loop_overlap` and the director restarts the track on the other player that
+## many seconds before the end, so the track's own fades overlap into a seamless cycle.
 
 const BED_VOLUME_DB := -12.0
 const SILENT_DB := -60.0
@@ -10,6 +12,8 @@ const DEFAULT_FADE := 1.5
 
 ## The stream the director wants playing (kept while disabled, so re-enabling resumes it).
 var current_stream: AudioStream
+## Seconds before the end of a non-looping track at which the next cycle starts (0 = no handoff).
+var loop_overlap := 0.0
 var _enabled := true
 var _duck_db := 0.0
 var _players: Array[AudioStreamPlayer] = []
@@ -65,6 +69,36 @@ func duck(amount_db: float, fade: float = 0.3) -> void:
 	_duck_db = -absf(amount_db)
 	if _enabled and current_stream != null:
 		_tween_volume(_active, target_volume_db(), fade)
+
+
+func _process(_delta: float) -> void:
+	var player := active_player()
+	if not _enabled or current_stream == null or not player.playing or player.stream != current_stream:
+		return
+	if needs_loop_handoff(player.get_playback_position(), current_stream.get_length()):
+		loop_handoff()
+
+
+## True once playback has reached the overlap window of a finite, non-looping track.
+func needs_loop_handoff(position: float, length: float) -> bool:
+	return loop_overlap > 0.0 and length > loop_overlap * 2.0 and position >= length - loop_overlap
+
+
+## Starts the next cycle on the other player at full bed volume; the outgoing player keeps
+## playing its own fade-out and stops by itself at the end of the stream.
+func loop_handoff() -> void:
+	var outgoing := active_player()
+	_active = 1 - _active
+	var incoming := active_player()
+	if _tweens[_active] != null and _tweens[_active].is_valid():
+		_tweens[_active].kill()
+	incoming.stream = current_stream
+	incoming.volume_db = target_volume_db()
+	incoming.play()
+	# Keep the outgoing tail at the bed level; it is the track's own fade-out.
+	if _tweens[1 - _active] != null and _tweens[1 - _active].is_valid():
+		_tweens[1 - _active].kill()
+	outgoing.volume_db = target_volume_db()
 
 
 func target_volume_db() -> float:

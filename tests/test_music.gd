@@ -79,3 +79,28 @@ func test_duck_and_stop() -> void:
 	await _wait(0.1)
 	assert_false(director.active_player().playing)
 	director.free()
+
+
+func test_loop_handoff_window() -> void:
+	var director := _make()
+	assert_false(director.needs_loop_handoff(195.0, 198.0), "disabled by default")
+	director.loop_overlap = 4.5
+	assert_false(director.needs_loop_handoff(190.0, 198.0))
+	assert_true(director.needs_loop_handoff(193.5, 198.0))
+	assert_false(director.needs_loop_handoff(1.0, 6.0), "tracks shorter than two overlaps never hand off")
+	director.free()
+
+
+func test_loop_handoff_restarts_on_other_player() -> void:
+	var director := _make()
+	var a := _stream()
+	director.play(a, 0.01)
+	await _wait(0.05)
+	var first := director.active_player()
+	director.loop_handoff()
+	var second := director.active_player()
+	assert_true(second != first, "next cycle uses the other player")
+	assert_true(second.stream == a and second.playing)
+	assert_true(first.playing, "outgoing tail keeps playing")
+	assert_near(second.volume_db, MusicDirector.BED_VOLUME_DB, 0.01)
+	director.free()
