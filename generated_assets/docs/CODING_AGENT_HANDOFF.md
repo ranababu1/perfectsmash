@@ -1,17 +1,25 @@
 # Coding agent handoff: integrating the generated assets
 
 **For:** the coding agent that wires art, VFX, UI and audio into the Godot game.
-**Written:** 2026-11-10 against `assets` at `249a49a` (main last merged in: `9f773fd`).
-**Read with:** `generated_assets/docs/ASSET_CONTRACT.md` (v1.7, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
+**Written:** 2026-11-10 against `assets` at `249a49a`; **brought to the final state** by integration pass 17 (all four asset streams finished; `main` `3678b6b` merged into `assets`).
+**Read with:** `generated_assets/docs/ASSET_CONTRACT.md` (v1.9, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
 
 Everything below is checked against the files on `assets`. Anything not yet delivered is marked **PENDING** with what is on disk today.
+
+## 0. Final state (integration pass 17, 2026-11-10)
+
+- **Library:** `generated_assets/asset_manifest.json` has 1,469 entries (417.1 MB on disk), merged from the four finished fragments (3d-kits 418, surfaces 475, ui-vfx 314, audio 245, plus 17 base entries). `validate_asset_manifest.py --check --loudness` passes: 0 errors, 4 warnings (listed in section 9).
+- **Godot 4.7.2:** headless import exit 0; `load_check.gd` loaded 1,462 resources with 0 failures (233 Ogg, 13 WAV, 816 textures, 8 fonts, 392 scenes; this includes 11 unlisted VFX preset scenes; JSON and SRT files are checked by the validator instead).
+- **Coverage:** 3,236 of 3,236 requirements, 100 of 100 levels full, 36 of 36 game-wide items.
+- **Two copies of the library now exist on `assets`.** `main` consolidated the library under `assets/` (PR #3, with paths rewritten from `generated_assets/` to `assets/`) and integrated slices A and B from it. That copy is the pass 16 snapshot (1,394 entries). Of those, 368 files have since been replaced in `generated_assets/` by the 3d-kits premium uplift and the later surfaces batches, and 75 entries exist only in `generated_assets/`. Use `generated_assets/` as the source of truth. Refreshing `assets/` from it is a change to what `main` ships, so it needs Imran's approval first.
+- Sections below that say **PENDING** for the operative, weapons, projectiles and cinematics are superseded: all of them are delivered (see section 9).
 
 ---
 
 ## 1. Ground rules
 
 - All generated assets live on the **`assets` branch** under `generated_assets/`. `main` stays untouched until Imran approves the merge. Do not cherry-pick or copy files from `assets` into `main`. Prototype the loader on a branch of your own that is based on `assets`, or in a scratch copy, and keep it out of `main` until Imran approves.
-- **Every new asset is `approval_status: pending_review`** (1,316 of 1,326 entries at the time of writing; the other 10 are legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
+- **Every new asset is `approval_status: pending_review`** (1,459 of 1,469 entries in the final pass; the other 10 are 9 legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
 - **Rights caveats (do not ship as cleared):**
   - AI-generated images are **not commercially cleared**. These are the background plates and texture sources (GenerateImage), the two UI backdrops, and the concepts. Check the `rights_status` text of each entry.
   - Procedural and code-generated work (meshes, VFX, UI vector art, synthesised audio) is original work, but ownership of AI-assisted output is not legally settled, so none of it is marked commercially cleared.
@@ -22,7 +30,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 2. How to find and load assets
 
-- **Manifest:** `generated_assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `generated_assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 generated_assets/tools/validate_asset_manifest.py --check` says whether it is current (after integration pass 16 it is: 1,394 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
+- **Manifest:** `generated_assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `generated_assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 generated_assets/tools/validate_asset_manifest.py --check` says whether it is current (after the final pass 17 it is: 1,469 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
 - **Entry fields you need:** `id`, `path` (repo-relative, so prefix it with `res://`), `category`, `render_type` (`mesh`, `texture`, `sprite`, `ui`, `audio`, `font`, `reference`), `chapter` (`helix`, `vita`, `nova_grid`, `civitas`, `meridian`, `shared`), and, where they apply, `component_kind`, `material`, `reference_size_px`, `depth_m`, `scale_range`, `states`, `critical`, `animation`, `blend`, `pivot`, `nine_slice`, `bus`, `loop`, `loop_offset_seconds`, `sound_id`, `music_cue`, `ambience_cue`, `levels`.
 - **Skip** `render_type: reference` entries and ids ending `-MOCK` (concepts, previews, screen mock-ups). They are review material, not game assets.
 - **Ids** are `<CH>-<TYPE>-<NAME>-<VARIANT>` (section 6). `CH` is `HLX`, `VTA`, `NVG`, `CVT`, `MRD`, `SHR`, `OPR` or `GAM`. `TYPE` includes `CMP` (component), `DEB` (debris), `ENV`, `PRP`, `BG`, `MAT`, `DMG`, `DCL`, `VFX`, `UI`, `ICN`, `MUS`, `SFX`, `AMB`, `FNT` and `LOGO`. The file name is the id in lower case with hyphens turned into underscores, for example `HLX-CMP-SERVER_RACK-B` is `generated_assets/destructibles/helix/hlx_cmp_server_rack_b.glb`.
@@ -164,7 +172,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 7. Cinematics
 
-- **PENDING.** No cinematic stills (`*-CIN-*`) have been delivered yet. `generated_assets/cinematics/` holds only its README.
+- **Delivered.** 56 stills (1920 x 1080 WebP, AI-generated and upscaled, not commercially cleared) for all 11 game sequences, plus a 2041 teaser. `generated_assets/cinematics/cinematic_sequences.json` is a CinematicCatalog-compatible copy of `data/cinematics.json` with an `image` per slide; the validator checks it slide for slide against `data/cinematics.json` (speaker, subtitle, caption) and checks that every image exists. SRT and JSON subtitles are in `generated_assets/cinematics/subtitles/`. The extra `teaser_2041` sequence is not in `data/cinematics.json` yet.
 - **On `main` now:** `data/cinematics.json` has 11 sequences (opening, `ch01_intro` to `ch05_intro`, `ch01_outro` to `ch04_outro`, and finale). Each slide has `speaker`, `subtitle`, `motion` (`push_in`, `pan_left`, `pull_back`...) and `caption`, and each sequence has an `end_card`. There is no image field yet.
 - **Proposed format:** 1920 x 1080 stills (WebP q90), 16:9, with a quiet lower band for subtitles and no baked text (section 16). They need ids `GAM-CIN-OPENING-*`, `<CH>-CIN-INTRO-*`, `<CH>-CIN-OUTRO-*` and `GAM-CIN-FINALE-*`. Subtitles and captions stay as Godot Labels from the JSON. When stills land, add an image id per slide, for example `"still": "HLX-CIN-INTRO-01"`.
 - **Already delivered:** the cinematic scores (`<CH>-MUS-INTRO-01`, `<CH>-MUS-OUTRO-01`, `GAM-MUS-OPENING-01`, `GAM-MUS-FINALE-01`, `GAM-MUS-ENDING-CREDITS`) and `<CH>-MUS-TRANSITION-STINGER`. They are mixed at -16.5 LUFS to leave room for narration.
@@ -184,22 +192,20 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 9. Known gaps and open questions
 
-- **PENDING (not on disk):**
-  - operative mesh and animations (on hold until the greybox decision)
-  - weapon meshes (Kinetic Accelerator, Breach Charge launcher)
-  - projectile meshes (kinetic slug, breach canister)
-  - cinematic stills
-  - a Godot Theme `.tres`
-
-  The coverage matrix (on the last merge) shows 2 of 100 levels full, 16 with shared fallbacks and 82 with something missing, mostly the environment kits that have since landed and the cinematics. The next integration pass will refresh it.
+- **Delivered since this brief was first written:** the rigged operative `OPR-CHR-OPERATIVE-A` (9 clips; the greybox decision in section 8 still applies), weapons (`OPR-WPN-KINETIC_ACCELERATOR-A` to `-C`, `OPR-WPN-BREACH_CHARGE-A` to `-C`, plus future weapons), the projectiles `OPR-PRJ-KINETIC_SLUG-A` and `OPR-PRJ-BREACH_CANISTER-A`, environment kits for all five chapters, and the cinematic stills.
+- **Still not on disk:** a Godot Theme `.tres` (the theme is a JSON spec).
+- **Coverage (final pass):** 100 of 100 levels full, 3,236 of 3,236 requirements.
+- **Open findings from the final pass:**
+  - VITA reads washed out under the MissionView light. `VTA-MAT-FLOOR-A` was lowered to an albedo mean of about 160 sRGB, but the game light and Filmic tonemap brighten floors by about 2 to 3 times in linear terms, so 71% of the floor in `harness_mission_vita.webp` still renders at 250 or above. Either take the VITA floor and white panels to about 115 to 125 sRGB, or lower the exposure for VITA in the chapter environment.
+  - Validator warnings: `SHR-SFX-IMPACT_COMPOSITE-02`, `-03` and `-04` measure 1.2 LU louder (ffmpeg ebur128) than their `loudness_lufs` metadata. The files are consistent with variation 01 (-21.6 LUFS); only the metadata is off. Also, `teaser_2041` is not in `data/cinematics.json`.
 - **Chapter II to V kinds** (`lab_column`, `grid_pylon`, `civic_column`, `anchor_column`...) are proposed names (section 5). Missions for those chapters should use them, or tell us your names so the kits can be renamed.
 - **Breach Charge design:** it is assumed to be a launcher that fires lobbed canisters. Imran has not yet confirmed this.
 - **Validation done so far, honestly:**
-  - Godot 4.7.2 headless import and load of every manifest file (last full pass 1,206 / 1,206).
+  - Godot 4.7.2 headless import and load of every manifest file (final pass: 1,462 loaded, 0 failed).
   - Renders under a copy of the MissionView camera and light, on the box's software OpenGL (llvmpipe).
   - Godot load of all 245 audio files.
 
   **Not done:** any test inside the real `MissionView` scene or on a phone GPU. Your integration is the first in-game test.
 - **Audio:** the hook map lists `ending` for two cues (`GAM-MUS-FINALE-01` and `GAM-MUS-ENDING-CREDITS`). Decide which one plays after the finale and which over the credits. The proposed cue names for prep, critical layer, theme and stingers are only in the entry `notes`.
 - **Repetition:** wide shots show mid and near card repeats. Each chapter has only an `-A` texture set per material.
-- **Repo size:** `generated_assets/` is about 334 MB. Plan export filters so previews, sources and mock-ups stay out of the APK.
+- **Repo size:** `generated_assets/` is about 386 MB on disk (and `assets/`, main's copy, 366 MB; git stores identical files once, and `.git` is 401 MB). Plan export filters so previews, sources and mock-ups stay out of the APK.
