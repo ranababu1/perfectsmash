@@ -161,6 +161,14 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Library refresh from the latest delivery (owner-approved 2026-11-10, `8b9361a`)
+
+- `assets/` on `main` refreshed from `assets@f186977` (integration pass 18, 1,473 entries): 562 files updated or added, `generated_assets/` → `assets/` path rewrite in text files, legacy icons and `gameplay_bed.ogg` untouched, existing import settings kept. The `assets` branch itself is unchanged.
+- Includes the rebuilt operative, Kinetic Accelerator and Breach launcher, the premium Helix kit, the Godot UI theme (`assets/ui/theme/tfj_theme.tres`), VITA revision 4 and the 2041 teaser stills.
+- Validator: 1,473 present, 1 warning (`teaser_2041` not yet in `data/cinematics.json`). Godot import clean on re-run. Tests 204 passed / 0 failed / 1 skipped; slices A, B and D work unchanged with the rebuilt models.
+- Emulator (Compatibility, `4752214`, two runs): median frame 16 ms, but more ~48 ms frames (p99 45-48 ms, was ~35 ms) with the textured premium kit, averages 46-54 fps; viewport CPU 6.0-6.6 ms (was ~8 ms); worst breach frame 55-71 ms; restarts 600-820 ms. Likely GPU cost of the richer textures; the Compatibility renderer reports no GPU timing on the emulator, so this needs a physical device. Logs: `docs/benchmarks/2026-11-10-helix-refresh/`.
+- Next: slice C (theme, typography, HUD, operative and weapon models).
+
 ## Asset integration: Helix slice D, music, ambience and sound effects (2026-11-10, `91d1967`)
 
 - Audio on `main` is identical to the latest `assets` delivery (pass 18 changed only cue-sheet and QC text), so slice D uses the files already on `main`. 90 files integrated (slice `D_helix_audio`, rights unchanged, all `pending_review`).

@@ -2,6 +2,11 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Asset library refreshed from the latest delivery
+
+- `8b9361a` `assets/` refreshed from `assets@f186977` (owner-approved): 562 files, path rewrite, legacy files and import settings kept. `4752214` integration manifest rebuilt.
+- Results: validator 1 warning (teaser_2041), Godot import clean, headless 204 passed / 0 failed / 1 skipped; emulator benchmark logs in `docs/benchmarks/2026-11-10-helix-refresh/`.
+
 ## 2026-11-10 — Asset integration slice D: Helix music, ambience, sound effects
 
 - `91d1967` `data/audio.json` on the delivered audio (90 files), buses (`default_bus_layout.tres`), material-aware impact and destruction sounds, one-sound-per-event throttle, `MissionAudio` (intensity steps with position-synced cross-fades, critical layer, stingers), ambience director, loop flags in imports. `AudioCatalog` gains buses, loop flags, ambience, `destroyed_by_material` and mission plans; `MusicDirector` gains a bus, `keep_position` and a layer player.
