@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — M0: campaign catalog, test discovery, frozen contracts, agent definitions
+
+- `MissionCatalog` (`scripts/core/mission_catalog.gd`): 100 campaign slots from `data/chapters.json`, ids `<chapter theme>_<nn>` (`helix_01`..`meridian_20`), a slot is authored when `data/missions/<id>.json` exists, linear unlocks over authored missions. `main.gd` boots the first authored mission and restarts the current one; `MissionScreen.next_requested` (connected to an optional HUD `next_pressed`) moves to the next unlocked authored mission.
+- `tests/run_tests.gd` also discovers `tests/<folder>/test_*.gd` (`const PHYSICS_SUITE := true` opts out of `--unit`), so workstreams add suites without editing the runner. New `tests/campaign/test_mission_catalog.gd` (4 tests) including the content gate: each mission file's `id`/`chapter` match its slot and it validates.
+- `docs/interfaces.md`: frozen contracts and the ownership map for the five specialist workstreams; `.claude/agents/*.md` carry concrete owned/forbidden paths.
+- `docs/plan.md` revision 6 appended (multi-agent production, owner defaults); `docs/currentstate.md` rewritten as a concise verified handoff (previous version at `99f5ee3`).
+- Local import cache: 17 Helix GLBs reimported (stale texture UIDs; 34 warnings → 0). No committed asset changed.
+- Results: headless 217 passed / 0 failed / 1 skipped; `--unit` 173 / 0 / 0; boot smoke exit 0; asset validator PASS (1,464). Windowed (pre-M0) 214 / 0 / 0.
+
 ## 2026-11-11 — Slice E, part 1: restart cost, lighting balance, warm-ups
 
 - Restart keeps the mission set: `MissionView` builds the environment, sun, set dressing and statics under one `Set` node and hands it to the next attempt of the same mission (cached on leaving the tree, released on leaving missions, at quit and at the end of the test run). Desktop restart after the first: ready ~29 ms → ~6 ms; the emulator saving (sky radiance, shadow light, MultiMesh buffers, materials) is still to be measured.

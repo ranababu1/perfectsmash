@@ -38,10 +38,43 @@ func _initialize() -> void:
 	_run.call_deferred()
 
 
+## Workstream suites live in one level of sub-folders (tests/levels/, tests/ui/, ...) and are
+## discovered automatically, so adding a suite never means editing this file. A discovered suite
+## that declares `const PHYSICS_SUITE := true` is skipped by `--unit`.
+const TESTS_ROOT := "res://tests"
+
+
+static func discover_suites() -> Array[String]:
+	var found: Array[String] = []
+	var root := DirAccess.open(TESTS_ROOT)
+	if root == null:
+		return found
+	var folders := Array(root.get_directories())
+	folders.sort()
+	for folder: String in folders:
+		if folder == "output" or folder.begins_with("."):
+			continue
+		var dir := DirAccess.open(TESTS_ROOT.path_join(folder))
+		if dir == null:
+			continue
+		var files := Array(dir.get_files())
+		files.sort()
+		for file: String in files:
+			if file.begins_with("test_") and file.ends_with(".gd"):
+				found.append(TESTS_ROOT.path_join(folder).path_join(file))
+	return found
+
+
 func _run() -> void:
+	var unit_only := OS.get_cmdline_user_args().has("--unit")
 	var suites: Array = UNIT_SUITES.duplicate()
-	if not OS.get_cmdline_user_args().has("--unit"):
+	if not unit_only:
 		suites.append_array(PHYSICS_SUITES)
+	for path in discover_suites():
+		var discovered: GDScript = load(path)
+		if unit_only and discovered != null and discovered.get_script_constant_map().get("PHYSICS_SUITE", false):
+			continue
+		suites.append(path)
 	var passed := 0
 	var failed := 0
 	var skipped := 0

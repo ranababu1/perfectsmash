@@ -9,6 +9,8 @@ extends Node
 ## release close to the operative to cancel.
 
 signal restart_requested
+## The player asked for the next campaign mission (main.gd resolves it through MissionCatalog).
+signal next_requested
 
 const DEFAULT_MISSION := "res://data/missions/helix_01.json"
 const CANCEL_DISTANCE := 70.0
@@ -84,6 +86,9 @@ func _ready() -> void:
 	hud.pause_pressed.connect(pause)
 	hud.resume_pressed.connect(resume)
 	hud.restart_pressed.connect(func() -> void: restart_requested.emit())
+	# Optional HUD signal (HUD contract, docs/interfaces.md): a results-panel "next mission" action.
+	if hud.has_signal("next_pressed"):
+		hud.connect("next_pressed", func() -> void: next_requested.emit())
 
 	engine.objective_changed.connect(_on_objective_changed)
 	engine.critical_asset_changed.connect(func(_id: String, state: int) -> void:

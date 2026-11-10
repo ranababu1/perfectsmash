@@ -592,3 +592,14 @@ Implementation batches for the prototype: (1) materials, weapons, damage, damage
   - D. Helix music, SFX and ambience through `AudioCatalog`, `AudioService` and `MusicDirector`.
   - E. Renderer and mobile optimisation, lighting, composition and polish.
 - Scope stays on the Helix prototype; no campaign expansion. Physical Android validation remains pending until the owner connects a device.
+
+## 12. Revision 6: multi-agent campaign production (2026-11-11)
+
+**Status:** Added at the owner's request in the Master Orchestrator brief (2026-11-11). Earlier sections are unchanged. Defaults below were chosen because the owner continued without answering the Stage 0 open decisions; any of them can be reversed by the owner.
+
+- **Scope of this phase:** the 100-mission campaign (five chapters of 20) on the existing Helix architecture, chapter select and mission select, chapter audio identities, weapon tuning and validation tooling. `helix_01` is level 1 and the reference implementation.
+- **Workstreams:** the orchestrator (shared architecture, asset baseline, integration) plus five specialists defined in `.claude/agents/`: `levels`, `operative-weapons`, `ui-ux`, `audio-atmosphere`, `performance-qa`. Specialists work on their own branches in isolated worktrees and commit but do not push; the orchestrator reviews every diff, pushes branches and opens PRs. **The owner merges PRs** (default).
+- **Weapons:** all 100 missions use the Kinetic Accelerator and Breach Charge only (default). The later chapter weapons in revision 5 §4 stay planned for a separate phase, as `level-design-spec.md` requires (no level depends on an unimplemented weapon).
+- **Deferred (default):** cinematic player and Story Archive; removal of the legacy 20 levels (kept frozen for regression).
+- **Contracts and ownership:** `docs/interfaces.md` (mission catalog naming `<chapter theme>_<nn>`, schema, signals, HUD, weapons, audio ids, save v4, asset baseline, test layout).
+- **Milestones:** M0 baseline (orchestrator), then one chapter batch of 20 per milestone (M1 Helix 02-20, M2 VITA, M3 Nova Grid, M4 Civitas, M5 Meridian). Each batch: schema-valid, assets mapped, solvable by probe within its recommended shots, QA report, full suite green. Physical-device validation is a human task and is not claimed by any milestone.

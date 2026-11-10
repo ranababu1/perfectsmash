@@ -13,6 +13,7 @@ var save := SaveService.new()
 var progress: ProgressData
 var catalog: LevelCatalog
 var chapters: ChapterCatalog
+var missions: MissionCatalog
 var audio_catalog: AudioCatalog
 var audio: AudioService
 var music: MusicDirector
@@ -57,8 +58,9 @@ func _ready() -> void:
 	if not chapters.is_valid():
 		# Chapters only drive presentation, so the game stays playable with default scenery.
 		push_error("Chapter catalog invalid: %s" % ", ".join(chapters.errors))
+	missions = MissionCatalog.from_chapters(chapters)
 	_add_fade_layer()
-	_show_mission()
+	_show_mission(missions.first_authored_id() if missions.is_valid() else "")
 
 
 ## A full-screen veil that fades out after every screen change. It never takes input.
@@ -110,14 +112,27 @@ func _handle_back() -> void:
 		get_tree().quit()
 
 
-func _show_mission() -> void:
+## Starts a campaign mission by id (MissionCatalog slot). An empty or unknown id falls back to
+## MissionScreen's default (the Helix reference mission).
+func _show_mission(mission_id: String = "") -> void:
 	_clear_screens()
-	_mission = MissionScreen.new(audio, progress, save)
+	var entry := missions.slot(mission_id) if missions != null else null
+	var path := entry.path if entry != null and entry.authored else MissionScreen.DEFAULT_MISSION
+	_mission = MissionScreen.new(audio, progress, save, path)
 	_mission.music = music
 	_mission.ambience = ambience
-	_mission.restart_requested.connect(_show_mission)
+	_mission.restart_requested.connect(_show_mission.bind(mission_id))
+	_mission.next_requested.connect(_show_next_mission.bind(mission_id))
 	add_child(_mission)
 	_reveal()
+
+
+func _show_next_mission(after_id: String) -> void:
+	var next := missions.next_authored_id(after_id) if missions != null else ""
+	if next.is_empty() or not missions.is_unlocked(next, progress):
+		_show_mission(after_id)
+	else:
+		_show_mission(next)
 
 
 func _show_menu() -> void:
