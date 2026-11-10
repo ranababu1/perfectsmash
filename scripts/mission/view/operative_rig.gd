@@ -1,9 +1,12 @@
 class_name OperativeRig
 extends Node3D
-## Placeholder operative built from primitives: anonymous (helmet with a visor, no face), facing
-## the facility (+x). It is part of play, not decoration: the weapon arm tracks the aim, the body
-## recoils on each shot, lowers the weapon while reloading and reacts to the mission outcome.
-## Detailed models replace the meshes later; the state machine stays.
+## The operative: anonymous (hood and visor, no face), facing the facility (+x). It is part of
+## play, not decoration: the weapon arm tracks the aim, the body recoils on each shot, lowers the
+## weapon while reloading and reacts to the mission outcome.
+## With the production model (OPR-CHR-OPERATIVE-A, integrated assets) the body plays the delivered
+## clips (idle, ready, aim_pose, fire_recoil, reload, weapon_switch, victory, defeat) and the
+## weapon arm (arm_weapon, rotation about +z) is set to the live aim after each clip pose; the
+## weapon models (OPR-WPN-*) mount on weapon_socket. Without it, a primitive placeholder.
 
 enum State { IDLE, READY, AIM, RELOAD, VICTORY, DEFEAT }
 
@@ -12,6 +15,20 @@ const RECOIL_DECAY := 9.0
 const BODY_COLOR := Color("2b3138")
 const ARMOR_COLOR := Color("3d4650")
 const VISOR_COLOR := Color("5fd4e8")
+const MODEL_ID := "OPR-CHR-OPERATIVE-A"
+const WEAPON_MODELS := {"kinetic_accelerator": "OPR-WPN-KINETIC_ACCELERATOR-A", "breach_charge": "OPR-WPN-BREACH_CHARGE-A"}
+## Looping clip per state; one-shot clips play over them and hand back.
+const STATE_CLIPS := {0: "idle", 1: "ready", 2: "aim_pose", 3: "reload", 4: "victory", 5: "defeat"}
+const BLEND := 0.15
+
+## Integrated assets; set before the rig enters the tree to use the production model.
+var library: AssetLibrary
+## True when the production operative model is in use.
+var uses_model := false
+## The weapon model's muzzle marker, when the production weapon is shown.
+var muzzle: Node3D
+var _animation: AnimationPlayer
+var _one_shot := ""
 
 var state := State.IDLE
 var aim_angle := 0.0
@@ -25,6 +42,10 @@ var _arm_angle := 0.0
 
 
 func _ready() -> void:
+	if library != null and _build_model():
+		set_weapon(weapon_id)
+		_play_loop()
+		return
 	_torso = Node3D.new()
 	add_child(_torso)
 	_add_box(self, Vector3(0.16, 0.8, 0.18), Vector3(-0.07, 0.4, 0.05), BODY_COLOR)  # legs
@@ -68,13 +89,22 @@ func _ready() -> void:
 
 
 func set_weapon(id: String) -> void:
+	var changed := id != weapon_id
 	weapon_id = id
 	for key: String in _weapons:
 		(_weapons[key] as Node3D).visible = key == id
+	if uses_model:
+		var shown: Node3D = _weapons.get(id)
+		muzzle = shown.find_child("muzzle", true, false) as Node3D if shown != null else null
+		if changed and is_inside_tree():
+			_play_once("weapon_switch")
 
 
 func set_state(next: State) -> void:
+	var changed := next != state
 	state = next
+	if uses_model and changed and _one_shot.is_empty():
+		_play_loop()
 
 
 ## `angle` is counter-clockwise from facing straight at the facility (+x), in radians.
@@ -84,9 +114,14 @@ func set_aim(angle: float) -> void:
 
 func fire() -> void:
 	_recoil = 1.0
+	if uses_model:
+		_play_once("fire_recoil")
 
 
 func _process(delta: float) -> void:
+	if uses_model:
+		_process_model(delta)
+		return
 	_time += delta
 	_recoil = maxf(0.0, _recoil - delta * RECOIL_DECAY * _recoil - delta)
 	var target := 0.0
@@ -113,6 +148,61 @@ func _process(delta: float) -> void:
 	_arm.position = SHOULDER + Vector3(-_recoil * 0.08, 0.0, 0.0)
 	_torso.position = Vector3(-_recoil * 0.05, bob, 0.0)
 	_torso.rotation = Vector3(0.0, 0.0, -lean + _recoil * 0.05)
+
+
+func _build_model() -> bool:
+	var model := library.instance_piece(MODEL_ID, "shared")
+	if model == null:
+		return false
+	add_child(model)
+	_torso = model.find_child("torso", true, false) as Node3D
+	_arm = model.find_child("arm_weapon", true, false) as Node3D
+	var socket := model.find_child("weapon_socket", true, false) as Node3D
+	_animation = model.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if _torso == null or _arm == null or socket == null or _animation == null:
+		model.queue_free()
+		return false
+	# Clips are advanced by hand so the live aim can be applied after each pose.
+	_animation.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
+	_animation.animation_finished.connect(_on_clip_finished)
+	for id: String in WEAPON_MODELS:
+		var weapon := library.instance_piece(WEAPON_MODELS[id], "shared")
+		if weapon != null:
+			socket.add_child(weapon)
+			_weapons[id] = weapon
+	uses_model = true
+	return true
+
+
+func _process_model(delta: float) -> void:
+	_animation.advance(delta)
+	# The arm follows the aim while aiming; other states keep the clip's arm pose.
+	if state == State.AIM and _one_shot != "weapon_switch":
+		_arm_angle = lerpf(_arm_angle, aim_angle, clampf(delta * 14.0, 0.0, 1.0))
+		_arm.rotation = Vector3(0.0, 0.0, _arm_angle)
+	else:
+		_arm_angle = _arm.rotation.z
+
+
+func _play_loop() -> void:
+	var clip: String = STATE_CLIPS.get(state, "idle")
+	if _animation.has_animation(clip):
+		_animation.get_animation(clip).loop_mode = Animation.LOOP_LINEAR if state <= State.RELOAD and state != State.RELOAD else Animation.LOOP_NONE
+		_animation.play(clip, BLEND)
+
+
+func _play_once(clip: String) -> void:
+	if _animation == null or not _animation.has_animation(clip):
+		return
+	_one_shot = clip
+	_animation.get_animation(clip).loop_mode = Animation.LOOP_NONE
+	_animation.play(clip, BLEND * 0.5)
+
+
+func _on_clip_finished(clip: StringName) -> void:
+	if String(clip) == _one_shot:
+		_one_shot = ""
+		_play_loop()
 
 
 func _add_box(parent: Node3D, size: Vector3, at: Vector3, color: Color) -> MeshInstance3D:

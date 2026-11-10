@@ -21,7 +21,9 @@ REPO = Path(__file__).resolve().parents[2]
 ASSETS = REPO / "assets"
 BASE_EXCLUDE = ["tests/*", "tools/*", "docs/*"]
 ## Game files under assets/ that are not part of the production library manifest.
-KEEP = ["assets/icon", "assets/audio/music/gameplay_bed.ogg"]
+KEEP = ["assets/icon", "assets/audio/music/gameplay_bed.ogg",
+        # SIL OFL 1.1 requires the licence to travel with the fonts.
+        "assets/fonts/chakra_petch/OFL.txt", "assets/fonts/barlow/OFL.txt"]
 
 
 def kept_paths():

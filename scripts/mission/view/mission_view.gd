@@ -49,6 +49,12 @@ var _meshes := {}
 var _projectiles := {}
 ## Integrated production assets, loaded once and shared by every mission view.
 static var _library: AssetLibrary
+
+
+static func assets() -> AssetLibrary:
+	if _library == null:
+		_library = AssetLibrary.load_from_file()
+	return _library
 ## Chapter key of the mission's set ("" when the mission has no environment file).
 var chapter := ""
 ## Asset ids placed by the environment file (set dressing and statics), for reports and tests.
@@ -56,6 +62,12 @@ var placed_pieces: Array[String] = []
 var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
+## Projectile models per weapon (contract 11); the glowing sphere is the fallback.
+const PROJECTILE_MODELS := {"kinetic_accelerator": "OPR-PRJ-KINETIC_SLUG-A", "breach_charge": "OPR-PRJ-BREACH_CANISTER-A"}
+## The kinetic slug is a thin 6 cm round; drawn larger so it reads at phone distance.
+const SLUG_SCALE := 2.0
+## False when the HUD draws the critical-asset marker (GAM-ICN-CRITICAL_ASSET) instead.
+var world_markers := true
 var _time := 0.0
 ## Renderer-evaluation switch (tools/renderer_eval): false builds no blast lights at all.
 static var blast_lights_enabled := true
@@ -99,6 +111,7 @@ func setup(p_world: MissionWorld) -> void:
 	for c in definition.components:
 		_add_component(c)
 	operative = OperativeRig.new()
+	operative.library = _library
 	operative.position = ViewMapping.to_3d(definition.operative, definition.ground_y, 0.3)
 	add_child(operative)
 	_build_preview()
@@ -219,6 +232,7 @@ func _process(delta: float) -> void:
 		marker.position = top + Vector3(0.0, core.size.y / ViewMapping.PX_PER_METRE / 2.0 + MARKER_HEIGHT + sin(_time * 3.0) * 0.06, 0.0)
 		vfx.move_core_idle(id, top + Vector3(0.0, 0.0, 0.4))
 		marker.rotation.y = _time * 1.5
+		marker.visible = world_markers
 	for id: String in _meshes.keys():
 		var body := world.body_for(id)
 		var visual: ComponentVisual = _meshes[id]
@@ -229,7 +243,22 @@ func _process(delta: float) -> void:
 		visual.animate(_time)
 	for projectile: WeaponProjectile in _projectiles.keys():
 		if is_instance_valid(projectile):
-			(_projectiles[projectile] as Node3D).position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
+			var node: Node3D = _projectiles[projectile]
+			node.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
+			if projectile.linear_velocity.length() > 1.0:
+				node.rotation = Vector3(0.0, 0.0, ViewMapping.direction_angle(projectile.linear_velocity))
+
+
+## Screen position of the marker point above a critical asset (null when it is gone or behind
+## the camera), for the HUD's critical-asset marker.
+func marker_screen_position(component_id: String) -> Variant:
+	var core := world.body_for(component_id)
+	if core == null:
+		return null
+	var top := ViewMapping.to_3d(core.global_position, definition.ground_y) + Vector3(0.0, core.size.y / ViewMapping.PX_PER_METRE / 2.0 + MARKER_HEIGHT, 0.0)
+	if camera.is_position_behind(top):
+		return null
+	return camera.unproject_position(top)
 
 
 func _build_environment() -> void:
@@ -540,6 +569,18 @@ func _spawn_debris_set(component_id: String, visual: ComponentVisual) -> bool:
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
+	var model := _library.instance_piece(PROJECTILE_MODELS.get(projectile.weapon_id, ""), "shared") if _library != null else null
+	if model != null:
+		if projectile.weapon_id == "kinetic_accelerator":
+			model.scale = Vector3.ONE * SLUG_SCALE
+		model.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
+		add_child(model)
+		_projectiles[projectile] = model
+		if projectile.weapon_id != "breach_charge":
+			var flash_at: Vector3 = operative.muzzle.global_position if operative != null and operative.muzzle != null else model.position
+			vfx.muzzle(flash_at, ViewMapping.direction_angle(projectile.linear_velocity))
+			projectile.struck.connect(_on_kinetic_struck)
+		return
 	var mesh := MeshInstance3D.new()
 	var sphere := SphereMesh.new()
 	var radius := float(projectile.stats.projectile_radius) / ViewMapping.PX_PER_METRE

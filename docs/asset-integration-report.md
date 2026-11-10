@@ -63,3 +63,12 @@ Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrat
 - **Sound effects:** `OPR-SFX-KINETIC_FIRE-01..05`, `OPR-SFX-BREACH_LAUNCH-01..04`, `OPR-SFX-BREACH_EXPLOSION-01..05`, `OPR-SFX-WEAPON_SWITCH-01..03`, `OPR-SFX-RELOAD_READY-01..03`, `SHR-SFX-IMPACT_{METAL,GLASS,COMPOSITE,CONCRETE}-*`, `SHR-SFX-ELECTRIC_SHORT-*`, `SHR-SFX-{STRUCTURE_COLLAPSE,MACHINE_FAILURE,ENERGY_DISCHARGE,SECONDARY_BLAST}-*`, `HLX-SFX-CORE_DESTROYED-01..03`, `SHR-SFX-ALARM_PULSE-01`, `GAM-SFX-UI_{CLICK,CONFIRM,BACK,OBJECTIVE_COMPLETE,VICTORY,DEFEAT}-*`.
 - **Scripts:** `scripts/core/audio_catalog.gd`, `scripts/services/audio_service.gd`, `scripts/services/music_director.gd`, new `scripts/mission/mission_audio.gd`, `scripts/mission/mission_screen.gd`, `scripts/main.gd`; `default_bus_layout.tres`; loop flags in 8 Ogg imports.
 - **Rights:** all `pending_review`; the asset notes describe original synthesised and algorithmic work, not commercially cleared until reviewed. `gameplay_bed.ogg` remains unverified.
+
+## Slice C: HUD, typography, operative and weapons
+
+**Implemented and verified** (tests, captures; emulator run pending with slice E).
+
+- **Asset ids:** `GAM-UI-THEME-A` (+ fonts `GAM-FNT-CHAKRA_PETCH-*`, `GAM-FNT-BARLOW-*`, UI kit textures as dependencies), icons `GAM-ICN-{OBJECTIVE_PRIMARY,OBJECTIVE_OPTIONAL,OBJECTIVE_COMPLETE,OBJECTIVE_FAILED,CRITICAL_ASSET,SHOTS_FIRED,TIME_LIMIT,AMMO,PAUSE,RETRY,WEAPON_KINETIC_ACCELERATOR,WEAPON_BREACH_CHARGE}-A`, `OPR-CHR-OPERATIVE-A`, `OPR-WPN-KINETIC_ACCELERATOR-A`, `OPR-WPN-BREACH_CHARGE-A`, `OPR-PRJ-KINETIC_SLUG-A`, `OPR-PRJ-BREACH_CANISTER-A`.
+- **Scripts:** `scripts/mission/mission_hud.gd`, `scripts/mission/view/operative_rig.gd`, `scripts/mission/view/mission_view.gd`, `scripts/mission/view/asset_library.gd`, `scripts/mission/mission_screen.gd`; tools `build_integration_manifest.py`, `export_filter.py`.
+- **Visible:** themed panels, chips and buttons; weapon buttons with icons and live ammunition; objective state icons; red critical-asset marker over the core; hooded operative aiming, recoiling, reloading and switching weapons; slug and canister projectiles.
+- **Rights:** fonts SIL OFL 1.1 (cleared for embedding, licences shipped); everything else `pending_review`, not commercially cleared.

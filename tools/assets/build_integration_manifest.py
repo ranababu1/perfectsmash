@@ -12,8 +12,9 @@ fields), with:
 - `path`: the file's location in this repository (assets/...);
 - `slice`: the vertical slice that integrated it;
 - `albedo_mean_linear` for texture-set albedo maps;
-- `required_by`: for files pulled in automatically because an integrated glb references them
-  (glTF external image URIs), the ids of those glbs.
+- `required_by`: for files pulled in automatically because an integrated glb (glTF external
+  image URIs) or Godot text resource (.tres/.tscn ext_resources) references them, the ids of
+  those assets; UI kit 1x files carry their 2x entry's metadata with `variant`.
 Godot particle presets (`godot_presets` in the selection: name -> .tscn under assets/) are
 listed under `presets`; every texture a preset references must itself be integrated, so a build
 never ships a preset without its sheets. The preset files carry no rights of their own beyond
@@ -68,6 +69,12 @@ def preset_texture_paths(repo_rel):
     return [m[len("res://"):] for m in re.findall(r'path="(res://[^"]+)"', text)]
 
 
+def text_resource_paths(repo_rel):
+    """Repository paths of the ext_resources a Godot text resource (.tres/.tscn) references."""
+    text = (REPO / repo_rel).read_text(encoding="utf-8")
+    return [m for m in re.findall(r'path="res://([^"]+)"', text)]
+
+
 def main():
     by_id = {}
     for name in FRAGMENTS:
@@ -102,15 +109,24 @@ def main():
     by_path = {repo_path(e["path"]): e for e in by_id.values()}
     integrated = {e["path"]: e for e in entries}
     for entry in list(entries):
-        if not entry["path"].endswith(".glb"):
+        if entry["path"].endswith(".glb"):
+            deps = glb_image_paths(entry["path"])
+        elif entry["path"].endswith((".tres", ".tscn")):
+            deps = text_resource_paths(entry["path"])
+        else:
             continue
-        for dep in glb_image_paths(entry["path"]):
+        for dep in deps:
             if dep in integrated:
                 integrated[dep].setdefault("required_by", [])
                 if entry["id"] not in integrated[dep]["required_by"] and integrated[dep].get("slice") == "dependency":
                     integrated[dep]["required_by"].append(entry["id"])
                 continue
             source = by_path.get(dep)
+            variant_of = None
+            if source is None and "/png_1x/" in dep:
+                # UI kit 1x files are recorded in the notes of their 2x entry (same id).
+                source = by_path.get(dep.replace("/png_1x/", "/png_2x/"))
+                variant_of = "1x of " + source["path"] if source else None
             if source is None:
                 problems.append(f"{entry['id']}: references {dep}, which has no manifest entry")
                 continue
@@ -118,6 +134,8 @@ def main():
             dep_entry["path"] = dep
             dep_entry["slice"] = "dependency"
             dep_entry["required_by"] = [entry["id"]]
+            if variant_of:
+                dep_entry["variant"] = variant_of
             if not (REPO / dep).exists():
                 problems.append(f"{entry['id']}: references missing file {dep}")
                 continue

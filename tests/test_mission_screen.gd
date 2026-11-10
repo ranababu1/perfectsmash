@@ -118,7 +118,12 @@ func test_objective_progress_refreshes_on_destruction() -> void:
 	var screen: MissionScreen = main._mission
 	screen.engine.apply_damage("rack_1", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	await tree.process_frame
-	var texts := screen.hud._objective_box.get_children().filter(func(n: Node) -> bool: return not n.is_queued_for_deletion()).map(func(l: Label) -> String: return l.text)
+	var texts := []
+	for row: Node in screen.hud._objective_box.get_children():
+		if row.is_queued_for_deletion():
+			continue
+		for label: Label in ([row] if row is Label else row.find_children("*", "Label", true, false)):
+			texts.append(label.text)
 	assert_true(texts.any(func(t: String) -> bool: return t.contains("server racks") and t.contains("25%")), str(texts))
 	await _free(main)
 
@@ -154,4 +159,22 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	assert_eq(reloaded.research_data, first_granted)
 	assert_eq(reloaded.mission_result("helix_01").attempts, 2, "both runs counted")
 	assert_eq(reloaded.mission_result("helix_01").completions, 2)
+	await _free(main)
+
+
+func test_hud_uses_production_theme_icons_and_operative() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	await tree.process_frame
+	assert_true(screen.hud.theme != null and screen.hud.theme.resource_path.ends_with("tfj_theme.tres"), "production UI theme")
+	assert_true(screen.hud.icon("kinetic_accelerator") != null, "weapon icons")
+	var weapon_button: Button = screen.hud._weapon_buttons["kinetic_accelerator"]
+	assert_true(weapon_button.icon != null, "weapon button shows its icon")
+	assert_true(weapon_button.text.contains("14"), "ammunition stays a live label")
+	assert_true(screen.hud.critical_marker != null and screen.hud.critical_marker.visible, "critical-asset marker on screen")
+	assert_false(screen.view.world_markers, "the HUD marker replaces the 3D marker")
+	assert_true(screen.view.operative.uses_model, "production operative model")
+	assert_true(screen.view.operative.muzzle != null, "weapon model with its muzzle marker")
+	screen.select_weapon("breach_charge")
+	assert_eq(String(screen.view.operative.muzzle.get_parent().name), "opr_wpn_breach_charge_a", "the shown weapon follows the selection")
 	await _free(main)

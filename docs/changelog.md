@@ -2,6 +2,11 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Asset integration slice C: HUD, operative, weapons
+
+- Production UI theme and fonts on the mission HUD, HUD icons, screen-space critical-asset marker; production operative with its animation clips and live aim; weapon and projectile models; integration tool handles theme/scene dependencies and UI kit 1x variants; export keeps the OFL licences.
+- Results: headless 205 passed / 0 failed / 1 skipped.
+
 ## 2026-11-10 — Asset library refreshed from the latest delivery
 
 - `8b9361a` `assets/` refreshed from `assets@f186977` (owner-approved): 562 files, path rewrite, legacy files and import settings kept. `4752214` integration manifest rebuilt.

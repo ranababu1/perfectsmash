@@ -161,6 +161,15 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Asset integration: Helix slice C, HUD, operative and weapons (2026-11-10)
+
+- Integrated (slice `C_helix_hud_operative_weapons`, rights unchanged): `GAM-UI-THEME-A` with its fonts (Chakra Petch, Barlow; OFL licence files ship with them) and UI kit textures, 12 HUD icons, `OPR-CHR-OPERATIVE-A`, `OPR-WPN-KINETIC_ACCELERATOR-A`, `OPR-WPN-BREACH_CHARGE-A`, `OPR-PRJ-KINETIC_SLUG-A`, `OPR-PRJ-BREACH_CANISTER-A`. The integration tool now pulls in files referenced by themes/scenes; UI kit 1x files carry their 2x entry's metadata.
+- HUD: production theme; icons for objectives (primary, optional, complete, failed), shots, time, weapons, pause and retry; values stay live labels. The critical-asset marker is now a screen-space icon tracking the core (the 3D marker remains as fallback).
+- Operative: production model with its clips (idle, ready, aim_pose, fire_recoil, reload, weapon_switch, victory, defeat); the weapon arm follows the live aim after each clip pose; weapon models swap on selection; the muzzle flash starts at the weapon's muzzle marker. Projectiles use the slug and canister models, oriented along their flight. Primitive rig and sphere projectiles remain as fallbacks.
+- Upgrade-tier weapon variants (`-B`, `-C`) are not used until upgrades exist.
+- Tests 205 passed / 0 failed / 1 skipped. Captures `docs/images/assets/sliceC_*`.
+- Next: slice E (performance on the premium kit, lighting balance, composition, polish), then physical-device testing.
+
 ## Library refresh from the latest delivery (owner-approved 2026-11-10, `8b9361a`)
 
 - `assets/` on `main` refreshed from `assets@f186977` (integration pass 18, 1,473 entries): 562 files updated or added, `generated_assets/` → `assets/` path rewrite in text files, legacy icons and `gameplay_bed.ogg` untouched, existing import settings kept. The `assets` branch itself is unchanged.
