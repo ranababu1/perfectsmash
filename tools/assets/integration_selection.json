@@ -212,12 +212,12 @@
 			"GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A",
 			"GAM-ICN-WEAPON_BREACH_CHARGE-A"
 		],
-		"E_weapons_projectiles": [
+		"F_weapon_projectile_trails_arming": [
 			"OPR-VFX-BREACH_TRAIL-A",
 			"OPR-VFX-BREACH_ARMING-A",
 			"OPR-VFX-KINETIC_TRAIL-A"
 		],
-		"F_all_chapters_kits_environment_materials": [
+		"G_all_chapters_kits_environment_materials": [
 			"CVT-CMP-CIVIC_COLUMN-A",
 			"CVT-CMP-CIVIC_COLUMN-B",
 			"CVT-CMP-CIVIC_COLUMN-C",

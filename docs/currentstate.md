@@ -87,7 +87,7 @@ Existing architecture remains as documented below. Proposed story additions are 
 ## Export presets (local, gitignored) — required values
 
 `export_presets.cfg` is gitignored, so set these on any new machine:
-- **Android Debug:** `package/unique_name="dev.imrn.temporal1"`, `package/name="Temporal: First Jump"`, arm64-v8a + x86_64, `screen/immersive_mode=true`, `permissions/vibrate=true`, `launcher_icons/*` → the four PNGs in `assets/icon/`, export path `build/temporal1-debug.apk`. Debug signing uses the editor's debug keystore (`%APPDATA%\Godot\keystores\debug.keystore`).
+- **Android Debug:** `package/unique_name="dev.imrn.temporal1"`, `package/name="Temporal: First Jump"`, arm64-v8a + x86_64, `screen/immersive_mode=true`, `permissions/vibrate=true`, `launcher_icons/main_192x192` → `assets/ui/branding/app_icon/gam_logo_app_icon_a_192.png`, `launcher_icons/adaptive_foreground_432x432`, `_background_432x432` and `_monochrome_432x432` → the three PNGs in `assets/ui/branding/app_icon/android_adaptive/` (the legacy `assets/icon/` set was removed on 2026-11-10; update any local preset that still points there), export path `build/temporal1-debug.apk`. Debug signing uses the editor's debug keystore (`%APPDATA%\Godot\keystores\debug.keystore`).
 - **iOS:** `application/bundle_identifier="dev.imrn.temporal1"`; team ID, provisioning and signing to be set on macOS/Xcode. Requires installing the 4.7.2 iOS export templates.
 - No release keystore exists yet. When created, keep it outside the repo; Godot 4 stores keystore passwords in `.godot/export_credentials.cfg` (ignored), not in the preset.
 
