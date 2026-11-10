@@ -190,7 +190,7 @@ def _cvt_camera(B, x, y, z, s=1.0):
     B.box((x, y + 0.06 * s, z + 0.08 * s), (0.08 * s, 0.12 * s, 0.05 * s), "dark", "greeble", 0.0)
     B.lathe([(0.0, 0.0), (0.09 * s, 0.0), (0.085 * s, -0.04 * s), (0.06 * s, -0.075 * s), (0.0, -0.09 * s)], (x, y, z + 0.05 * s),
             8, "glass_smoked", "greeble")
-    B.light_strip((x, y - 0.088 * s, z + 0.0), (0.022 * s, 0.008, 0.022 * s), "emit_red")
+    B.light_strip((x, y - 0.088 * s, z + 0.0), (0.03 * s, 0.008, 0.03 * s), "emit_red")
 
 
 def cvt_wall_facade(B, w=4.0, h=6.0, t=0.5):
@@ -222,7 +222,7 @@ def cvt_wall_facade(B, w=4.0, h=6.0, t=0.5):
     for x in (-1.0, 1.0):
         _cvt_camera(B, x, fy - 0.3, 4.96, 1.0)
     for x in (-w / 2 + 0.12, w / 2 - 0.12):  # red security lights at the entablature ends
-        B.light_strip((x, fy - 0.334, 5.42), (0.08, 0.006, 0.08), "emit_red")
+        B.light_strip((x, fy - 0.336, 5.42), (0.14, 0.008, 0.11), "emit_red")
 
 
 def cvt_wall_glass(B, w=4.0, h=6.0, t=0.5):
@@ -255,7 +255,7 @@ def cvt_wall_glass(B, w=4.0, h=6.0, t=0.5):
     B.box((0, -0.04, h - 0.2), (w, t + 0.12, 0.4), "frame", "frame", 0.01)
     B.light_strip((0, fy - 0.1, h - 0.2), (w * 0.8, 0.004, 0.04), "emit_blue")
     for x in (-w / 2 + 0.15, w / 2 - 0.15):
-        B.light_strip((x, fy - 0.1, h - 0.2), (0.08, 0.006, 0.08), "emit_red")
+        B.light_strip((x, fy - 0.102, h - 0.2), (0.14, 0.008, 0.11), "emit_red")
 
 
 def cvt_massing_slab(B, w=6.0, h=10.0, d=4.0):

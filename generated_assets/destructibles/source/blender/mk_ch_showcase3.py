@@ -32,14 +32,14 @@ if ch == "nova_grid":
 elif ch == "civitas":
     back = [W("a", -6), W("b", -2), W("a", 2), W("b", 6), W("b", -10),
             dict(f=e("prp_screen_wall_a"), p=[13.0, 0, -6.6]),
-            dict(f=e("prp_sensor_tower_a"), p=[9.4, 0, -4.8]),
+            dict(f=e("prp_sensor_tower_a"), p=[7.6, 0, -9.6]),
             dict(f=e("env_massing_block_a"), p=[-1.0, 0, -11.5]),
             dict(f=e("prp_relay_spire_a"), p=[5.0, 0, -11.0]),
             dict(f=e("env_massing_tower_b"), p=[-9.0, 0, -12.0]), dict(f=e("env_massing_tower_b"), p=[17.5, 0, -11.5]),
             dict(f=e("env_low_wall_a"), p=[-3.6, 0, -3.4]), dict(f=e("prp_console_a"), p=[3.4, 0, -3.2])]
     lights = [dict(p=[-2.0, 3.0, -5.2], c="8ab4ff", e=1.4, r=5.0), dict(p=[6.0, 3.0, -5.2], c="8ab4ff", e=1.2, r=5.0),
               dict(p=[-7.0, 5.0, -5.8], c="ff3b4e", e=0.9, r=2.2), dict(p=[1.0, 5.0, -5.8], c="ff3b4e", e=0.9, r=2.2),
-              dict(p=[9.4, 9.0, -3.6], c="ff3b4e", e=0.8, r=2.5), dict(p=[13.0, 3.0, -5.0], c="8ab4ff", e=1.4, r=5.0),
+              dict(p=[13.0, 5.6, -5.6], c="ff3b4e", e=0.8, r=2.5), dict(p=[13.0, 3.0, -5.0], c="8ab4ff", e=1.4, r=5.0),
               dict(p=[3.0, 1.5, 1.0], c="9fc0ff", e=0.5, r=4.0),
               dict(type="spot", p=[-0.6, 4.0, 4.0], look=[-1.4, 0.8, 0.7], c="d8e6ff", e=1.5, r=8.0, angle=25)]
     grade = dict(ambient_color="6f86ae", horizon_color="6c8cb8", fog_color="141e2c", sun_color="d0e0ff", rim_color="8fb4ff",
