@@ -1,13 +1,13 @@
 {
  "ga": "/workspace/tfj-3d-kits/generated_assets",
  "focus": [
-  4.0,
+  3.5,
   1.6,
   0.0
  ],
  "zoom": 1.0,
- "exposure": 0.95,
- "ambient": 0.42,
+ "exposure": 0.92,
+ "ambient": 0.45,
  "rim": 0.9,
  "fog_begin": 14.0,
  "fog_end": 40.0,
@@ -465,11 +465,11 @@
   {
    "f": "characters/shared/opr_chr_operative_a.glb",
    "p": [
-    -2.1,
+    -1.45,
     0.0,
-    0.4
+    0.7
    ],
-   "r": 90,
+   "r": 0,
    "anim": "aim_pose",
    "t": 0.5,
    "mount": {
@@ -622,14 +622,14 @@
   {
    "type": "spot",
    "p": [
-    -1.0,
+    -0.6,
     4.0,
     4.0
    ],
    "look": [
-    -2.0,
+    -1.4,
     0.8,
-    0.4
+    0.7
    ],
    "c": "cfe6ff",
    "e": 1.6,
@@ -637,5 +637,8 @@
    "angle": 25
   }
  ],
- "sky_energy": 0.35
+ "sky_energy": 0.35,
+ "asis_exposure": 1.0,
+ "asis_ambient": 0.55,
+ "fill": 0.22
 }

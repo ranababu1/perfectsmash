@@ -15,7 +15,7 @@ MATNOTE = ("Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTR
            "same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt "
            "metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and "
            "the 1 tile/m damage overlays line up.")
-PREMIUM = {"helix"}  # chapters rebuilt in the premium uplift pass (textured slots)
+PREMIUM = {"helix", "vita", "nova_grid", "civitas", "meridian"}  # chapters rebuilt in the premium uplift pass (textured slots)
 MATNOTE_TEX = ("Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references "
                "the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed "
                "them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both "
@@ -26,6 +26,12 @@ MATNOTE_TEX = ("Premium pass (2026-11-10): every slot is textured from the surfa
                "blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt "
                "metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module "
                "faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit).")
+
+
+WPNNOTE = ("Premium pass (2026-11-10): one baked texture set embedded in the glb (512 for weapons, 256 for projectiles: "
+           "albedo, tangent normal, ORM, emission mask) in a single slot wpn_<file stem>, baked from the textured zone "
+           "surfaces (surfaces stream library) through a unique UV; no COLOR_0. Emission is a mask (EMISSION_OP_MULTIPLY); "
+           "per v1.9 keep emission enabled. The grip is shared by every weapon (same hand pose on weapon_socket).")
 
 
 def matnote(ch):
@@ -133,7 +139,7 @@ def env_entries(st):
         e["depth_m"] = st["depth_m"]
     notes = [f"Single node mesh_intact ({t} tris) under a root named after the file.",
              f"Material slots: {', '.join(st['materials'])}.",
-             matnote(ch), "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
+             (WPNNOTE if cat == "weapons" else matnote(ch)), "Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces.",
              DESIGN]
     if st.get("fx"):
         notes.insert(1, f"Marker empties: {', '.join(st['fx'])}.")
@@ -160,15 +166,26 @@ def char_entries():
              used_by="OperativeRig replacement (proposed, ASSET_CONTRACT 11): drive torso, arm_weapon, head, legs like the primitive placeholder",
              pivot="between the feet at floor level, facing +X", tris=t, dimensions="about 0.55 x 1.84 x 0.5 m (w x h x d)",
              animation=sorted(anims), **base)
-    e["notes"] = (f"Node rig (no skin): hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, "
+    e["notes"] = (f"Premium pass 2 (2026-11-10, SV-01, after review): smooth stylised forms instead of box primitives. "
+                  f"Superellipse-lofted torso, bulged 12-sided limbs with ball joints, and every armour plate is a curved "
+                  f"shell sampled from the body surface it sits on (chest, side, back, abdomen bands, pauldrons in two layers, "
+                  f"bracers, thigh, knee, shin and toe guards) with a chamfered rim, so the suit reads as layered panels. "
+                  f"Soft cloth hood (deep opening, soft brow point, loose folds, rolled rim) over a glossy black visor with "
+                  f"cyan slits; cowl and V scarf; cross straps over the plates; belt pouches. Suit panel seams and cloth "
+                  f"creases are baked into the normal map (bake-time bump). A shorter flowing cloth cape (12 x 10 grid, "
+                  f"folds and a pointed hem, flaring back) is skinned to cape_rig (Skeleton3D on import, bones "
+                  f"cape_root and a 3 x 3 grid cape_<column>_<row>) parented under torso, with sway keyed in every clip. "
+                  f"Everything else is a rigid node rig, unchanged: hips > torso > head > hood, torso > arm_weapon > forearm_weapon > weapon_socket, "
                   f"torso > arm_support > forearm_support, hips > leg_r/leg_l > shin_r/shin_l. arm_weapon pivots at the "
                   f"right (camera-side) shoulder; rotation 0 aims along +X and the aim angle is a rotation about +Z, as "
                   f"in OperativeRig. Mount the weapon glb on weapon_socket with no offset (weapon origin = grip). "
                   f"The support arm is separate; copy a share of the arm_weapon rotation to arm_support if the far hand "
-                  f"should follow the aim. Head carries the emissive visor slits (emit_cyan_opr). Animations are node "
+                  f"should follow the aim. Head carries the emissive visor slits (in the baked emission mask). Animations are node "
                   f"TRS clips at 30 fps, in place, every node keyed in every clip so clips can be switched cleanly. "
-                  f"Material slots: {', '.join(st['materials'])}. Slot convention as the kit (colour in baseColorFactor, no COLOR_0). Quality: stylised production candidate built procedurally; it reads "
-                  f"well at game distance but is not a sculpted hero character. {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
+                  f"Material: one baked 1024 set embedded in the glb ({', '.join(st['materials'])}: albedo, tangent normal, ORM, emission "
+                  f"mask; library surfaces from the surfaces stream baked through a unique UV), no COLOR_0. Per v1.9 keep "
+                  f"emission enabled. Quality: stylised production candidate built procedurally; it reads well at game "
+                  f"distance but is not a sculpted hero character (procedural shells, no cloth simulation, {t} of 6,000 tris). {DESIGN} glb {st['bytes'] / 1024:.0f} KB.")
     out = [e]
     for name, a in sorted(anims.items()):
         out.append(dict(id=f"OPR-ANM-OPERATIVE-{name.upper()}", path=rel(st["file"]),

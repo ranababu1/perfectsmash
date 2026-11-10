@@ -155,7 +155,7 @@ def core_shield(B, w, h, d, rng, spec):
     B.light_strip((0, -d / 2 - 0.026, z1 - 0.09), (w * 0.3, 0.003, 0.03), "emit2")
 
 
-def power_cell(B, w, h, d, rng, spec):
+def power_cell(B, w, h, d, rng, spec, loom=True):
     """Energy cell in a caged frame: corner posts with amber caps, a glowing core cylinder banded
     with rings, terminal cap and hatch, a cable loom and a warning strip."""
     z0, z1 = -h / 2, h / 2
@@ -172,8 +172,9 @@ def power_cell(B, w, h, d, rng, spec):
         B.ring((0, 0, zz), r * 1.07, r * 0.92, 0.03, "Z", 16, "trim", "frame", 0.0)
     B.cyl((0, 0, z1 - 0.045), r * 0.4, 0.03, "Z", 10, "trim", "greeble", 0.0)
     Dt.top_hatch(B, 0, 0, z1, w * 0.5, d * 0.4, "panel")
-    Dt.loom(B, (-w / 2 + 0.03, -d * 0.2, z1 - 0.06), (-r * 0.9, -d * 0.1, -ch * 0.3), 2, 0.008, 0.04, 0.018,
-            (0, 1, 0), seg=6)
+    if loom:
+        Dt.loom(B, (-w / 2 + 0.03, -d * 0.2, z1 - 0.06), (-r * 0.9, -d * 0.1, -ch * 0.3), 2, 0.008, 0.04, 0.018,
+                (0, 1, 0), seg=6)
     B.box((0, -d * 0.46 + 0.003, z0 + 0.025), (w * 0.4, 0.006, 0.02), "emit2", "emit", 0.0)
     B.hazard_band((0, -d * 0.46, z1 - 0.02), (w * 0.5, 0.006, 0.022), 3)
 

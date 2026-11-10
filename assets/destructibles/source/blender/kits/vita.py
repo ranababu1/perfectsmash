@@ -222,3 +222,84 @@ SPECS = [
     S("cryo_cell", "A", "energy_component", 36, 50, 0.5, cryo_cell, emit="white"),
     S("gene_vault_core", "A", "ai_core_module", 70, 110, 0.8, gene_vault_core, critical=True, emit2="red"),
 ]
+
+
+# ---------------------------------------------------------------- premium pass (2026-11-10): secondary detail
+# VITA restraint: gasket lines, flush fasteners, small green status pips, hoses and clean control panels.
+import tfjdetail as Dt
+
+
+def _p_column(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    foot = min(0.09, h * 0.07)
+    Dt.status_leds(B, -0.011, z0 + foot * 0.5, -d * 0.43, 2, 0.022, (0.01, 0.005), "emit", None, rng)
+    Dt.top_hatch(B, 0, 0, z1, w * 0.5, d * 0.4, "light")
+
+
+def _p_deck(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    n = max(2, int(w / 0.6))
+    for i in range(n + 1):
+        x = -w / 2 + 0.05 + i * (w - 0.1) / n
+        B.cyl((x, -d / 2 + 0.004, z0 + h * 0.25), 0.01, 0.006, "Y", 8, "frame", "greeble", 0.0)
+    B.cyl((0, d * 0.1, z0 - 0.015), 0.014, w * 0.85, "X", 8, "cable", "cable", 0.0)
+
+
+def _p_panel(B, w, h, d, rng, spec):
+    if w >= 0.3:
+        f = min(0.045, min(w, h) * 0.16)
+        fd = min(d * 0.5, 0.2)
+        Dt.bolts(B, [(sx * (w / 2 - f / 2), zz) for sx in (-1, 1) for zz in (-h / 2 + f * 0.7, h / 2 - f / 2)],
+                 -fd / 2 - 0.001, 0.01, "frame")
+
+
+def _p_rack(B, w, h, d, rng, spec):
+    Dt.top_hatch(B, 0, 0, h / 2, w * 0.6, d * 0.5, "light")
+    Dt.side_seams(B, -d / 2 + 0.06, d / 2 - 0.06, -h / 2 + 0.08, h / 2 - 0.08, -w / 2, -1, 2, max(2, int(h / 0.4)), "light")
+
+
+def _p_reactor(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    r = min(w, d) * 0.43
+    base_h = h * 0.16
+    Dt.screen(B, -r * 0.5, z0 + base_h * 0.55, min(0.12, r * 0.6), base_h * 0.4, -r * 1.15 - 0.004, "emit", "frame", 2, rng)
+    Dt.loom(B, (-r * 0.9, -r * 0.3, z0 + base_h + 0.03), (-w / 2 + 0.02, -r * 0.6, z0 + 0.04), 2, 0.01, 0.03, 0.022,
+            (0, 1, 0), seg=6)
+
+
+def _p_cap(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    n = max(2, int(w / 0.4))
+    for i in range(n - 1):
+        B.box((-w / 2 + (i + 1) * w / n, -d / 2 + 0.002, 0), (0.006, 0.006, h * 0.7), "internal", "greeble", 0.0)
+    Dt.screen(B, -w * 0.3, z0 + h * 0.6, min(0.14, w * 0.2), h * 0.25, -d / 2 + 0.0, "emit", "frame", 2, rng)
+
+
+def _p_cryo(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    Dt.status_leds(B, -w * 0.2, z0 + 0.025, -d * 0.45 - 0.002, 3, 0.02, (0.01, 0.005), "emit", "emit2", rng)
+    Dt.top_hatch(B, 0, 0, z1, w * 0.4, d * 0.4, "light")
+
+
+def _p_core(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    r = min(w, d) * 0.42
+    base_h = h * 0.17
+    Dt.screen(B, r * 0.55, z0 + base_h * 0.55, min(0.12, r * 0.5), base_h * 0.35, -r * 1.18 - 0.004, "emit", "frame", 2, rng)
+
+
+PREMIUM = {"lab_column": _p_column, "lab_deck": _p_deck, "cleanroom_panel": _p_panel, "specimen_rack": _p_rack,
+           "bioreactor": _p_reactor, "containment_cap": _p_cap, "cryo_cell": _p_cryo, "gene_vault_core": _p_core}
+
+
+def _wrap(fn, extra):
+    def build(B, w, h, d, rng, spec):
+        fn(B, w, h, d, rng, spec)
+        extra(B, w, h, d, rng, spec)
+    return build
+
+
+for _s in SPECS:
+    if _s["kind"] in PREMIUM and not _s.get("_premium"):
+        _s["build"] = _wrap(_s["build"], PREMIUM[_s["kind"]])
+        _s["_premium"] = True

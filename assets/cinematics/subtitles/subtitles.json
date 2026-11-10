@@ -375,5 +375,38 @@
     "text": "Recalculating temporal coordinates. New destination confirmed. We need to go further back."
    }
   ]
+ },
+ "teaser_2041": {
+  "total_seconds": 23.6,
+  "cues": [
+   {
+    "slide_id": "GAM-CIN-TEASER_2041-01",
+    "speaker": "narrator",
+    "start": 0.2,
+    "end": 5.3,
+    "text": "2041. An ordinary morning. Nobody knows what is about to begin."
+   },
+   {
+    "slide_id": "GAM-CIN-TEASER_2041-02",
+    "speaker": "narrator",
+    "start": 5.8,
+    "end": 12.1,
+    "text": "In a university laboratory, a small machine is switched on for the first time."
+   },
+   {
+    "slide_id": "GAM-CIN-TEASER_2041-03",
+    "speaker": "control",
+    "start": 12.6,
+    "end": 17.7,
+    "text": "Temporal arrival confirmed. You are earlier than anyone has ever gone."
+   },
+   {
+    "slide_id": "GAM-CIN-TEASER_2041-04",
+    "speaker": "narrator",
+    "start": 18.2,
+    "end": 23.3,
+    "text": "Every future you saved began here. Season two: The First Mistake."
+   }
+  ]
  }
 }

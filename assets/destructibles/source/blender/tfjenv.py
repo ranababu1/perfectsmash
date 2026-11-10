@@ -40,14 +40,21 @@ def build(spec, out_dir=None, tiles_dir="/tmp/tfj_tiles", render=True, samples=4
         TB.fit_envelope(parts, w, h, d, spec["id"])
     budget = spec.get("budget", 2000)
     pre = sum(sum(len(f.vertices) - 2 for f in p.data.polygons) for p in parts)
+    print("PRE_TRIS", spec["id"], pre)
     ob = P.pack(parts, "mesh_intact", ao=False, budget=budget if pre > budget else None)
     P.bake_ao(ob, dist=spec.get("ao_dist", 0.12), samples=16)
-    scale_value(ob, spec.get("value", 1.0))
+    # layer darkening lives in baseColorFactor only (K.CTX["value"]); scaling COLOR_0 (AO) by it as
+    # well darkened textured pieces twice (fixed 2026-11-10)
     if spec.get("bake"):  # hero assets: one unique baked set (contract 11), no COLOR_0
         import tfjbake
+        for c in bpy.data.collections:  # the builder parts overlap the packed mesh: hide them from the bake rays
+            c.hide_render = True
+            c.hide_viewport = True
+        K.CTX["baking"] = True
         K.materialise([ob])
         tfjbake.bake(ob, sid, spec["bake"], emit_strength=spec.get("emit_strength", 1.6),
-                     high_bevel=spec.get("high_bevel", 0.0025), cage=spec.get("cage", 0.006))
+                     high_bevel=spec.get("high_bevel", 0.0025), cage=spec.get("cage", 0.006),
+                     use_high=spec.get("bake_high", False), ao_mix=spec.get("ao_mix", 0.4))
         K.CTX["vcol"] = False
     for c in bpy.data.collections:
         c.hide_render = True

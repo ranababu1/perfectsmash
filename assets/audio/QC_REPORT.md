@@ -23,6 +23,8 @@ PASS: structure, ids, paths and deep file checks valid
 
 The 3 warnings: SHR-SFX-IMPACT_COMPOSITE-02, -03, -04 measure 1.2 dB louder in ffmpeg ebur128 than the recorded value (short 1 s clips with silence gating; the in-house BS.1770 meter and ffmpeg gate the final block differently). Music and ambience match exactly.
 
+Update (integration stream, 2026-11-10): the recorded `loudness_lufs` of SHR-SFX-IMPACT_COMPOSITE-02, -03 and -04 is now the ffmpeg ebur128 value (-22.0, -22.3 and -21.7 LUFS; was -23.17, -23.54 and -22.87), so the validator no longer warns. The audio files are unchanged.
+
 ## Godot 4.7.2 import and load (temp copy of the clone, /tmp/tfj-audio-godot/project)
 
 ```

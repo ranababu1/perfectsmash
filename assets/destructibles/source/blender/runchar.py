@@ -43,12 +43,159 @@ def limb(a, b, r0, r1, slot, verts=8):
     return B._new_obj(bm, "frame", None, [slot])
 
 
-# ---------------------------------------------------------------- premium pass (SV-01): layered tactical suit
-def plate(center, size, slot="panel", rx=0.0, ry=0.0, rz=0.0, bevel=0.006, taper=None):
-    ob = B.box(center, size, slot, "cover", bevel, taper=taper)
-    for ang, ax in ((rx, "X"), (ry, "Y"), (rz, "Z")):
-        if ang:
-            K.rotate(ob, ang, ax, center)
+# ---------------------------------------------------------------- premium pass 2 (SV-01): smooth layered stylised suit
+# Rounded forms throughout: the torso is a superellipse loft, limbs are bulged 12-sided lathes with ball
+# joints, and every armour plate is a curved shell sampled from the body surface it sits on (offset,
+# solidified, rim bevelled in two segments) so the suit reads as layered panels, not boxes.
+def _se(c, p):
+    return math.copysign(abs(c) ** (2.0 / p), c)
+
+
+def _finish(bm, slot, role="cover", bevel=0.0, segs=2, angle=40, outward=None):
+    bm.normal_update()
+    if outward is not None and bm.faces:
+        f = bm.faces[0]
+        if f.normal.dot(outward(f.calc_center_median())) < 0:
+            bmesh.ops.reverse_faces(bm, faces=bm.faces[:])
+    if bevel > 0:
+        K.bm_bevel_sharp(bm, bevel, segs, angle=angle)
+    return B._new_obj(bm, role, None, [slot])
+
+
+def loft(rings, n=16, slot="key", p=2.6, caps=True, solid=0.0, role="frame"):
+    """Superellipse loft. rings [(z, cx, rx, ry)]; angle 0 faces +X (the operative's front)."""
+    bm = bmesh.new()
+    vs = []
+    for (z, cx, rx, ry) in rings:
+        vs.append([bm.verts.new((cx + rx * _se(math.cos(2 * math.pi * i / n), p),
+                                 ry * _se(math.sin(2 * math.pi * i / n), p), z)) for i in range(n)])
+    for j in range(len(rings) - 1):
+        for i in range(n):
+            bm.faces.new((vs[j][i], vs[j][(i + 1) % n], vs[j + 1][(i + 1) % n], vs[j + 1][i]))
+    if caps:
+        bm.faces.new(vs[0][::-1])
+        bm.faces.new(vs[-1])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    if solid:
+        bmesh.ops.solidify(bm, geom=bm.faces[:], thickness=solid)
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    return _finish(bm, slot, role)
+
+
+def loft_F(rings, p=2.6):
+    zs = [r[0] for r in rings]
+
+    def ring(z):
+        z = max(zs[0], min(zs[-1], z))
+        for k in range(len(rings) - 1):
+            if zs[k] <= z <= zs[k + 1]:
+                t = (z - zs[k]) / max(1e-6, zs[k + 1] - zs[k])
+                return [rings[k][i] * (1 - t) + rings[k + 1][i] * t for i in (1, 2, 3)]
+        return list(rings[-1][1:])
+
+    def F(u, v, off=0.0):  # u angle (rad), v height z
+        cx, rx, ry = ring(v)
+        c, s = math.cos(u), math.sin(u)
+        x, y = rx * _se(c, p), ry * _se(s, p)
+        n = Vector((math.copysign(abs(x / rx) ** (p - 1), x) / rx, math.copysign(abs(y / ry) ** (p - 1), y) / ry,
+                    0.0)).normalized()
+        return Vector((cx + x, y, v)) + n * off, n
+    return F
+
+
+def limb_F(a, b, r0, r1, ref=(1, 0, 0), bulge=0.07):
+    a, b = Vector(a), Vector(b)
+    d = (b - a).normalized()
+    L = (b - a).length
+    e1 = Vector(ref) - d * Vector(ref).dot(d)
+    e1.normalize()
+    e2 = d.cross(e1)
+
+    def rad(t):
+        return (r0 * (1 - t) + r1 * t) * (1.0 + bulge * math.sin(math.pi * min(1.0, t * 1.25)))
+
+    def F(u, t, off=0.0):
+        n = e1 * math.cos(u) + e2 * math.sin(u)
+        return a + d * (L * t) + n * (rad(t) + off), n
+    return F, rad
+
+
+def sphere_F(c, radii):
+    c, R = Vector(c), Vector(radii)
+
+    def F(u, v, off=0.0):
+        q = Vector((math.cos(v) * math.cos(u), math.cos(v) * math.sin(u), math.sin(v)))
+        p = Vector((q.x * R.x, q.y * R.y, q.z * R.z))
+        n = Vector((p.x / R.x ** 2, p.y / R.y ** 2, p.z / R.z ** 2)).normalized()
+        return c + p + n * off, n
+    return F
+
+
+def patch(F, u0, u1, v0, v1, nu, nv, off=0.012, thick=0.01, slot="panel", bevel=0.004, vmap=None):
+    """Curved armour shell over the surface F: outer face at `off`, a skirt dropping `thick` back towards
+    the body (no hidden inner face, to save triangles) and one chamfer segment on the outer rim."""
+    bm = bmesh.new()
+    grid, nrm = [], []
+    for j in range(nv + 1):
+        row, nrow = [], []
+        for i in range(nu + 1):
+            u = u0 + (u1 - u0) * i / nu
+            v = vmap(u, j / nv) if vmap else v0 + (v1 - v0) * j / nv
+            pnt, n = F(u, v, off)
+            row.append(bm.verts.new(pnt))
+            nrow.append(n)
+        grid.append(row)
+        nrm.append(nrow)
+    for j in range(nv):
+        for i in range(nu):
+            bm.faces.new((grid[j][i], grid[j][i + 1], grid[j + 1][i + 1], grid[j + 1][i]))
+    bm.normal_update()
+    um = (u0 + u1) / 2
+    nc = F(um, vmap(um, 0.5) if vmap else (v0 + v1) / 2, off)[1]
+    if sum((f.normal for f in bm.faces), Vector()).dot(nc) < 0:
+        bmesh.ops.reverse_faces(bm, faces=bm.faces[:])
+    nmap = {grid[j][i]: nrm[j][i] for j in range(nv + 1) for i in range(nu + 1)}
+    rim = [e for e in bm.edges if e.is_boundary]
+    res = bmesh.ops.extrude_edge_only(bm, edges=rim)
+    for v in [g for g in res["geom"] if isinstance(g, bmesh.types.BMVert)]:
+        src = next((e.other_vert(v) for e in v.link_edges if e.other_vert(v) in nmap), None)
+        if src is not None:
+            v.co = src.co - nmap[src] * thick
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    if bevel > 0:
+        bmesh.ops.bevel(bm, geom=rim + list({v for e in rim for v in e.verts}), offset=bevel, segments=1,
+                        profile=0.5, affect="EDGES", clamp_overlap=True)
+    return B._new_obj(bm, "cover", None, [slot])
+
+
+def limb(a, b, r0, r1, slot, verts=12, ref=(1, 0, 0), bulge=0.07, nt=5):
+    F, rad = limb_F(a, b, r0, r1, ref, bulge)
+    bm = bmesh.new()
+    rows = []
+    for j in range(nt + 1):
+        t = j / nt
+        rows.append([bm.verts.new(F(2 * math.pi * i / verts, t)[0]) for i in range(verts)])
+    for j in range(nt):
+        for i in range(verts):
+            bm.faces.new((rows[j][i], rows[j][(i + 1) % verts], rows[j + 1][(i + 1) % verts], rows[j + 1][i]))
+    bm.faces.new(rows[0][::-1])
+    bm.faces.new(rows[-1])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    return _finish(bm, slot, "frame")
+
+
+def joint(c, r, slot="key"):
+    return B.uvsphere(tuple(c), r, 8, 5, slot, "frame")
+
+
+def rbox(center, size, slot="accent", bevel=0.014):
+    return B.box(center, size, slot, "cover", bevel, segs=1)
+
+
+def strip_on(F, u, v, size, off=0.004):
+    pnt, n = F(u, v, off)
+    ob = B.light_strip(tuple(pnt), size, "emit")
+    K.rotate(ob, math.degrees(math.atan2(n.y, n.x)), "Z", tuple(pnt))
     return ob
 
 
@@ -56,80 +203,97 @@ def strap(a, b, w=0.032, slot="rubber"):
     return B.strut(a, b, w, slot, "greeble")
 
 
+def strap_path(pts, w=0.03, slot="rubber"):
+    for p0, p1 in zip(pts, pts[1:]):
+        strap(tuple(p0), tuple(p1), w, slot)
+
+
+R_ = math.radians
 HIP_Z, KNEE_Z, ANKLE_Z = 0.93, 0.5, 0.1
 for side, sy in (("r", -1), ("l", 1)):
     y = sy * 0.1
     d = grp(f"leg_{side}")
-    limb((0, y, HIP_Z), (0.012, y, KNEE_Z + 0.03), 0.094, 0.07, "key", 10)                 # suit thigh
-    plate((0.058, y, HIP_Z - 0.2), (0.05, 0.135, 0.22), "panel", ry=-4, taper=(0.9, 0.9))     # thigh armour
-    B.light_strip((0.085, y + sy * 0.035, HIP_Z - 0.2), (0.004, 0.008, 0.12), "emit")
-    plate((0.0, y + sy * 0.098, HIP_Z - 0.15), (0.12, 0.045, 0.14), "accent", bevel=0.008)   # thigh pouch
-    strap((0.04, y + sy * 0.1, HIP_Z - 0.09), (-0.04, y + sy * 0.1, HIP_Z - 0.09), 0.018)
-    strap((0.06, y + sy * 0.09, HIP_Z - 0.29), (-0.06, y + sy * 0.09, HIP_Z - 0.29), 0.016)
+    TH, _ = limb_F((0, y, HIP_Z), (0.012, y, KNEE_Z + 0.03), 0.094, 0.07)
+    limb((0, y, HIP_Z), (0.012, y, KNEE_Z + 0.03), 0.094, 0.07, "key")                        # suit thigh
+    patch(TH, R_(-55), R_(55), 0.14, 0.58, 4, 3, 0.014, 0.011, "panel")                       # thigh armour
+    patch(TH, R_(-40), R_(40), 0.6, 0.78, 4, 1, 0.012, 0.009, "frame")                        # lower thigh layer
+    strip_on(TH, R_(sy * 34), 0.36, (0.004, 0.008, 0.12), 0.026)
+    rbox((0.0, y + sy * 0.1, HIP_Z - 0.15), (0.11, 0.05, 0.14), "accent")                     # thigh pouch
+    strap((0.06, y + sy * 0.09, HIP_Z - 0.09), (-0.06, y + sy * 0.09, HIP_Z - 0.09), 0.018)
+    strap((0.07, y + sy * 0.083, HIP_Z - 0.27), (-0.07, y + sy * 0.083, HIP_Z - 0.27), 0.016)
     d()
     d = grp(f"shin_{side}")
-    limb((0.012, y, KNEE_Z), (0.0, y, ANKLE_Z + 0.06), 0.072, 0.056, "key", 10)
-    plate((0.07, y, KNEE_Z + 0.01), (0.06, 0.13, 0.13), "panel", ry=-10, taper=(0.85, 0.9))   # knee guard
-    plate((0.092, y, KNEE_Z + 0.07), (0.03, 0.1, 0.05), "frame", ry=-30)
-    B.light_strip((0.103, y, KNEE_Z - 0.01), (0.004, 0.05, 0.006), "emit")
-    plate((0.058, y, KNEE_Z - 0.21), (0.045, 0.115, 0.24), "panel", ry=3, taper=(0.9, 0.85))  # shin guard
-    # boot: tread sole, toe cap, ankle cuff, strap
-    B.zprism(K.chamfer_rect(0.29, 0.135, 0.035, 0.05, y), 0.0, 0.035, "rubber", "frame", 0.0)
-    B.zprism(K.chamfer_rect(0.26, 0.125, 0.04, 0.045, y), 0.035, 0.12, "dark", "frame", 0.0, top_scale=0.82)
-    plate((0.15, y, 0.07), (0.07, 0.12, 0.07), "panel", ry=-25)
-    B.zprism(K.chamfer_rect(0.14, 0.135, 0.03, 0.0, y), 0.12, 0.2, "dark", "frame", 0.0)
-    strap((0.07, y - 0.068, 0.15), (0.07, y + 0.068, 0.15), 0.02, "frame")
+    SH_, _ = limb_F((0.012, y, KNEE_Z), (0.0, y, ANKLE_Z + 0.06), 0.072, 0.056, bulge=0.1)
+    limb((0.012, y, KNEE_Z), (0.0, y, ANKLE_Z + 0.06), 0.072, 0.056, "key", bulge=0.1)
+    KN = sphere_F((0.03, y, KNEE_Z + 0.01), (0.075, 0.08, 0.085))
+    patch(KN, R_(-62), R_(62), R_(-45), R_(55), 4, 3, 0.004, 0.012, "panel")                   # knee guard
+    B.light_strip((0.115, y, KNEE_Z - 0.015), (0.004, 0.045, 0.006), "emit")
+    patch(SH_, R_(-58), R_(58), 0.2, 0.8, 4, 3, 0.012, 0.011, "panel")                        # shin guard
+    strip_on(SH_, 0.0, 0.62, (0.004, 0.008, 0.07), 0.026)
+    # boot: rounded tread sole, toe cap, ankle cuff and strap
+    B.zprism(K.chamfer_rect(0.29, 0.135, 0.045, 0.05, y), 0.0, 0.035, "rubber", "frame", 0.0)
+    B.zprism(K.chamfer_rect(0.26, 0.125, 0.05, 0.045, y), 0.035, 0.12, "dark", "frame", 0.006, top_scale=0.82)
+    TOE = sphere_F((0.13, y, 0.04), (0.075, 0.068, 0.07))
+    patch(TOE, R_(-70), R_(70), R_(0), R_(70), 4, 2, 0.002, 0.01, "panel")
+    B.zprism(K.chamfer_rect(0.14, 0.135, 0.045, 0.0, y), 0.12, 0.2, "dark", "frame", 0.0)
+    strap((0.07, y - 0.07, 0.15), (0.07, y + 0.07, 0.15), 0.02, "frame")
     d()
 
 # ---------------------------------------------------------------- torso
+TR = [(0.84, 0.0, 0.118, 0.162), (0.93, 0.0, 0.118, 0.158), (1.03, 0.0, 0.11, 0.148), (1.13, 0.005, 0.124, 0.172),
+      (1.25, 0.01, 0.14, 0.2), (1.35, 0.005, 0.138, 0.212), (1.42, -0.005, 0.118, 0.2), (1.47, -0.01, 0.075, 0.11)]
+T = loft_F(TR)
 d = grp("torso")
-B.zprism(K.chamfer_rect(0.22, 0.32, 0.06), HIP_Z - 0.06, 1.13, "key", "frame", 0.0, top_scale=1.06)   # abdomen
-B.zprism(K.chamfer_rect(0.27, 0.43, 0.09), 1.13, 1.46, "key", "frame", 0.0, top_scale=0.86)          # chest
-B.zprism(K.chamfer_rect(0.23, 0.33, 0.06), HIP_Z - 0.09, HIP_Z + 0.06, "dark", "frame", 0.0)         # pelvis
-for k in range(3):  # quilted abdomen segments
-    B.box((0.112, 0, HIP_Z + 0.1 + k * 0.05), (0.012, 0.2, 0.036), "frame", "cover", 0.004)
-# chest armour: chevron plates on the front, wrapping the camera side
+loft(TR, 16, "key")                                                                          # suit torso
 for sy in (-1, 1):
-    plate((0.12, sy * 0.1, 1.33), (0.05, 0.18, 0.2), "panel", rx=sy * 14, ry=-6, taper=(1.0, 0.8))
-    B.light_strip((0.148, sy * 0.13, 1.35), (0.004, 0.07, 0.01), "emit")
-plate((0.13, 0, 1.2), (0.04, 0.2, 0.08), "frame", ry=-8)
-plate((0.0, -0.215, 1.3), (0.18, 0.03, 0.22), "panel")                                            # camera-side plate
-B.light_strip((0.0, -0.232, 1.33), (0.1, 0.004, 0.01), "emit")
-plate((-0.13, 0, 1.25), (0.06, 0.24, 0.3), "panel")                                               # back plate
-plate((-0.16, 0, 1.1), (0.05, 0.18, 0.14), "accent")                                              # back pack
-# cross straps with a centre buckle
-for sy in (-1, 1):
-    strap((0.15, sy * 0.17, 1.45), (0.135, -sy * 0.13, 1.05), 0.034)
-B.box((0.15, 0, 1.25), (0.02, 0.05, 0.05), "trim", "greeble", 0.0)
-# belt, buckle, pouches, holster
-B.zprism(K.chamfer_rect(0.25, 0.35, 0.07), HIP_Z + 0.02, HIP_Z + 0.085, "rubber", "frame", 0.0)
-B.box((0.128, 0, HIP_Z + 0.052), (0.02, 0.08, 0.055), "trim", "greeble", 0.0)
+    u0, u1 = sorted((R_(sy * 6), R_(sy * 64)))
+    patch(T, u0, u1, 1.23, 1.43, 4, 3, 0.016, 0.012, "panel")                                 # chest plates
+    strip_on(T, R_(sy * 36), 1.36, (0.004, 0.07, 0.01), 0.03)
+    if sy < 0:  # camera side only (the far side is hidden by the arm in every clip)
+        patch(T, R_(-118), R_(-72), 1.17, 1.38, 2, 3, 0.014, 0.011, "panel")                  # side plate
+        patch(T, R_(-75), R_(-40), 1.05, 1.18, 2, 2, 0.012, 0.009, "frame")                   # flank layer
+strip_on(T, R_(-96), 1.33, (0.004, 0.08, 0.01), 0.028)
+patch(T, R_(-12), R_(12), 1.15, 1.25, 2, 2, 0.02, 0.012, "frame")                            # sternum plate
+for k in range(2):                                                                           # segmented abdomen
+    patch(T, R_(-42), R_(42), 1.02 + k * 0.056, 1.034 + k * 0.052, 4, 1, 0.01, 0.008, "frame")
+patch(T, R_(140), R_(220), 1.12, 1.41, 4, 3, 0.016, 0.012, "panel")                          # back plate
+rbox((-0.165, 0, 1.1), (0.06, 0.17, 0.13), "accent", 0.016)                                   # back pack
+B.light_strip((-0.196, 0, 1.12), (0.004, 0.08, 0.008), "emit")
+for sy in (-1, 1):                                                                           # cross straps over the plates
+    pts = [T(R_(sy * 58), 1.44, 0.03)[0], T(R_(sy * 24), 1.3, 0.034)[0], T(R_(-sy * 10), 1.19, 0.03)[0],
+           T(R_(-sy * 38), 1.06, 0.022)[0]]
+    strap_path(pts, 0.03)
+B.box(tuple(T(0.0, 1.245, 0.038)[0]), (0.02, 0.05, 0.05), "trim", "greeble", 0.004)
+# belt, buckle, pouches
+loft([(0.915, 0.0, 0.132, 0.174), (0.99, 0.0, 0.13, 0.17)], 14, "rubber")
+B.box(tuple(T(0.0, 0.952, 0.02)[0]), (0.02, 0.08, 0.055), "trim", "greeble", 0.004)
 for sy, x in ((-1, 0.07), (-1, -0.05), (1, 0.07), (1, -0.05)):
-    plate((x, sy * 0.185, HIP_Z - 0.01), (0.08, 0.05, 0.1), "accent", bevel=0.008)
-    B.box((x, sy * 0.212, HIP_Z + 0.02), (0.06, 0.006, 0.02), "frame", "greeble", 0.0)
-# cowl and scarf: thick cloth ring around the neck draping onto chest and back
-B.ring((0.0, 0, 1.47), 0.175, 0.07, 0.1, "Z", 14, "cloth", "frame", 0.0)
-K.scale(B.parts[-1], (0.95, 1.08, 1.0), (0, 0, 1.47))
-B.prism([(0.08, 1.52), (0.19, 1.47), (0.16, 1.36), (0.05, 1.4)], 0.22, 0.0, "cloth", "frame", 0.0)     # scarf drape
+    rbox((x, sy * 0.185, HIP_Z - 0.01), (0.08, 0.05, 0.1), "accent")
+# cowl and scarf: a soft cloth loft around the neck and a V drape onto the chest
+loft([(1.36, -0.005, 0.158, 0.218), (1.42, -0.012, 0.168, 0.226), (1.49, -0.012, 0.12, 0.14),
+      (1.545, -0.006, 0.085, 0.095)], 14, "cloth", p=2.2, caps=False, solid=0.022)
+CW = loft_F([(1.3, -0.005, 0.15, 0.215), (1.47, -0.012, 0.165, 0.222)], p=2.2)
+patch(CW, R_(-50), R_(50), 0, 0, 5, 2, 0.012, 0.016, "cloth", 0.006,
+      vmap=lambda u, t: 1.47 - t * (0.15 - 0.09 * abs(u) / R_(50)))
 d()
 
 # ---------------------------------------------------------------- head: faceless visor helmet inside a deep hood
 NECK = Vector((0.0, 0.0, 1.48))
 d = grp("head")
-B.cyl((0.0, 0, 1.53), 0.052, 0.08, "Z", 8, "dark", "frame", 0.0)
-B.uvsphere((0.015, 0, 1.645), 0.112, 14, 9, "dark", "frame", (1.0, 0.9, 1.12))                   # helmet
-B.uvsphere((0.075, 0, 1.635), 0.082, 14, 8, "visor", "frame", (0.72, 0.98, 0.98))                  # glossy faceplate
+B.cyl((0.0, 0, 1.53), 0.052, 0.08, "Z", 10, "dark", "frame", 0.0)
+B.uvsphere((0.015, 0, 1.645), 0.112, 12, 8, "dark", "frame", (1.0, 0.9, 1.12))               # helmet
+B.uvsphere((0.075, 0, 1.635), 0.082, 12, 6, "visor", "frame", (0.72, 0.98, 0.98))               # glossy faceplate
 for sy in (-1, 1):  # angled cyan eye slits
     ob = B.light_strip((0.13, sy * 0.034, 1.652), (0.008, 0.03, 0.006), "emit")
     K.rotate(ob, sy * 18, "X", (0.13, sy * 0.034, 1.652))
-B.box((0.124, 0, 1.6), (0.012, 0.03, 0.006), "frame", "greeble", 0.0)
+B.box((0.124, 0, 1.6), (0.012, 0.03, 0.006), "frame", "greeble", 0.002)
 d()
 d = grp("hood")
-hood = B.uvsphere((-0.02, 0, 1.67), 0.158, 16, 10, "cloth", "frame", (1.1, 1.02, 1.12))
+hood = B.uvsphere((-0.02, 0, 1.672), 0.148, 14, 10, "cloth", "frame", (1.08, 1.0, 1.14))
 bmh = bmesh.new()
 bmh.from_mesh(hood.data)
 bmesh.ops.delete(bmh, geom=[v for v in bmh.verts if v.co.x > 0.06 and 1.53 < v.co.z < 1.78], context="VERTS")
-for v in bmh.verts:  # drape the back and sides onto the shoulders, deepen the opening
+for v in bmh.verts:  # soft cloth: drape onto the shoulders, deepen the opening, soft peak and folds
     if v.co.z < 1.66:
         t = (1.66 - v.co.z) / 0.16
         v.co.z -= 0.1 * t
@@ -139,55 +303,69 @@ for v in bmh.verts:  # drape the back and sides onto the shoulders, deepen the o
     if v.co.x < -0.05 and v.co.z > 1.72:
         v.co.x -= 0.04 * (v.co.z - 1.72) / 0.12
         v.co.z += 0.02 * (v.co.z - 1.72) / 0.12
+    if v.co.z > 1.74 and v.co.x > -0.04:   # the brow comes forward into a soft point over the visor
+        k = min(1.0, (v.co.z - 1.74) / 0.07) * min(1.0, (v.co.x + 0.04) / 0.1)
+        v.co.x += 0.055 * k
+        v.co.z -= 0.025 * k
+    ang = math.atan2(v.co.y, v.co.x + 0.02)
+    if v.co.z < 1.72:                       # loose vertical folds, stronger towards the shoulders
+        f = 0.007 * math.sin(ang * 7.0) * min(1.0, (1.72 - v.co.z) / 0.12)
+        v.co.x += f * math.cos(ang)
+        v.co.y += f * math.sin(ang)
 bmesh.ops.recalc_face_normals(bmh, faces=bmh.faces[:])
-bmesh.ops.solidify(bmh, geom=bmh.faces[:], thickness=0.014)
+bmesh.ops.solidify(bmh, geom=bmh.faces[:], thickness=0.016)
 bmesh.ops.recalc_face_normals(bmh, faces=bmh.faces[:])
+K.bm_bevel_sharp(bmh, 0.005, 1, angle=60)                                                     # rolled rim
 bmh.to_mesh(hood.data)
 bmh.free()
-B.prism([(0.04, 1.84), (0.165, 1.75), (0.14, 1.71), (0.02, 1.79)], 0.21, 0.0, "cloth", "frame", 0.0)      # hood peak
-for sy in (-1, 1):  # hood rim folds framing the visor
-    ob = B.box((0.1, sy * 0.115, 1.65), (0.06, 0.03, 0.2), "cloth", "frame", 0.008)
-    K.rotate(ob, sy * -10, "X", (0.1, sy * 0.115, 1.65))
 d()
 
 # ---------------------------------------------------------------- weapon arm (right, camera side), rest = aiming along +X
 SH_R = Vector((0.0, -0.25, 1.4))
-d = grp("arm_weapon")
-plate(SH_R + Vector((0.0, -0.03, 0.04)), (0.17, 0.08, 0.1), "panel", rx=-20)                   # layered pauldron
-plate(SH_R + Vector((0.0, -0.06, -0.015)), (0.15, 0.06, 0.07), "frame", rx=-30)
-B.light_strip(SH_R + Vector((0.075, -0.075, 0.04)), (0.004, 0.03, 0.03), "emit")
-limb(SH_R, SH_R + Vector((0.2, 0, -0.2)), 0.066, 0.056, "key", 10)
-ob = plate(SH_R + Vector((0.1, -0.055, -0.1)), (0.15, 0.025, 0.075), "panel")
-K.rotate(ob, 45, "Y", SH_R + Vector((0.1, -0.055, -0.1)))
-d()
 EL_R = SH_R + Vector((0.2, 0, -0.2))
-d = grp("forearm_weapon")
-limb(EL_R, EL_R + Vector((0.25, 0, 0)), 0.056, 0.046, "key", 10)
-plate(EL_R + Vector((0.13, -0.03, 0.0)), (0.18, 0.045, 0.09), "panel", taper=(1.0, 0.9))          # bracer
-B.light_strip(EL_R + Vector((0.13, -0.055, 0.012)), (0.1, 0.004, 0.008), "emit")
-B.box(EL_R + Vector((0.29, 0, -0.01)), (0.09, 0.08, 0.085), "rubber", "frame", 0.012)              # glove
-plate(EL_R + Vector((0.31, -0.035, 0.0)), (0.05, 0.02, 0.06), "frame")                             # knuckle plate
-d()
 HAND_R = EL_R + Vector((0.29, 0, -0.03))
-
-# support arm (left, far side): reaches toward the fore-grip in the rest (aim) pose
 SH_L = Vector((0.0, 0.25, 1.4))
-d = grp("arm_support")
-plate(SH_L + Vector((0.0, 0.03, 0.04)), (0.17, 0.08, 0.1), "panel", rx=20)
-limb(SH_L, SH_L + Vector((0.2, -0.1, -0.2)), 0.062, 0.054, "key", 10)
-d()
 EL_L = SH_L + Vector((0.2, -0.1, -0.2))
-d = grp("forearm_support")
-limb(EL_L, EL_L + Vector((0.25, -0.13, 0.0)), 0.054, 0.046, "key", 10)
-plate(EL_L + Vector((0.12, -0.06, 0.0)), (0.16, 0.05, 0.08), "panel")
-B.box(EL_L + Vector((0.28, -0.15, 0.0)), (0.08, 0.075, 0.08), "rubber", "frame", 0.012)
-d()
 
 
-# ---------------------------------------------------------------- short cloth cape (skinned to a 3 x 3 bone grid)
+def arm(sh, el, sy, upper_name, fore_name, fore_vec, hand_off):
+    d = grp(upper_name)
+    joint(sh, 0.07)
+    P1 = sphere_F(sh + Vector((0, sy * 0.005, 0.0)), (0.098, 0.095, 0.098))
+    u0, u1 = sorted((R_(sy * 30), R_(sy * 150)))
+    patch(P1, u0, u1, R_(-5), R_(80), 4, 3, 0.004, 0.014, "panel")                           # pauldron
+    P2 = sphere_F(sh + Vector((0, sy * 0.01, -0.035)), (0.11, 0.105, 0.085))
+    u0, u1 = sorted((R_(sy * 40), R_(sy * 140)))
+    patch(P2, u0, u1, R_(-25), R_(20), 4, 1, 0.004, 0.012, "frame")                          # lower layer
+    strip_on(P1, R_(sy * 62), R_(18), (0.004, 0.03, 0.03), 0.02)
+    UA, _ = limb_F(sh, el, 0.066, 0.056, ref=(0, sy, 0))
+    limb(sh, el, 0.066, 0.056, "key", ref=(0, sy, 0), nt=4)
+    patch(UA, R_(-50), R_(50), 0.35, 0.82, 3, 2, 0.012, 0.01, "panel")                        # bicep plate
+    d()
+    d = grp(fore_name)
+    joint(el, 0.058)
+    fe = el + fore_vec
+    FA, _ = limb_F(el, fe, 0.056, 0.046, ref=(0, sy, 0), bulge=0.12)
+    limb(el, fe, 0.056, 0.046, "key", ref=(0, sy, 0), bulge=0.12, nt=4)
+    patch(FA, R_(-80), R_(80), 0.12, 0.78, 5, 2, 0.012, 0.012, "panel")                       # bracer
+    patch(FA, R_(-30), R_(30), 0.2, 0.62, 1, 2, 0.026, 0.006, "frame")                        # bracer inlay
+    strip_on(FA, 0.0, 0.42, (0.09, 0.004, 0.008), 0.034) if False else None
+    pnt, n = FA(0.0, 0.42, 0.034)
+    B.light_strip(tuple(pnt), (0.1, 0.004, 0.008) if abs(fore_vec.x) > abs(fore_vec.y) else (0.008, 0.1, 0.008), "emit")
+    hc = el + hand_off
+    rbox(tuple(hc), (0.09, 0.08, 0.085), "rubber", 0.026)                                     # glove
+    rbox(tuple(hc + Vector((0.025, sy * 0.036, 0.01))), (0.05, 0.016, 0.06), "frame", 0.006)  # knuckle plate
+    d()
+
+
+arm(SH_R, EL_R, -1, "arm_weapon", "forearm_weapon", Vector((0.25, 0, 0)), Vector((0.29, 0, -0.01)))
+arm(SH_L, EL_L, 1, "arm_support", "forearm_support", Vector((0.25, -0.13, 0.0)), Vector((0.28, -0.15, 0.0)))
+
+
+# ---------------------------------------------------------------- short flowing cloth cape (skinned to a 3 x 3 bone grid)
 def cape_mesh():
     bm = bmesh.new()
-    rows, cols = 8, 6
+    rows, cols = 10, 12
     vs = []
     for j in range(rows + 1):
         t = j / rows
@@ -196,9 +374,12 @@ def cape_mesh():
         for i in range(cols + 1):
             u = i / cols
             yy = (u - 0.5) * (0.42 + 0.26 * t)
-            xx = -0.16 - 0.07 * t - 0.06 * math.cos((u - 0.5) * math.pi) * (0.3 + t) - 0.012 * math.sin(u * 9.0) * t
-            hem = (0.045 * math.sin(i * 2.3 + 0.5) - 0.02) if j == rows else 0.0
-            row.append(bm.verts.new((xx, yy, z + hem)))
+            xx = -0.16 - 0.13 * t ** 1.3 - 0.06 * math.cos((u - 0.5) * math.pi) * (0.3 + t)   # flares back
+            xx -= 0.022 * (0.5 + 0.5 * math.sin(u * math.pi * 6.0 + 0.6)) * t ** 1.2   # soft vertical folds
+            hem = 0.0
+            if j == rows:   # pointed, uneven hem: lower at the centre, lifted at the corners
+                hem = -0.07 * (1.0 - abs(u - 0.5) * 2.0) + 0.012 * math.sin(i * 2.3 + 0.5) + 0.02
+            row.append(bm.verts.new((xx, yy, z + hem * t)))
         vs.append(row)
     for j in range(rows):
         for i in range(cols):
@@ -235,8 +416,9 @@ NODES["hips"] = hips
 total = 0
 for name in ("torso", "head", "hood", "arm_weapon", "forearm_weapon", "arm_support", "forearm_support",
              "leg_r", "shin_r", "leg_l", "shin_l"):
-    ob = P.pack(G[name], name, ao=(name != "hood"))
+    ob = P.pack(G[name], name, ao=(name != "hood"), smooth_angle=(70 if name == "hood" else 42))
     total += K.tri_count(ob)
+    print("GROUP_TRIS", name, K.tri_count(ob))
     ob.data.transform(Matrix.Translation(-PIVOTS[name]))
     par = PARENT[name]
     ob.parent = NODES[par]
@@ -252,7 +434,7 @@ sock.location = HAND_R - EL_R
 NODES["weapon_socket"] = sock
 
 # cape: skinned cloth on a 3 x 3 bone grid under cape_root, the rig parented to the torso node
-cape = P.pack([CAPE_PART], "cape", smooth_angle=50)
+cape = P.pack([CAPE_PART], "cape", smooth_angle=75)
 arm_d = bpy.data.armatures.new("cape_rig")
 rig = bpy.data.objects.new("cape_rig", arm_d)
 bpy.context.scene.collection.objects.link(rig)
@@ -302,6 +484,9 @@ NODES["cape_rig"] = rig
 CAPE_BONES = [b.name for b in arm_d.bones if b.name != "cape_root"]
 total += K.tri_count(cape)
 print("TRIS", total)
+if os.environ.get("TFJ_COUNT_ONLY"):
+    sys.stdout.flush()
+    os._exit(0)
 
 # ---------------------------------------------------------------- animation
 sc = bpy.context.scene
@@ -483,13 +668,57 @@ objs = [root] + list(NODES.values()) + [cape]
 K.CTX["baking"] = True
 K.materialise(objs)  # textured zone slots (Blender side only), then one baked 1024 set (contract 11)
 import tfjbake
+
+
+def _detail_bump(m, kind):
+    """Bake-time normal detail (self bake): suit panel seams on the key suit, soft creases on cloth.
+    A Bump node in object space chained after the library normal map, so it lands in the baked normal."""
+    nt = m.node_tree
+    bsdf = next((n for n in nt.nodes if n.type == "BSDF_PRINCIPLED"), None)
+    if bsdf is None:
+        return
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    bump = nt.nodes.new("ShaderNodeBump")
+    prev = bsdf.inputs["Normal"].links[0].from_socket if bsdf.inputs["Normal"].links else None
+    if prev is not None:
+        nt.links.new(prev, bump.inputs["Normal"])
+    if kind == "suit":
+        tex = nt.nodes.new("ShaderNodeTexBrick")
+        tex.inputs["Scale"].default_value = 7.0
+        tex.inputs["Mortar Size"].default_value = 0.012
+        tex.inputs["Mortar Smooth"].default_value = 0.4
+        tex.offset = 0.5
+        tex.squash = 1.6
+        nt.links.new(tc.outputs["Object"], tex.inputs["Vector"])
+        nt.links.new(tex.outputs["Fac"], bump.inputs["Height"])
+        bump.inputs["Strength"].default_value = 0.55
+        bump.inputs["Distance"].default_value = 0.004
+    else:
+        tex = nt.nodes.new("ShaderNodeTexNoise")   # soft irregular creases, no banding
+        tex.inputs["Scale"].default_value = 5.0
+        tex.inputs["Detail"].default_value = 3.0
+        tex.inputs["Roughness"].default_value = 0.45
+        nt.links.new(tc.outputs["Object"], tex.inputs["Vector"])
+        nt.links.new(tex.outputs["Fac"], bump.inputs["Height"])
+        bump.inputs["Strength"].default_value = 0.22
+        bump.inputs["Distance"].default_value = 0.006
+    nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
+    print("DETAIL_BUMP", m.name, kind)
+
+
+for m in bpy.data.materials:
+    if m.get("tfj_kind") == "zone" and m.use_nodes:
+        if m.get("tfj_zone") == "key":
+            _detail_bump(m, "suit")
+        elif m.get("tfj_zone") == "cloth":
+            _detail_bump(m, "cloth")
 mesh_nodes = [o for o in objs if o.type == "MESH"]
 for pb in rig.pose.bones:
     pb.rotation_euler = (0, 0, 0)
 cape.modifiers["skin"].show_viewport = False
 cape.modifiers["skin"].show_render = False
 tfjbake.bake(mesh_nodes, SID, 1024, high_bevel=0.003, cage=0.008, emit_strength=1.6, slot="chr_operative_a",
-             samples=16, ao_mix=0.5)
+             samples=16, ao_mix=0.5, use_high=False)
 cape.modifiers["skin"].show_viewport = True
 cape.modifiers["skin"].show_render = True
 for o in bpy.context.view_layer.objects:

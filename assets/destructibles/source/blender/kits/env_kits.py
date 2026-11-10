@@ -2,6 +2,7 @@
 props and the four band landmarks per chapter (contract sections 10 and 19)."""
 import env_common as E
 import env_landmarks as L
+import env_arch as A
 
 CODE = {"helix": "HLX", "vita": "VTA", "nova_grid": "NVG", "civitas": "CVT", "meridian": "MRD"}
 EMIT = {"helix": ("cyan", "orange"), "vita": ("green", "white"), "nova_grid": ("amber", "blue"),
@@ -19,6 +20,22 @@ LANDMARKS = {
     "meridian": [("HYBRID_STACK", L.mrd_hybrid_stack), ("FOUNDATION_PILLARS", L.mrd_foundation_pillars),
                  ("TEMPORAL_ANCHOR", L.mrd_temporal_anchor), ("CONVERGENCE_CHAMBER", L.mrd_convergence_chamber)],
 }
+
+
+def _wall(B, ch, k):
+    if ch in A.WALLS:
+        return A.WALLS[ch][k](B)
+    return E.wall(B, ch) if k == 0 else E.wall(B, ch, kind="window")
+
+
+def _mass(B, ch, k):
+    if ch in A.MASSING:
+        return A.MASSING[ch][k](B)
+    return E.massing(B, ch) if k == 0 else E.massing(B, ch, 3.0, 12.0, 3.0, 4)
+
+
+def _p(ch, k, default):
+    return A.PURPOSE[ch][k] if ch in A.PURPOSE else default
 
 
 def _spec(ch, typ, name, fn, mat, layer, origin, purpose, **kw):
@@ -41,10 +58,10 @@ def specs_for(ch):
               "Floor module 4 x 4 m, top at y 0, left edge at x 0, depth centred", dims_m=[4.0, 0.3, 4.0]),
         _spec(ch, "ENV", "FLOOR_TRENCH-A", lambda B, r, s: E.floor_tile(B, s["chapter"], 4.0, 4.0, "trench"), mf, "floor",
               "floor", "Floor module 4 x 4 m with a covered service trench along x", dims_m=[4.0, 0.3, 4.0]),
-        _spec(ch, "ENV", "BACK_WALL-A", lambda B, r, s: E.wall(B, s["chapter"]), mw, "mid", "bottom_centre",
-              "Mid-back facility wall module 4 m wide, 6 m tall, 0.5 m thick", dims_m=[4.0, 6.0, 0.6]),
-        _spec(ch, "ENV", "BACK_WALL-B", lambda B, r, s: E.wall(B, s["chapter"], kind="window"), mw, "mid", "bottom_centre",
-              "Mid-back wall module with an observation window", dims_m=[4.0, 6.0, 0.6]),
+        _spec(ch, "ENV", "BACK_WALL-A", lambda B, r, s: _wall(B, s["chapter"], 0), mw, "mid", "bottom_centre",
+              _p(ch, 0, "Mid-back facility wall module 4 m wide, 6 m tall, 0.5 m thick"), dims_m=[4.0, 6.0, 0.6]),
+        _spec(ch, "ENV", "BACK_WALL-B", lambda B, r, s: _wall(B, s["chapter"], 1), mw, "mid", "bottom_centre",
+              _p(ch, 1, "Mid-back wall module with an observation window"), dims_m=[4.0, 6.0, 0.6]),
         _spec(ch, "ENV", "LOW_WALL-A", lambda B, r, s: E.low_wall(B, s["chapter"]), mw, "near", "bottom_centre",
               "Near-back low wall with railing and console faces, 1.1 m tall", dims_m=[4.0, 1.1, 0.46]),
         _spec(ch, "ENV", "PILLAR-A", lambda B, r, s: E.pillar(B, s["chapter"]), mw, "mid", "bottom_centre",
@@ -54,10 +71,10 @@ def specs_for(ch):
         _spec(ch, "ENV", "CEILING_TRUSS-A", lambda B, r, s: E.truss(B, s["chapter"]), "reinforced_steel", "mid",
               "bottom_centre", "Ceiling truss 8 m long with light fittings below (origin at the fittings' underside)",
               dims_m=[8.0, 0.88, 0.8]),
-        _spec(ch, "ENV", "MASSING_BLOCK-A", lambda B, r, s: E.massing(B, s["chapter"]), mw, "mid", "bottom_centre",
-              "Mid/background facility block 6 x 8 x 4 m with stepped tiers and window bands", dims_m=[6.0, 10.0, 4.0]),
-        _spec(ch, "ENV", "MASSING_TOWER-B", lambda B, r, s: E.massing(B, s["chapter"], 3.0, 12.0, 3.0, 4), mw, "mid",
-              "bottom_centre", "Background tower 3 x 12 x 3 m", dims_m=[3.0, 14.0, 3.0]),
+        _spec(ch, "ENV", "MASSING_BLOCK-A", lambda B, r, s: _mass(B, s["chapter"], 0), mw, "mid", "bottom_centre",
+              _p(ch, 2, "Mid/background facility block 6 x 8 x 4 m with stepped tiers and window bands"), dims_m=[6.0, 10.0, 4.0]),
+        _spec(ch, "ENV", "MASSING_TOWER-B", lambda B, r, s: _mass(B, s["chapter"], 1), mw, "mid",
+              "bottom_centre", _p(ch, 3, "Background tower 3 x 12 x 3 m"), dims_m=[3.0, 14.0, 3.0]),
         _spec(ch, "ENV", "LEDGE_STATIC-A", lambda B, r, s: E.static_ledge(B, s["chapter"], 2.0, 0.3), mf, "static", "centre",
               "Static ledge, collision rect 200 x 30 px, depth 1.6 m", fit=(2.0, 0.3, 1.6), reference_size_px=[200, 30],
               depth_m=1.6, frame=1.1),

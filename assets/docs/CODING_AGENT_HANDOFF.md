@@ -1,17 +1,29 @@
 # Coding agent handoff: integrating the generated assets
 
 **For:** the coding agent that wires art, VFX, UI and audio into the Godot game.
-**Written:** 2026-11-10 against `assets` at `249a49a` (main last merged in: `9f773fd`).
-**Read with:** `assets/docs/ASSET_CONTRACT.md` (v1.7, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
+**Written:** 2026-11-10 against `assets` at `249a49a`; **brought to the final state** by integration pass 17 (all four asset streams finished; `main` `3678b6b` merged into `assets`); asset-side gaps closed in pass 18 (VITA washout, loudness metadata, Godot Theme).
+**Read with:** `assets/docs/ASSET_CONTRACT.md` (v1.9, the binding spec; section numbers below point to it). This brief tells you what to do and in what order; the contract has the detail.
 
 Everything below is checked against the files on `assets`. Anything not yet delivered is marked **PENDING** with what is on disk today.
+
+## 0. Final state (integration pass 18, 2026-11-10)
+
+- **Library:** `assets/asset_manifest.json` has 1,473 entries (417.4 MB on disk), merged from the four finished fragments (3d-kits 418, surfaces 475, ui-vfx 318, audio 245, plus 17 base entries). `validate_asset_manifest.py --check --loudness` passes: 0 errors, 1 warning (`teaser_2041` is not in `data/cinematics.json`; see the code-side actions below).
+- **Godot 4.7.2:** headless import exit 0 (the first attempt segfaulted during the import, as before, and the logged retry passed); `load_check.gd` loaded 1,464 resources with 0 failures (233 Ogg, 13 WAV, 817 textures, 8 fonts, 392 scenes, 1 Theme; this includes 11 unlisted VFX preset scenes; JSON and SRT files are checked by the validator instead).
+- **Pass 18 closed the asset-side gaps:** VITA no longer washes out under the game light (`harness_mission_vita.webp`: 29.1% of the frame clipped before, 1.5% now; materials and textures only, no exposure change; `environments/PRODUCTION_NOTES.md`). The `SHR-SFX-IMPACT_COMPOSITE-02` to `-04` loudness metadata now matches the measured files. A real Godot Theme is on disk: `ui/theme/tfj_theme.tres` (section 5).
+- **Code-side actions the asset streams cannot do (they are outside `assets/`):**
+  - Add the `teaser_2041` sequence to `data/cinematics.json`. Its slides, stills and subtitles are in `assets/cinematics/cinematic_sequences.json` and `cinematics/subtitles/`. Until then, the validator warns about it.
+  - The `assets/` copy on `main` is stale. It is the pass 16 snapshot and does not have the later 3d-kits premium uplift and surfaces batches (368 files replaced, 75 entries only in `assets/`), nor the pass 18 VITA textures and floor glbs, the corrected loudness metadata or the Theme. Refresh it from `assets/` (with the `assets/` to `assets/` path rewrite) only when Imran approves.
+- **Coverage:** 3,236 of 3,236 requirements, 100 of 100 levels full, 36 of 36 game-wide items.
+- **Two copies of the library now exist on `assets`.** `main` consolidated the library under `assets/` (PR #3, with paths rewritten from `assets/` to `assets/`) and integrated slices A and B from it. That copy is the pass 16 snapshot (1,394 entries). Of those, 368 files have since been replaced in `assets/` by the 3d-kits premium uplift and the later surfaces batches, and 75 entries exist only in `assets/`. Use `assets/` as the source of truth. Refreshing `assets/` from it is a change to what `main` ships, so it needs Imran's approval first.
+- Sections below that say **PENDING** for the operative, weapons, projectiles and cinematics are superseded: all of them are delivered (see section 9).
 
 ---
 
 ## 1. Ground rules
 
 - All generated assets live on the **`assets` branch** under `assets/`. `main` stays untouched until Imran approves the merge. Do not cherry-pick or copy files from `assets` into `main`. Prototype the loader on a branch of your own that is based on `assets`, or in a scratch copy, and keep it out of `main` until Imran approves.
-- **Every new asset is `approval_status: pending_review`** (1,316 of 1,326 entries at the time of writing; the other 10 are legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
+- **Every new asset is `approval_status: pending_review`** (1,463 of 1,473 entries after pass 18; the other 10 are 9 legacy files and one owner-instructed entry). Nothing is approved to ship yet. `data/audio.json` itself says files are added only after owner approval, so keep `files` empty on `main` until then.
 - **Rights caveats (do not ship as cleared):**
   - AI-generated images are **not commercially cleared**. These are the background plates and texture sources (GenerateImage), the two UI backdrops, and the concepts. Check the `rights_status` text of each entry.
   - Procedural and code-generated work (meshes, VFX, UI vector art, synthesised audio) is original work, but ownership of AI-assisted output is not legally settled, so none of it is marked commercially cleared.
@@ -22,7 +34,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 2. How to find and load assets
 
-- **Manifest:** `assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 assets/tools/validate_asset_manifest.py --check` says whether it is current (after integration pass 16 it is: 1,394 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
+- **Manifest:** `assets/asset_manifest.json` (`entries`, plus `planned`, `schema` and `fragments`). It is the merge of `assets/manifest_parts/{3d-kits,audio,surfaces,ui-vfx}.json` and is rebuilt on each integration pass. It can lag behind the fragments between integration passes; `python3 assets/tools/validate_asset_manifest.py --check` says whether it is current (after pass 18 it is: 1,473 entries, level with the fragments). If it lags, read the fragments, or the union of both by `id`, until the next pass catches up.
 - **Entry fields you need:** `id`, `path` (repo-relative, so prefix it with `res://`), `category`, `render_type` (`mesh`, `texture`, `sprite`, `ui`, `audio`, `font`, `reference`), `chapter` (`helix`, `vita`, `nova_grid`, `civitas`, `meridian`, `shared`), and, where they apply, `component_kind`, `material`, `reference_size_px`, `depth_m`, `scale_range`, `states`, `critical`, `animation`, `blend`, `pivot`, `nine_slice`, `bus`, `loop`, `loop_offset_seconds`, `sound_id`, `music_cue`, `ambience_cue`, `levels`.
 - **Skip** `render_type: reference` entries and ids ending `-MOCK` (concepts, previews, screen mock-ups). They are review material, not game assets.
 - **Ids** are `<CH>-<TYPE>-<NAME>-<VARIANT>` (section 6). `CH` is `HLX`, `VTA`, `NVG`, `CVT`, `MRD`, `SHR`, `OPR` or `GAM`. `TYPE` includes `CMP` (component), `DEB` (debris), `ENV`, `PRP`, `BG`, `MAT`, `DMG`, `DCL`, `VFX`, `UI`, `ICN`, `MUS`, `SFX`, `AMB`, `FNT` and `LOGO`. The file name is the id in lower case with hyphens turned into underscores, for example `HLX-CMP-SERVER_RACK-B` is `assets/destructibles/helix/hlx_cmp_server_rack_b.glb`.
@@ -117,7 +129,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 5. UI, fonts, branding
 
-- **Theme:** `assets/ui/theme/tfj_theme_spec.json` is a spec, not a `.tres`. Build a `Theme` from it, by script or by hand. It has these keys:
+- **Theme:** `assets/ui/theme/tfj_theme.tres` is a Godot 4 `Theme` built from the spec by `ui/theme/build_theme.gd`. It loads in Godot 4.7.2. Assign it to your root Control or as the project GUI theme. Type variations: `PrimaryButton`, `DangerButton`, `IconButton`, `PanelModal`, `PanelInset`, `PanelHeader`, `Chip`, `TooltipPanel`, `TooltipLabel`, `ProgressBarEnergy`, `ProgressBarIntegrity`, `ProgressBarSuccess`, and one Label variation per type role (`LabelTitle`, `LabelBody`, `LabelCaption`, `LabelLabelCaps` and so on). The palette, chapter accents, tiers and spacing are items on the custom type `TFJ`, for example `theme.get_color("scrim", "TFJ")` or `theme.get_constant("spacing_m", "TFJ")`. Set these on the nodes yourself, because they are not theme items: `uppercase` for the uppercase roles, minimum sizes, the cooldown `TextureProgressBar` textures and fill mode, and the HUD layout. `ui/screens/webp_1x/gam_ui_screen_theme_applied_mock.webp` is a Godot render with the theme applied. If files move, rebuild the `.tres` with the script; do not edit it by hand. The spec, `assets/ui/theme/tfj_theme_spec.json`, has these keys:
   - `colors`, `chapter_accents`, `upgrade_tiers`, `fonts`, `type_roles`, `spacing`, `hud_layout` (matches the current MissionHud placement), `damage_numbers` and `motion`
   - `theme`, with style boxes for Button, PrimaryButton, DangerButton, IconButton, the Panel* types, Chip, TabBar, HSlider, CheckButton, ProgressBar, TextureProgressBar_Cooldown, Label and Tooltip
 
@@ -164,7 +176,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 
 ## 7. Cinematics
 
-- **PENDING.** No cinematic stills (`*-CIN-*`) have been delivered yet. `assets/cinematics/` holds only its README.
+- **Delivered.** 56 stills (1920 x 1080 WebP, AI-generated and upscaled, not commercially cleared) for all 11 game sequences, plus a 2041 teaser. `assets/cinematics/cinematic_sequences.json` is a CinematicCatalog-compatible copy of `data/cinematics.json` with an `image` per slide; the validator checks it slide for slide against `data/cinematics.json` (speaker, subtitle, caption) and checks that every image exists. SRT and JSON subtitles are in `assets/cinematics/subtitles/`. The extra `teaser_2041` sequence is not in `data/cinematics.json` yet.
 - **On `main` now:** `data/cinematics.json` has 11 sequences (opening, `ch01_intro` to `ch05_intro`, `ch01_outro` to `ch04_outro`, and finale). Each slide has `speaker`, `subtitle`, `motion` (`push_in`, `pan_left`, `pull_back`...) and `caption`, and each sequence has an `end_card`. There is no image field yet.
 - **Proposed format:** 1920 x 1080 stills (WebP q90), 16:9, with a quiet lower band for subtitles and no baked text (section 16). They need ids `GAM-CIN-OPENING-*`, `<CH>-CIN-INTRO-*`, `<CH>-CIN-OUTRO-*` and `GAM-CIN-FINALE-*`. Subtitles and captions stay as Godot Labels from the JSON. When stills land, add an image id per slide, for example `"still": "HLX-CIN-INTRO-01"`.
 - **Already delivered:** the cinematic scores (`<CH>-MUS-INTRO-01`, `<CH>-MUS-OUTRO-01`, `GAM-MUS-OPENING-01`, `GAM-MUS-FINALE-01`, `GAM-MUS-ENDING-CREDITS`) and `<CH>-MUS-TRANSITION-STINGER`. They are mixed at -16.5 LUFS to leave room for narration.
@@ -178,28 +190,27 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 5. **VFX presets** on the hooks in section 4, with warm-up.
 6. **Environment:** remove or lower the z -6 wall and the z -5 blocks, add the floor tiles and back modules, and add the three background cards per `level_schedule.json`.
 7. **Audio:** bus layout, the `data/audio.json` changes in section 6, loop flags, and the 3 dB bed dip under the critical layer.
-8. **UI:** build the Theme from the spec, load the fonts, swap in the HUD kit and the icons.
+8. **UI:** apply `ui/theme/tfj_theme.tres`, swap in the HUD kit and the icons.
 9. Optionally, add the reflection-only sky (section 9) and compare it against the harness renders.
 10. **Helix greybox integration test (the deciding step):** play `helix_01` with the Helix kit, damage states, debris, VFX, backgrounds and audio in place, using the placeholder `OperativeRig`. Capture screenshots and an emulator or phone run (frame time, first-detonation stall). Send them to Imran. **The final operative representation is decided from this test**: a full mesh, a stylised low-poly figure, or a refined primitive rig. Until then, keep `OperativeRig` and its state machine as they are.
 
 ## 9. Known gaps and open questions
 
-- **PENDING (not on disk):**
-  - operative mesh and animations (on hold until the greybox decision)
-  - weapon meshes (Kinetic Accelerator, Breach Charge launcher)
-  - projectile meshes (kinetic slug, breach canister)
-  - cinematic stills
-  - a Godot Theme `.tres`
-
-  The coverage matrix (on the last merge) shows 2 of 100 levels full, 16 with shared fallbacks and 82 with something missing, mostly the environment kits that have since landed and the cinematics. The next integration pass will refresh it.
+- **Delivered since this brief was first written:** the rigged operative `OPR-CHR-OPERATIVE-A` (9 clips; the greybox decision in section 8 still applies), weapons (`OPR-WPN-KINETIC_ACCELERATOR-A` to `-C`, `OPR-WPN-BREACH_CHARGE-A` to `-C`, plus future weapons), the projectiles `OPR-PRJ-KINETIC_SLUG-A` and `OPR-PRJ-BREACH_CANISTER-A`, environment kits for all five chapters, and the cinematic stills.
+- **Godot Theme:** delivered in pass 18 (`ui/theme/tfj_theme.tres`).
+- **Coverage (final pass):** 100 of 100 levels full, 3,236 of 3,236 requirements.
+- **Findings from pass 17, closed in pass 18:**
+  - VITA washout: fixed in the materials (revision 4). The floor albedo is now about 141 / 138 / 126 sRGB with a warm tint against the blue light, the white panels are darker with more detail contrast, and the floor tile glbs have a lower composite factor. Clipped pixels in `harness_mission_vita.webp` fell from 29.1% to 1.5% (floor band from 71.7% to 0.3%). No exposure change is needed in the chapter environment. The Cycles environment sheet and the material tile previews still show revision 3.
+  - Loudness metadata: `SHR-SFX-IMPACT_COMPOSITE-02`, `-03` and `-04` now record -22.0, -22.3 and -21.7 LUFS (measured). The audio files are unchanged.
+  - Still open, code side: `teaser_2041` is not in `data/cinematics.json` (section 0).
 - **Chapter II to V kinds** (`lab_column`, `grid_pylon`, `civic_column`, `anchor_column`...) are proposed names (section 5). Missions for those chapters should use them, or tell us your names so the kits can be renamed.
 - **Breach Charge design:** it is assumed to be a launcher that fires lobbed canisters. Imran has not yet confirmed this.
 - **Validation done so far, honestly:**
-  - Godot 4.7.2 headless import and load of every manifest file (last full pass 1,206 / 1,206).
+  - Godot 4.7.2 headless import and load of every manifest file (pass 18: 1,464 loaded, 0 failed, including the Theme).
   - Renders under a copy of the MissionView camera and light, on the box's software OpenGL (llvmpipe).
   - Godot load of all 245 audio files.
 
   **Not done:** any test inside the real `MissionView` scene or on a phone GPU. Your integration is the first in-game test.
 - **Audio:** the hook map lists `ending` for two cues (`GAM-MUS-FINALE-01` and `GAM-MUS-ENDING-CREDITS`). Decide which one plays after the finale and which over the credits. The proposed cue names for prep, critical layer, theme and stingers are only in the entry `notes`.
 - **Repetition:** wide shots show mid and near card repeats. Each chapter has only an `-A` texture set per material.
-- **Repo size:** `assets/` is about 334 MB. Plan export filters so previews, sources and mock-ups stay out of the APK.
+- **Repo size:** `assets/` is about 386 MB on disk (and `assets/`, main's copy, 366 MB; git stores identical files once, and `.git` is 401 MB). Plan export filters so previews, sources and mock-ups stay out of the APK.

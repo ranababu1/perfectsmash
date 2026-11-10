@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpv8qb5fg4oii"
-path.s3tc="res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.s3tc.ctex"
-path.etc2="res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.etc2.ctex"
+uid="uid://wuow0fw5x11m"
+path="res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/materials/shared/shr_mat_painted_panel_a_albedo.png"
-dest_files=["res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.s3tc.ctex", "res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.etc2.ctex"]
+dest_files=["res://.godot/imported/shr_mat_painted_panel_a_albedo.png-7d1419b2256aa7f768f9a94bfba38ccd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

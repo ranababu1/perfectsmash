@@ -76,3 +76,38 @@ Revision of the 22 Helix components and their debris sets in place. File names a
   - Godot 4.7.2 GL Compatibility lineup: 44 of 44 files load, with COLOR_0 present.
   - Validator: PASS.
   - Previews: `previews/hlx_components_sheet.webp` (Cycles) and `environments/previews/hlx_showcase_*.webp` (Godot).
+
+## Premium uplift, VITA batch (2026-11-10)
+
+- VITA components (17) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_vta` and `trim_module_vta` slots with fit UVs, and secondary detail from `kits/vita.py` (premium block: column caps and seams, deck edge trims, cleanroom panel frames and status LEDs, specimen rack bays, reactor and cryo bands, gene vault core cap and pips). VITA keeps the clean white lab look: no bolts on floors, soft white edges.
+- Tris: 256 to 2,104 intact (the gene vault core is critical, under 3,000). Debris sets stay within 1.5x. IDs unchanged.
+- Godot 4.7.2 `kit_lineup.gd`: 34/34 component and debris files load, COLOR_0 present on all 34.
+- Previews (after): `previews/vta_components_sheet.webp` (Cycles). Before: the same path at commit `9091af3`.
+
+## Premium uplift, Nova Grid batch (2026-11-10)
+
+- Nova Grid components (13) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_nvg` and `trim_module_nvg` slots with fit UVs, and heavy-industrial secondary detail from the new premium block in `kits/nova_grid.py`: flange bolts and a cable run on the pylons, a cable loom along the bridge tops, bolts and amber status pips on the transformers, roof louvres on the cooling towers, ring bolts, capacitor top hatches and pips, wall hatches and looms, and base bolts on the reactor core.
+- The cable bridge loom first hung below the collision rectangle (validator: origin not centred); it now runs along the top and both bridges pass.
+- Tris: 532 to 1,612 intact (reactor core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 26/26 component and debris files load, COLOR_0 on all 26.
+- Previews (after): `previews/nvg_components_sheet.webp` (Cycles). Before: the same path at commit `023939a`.
+
+## Premium uplift, Civitas batch (2026-11-10)
+
+- Civitas components (16) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_cvt` and `trim_module_cvt` slots with fit UVs, and civic secondary detail from the premium block in `kits/civitas.py`: column capitals, seams and bolts, relay bridge deck trims and LEDs, sensor mast collars and pips, array frames, civic screen bezels, data exchange rack bays and status lights, security wall panels, and the surveillance core's ring and eye detail.
+- Tris: 320 to 1,592 intact (surveillance core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 32/32 component and debris files load, COLOR_0 on all 32.
+- Previews (after): `previews/cvt_components_sheet.webp` (Cycles). Before: the same path at commit `0b4feb7`.
+
+## Premium uplift, Meridian batch (2026-11-10)
+
+- Meridian components (12) rebuilt with the premium pass: textured zone slots from the surfaces library (relative URIs), COLOR_0 AO, `trim_edge_mrd` and `trim_module_mrd` slots with fit UVs, and secondary detail from the premium block in `kits/meridian.py`: temporal glyph inlays, anchor column collars, convergence deck edge rings, phase shield frames, stabilizer rings, temporal cell bands, monolith slab seams, timeline relay pips and the convergence core cage.
+- The quantum stabilizer first came out at 1,568 tris (over the 1,500 standard budget); a cable loom was removed and it is now 1,432.
+- Tris: 208 to 1,972 intact (convergence core critical, under 3,000). Debris within 1.5x. IDs unchanged.
+- Godot `kit_lineup.gd`: 24/24 component and debris files load, COLOR_0 on all 24.
+- Previews (after): `previews/mrd_components_sheet.webp` (Cycles). Before: the same path at commit `6864c26`.
+
+## Shared kit re-render (premium pass, 2026-11-10)
+- All 94 SHR files rebuilt with the current pipeline (library textures, COLOR_0 AO no longer scaled by the layer value). IDs unchanged.
+- SHR-CMP-ENERGY_CELL-B reuses the Helix power cell, which gained secondary detail in the uplift and reached 1,544 intact tris. The tall shared variant now drops the cable loom (1,384 intact tris, inside the 1,500 component budget). Variant A keeps the loom.
+- Verification: Godot 4.7.2 lineup of destructibles/shared, 94 of 94 load, COLOR_0 present on all 94. Sheet: destructibles/previews/shr_components_sheet.webp.

@@ -180,3 +180,91 @@ SPECS = [
     S("timeline_relay", "A", "lightweight_alloy", 24, 200, 0.4, timeline_relay),
     S("convergence_core", "A", "energy_component", 80, 120, 0.8, convergence_core, critical=True, emit2="red"),
 ]
+
+
+# ---------------------------------------------------------------- premium pass (2026-11-10): secondary detail
+# Meridian restraint: chiselled grooves, bronze-dark pins and short violet glyph pips, no clutter.
+import tfjdetail as Dt
+
+
+def _glyphs(B, x0, z, fy, n=3, rng=None):
+    for i in range(n):
+        ww = 0.01 + 0.012 * ((i * 7) % 3)
+        B.light_strip((x0 + i * 0.03, fy - 0.002, z), (ww, 0.004, 0.006), "emit")
+
+
+def _p_anchor(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    base_h = min(0.16, h * 0.08)
+    Dt.bolts(B, [(sx * w * 0.32, z0 + base_h / 2) for sx in (-1, 1)], -d * 0.45 - 0.001, 0.016)
+    _glyphs(B, -0.03, z0 + base_h * 0.5, -d * 0.45, 3, rng)
+    Dt.top_hatch(B, 0, 0, z1, w * 0.5, d * 0.4, "panel")
+
+
+def _p_deck(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    n = max(2, int(w / 0.8))
+    Dt.bolts(B, [(-w / 2 + (i + 0.5) * w / n + sx * (w / n / 2 - 0.07), z0 + h * 0.3) for i in range(n) for sx in (-1, 1)],
+             -d / 2 + h * 0.12 - 0.006, 0.012)
+    for i in range(n - 1):
+        B.box((-w / 2 + (i + 1) * w / n, -d / 2 + h * 0.07, 0), (0.008, 0.01, h * 0.6), "internal", "greeble", 0.0)
+
+
+def _p_shield(B, w, h, d, rng, spec):
+    f = min(0.05, w * 0.2)
+    dd = min(d, 0.3)
+    Dt.bolts(B, [(sx * (w / 2 - f * 0.8), zz) for sx in (-1, 1) for zz in (-h / 2 + f / 2, h / 2 - f / 2)], -dd / 2 - 0.001, 0.012)
+    if w >= 0.3:
+        Dt.top_hatch(B, 0, 0, h / 2, w * 0.4, dd * 0.5, "panel")
+
+
+def _p_stabilizer(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.bolts(B, [(x, z0 + h * 0.06) for x in (-w * 0.3, w * 0.3)], -d * 0.46 - 0.001, 0.014)
+    _glyphs(B, -w * 0.32, z0 + h * 0.1, -d * 0.46, 2, rng)
+
+
+def _p_cell(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    Dt.bolts(B, [(sx * w * 0.32, z0 + 0.025) for sx in (-1, 1)], -d / 2 - 0.001, 0.012)
+    Dt.top_hatch(B, 0, 0, z1, w * 0.4, d * 0.4, "panel")
+
+
+def _p_slab(B, w, h, d, rng, spec):
+    z0, z1 = -h / 2, h / 2
+    fy = -d * 0.35
+    Dt.bolts(B, [(sx * (w * 0.48 - 0.04), zz) for sx in (-1, 1) for zz in (z0 + 0.1, z1 - 0.06)], fy - 0.001, 0.016)
+    for k in range(2):  # chiselled strata grooves
+        z = z0 + h * (0.35 + 0.3 * k)
+        B.box((0, fy - 0.001, z), (w * 0.92, 0.004, 0.008), "internal", "greeble", 0.0)
+    _glyphs(B, w * 0.18, z0 + 0.12, fy, 3, rng)
+    Dt.top_hatch(B, 0, 0, z1 - h * 0.01, w * 0.4, d * 0.35, "panel")
+
+
+def _p_relay(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.bolts(B, [(sx * w * 0.36, z0 + 0.035) for sx in (-1, 1)], -d / 2 - 0.001, 0.012)
+    B.cyl((w * 0.16, 0, 0), 0.008, h - 0.3, "Z", 6, "cable", "cable", 0.0)
+
+
+def _p_core(B, w, h, d, rng, spec):
+    z0 = -h / 2
+    Dt.bolts(B, [(x, z0 + h * 0.05) for x in (-w * 0.3, -w * 0.1, w * 0.1, w * 0.3)], -d * 0.45 - 0.001, 0.016)
+
+
+PREMIUM = {"anchor_column": _p_anchor, "convergence_deck": _p_deck, "phase_shield": _p_shield,
+           "quantum_stabilizer": _p_stabilizer, "temporal_cell": _p_cell, "monolith_slab": _p_slab,
+           "timeline_relay": _p_relay, "convergence_core": _p_core}
+
+
+def _wrap(fn, extra):
+    def build(B, w, h, d, rng, spec):
+        fn(B, w, h, d, rng, spec)
+        extra(B, w, h, d, rng, spec)
+    return build
+
+
+for _s in SPECS:
+    if _s["kind"] in PREMIUM and not _s.get("_premium"):
+        _s["build"] = _wrap(_s["build"], PREMIUM[_s["kind"]])
+        _s["_premium"] = True

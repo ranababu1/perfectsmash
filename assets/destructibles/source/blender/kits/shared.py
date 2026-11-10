@@ -361,7 +361,8 @@ def comms_array(B, w, h, d, rng, spec):
 # ---------------------------------------------------------------- energy
 def energy_cell(B, w, h, d, rng, spec):
     import helix
-    helix.power_cell(B, w, h, d, rng, spec)
+    # the tall shared variant drops the cable loom to stay inside the 1,500 tri component budget
+    helix.power_cell(B, w, h, d, rng, spec, loom=h <= 0.5)
 
 
 def transformer_unit(B, w, h, d, rng, spec):
