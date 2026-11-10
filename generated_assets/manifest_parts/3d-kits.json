@@ -1588,7 +1588,7 @@
    "category": "environments",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Mid-back facility wall module 4 m wide, 6 m tall, 0.5 m thick",
+   "purpose": "Mid-back temporal arch: ashlar body, round-headed arch, violet rings and a cyan core",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -1618,9 +1618,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 1416,
+   "tris": 1592,
    "dimensions": "4 x 6 x 0.6 m (w x h x d)",
-   "notes": "Single node mesh_intact (1416 tris) under a root named after the file. Material slots: emit_violet_mrd, mat_concrete_mrd, mat_concrete_mrd_panel, trim_cable_mrd, trim_dark_mrd, trim_edge_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 128 KB."
+   "notes": "Single node mesh_intact (1592 tris) under a root named after the file. Material slots: emit_cyan_mrd, emit_violet_mrd, mat_concrete_mrd, mat_concrete_mrd_frame, trim_dark_mrd, trim_edge_mrd, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 137 KB."
   },
   {
    "id": "MRD-ENV-BACK_WALL-B",
@@ -1628,7 +1628,7 @@
    "category": "environments",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Mid-back wall module with an observation window",
+   "purpose": "Mid-back ring gate: great stepped ring with violet segments, radial struts, cyan core",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -1658,9 +1658,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 276,
+   "tris": 1900,
    "dimensions": "4 x 6 x 0.6 m (w x h x d)",
-   "notes": "Single node mesh_intact (276 tris) under a root named after the file. Material slots: emit_violet_mrd, glass_smoked_mrd, mat_concrete_mrd, mat_concrete_mrd_frame, trim_dark_mrd, trim_edge_mrd, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 34 KB."
+   "notes": "Single node mesh_intact (1900 tris) under a root named after the file. Material slots: emit_cyan_mrd, emit_violet_mrd, mat_concrete_mrd, mat_concrete_mrd_frame, trim_dark_mrd, trim_edge_mrd, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 157 KB."
   },
   {
    "id": "MRD-ENV-CATWALK-A",
@@ -1953,7 +1953,7 @@
    "category": "environments",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Mid/background facility block 6 x 8 x 4 m with stepped tiers and window bands",
+   "purpose": "Background temporal monument: three stepped tiers crowned by a standing ring",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -1983,9 +1983,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 524,
+   "tris": 916,
    "dimensions": "6 x 10 x 4 m (w x h x d)",
-   "notes": "Single node mesh_intact (524 tris) under a root named after the file. Material slots: emit_violet_mrd, mat_concrete_mrd, trim_dark_mrd, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 50 KB."
+   "notes": "Single node mesh_intact (916 tris) under a root named after the file. Material slots: emit_cyan_mrd, emit_violet_mrd, mat_concrete_mrd, mat_concrete_mrd_frame, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 72 KB."
   },
   {
    "id": "MRD-ENV-MASSING_TOWER-B",
@@ -1993,7 +1993,7 @@
    "category": "environments",
    "render_type": "mesh",
    "format": "glb",
-   "purpose": "Background tower 3 x 12 x 3 m",
+   "purpose": "Background temporal obelisk with three floating orbit rings",
    "source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: generated_assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
    "rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see generated_assets/materials/PRODUCTION_NOTES.md for their rights note)",
    "approval_status": "pending_review",
@@ -2023,9 +2023,9 @@
    ],
    "pivot": "bottom centre (x and z centred, lowest point at y = 0)",
    "material": "concrete",
-   "tris": 600,
+   "tris": 1468,
    "dimensions": "3 x 14 x 3 m (w x h x d)",
-   "notes": "Single node mesh_intact (600 tris) under a root named after the file. Material slots: emit_violet_mrd, mat_concrete_mrd, trim_dark_mrd, trim_internal_mrd, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 57 KB."
+   "notes": "Single node mesh_intact (1468 tris) under a root named after the file. Material slots: emit_cyan_mrd, emit_violet_mrd, mat_concrete_mrd, mat_concrete_mrd_frame, trim_trim_mrd. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 113 KB."
   },
   {
    "id": "MRD-ENV-PILLAR-A",

@@ -54,9 +54,9 @@ elif ch == "meridian":
             dict(f=e("env_low_wall_a"), p=[-4.6, 0, -3.4]), dict(f=e("prp_crate_stack_a"), p=[1.2, 0, -3.4])]
     lights = [dict(p=[-6.0, 2.6, -5.4], c="8f7cff", e=1.6, r=4.0), dict(p=[2.0, 2.6, -5.4], c="8f7cff", e=1.4, r=4.0),
               dict(p=[-2.0, 3.0, -5.5], c="7fe8ff", e=1.1, r=3.0), dict(p=[6.4, 4.5, -4.6], c="7fe8ff", e=1.4, r=4.0),
-              dict(p=[12.6, 5.0, -5.0], c="8f7cff", e=1.8, r=6.0), dict(p=[3.0, 1.5, 1.0], c="b4a8ff", e=0.5, r=4.0),
+              dict(p=[12.6, 5.0, -5.0], c="8f7cff", e=1.8, r=6.0),
               dict(type="spot", p=[-0.6, 4.0, 4.0], look=[-1.4, 0.8, 0.7], c="e4e0ff", e=1.5, r=8.0, angle=25)]
-    grade = dict(ambient_color="7e78a0", horizon_color="7a70a8", fog_color="1a1628", sun_color="e6e2ff", rim_color="a090ff")
+    grade = dict(ambient_color="7c7a94", horizon_color="78729a", fog_color="1a1726", sun_color="e8e6f2", rim_color="b4acdc", rim=0.4, saturation=0.98)
 else:  # vita
     back = [W("a", -6), W("b", -2), W("a", 2), W("b", 6), W("a", 10), W("b", 14), W("b", -10),
             dict(f=e("prp_growth_chamber_a"), p=[10.6, 0, -4.2]),
@@ -69,6 +69,9 @@ else:  # vita
               dict(type="spot", p=[-0.6, 4.0, 4.0], look=[-1.4, 0.8, 0.7], c="eef8f4", e=1.4, r=8.0, angle=25)]
     grade = dict(ambient_color="90a6a0", horizon_color="a0b8b0", fog_color="1a2624", sun_color="eef8f4", rim_color="a8e8d0")
 for k in ("ambient_color", "horizon_color", "fog_color", "sun_color", "rim_color", "saturation"):
+    L.pop(k, None)
+L["rim"] = 0.9
+for k in ():
     L.pop(k, None)
 L.update(grade)
 L["lights"] = lights

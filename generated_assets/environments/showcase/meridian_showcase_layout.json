@@ -8,53 +8,59 @@
  "zoom": 1.0,
  "exposure": 0.92,
  "ambient": 0.45,
- "rim": 0.9,
+ "rim": 0.4,
  "fog_begin": 14.0,
  "fog_end": 40.0,
  "lights": [
   {
-   "type": "omni",
    "p": [
-    2.75,
-    0.9,
-    0.7
-   ],
-   "c": "ffae42",
-   "e": 0.5,
-   "r": 1.2
-  },
-  {
-   "type": "omni",
-   "p": [
-    1.4,
-    1.3,
-    1.0
-   ],
-   "c": "5fd4e8",
-   "e": 0.8,
-   "r": 3.0
-  },
-  {
-   "type": "omni",
-   "p": [
-    7.2,
-    1.5,
-    1.0
-   ],
-   "c": "5fd4e8",
-   "e": 0.6,
-   "r": 3.0
-  },
-  {
-   "type": "omni",
-   "p": [
-    4.0,
+    -6.0,
     2.6,
-    -3.6
+    -5.4
    ],
-   "c": "5fd4e8",
-   "e": 0.9,
-   "r": 5.0
+   "c": "8f7cff",
+   "e": 1.6,
+   "r": 4.0
+  },
+  {
+   "p": [
+    2.0,
+    2.6,
+    -5.4
+   ],
+   "c": "8f7cff",
+   "e": 1.4,
+   "r": 4.0
+  },
+  {
+   "p": [
+    -2.0,
+    3.0,
+    -5.5
+   ],
+   "c": "7fe8ff",
+   "e": 1.1,
+   "r": 3.0
+  },
+  {
+   "p": [
+    6.4,
+    4.5,
+    -4.6
+   ],
+   "c": "7fe8ff",
+   "e": 1.4,
+   "r": 4.0
+  },
+  {
+   "p": [
+    12.6,
+    5.0,
+    -5.0
+   ],
+   "c": "8f7cff",
+   "e": 1.8,
+   "r": 6.0
   },
   {
    "type": "spot",
@@ -68,8 +74,8 @@
     0.8,
     0.7
    ],
-   "c": "cfe6ff",
-   "e": 1.6,
+   "c": "e4e0ff",
+   "e": 1.5,
    "r": 8.0,
    "angle": 25
   }
@@ -82,6 +88,14 @@
   {
    "f": "environments/meridian/mrd_env_floor_tile_b.glb",
    "p": [
+    -10,
+    0,
+    3
+   ]
+  },
+  {
+   "f": "environments/meridian/mrd_env_floor_tile_b.glb",
+   "p": [
     -6,
     0,
     3
@@ -125,6 +139,14 @@
     14,
     0,
     3
+   ]
+  },
+  {
+   "f": "environments/meridian/mrd_env_floor_tile_b.glb",
+   "p": [
+    -10,
+    0,
+    -1
    ]
   },
   {
@@ -178,6 +200,14 @@
   {
    "f": "environments/meridian/mrd_env_floor_tile_a.glb",
    "p": [
+    -10,
+    0,
+    -5
+   ]
+  },
+  {
+   "f": "environments/meridian/mrd_env_floor_tile_a.glb",
+   "p": [
     -6,
     0,
     -5
@@ -228,7 +258,7 @@
    "p": [
     -6,
     0,
-    -6.3
+    -6.6
    ]
   },
   {
@@ -236,23 +266,7 @@
    "p": [
     -2,
     0,
-    -6.3
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_back_wall_a.glb",
-   "p": [
-    10,
-    0,
-    -6.3
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_back_wall_b.glb",
-   "p": [
-    14,
-    0,
-    -6.3
+    -6.6
    ]
   },
   {
@@ -260,117 +274,78 @@
    "p": [
     2,
     0,
-    -6.3
+    -6.6
    ]
   },
   {
    "f": "environments/meridian/mrd_env_back_wall_b.glb",
    "p": [
-    6,
+    -10,
     0,
-    -6.3
+    -6.6
    ]
   },
   {
-   "f": "environments/meridian/mrd_env_pillar_a.glb",
+   "f": "environments/meridian/mrd_prp_temporal_anchor_a.glb",
    "p": [
-    -4,
+    6.4,
     0,
-    -5.4
+    -6.0
    ]
   },
   {
-   "f": "environments/meridian/mrd_env_pillar_a.glb",
+   "f": "environments/meridian/mrd_prp_convergence_chamber_a.glb",
    "p": [
+    12.6,
     0,
-    0,
-    -5.4
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_pillar_a.glb",
-   "p": [
-    8,
-    0,
-    -5.4
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_pillar_a.glb",
-   "p": [
-    12,
-    0,
-    -5.4
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_catwalk_a.glb",
-   "p": [
-    10,
-    2.8,
-    -4.6
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_env_catwalk_a.glb",
-   "p": [
-    14,
-    2.8,
-    -4.6
+    -6.6
    ]
   },
   {
    "f": "environments/meridian/mrd_env_massing_block_a.glb",
    "p": [
-    -7,
+    6.2,
     0,
-    -10
+    -11.5
    ]
   },
   {
    "f": "environments/meridian/mrd_env_massing_tower_b.glb",
    "p": [
-    17,
+    -8.0,
     0,
-    -11
+    -11.5
    ]
+  },
+  {
+   "f": "environments/meridian/mrd_env_massing_tower_b.glb",
+   "p": [
+    18.0,
+    0,
+    -12.0
+   ]
+  },
+  {
+   "f": "environments/meridian/mrd_env_massing_tower_b.glb",
+   "p": [
+    0.0,
+    0,
+    -13.0
+   ],
+   "s": 0.85
   },
   {
    "f": "environments/meridian/mrd_env_low_wall_a.glb",
    "p": [
-    -5.0,
+    -4.6,
     0,
-    -3.2
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_prp_console_a.glb",
-   "p": [
-    9.0,
-    0,
-    -3.0
+    -3.4
    ]
   },
   {
    "f": "environments/meridian/mrd_prp_crate_stack_a.glb",
    "p": [
-    1.0,
-    0,
-    -3.3
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_prp_pipe_run_a.glb",
-   "p": [
-    12.5,
-    0,
-    -3.6
-   ]
-  },
-  {
-   "f": "environments/meridian/mrd_prp_tank_a.glb",
-   "p": [
-    -8.5,
+    1.2,
     0,
     -3.4
    ]
@@ -528,5 +503,11 @@
     "socket": "weapon_socket"
    }
   }
- ]
+ ],
+ "ambient_color": "7c7a94",
+ "horizon_color": "78729a",
+ "fog_color": "1a1726",
+ "sun_color": "e8e6f2",
+ "rim_color": "b4acdc",
+ "saturation": 0.98
 }
