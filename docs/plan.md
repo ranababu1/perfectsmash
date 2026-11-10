@@ -579,3 +579,16 @@ Implementation batches for the prototype: (1) materials, weapons, damage, damage
 - Leaderboards are fair and validated.
 - Frontlines works asynchronously against persistent versioned institution snapshots.
 - Core mobile performance, stability and campaign quality take priority over online feature breadth.
+
+## 11. Batch 5 outcome and next phase (2026-11-10)
+
+- **Batch 5 rules in force:** save v4; data-driven blast occlusion; load-aware knockback; Helix blast wall 90 px, core ×3.0 on the `ai_core_module` housing; collapses leave the core critical and a Kinetic round finishes it (0/112 single-charge kills after the resting-contact fix; expert line = column Breach + one round). Racks keep 100 px proportions: 3-4 beside the right column, 1-2 beyond the relay mast.
+- **Renderer:** GL Compatibility stays the production renderer; first-detonation and per-blast hitches fixed (pooled effects). Mobile renderer remains under evaluation pending physical devices.
+- **Economy:** chapter-scaled pricing and rewards is the approved direction; final values wait for the campaign reward and weapon-unlock schedule.
+- **Next phase (owner, 2026-11-10): real Helix asset integration**, development use only (not commercial clearance), from the `assets` branch, selected file by file with manifest ids and rights metadata, under the asset contract. Vertical slices, each buildable, tested, documented, committed and pushed:
+  - A. Helix structural GLB models, environment and materials.
+  - B. AI core, damage-state models, destruction and VFX.
+  - C. HUD, typography, weapon and objective presentation (operative and weapon meshes are not delivered yet: deliberate temporary representation).
+  - D. Helix music, SFX and ambience through `AudioCatalog`, `AudioService` and `MusicDirector`.
+  - E. Renderer and mobile optimisation, lighting, composition and polish.
+- Scope stays on the Helix prototype; no campaign expansion. Physical Android validation remains pending until the owner connects a device.

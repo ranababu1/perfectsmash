@@ -1,0 +1,47 @@
+== /opt/tfj-tools/bin/godot --headless --path <work>/project --import
+import exit 0 errors 0
+== /opt/tfj-tools/bin/godot --headless --path <work>/project --script res://generated_assets/vfx/godot/tools/build_presets.gd
+build exit 0
+PRESET vfx_breach_explosion.tscn save=0
+PRESET vfx_kinetic_impact.tscn save=0
+PRESET vfx_kinetic_muzzle.tscn save=0
+PRESET vfx_impact_metal.tscn save=0
+PRESET vfx_impact_glass.tscn save=0
+PRESET vfx_impact_electric.tscn save=0
+PRESET vfx_impact_concrete.tscn save=0
+PRESET vfx_component_collapse.tscn save=0
+PRESET vfx_burning_loop.tscn save=0
+PRESET vfx_critical_core_destroyed.tscn save=0
+PRESET vfx_critical_core_idle.tscn save=0
+== /opt/tfj-tools/bin/godot --headless --path <work>/project --script res://generated_assets/vfx/godot/tools/load_presets.gd
+load exit 0
+LOAD vfx_breach_explosion.tscn emitters=6 problems=0
+LOAD vfx_burning_loop.tscn emitters=2 problems=0
+LOAD vfx_component_collapse.tscn emitters=2 problems=0
+LOAD vfx_critical_core_destroyed.tscn emitters=3 problems=0
+LOAD vfx_critical_core_idle.tscn emitters=1 problems=0
+LOAD vfx_impact_concrete.tscn emitters=1 problems=0
+LOAD vfx_impact_electric.tscn emitters=1 problems=0
+LOAD vfx_impact_glass.tscn emitters=1 problems=0
+LOAD vfx_impact_metal.tscn emitters=1 problems=0
+LOAD vfx_kinetic_impact.tscn emitters=1 problems=0
+LOAD vfx_kinetic_muzzle.tscn emitters=1 problems=0
+LOAD summary 11/11 ok
+== xvfb-run -a -s '-screen 0 1280x720x24' /opt/tfj-tools/bin/godot --path <work>/project --rendering-driver opengl3 --resolution 1280x720 --fixed-fps 30 --script res://generated_assets/vfx/godot/tools/render_presets.gd -- --out=<work>/render
+render exit 0
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+RENDER presets: 11
+RENDER adapter: llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1
+RENDER start vfx_breach_explosion.tscn emitters=6
+RENDER start vfx_burning_loop.tscn emitters=2
+RENDER start vfx_component_collapse.tscn emitters=2
+RENDER start vfx_critical_core_destroyed.tscn emitters=3
+RENDER start vfx_critical_core_idle.tscn emitters=1
+RENDER start vfx_impact_concrete.tscn emitters=1
+RENDER start vfx_impact_electric.tscn emitters=1
+RENDER start vfx_impact_glass.tscn emitters=1
+RENDER start vfx_impact_metal.tscn emitters=1
+RENDER start vfx_kinetic_impact.tscn emitters=1
+RENDER start vfx_kinetic_muzzle.tscn emitters=1
+RENDER done
+frames: 407

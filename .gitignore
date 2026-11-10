@@ -31,3 +31,6 @@ tests/output/
 
 # Owner-supplied audio masters (not shipped; game uses assets/audio/)
 assets/music/
+
+# Python caches (asset tools)
+__pycache__/

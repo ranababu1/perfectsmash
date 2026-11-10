@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_fire_loop_a.png" id="1_8cq4p"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_smoke_loop_a.png" id="2_abjq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm6xx"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_8cq4p")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_6njwn"]
+size = Vector2(1.2, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ye7wc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_abjq8")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_e3g3q"]
+size = Vector2(2, 2)
+
+[node name="VfxBurningLoop" type="Node3D" unique_id=212815811]
+metadata/tfj_note = "Looping fire with smoke for burning components. Leave emitting on; stop by setting emitting = false."
+
+[node name="Fire" type="CPUParticles3D" parent="." unique_id=1178409457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528, 0)
+material_override = SubResource("StandardMaterial3D_jm6xx")
+emitting = false
+amount = 1
+lifetime = 0.8
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_6njwn")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=383337044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.05)
+material_override = SubResource("StandardMaterial3D_ye7wc")
+emitting = false
+amount = 1
+lifetime = 1.33
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_e3g3q")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0

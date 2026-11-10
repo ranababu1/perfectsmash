@@ -1,0 +1,2102 @@
+{
+ "base_viewport": [
+  1280,
+  720
+ ],
+ "files": {
+  "svg": "svg/<file>.svg",
+  "1x": "png_1x/<file>.png",
+  "2x": "png_2x/<file>.png"
+ },
+ "nine_slice_note": "margins in file pixels; use nine_slice_2x with the 2x PNG (contract: author at 2x, display at base size)",
+ "components": [
+  {
+   "name": "panel_main",
+   "file": "gam_ui_panel_main",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "StyleBoxTexture; axis_stretch stretch; content margins 24 at 1x"
+  },
+  {
+   "name": "panel_inset",
+   "file": "gam_ui_panel_inset",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "StyleBoxTexture; axis_stretch stretch; content margins 24 at 1x"
+  },
+  {
+   "name": "panel_modal",
+   "file": "gam_ui_panel_modal",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "StyleBoxTexture; axis_stretch stretch; content margins 24 at 1x"
+  },
+  {
+   "name": "panel_header",
+   "file": "gam_ui_panel_header",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "StyleBoxTexture; axis_stretch stretch; content margins 24 at 1x"
+  },
+  {
+   "name": "panel_main_helix",
+   "file": "gam_ui_panel_main_helix",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "chapter-accent variant (helix)"
+  },
+  {
+   "name": "panel_main_vita",
+   "file": "gam_ui_panel_main_vita",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "chapter-accent variant (vita)"
+  },
+  {
+   "name": "panel_main_nova_grid",
+   "file": "gam_ui_panel_main_nova_grid",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "chapter-accent variant (nova_grid)"
+  },
+  {
+   "name": "panel_main_civitas",
+   "file": "gam_ui_panel_main_civitas",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "chapter-accent variant (civitas)"
+  },
+  {
+   "name": "panel_main_meridian",
+   "file": "gam_ui_panel_main_meridian",
+   "group": "panels",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": {
+    "left": 28,
+    "top": 28,
+    "right": 28,
+    "bottom": 28
+   },
+   "nine_slice_2x": {
+    "left": 56,
+    "top": 56,
+    "right": 56,
+    "bottom": 56
+   },
+   "notes": "chapter-accent variant (meridian)"
+  },
+  {
+   "name": "card_chapter_helix_normal",
+   "file": "gam_ui_card_chapter_helix_normal",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_helix_selected",
+   "file": "gam_ui_card_chapter_helix_selected",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_helix_locked",
+   "file": "gam_ui_card_chapter_helix_locked",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_vita_normal",
+   "file": "gam_ui_card_chapter_vita_normal",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_vita_selected",
+   "file": "gam_ui_card_chapter_vita_selected",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_vita_locked",
+   "file": "gam_ui_card_chapter_vita_locked",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_nova_grid_normal",
+   "file": "gam_ui_card_chapter_nova_grid_normal",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_nova_grid_selected",
+   "file": "gam_ui_card_chapter_nova_grid_selected",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_nova_grid_locked",
+   "file": "gam_ui_card_chapter_nova_grid_locked",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_civitas_normal",
+   "file": "gam_ui_card_chapter_civitas_normal",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_civitas_selected",
+   "file": "gam_ui_card_chapter_civitas_selected",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_civitas_locked",
+   "file": "gam_ui_card_chapter_civitas_locked",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_meridian_normal",
+   "file": "gam_ui_card_chapter_meridian_normal",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_meridian_selected",
+   "file": "gam_ui_card_chapter_meridian_selected",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "card_chapter_meridian_locked",
+   "file": "gam_ui_card_chapter_meridian_locked",
+   "group": "cards",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 34,
+    "top": 34,
+    "right": 34,
+    "bottom": 34
+   },
+   "nine_slice_2x": {
+    "left": 68,
+    "top": 68,
+    "right": 68,
+    "bottom": 68
+   },
+   "notes": "chapter tile frame; emblem and text added in Godot"
+  },
+  {
+   "name": "button_primary_normal",
+   "file": "gam_ui_button_primary_normal",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #061015; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_primary_hover",
+   "file": "gam_ui_button_primary_hover",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #061015; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_primary_pressed",
+   "file": "gam_ui_button_primary_pressed",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #061015; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_primary_disabled",
+   "file": "gam_ui_button_primary_disabled",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #46525C; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_secondary_normal",
+   "file": "gam_ui_button_secondary_normal",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_secondary_hover",
+   "file": "gam_ui_button_secondary_hover",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_secondary_pressed",
+   "file": "gam_ui_button_secondary_pressed",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_secondary_disabled",
+   "file": "gam_ui_button_secondary_disabled",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #46525C; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_danger_normal",
+   "file": "gam_ui_button_danger_normal",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_danger_hover",
+   "file": "gam_ui_button_danger_hover",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_danger_pressed",
+   "file": "gam_ui_button_danger_pressed",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #E7EDF2; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_danger_disabled",
+   "file": "gam_ui_button_danger_disabled",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "label colour #46525C; 4 px transparent pad on each side holds the hover halo; set StyleBox expand margins 4 (1x)"
+  },
+  {
+   "name": "button_icon_normal",
+   "file": "gam_ui_button_icon_normal",
+   "group": "buttons",
+   "size_1x": [
+    72,
+    72
+   ],
+   "size_2x": [
+    144,
+    144
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "64 px square icon button (touch minimum) with 4 px halo pad"
+  },
+  {
+   "name": "button_icon_hover",
+   "file": "gam_ui_button_icon_hover",
+   "group": "buttons",
+   "size_1x": [
+    72,
+    72
+   ],
+   "size_2x": [
+    144,
+    144
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "64 px square icon button (touch minimum) with 4 px halo pad"
+  },
+  {
+   "name": "button_icon_pressed",
+   "file": "gam_ui_button_icon_pressed",
+   "group": "buttons",
+   "size_1x": [
+    72,
+    72
+   ],
+   "size_2x": [
+    144,
+    144
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "64 px square icon button (touch minimum) with 4 px halo pad"
+  },
+  {
+   "name": "button_icon_disabled",
+   "file": "gam_ui_button_icon_disabled",
+   "group": "buttons",
+   "size_1x": [
+    72,
+    72
+   ],
+   "size_2x": [
+    144,
+    144
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "64 px square icon button (touch minimum) with 4 px halo pad"
+  },
+  {
+   "name": "focus_ring",
+   "file": "gam_ui_focus_ring",
+   "group": "buttons",
+   "size_1x": [
+    104,
+    64
+   ],
+   "size_2x": [
+    208,
+    128
+   ],
+   "nine_slice_1x": {
+    "left": 22,
+    "top": 22,
+    "right": 22,
+    "bottom": 22
+   },
+   "nine_slice_2x": {
+    "left": 44,
+    "top": 44,
+    "right": 44,
+    "bottom": 44
+   },
+   "notes": "keyboard/gamepad focus StyleBox; drawn over buttons"
+  },
+  {
+   "name": "tab_normal",
+   "file": "gam_ui_tab_normal",
+   "group": "tabs",
+   "size_1x": [
+    96,
+    48
+   ],
+   "size_2x": [
+    192,
+    96
+   ],
+   "nine_slice_1x": {
+    "left": 16,
+    "top": 8,
+    "right": 16,
+    "bottom": 10
+   },
+   "nine_slice_2x": {
+    "left": 32,
+    "top": 16,
+    "right": 32,
+    "bottom": 20
+   },
+   "notes": "TabBar tab StyleBox"
+  },
+  {
+   "name": "tab_hover",
+   "file": "gam_ui_tab_hover",
+   "group": "tabs",
+   "size_1x": [
+    96,
+    48
+   ],
+   "size_2x": [
+    192,
+    96
+   ],
+   "nine_slice_1x": {
+    "left": 16,
+    "top": 8,
+    "right": 16,
+    "bottom": 10
+   },
+   "nine_slice_2x": {
+    "left": 32,
+    "top": 16,
+    "right": 32,
+    "bottom": 20
+   },
+   "notes": "TabBar tab StyleBox"
+  },
+  {
+   "name": "tab_selected",
+   "file": "gam_ui_tab_selected",
+   "group": "tabs",
+   "size_1x": [
+    96,
+    48
+   ],
+   "size_2x": [
+    192,
+    96
+   ],
+   "nine_slice_1x": {
+    "left": 16,
+    "top": 8,
+    "right": 16,
+    "bottom": 10
+   },
+   "nine_slice_2x": {
+    "left": 32,
+    "top": 16,
+    "right": 32,
+    "bottom": 20
+   },
+   "notes": "TabBar tab StyleBox"
+  },
+  {
+   "name": "tab_disabled",
+   "file": "gam_ui_tab_disabled",
+   "group": "tabs",
+   "size_1x": [
+    96,
+    48
+   ],
+   "size_2x": [
+    192,
+    96
+   ],
+   "nine_slice_1x": {
+    "left": 16,
+    "top": 8,
+    "right": 16,
+    "bottom": 10
+   },
+   "nine_slice_2x": {
+    "left": 32,
+    "top": 16,
+    "right": 32,
+    "bottom": 20
+   },
+   "notes": "TabBar tab StyleBox"
+  },
+  {
+   "name": "slider_track",
+   "file": "gam_ui_slider_track",
+   "group": "slider",
+   "size_1x": [
+    64,
+    8
+   ],
+   "size_2x": [
+    128,
+    16
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "HSlider slider StyleBox"
+  },
+  {
+   "name": "slider_fill",
+   "file": "gam_ui_slider_fill",
+   "group": "slider",
+   "size_1x": [
+    64,
+    8
+   ],
+   "size_2x": [
+    128,
+    16
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "HSlider grabber_area StyleBox"
+  },
+  {
+   "name": "slider_grabber_normal",
+   "file": "gam_ui_slider_grabber_normal",
+   "group": "slider",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HSlider grabber icon"
+  },
+  {
+   "name": "slider_grabber_hover",
+   "file": "gam_ui_slider_grabber_hover",
+   "group": "slider",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HSlider grabber icon"
+  },
+  {
+   "name": "slider_grabber_pressed",
+   "file": "gam_ui_slider_grabber_pressed",
+   "group": "slider",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HSlider grabber icon"
+  },
+  {
+   "name": "slider_grabber_disabled",
+   "file": "gam_ui_slider_grabber_disabled",
+   "group": "slider",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HSlider grabber icon"
+  },
+  {
+   "name": "toggle_off",
+   "file": "gam_ui_toggle_off",
+   "group": "toggle",
+   "size_1x": [
+    64,
+    32
+   ],
+   "size_2x": [
+    128,
+    64
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "CheckButton checked/unchecked icons"
+  },
+  {
+   "name": "toggle_on",
+   "file": "gam_ui_toggle_on",
+   "group": "toggle",
+   "size_1x": [
+    64,
+    32
+   ],
+   "size_2x": [
+    128,
+    64
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "CheckButton checked/unchecked icons"
+  },
+  {
+   "name": "toggle_off_disabled",
+   "file": "gam_ui_toggle_off_disabled",
+   "group": "toggle",
+   "size_1x": [
+    64,
+    32
+   ],
+   "size_2x": [
+    128,
+    64
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "CheckButton checked/unchecked icons"
+  },
+  {
+   "name": "toggle_on_disabled",
+   "file": "gam_ui_toggle_on_disabled",
+   "group": "toggle",
+   "size_1x": [
+    64,
+    32
+   ],
+   "size_2x": [
+    128,
+    64
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "CheckButton checked/unchecked icons"
+  },
+  {
+   "name": "progress_track",
+   "file": "gam_ui_progress_track",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "ProgressBar background"
+  },
+  {
+   "name": "progress_fill_cyan",
+   "file": "gam_ui_progress_fill_cyan",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "ProgressBar fill"
+  },
+  {
+   "name": "progress_fill_cyan_segmented",
+   "file": "gam_ui_progress_fill_cyan_segmented",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 0,
+    "top": 6,
+    "right": 0,
+    "bottom": 6
+   },
+   "notes": "segmented fill; axis_stretch tile horizontally"
+  },
+  {
+   "name": "progress_fill_amber",
+   "file": "gam_ui_progress_fill_amber",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "ProgressBar fill"
+  },
+  {
+   "name": "progress_fill_amber_segmented",
+   "file": "gam_ui_progress_fill_amber_segmented",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 0,
+    "top": 6,
+    "right": 0,
+    "bottom": 6
+   },
+   "notes": "segmented fill; axis_stretch tile horizontally"
+  },
+  {
+   "name": "progress_fill_critical",
+   "file": "gam_ui_progress_fill_critical",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "ProgressBar fill"
+  },
+  {
+   "name": "progress_fill_critical_segmented",
+   "file": "gam_ui_progress_fill_critical_segmented",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 0,
+    "top": 6,
+    "right": 0,
+    "bottom": 6
+   },
+   "notes": "segmented fill; axis_stretch tile horizontally"
+  },
+  {
+   "name": "progress_fill_success",
+   "file": "gam_ui_progress_fill_success",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 3,
+    "top": 3,
+    "right": 3,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 6,
+    "top": 6,
+    "right": 6,
+    "bottom": 6
+   },
+   "notes": "ProgressBar fill"
+  },
+  {
+   "name": "progress_fill_success_segmented",
+   "file": "gam_ui_progress_fill_success_segmented",
+   "group": "progress",
+   "size_1x": [
+    64,
+    12
+   ],
+   "size_2x": [
+    128,
+    24
+   ],
+   "nine_slice_1x": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   },
+   "nine_slice_2x": {
+    "left": 0,
+    "top": 6,
+    "right": 0,
+    "bottom": 6
+   },
+   "notes": "segmented fill; axis_stretch tile horizontally"
+  },
+  {
+   "name": "cooldown_ring_under",
+   "file": "gam_ui_cooldown_ring_under",
+   "group": "cooldown",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "TextureProgressBar radial, fill_mode FILL_CLOCKWISE, radial_initial_angle 0"
+  },
+  {
+   "name": "cooldown_ring_progress",
+   "file": "gam_ui_cooldown_ring_progress",
+   "group": "cooldown",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "TextureProgressBar radial, fill_mode FILL_CLOCKWISE, radial_initial_angle 0"
+  },
+  {
+   "name": "cooldown_ring_over",
+   "file": "gam_ui_cooldown_ring_over",
+   "group": "cooldown",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "TextureProgressBar radial, fill_mode FILL_CLOCKWISE, radial_initial_angle 0"
+  },
+  {
+   "name": "cooldown_ring_progress_amber",
+   "file": "gam_ui_cooldown_ring_progress_amber",
+   "group": "cooldown",
+   "size_1x": [
+    96,
+    96
+   ],
+   "size_2x": [
+    192,
+    192
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "Breach Charge cooldown"
+  },
+  {
+   "name": "ammo_pip_kinetic_full",
+   "file": "gam_ui_ammo_pip_kinetic_full",
+   "group": "ammo",
+   "size_1x": [
+    14,
+    28
+   ],
+   "size_2x": [
+    28,
+    56
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HBox of TextureRects; one pip per round"
+  },
+  {
+   "name": "ammo_pip_kinetic_empty",
+   "file": "gam_ui_ammo_pip_kinetic_empty",
+   "group": "ammo",
+   "size_1x": [
+    14,
+    28
+   ],
+   "size_2x": [
+    28,
+    56
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HBox of TextureRects; one pip per round"
+  },
+  {
+   "name": "ammo_pip_breach_full",
+   "file": "gam_ui_ammo_pip_breach_full",
+   "group": "ammo",
+   "size_1x": [
+    20,
+    28
+   ],
+   "size_2x": [
+    40,
+    56
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HBox of TextureRects; one pip per round"
+  },
+  {
+   "name": "ammo_pip_breach_empty",
+   "file": "gam_ui_ammo_pip_breach_empty",
+   "group": "ammo",
+   "size_1x": [
+    20,
+    28
+   ],
+   "size_2x": [
+    40,
+    56
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "HBox of TextureRects; one pip per round"
+  },
+  {
+   "name": "objective_marker_primary",
+   "file": "gam_ui_objective_marker_primary",
+   "group": "markers",
+   "size_1x": [
+    48,
+    64
+   ],
+   "size_2x": [
+    96,
+    128
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "world-space objective marker, pivot bottom-centre (24, 60 at 1x)"
+  },
+  {
+   "name": "objective_marker_optional",
+   "file": "gam_ui_objective_marker_optional",
+   "group": "markers",
+   "size_1x": [
+    48,
+    64
+   ],
+   "size_2x": [
+    96,
+    128
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "world-space objective marker, pivot bottom-centre (24, 60 at 1x)"
+  },
+  {
+   "name": "objective_marker_complete",
+   "file": "gam_ui_objective_marker_complete",
+   "group": "markers",
+   "size_1x": [
+    48,
+    64
+   ],
+   "size_2x": [
+    96,
+    128
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "world-space objective marker, pivot bottom-centre (24, 60 at 1x)"
+  },
+  {
+   "name": "objective_marker_failed",
+   "file": "gam_ui_objective_marker_failed",
+   "group": "markers",
+   "size_1x": [
+    48,
+    64
+   ],
+   "size_2x": [
+    96,
+    128
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "world-space objective marker, pivot bottom-centre (24, 60 at 1x)"
+  },
+  {
+   "name": "offscreen_indicator",
+   "file": "gam_ui_offscreen_indicator",
+   "group": "markers",
+   "size_1x": [
+    48,
+    48
+   ],
+   "size_2x": [
+    96,
+    96
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "edge-of-screen pointer; rotate toward target; pivot centre"
+  },
+  {
+   "name": "offscreen_indicator_critical",
+   "file": "gam_ui_offscreen_indicator_critical",
+   "group": "markers",
+   "size_1x": [
+    48,
+    48
+   ],
+   "size_2x": [
+    96,
+    96
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "critical-asset edge pointer"
+  },
+  {
+   "name": "critical_marker_all",
+   "file": "gam_ui_critical_marker_all",
+   "group": "markers",
+   "size_1x": [
+    128,
+    128
+   ],
+   "size_2x": [
+    256,
+    256
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "critical-asset marker; animate layers in code: ring rotates 30 deg/s, diamond pulses scale 0.9-1.1 at 1.2 Hz; pivot centre"
+  },
+  {
+   "name": "critical_marker_brackets",
+   "file": "gam_ui_critical_marker_brackets",
+   "group": "markers",
+   "size_1x": [
+    128,
+    128
+   ],
+   "size_2x": [
+    256,
+    256
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "critical-asset marker; animate layers in code: ring rotates 30 deg/s, diamond pulses scale 0.9-1.1 at 1.2 Hz; pivot centre"
+  },
+  {
+   "name": "critical_marker_diamond",
+   "file": "gam_ui_critical_marker_diamond",
+   "group": "markers",
+   "size_1x": [
+    128,
+    128
+   ],
+   "size_2x": [
+    256,
+    256
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "critical-asset marker; animate layers in code: ring rotates 30 deg/s, diamond pulses scale 0.9-1.1 at 1.2 Hz; pivot centre"
+  },
+  {
+   "name": "critical_marker_ring",
+   "file": "gam_ui_critical_marker_ring",
+   "group": "markers",
+   "size_1x": [
+    128,
+    128
+   ],
+   "size_2x": [
+    256,
+    256
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "critical-asset marker; animate layers in code: ring rotates 30 deg/s, diamond pulses scale 0.9-1.1 at 1.2 Hz; pivot centre"
+  },
+  {
+   "name": "aim_reticle",
+   "file": "gam_ui_aim_reticle",
+   "group": "hud",
+   "size_1x": [
+    64,
+    64
+   ],
+   "size_2x": [
+    128,
+    128
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "aim end-point reticle; tint white"
+  },
+  {
+   "name": "trajectory_dot",
+   "file": "gam_ui_trajectory_dot",
+   "group": "hud",
+   "size_1x": [
+    16,
+    16
+   ],
+   "size_2x": [
+    32,
+    32
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "trajectory preview dot; fade alpha along the arc"
+  },
+  {
+   "name": "weapon_slot_normal",
+   "file": "gam_ui_weapon_slot_normal",
+   "group": "hud",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 30,
+    "top": 30,
+    "right": 30,
+    "bottom": 30
+   },
+   "nine_slice_2x": {
+    "left": 60,
+    "top": 60,
+    "right": 60,
+    "bottom": 60
+   },
+   "notes": "HUD weapon card"
+  },
+  {
+   "name": "weapon_slot_selected",
+   "file": "gam_ui_weapon_slot_selected",
+   "group": "hud",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 30,
+    "top": 30,
+    "right": 30,
+    "bottom": 30
+   },
+   "nine_slice_2x": {
+    "left": 60,
+    "top": 60,
+    "right": 60,
+    "bottom": 60
+   },
+   "notes": "HUD weapon card"
+  },
+  {
+   "name": "weapon_slot_empty",
+   "file": "gam_ui_weapon_slot_empty",
+   "group": "hud",
+   "size_1x": [
+    112,
+    112
+   ],
+   "size_2x": [
+    224,
+    224
+   ],
+   "nine_slice_1x": {
+    "left": 30,
+    "top": 30,
+    "right": 30,
+    "bottom": 30
+   },
+   "nine_slice_2x": {
+    "left": 60,
+    "top": 60,
+    "right": 60,
+    "bottom": 60
+   },
+   "notes": "HUD weapon card"
+  },
+  {
+   "name": "chip",
+   "file": "gam_ui_chip",
+   "group": "hud",
+   "size_1x": [
+    64,
+    40
+   ],
+   "size_2x": [
+    128,
+    80
+   ],
+   "nine_slice_1x": {
+    "left": 12,
+    "top": 12,
+    "right": 12,
+    "bottom": 12
+   },
+   "nine_slice_2x": {
+    "left": 24,
+    "top": 24,
+    "right": 24,
+    "bottom": 24
+   },
+   "notes": "small info chip (currency, timers)"
+  },
+  {
+   "name": "divider",
+   "file": "gam_ui_divider",
+   "group": "panels",
+   "size_1x": [
+    256,
+    4
+   ],
+   "size_2x": [
+    512,
+    8
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "horizontal divider; stretch X"
+  },
+  {
+   "name": "tier_badge_tier0",
+   "file": "gam_ui_tier_badge_tier0",
+   "group": "upgrades",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "upgrade tier badge Base"
+  },
+  {
+   "name": "tier_badge_tier1",
+   "file": "gam_ui_tier_badge_tier1",
+   "group": "upgrades",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "upgrade tier badge Mk I"
+  },
+  {
+   "name": "tier_badge_tier2",
+   "file": "gam_ui_tier_badge_tier2",
+   "group": "upgrades",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "upgrade tier badge Mk II"
+  },
+  {
+   "name": "tier_badge_tier3",
+   "file": "gam_ui_tier_badge_tier3",
+   "group": "upgrades",
+   "size_1x": [
+    40,
+    40
+   ],
+   "size_2x": [
+    80,
+    80
+   ],
+   "nine_slice_1x": null,
+   "nine_slice_2x": null,
+   "notes": "upgrade tier badge Mk III"
+  }
+ ]
+}

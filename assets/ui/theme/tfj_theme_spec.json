@@ -1,0 +1,1446 @@
+{
+ "name": "Temporal: First Jump UI theme",
+ "version": 1,
+ "base_viewport": [
+  1280,
+  720
+ ],
+ "stretch": "canvas_items / expand (project.godot)",
+ "notes": [
+  "All numbers are 1x base pixels unless a key ends in _2x.",
+  "StyleBoxTexture draws texture margins at texel size, so a 2x texture with 2x margins would draw corners twice as large. Use the 1x texture + 1x margins in a StyleBox (default below), or use the resolution-independent StyleBoxFlat equivalents in flat_equivalents (preferred for crisp panels on phones: corner_detail 1 gives the chamfer). The 2x files are for NinePatchRect/TextureRect use where the node is drawn at half scale, and for icons/sprites (TextureRect expand + stretch keep aspect, so 2x stays crisp).",
+  "No dynamic text is baked into any texture. Every string is a Label / Button text using these fonts.",
+  "Orange/amber is reserved for weapon energy and danger; red for critical assets and failure; cyan for interaction and temporal energy.",
+  "Restrained glow: hover states use a 1.5 px halo line, not bloom. Nothing depends on WorldEnvironment glow."
+ ],
+ "colors": {
+  "void": "#05080B",
+  "bg0": "#080C10",
+  "bg1": "#0D1319",
+  "surface": "#111A22",
+  "surface_raised": "#172330",
+  "surface_hover": "#1D2C3A",
+  "surface_pressed": "#0E161E",
+  "line": "#2A3846",
+  "line_bright": "#40546480",
+  "line_solid": "#3D5061",
+  "steel": "#7C8C99",
+  "text": "#E7EDF2",
+  "text_dim": "#97A7B4",
+  "text_faint": "#5D6D7A",
+  "text_disabled": "#46525C",
+  "ink": "#061015",
+  "cyan": "#3CC8E6",
+  "cyan_bright": "#9BEBFA",
+  "cyan_deep": "#127A92",
+  "cyan_glow": "#3CC8E6",
+  "amber": "#F2A23A",
+  "amber_deep": "#9A5A12",
+  "critical": "#FF4D3D",
+  "critical_deep": "#8A1E16",
+  "success": "#6EDDA6",
+  "research": "#8FE3F5",
+  "points": "#E7EDF2",
+  "star": "#F4C766",
+  "star_empty": "#2C3946"
+ },
+ "chapter_accents": {
+  "helix": {
+   "accent": "#3CC8E6",
+   "accent2": "#F2A23A",
+   "base": "#0F161C",
+   "levels": [
+    1,
+    20
+   ]
+  },
+  "vita": {
+   "accent": "#7FD9A8",
+   "accent2": "#DDEBEA",
+   "base": "#0F1716",
+   "levels": [
+    21,
+    40
+   ]
+  },
+  "nova_grid": {
+   "accent": "#F0A040",
+   "accent2": "#4AA8FF",
+   "base": "#15120F",
+   "levels": [
+    41,
+    60
+   ]
+  },
+  "civitas": {
+   "accent": "#8EB6DA",
+   "accent2": "#E5484D",
+   "base": "#11151A",
+   "levels": [
+    61,
+    80
+   ]
+  },
+  "meridian": {
+   "accent": "#A592FF",
+   "accent2": "#7FE6F2",
+   "base": "#0B0E12",
+   "levels": [
+    81,
+    100
+   ]
+  }
+ },
+ "upgrade_tiers": {
+  "tier0": {
+   "name": "Base",
+   "color": "#9AA9B5"
+  },
+  "tier1": {
+   "name": "Mk I",
+   "color": "#3CC8E6"
+  },
+  "tier2": {
+   "name": "Mk II",
+   "color": "#5AA9FF"
+  },
+  "tier3": {
+   "name": "Mk III",
+   "color": "#B9F2FF"
+  }
+ },
+ "fonts": {
+  "display_regular": "res://assets/fonts/chakra_petch/ChakraPetch-Regular.ttf",
+  "display_medium": "res://assets/fonts/chakra_petch/ChakraPetch-Medium.ttf",
+  "display_semibold": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+  "display_bold": "res://assets/fonts/chakra_petch/ChakraPetch-Bold.ttf",
+  "body_regular": "res://assets/fonts/barlow/Barlow-Regular.ttf",
+  "body_medium": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+  "body_semibold": "res://assets/fonts/barlow/Barlow-SemiBold.ttf",
+  "body_bold": "res://assets/fonts/barlow/Barlow-Bold.ttf"
+ },
+ "font_import": {
+  "antialiasing": "grayscale",
+  "hinting": "light",
+  "subpixel_positioning": "auto",
+  "generate_mipmaps": false,
+  "multichannel_signed_distance_field": false
+ },
+ "default_font": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+ "default_font_size": 20,
+ "type_roles": {
+  "display_xl": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-Bold.ttf",
+   "size": 64,
+   "spacing_glyph": 7.7,
+   "uppercase": true
+  },
+  "display_l": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "size": 44,
+   "spacing_glyph": 4.4,
+   "uppercase": true
+  },
+  "title": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "size": 32,
+   "spacing_glyph": 1.9,
+   "uppercase": true
+  },
+  "heading": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "size": 26,
+   "spacing_glyph": 1.6,
+   "uppercase": true
+  },
+  "label_caps": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "size": 18,
+   "spacing_glyph": 2.9,
+   "uppercase": true
+  },
+  "body_l": {
+   "font": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+   "size": 24,
+   "spacing_glyph": 0.0,
+   "uppercase": false
+  },
+  "body": {
+   "font": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+   "size": 20,
+   "spacing_glyph": 0.0,
+   "uppercase": false
+  },
+  "caption": {
+   "font": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+   "size": 18,
+   "spacing_glyph": 0.4,
+   "uppercase": false
+  },
+  "numeric_l": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-Bold.ttf",
+   "size": 40,
+   "spacing_glyph": 0.8,
+   "uppercase": false
+  },
+  "numeric": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "size": 24,
+   "spacing_glyph": 0.5,
+   "uppercase": false
+  },
+  "damage_number": {
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-Bold.ttf",
+   "size": 30,
+   "spacing_glyph": 0.0,
+   "uppercase": false
+  }
+ },
+ "spacing": {
+  "xxs": 4,
+  "xs": 8,
+  "s": 12,
+  "m": 16,
+  "l": 24,
+  "xl": 32,
+  "xxl": 48
+ },
+ "safe_margin": 32,
+ "touch_target_min": 64,
+ "minimum_readable_size": {
+  "body": 18,
+  "caps_label": 12,
+  "numerals_hud": 20,
+  "note": "never smaller on a 1280x720 base; phones scale up about 1.8x"
+ },
+ "theme": {
+  "Button": {
+   "styles": {
+    "normal": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_secondary_normal.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_secondary_normal.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 20,
+      "top": 12,
+      "right": 20,
+      "bottom": 12
+     },
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "hover": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_secondary_hover.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_secondary_hover.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "pressed": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_secondary_pressed.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_secondary_pressed.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "disabled": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_secondary_disabled.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_secondary_disabled.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "focus": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_focus_ring.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_focus_ring.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    }
+   },
+   "colors": {
+    "font_color": "#E7EDF2",
+    "font_hover_color": "#FFFFFF",
+    "font_pressed_color": "#9BEBFA",
+    "font_focus_color": "#E7EDF2",
+    "font_disabled_color": "#46525C"
+   },
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "font_size": 20,
+   "spacing_glyph": 2.5,
+   "min_height": 56,
+   "icon_max_width": 24,
+   "h_separation": 12
+  },
+  "PrimaryButton": {
+   "base_type": "Button",
+   "styles": {
+    "normal": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_primary_normal.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_primary_normal.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "hover": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_primary_hover.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_primary_hover.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "pressed": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_primary_pressed.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_primary_pressed.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "disabled": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_primary_disabled.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_primary_disabled.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    }
+   },
+   "colors": {
+    "font_color": "#061015",
+    "font_hover_color": "#061015",
+    "font_pressed_color": "#061015",
+    "font_focus_color": "#061015",
+    "font_disabled_color": "#46525C",
+    "icon_normal_color": "#061015"
+   }
+  },
+  "DangerButton": {
+   "base_type": "Button",
+   "styles": {
+    "normal": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_danger_normal.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_danger_normal.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "hover": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_danger_hover.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_danger_hover.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "pressed": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_danger_pressed.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_danger_pressed.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "disabled": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_danger_disabled.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_danger_disabled.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    }
+   },
+   "colors": {
+    "font_color": "#E7EDF2",
+    "font_hover_color": "#FFFFFF",
+    "font_pressed_color": "#FFB3AA",
+    "font_focus_color": "#E7EDF2",
+    "font_disabled_color": "#46525C"
+   }
+  },
+  "IconButton": {
+   "base_type": "Button",
+   "styles": {
+    "normal": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_icon_normal.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_icon_normal.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "hover": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_icon_hover.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_icon_hover.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "pressed": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_icon_pressed.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_icon_pressed.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    },
+    "disabled": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_button_icon_disabled.png",
+     "texture_margin": {
+      "left": 22,
+      "top": 22,
+      "right": 22,
+      "bottom": 22
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_button_icon_disabled.png",
+     "texture_margin_2x": {
+      "left": 44,
+      "top": 44,
+      "right": 44,
+      "bottom": 44
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "expand_margin": {
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+     }
+    }
+   },
+   "min_size": [
+    64,
+    64
+   ],
+   "icon_size": 32
+  },
+  "PanelContainer": {
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_panel_main.png",
+     "texture_margin": {
+      "left": 28,
+      "top": 28,
+      "right": 28,
+      "bottom": 28
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_panel_main.png",
+     "texture_margin_2x": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 56
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24
+     }
+    }
+   }
+  },
+  "PanelInset": {
+   "base_type": "PanelContainer",
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_panel_inset.png",
+     "texture_margin": {
+      "left": 28,
+      "top": 28,
+      "right": 28,
+      "bottom": 28
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_panel_inset.png",
+     "texture_margin_2x": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 56
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 20,
+      "top": 20,
+      "right": 20,
+      "bottom": 20
+     }
+    }
+   }
+  },
+  "PanelModal": {
+   "base_type": "PanelContainer",
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_panel_modal.png",
+     "texture_margin": {
+      "left": 28,
+      "top": 28,
+      "right": 28,
+      "bottom": 28
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_panel_modal.png",
+     "texture_margin_2x": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 56
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32
+     }
+    }
+   }
+  },
+  "PanelHeader": {
+   "base_type": "PanelContainer",
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_panel_header.png",
+     "texture_margin": {
+      "left": 28,
+      "top": 28,
+      "right": 28,
+      "bottom": 28
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_panel_header.png",
+     "texture_margin_2x": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 56
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 24,
+      "top": 12,
+      "right": 24,
+      "bottom": 12
+     }
+    }
+   }
+  },
+  "Chip": {
+   "base_type": "PanelContainer",
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_chip.png",
+     "texture_margin": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_chip.png",
+     "texture_margin_2x": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 14,
+      "top": 8,
+      "right": 14,
+      "bottom": 8
+     }
+    }
+   }
+  },
+  "TabBar": {
+   "styles": {
+    "tab_unselected": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_tab_normal.png",
+     "texture_margin": {
+      "left": 16,
+      "top": 8,
+      "right": 16,
+      "bottom": 10
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_tab_normal.png",
+     "texture_margin_2x": {
+      "left": 32,
+      "top": 16,
+      "right": 32,
+      "bottom": 20
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "tab_hovered": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_tab_hover.png",
+     "texture_margin": {
+      "left": 16,
+      "top": 8,
+      "right": 16,
+      "bottom": 10
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_tab_hover.png",
+     "texture_margin_2x": {
+      "left": 32,
+      "top": 16,
+      "right": 32,
+      "bottom": 20
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "tab_selected": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_tab_selected.png",
+     "texture_margin": {
+      "left": 16,
+      "top": 8,
+      "right": 16,
+      "bottom": 10
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_tab_selected.png",
+     "texture_margin_2x": {
+      "left": 32,
+      "top": 16,
+      "right": 32,
+      "bottom": 20
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "tab_disabled": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_tab_disabled.png",
+     "texture_margin": {
+      "left": 16,
+      "top": 8,
+      "right": 16,
+      "bottom": 10
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_tab_disabled.png",
+     "texture_margin_2x": {
+      "left": 32,
+      "top": 16,
+      "right": 32,
+      "bottom": 20
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    }
+   },
+   "colors": {
+    "font_unselected_color": "#97A7B4",
+    "font_hovered_color": "#E7EDF2",
+    "font_selected_color": "#E7EDF2",
+    "font_disabled_color": "#46525C"
+   },
+   "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+   "font_size": 15,
+   "spacing_glyph": 3,
+   "min_tab_height": 48
+  },
+  "HSlider": {
+   "styles": {
+    "slider": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_slider_track.png",
+     "texture_margin": {
+      "left": 3,
+      "top": 3,
+      "right": 3,
+      "bottom": 3
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_slider_track.png",
+     "texture_margin_2x": {
+      "left": 6,
+      "top": 6,
+      "right": 6,
+      "bottom": 6
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "grabber_area": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_slider_fill.png",
+     "texture_margin": {
+      "left": 3,
+      "top": 3,
+      "right": 3,
+      "bottom": 3
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_slider_fill.png",
+     "texture_margin_2x": {
+      "left": 6,
+      "top": 6,
+      "right": 6,
+      "bottom": 6
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "grabber_area_highlight": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_slider_fill.png",
+     "texture_margin": {
+      "left": 3,
+      "top": 3,
+      "right": 3,
+      "bottom": 3
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_slider_fill.png",
+     "texture_margin_2x": {
+      "left": 6,
+      "top": 6,
+      "right": 6,
+      "bottom": 6
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    }
+   },
+   "icons": {
+    "grabber": "res://assets/ui/kit/png_2x/gam_ui_slider_grabber_normal.png",
+    "grabber_highlight": "res://assets/ui/kit/png_2x/gam_ui_slider_grabber_hover.png",
+    "grabber_disabled": "res://assets/ui/kit/png_2x/gam_ui_slider_grabber_disabled.png"
+   },
+   "icon_display_size_1x": [
+    40,
+    40
+   ],
+   "min_height": 40
+  },
+  "CheckButton": {
+   "icons": {
+    "checked": "res://assets/ui/kit/png_2x/gam_ui_toggle_on.png",
+    "unchecked": "res://assets/ui/kit/png_2x/gam_ui_toggle_off.png",
+    "checked_disabled": "res://assets/ui/kit/png_2x/gam_ui_toggle_on_disabled.png",
+    "unchecked_disabled": "res://assets/ui/kit/png_2x/gam_ui_toggle_off_disabled.png"
+   },
+   "icon_display_size_1x": [
+    64,
+    32
+   ],
+   "min_height": 56
+  },
+  "ProgressBar": {
+   "styles": {
+    "background": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_progress_track.png",
+     "texture_margin": {
+      "left": 3,
+      "top": 3,
+      "right": 3,
+      "bottom": 3
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_progress_track.png",
+     "texture_margin_2x": {
+      "left": 6,
+      "top": 6,
+      "right": 6,
+      "bottom": 6
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    },
+    "fill": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_progress_fill_cyan.png",
+     "texture_margin": {
+      "left": 3,
+      "top": 3,
+      "right": 3,
+      "bottom": 3
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_progress_fill_cyan.png",
+     "texture_margin_2x": {
+      "left": 6,
+      "top": 6,
+      "right": 6,
+      "bottom": 6
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch"
+    }
+   },
+   "variants": {
+    "energy": "progress_fill_amber",
+    "integrity": "progress_fill_critical",
+    "success": "progress_fill_success"
+   },
+   "show_percentage": false,
+   "min_height": 12
+  },
+  "TextureProgressBar_Cooldown": {
+   "under": "res://assets/ui/kit/png_2x/gam_ui_cooldown_ring_under.png",
+   "progress": "res://assets/ui/kit/png_2x/gam_ui_cooldown_ring_progress.png",
+   "over": "res://assets/ui/kit/png_2x/gam_ui_cooldown_ring_over.png",
+   "progress_amber": "res://assets/ui/kit/png_2x/gam_ui_cooldown_ring_progress_amber.png",
+   "fill_mode": "FILL_CLOCKWISE (TextureProgressBar.FILL_CLOCKWISE = 4)",
+   "display_size_1x": [
+    96,
+    96
+   ],
+   "value_semantics": "value = remaining cooldown fraction, 1 -> 0"
+  },
+  "Label": {
+   "colors": {
+    "font_color": "#E7EDF2",
+    "font_shadow_color": "#00000000",
+    "font_outline_color": "#05080BCC"
+   },
+   "font": "res://assets/fonts/barlow/Barlow-Medium.ttf",
+   "font_size": 20
+  },
+  "Tooltip": {
+   "styles": {
+    "panel": {
+     "type": "StyleBoxTexture",
+     "texture": "res://assets/ui/kit/png_1x/gam_ui_chip.png",
+     "texture_margin": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12
+     },
+     "texture_2x": "res://assets/ui/kit/png_2x/gam_ui_chip.png",
+     "texture_margin_2x": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24
+     },
+     "axis_stretch_horizontal": "stretch",
+     "axis_stretch_vertical": "stretch",
+     "content_margin": {
+      "left": 12,
+      "top": 8,
+      "right": 12,
+      "bottom": 8
+     }
+    }
+   },
+   "font_size": 18
+  },
+  "ScrimColor": "#05080BB3"
+ },
+ "flat_equivalents": {
+  "note": "StyleBoxFlat values that reproduce the kit shapes without textures. corner radius is applied to top-left and bottom-right only; corner_detail = 1 makes it a straight chamfer.",
+  "panel_main": {
+   "bg_color": "#131D26F0",
+   "border_color": "#2C3B48",
+   "border_width": 1,
+   "corner_radius_top_left": 12,
+   "corner_radius_bottom_right": 12,
+   "corner_detail": 1,
+   "anti_aliasing": true,
+   "content_margin": 24,
+   "accent_tick": "draw the 2 px cyan corner tick with a small TextureRect (gam_ui_panel_main 1x corner) or omit"
+  },
+  "panel_inset": {
+   "bg_color": "#0B1218EB",
+   "border_color": "#2A3846",
+   "border_width": 1,
+   "corner_radius_top_left": 12,
+   "corner_radius_bottom_right": 12,
+   "corner_detail": 1,
+   "content_margin": 20
+  },
+  "panel_modal": {
+   "bg_color": "#141F28F7",
+   "border_color": "#3A4E5E",
+   "border_width": 1,
+   "corner_radius_top_left": 12,
+   "corner_radius_bottom_right": 12,
+   "corner_detail": 1,
+   "content_margin": 32
+  },
+  "button_primary": {
+   "normal": {
+    "bg_color": "#3AC1DE",
+    "border_color": "#8FE8F8"
+   },
+   "hover": {
+    "bg_color": "#52CDE7",
+    "border_color": "#C9F5FD"
+   },
+   "pressed": {
+    "bg_color": "#2393B0",
+    "border_color": "#5FD4EA"
+   },
+   "disabled": {
+    "bg_color": "#18232D",
+    "border_color": "#2A3846"
+   },
+   "common": {
+    "border_width": 1,
+    "corner_radius_top_left": 10,
+    "corner_radius_bottom_right": 10,
+    "corner_detail": 1,
+    "content_margin_h": 20,
+    "content_margin_v": 12
+   }
+  },
+  "button_secondary": {
+   "normal": {
+    "bg_color": "#15202AEB",
+    "border_color": "#3CC8E68C"
+   },
+   "hover": {
+    "bg_color": "#1B2A37F2",
+    "border_color": "#9BEBFAF2"
+   },
+   "pressed": {
+    "bg_color": "#0F1820F2",
+    "border_color": "#3CC8E6CC"
+   },
+   "disabled": {
+    "bg_color": "#11181FB3",
+    "border_color": "#2A3846CC"
+   },
+   "common": {
+    "border_width": 1,
+    "corner_radius_top_left": 10,
+    "corner_radius_bottom_right": 10,
+    "corner_detail": 1
+   }
+  },
+  "button_danger": {
+   "normal": {
+    "bg_color": "#241413F0",
+    "border_color": "#FF4D3DA6"
+   },
+   "hover": {
+    "bg_color": "#321816F5",
+    "border_color": "#FF8A7E"
+   },
+   "pressed": {
+    "bg_color": "#1C0F0EF5",
+    "border_color": "#FF4D3DD9"
+   },
+   "disabled": {
+    "bg_color": "#11181FB3",
+    "border_color": "#2A3846CC"
+   },
+   "common": {
+    "border_width": 1,
+    "corner_radius_top_left": 10,
+    "corner_radius_bottom_right": 10,
+    "corner_detail": 1
+   }
+  },
+  "chip": {
+   "bg_color": "#0A1117D1",
+   "border_color": "#3D5061",
+   "border_width": 1,
+   "corner_radius_top_left": 6,
+   "corner_radius_bottom_right": 6,
+   "corner_detail": 1
+  },
+  "focus": {
+   "draw_center": false,
+   "border_color": "#9BEBFA",
+   "border_width": 2,
+   "expand_margin": 4,
+   "corner_radius_top_left": 12,
+   "corner_radius_bottom_right": 12,
+   "corner_detail": 1
+  }
+ },
+ "hud_layout": {
+  "note": "matches the current MissionHud placement in code (objectives top-left, shots and time top-centre, retry and pause top-right, weapon cards bottom-right, hint bottom-centre)",
+  "objectives_panel": {
+   "anchor": "top_left",
+   "offset": [
+    24,
+    24
+   ],
+   "width": 330,
+   "row_height": 28,
+   "icon_size": 22,
+   "primary_font": "body 19",
+   "optional_font": "body 17"
+  },
+  "stats_chip": {
+   "anchor": "top_center",
+   "offset": [
+    0,
+    24
+   ],
+   "size": [
+    308,
+    48
+   ]
+  },
+  "buttons_top_right": {
+   "anchor": "top_right",
+   "offset": [
+    -24,
+    24
+   ],
+   "size": [
+    64,
+    64
+   ],
+   "gap": 16,
+   "order": [
+    "retry",
+    "pause"
+   ]
+  },
+  "weapon_cards": {
+   "anchor": "bottom_right",
+   "offset": [
+    -24,
+    -24
+   ],
+   "card_size": [
+    176,
+    110
+   ],
+   "gap": 12,
+   "states": [
+    "normal",
+    "selected",
+    "empty"
+   ]
+  },
+  "cooldown_ring": {
+   "anchor": "above the selected weapon card",
+   "size": [
+    48,
+    48
+   ],
+   "note": "TextureProgressBar_Cooldown drawn at 48 base px in the HUD"
+  },
+  "hint": {
+   "anchor": "bottom_center",
+   "offset": [
+    0,
+    -30
+   ],
+   "font": "body 17",
+   "color": "#97A7B4"
+  },
+  "critical_marker": {
+   "world_anchor": "0.75 m above the critical asset top (code)",
+   "size": [
+    104,
+    104
+   ],
+   "layers": [
+    "ring",
+    "brackets",
+    "diamond"
+   ],
+   "motion": {
+    "ring_rotation_deg_per_s": 30,
+    "diamond_pulse_scale": [
+     0.9,
+     1.1
+    ],
+    "diamond_pulse_hz": 1.2
+   }
+  },
+  "objective_marker": {
+   "size": [
+    48,
+    64
+   ],
+   "pivot": [
+    24,
+    60
+   ]
+  },
+  "trajectory": {
+   "dot_texture": "res://assets/ui/kit/png_2x/gam_ui_trajectory_dot.png",
+   "dot_size_start": 9,
+   "dot_size_end": 6,
+   "alpha_start": 0.9,
+   "alpha_end": 0.35,
+   "spacing_px": 28
+  }
+ },
+ "damage_numbers": {
+  "font": "res://assets/fonts/chakra_petch/ChakraPetch-Bold.ttf",
+  "label_settings": {
+   "standard": {
+    "font_size": 30,
+    "font_color": "#E7EDF2",
+    "outline_size": 6,
+    "outline_color": "#05080BD9"
+   },
+   "resisted": {
+    "font_size": 22,
+    "font_color": "#97A7B4",
+    "outline_size": 5,
+    "outline_color": "#05080BD9",
+    "note": "hit absorbed by resistance or below min_damage"
+   },
+   "blast": {
+    "font_size": 32,
+    "font_color": "#F2A23A",
+    "outline_size": 6,
+    "outline_color": "#05080BD9"
+   },
+   "critical_asset": {
+    "font_size": 34,
+    "font_color": "#FF4D3D",
+    "outline_size": 6,
+    "outline_color": "#05080BD9",
+    "caption": {
+     "text_key": "ui.damage.critical",
+     "font": "res://assets/fonts/chakra_petch/ChakraPetch-SemiBold.ttf",
+     "font_size": 12,
+     "spacing_glyph": 2.5,
+     "color": "#FF4D3D"
+    }
+   },
+   "destroyed": {
+    "font_size": 26,
+    "font_color": "#6EDDA6",
+    "outline_size": 5,
+    "outline_color": "#05080BD9",
+    "note": "component destroyed, shows +Mission Points"
+   },
+   "research": {
+    "font_size": 24,
+    "font_color": "#8FE3F5",
+    "outline_size": 5,
+    "outline_color": "#05080BD9"
+   }
+  },
+  "format": {
+   "damage": "-{value}",
+   "points": "+{value}",
+   "thousands_separator": ","
+  },
+  "motion": {
+   "spawn_offset_px": [
+    0,
+    -24
+   ],
+   "rise_px": 36,
+   "duration_s": 0.7,
+   "ease": "cubic out",
+   "pop_scale": [
+    1.25,
+    1.0
+   ],
+   "pop_s": 0.12,
+   "fade_out_last_s": 0.25,
+   "stack_offset_px": 18,
+   "max_on_screen": 6,
+   "merge_window_s": 0.15,
+   "note": "draw in a CanvasLayer above the 3D view; position from Camera3D.unproject_position"
+  }
+ },
+ "motion": {
+  "panel_in_s": 0.28,
+  "panel_rise_px": 16,
+  "button_press_scale": 0.96,
+  "button_press_s": 0.06,
+  "button_release_s": 0.12,
+  "screen_fade_s": 0.25,
+  "chapter_title_hold_s": 2.4,
+  "reduce_motion": "honour the Reduce screen shake / Reduce flashes settings: no pop scale, no flicker, fades only"
+ }
+}

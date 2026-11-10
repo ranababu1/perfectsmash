@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-11-09 · Version 0.1.0 (unreleased) · Branch `main` · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Branch `main` (slice B merged from `claude/vigilant-gates-mnfkim`) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
 
 M1 audit findings (toolchain, architecture, level mapping, identity/signing, risks): see `docs/project-audit.md`.
 
@@ -174,7 +174,77 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
-## Batch 5 pre-work review (2026-11-09, `33dd17f`..`1f417b5`) — awaiting owner decisions
+## Asset integration: Helix slice B (verified 2026-11-10, merged `96596ab`)
+
+- Built in a cloud session without Godot (`b69196c`..`a411ef9`); verified here: Godot import clean, headless 199 passed / 0 failed / 1 skipped, gameplay captures show debris sets, light/heavy damage overlays, breach explosion, material impacts, core idle glow and core destruction effects.
+- Fix on verification (`b649204`): the 79 integrated textures now import VRAM-compressed with mipmaps. Uncompressed VFX sheets had raised emulator video memory from ~95 MB to ~265 MB; after the fix 93-97 MB.
+- Emulator (Compatibility, `b649204`): 52-55 fps, ~610-690 draw calls, 8 ms viewport CPU, worst breach frame 68 ms, restarts 720-820 ms, first load ~12 s. Eval APK 126 MB (ETC2 + ASTC textures both shipped; texture-format split is slice E).
+- Open: a ~170 ms spike on the first kinetic shot (first effect use), restart cost, first load; physical-device numbers.
+
+## Asset integration: Helix slice A (2026-11-10, `fe828ad`..`88e3ce6`)
+
+- Production library on `main` under `assets/` (owner PRs #2/#3); references updated from `generated_assets/` to `assets/` (`af8a523`); validator PASS (1439 entries); Godot import of the whole library without errors; import metadata committed.
+- Slice A integrated (development use only, rights unchanged): 9 Helix component models, 19 environment/prop models, Helix texture sets, and 21 shared texture files the models reference. `AssetLibrary` + `ComponentVisual` (models follow physics bodies, damage-state nodes switch with component states, greybox fallback), set dressing from `data/environments/helix_01.json`, kit ledge for statics, graphite lighting with reflection sky and fog.
+- Builds ship only integrated assets (`tools/assets/export_filter.py`): APK 74.5 MB (245 MB without the filter).
+- Performance (emulator, Compatibility): draw calls ~120 → ~1,800 → ~600 after batching; worst breach frame 66 ms; restarts ~650 ms and 9-10 s first load still to optimise (slice E). Details and screenshots: `docs/asset-integration-report.md`, `docs/images/assets/`.
+- Playable build: `build/temporal1-debug.apk` (local, from `4e2798a`; rebuild with `godot_console --headless --export-debug "Android Debug" build/temporal1-debug.apk` after `python tools/assets/export_filter.py --apply export_presets.cfg`). Runs on the emulator; **no physical device tested**.
+- Tests: headless 193 passed / 0 failed / 1 skipped.
+- Next: slice B (implemented, unverified; see the section below), C (HUD/typography/weapon presentation), D (Helix music, SFX, ambience), E (performance, lighting, polish).
+
+## Asset integration: Helix slice B (2026-11-10, branch `claude/vigilant-gates-mnfkim`) — implemented, NOT yet verified in Godot
+
+- Debris sets for all nine Helix component kinds replace destroyed components (`DebrisSet`, seeded, visual only); damage overlays (`SHR-DMG-*`) on main surfaces at DAMAGED/CRITICAL; ui-vfx presets for Breach detonations, material impacts, kinetic hit/muzzle, collapse dust, core destruction and the core idle glow (`MissionVfx`, pooled, warmed at load). Procedural effects remain the fallback when an asset is missing.
+- 40 new integrated ids + 10 presets (`data/integrated_assets.json`, 116 entries). Rights unchanged, all `pending_review`.
+- **Verification status:** the Godot test suite, editor import of the new files, Android export and emulator performance were **not run** (no Godot binary in that session). Only a GDScript syntax parse and the Python build tools ran. First steps for the next session: `godot_console --headless --import`, the headless suite (expect 199 tests: 193 + 6), then the `mission_benchmark` breach scenario on the emulator to check the overlay pass and particle presets do not reintroduce hitches or a large draw-call increase.
+- Deferred from slice B: looping sparks from `fx_spark_*` empties at CRITICAL for electronic/energy parts; emission flicker at heavy damage; trails for projectiles (`*_TRAIL-*`); upgrade-tier VFX variants.
+
+## Batch 5 — approved changes and validation (2026-11-10, `81fefdc`..`503347c`)
+
+Owner-approved: save v4, blast occlusion with material data, load-aware knockback, blast wall 90 px, core health ×3.0, collapse leaves the core critical and a Kinetic shot generally finishes it, economy direction (prices unchanged), audio data architecture. Not approved as final: the 40 px racks (comparison below).
+
+| Area | State |
+|---|---|
+| Save schema v4 | `best_points` = successful runs only (leaderboard-eligible); `best_attempt_points` = any run; `attempts`/`completions` counters. v3 records migrate without loss; counters start at 0 with `counts_since_upgrade: true` (history not reconstructed) |
+| Blast occlusion | On. Per-material `blast_transmission` in `data/materials.json`; statics and unknown materials pass 0.05; penetration and compounding unchanged |
+| Load-aware knockback | On (`MissionWorld.load_aware_push`) |
+| Core housing | New material `ai_core_module`: weapon resistances as electronics, `structural_resistance` 0.42 (falls/crushing). Materials gain optional `structural_resistance` (defaults to impact resistance) |
+| Resting-contact fix | `ComponentBody` allows one gravity step of support: a resting released heavy body no longer reports an impact every frame (the blast wall did, 154 per frame, and the scene never settled) |
+| Helix layout | Blast wall 30 × 90; core health ×3.0; racks 3-4 beside the right column (x 1030 / 1080), racks 1-2 at full 40 × 100 beyond the relay mast (x 1262 / 1304) |
+| Outcome (sweep, 112 Breach trajectories + 10 kinetic angles) | 0 single-charge core kills; 35 collapses leave the core critical and a kinetic finish works (1.4 rounds); 0 collapses leave it unreachable; kinetic route clears on 7/10 angles in 3 rounds. Expert line: column Breach + one Kinetic round (2 shots) |
+| Economy | Prices unchanged; chapter-scaled scheme B recorded as provisional direction in `tools/economy/economy_assumptions.json` |
+| Audio architecture | `data/audio.json` + `AudioCatalog`; `AudioService` file variants with procedural fallback; material-aware impacts; `MusicDirector.play_cue`. No production audio files integrated yet |
+
+**Server rack comparison** (`tools/regression/rack_comparison.gd`, `rack_capture.gd`; screenshots `docs/images/batch5/rack_*.webp`):
+
+| Layout | Breach: collapse + kinetic finish | Kinetic route | Notes |
+|---|---|---|---|
+| 100 px racks in front (original) | 12 (2.1 rounds; rack 1 shot first) | 4/10 angles, 6-9 rounds | racks hide the fallen core from flat kinetic fire |
+| 40 px racks in front (test variant) | 24 (1.3) | 7/10, 3 | proportions lost |
+| 70 px racks in front | 16 (1.3) | 6/10, 3 | |
+| 100 px racks in one bank behind the structure | 29 (1.4) | 7/10, 3 | one charge cleared all four racks and the relay mast |
+| **Chosen: split bank** (3-4 beside the column, 1-2 beyond the mast) | same as one bank | 7/10, 3 | keeps proportions; a charge reaches only a pair |
+| Static plinth under the deck | worse (core slid off) | | rejected |
+| Weaker steel shield | no change (shield did not break) | | rejected; in real trajectories the shield never blocked a finish |
+
+Numbers above were measured before the resting-contact fix except the final sweep row (0 / 35 / 0, 7/10).
+
+**Renderer comparison on the real Helix scene** (`tools/renderer_eval/mission_benchmark.tscn`; logs and reports in `docs/benchmarks/2026-11-10-helix-mission/`, build `503347c`):
+
+| | GL Compatibility | Mobile (Vulkan) |
+|---|---|---|
+| Emulator (x86_64, host GPU via translation), fps | 55-60 | 59-60 |
+| Emulator worst frame, breach scenario | 38 ms (was 1113 ms on `9f773fd`, ~300 ms per blast on `9cfee96`) | 103 ms once (was 971 ms) |
+| Emulator draw calls / video memory | ~120 / 35-37 MB | ~87 / 76-89 MB |
+| Emulator viewport CPU render time | 2.0-3.7 ms | 0.56-0.63 ms |
+| Mission restart (emulator) | 32-63 ms | 46-56 ms |
+| Desktop (RTX 5060 Ti), fps / draw calls / VRAM / restart | 144 (vsync) / 116-132 / 15 MB / 7 ms | 144 / 86-96 / 66-68 MB / 18 ms |
+| Visual (same frame, `docs/images/batch5/renderer_*`) | as authored; core white with red emission | linear HDR: core reads pink, cyan more saturated |
+
+Hitch fixes: effects compiled at load; blast lights and flash meshes are persistent pools (creating them per detonation cost ~300 ms each on Compatibility). **Recommendation:** keep GL Compatibility as the production renderer (approved; lowest memory, no hitches now, colour as authored). Mobile remains the candidate if physical devices show lower CPU render cost matters; decide after physical-device runs. **Physical-device testing has not been done** (no USB device connected); emulator numbers are not representative of phone GPUs.
+
+Tests: headless 185 passed / 0 failed / 1 skipped (`503347c`).
+
+## Batch 5 pre-work review (2026-11-09, `33dd17f`..`1f417b5`) — superseded by the section above
 
 Findings and proposals: `docs/batch5-review.md`. No gameplay or progression rule changed yet.
 - **Committed (no rule change):** 5 accuracy tests; golden pure-scoring test; scripted cross-platform score replay (`tools/regression/score_replay.tscn`) plus a repeatability test; opt-in `blast_occlusion` and `load_aware_push` prototypes in `MissionWorld` (both **off**) with 6 tests; `tools/regression/tactics_probe.gd`; `tools/economy/simulate_research_data.py`; `make_eval_project.py --main`.

@@ -1,0 +1,623 @@
+{
+ "grid_units": 48,
+ "stroke_units": 3,
+ "base_px": 64,
+ "files": {
+  "svg": "svg/<file>.svg",
+  "1x": "png_1x/<file>.png (64)",
+  "2x": "png_2x/<file>.png (128)",
+  "hero": "png_hero_256/<file>.png (256, hero groups only)"
+ },
+ "tint": "white source; tint in Godot with modulate or theme colours",
+ "icons": [
+  {
+   "id": "GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A",
+   "name": "weapon_kinetic_accelerator",
+   "file": "gam_icn_weapon_kinetic_accelerator_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_BREACH_CHARGE-A",
+   "name": "weapon_breach_charge",
+   "file": "gam_icn_weapon_breach_charge_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_PRECISION_ACCELERATOR-A",
+   "name": "weapon_precision_accelerator",
+   "file": "gam_icn_weapon_precision_accelerator_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_PENETRATOR-A",
+   "name": "weapon_penetrator",
+   "file": "gam_icn_weapon_penetrator_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_PULSE_CANNON-A",
+   "name": "weapon_pulse_cannon",
+   "file": "gam_icn_weapon_pulse_cannon_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_DISRUPTOR-A",
+   "name": "weapon_disruptor",
+   "file": "gam_icn_weapon_disruptor_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-WEAPON_TEMPORAL_LANCE-A",
+   "name": "weapon_temporal_lance",
+   "file": "gam_icn_weapon_temporal_lance_a",
+   "group": "weapons",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_IMPACT_ENERGY-A",
+   "name": "upgrade_impact_energy",
+   "file": "gam_icn_upgrade_impact_energy_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_PENETRATION-A",
+   "name": "upgrade_penetration",
+   "file": "gam_icn_upgrade_penetration_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_BLAST_EFFICIENCY-A",
+   "name": "upgrade_blast_efficiency",
+   "file": "gam_icn_upgrade_blast_efficiency_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_ENERGY_CAPACITY-A",
+   "name": "upgrade_energy_capacity",
+   "file": "gam_icn_upgrade_energy_capacity_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_TARGETING_ASSISTANCE-A",
+   "name": "upgrade_targeting_assistance",
+   "file": "gam_icn_upgrade_targeting_assistance_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-UPGRADE_ENERGY_EFFICIENCY-A",
+   "name": "upgrade_energy_efficiency",
+   "file": "gam_icn_upgrade_energy_efficiency_a",
+   "group": "upgrades",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-OBJECTIVE_PRIMARY-A",
+   "name": "objective_primary",
+   "file": "gam_icn_objective_primary_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-OBJECTIVE_OPTIONAL-A",
+   "name": "objective_optional",
+   "file": "gam_icn_objective_optional_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-OBJECTIVE_COMPLETE-A",
+   "name": "objective_complete",
+   "file": "gam_icn_objective_complete_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-OBJECTIVE_FAILED-A",
+   "name": "objective_failed",
+   "file": "gam_icn_objective_failed_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CRITICAL_ASSET-A",
+   "name": "critical_asset",
+   "file": "gam_icn_critical_asset_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-DESTROY_COMPONENTS-A",
+   "name": "destroy_components",
+   "file": "gam_icn_destroy_components_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MAX_SHOTS-A",
+   "name": "max_shots",
+   "file": "gam_icn_max_shots_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-TIME_LIMIT-A",
+   "name": "time_limit",
+   "file": "gam_icn_time_limit_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-INTEL_BRIEFING-A",
+   "name": "intel_briefing",
+   "file": "gam_icn_intel_briefing_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MISSION-A",
+   "name": "mission",
+   "file": "gam_icn_mission_a",
+   "group": "objectives",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-RESEARCH_DATA-A",
+   "name": "research_data",
+   "file": "gam_icn_research_data_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MISSION_POINTS-A",
+   "name": "mission_points",
+   "file": "gam_icn_mission_points_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-STAR_FULL-A",
+   "name": "star_full",
+   "file": "gam_icn_star_full_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-STAR_EMPTY-A",
+   "name": "star_empty",
+   "file": "gam_icn_star_empty_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-STAR_HALF-A",
+   "name": "star_half",
+   "file": "gam_icn_star_half_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-TROPHY-A",
+   "name": "trophy",
+   "file": "gam_icn_trophy_a",
+   "group": "economy",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-LOCK-A",
+   "name": "lock",
+   "file": "gam_icn_lock_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-UNLOCK-A",
+   "name": "unlock",
+   "file": "gam_icn_unlock_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CHECK-A",
+   "name": "check",
+   "file": "gam_icn_check_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CROSS-A",
+   "name": "cross",
+   "file": "gam_icn_cross_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-WARNING-A",
+   "name": "warning",
+   "file": "gam_icn_warning_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-INFO-A",
+   "name": "info",
+   "file": "gam_icn_info_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SHIELD-A",
+   "name": "shield",
+   "file": "gam_icn_shield_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-REPAIR-A",
+   "name": "repair",
+   "file": "gam_icn_repair_a",
+   "group": "state",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-PLAY-A",
+   "name": "play",
+   "file": "gam_icn_play_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-PAUSE-A",
+   "name": "pause",
+   "file": "gam_icn_pause_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-RETRY-A",
+   "name": "retry",
+   "file": "gam_icn_retry_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-NEXT-A",
+   "name": "next",
+   "file": "gam_icn_next_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-BACK-A",
+   "name": "back",
+   "file": "gam_icn_back_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SKIP-A",
+   "name": "skip",
+   "file": "gam_icn_skip_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-FAST_FORWARD-A",
+   "name": "fast_forward",
+   "file": "gam_icn_fast_forward_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-HOME-A",
+   "name": "home",
+   "file": "gam_icn_home_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CLOSE-A",
+   "name": "close",
+   "file": "gam_icn_close_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MENU-A",
+   "name": "menu",
+   "file": "gam_icn_menu_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SETTINGS-A",
+   "name": "settings",
+   "file": "gam_icn_settings_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_MAP-A",
+   "name": "chapter_map",
+   "file": "gam_icn_chapter_map_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-REPLAY-A",
+   "name": "replay",
+   "file": "gam_icn_replay_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CREDITS-A",
+   "name": "credits",
+   "file": "gam_icn_credits_a",
+   "group": "navigation",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SOUND_ON-A",
+   "name": "sound_on",
+   "file": "gam_icn_sound_on_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SOUND_OFF-A",
+   "name": "sound_off",
+   "file": "gam_icn_sound_off_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MUSIC_ON-A",
+   "name": "music_on",
+   "file": "gam_icn_music_on_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-MUSIC_OFF-A",
+   "name": "music_off",
+   "file": "gam_icn_music_off_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-VIBRATION-A",
+   "name": "vibration",
+   "file": "gam_icn_vibration_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-GRAPHICS-A",
+   "name": "graphics",
+   "file": "gam_icn_graphics_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-LANGUAGE-A",
+   "name": "language",
+   "file": "gam_icn_language_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CONTROLS_TOUCH-A",
+   "name": "controls_touch",
+   "file": "gam_icn_controls_touch_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-ACCESSIBILITY-A",
+   "name": "accessibility",
+   "file": "gam_icn_accessibility_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-BRIGHTNESS-A",
+   "name": "brightness",
+   "file": "gam_icn_brightness_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SUBTITLES-A",
+   "name": "subtitles",
+   "file": "gam_icn_subtitles_a",
+   "group": "settings",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-AMMO-A",
+   "name": "ammo",
+   "file": "gam_icn_ammo_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-COOLDOWN-A",
+   "name": "cooldown",
+   "file": "gam_icn_cooldown_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-RETICLE-A",
+   "name": "reticle",
+   "file": "gam_icn_reticle_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-TRAJECTORY-A",
+   "name": "trajectory",
+   "file": "gam_icn_trajectory_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SHOTS_FIRED-A",
+   "name": "shots_fired",
+   "file": "gam_icn_shots_fired_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-STRUCTURE_INTEGRITY-A",
+   "name": "structure_integrity",
+   "file": "gam_icn_structure_integrity_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-BLAST_RADIUS-A",
+   "name": "blast_radius",
+   "file": "gam_icn_blast_radius_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-WEAPON_SWAP-A",
+   "name": "weapon_swap",
+   "file": "gam_icn_weapon_swap_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-ZOOM-A",
+   "name": "zoom",
+   "file": "gam_icn_zoom_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CAMERA_PAN-A",
+   "name": "camera_pan",
+   "file": "gam_icn_camera_pan_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-OPERATIVE-A",
+   "name": "operative",
+   "file": "gam_icn_operative_a",
+   "group": "gameplay",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-LEADERBOARD-A",
+   "name": "leaderboard",
+   "file": "gam_icn_leaderboard_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-PROFILE-A",
+   "name": "profile",
+   "file": "gam_icn_profile_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-FRIENDS-A",
+   "name": "friends",
+   "file": "gam_icn_friends_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-FRONTLINES-A",
+   "name": "frontlines",
+   "file": "gam_icn_frontlines_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-INSTITUTION_BUILDER-A",
+   "name": "institution_builder",
+   "file": "gam_icn_institution_builder_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-ATTACK_REPORT-A",
+   "name": "attack_report",
+   "file": "gam_icn_attack_report_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-ACHIEVEMENT-A",
+   "name": "achievement",
+   "file": "gam_icn_achievement_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-SHARE-A",
+   "name": "share",
+   "file": "gam_icn_share_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-WEEKLY_CHALLENGE-A",
+   "name": "weekly_challenge",
+   "file": "gam_icn_weekly_challenge_a",
+   "group": "meta",
+   "hero": false
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_HELIX-A",
+   "name": "chapter_helix",
+   "file": "gam_icn_chapter_helix_a",
+   "group": "chapters",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_VITA-A",
+   "name": "chapter_vita",
+   "file": "gam_icn_chapter_vita_a",
+   "group": "chapters",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_NOVA_GRID-A",
+   "name": "chapter_nova_grid",
+   "file": "gam_icn_chapter_nova_grid_a",
+   "group": "chapters",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_CIVITAS-A",
+   "name": "chapter_civitas",
+   "file": "gam_icn_chapter_civitas_a",
+   "group": "chapters",
+   "hero": true
+  },
+  {
+   "id": "GAM-ICN-CHAPTER_MERIDIAN-A",
+   "name": "chapter_meridian",
+   "file": "gam_icn_chapter_meridian_a",
+   "group": "chapters",
+   "hero": true
+  }
+ ]
+}

@@ -35,6 +35,46 @@ All meaningful changes, newest first.
 - Integration pass 7: 3d-kits batch 1 merged (140 entries: 69 Helix and shared destructible components with intact, light and heavy states and debris sets). Validator: 0 errors, 0 warnings (pivots, silhouettes, depths, budgets and damage-geometry bounds all within the contract). Godot load 1063 / 1063, 149 PackedScenes. First real kit renders under the game camera: `harness_mission_helix*.webp`, `harness_kit_helix.webp`, `harness_states_helix.webp`. Coverage: 2227 / 3236, 0 / 100 levels complete; every Helix level now has its components, critical asset, debris, materials, VFX, music and ambience, and still lacks environment kits, band landmarks and cinematics.
 - No gameplay code, scenes, data or shipped `assets/` files changed. `assets/audio/music/gameplay_bed.ogg` keeps its unverified rights status.
 
+## 2026-11-10 — Slice B verified and merged
+
+- `380cd10` uid files for the new view scripts; `b649204` integrated textures import VRAM-compressed with mipmaps (emulator video memory ~265 MB → ~95 MB).
+- Verification of the cloud-built slice B: Godot import clean; headless 199 passed / 0 failed / 1 skipped; captures; emulator benchmark (Compatibility, `b649204`): 52-55 fps, worst breach frame 68 ms. Logs in `docs/benchmarks/2026-11-10-helix-sliceB/`.
+- `96596ab` merged into `main` (normal merge).
+
+## 2026-11-10 — Asset integration slice B: debris sets, damage overlays, gameplay VFX
+
+- Integration selection: slice `B_helix_debris_damage_vfx` (40 ids): the nine Helix debris sets matching the integrated component variants (`HLX-DEB-*`), light/heavy damage overlays for the seven physics materials used by `helix_01` (`SHR-DMG-*`), and the 17 VFX sheets/textures the presets reference. Rights and approval fields copied unchanged (all `pending_review`).
+- `build_integration_manifest.py`: `godot_presets` in the selection become `presets` in `data/integrated_assets.json` (10 ui-vfx CPUParticles3D presets); the build fails if a preset references a file that is not integrated. `export_filter.py` ships the listed presets.
+- `AssetLibrary`: `instance_debris` (scaled like the component), `damage_overlay`, `damaged_material` (darkened copy with the overlay as an object-space triplanar transparent `next_pass`, shared per source surface and level, contract 8), `preset_scene`.
+- `ComponentVisual`: main-material surfaces switch to the light overlay at DAMAGED and heavy at CRITICAL; the heavy overlay is drawn during the existing two-frame load warm-up.
+- New `DebrisSet`: the debris set replaces the destroyed component in its last pose; fragments are thrown outward and up (seeded by component id), land on the floor, shrink away after 2.2 s. Visual only, no 3D physics. Procedural chunks remain the fallback.
+- New `MissionVfx`: fixed pools of the presets (breach explosion scaled by blast radius, material impacts, kinetic hit and muzzle, collapse dust scaled by width, core destruction) plus the looping core glow that follows the AI core. Each preset and each debris set is drawn once, motionless under the floor, while the mission loads. The flash sphere is hidden when the explosion preset exists; the pooled blast lights stay.
+- Tests: 6 new in `tests/test_assets.gd` (debris per component, seeded debris motion and floor landing, overlays per material, shared overlay materials, presets load, view spawns debris/overlays/effects).
+- **Not run:** no Godot binary was available in this session (running a downloaded engine was not permitted), so the Godot test suite, import of the new files, export and emulator benchmarks were **not run**. Only a GDScript syntax parse (gdtoolkit 4) of the changed scripts and the Python build tools were executed. Run the suite and an emulator benchmark before treating slice B as verified.
+
+## 2026-11-10 — Asset integration slice A: Helix structures, environment, materials
+
+- `bc46f53` Merged the owner's asset-library PRs (#2/#3: library moved to `assets/`) with a normal merge; slice A's own copies under `generated_assets/` were dropped first (`a14d7c8`).
+- `af8a523` Library references `generated_assets/` → `assets/` (manifest, fragments, cue sheets, docs, VFX/UI preset scenes, asset tools); binaries untouched. Validator PASS, 1439 entries.
+- `2968737` Godot import metadata for the library (import: no errors).
+- `fe828ad`, `4e2798a` Slice A: `data/integrated_assets.json` from `tools/assets/integration_selection.json` (55 ids + 21 texture dependencies, rights unchanged); `AssetLibrary`, `ComponentVisual`; `data/environments/helix_01.json`; graphite lighting; `tools/assets/export_filter.py` (APK 245 → 74.5 MB); `tools/capture_helix.gd`; `tests/test_assets.gd` (8).
+- `88e3ce6` Performance: MultiMesh batching of repeated set pieces, damage-state shader warm-up, fewer shadow casters (emulator Compatibility: draw calls ~1,800 → ~600, worst breach frame 1,739 → 66 ms).
+- Results: headless 193 passed / 0 failed / 1 skipped; playable debug APK runs on the Android emulator.
+
+## 2026-11-10 — Batch 5: approved rules, rack comparison, physics fix, renderer validation
+
+- `81fefdc` Save schema v4: `best_points` from successful runs only, `best_attempt_points` for any run, `attempts`/`completions` (migrated records flagged `counts_since_upgrade`, counts not fabricated). Migration and round-trip tests.
+- `77a9fb5` Blast occlusion on, `blast_transmission` per material in data; load-aware knockback on; `structural_resistance` (optional) and the `ai_core_module` core housing; blast wall 90 px, core ×3.0; collapse probe, preview-style aim helper; replay sequences re-measured.
+- `9beb178` Economy simulation driven by `tools/economy/economy_assumptions.json` (prices unchanged).
+- `71f8946` `data/audio.json` + `AudioCatalog`; `AudioService` file variants with procedural fallback and material-aware impacts; `MusicDirector.play_cue`; `impact_happened` carries the component id.
+- `c97d4c1` Renderer benchmark on the real Helix 3D scene (`mission_benchmark`).
+- `9f773fd`, `6ce8c8e`, `503347c` Hitch fixes: effects warmed at load, component emission always enabled, pooled blast lights and flash meshes. Compatibility worst frame in the breach scenario 1113 ms → 38 ms; Mobile 971 ms → ≤103 ms (emulator).
+- `7e42a91` Rack comparison (5 layouts × 112 Breach trajectories + kinetic angles, screenshots); `9cfee96`/`2a2c935` chosen layout: racks 3-4 beside the right column, 1-2 at full height beyond the relay mast.
+- `2a2c935` Physics: resting contacts no longer count as impacts (a resting released blast wall reported 154 per frame and blocked settling); core `structural_resistance` 0.5 → 0.42; single-charge core kills 0/112, every collapse leaves the core critical, one kinetic round finishes it. Regression test.
+- `6219946` Benchmark spike log with recent gameplay events; switch to run without blast lights.
+- Git: the six commits after `44a4664` were rewritten (by the owner's request) to remove AI co-author trailers; no force push was made from this session.
+- Results: headless 185 passed / 0 failed / 1 skipped; emulator benchmarks from freshly installed builds of `503347c` (logs in `docs/benchmarks/2026-11-10-helix-mission/`). Physical-device validation still pending.
+
 ## 2026-11-09 — Batch 5 pre-work review (findings; rule changes pending approval)
 
 - `33dd17f` Accuracy tests: multi-component blast, chain reaction, shot through a destroyed component, empty detonation, two shots.

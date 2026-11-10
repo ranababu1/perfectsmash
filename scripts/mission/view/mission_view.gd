@@ -1,11 +1,16 @@
 class_name MissionView
 extends Node3D
-## Greybox 3D presentation of a MissionWorld, seen through a tilted three-quarter camera.
-## Every component is its physics rectangle extruded in depth (front face = collision shape), so
-## the picture never implies collisions the 2D simulation does not have. Owns no game rules:
-## it mirrors bodies each frame and reacts to world/engine signals with simple VFX.
+## 3D presentation of a MissionWorld, seen through a tilted three-quarter camera. Components use
+## the integrated production models (AssetLibrary, data/integrated_assets.json) and fall back to
+## greybox boxes: either way the front face is the physics rectangle, so the picture never implies
+## collisions the 2D simulation does not have. The set dressing comes from
+## data/environments/<mission id>.json. Owns no game rules: it mirrors bodies each frame and
+## reacts to world/engine signals with VFX: the ui-vfx presets through MissionVfx, debris sets
+## (DebrisSet) for destroyed components, and the procedural sparks/flash/chunks as fallback when
+## an asset is not integrated.
 
 ## Greybox look per component kind: [depth (m), colour, emission colour or null, emission energy].
+## Depths also apply to production models (ASSET_CONTRACT 3); colours are the greybox fallback.
 ## The AI core is the only white/red object so the critical asset reads instantly.
 const KINDS := {
 	"server_rack": [0.8, Color("39424c"), Color("2f8fa3"), 0.25],
@@ -33,14 +38,21 @@ const PREVIEW_DOTS := 14
 const BLAST_LIGHTS := 2
 const BLAST_LIGHT_IDLE_ENERGY := 0.01
 const BLAST_LIGHT_COLOR := Color("ffb060")
+const ENVIRONMENT_DIR := "res://data/environments"
 
 var world: MissionWorld
 var definition: MissionDefinition
 var camera: Camera3D
 var operative: OperativeRig
+## component id -> ComponentVisual
 var _meshes := {}
-var _materials := {}
 var _projectiles := {}
+## Integrated production assets, loaded once and shared by every mission view.
+static var _library: AssetLibrary
+## Chapter key of the mission's set ("" when the mission has no environment file).
+var chapter := ""
+## Asset ids placed by the environment file (set dressing and statics), for reports and tests.
+var placed_pieces: Array[String] = []
 var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
@@ -49,15 +61,41 @@ var _time := 0.0
 static var blast_lights_enabled := true
 var _blast_lights: Array[OmniLight3D] = []
 var _next_blast_light := 0
+## Pooled blast flashes [MeshInstance3D, StandardMaterial3D]: creating a transparent flash per
+## detonation cost ~300 ms per blast on GL Compatibility (emulator spike log, lights disabled).
+var _blast_flashes := []
+var _next_blast_flash := 0
+## Preset effects (pools); `has_preset` false -> procedural fallback.
+var vfx: MissionVfx
+## Asset ids of the debris sets spawned so far, for reports and tests.
+var debris_spawned: Array[String] = []
+## component id -> physics material id (selects impact effects).
+var _material_of := {}
+## Point the camera frames (view space).
+var _focus := Vector3.ZERO
+## Debris sets drawn once under the floor while the mission loads (shader warm-up).
+var _warm_nodes: Array[Node3D] = []
+var _warm_frames := 0
+const WARM_FRAMES := 3
+## Hard impacts below this strength (px/s or impulse) show no effect.
+const IMPACT_EFFECT_MIN := 400.0
 
 
 func setup(p_world: MissionWorld) -> void:
 	world = p_world
 	definition = world.definition
+	if _library == null:
+		_library = AssetLibrary.load_from_file()
 	_build_environment()
 	_build_camera()
+	vfx = MissionVfx.new()
+	vfx.name = "MissionVfx"
+	add_child(vfx)
+	vfx.setup(_library, _focus.x)
+	var set_data := _environment_data()
 	for s in definition.statics:
-		_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
+		if not _add_static_piece(s, set_data):
+			_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
 	for c in definition.components:
 		_add_component(c)
 	operative = OperativeRig.new()
@@ -76,9 +114,24 @@ func setup(p_world: MissionWorld) -> void:
 
 
 func _build_blast_lights() -> void:
+	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.5
+	sphere.height = 1.0
+	for i in BLAST_LIGHTS:
+		var flash := MeshInstance3D.new()
+		flash.mesh = sphere
+		var material := StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.albedo_color = Color(1.0, 0.72, 0.35, 0.0)
+		flash.material_override = material
+		flash.position = centre
+		flash.scale = Vector3.ONE * 0.2
+		add_child(flash)
+		_blast_flashes.append([flash, material])
 	if not blast_lights_enabled:
 		return
-	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
 	for i in BLAST_LIGHTS:
 		var light := OmniLight3D.new()
 		light.light_color = BLAST_LIGHT_COLOR
@@ -89,19 +142,33 @@ func _build_blast_lights() -> void:
 		_blast_lights.append(light)
 
 
-## The blast flash is alpha-blended, a shader variant nothing else in the scene uses; compiling
-## it on the first detonation stalled that frame by 0.5-1.1 s on the Android emulator (renderer
-## evaluation, 2026-11-10). Show it once at zero alpha while the mission loads, so that cost is
-## paid up front. Debris and sparks warm up the same way. (Blast lights are a persistent pool.)
+## Effects first used mid-play compiled shaders then: 0.5-1.1 s on the first detonation on the
+## Android emulator (renderer evaluation, 2026-11-10). Blast flashes and lights are persistent
+## pools (always drawn, so compiled with the mission); debris and sparks are shown once here,
+## hidden, while the mission loads.
 func _warm_up_effects() -> void:
-	var centre := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y - 150.0), definition.ground_y)
-	_spawn_flash(centre, 4.0, 0.0, 0.0)
 	# Particles just under the ground surface: drawn (so compiled) but hidden, and not moving.
 	var hidden := ViewMapping.to_3d(Vector2(definition.width / 2.0, definition.ground_y + 60.0), definition.ground_y)
 	for particles: CPUParticles3D in [_spawn_sparks(hidden), _spawn_debris(hidden, Color.BLACK, Vector3.ONE * 0.1)]:
 		particles.initial_velocity_min = 0.0
 		particles.initial_velocity_max = 0.0
 		particles.gravity = Vector3.ZERO
+	# One debris set per kind in the mission, motionless under the floor for a few frames.
+	if _library == null:
+		return
+	var warmed := {}
+	for c in definition.components:
+		var entry := _library.debris_entry(chapter, c.kind, c.size)
+		if entry.is_empty() or warmed.has(entry.id):
+			continue
+		warmed[entry.id] = true
+		var model := _library.instance_debris(chapter, c.kind, c.size)
+		if model == null:
+			continue
+		model.position = Vector3(_focus.x, -1.2, 0.0)
+		add_child(model)
+		_warm_nodes.append(model)
+	_warm_frames = WARM_FRAMES
 
 
 ## The point in the 2D physics plane under a screen position (null if the ray misses it).
@@ -137,6 +204,12 @@ func hide_preview() -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
+	if _warm_frames > 0:
+		_warm_frames -= 1
+		if _warm_frames == 0:
+			for node: Node3D in _warm_nodes:
+				node.queue_free()
+			_warm_nodes.clear()
 	for id: String in _markers.keys():
 		var core := world.body_for(id)
 		var marker: MeshInstance3D = _markers[id]
@@ -144,22 +217,23 @@ func _process(delta: float) -> void:
 			continue
 		var top := ViewMapping.to_3d(core.global_position, definition.ground_y)
 		marker.position = top + Vector3(0.0, core.size.y / ViewMapping.PX_PER_METRE / 2.0 + MARKER_HEIGHT + sin(_time * 3.0) * 0.06, 0.0)
+		vfx.move_core_idle(id, top + Vector3(0.0, 0.0, 0.4))
 		marker.rotation.y = _time * 1.5
-		var material: StandardMaterial3D = _materials[id][0]
-		material.emission_energy_multiplier = 1.0 + sin(_time * 4.0) * 0.4
 	for id: String in _meshes.keys():
 		var body := world.body_for(id)
-		var mesh: MeshInstance3D = _meshes[id]
+		var visual: ComponentVisual = _meshes[id]
 		if body == null:
 			continue
-		mesh.position = ViewMapping.to_3d(body.global_position, definition.ground_y)
-		mesh.rotation = ViewMapping.rotation_to_3d(body.global_rotation)
+		visual.position = ViewMapping.to_3d(body.global_position, definition.ground_y)
+		visual.rotation = ViewMapping.rotation_to_3d(body.global_rotation)
+		visual.animate(_time)
 	for projectile: WeaponProjectile in _projectiles.keys():
 		if is_instance_valid(projectile):
 			(_projectiles[projectile] as Node3D).position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
 
 
 func _build_environment() -> void:
+	var has_set := not _environment_data().is_empty()
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
 	env.background_color = Color("15191e")
@@ -167,20 +241,40 @@ func _build_environment() -> void:
 	env.ambient_light_color = Color("8090a0")
 	env.ambient_light_energy = 0.55
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	if has_set:
+		# Production set (dark graphite hall): lower fill, a reflection-only sky so metals read
+		# as metal (ASSET_CONTRACT 9, proposed source), and depth fog so the back recedes.
+		env.ambient_light_color = Color("6c7a88")
+		env.ambient_light_energy = 0.42
+		var sky_material := ProceduralSkyMaterial.new()
+		sky_material.sky_top_color = Color("4a5866")
+		sky_material.sky_horizon_color = Color("8090a0")
+		sky_material.ground_horizon_color = Color("3a4048")
+		sky_material.ground_bottom_color = Color("1b2026")
+		var sky := Sky.new()
+		sky.sky_material = sky_material
+		env.sky = sky
+		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+		env.fog_enabled = true
+		env.fog_light_color = Color("121820")
+		env.fog_density = 0.035
+		env.fog_sky_affect = 0.0
 	var world_env := WorldEnvironment.new()
 	world_env.environment = env
 	add_child(world_env)
 
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-52.0, -38.0, 0.0)
-	sun.light_energy = 1.15
+	sun.light_energy = 1.0 if has_set else 1.15
 	sun.light_color = Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
 	add_child(sun)
 
+	if _build_set():
+		return
 	var width_m := definition.width / ViewMapping.PX_PER_METRE
-	# Floor: a slab whose top is the physics ground line.
+	# Greybox fallback. Floor: a slab whose top is the physics ground line.
 	_add_box(Vector3(width_m + 30.0, 0.4, 14.0), _flat(Color("23282e")), Vector3(width_m / 2.0, -0.2, -2.0), 0.0)
 	# Low-contrast facility backdrop: back wall and a few distant blocks.
 	_add_box(Vector3(width_m + 30.0, 9.0, 0.4), _flat(Color("1b2026")), Vector3(width_m / 2.0, 4.5, -6.0), 0.0)
@@ -192,12 +286,136 @@ func _build_environment() -> void:
 		_add_box(Vector3(w, h, 1.0), _flat(Color("20262c")), Vector3(rng.randf_range(-2.0, width_m + 2.0), h / 2.0, -5.0), 0.0)
 
 
+func _environment_data() -> Dictionary:
+	var path := "%s/%s.json" % [ENVIRONMENT_DIR, definition.id]
+	if not FileAccess.file_exists(path):
+		return {}
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return data if data is Dictionary else {}
+
+
+## Places the mission's set dressing from data/environments/<id>.json. Returns false (greybox
+## backdrop instead) when there is no file or none of its pieces is integrated.
+func _build_set() -> bool:
+	var data := _environment_data()
+	if data.is_empty() or _library == null:
+		return false
+	chapter = str(data.get("chapter", ""))
+	var placed := 0
+	for piece: Variant in data.get("pieces", []):
+		if not piece is Dictionary:
+			continue
+		var xs: Array = []
+		if piece.has("repeat"):
+			var r: Dictionary = piece.repeat
+			var x := float(r.x_from)
+			while x <= float(r.x_to) + 0.001:
+				xs.append(x)
+				x += float(r.step)
+		else:
+			xs.append(float(piece.get("x", 0.0)))
+		var transforms: Array[Transform3D] = []
+		for x: float in xs:
+			var basis := Basis(Vector3.UP, deg_to_rad(float(piece.get("rot", 0.0)))).scaled(Vector3.ONE * float(piece.get("scale", 1.0)))
+			transforms.append(Transform3D(basis, Vector3(x, float(piece.get("y", 0.0)), float(piece.get("z", 0.0)))))
+		var shadows: bool = piece.get("shadows", true)
+		var count := _place_piece(str(piece.id), transforms, shadows)
+		for i in count:
+			placed_pieces.append(str(piece.id))
+		placed += count
+	return placed > 0
+
+
+## Places one set piece at each transform. Repeated pieces become one MultiMeshInstance3D per
+## mesh in the piece, so a row of 11 floor tiles costs its surface count in draw calls instead
+## of 11 times that (slice A measured ~1,800 draw calls with one node per piece). Returns the
+## number placed.
+func _place_piece(asset_id: String, transforms: Array[Transform3D], shadows: bool) -> int:
+	var template := _library.instance_piece(asset_id, chapter)
+	if template == null:
+		return 0
+	var cast := GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	if transforms.size() == 1:
+		template.transform = transforms[0]
+		add_child(template)
+		for mesh_instance: MeshInstance3D in template.find_children("*", "MeshInstance3D", true, false):
+			mesh_instance.cast_shadow = cast
+		return 1
+	for mesh_instance: MeshInstance3D in template.find_children("*", "MeshInstance3D", true, false):
+		if not mesh_instance.visible or mesh_instance.mesh == null:
+			continue
+		var local := _relative_transform(template, mesh_instance)
+		var mesh := mesh_instance.mesh
+		# Bake per-surface overrides into a copy of the mesh so the MultiMesh draws them.
+		var overridden := false
+		for surface in mesh.get_surface_count():
+			if mesh_instance.get_surface_override_material(surface) != null:
+				overridden = true
+		if overridden:
+			mesh = mesh.duplicate()
+			for surface in mesh.get_surface_count():
+				var material := mesh_instance.get_surface_override_material(surface)
+				if material != null:
+					mesh.surface_set_material(surface, material)
+		var multimesh := MultiMesh.new()
+		multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.mesh = mesh
+		multimesh.instance_count = transforms.size()
+		for i in transforms.size():
+			multimesh.set_instance_transform(i, transforms[i] * local)
+		var batch := MultiMeshInstance3D.new()
+		batch.name = "%s_batch" % asset_id
+		batch.multimesh = multimesh
+		batch.cast_shadow = cast
+		add_child(batch)
+	template.free()
+	return transforms.size()
+
+
+static func _relative_transform(root: Node3D, node: Node3D) -> Transform3D:
+	var t := Transform3D.IDENTITY
+	var current: Node = node
+	while current != null and current != root:
+		if current is Node3D:
+			t = (current as Node3D).transform * t
+		current = current.get_parent()
+	return t
+
+
+## A static ledge or plinth from the set's kit, scaled to the static rectangle (statics use the
+## component pivot: centre of the rectangle, z = 0).
+func _add_static_piece(s: Dictionary, data: Dictionary) -> bool:
+	var kit: Dictionary = data.get("statics", {})
+	if kit.is_empty() or _library == null:
+		return false
+	var low: bool = s.size.y / ViewMapping.PX_PER_METRE <= float(kit.get("low_max_height_m", 0.45))
+	var asset_id := str(kit.get("low" if low else "tall", ""))
+	var node := _library.instance_piece(asset_id, chapter)
+	if node == null:
+		return false
+	var dims := _piece_size_m(asset_id)
+	node.scale = Vector3(s.size.x / ViewMapping.PX_PER_METRE / dims.x, s.size.y / ViewMapping.PX_PER_METRE / dims.y, 1.0)
+	node.position = ViewMapping.to_3d(s.position, definition.ground_y)
+	node.rotation = ViewMapping.rotation_to_3d(s.rotation)
+	add_child(node)
+	placed_pieces.append(asset_id)
+	return true
+
+
+## Width and height in metres from a manifest entry's "dimensions" ("2.00 x 0.30 x 1.60 m").
+func _piece_size_m(asset_id: String) -> Vector2:
+	var text := str(_library.entries.get(asset_id, {}).get("dimensions", "1 x 1 x 1"))
+	var parts := text.replace(" m", "").split(" x ")
+	return Vector2(float(parts[0]), float(parts[1])) if parts.size() >= 2 else Vector2.ONE
+
+
 func _build_camera() -> void:
 	camera = Camera3D.new()
 	camera.fov = CAMERA_FOV
 	var left := minf(definition.operative.x, _facility_left())
 	var right := _facility_right()
 	var focus := Vector3((left + right) / 2.0 / ViewMapping.PX_PER_METRE, 1.6, 0.0)
+	_focus = focus
 	camera.position = focus + CAMERA_OFFSET
 	add_child(camera)
 	camera.look_at(focus + Vector3(0.0, -0.4, 0.0), Vector3.UP)
@@ -237,17 +455,15 @@ func _build_preview() -> void:
 
 func _add_component(c: Dictionary) -> void:
 	var look: Array = KINDS.get(c.kind, DEFAULT_KIND)
-	var material := _flat(look[1])
-	# Emission stays enabled (black when unlit) so turning CRITICAL later only changes values,
-	# not the shader variant: a variant switch mid-play costs a shader compile.
-	material.emission_enabled = true
-	material.emission = look[2] if look[2] != null else Color.BLACK
-	material.emission_energy_multiplier = look[3] if look[2] != null else 0.0
-	var mesh := _add_box(ViewMapping.size_to_3d(c.size, look[0]), material, ViewMapping.to_3d(c.position, definition.ground_y), c.rotation)
-	_meshes[c.id] = mesh
-	_materials[c.id] = [material, look[1]]
+	var visual := ComponentVisual.create(c, look, _library, chapter)
+	visual.position = ViewMapping.to_3d(c.position, definition.ground_y)
+	visual.rotation = ViewMapping.rotation_to_3d(c.rotation)
+	add_child(visual)
+	_meshes[c.id] = visual
+	_material_of[c.id] = str(c.get("material", ""))
 	if c.critical_asset:
 		_markers[c.id] = _add_marker()
+		vfx.start_core_idle(c.id, _library, visual.position + Vector3(0.0, 0.0, 0.4))
 
 
 ## A floating, slowly turning red pointer above a critical asset.
@@ -286,31 +502,41 @@ static func _flat(color: Color) -> StandardMaterial3D:
 
 
 func _on_component_state_changed(component_id: String, _previous: int, current: int) -> void:
-	if not _materials.has(component_id):
-		return
-	var material: StandardMaterial3D = _materials[component_id][0]
-	var base: Color = _materials[component_id][1]
-	match current:
-		DamageableComponent.State.DAMAGED:
-			material.albedo_color = base.darkened(0.25)
-		DamageableComponent.State.CRITICAL:
-			material.albedo_color = base.darkened(0.45)
-			material.emission_enabled = true
-			material.emission = Color("ff4a30")
-			material.emission_energy_multiplier = 0.8
+	var visual: ComponentVisual = _meshes.get(component_id)
+	if visual != null:
+		visual.set_state(current)
 
 
 func _on_component_removed(component_id: String, at: Vector2) -> void:
-	var mesh: MeshInstance3D = _meshes.get(component_id)
+	var visual: ComponentVisual = _meshes.get(component_id)
 	_meshes.erase(component_id)
+	var at_3d := ViewMapping.to_3d(at, definition.ground_y)
 	if _markers.has(component_id):
 		(_markers[component_id] as Node).queue_free()
 		_markers.erase(component_id)
-	if mesh == null:
+		vfx.stop_core_idle(component_id)
+		vfx.core_destroyed(at_3d + Vector3(0.0, 0.0, 0.4))
+	if visual == null:
 		return
-	var color: Color = _materials[component_id][1]
-	_spawn_debris(ViewMapping.to_3d(at, definition.ground_y), color, (mesh.mesh as BoxMesh).size)
-	mesh.queue_free()
+	vfx.collapse(at_3d, visual.size_m.x)
+	if not _spawn_debris_set(component_id, visual):
+		_spawn_debris(at_3d, visual.base_color, visual.size_m)
+	visual.queue_free()
+
+
+## The library's debris set where the component was, with its last pose. False when none is
+## integrated for the kind (caller falls back to procedural chunks).
+func _spawn_debris_set(component_id: String, visual: ComponentVisual) -> bool:
+	if _library == null:
+		return false
+	var model := _library.instance_debris(chapter, visual.kind, visual.size_px)
+	if model == null:
+		return false
+	var entry := _library.debris_entry(chapter, visual.kind, visual.size_px)
+	var debris := DebrisSet.create(model, visual.position, visual.rotation.z, component_id, str(entry.id))
+	add_child(debris)
+	debris_spawned.append(debris.asset_id)
+	return true
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
@@ -329,6 +555,13 @@ func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
 	mesh.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
 	add_child(mesh)
 	_projectiles[projectile] = mesh
+	if not lobbed:
+		vfx.muzzle(mesh.position, ViewMapping.direction_angle(projectile.linear_velocity))
+		projectile.struck.connect(_on_kinetic_struck)
+
+
+func _on_kinetic_struck(projectile: WeaponProjectile, _target: Node, _impact_speed: float) -> void:
+	vfx.kinetic_hit(ViewMapping.to_3d(projectile.global_position, definition.ground_y, 0.3))
 
 
 func _on_projectile_removed(projectile: WeaponProjectile) -> void:
@@ -339,26 +572,23 @@ func _on_projectile_removed(projectile: WeaponProjectile) -> void:
 
 
 func _on_blast(center: Vector2, radius: float) -> void:
-	_spawn_flash(ViewMapping.to_3d(center, definition.ground_y), radius / ViewMapping.PX_PER_METRE * 2.0, 0.7, 4.0)
+	var at := ViewMapping.to_3d(center, definition.ground_y)
+	# With the preset the fireball replaces the flash sphere; the pooled light still lights the set.
+	var preset := vfx.breach_explosion(at + Vector3(0.0, 0.0, 0.3), radius)
+	_spawn_flash(at, radius / ViewMapping.PX_PER_METRE * 2.0, 0.0 if preset else 0.7, 4.0)
 
 
 func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -> void:
-	var flash := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = 0.5
-	sphere.height = 1.0
-	flash.mesh = sphere
-	var material := StandardMaterial3D.new()
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(1.0, 0.72, 0.35, alpha)
-	flash.material_override = material
-	flash.position = at
-	add_child(flash)
-	var tween := flash.create_tween().set_parallel()
-	tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
-	tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
-	tween.chain().tween_callback(flash.queue_free)
+	if not _blast_flashes.is_empty():
+		var entry: Array = _blast_flashes[_next_blast_flash]
+		_next_blast_flash = (_next_blast_flash + 1) % _blast_flashes.size()
+		var flash: MeshInstance3D = entry[0]
+		var material: StandardMaterial3D = entry[1]
+		flash.position = at
+		material.albedo_color.a = alpha
+		var tween := flash.create_tween().set_parallel()
+		tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
+		tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
 	if light_energy <= 0.0 or _blast_lights.is_empty():
 		return
 	var light := _blast_lights[_next_blast_light]
@@ -369,10 +599,12 @@ func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -
 	light.create_tween().tween_property(light, "light_energy", BLAST_LIGHT_IDLE_ENERGY, 0.3)
 
 
-func _on_impact(at: Vector2, strength: float, _component_id: String) -> void:
-	if strength < 400.0:
+func _on_impact(at: Vector2, strength: float, component_id: String) -> void:
+	if strength < IMPACT_EFFECT_MIN:
 		return
-	_spawn_sparks(ViewMapping.to_3d(at, definition.ground_y, 0.3))
+	var at_3d := ViewMapping.to_3d(at, definition.ground_y, 0.3)
+	if not vfx.impact(at_3d, _material_of.get(component_id, "")):
+		_spawn_sparks(at_3d)
 
 
 func _spawn_sparks(at: Vector3) -> CPUParticles3D:

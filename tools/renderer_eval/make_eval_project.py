@@ -32,6 +32,13 @@ VARIANTS = {
 
 EVAL_PACKAGE = "dev.imrn.temporal1.rendereval"
 
+
+def eval_exclude_filter() -> str:
+    """Ship only integrated assets (tools/assets/export_filter.py); keep tools/renderer_eval."""
+    sys.path.insert(0, str(REPO / "tools/assets"))
+    import export_filter
+    return ", ".join(["tests/*", "docs/*"] + export_filter.exclusions())
+
 ANDROID_PRESET = """[preset.0]
 
 name="Android Eval"
@@ -40,8 +47,8 @@ runnable=true
 dedicated_server=false
 custom_features=""
 export_filter="all_resources"
-include_filter="data/*.json, tools/renderer_eval/*.json"
-exclude_filter="tests/*, docs/*"
+include_filter="data/*.json, data/*/*.json, tools/renderer_eval/*.json"
+exclude_filter="{exclude}"
 export_path="build/eval.apk"
 encryption_include_filters=""
 encryption_exclude_filters=""
@@ -119,7 +126,7 @@ def main() -> int:
     config = {"variant": args.variant, "soak_minutes": args.soak_minutes}
     (out / "tools/renderer_eval/benchmark_config.json").write_text(json.dumps(config, indent=2) + "\n")
     (out / "export_presets.cfg").write_text(
-        ANDROID_PRESET.replace("{package}", EVAL_PACKAGE).replace("{label}", args.variant), newline="\n"
+        ANDROID_PRESET.replace("{package}", EVAL_PACKAGE).replace("{label}", args.variant).replace("{exclude}", eval_exclude_filter()), newline="\n"
     )
     print(f"eval project ({args.variant}, renderer {method}) written to {out}")
     return 0

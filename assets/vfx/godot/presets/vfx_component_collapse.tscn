@@ -1,0 +1,70 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_dust_collapse_a.png" id="1_ayg1b"]
+[ext_resource type="Texture2D" path="res://assets/vfx/shared/shr_vfx_debris_chip_small_a.png" id="2_ajblk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7vvh"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ayg1b")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ivg75"]
+size = Vector2(4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7hio"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_ajblk")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_5p3k1"]
+size = Vector2(0.16, 0.16)
+
+[node name="VfxComponentCollapse" type="Node3D" unique_id=1141917791]
+metadata/tfj_note = "Component removed / toppled at ground level: collapse dust plus small chips. Scale the root by component width / 1.6 m."
+
+[node name="Dust" type="CPUParticles3D" parent="." unique_id=1026855217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44, 0)
+material_override = SubResource("StandardMaterial3D_h7vvh")
+emitting = false
+amount = 1
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_ivg75")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Chips" type="CPUParticles3D" parent="." unique_id=1543363934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+material_override = SubResource("StandardMaterial3D_g7hio")
+emitting = false
+amount = 18
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_5p3k1")
+emission_shape = 3
+emission_box_extents = Vector3(0.6, 0.3, 0.1)
+direction = Vector3(0, 1, 0)
+spread = 65.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.5
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.6
+scale_amount_max = 1.4
+anim_offset_max = 1.0
