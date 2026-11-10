@@ -6,10 +6,19 @@ All meaningful changes, newest first.
 
 - Restart keeps the mission set: `MissionView` builds the environment, sun, set dressing and statics under one `Set` node and hands it to the next attempt of the same mission (cached on leaving the tree, released on leaving missions, at quit and at the end of the test run). Desktop restart after the first: ready ~29 ms → ~6 ms; the emulator saving (sky radiance, shadow light, MultiMesh buffers, materials) is still to be measured.
 - Lighting: depth fog from 12 m to 18 m (behind the facility, which is ~10.5 m from the camera) replaces the exponential fog that hazed the gameplay plane by ~30%; sun lowered from -52° to -36° pitch so the faces of the pieces toward the camera carry more light than the floor. Measured luminance at the start frame: racks 38 → 46, columns 48 → 62, operative 44 → 47, floor 55 → 55, back hall upper area recedes into haze.
-- Warm-ups: projectile models (slug, canister) and the unselected weapon model are drawn for the first frames at load (the first Kinetic shot stalled ~150 ms on the emulator).
+- Warm-ups: the unselected weapon model on the operative is drawn for the first frames at load (projectiles are already warmed by `ProjectileVisual`).
 - Tests: `wait_process_frames` helper; the overlay test waits rendered frames (it depended on physics catch-up timing); new `test_restart_reuses_the_mission_set`, `test_projectiles_and_hidden_weapon_are_warmed_at_load`. Headless 207 passed / 0 failed / 1 skipped.
 - `tools/perf/restart_timing.gd` times app-style restarts on desktop.
 - Emulator benchmark not run: the emulator is pinned in lock-task mode by another app (`app.sipsure`), which refuses other launches; left untouched.
+
+## 2026-11-10 - Full asset integration into the game (owner approval)
+
+- `110c1d0` legacy Perfect Smash app icons removed (`assets/icon/*`, 9 files, and `tools/render_icons.gd`); `config/icon` is `assets/ui/branding/app_icon/gam_logo_app_icon_a_256.png`; library manifest 1,464 entries.
+- `a14afcb` `teaser_2041` added to `data/cinematics.json` (12 sequences, 50 slides).
+- `64ee807` Breach Charge: a launcher that lobs canisters, area damage on contact plus a 2.5 s air-burst fuse (`fuse_seconds`); `ProjectileVisual` draws the slug and canister meshes, the kinetic and breach trails, the breach arming light and the activation flash. Weapon validation: fuse at most 5 s, only blast weapons can have a fuse, lobbed weapons must have a blast.
+- `681016c` the kits, debris, environment pieces, landmarks and texture sets of all five chapters integrated (348 ids) with the trails and arming sprites; tools-only chapter previews and `tools/capture_chapters.gd`; audio hook map reports files wired directly in `data/audio.json`.
+- `449a501` merged `origin/main` (slice C); projectiles keep `ProjectileVisual` with the slice C muzzle flash; slices renamed F (trails, arming) and G (all chapters) so slice E stays free for the planned polish pass; 618 integrated entries, 10 presets.
+- Results: validator PASS with 0 warnings; clean Godot import (no `.godot`) exit 0 with 0 errors, no segfault; load check 1,455 resources, 0 failed; headless tests 211 passed / 0 failed / 1 skipped; windowed (xvfb, GL Compatibility) 212 passed / 0 failed / 0 skipped; chapter captures for all five chapters (13 of 13 production models each); reference check 0 broken references.
 
 ## 2026-11-10 — Asset integration slice C: HUD, operative, weapons
 

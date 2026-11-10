@@ -6,16 +6,14 @@
 
 Everything below is checked against the files on `assets`. Anything not yet delivered is marked **PENDING** with what is on disk today.
 
-## 0. Final state (integration pass 18, 2026-11-10)
+## 0. State on `main` (integration into the game, 2026-11-10)
 
-- **Library:** `assets/asset_manifest.json` has 1,473 entries (417.4 MB on disk), merged from the four finished fragments (3d-kits 418, surfaces 475, ui-vfx 318, audio 245, plus 17 base entries). `validate_asset_manifest.py --check --loudness` passes: 0 errors, 1 warning (`teaser_2041` is not in `data/cinematics.json`; see the code-side actions below).
-- **Godot 4.7.2:** headless import exit 0 (the first attempt segfaulted during the import, as before, and the logged retry passed); `load_check.gd` loaded 1,464 resources with 0 failures (233 Ogg, 13 WAV, 817 textures, 8 fonts, 392 scenes, 1 Theme; this includes 11 unlisted VFX preset scenes; JSON and SRT files are checked by the validator instead).
-- **Pass 18 closed the asset-side gaps:** VITA no longer washes out under the game light (`harness_mission_vita.webp`: 29.1% of the frame clipped before, 1.5% now; materials and textures only, no exposure change; `environments/PRODUCTION_NOTES.md`). The `SHR-SFX-IMPACT_COMPOSITE-02` to `-04` loudness metadata now matches the measured files. A real Godot Theme is on disk: `ui/theme/tfj_theme.tres` (section 5).
-- **Code-side actions the asset streams cannot do (they are outside `assets/`):**
-  - Add the `teaser_2041` sequence to `data/cinematics.json`. Its slides, stills and subtitles are in `assets/cinematics/cinematic_sequences.json` and `cinematics/subtitles/`. Until then, the validator warns about it.
-  - The `assets/` copy on `main` is stale. It is the pass 16 snapshot and does not have the later 3d-kits premium uplift and surfaces batches (368 files replaced, 75 entries only in `assets/`), nor the pass 18 VITA textures and floor glbs, the corrected loudness metadata or the Theme. Refresh it from `assets/` (with the `assets/` to `assets/` path rewrite) only when Imran approves.
-- **Coverage:** 3,236 of 3,236 requirements, 100 of 100 levels full, 36 of 36 game-wide items.
-- **Two copies of the library now exist on `assets`.** `main` consolidated the library under `assets/` (PR #3, with paths rewritten from `assets/` to `assets/`) and integrated slices A and B from it. That copy is the pass 16 snapshot (1,394 entries). Of those, 368 files have since been replaced in `assets/` by the 3d-kits premium uplift and the later surfaces batches, and 75 entries exist only in `assets/`. Use `assets/` as the source of truth. Refreshing `assets/` from it is a change to what `main` ships, so it needs Imran's approval first.
+- **Library on `main`:** `assets/` holds the complete delivery from `assets@f186977` (integration pass 18; every delivered file byte-identical, text files with the `generated_assets/` to `assets/` path rewrite). `assets/asset_manifest.json` has 1,464 entries (417.0 MB): 1,456 from the four fragments (3d-kits 418, surfaces 475, ui-vfx 318, audio 245) plus 8 base entries (the legacy `gameplay_bed.ogg` and 7 style-concept references). The 9 legacy `ICON-*` entries (Perfect Smash app icons, `assets/icon/*`) were removed with their files; `gam_logo_app_icon_a_*` replaces them and `project.godot` `config/icon` points at the new 256 px icon. `validate_asset_manifest.py --check --loudness`: PASS, 0 errors, 0 warnings.
+- **In the game:** `data/integrated_assets.json` (built by `tools/assets/build_integration_manifest.py` from `tools/assets/integration_selection.json`) now integrates the kits, debris, environment pieces, landmarks and texture sets of all five chapters (slice G), the weapon trails and breach arming and activation sprites (slice F; the projectile meshes came with slice C), plus the Helix slices A (structures, environment, materials), B (debris, damage, VFX), C (HUD theme and icons, operative, weapon models) and D (audio): 618 entries and 10 VFX presets. Missions other than `helix_01` do not exist yet, so chapters II to V are seen in-game only through the tools-only previews in `tools/chapter_preview/` (`tools/capture_chapters.gd`).
+- **Breach Charge (confirmed by Imran):** a launcher that lobs canisters. Area damage on contact, plus a 2.5 s air-burst fuse (`fuse_seconds`) for a canister that has hit nothing. The canister mesh `OPR-PRJ-BREACH_CANISTER-A` tumbles with the physics body, with the breach trail, arming light and activation flash (`scripts/mission/view/projectile_visual.gd`). The Kinetic Accelerator stays the precision direct-impact weapon (slug mesh and kinetic trail).
+- **Cinematics:** `teaser_2041` is in `data/cinematics.json` (no chapter plays it yet).
+- **Coverage:** 3,236 of 3,236 requirements, 100 of 100 levels full, 36 of 36 game-wide items (design-spec level mapping; only `helix_01` is an authored mission).
+- **The `assets` branch** is kept unchanged as the source and archive of the delivery.
 - Sections below that say **PENDING** for the operative, weapons, projectiles and cinematics are superseded: all of them are delivered (see section 9).
 
 ---
@@ -28,7 +26,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   - AI-generated images are **not commercially cleared**. These are the background plates and texture sources (GenerateImage), the two UI backdrops, and the concepts. Check the `rights_status` text of each entry.
   - Procedural and code-generated work (meshes, VFX, UI vector art, synthesised audio) is original work, but ownership of AI-assisted output is not legally settled, so none of it is marked commercially cleared.
   - The fonts (Chakra Petch, Barlow) are SIL OFL 1.1, cleared for embedding. Keep `OFL.txt` beside them and credit both families.
-  - The legacy `assets/audio/music/gameplay_bed.ogg` keeps its **unverified** rights status. Do not delete, re-encode or relabel it. `assets/icon/*` and `assets/music/` are legacy and also untouched.
+  - The legacy `assets/audio/music/gameplay_bed.ogg` keeps its **unverified** rights status. Do not delete, re-encode or relabel it. The legacy `assets/icon/*` set was replaced by `assets/ui/branding/app_icon/` and removed on 2026-11-10. `assets/music/` (the untracked owner master) is legacy and also untouched.
 - **Do not edit generated files in place** (glb, png, ogg, the manifest, fragments or tool output). They are rebuilt from source scripts, and hand edits would be lost. If something is wrong (scale, pivot, node name, loudness, a missing variant), write the request down (asset id, what is wrong, what you need) and pass it to Imran for the asset streams.
 - Do not regenerate `asset_manifest.json`. The integration stream owns `--merge`.
 
@@ -149,7 +147,7 @@ Everything below is checked against the files on `assets`. Anything not yet deli
   - project `config/icon` candidate: `gam_logo_app_icon_a_256.png`
   - Play Store icon: `gam_logo_app_icon_a_512.png`
 
-  `assets/icon/*` is legacy. Leave it, and leave `project.godot`, unchanged until Imran approves.
+  Done on 2026-11-10 (owner approval): `config/icon` uses `gam_logo_app_icon_a_256.png` and the legacy `assets/icon/*` set is removed. Set the launcher icons in your local `export_presets.cfg`.
 - **Also delivered:** a cooldown ring (`TextureProgressBar`, clockwise), a layered critical-asset marker for a CanvasLayer at the unprojected marker point, an aim reticle, a trajectory dot, ammo pips and off-screen indicators. The 23 screen mock-ups are layout references only.
 
 ## 6. Audio (`audio/PRODUCTION_NOTES.md`, `CUE_SHEET.md`, `QC_REPORT.md`, `docs/audio_hook_map.md`)
@@ -202,9 +200,9 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 - **Findings from pass 17, closed in pass 18:**
   - VITA washout: fixed in the materials (revision 4). The floor albedo is now about 141 / 138 / 126 sRGB with a warm tint against the blue light, the white panels are darker with more detail contrast, and the floor tile glbs have a lower composite factor. Clipped pixels in `harness_mission_vita.webp` fell from 29.1% to 1.5% (floor band from 71.7% to 0.3%). No exposure change is needed in the chapter environment. The Cycles environment sheet and the material tile previews still show revision 3.
   - Loudness metadata: `SHR-SFX-IMPACT_COMPOSITE-02`, `-03` and `-04` now record -22.0, -22.3 and -21.7 LUFS (measured). The audio files are unchanged.
-  - Still open, code side: `teaser_2041` is not in `data/cinematics.json` (section 0).
+  - `teaser_2041` was added to `data/cinematics.json` on `main` (2026-11-10).
 - **Chapter II to V kinds** (`lab_column`, `grid_pylon`, `civic_column`, `anchor_column`...) are proposed names (section 5). Missions for those chapters should use them, or tell us your names so the kits can be renamed.
-- **Breach Charge design:** it is assumed to be a launcher that fires lobbed canisters. Imran has not yet confirmed this.
+- **Breach Charge design:** confirmed by Imran (2026-11-10): a launcher that lobs canisters, an area-damage weapon distinct from the precision direct-impact Kinetic Accelerator. Implemented on `main` (section 0).
 - **Validation done so far, honestly:**
   - Godot 4.7.2 headless import and load of every manifest file (pass 18: 1,464 loaded, 0 failed, including the Theme).
   - Renders under a copy of the MissionView camera and light, on the box's software OpenGL (llvmpipe).

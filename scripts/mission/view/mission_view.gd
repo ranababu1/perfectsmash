@@ -44,6 +44,9 @@ const SUN_YAW := -30.0
 const FOG_DENSITY := 0.85
 const FOG_DEPTH_BEGIN := 12.0
 const FOG_DEPTH_END := 18.0
+## Folder holding <mission id>.json set files. Tools (tools/chapter_preview) point it at their own
+## sets; the game always uses ENVIRONMENT_DIR.
+static var environment_dir := ENVIRONMENT_DIR
 
 var world: MissionWorld
 var definition: MissionDefinition
@@ -77,10 +80,7 @@ static var _cached_set_info := {}
 var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
-## Projectile models per weapon (contract 11); the glowing sphere is the fallback.
-const PROJECTILE_MODELS := {"kinetic_accelerator": "OPR-PRJ-KINETIC_SLUG-A", "breach_charge": "OPR-PRJ-BREACH_CANISTER-A"}
-## The kinetic slug is a thin 6 cm round; drawn larger so it reads at phone distance.
-const SLUG_SCALE := 2.0
+## Projectile meshes, trails and the breach arming light: ProjectileVisual (contract 11).
 ## False when the HUD draws the critical-asset marker (GAM-ICN-CRITICAL_ASSET) instead.
 var world_markers := true
 var _time := 0.0
@@ -160,7 +160,7 @@ func _attach_set() -> void:
 
 
 func _set_key() -> String:
-	return "%s|%s" % [definition.id, _library.get_instance_id() if _library != null else 0]
+	return "%s|%s|%s" % [environment_dir, definition.id, _library.get_instance_id() if _library != null else 0]
 
 
 func _notification(what: int) -> void:
@@ -242,14 +242,6 @@ func _warm_up_effects() -> void:
 	# One debris set per kind in the mission, motionless under the floor for a few frames.
 	if _library == null:
 		return
-	# Projectile models too: first drawn at the first shot, they stalled ~150 ms on the emulator.
-	for id: String in PROJECTILE_MODELS:
-		var projectile_model := _library.instance_piece(PROJECTILE_MODELS[id], "shared")
-		if projectile_model != null:
-			projectile_model.position = Vector3(_focus.x, -1.2, 0.0)
-			add_child(projectile_model)
-			_warm_nodes.append(projectile_model)
-	_warm_frames = WARM_FRAMES
 	var warmed := {}
 	for c in definition.components:
 		var entry := _library.debris_entry(chapter, c.kind, c.size)
@@ -262,6 +254,17 @@ func _warm_up_effects() -> void:
 		model.position = Vector3(_focus.x, -1.2, 0.0)
 		add_child(model)
 		_warm_nodes.append(model)
+	# Both projectile looks (meshes, trails, arming and activation sprites), so the first shot of
+	# each weapon compiles nothing mid-play.
+	for weapon_id: String in ProjectileVisual.ASSETS:
+		if not world.engine.weapons.has(weapon_id):
+			continue
+		var probe := WeaponProjectile.new(weapon_id, world.engine.weapons[weapon_id].stats, Vector2.ZERO, Vector2(1000.0, 0.0))
+		var warm := ProjectileVisual.create(probe, _library)
+		probe.free()
+		add_child(warm)
+		warm.park(Vector3(_focus.x, -0.6, 0.0))
+		_warm_nodes.append(warm)
 	_warm_frames = WARM_FRAMES
 
 
@@ -324,10 +327,7 @@ func _process(delta: float) -> void:
 		visual.animate(_time)
 	for projectile: WeaponProjectile in _projectiles.keys():
 		if is_instance_valid(projectile):
-			var node: Node3D = _projectiles[projectile]
-			node.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
-			if projectile.linear_velocity.length() > 1.0:
-				node.rotation = Vector3(0.0, 0.0, ViewMapping.direction_angle(projectile.linear_velocity))
+			(_projectiles[projectile] as ProjectileVisual).follow(projectile, definition.ground_y, delta)
 
 
 ## Screen position of the marker point above a critical asset (null when it is gone or behind
@@ -404,7 +404,7 @@ func _build_environment() -> void:
 
 
 func _environment_data() -> Dictionary:
-	var path := "%s/%s.json" % [ENVIRONMENT_DIR, definition.id]
+	var path := "%s/%s.json" % [environment_dir, definition.id]
 	if not FileAccess.file_exists(path):
 		return {}
 	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
@@ -657,35 +657,13 @@ func _spawn_debris_set(component_id: String, visual: ComponentVisual) -> bool:
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
-	var model := _library.instance_piece(PROJECTILE_MODELS.get(projectile.weapon_id, ""), "shared") if _library != null else null
-	if model != null:
-		if projectile.weapon_id == "kinetic_accelerator":
-			model.scale = Vector3.ONE * SLUG_SCALE
-		model.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
-		add_child(model)
-		_projectiles[projectile] = model
-		if projectile.weapon_id != "breach_charge":
-			var flash_at: Vector3 = operative.muzzle.global_position if operative != null and operative.muzzle != null else model.position
-			vfx.muzzle(flash_at, ViewMapping.direction_angle(projectile.linear_velocity))
-			projectile.struck.connect(_on_kinetic_struck)
-		return
-	var mesh := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	var radius := float(projectile.stats.projectile_radius) / ViewMapping.PX_PER_METRE
-	sphere.radius = radius
-	sphere.height = radius * 2.0
-	mesh.mesh = sphere
-	var lobbed := projectile.weapon_id == "breach_charge"
-	var material := _flat(Color("e0a040") if lobbed else Color("bdf4ff"))
-	material.emission_enabled = true
-	material.emission = material.albedo_color
-	material.emission_energy_multiplier = 1.6
-	mesh.material_override = material
-	mesh.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
-	add_child(mesh)
-	_projectiles[projectile] = mesh
-	if not lobbed:
-		vfx.muzzle(mesh.position, ViewMapping.direction_angle(projectile.linear_velocity))
+	var visual := ProjectileVisual.create(projectile, _library)
+	add_child(visual)
+	visual.follow(projectile, definition.ground_y, 0.0)
+	_projectiles[projectile] = visual
+	if not projectile.weapon_id == "breach_charge":
+		var flash_at: Vector3 = operative.muzzle.global_position if operative != null and operative.muzzle != null else visual.position
+		vfx.muzzle(flash_at, ViewMapping.direction_angle(projectile.linear_velocity))
 		projectile.struck.connect(_on_kinetic_struck)
 
 

@@ -1,0 +1,212 @@
+{
+	"_note": "TOOLS ONLY, not a game level: helix_01 recast onto the civitas kit for asset screenshots (tools/chapter_preview/build_chapter_previews.py).",
+	"id": "civitas_preview",
+	"name": "Civitas kit preview",
+	"chapter": 4,
+	"briefing": "Preview of the civitas kit on the helix_01 layout. Destroy the surveillance core.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 75,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 14
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [
+		{
+			"x": 900,
+			"y": 625,
+			"w": 420,
+			"h": 30
+		}
+	],
+	"components": [
+		{
+			"id": "blast_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 590,
+			"y": 595,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "rack_1",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1262,
+			"y": 590,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_2",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1304,
+			"y": 590,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "pillar_l",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 830,
+			"y": 530,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "pillar_r",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 970,
+			"y": 530,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "deck",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 900,
+			"y": 438,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"pillar_l",
+				"pillar_r"
+			]
+		},
+		{
+			"id": "core_shield",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 842,
+			"y": 386,
+			"w": 16,
+			"h": 80,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "aura_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 885,
+			"y": 396,
+			"w": 60,
+			"h": 60,
+			"health_scale": 3.0,
+			"critical_asset": true,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "power_cell",
+			"kind": "sensor_array",
+			"material": "glass_polymer",
+			"x": 955,
+			"y": 406,
+			"w": 36,
+			"h": 40,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "rack_3",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1030,
+			"y": 560,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_4",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1080,
+			"y": 560,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "relay_mast",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1200,
+			"y": 500,
+			"w": 22,
+			"h": 220
+		},
+		{
+			"id": "relay_dish",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 1200,
+			"y": 378,
+			"w": 70,
+			"h": 24,
+			"supports": [
+				"relay_mast"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the surveillance core",
+			"targets": [
+				"aura_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Wipe the racks",
+			"targets": [
+				"rack_1",
+				"rack_2",
+				"rack_3",
+				"rack_4"
+			]
+		},
+		{
+			"id": "relay",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Cut the top link",
+			"targets": [
+				"relay_dish"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 8 shots",
+			"limit": 8
+		}
+	]
+}

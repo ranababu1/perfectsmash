@@ -25,6 +25,57 @@
    "pending_approval": 4
   },
   {
+   "sound_id": "ui_confirm",
+   "fallback": "click",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/gam_sfx_ui_confirm_01.wav",
+    "res://assets/audio/sfx/shared/gam_sfx_ui_confirm_02.wav",
+    "res://assets/audio/sfx/shared/gam_sfx_ui_confirm_03.wav"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_CONFIRM-01",
+    "GAM-SFX-UI_CONFIRM-02",
+    "GAM-SFX-UI_CONFIRM-03"
+   ],
+   "pending_approval": 3
+  },
+  {
+   "sound_id": "ui_back",
+   "fallback": "click",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/gam_sfx_ui_back_01.wav",
+    "res://assets/audio/sfx/shared/gam_sfx_ui_back_02.wav",
+    "res://assets/audio/sfx/shared/gam_sfx_ui_back_03.wav"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_BACK-01",
+    "GAM-SFX-UI_BACK-02",
+    "GAM-SFX-UI_BACK-03"
+   ],
+   "pending_approval": 3
+  },
+  {
+   "sound_id": "weapon_switch",
+   "fallback": "click",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/opr_sfx_weapon_switch_01.ogg",
+    "res://assets/audio/sfx/shared/opr_sfx_weapon_switch_02.ogg",
+    "res://assets/audio/sfx/shared/opr_sfx_weapon_switch_03.ogg"
+   ],
+   "asset_ids": [
+    "OPR-SFX-WEAPON_SWITCH-01",
+    "OPR-SFX-WEAPON_SWITCH-02",
+    "OPR-SFX-WEAPON_SWITCH-03"
+   ],
+   "pending_approval": 3
+  },
+  {
    "sound_id": "kinetic_fire",
    "fallback": "launch",
    "status": "delivered",
@@ -122,6 +173,25 @@
    "pending_approval": 14
   },
   {
+   "sound_id": "secondary_blast",
+   "fallback": "shatter",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_secondary_blast_01.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_secondary_blast_02.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_secondary_blast_03.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_secondary_blast_04.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-SECONDARY_BLAST-01",
+    "SHR-SFX-SECONDARY_BLAST-02",
+    "SHR-SFX-SECONDARY_BLAST-03",
+    "SHR-SFX-SECONDARY_BLAST-04"
+   ],
+   "pending_approval": 4
+  },
+  {
    "sound_id": "impact_metal",
    "fallback": "impact",
    "status": "delivered",
@@ -185,6 +255,46 @@
    "pending_approval": 5
   },
   {
+   "sound_id": "impact_composite",
+   "fallback": "impact",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-IMPACT_COMPOSITE-01",
+    "SHR-SFX-IMPACT_COMPOSITE-02",
+    "SHR-SFX-IMPACT_COMPOSITE-03",
+    "SHR-SFX-IMPACT_COMPOSITE-04"
+   ],
+   "pending_approval": 4
+  },
+  {
+   "sound_id": "impact_concrete",
+   "fallback": "impact",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_impact_concrete_01.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_concrete_02.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_concrete_03.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_concrete_04.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_impact_concrete_05.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-IMPACT_CONCRETE-01",
+    "SHR-SFX-IMPACT_CONCRETE-02",
+    "SHR-SFX-IMPACT_CONCRETE-03",
+    "SHR-SFX-IMPACT_CONCRETE-04",
+    "SHR-SFX-IMPACT_CONCRETE-05"
+   ],
+   "pending_approval": 5
+  },
+  {
    "sound_id": "impact_generic",
    "fallback": "impact",
    "status": "stand_in",
@@ -215,6 +325,44 @@
     "SHR-SFX-IMPACT_CONCRETE-05"
    ],
    "pending_approval": 9
+  },
+  {
+   "sound_id": "structure_collapse",
+   "fallback": "pop",
+   "status": "wired_in_code",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_structure_collapse_01.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_structure_collapse_02.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_structure_collapse_03.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_structure_collapse_04.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-STRUCTURE_COLLAPSE-01",
+    "SHR-SFX-STRUCTURE_COLLAPSE-02",
+    "SHR-SFX-STRUCTURE_COLLAPSE-03",
+    "SHR-SFX-STRUCTURE_COLLAPSE-04"
+   ],
+   "pending_approval": 4
+  },
+  {
+   "sound_id": "machine_failure",
+   "fallback": "pop",
+   "status": "wired_in_code",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
+    "res://assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-MACHINE_FAILURE-01",
+    "SHR-SFX-MACHINE_FAILURE-02",
+    "SHR-SFX-MACHINE_FAILURE-03",
+    "SHR-SFX-MACHINE_FAILURE-04"
+   ],
+   "pending_approval": 4
   },
   {
    "sound_id": "component_destroyed",
@@ -320,6 +468,34 @@
    }
   },
   {
+   "sound_id": "core_critical",
+   "fallback": "click",
+   "status": "wired_in_code",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/shr_sfx_alarm_pulse_01.ogg"
+   ],
+   "asset_ids": [
+    "SHR-SFX-ALARM_PULSE-01"
+   ],
+   "pending_approval": 1
+  },
+  {
+   "sound_id": "objective_complete",
+   "fallback": "win",
+   "status": "delivered",
+   "stand_in_ids": [],
+   "files": [
+    "res://assets/audio/sfx/shared/gam_sfx_ui_objective_complete_01.ogg",
+    "res://assets/audio/sfx/shared/gam_sfx_ui_objective_complete_02.ogg"
+   ],
+   "asset_ids": [
+    "GAM-SFX-UI_OBJECTIVE_COMPLETE-01",
+    "GAM-SFX-UI_OBJECTIVE_COMPLETE-02"
+   ],
+   "pending_approval": 2
+  },
+  {
    "sound_id": "reload_ready",
    "fallback": "click",
    "status": "delivered",
@@ -365,8 +541,19 @@
  ],
  "music": [
   {
+   "music_cue": "helix_prep",
+   "code_file": "res://assets/audio/music/helix/hlx_mus_gameplay_prep.ogg",
+   "status": "wired_in_code",
+   "files": [
+    "res://assets/audio/music/helix/hlx_mus_gameplay_prep.ogg"
+   ],
+   "asset_ids": [
+    "HLX-MUS-GAMEPLAY-PREP"
+   ]
+  },
+  {
    "music_cue": "helix_gameplay",
-   "code_file": "res://assets/audio/music/gameplay_bed.ogg",
+   "code_file": "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg",
    "status": "delivered",
    "files": [
     "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg"
@@ -376,8 +563,63 @@
    ]
   },
   {
+   "music_cue": "helix_combat",
+   "code_file": "res://assets/audio/music/helix/hlx_mus_combat_01.ogg",
+   "status": "delivered",
+   "files": [
+    "res://assets/audio/music/helix/hlx_mus_combat_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-MUS-COMBAT-01"
+   ]
+  },
+  {
+   "music_cue": "helix_critical_layer",
+   "code_file": "res://assets/audio/music/helix/hlx_mus_critical_layer_01.ogg",
+   "status": "wired_in_code",
+   "files": [
+    "res://assets/audio/music/helix/hlx_mus_critical_layer_01.ogg"
+   ],
+   "asset_ids": [
+    "HLX-MUS-CRITICAL_LAYER-01"
+   ]
+  },
+  {
+   "music_cue": "victory_mission",
+   "code_file": "res://assets/audio/music/shared/gam_mus_victory_mission.ogg",
+   "status": "wired_in_code",
+   "files": [
+    "res://assets/audio/music/shared/gam_mus_victory_mission.ogg"
+   ],
+   "asset_ids": [
+    "GAM-MUS-VICTORY-MISSION"
+   ]
+  },
+  {
+   "music_cue": "defeat_mission",
+   "code_file": "res://assets/audio/music/shared/gam_mus_defeat_mission.ogg",
+   "status": "wired_in_code",
+   "files": [
+    "res://assets/audio/music/shared/gam_mus_defeat_mission.ogg"
+   ],
+   "asset_ids": [
+    "GAM-MUS-DEFEAT-MISSION"
+   ]
+  },
+  {
+   "music_cue": "legacy_bed",
+   "code_file": "res://assets/audio/music/gameplay_bed.ogg",
+   "status": "wired_in_code",
+   "files": [
+    "res://assets/audio/music/gameplay_bed.ogg"
+   ],
+   "asset_ids": [
+    "MUSIC-GAMEPLAY-BED"
+   ]
+  },
+  {
    "music_cue": "menu",
-   "code_file": "",
+   "code_file": "res://assets/audio/music/shared/gam_mus_menu_01.ogg",
    "status": "delivered",
    "files": [
     "res://assets/audio/music/shared/gam_mus_menu_01.ogg"
@@ -388,7 +630,7 @@
   },
   {
    "music_cue": "cinematic",
-   "code_file": "",
+   "code_file": "res://assets/audio/music/shared/gam_mus_opening_01.ogg",
    "status": "delivered",
    "files": [
     "res://assets/audio/music/shared/gam_mus_opening_01.ogg"
@@ -406,7 +648,6 @@
   "civitas_outro",
   "ending",
   "helix_boss",
-  "helix_combat",
   "helix_intro",
   "helix_outro",
   "meridian_boss",
@@ -612,44 +853,6 @@
    "SHR-SFX-ALARM_KLAXON-01",
    "SHR-SFX-ALARM_PULSE-01",
    "SHR-SFX-ALARM_SIREN-01"
-  ],
-  "impact_composite": [
-   "SHR-SFX-IMPACT_COMPOSITE-01",
-   "SHR-SFX-IMPACT_COMPOSITE-02",
-   "SHR-SFX-IMPACT_COMPOSITE-03",
-   "SHR-SFX-IMPACT_COMPOSITE-04"
-  ],
-  "impact_concrete": [
-   "SHR-SFX-IMPACT_CONCRETE-01",
-   "SHR-SFX-IMPACT_CONCRETE-02",
-   "SHR-SFX-IMPACT_CONCRETE-03",
-   "SHR-SFX-IMPACT_CONCRETE-04",
-   "SHR-SFX-IMPACT_CONCRETE-05"
-  ],
-  "objective_complete": [
-   "GAM-SFX-UI_OBJECTIVE_COMPLETE-01",
-   "GAM-SFX-UI_OBJECTIVE_COMPLETE-02"
-  ],
-  "secondary_blast": [
-   "SHR-SFX-SECONDARY_BLAST-01",
-   "SHR-SFX-SECONDARY_BLAST-02",
-   "SHR-SFX-SECONDARY_BLAST-03",
-   "SHR-SFX-SECONDARY_BLAST-04"
-  ],
-  "ui_back": [
-   "GAM-SFX-UI_BACK-01",
-   "GAM-SFX-UI_BACK-02",
-   "GAM-SFX-UI_BACK-03"
-  ],
-  "ui_confirm": [
-   "GAM-SFX-UI_CONFIRM-01",
-   "GAM-SFX-UI_CONFIRM-02",
-   "GAM-SFX-UI_CONFIRM-03"
-  ],
-  "weapon_switch": [
-   "OPR-SFX-WEAPON_SWITCH-01",
-   "OPR-SFX-WEAPON_SWITCH-02",
-   "OPR-SFX-WEAPON_SWITCH-03"
   ]
  },
  "proposed_impact_by_material": {

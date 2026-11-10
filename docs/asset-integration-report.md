@@ -78,7 +78,7 @@ Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrat
 **Part 1 implemented and tested headless and on desktop; emulator benchmark pending** (the emulator is pinned in lock-task mode by another app).
 
 - **Asset ids:** none added; slice E works on the integrated set.
-- **Scripts:** `scripts/mission/view/mission_view.gd` (set kept across restarts, depth fog, sun angle, projectile warm-up), `scripts/mission/view/operative_rig.gd` (weapon warm-up), `scripts/main.gd` and `tests/run_tests.gd` (release the kept set); tests `test_case.gd`, `test_assets.gd`; tool `tools/perf/restart_timing.gd`.
+- **Scripts:** `scripts/mission/view/mission_view.gd` (set kept across restarts, depth fog, sun angle), `scripts/mission/view/operative_rig.gd` (weapon warm-up), `scripts/main.gd` and `tests/run_tests.gd` (release the kept set); tests `test_case.gd`, `test_assets.gd`; tool `tools/perf/restart_timing.gd`.
 - **Visible:** clearer separation of gameplay pieces from the hall (before/after: `docs/images/assets/sliceE_lighting_before_after.webp`); no change to gameplay or rules.
 - **Performance (desktop, RTX 5060 Ti, Compatibility):** restart after the first attempt ~6 ms build + ~6 ms first frame (was ~29 ms + ~20 ms). The emulator restart cost (~650 ms at `4752214`) is to be re-measured.
 - **Open:** rack-collapse hitch on the emulator, APK texture-format split (APK 149 MB), first load (~10-12 s on the emulator).
