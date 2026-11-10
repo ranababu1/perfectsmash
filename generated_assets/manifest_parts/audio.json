@@ -5123,9 +5123,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.17,
+   "loudness_lufs": -22.0,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_02.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use.",
+   "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.17 to -22.0, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
    "sound_id": "impact_composite"
   },
   {
@@ -5145,9 +5145,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -23.54,
+   "loudness_lufs": -22.3,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_03.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use.",
+   "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.54 to -22.3, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
    "sound_id": "impact_composite"
   },
   {
@@ -5167,9 +5167,9 @@
    "bus": "SFX",
    "sample_rate": 44100,
    "channels": 1,
-   "loudness_lufs": -22.87,
+   "loudness_lufs": -21.7,
    "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_04.wav",
-   "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use.",
+   "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -22.87 to -21.7, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
    "sound_id": "impact_composite"
   },
   {

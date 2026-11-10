@@ -194,3 +194,25 @@ The 21 Helix environment pieces were rebuilt in place with the same ids.
 - VITA: VTA-ENV-BACK_WALL-A is lab glazing (clean white body, a projecting rounded bay window with a deep reveal and slim transom, a lit lab bench, sample columns and a monitor behind the glass), 1,272 tris. VTA-ENV-BACK_WALL-B is a dome bay (projecting round-arched glazing with radial mullions, a growth dome on a lit plinth inside; the inner dome is a shallow relief to fit the 0.6 m wall depth), 1,038 tris. VTA-ENV-MASSING_BLOCK-A is a lab pavilion with a large and a small ribbed glass dome (1,792 tris); VTA-ENV-MASSING_TOWER-B is a research tower with an observation drum and dome cap (854 tris). Showcase back band: alternating glazing and dome bays, the growth chamber landmark, pavilion and towers behind; soft green and white lights, clean pale grade.
 - Verification (VITA): Godot lineup, environments 21 of 21 and destructibles 34 of 34 load with COLOR_0; showcase frames and kit_scene test frame re-rendered.
 - Limits of this pass: the new walls and massing use the existing material library and bake (no sculpted detail); emission strengths are unchanged (accent presence comes from more and larger emissive elements plus showcase lights); the chapter grades are presentation only and apply to the graded frame, not to the game.
+
+## VITA revision 4: washout fix under the game light (integration stream, 2026-11-10)
+- Problem: under the MissionView light (sun 1.15, ambient 0.55, Filmic) the VITA floor and white panels clipped. `docs/previews/harness_mission_vita.webp` had 29.1% of the frame and 71.7% of the floor band at L 250 or above, so the tiles, seams and panel detail were lost.
+- Fix: materials and textures only. Exposure, lights and the environment in code are unchanged, and so is the harness.
+  - The eight VITA albedo textures were toned in linear light by `tools/tone_albedo.py` with the parameters in `tools/vita_tone_rev4.json`: out = k * tint * (mean + c * (x - mean)). k darkens; c above 1 restores panel detail around the mean.
+  - The floor (k 0.65, warm tint 1.24 / 1.09 / 0.85) cancels the blue cast that clipped the blue channel first. Its sRGB mean is now 141 / 138 / 126 (was 156 / 162 / 165) and it renders at about 194 / 206 / 204: off-white with a mint hint, with the tile seams visible.
+  - The panels: composite k 0.64 c 1.5, reinforced steel 0.72 / 1.4, lightweight alloy 0.75 / 1.4, concrete 0.66 / 1.3, electronic module 0.72 / 1.4, AI core module 0.7 / 1.3, energy component 0.8 / 1.3. Glass polymer, ORM, normal and emission maps are unchanged.
+  - `vta_env_floor_tile_a.glb`, `vta_env_floor_tile_b.glb` and `vta_env_floor_trench_a.glb`: `mat_composite_vta` baseColorFactor scaled by 0.75 in the glb JSON only (geometry, UVs and COLOR_0 untouched). The Blender source still has the old factor, so a kit rebuild must carry this over. Scaling the destructible factors made no measurable difference and was reverted.
+- Result (L 250 or above, share of frame), before and after:
+  - harness_mission_vita: 29.1% to 1.5% (floor band 71.7% to 0.3%)
+  - harness_mission_vita_bg1 to bg4: 49.0% to 1.7%
+  - harness_mission_vita_proposed_env: 42.9% to 1.7%
+  - harness_states_vita: 30.1% to 0.2%; harness_kit_vita: 21.6% to 1.2%; harness_materials_vita: 13.1% to 0.7%; harness_props_vita: 2.6% to 0.0%
+  - vta_showcase_missionview: 4.0% to 2.7%; vta_showcase_graded: 9.3% to 5.4%; vta_showcase_close: 13.7% to 9.8% (what still clips is component tops under the graded spot light); vta_godot_test_frame: 2.1% to 1.6%
+- The other chapters render the same. The Helix harness previews were re-encoded and came out byte-identical to the committed files. Nova Grid, Civitas and Meridian differ from the committed files in at most 508 of 921,600 pixels (WebP and software-renderer noise), which is under the 0.1% churn threshold in `integration_cycle.sh`. In git, no non-VITA preview changed.
+- Showcase re-render: the four VITA showcase frames were re-rendered with showcase.gd and kit_scene.gd. The parameters for the close framing (zoom 0.5, focus 4.1 / 1.25 / 0.0) and for the test-frame component list were not recorded in the earlier pass, so they were reconstructed to match the committed frames. `vta_environment_sheet.webp` (Cycles) and the material tile previews were not regenerated and still show revision 3.
+- Reproduce:
+  ```
+  mkdir -p /tmp/vita_r3 && for n in floor composite reinforced_steel lightweight_alloy concrete electronic_module ai_core_module energy_component; do f=vta_mat_${n}_a_albedo.png; git show 191dc77:generated_assets/materials/vita/$f > /tmp/vita_r3/$f; done
+  python3 generated_assets/tools/tone_albedo.py /tmp/vita_r3 generated_assets/materials/vita vta_mat_ "$(cat generated_assets/tools/vita_tone_rev4.json)"
+  ```
+  This reproduces the committed textures byte for byte.
