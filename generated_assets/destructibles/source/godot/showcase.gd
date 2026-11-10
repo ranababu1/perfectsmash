@@ -10,6 +10,8 @@ extends SceneTree
 ##   "e": energy, "r": range}]}
 ## Modes: "asis" = MissionView exactly as the game ships it today (no sky, no glow, no fog);
 ## "showcase" = the contract's proposed reflection sky plus rim light, glow, depth fog and local lights.
+## Optional chapter grade keys (showcase mode only): ambient_color, horizon_color, fog_color, sun_color,
+## rim_color, saturation. The asis frame keeps the shipped MissionView colours.
 
 var root3d: Node3D
 var ga: String
@@ -94,7 +96,14 @@ func _environment(mode: String, layout: Dictionary) -> void:
 		env.fog_depth_curve = 1.4
 		env.adjustment_enabled = true
 		env.adjustment_contrast = 1.08
-		env.adjustment_saturation = 1.05
+		env.adjustment_saturation = float(layout.get("saturation", 1.05))
+		# chapter grade (layout opt-in, graded frames only): ambient, horizon and fog tints carry the chapter tone
+		if layout.has("ambient_color"):
+			env.ambient_light_color = Color(layout["ambient_color"])
+		if layout.has("horizon_color"):
+			sky_mat.sky_horizon_color = Color(layout["horizon_color"])
+		if layout.has("fog_color"):
+			env.fog_light_color = Color(layout["fog_color"])
 	if mode != "showcase" and layout.has("asis_exposure"):
 		# presentation lift for phone screens (layout opt-in); the strict MissionView test frame omits it
 		env.tonemap_exposure = float(layout["asis_exposure"])
@@ -105,7 +114,7 @@ func _environment(mode: String, layout: Dictionary) -> void:
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-52.0, -38.0, 0.0)
 	sun.light_energy = 1.15
-	sun.light_color = Color("dfe8f0")
+	sun.light_color = Color(layout.get("sun_color", "dfe8f0")) if mode == "showcase" else Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
 	root3d.add_child(sun)
@@ -120,7 +129,7 @@ func _environment(mode: String, layout: Dictionary) -> void:
 		var rim := DirectionalLight3D.new()  # cool back rim from behind-right, no shadow
 		rim.rotation_degrees = Vector3(-28.0, 150.0, 0.0)
 		rim.light_energy = float(layout.get("rim", 0.9))
-		rim.light_color = Color("8fc4ff")
+		rim.light_color = Color(layout.get("rim_color", "8fc4ff"))
 		rim.light_specular = 1.4
 		root3d.add_child(rim)
 
