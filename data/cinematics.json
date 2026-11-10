@@ -374,6 +374,37 @@
 				"title": "MISSION COMPLETE: THE WRONG FUTURE",
 				"subtitle": "YOU SAVED TOMORROW. NOW FIND OUT WHAT STARTED IT."
 			}
+		},
+		{
+			"id": "teaser_2041",
+			"title": "The First Mistake",
+			"theme": "meridian",
+			"slides": [
+				{
+					"speaker": "narrator",
+					"subtitle": "2041. An ordinary morning. Nobody knows what is about to begin.",
+					"motion": "pull_back"
+				},
+				{
+					"speaker": "narrator",
+					"subtitle": "In a university laboratory, a small machine is switched on for the first time.",
+					"motion": "push_in"
+				},
+				{
+					"speaker": "control",
+					"subtitle": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+					"motion": "static"
+				},
+				{
+					"speaker": "narrator",
+					"subtitle": "Every future you saved began here. Season two: The First Mistake.",
+					"motion": "push_in"
+				}
+			],
+			"end_card": {
+				"title": "",
+				"subtitle": ""
+			}
 		}
 	]
 }

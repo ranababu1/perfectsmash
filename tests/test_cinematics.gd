@@ -13,7 +13,9 @@ func test_covers_every_chapter_sequence() -> void:
 	var catalog := CinematicCatalog.load_from_file()
 	for id in ChapterCatalog.load_from_file().sequence_ids():
 		assert_true(catalog.has_sequence(id), "missing sequence '%s'" % id)
-	assert_eq(catalog.order.size(), 11)
+	# 11 game sequences plus the season-two teaser (teaser_2041), which no chapter plays yet.
+	assert_true(catalog.has_sequence("teaser_2041"), "missing sequence 'teaser_2041'")
+	assert_eq(catalog.order.size(), 12)
 
 
 func test_slide_budget_and_readability() -> void:
