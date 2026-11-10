@@ -68,3 +68,6 @@ Review note: the first SV-02 pass still read as a stocked rifle. Rebuilt in `kit
 - Tris: A 1,456, B 1,876, C 2,388 (budget 2,500, no decimation). One 512 baked set each.
 - Godot showcase: `emission_scale` (graded frames only, layout opt-in) trims emission so the cyan bands do not clip to white under ACES; the MissionView frame is untouched.
 - Previews (after): `previews/opr_weapons_showcase_graded.webp`, `previews/opr_weapons_showcase_missionview.webp`, `previews/opr_weapons_sheet.webp`. Before: the same paths at commit `218ced4`.
+
+## Future-weapon blockouts re-render (2026-11-10)
+- Penetrator, Pulse Cannon, Disruptor and Temporal Lance rebuilt with the current pipeline (240, 664, 248 and 728 tris). They remain blockouts for scale and silhouette only, not final art. Godot lineup: all weapons/shared files load. Sheet: weapons/previews/opr_weapons_sheet.webp.

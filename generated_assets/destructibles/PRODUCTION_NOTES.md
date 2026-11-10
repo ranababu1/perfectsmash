@@ -106,3 +106,8 @@ Revision of the 22 Helix components and their debris sets in place. File names a
 - Tris: 208 to 1,972 intact (convergence core critical, under 3,000). Debris within 1.5x. IDs unchanged.
 - Godot `kit_lineup.gd`: 24/24 component and debris files load, COLOR_0 on all 24.
 - Previews (after): `previews/mrd_components_sheet.webp` (Cycles). Before: the same path at commit `6864c26`.
+
+## Shared kit re-render (premium pass, 2026-11-10)
+- All 94 SHR files rebuilt with the current pipeline (library textures, COLOR_0 AO no longer scaled by the layer value). IDs unchanged.
+- SHR-CMP-ENERGY_CELL-B reuses the Helix power cell, which gained secondary detail in the uplift and reached 1,544 intact tris. The tall shared variant now drops the cable loom (1,384 intact tris, inside the 1,500 component budget). Variant A keeps the loom.
+- Verification: Godot 4.7.2 lineup of destructibles/shared, 94 of 94 load, COLOR_0 present on all 94. Sheet: destructibles/previews/shr_components_sheet.webp.

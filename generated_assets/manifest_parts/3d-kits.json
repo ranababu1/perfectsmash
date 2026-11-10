@@ -13334,7 +13334,7 @@
     0.8,
     1.25
    ],
-   "tris": 1860,
+   "tris": 1932,
    "states": [
     "intact",
     "light",
@@ -13343,7 +13343,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 0.40 x 0.6 m",
-   "notes": "Nodes: mesh_intact (528 tris), mesh_light (568), mesh_heavy (764); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_frame, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CIRCUIT_MODULE-A. glb 123 KB."
+   "notes": "Nodes: mesh_intact (528 tris), mesh_light (552), mesh_heavy (852); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_frame, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CIRCUIT_MODULE-A. glb 182 KB."
   },
   {
    "id": "SHR-DEB-CIRCUIT_MODULE-A",
@@ -13467,11 +13467,11 @@
     40
    ],
    "depth_m": 0.6,
-   "tris": 760,
+   "tris": 756,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 760 tris total, <= 1.5x intact). Same material slot convention as the component. glb 56 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 756 tris total, <= 1.5x intact). Same material slot convention as the component. glb 75 KB."
   },
   {
    "id": "SHR-CMP-COMMS_ARRAY-A",
@@ -13599,7 +13599,7 @@
     0.8,
     1.25
    ],
-   "tris": 2524,
+   "tris": 2424,
    "states": [
     "intact",
     "light",
@@ -13608,7 +13608,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 1.20 x 0.5 m",
-   "notes": "Nodes: mesh_intact (556 tris), mesh_light (1008), mesh_heavy (960); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_smoke_01. Material slots: emit_orange_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_light, mat_lightweight_alloy_shr_panel, mat_lightweight_alloy_shr_polymer, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-COMMS_ARRAY-A. glb 145 KB."
+   "notes": "Nodes: mesh_intact (556 tris), mesh_light (868), mesh_heavy (1000); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_smoke_01. Material slots: emit_orange_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_light, mat_lightweight_alloy_shr_panel, mat_lightweight_alloy_shr_polymer, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-COMMS_ARRAY-A. glb 216 KB."
   },
   {
    "id": "SHR-DEB-COMMS_ARRAY-A",
@@ -13732,11 +13732,11 @@
     120
    ],
    "depth_m": 0.5,
-   "tris": 797,
+   "tris": 802,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 797 tris total, <= 1.5x intact). Same material slot convention as the component. glb 48 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 802 tris total, <= 1.5x intact). Same material slot convention as the component. glb 66 KB."
   },
   {
    "id": "SHR-CMP-CONTROL_MODULE-A",
@@ -13864,7 +13864,7 @@
     0.8,
     1.25
    ],
-   "tris": 1530,
+   "tris": 1386,
    "states": [
     "intact",
     "light",
@@ -13873,7 +13873,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.60 x 0.8 m",
-   "notes": "Nodes: mesh_intact (340 tris), mesh_light (436), mesh_heavy (754); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CONTROL_MODULE-A. glb 108 KB."
+   "notes": "Nodes: mesh_intact (340 tris), mesh_light (340), mesh_heavy (706); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CONTROL_MODULE-A. glb 142 KB."
   },
   {
    "id": "SHR-DEB-CONTROL_MODULE-A",
@@ -13997,11 +13997,11 @@
     60
    ],
    "depth_m": 0.8,
-   "tris": 492,
+   "tris": 489,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 492 tris total, <= 1.5x intact). Same material slot convention as the component. glb 37 KB."
+   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 489 tris total, <= 1.5x intact). Same material slot convention as the component. glb 38 KB."
   },
   {
    "id": "SHR-CMP-CONTROL_MODULE-B",
@@ -14129,7 +14129,7 @@
     0.8,
     1.25
    ],
-   "tris": 1416,
+   "tris": 1566,
    "states": [
     "intact",
     "light",
@@ -14138,7 +14138,7 @@
    ],
    "critical": false,
    "dimensions": "0.80 x 0.50 x 0.8 m",
-   "notes": "Nodes: mesh_intact (340 tris), mesh_light (340), mesh_heavy (736); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CONTROL_MODULE-B. glb 106 KB."
+   "notes": "Nodes: mesh_intact (340 tris), mesh_light (444), mesh_heavy (782); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-CONTROL_MODULE-B. glb 157 KB."
   },
   {
    "id": "SHR-DEB-CONTROL_MODULE-B",
@@ -14262,11 +14262,11 @@
     50
    ],
    "depth_m": 0.8,
-   "tris": 492,
+   "tris": 489,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 492 tris total, <= 1.5x intact). Same material slot convention as the component. glb 31 KB."
+   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 489 tris total, <= 1.5x intact). Same material slot convention as the component. glb 45 KB."
   },
   {
    "id": "SHR-CMP-COOLING_UNIT-A",
@@ -14394,7 +14394,7 @@
     0.8,
     1.25
    ],
-   "tris": 4390,
+   "tris": 4362,
    "states": [
     "intact",
     "light",
@@ -14403,7 +14403,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 1.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1432 tris), mesh_light (1526), mesh_heavy (1432); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_composite_shr, mat_composite_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-COOLING_UNIT-A. glb 230 KB."
+   "notes": "Nodes: mesh_intact (1476 tris), mesh_light (1540), mesh_heavy (1346); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_composite_shr, mat_composite_shr_frame, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-COOLING_UNIT-A. glb 361 KB."
   },
   {
    "id": "SHR-DEB-COOLING_UNIT-A",
@@ -14527,11 +14527,11 @@
     120
    ],
    "depth_m": 0.8,
-   "tris": 2072,
+   "tris": 1812,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 2072 tris total, <= 1.5x intact). Same material slot convention as the component. glb 100 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1812 tris total, <= 1.5x intact). Same material slot convention as the component. glb 124 KB."
   },
   {
    "id": "SHR-CMP-DATA_NODE-A",
@@ -14659,7 +14659,7 @@
     0.8,
     1.25
    ],
-   "tris": 1522,
+   "tris": 1480,
    "states": [
     "intact",
     "light",
@@ -14668,7 +14668,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 0.40 x 0.6 m",
-   "notes": "Nodes: mesh_intact (260 tris), mesh_light (552), mesh_heavy (710); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-DATA_NODE-A. glb 102 KB."
+   "notes": "Nodes: mesh_intact (260 tris), mesh_light (496), mesh_heavy (724); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-DATA_NODE-A. glb 145 KB."
   },
   {
    "id": "SHR-DEB-DATA_NODE-A",
@@ -14792,11 +14792,11 @@
     40
    ],
    "depth_m": 0.6,
-   "tris": 365,
+   "tris": 362,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 365 tris total, <= 1.5x intact). Same material slot convention as the component. glb 30 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 362 tris total, <= 1.5x intact). Same material slot convention as the component. glb 42 KB."
   },
   {
    "id": "SHR-CMP-DATA_NODE-B",
@@ -14924,7 +14924,7 @@
     0.8,
     1.25
    ],
-   "tris": 1568,
+   "tris": 1548,
    "states": [
     "intact",
     "light",
@@ -14933,7 +14933,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 0.50 x 0.6 m",
-   "notes": "Nodes: mesh_intact (284 tris), mesh_light (496), mesh_heavy (788); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-DATA_NODE-B. glb 105 KB."
+   "notes": "Nodes: mesh_intact (284 tris), mesh_light (556), mesh_heavy (708); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, glass_smoked_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-DATA_NODE-B. glb 151 KB."
   },
   {
    "id": "SHR-DEB-DATA_NODE-B",
@@ -15057,11 +15057,11 @@
     50
    ],
    "depth_m": 0.6,
-   "tris": 399,
+   "tris": 402,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 399 tris total, <= 1.5x intact). Same material slot convention as the component. glb 32 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 402 tris total, <= 1.5x intact). Same material slot convention as the component. glb 40 KB."
   },
   {
    "id": "SHR-CMP-ENERGY_CELL-A",
@@ -15189,7 +15189,7 @@
     0.8,
     1.25
    ],
-   "tris": 3558,
+   "tris": 4342,
    "states": [
     "intact",
     "light",
@@ -15198,7 +15198,7 @@
    ],
    "critical": false,
    "dimensions": "0.36 x 0.40 x 0.5 m",
-   "notes": "Nodes: mesh_intact (1032 tris), mesh_light (1064), mesh_heavy (1462); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_shr, mat_energy_component_shr, mat_energy_component_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-ENERGY_CELL-A. glb 176 KB."
+   "notes": "Nodes: mesh_intact (1416 tris), mesh_light (1416), mesh_heavy (1510); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_energy_component_shr, mat_energy_component_shr_accent, mat_energy_component_shr_key, mat_energy_component_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_hazard_shr, trim_internal_shr, trim_rubber_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-ENERGY_CELL-A. glb 415 KB."
   },
   {
    "id": "SHR-DEB-ENERGY_CELL-A",
@@ -15322,11 +15322,11 @@
     40
    ],
    "depth_m": 0.5,
-   "tris": 1494,
+   "tris": 2052,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1494 tris total, <= 1.5x intact). Same material slot convention as the component. glb 73 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 2052 tris total, <= 1.5x intact). Same material slot convention as the component. glb 157 KB."
   },
   {
    "id": "SHR-CMP-ENERGY_CELL-B",
@@ -15454,7 +15454,7 @@
     0.8,
     1.25
    ],
-   "tris": 3600,
+   "tris": 4336,
    "states": [
     "intact",
     "light",
@@ -15463,7 +15463,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 0.60 x 0.5 m",
-   "notes": "Nodes: mesh_intact (1032 tris), mesh_light (1208), mesh_heavy (1360); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_shr, mat_energy_component_shr, mat_energy_component_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-ENERGY_CELL-B. glb 172 KB."
+   "notes": "Nodes: mesh_intact (1384 tris), mesh_light (1476), mesh_heavy (1476); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_energy_component_shr, mat_energy_component_shr_accent, mat_energy_component_shr_key, mat_energy_component_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_hazard_shr, trim_internal_shr, trim_rubber_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-ENERGY_CELL-B. glb 450 KB."
   },
   {
    "id": "SHR-DEB-ENERGY_CELL-B",
@@ -15587,11 +15587,11 @@
     60
    ],
    "depth_m": 0.5,
-   "tris": 1496,
+   "tris": 2002,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1496 tris total, <= 1.5x intact). Same material slot convention as the component. glb 70 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 2002 tris total, <= 1.5x intact). Same material slot convention as the component. glb 140 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BEAM_COMPOSITE-A",
@@ -15719,7 +15719,7 @@
     0.8,
     1.25
    ],
-   "tris": 1636,
+   "tris": 1600,
    "states": [
     "intact",
     "light",
@@ -15728,7 +15728,7 @@
    ],
    "critical": false,
    "dimensions": "1.30 x 0.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (412 tris), mesh_light (516), mesh_heavy (708); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-A. glb 104 KB."
+   "notes": "Nodes: mesh_intact (412 tris), mesh_light (460), mesh_heavy (728); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-A. glb 148 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BEAM_COMPOSITE-A",
@@ -15852,11 +15852,11 @@
     20
    ],
    "depth_m": 0.8,
-   "tris": 593,
+   "tris": 592,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 593 tris total, <= 1.5x intact). Same material slot convention as the component. glb 41 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 592 tris total, <= 1.5x intact). Same material slot convention as the component. glb 59 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BEAM_COMPOSITE-B",
@@ -15984,7 +15984,7 @@
     0.8,
     1.25
    ],
-   "tris": 1940,
+   "tris": 1864,
    "states": [
     "intact",
     "light",
@@ -15993,7 +15993,7 @@
    ],
    "critical": false,
    "dimensions": "1.70 x 0.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (468 tris), mesh_light (564), mesh_heavy (908); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-B. glb 120 KB."
+   "notes": "Nodes: mesh_intact (468 tris), mesh_light (552), mesh_heavy (844); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-B. glb 168 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BEAM_COMPOSITE-B",
@@ -16117,11 +16117,11 @@
     20
    ],
    "depth_m": 0.8,
-   "tris": 671,
+   "tris": 673,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 671 tris total, <= 1.5x intact). Same material slot convention as the component. glb 47 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 673 tris total, <= 1.5x intact). Same material slot convention as the component. glb 69 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BEAM_COMPOSITE-C",
@@ -16249,7 +16249,7 @@
     0.8,
     1.25
    ],
-   "tris": 2114,
+   "tris": 2388,
    "states": [
     "intact",
     "light",
@@ -16258,7 +16258,7 @@
    ],
    "critical": false,
    "dimensions": "2.40 x 0.20 x 0.8 m",
-   "notes": "Nodes: mesh_intact (636 tris), mesh_light (756), mesh_heavy (722); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-C. glb 128 KB."
+   "notes": "Nodes: mesh_intact (636 tris), mesh_light (748), mesh_heavy (1004); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_light, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BEAM_COMPOSITE-C. glb 209 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BEAM_COMPOSITE-C",
@@ -16382,11 +16382,11 @@
     20
    ],
    "depth_m": 0.8,
-   "tris": 932,
+   "tris": 916,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 932 tris total, <= 1.5x intact). Same material slot convention as the component. glb 55 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 916 tris total, <= 1.5x intact). Same material slot convention as the component. glb 91 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_ALLOY-A",
@@ -16523,7 +16523,7 @@
    ],
    "critical": false,
    "dimensions": "0.50 x 0.50 x 0.8 m",
-   "notes": "Nodes: mesh_intact (420 tris), mesh_light (444), mesh_heavy (756); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_frame, mat_lightweight_alloy_shr_light, trim_burnt_shr, trim_cable_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_ALLOY-A. glb 93 KB."
+   "notes": "Nodes: mesh_intact (420 tris), mesh_light (444), mesh_heavy (756); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_frame, mat_lightweight_alloy_shr_light, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_ALLOY-A. glb 147 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_ALLOY-A",
@@ -16651,7 +16651,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 602 tris total, <= 1.5x intact). Same material slot convention as the component. glb 38 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 602 tris total, <= 1.5x intact). Same material slot convention as the component. glb 56 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_ALLOY-B",
@@ -16779,7 +16779,7 @@
     0.8,
     1.25
    ],
-   "tris": 1764,
+   "tris": 1652,
    "states": [
     "intact",
     "light",
@@ -16788,7 +16788,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (420 tris), mesh_light (572), mesh_heavy (772); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_frame, mat_lightweight_alloy_shr_light, trim_burnt_shr, trim_cable_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_ALLOY-B. glb 95 KB."
+   "notes": "Nodes: mesh_intact (420 tris), mesh_light (500), mesh_heavy (732); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_frame, mat_lightweight_alloy_shr_light, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_ALLOY-B. glb 151 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_ALLOY-B",
@@ -16912,11 +16912,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 604,
+   "tris": 600,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 604 tris total, <= 1.5x intact). Same material slot convention as the component. glb 41 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 600 tris total, <= 1.5x intact). Same material slot convention as the component. glb 56 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_CONCRETE-A",
@@ -17044,7 +17044,7 @@
     0.8,
     1.25
    ],
-   "tris": 864,
+   "tris": 908,
    "states": [
     "intact",
     "light",
@@ -17053,7 +17053,7 @@
    ],
    "critical": false,
    "dimensions": "0.50 x 0.50 x 0.8 m",
-   "notes": "Nodes: mesh_intact (164 tris), mesh_light (188), mesh_heavy (512); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-A. glb 62 KB."
+   "notes": "Nodes: mesh_intact (164 tris), mesh_light (272), mesh_heavy (472); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-A. glb 87 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_CONCRETE-A",
@@ -17177,11 +17177,11 @@
     50
    ],
    "depth_m": 0.8,
-   "tris": 224,
+   "tris": 228,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 224 tris total, <= 1.5x intact). Same material slot convention as the component. glb 23 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 228 tris total, <= 1.5x intact). Same material slot convention as the component. glb 26 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_CONCRETE-B",
@@ -17309,7 +17309,7 @@
     0.8,
     1.25
    ],
-   "tris": 936,
+   "tris": 924,
    "states": [
     "intact",
     "light",
@@ -17318,7 +17318,7 @@
    ],
    "critical": false,
    "dimensions": "1.20 x 0.60 x 0.8 m",
-   "notes": "Nodes: mesh_intact (188 tris), mesh_light (248), mesh_heavy (500); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-B. glb 66 KB."
+   "notes": "Nodes: mesh_intact (188 tris), mesh_light (212), mesh_heavy (524); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-B. glb 92 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_CONCRETE-B",
@@ -17442,11 +17442,11 @@
     60
    ],
    "depth_m": 0.8,
-   "tris": 258,
+   "tris": 262,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 258 tris total, <= 1.5x intact). Same material slot convention as the component. glb 24 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 262 tris total, <= 1.5x intact). Same material slot convention as the component. glb 29 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_CONCRETE-C",
@@ -17574,7 +17574,7 @@
     0.8,
     1.25
    ],
-   "tris": 814,
+   "tris": 798,
    "states": [
     "intact",
     "light",
@@ -17583,7 +17583,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.60 x 0.8 m",
-   "notes": "Nodes: mesh_intact (164 tris), mesh_light (188), mesh_heavy (462); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-C. glb 59 KB."
+   "notes": "Nodes: mesh_intact (164 tris), mesh_light (164), mesh_heavy (470); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_CONCRETE-C. glb 81 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_CONCRETE-C",
@@ -17711,7 +17711,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 221 tris total, <= 1.5x intact). Same material slot convention as the component. glb 25 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 221 tris total, <= 1.5x intact). Same material slot convention as the component. glb 28 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_STEEL-A",
@@ -17839,7 +17839,7 @@
     0.8,
     1.25
    ],
-   "tris": 2586,
+   "tris": 2742,
    "states": [
     "intact",
     "light",
@@ -17848,7 +17848,7 @@
    ],
    "critical": false,
    "dimensions": "0.50 x 0.50 x 0.8 m",
-   "notes": "Nodes: mesh_intact (648 tris), mesh_light (784), mesh_heavy (1154); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_STEEL-A. glb 146 KB."
+   "notes": "Nodes: mesh_intact (648 tris), mesh_light (960), mesh_heavy (1134); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_STEEL-A. glb 234 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_STEEL-A",
@@ -17972,11 +17972,11 @@
     50
    ],
    "depth_m": 0.8,
-   "tris": 938,
+   "tris": 936,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 938 tris total, <= 1.5x intact). Same material slot convention as the component. glb 57 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 936 tris total, <= 1.5x intact). Same material slot convention as the component. glb 92 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_BLOCK_STEEL-B",
@@ -18104,7 +18104,7 @@
     0.8,
     1.25
    ],
-   "tris": 2702,
+   "tris": 2468,
    "states": [
     "intact",
     "light",
@@ -18113,7 +18113,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (648 tris), mesh_light (888), mesh_heavy (1166); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_STEEL-B. glb 151 KB."
+   "notes": "Nodes: mesh_intact (648 tris), mesh_light (720), mesh_heavy (1100); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_BLOCK_STEEL-B. glb 209 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_BLOCK_STEEL-B",
@@ -18237,11 +18237,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 934,
+   "tris": 936,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 934 tris total, <= 1.5x intact). Same material slot convention as the component. glb 59 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 936 tris total, <= 1.5x intact). Same material slot convention as the component. glb 80 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_CASING_REACTOR-A",
@@ -18369,7 +18369,7 @@
     0.8,
     1.25
    ],
-   "tris": 4126,
+   "tris": 4088,
    "states": [
     "intact",
     "light",
@@ -18378,7 +18378,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1180 tris), mesh_light (1492), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_CASING_REACTOR-A. glb 194 KB."
+   "notes": "Nodes: mesh_intact (1180 tris), mesh_light (1454), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_CASING_REACTOR-A. glb 414 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_CASING_REACTOR-A",
@@ -18506,7 +18506,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1706 tris total, <= 1.5x intact). Same material slot convention as the component. glb 84 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1706 tris total, <= 1.5x intact). Same material slot convention as the component. glb 118 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_COLUMN_CONCRETE-A",
@@ -18634,7 +18634,7 @@
     0.8,
     1.25
    ],
-   "tris": 1052,
+   "tris": 1092,
    "states": [
     "intact",
     "light",
@@ -18643,7 +18643,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 0.90 x 0.6 m",
-   "notes": "Nodes: mesh_intact (236 tris), mesh_light (260), mesh_heavy (556); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-A. glb 72 KB."
+   "notes": "Nodes: mesh_intact (236 tris), mesh_light (320), mesh_heavy (536); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-A. glb 100 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_COLUMN_CONCRETE-A",
@@ -18771,7 +18771,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 338 tris total, <= 1.5x intact). Same material slot convention as the component. glb 27 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 338 tris total, <= 1.5x intact). Same material slot convention as the component. glb 36 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_COLUMN_CONCRETE-B",
@@ -18899,7 +18899,7 @@
     0.8,
     1.25
    ],
-   "tris": 1016,
+   "tris": 1108,
    "states": [
     "intact",
     "light",
@@ -18908,7 +18908,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 1.80 x 0.6 m",
-   "notes": "Nodes: mesh_intact (236 tris), mesh_light (260), mesh_heavy (520); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-B. glb 72 KB."
+   "notes": "Nodes: mesh_intact (236 tris), mesh_light (320), mesh_heavy (552); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-B. glb 104 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_COLUMN_CONCRETE-B",
@@ -19032,11 +19032,11 @@
     180
    ],
    "depth_m": 0.6,
-   "tris": 338,
+   "tris": 336,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 338 tris total, <= 1.5x intact). Same material slot convention as the component. glb 26 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 336 tris total, <= 1.5x intact). Same material slot convention as the component. glb 36 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_COLUMN_CONCRETE-C",
@@ -19164,7 +19164,7 @@
     0.8,
     1.25
    ],
-   "tris": 1112,
+   "tris": 1150,
    "states": [
     "intact",
     "light",
@@ -19173,7 +19173,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 2.60 x 0.8 m",
-   "notes": "Nodes: mesh_intact (248 tris), mesh_light (320), mesh_heavy (544); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-C. glb 78 KB."
+   "notes": "Nodes: mesh_intact (248 tris), mesh_light (308), mesh_heavy (594); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_concrete_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_scorch_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_CONCRETE-C. glb 108 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_COLUMN_CONCRETE-C",
@@ -19297,11 +19297,11 @@
     260
    ],
    "depth_m": 0.8,
-   "tris": 353,
+   "tris": 352,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 353 tris total, <= 1.5x intact). Same material slot convention as the component. glb 27 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 352 tris total, <= 1.5x intact). Same material slot convention as the component. glb 39 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_COLUMN_STEEL-A",
@@ -19429,7 +19429,7 @@
     0.8,
     1.25
    ],
-   "tris": 1224,
+   "tris": 1328,
    "states": [
     "intact",
     "light",
@@ -19438,7 +19438,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 1.40 x 0.6 m",
-   "notes": "Nodes: mesh_intact (272 tris), mesh_light (352), mesh_heavy (600); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_STEEL-A. glb 88 KB."
+   "notes": "Nodes: mesh_intact (272 tris), mesh_light (412), mesh_heavy (644); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_STEEL-A. glb 130 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_COLUMN_STEEL-A",
@@ -19562,11 +19562,11 @@
     140
    ],
    "depth_m": 0.6,
-   "tris": 386,
+   "tris": 390,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 386 tris total, <= 1.5x intact). Same material slot convention as the component. glb 31 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 390 tris total, <= 1.5x intact). Same material slot convention as the component. glb 39 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_COLUMN_STEEL-B",
@@ -19694,7 +19694,7 @@
     0.8,
     1.25
    ],
-   "tris": 1416,
+   "tris": 1420,
    "states": [
     "intact",
     "light",
@@ -19703,7 +19703,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 2.00 x 0.6 m",
-   "notes": "Nodes: mesh_intact (320 tris), mesh_light (388), mesh_heavy (708); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_STEEL-B. glb 97 KB."
+   "notes": "Nodes: mesh_intact (320 tris), mesh_light (404), mesh_heavy (696); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_COLUMN_STEEL-B. glb 143 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_COLUMN_STEEL-B",
@@ -19827,11 +19827,11 @@
     200
    ],
    "depth_m": 0.6,
-   "tris": 454,
+   "tris": 456,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 454 tris total, <= 1.5x intact). Same material slot convention as the component. glb 37 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 456 tris total, <= 1.5x intact). Same material slot convention as the component. glb 47 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_FRAME_ALLOY-A",
@@ -19959,7 +19959,7 @@
     0.8,
     1.25
    ],
-   "tris": 1368,
+   "tris": 1308,
    "states": [
     "intact",
     "light",
@@ -19968,7 +19968,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.60 x 0.8 m",
-   "notes": "Nodes: mesh_intact (340 tris), mesh_light (420), mesh_heavy (608); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_FRAME_ALLOY-A. glb 93 KB."
+   "notes": "Nodes: mesh_intact (340 tris), mesh_light (380), mesh_heavy (588); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_FRAME_ALLOY-A. glb 119 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_FRAME_ALLOY-A",
@@ -20092,11 +20092,11 @@
     60
    ],
    "depth_m": 0.8,
-   "tris": 484,
+   "tris": 486,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 484 tris total, <= 1.5x intact). Same material slot convention as the component. glb 41 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 486 tris total, <= 1.5x intact). Same material slot convention as the component. glb 60 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_FRAME_ALLOY-B",
@@ -20224,7 +20224,7 @@
     0.8,
     1.25
    ],
-   "tris": 1348,
+   "tris": 1404,
    "states": [
     "intact",
     "light",
@@ -20233,7 +20233,7 @@
    ],
    "critical": false,
    "dimensions": "1.00 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (340 tris), mesh_light (408), mesh_heavy (600); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_FRAME_ALLOY-B. glb 91 KB."
+   "notes": "Nodes: mesh_intact (340 tris), mesh_light (444), mesh_heavy (620); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_lightweight_alloy_shr, mat_lightweight_alloy_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_FRAME_ALLOY-B. glb 125 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_FRAME_ALLOY-B",
@@ -20357,11 +20357,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 485,
+   "tris": 484,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 485 tris total, <= 1.5x intact). Same material slot convention as the component. glb 40 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 484 tris total, <= 1.5x intact). Same material slot convention as the component. glb 50 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_JOINT_STEEL-A",
@@ -20489,7 +20489,7 @@
     0.8,
     1.25
    ],
-   "tris": 1974,
+   "tris": 2034,
    "states": [
     "intact",
     "light",
@@ -20498,7 +20498,7 @@
    ],
    "critical": false,
    "dimensions": "0.20 x 0.20 x 0.4 m",
-   "notes": "Nodes: mesh_intact (560 tris), mesh_light (620), mesh_heavy (794); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_JOINT_STEEL-A. glb 107 KB."
+   "notes": "Nodes: mesh_intact (560 tris), mesh_light (604), mesh_heavy (870); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_JOINT_STEEL-A. glb 174 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_JOINT_STEEL-A",
@@ -20626,7 +20626,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 808 tris total, <= 1.5x intact). Same material slot convention as the component. glb 44 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 808 tris total, <= 1.5x intact). Same material slot convention as the component. glb 61 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_JOINT_STEEL-B",
@@ -20754,7 +20754,7 @@
     0.8,
     1.25
    ],
-   "tris": 2116,
+   "tris": 2030,
    "states": [
     "intact",
     "light",
@@ -20763,7 +20763,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 0.30 x 0.5 m",
-   "notes": "Nodes: mesh_intact (560 tris), mesh_light (736), mesh_heavy (820); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_JOINT_STEEL-B. glb 113 KB."
+   "notes": "Nodes: mesh_intact (560 tris), mesh_light (648), mesh_heavy (822); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_light, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_JOINT_STEEL-B. glb 170 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_JOINT_STEEL-B",
@@ -20887,11 +20887,11 @@
     30
    ],
    "depth_m": 0.5,
-   "tris": 808,
+   "tris": 806,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 808 tris total, <= 1.5x intact). Same material slot convention as the component. glb 45 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 806 tris total, <= 1.5x intact). Same material slot convention as the component. glb 60 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_GLASS-A",
@@ -21019,7 +21019,7 @@
     0.8,
     1.25
    ],
-   "tris": 1148,
+   "tris": 1128,
    "states": [
     "intact",
     "light",
@@ -21028,7 +21028,7 @@
    ],
    "critical": false,
    "dimensions": "0.14 x 0.90 x 0.8 m",
-   "notes": "Nodes: mesh_intact (84 tris), mesh_light (524), mesh_heavy (540); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, trim_burnt_shr, trim_cable_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-A. glb 79 KB."
+   "notes": "Nodes: mesh_intact (84 tris), mesh_light (508), mesh_heavy (536); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, trim_cable_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-A. glb 101 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_GLASS-A",
@@ -21152,11 +21152,11 @@
     90
    ],
    "depth_m": 0.8,
-   "tris": 144,
+   "tris": 105,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 144 tris total, <= 1.5x intact). Same material slot convention as the component. glb 18 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 105 tris total, <= 1.5x intact). Same material slot convention as the component. glb 25 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_GLASS-B",
@@ -21284,7 +21284,7 @@
     0.8,
     1.25
    ],
-   "tris": 1592,
+   "tris": 1624,
    "states": [
     "intact",
     "light",
@@ -21293,7 +21293,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (312 tris), mesh_light (636), mesh_heavy (644); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, mat_glass_polymer_shr_light, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-B. glb 117 KB."
+   "notes": "Nodes: mesh_intact (312 tris), mesh_light (684), mesh_heavy (628); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, mat_glass_polymer_shr_light, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-B. glb 153 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_GLASS-B",
@@ -21417,11 +21417,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 448,
+   "tris": 447,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 448 tris total, <= 1.5x intact). Same material slot convention as the component. glb 36 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 447 tris total, <= 1.5x intact). Same material slot convention as the component. glb 51 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_GLASS-C",
@@ -21549,7 +21549,7 @@
     0.8,
     1.25
    ],
-   "tris": 1734,
+   "tris": 1776,
    "states": [
     "intact",
     "light",
@@ -21558,7 +21558,7 @@
    ],
    "critical": false,
    "dimensions": "1.00 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (312 tris), mesh_light (776), mesh_heavy (646); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, mat_glass_polymer_shr_light, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-C. glb 127 KB."
+   "notes": "Nodes: mesh_intact (312 tris), mesh_light (732), mesh_heavy (732); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: glass_clear_shr, mat_glass_polymer_shr, mat_glass_polymer_shr_light, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_GLASS-C. glb 165 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_GLASS-C",
@@ -21682,11 +21682,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 450,
+   "tris": 446,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 450 tris total, <= 1.5x intact). Same material slot convention as the component. glb 37 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 446 tris total, <= 1.5x intact). Same material slot convention as the component. glb 55 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_POLYMER-A",
@@ -21814,7 +21814,7 @@
     0.8,
     1.25
    ],
-   "tris": 818,
+   "tris": 792,
    "states": [
     "intact",
     "light",
@@ -21823,7 +21823,7 @@
    ],
    "critical": false,
    "dimensions": "0.50 x 0.50 x 0.6 m",
-   "notes": "Nodes: mesh_intact (156 tris), mesh_light (180), mesh_heavy (482); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_POLYMER-A. glb 44 KB."
+   "notes": "Nodes: mesh_intact (156 tris), mesh_light (180), mesh_heavy (456); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_POLYMER-A. glb 64 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_POLYMER-A",
@@ -21947,11 +21947,11 @@
     50
    ],
    "depth_m": 0.6,
-   "tris": 221,
+   "tris": 218,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 221 tris total, <= 1.5x intact). Same material slot convention as the component. glb 18 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 218 tris total, <= 1.5x intact). Same material slot convention as the component. glb 22 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_POLYMER-B",
@@ -22079,7 +22079,7 @@
     0.8,
     1.25
    ],
-   "tris": 832,
+   "tris": 848,
    "states": [
     "intact",
     "light",
@@ -22088,7 +22088,7 @@
    ],
    "critical": false,
    "dimensions": "0.16 x 1.10 x 0.6 m",
-   "notes": "Nodes: mesh_intact (156 tris), mesh_light (180), mesh_heavy (496); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_POLYMER-B. glb 44 KB."
+   "notes": "Nodes: mesh_intact (156 tris), mesh_light (208), mesh_heavy (484); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_POLYMER-B. glb 66 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_POLYMER-B",
@@ -22212,11 +22212,11 @@
     110
    ],
    "depth_m": 0.6,
-   "tris": 219,
+   "tris": 222,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 219 tris total, <= 1.5x intact). Same material slot convention as the component. glb 18 KB."
+   "notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 222 tris total, <= 1.5x intact). Same material slot convention as the component. glb 22 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_REINFORCED-A",
@@ -22344,7 +22344,7 @@
     0.8,
     1.25
    ],
-   "tris": 2580,
+   "tris": 2612,
    "states": [
     "intact",
     "light",
@@ -22353,7 +22353,7 @@
    ],
    "critical": false,
    "dimensions": "0.30 x 1.20 x 1.0 m",
-   "notes": "Nodes: mesh_intact (580 tris), mesh_light (936), mesh_heavy (1064); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_REINFORCED-A. glb 136 KB."
+   "notes": "Nodes: mesh_intact (580 tris), mesh_light (1012), mesh_heavy (1020); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_REINFORCED-A. glb 246 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_REINFORCED-A",
@@ -22481,7 +22481,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 832 tris total, <= 1.5x intact). Same material slot convention as the component. glb 54 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 832 tris total, <= 1.5x intact). Same material slot convention as the component. glb 75 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PANEL_REINFORCED-B",
@@ -22609,7 +22609,7 @@
     0.8,
     1.25
    ],
-   "tris": 2044,
+   "tris": 1856,
    "states": [
     "intact",
     "light",
@@ -22618,7 +22618,7 @@
    ],
    "critical": false,
    "dimensions": "0.20 x 1.00 x 1.0 m",
-   "notes": "Nodes: mesh_intact (468 tris), mesh_light (784), mesh_heavy (792); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_REINFORCED-B. glb 109 KB."
+   "notes": "Nodes: mesh_intact (468 tris), mesh_light (564), mesh_heavy (824); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: mat_reinforced_steel_shr, mat_reinforced_steel_shr_frame, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PANEL_REINFORCED-B. glb 174 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PANEL_REINFORCED-B",
@@ -22742,11 +22742,11 @@
     100
    ],
    "depth_m": 1.0,
-   "tris": 674,
+   "tris": 672,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 674 tris total, <= 1.5x intact). Same material slot convention as the component. glb 45 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 672 tris total, <= 1.5x intact). Same material slot convention as the component. glb 59 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PLATFORM_COMPOSITE-A",
@@ -22874,7 +22874,7 @@
     0.8,
     1.25
    ],
-   "tris": 1326,
+   "tris": 1266,
    "states": [
     "intact",
     "light",
@@ -22883,7 +22883,7 @@
    ],
    "critical": false,
    "dimensions": "1.60 x 0.20 x 1.2 m",
-   "notes": "Nodes: mesh_intact (288 tris), mesh_light (348), mesh_heavy (690); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-A. glb 87 KB."
+   "notes": "Nodes: mesh_intact (288 tris), mesh_light (326), mesh_heavy (652); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-A. glb 120 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PLATFORM_COMPOSITE-A",
@@ -23007,11 +23007,11 @@
     20
    ],
    "depth_m": 1.2,
-   "tris": 410,
+   "tris": 411,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 410 tris total, <= 1.5x intact). Same material slot convention as the component. glb 34 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 411 tris total, <= 1.5x intact). Same material slot convention as the component. glb 46 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PLATFORM_COMPOSITE-B",
@@ -23139,7 +23139,7 @@
     0.8,
     1.25
    ],
-   "tris": 1548,
+   "tris": 1494,
    "states": [
     "intact",
     "light",
@@ -23148,7 +23148,7 @@
    ],
    "critical": false,
    "dimensions": "2.20 x 0.20 x 1.2 m",
-   "notes": "Nodes: mesh_intact (372 tris), mesh_light (440), mesh_heavy (736); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-B. glb 105 KB."
+   "notes": "Nodes: mesh_intact (372 tris), mesh_light (446), mesh_heavy (676); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-B. glb 138 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PLATFORM_COMPOSITE-B",
@@ -23272,11 +23272,11 @@
     20
    ],
    "depth_m": 1.2,
-   "tris": 531,
+   "tris": 530,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 531 tris total, <= 1.5x intact). Same material slot convention as the component. glb 45 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 530 tris total, <= 1.5x intact). Same material slot convention as the component. glb 54 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_PLATFORM_COMPOSITE-C",
@@ -23404,7 +23404,7 @@
     0.8,
     1.25
    ],
-   "tris": 2304,
+   "tris": 2280,
    "states": [
     "intact",
     "light",
@@ -23413,7 +23413,7 @@
    ],
    "critical": false,
    "dimensions": "4.00 x 0.20 x 1.2 m",
-   "notes": "Nodes: mesh_intact (624 tris), mesh_light (736), mesh_heavy (944); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-C. glb 153 KB."
+   "notes": "Nodes: mesh_intact (624 tris), mesh_light (692), mesh_heavy (964); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_PLATFORM_COMPOSITE-C. glb 206 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_PLATFORM_COMPOSITE-C",
@@ -23541,7 +23541,7 @@
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 898 tris total, <= 1.5x intact). Same material slot convention as the component. glb 65 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 898 tris total, <= 1.5x intact). Same material slot convention as the component. glb 85 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_WALL_INDUSTRIAL-A",
@@ -23669,7 +23669,7 @@
     0.8,
     1.25
    ],
-   "tris": 1593,
+   "tris": 1610,
    "states": [
     "intact",
     "light",
@@ -23678,7 +23678,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 1.20 x 0.6 m",
-   "notes": "Nodes: mesh_intact (368 tris), mesh_light (448), mesh_heavy (777); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_WALL_INDUSTRIAL-A. glb 102 KB."
+   "notes": "Nodes: mesh_intact (368 tris), mesh_light (416), mesh_heavy (826); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_white_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_WALL_INDUSTRIAL-A. glb 155 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_WALL_INDUSTRIAL-A",
@@ -23802,11 +23802,11 @@
     120
    ],
    "depth_m": 0.6,
-   "tris": 528,
+   "tris": 532,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 528 tris total, <= 1.5x intact). Same material slot convention as the component. glb 36 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 532 tris total, <= 1.5x intact). Same material slot convention as the component. glb 59 KB."
   },
   {
    "id": "SHR-CMP-GENERIC_WALL_INDUSTRIAL-B",
@@ -23934,7 +23934,7 @@
     0.8,
     1.25
    ],
-   "tris": 1917,
+   "tris": 1977,
    "states": [
     "intact",
     "light",
@@ -23943,7 +23943,7 @@
    ],
    "critical": false,
    "dimensions": "1.20 x 1.20 x 0.6 m",
-   "notes": "Nodes: mesh_intact (440 tris), mesh_light (612), mesh_heavy (865); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, emit_white_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_WALL_INDUSTRIAL-B. glb 123 KB."
+   "notes": "Nodes: mesh_intact (440 tris), mesh_light (622), mesh_heavy (915); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, emit_white_shr, mat_reinforced_steel_shr, mat_reinforced_steel_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-GENERIC_WALL_INDUSTRIAL-B. glb 183 KB."
   },
   {
    "id": "SHR-DEB-GENERIC_WALL_INDUSTRIAL-B",
@@ -24067,11 +24067,11 @@
     120
    ],
    "depth_m": 0.6,
-   "tris": 628,
+   "tris": 632,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 628 tris total, <= 1.5x intact). Same material slot convention as the component. glb 48 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 632 tris total, <= 1.5x intact). Same material slot convention as the component. glb 66 KB."
   },
   {
    "id": "SHR-CMP-POWER_CONDUIT-A",
@@ -24199,7 +24199,7 @@
     0.8,
     1.25
    ],
-   "tris": 1784,
+   "tris": 2124,
    "states": [
     "intact",
     "light",
@@ -24208,7 +24208,7 @@
    ],
    "critical": false,
    "dimensions": "1.20 x 0.20 x 0.5 m",
-   "notes": "Nodes: mesh_intact (428 tris), mesh_light (512), mesh_heavy (844); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-POWER_CONDUIT-A. glb 91 KB."
+   "notes": "Nodes: mesh_intact (428 tris), mesh_light (784), mesh_heavy (912); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-POWER_CONDUIT-A. glb 166 KB."
   },
   {
    "id": "SHR-DEB-POWER_CONDUIT-A",
@@ -24332,11 +24332,11 @@
     20
    ],
    "depth_m": 0.5,
-   "tris": 614,
+   "tris": 615,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 614 tris total, <= 1.5x intact). Same material slot convention as the component. glb 34 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 615 tris total, <= 1.5x intact). Same material slot convention as the component. glb 47 KB."
   },
   {
    "id": "SHR-CMP-POWER_CONDUIT-B",
@@ -24464,7 +24464,7 @@
     0.8,
     1.25
    ],
-   "tris": 1828,
+   "tris": 2004,
    "states": [
     "intact",
     "light",
@@ -24473,7 +24473,7 @@
    ],
    "critical": false,
    "dimensions": "0.20 x 1.20 x 0.5 m",
-   "notes": "Nodes: mesh_intact (428 tris), mesh_light (596), mesh_heavy (804); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-POWER_CONDUIT-B. glb 93 KB."
+   "notes": "Nodes: mesh_intact (428 tris), mesh_light (728), mesh_heavy (848); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_shr, mat_composite_shr, mat_composite_shr_panel, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-POWER_CONDUIT-B. glb 151 KB."
   },
   {
    "id": "SHR-DEB-POWER_CONDUIT-B",
@@ -24597,11 +24597,11 @@
     120
    ],
    "depth_m": 0.5,
-   "tris": 612,
+   "tris": 615,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 612 tris total, <= 1.5x intact). Same material slot convention as the component. glb 34 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 615 tris total, <= 1.5x intact). Same material slot convention as the component. glb 52 KB."
   },
   {
    "id": "SHR-CMP-REACTOR_MODULE-A",
@@ -24729,7 +24729,7 @@
     0.8,
     1.25
    ],
-   "tris": 3790,
+   "tris": 3770,
    "states": [
     "intact",
     "light",
@@ -24738,7 +24738,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1048 tris), mesh_light (1288), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_shr, glass_clear_shr, mat_energy_component_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-REACTOR_MODULE-A. glb 178 KB."
+   "notes": "Nodes: mesh_intact (1048 tris), mesh_light (1268), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_shr, glass_clear_shr, mat_energy_component_shr, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-REACTOR_MODULE-A. glb 318 KB."
   },
   {
    "id": "SHR-DEB-REACTOR_MODULE-A",
@@ -24862,11 +24862,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 1517,
+   "tris": 1515,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1517 tris total, <= 1.5x intact). Same material slot convention as the component. glb 72 KB."
+   "notes": "Nodes: husk + frag_01..frag_04 (5 meshes, 1515 tris total, <= 1.5x intact). Same material slot convention as the component. glb 103 KB."
   },
   {
    "id": "SHR-CMP-RELAY_UNIT-A",
@@ -24994,7 +24994,7 @@
     0.8,
     1.25
    ],
-   "tris": 1494,
+   "tris": 1478,
    "states": [
     "intact",
     "light",
@@ -25003,7 +25003,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 0.40 x 0.6 m",
-   "notes": "Nodes: mesh_intact (436 tris), mesh_light (436), mesh_heavy (622); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, mat_electronic_module_shr_polymer, trim_burnt_shr, trim_cable_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-RELAY_UNIT-A. glb 99 KB."
+   "notes": "Nodes: mesh_intact (436 tris), mesh_light (436), mesh_heavy (606); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_panel, mat_electronic_module_shr_polymer, trim_burnt_shr, trim_cable_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-RELAY_UNIT-A. glb 134 KB."
   },
   {
    "id": "SHR-DEB-RELAY_UNIT-A",
@@ -25127,11 +25127,11 @@
     40
    ],
    "depth_m": 0.6,
-   "tris": 618,
+   "tris": 628,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 618 tris total, <= 1.5x intact). Same material slot convention as the component. glb 45 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 628 tris total, <= 1.5x intact). Same material slot convention as the component. glb 60 KB."
   },
   {
    "id": "SHR-CMP-SERVER_CABINET-A",
@@ -25259,7 +25259,7 @@
     0.8,
     1.25
    ],
-   "tris": 3760,
+   "tris": 4240,
    "states": [
     "intact",
     "light",
@@ -25268,7 +25268,7 @@
    ],
    "critical": false,
    "dimensions": "0.40 x 1.00 x 0.8 m",
-   "notes": "Nodes: mesh_intact (1076 tris), mesh_light (1260), mesh_heavy (1424); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_accent, mat_electronic_module_shr_frame, mat_electronic_module_shr_light, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-SERVER_CABINET-A. glb 247 KB."
+   "notes": "Nodes: mesh_intact (1332 tris), mesh_light (1454), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_shr, emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_accent, mat_electronic_module_shr_module, mat_electronic_module_shr_panel, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr, trim_internal_shr, trim_trim_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-SERVER_CABINET-A. glb 480 KB."
   },
   {
    "id": "SHR-DEB-SERVER_CABINET-A",
@@ -25392,11 +25392,11 @@
     100
    ],
    "depth_m": 0.8,
-   "tris": 1551,
+   "tris": 1928,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1551 tris total, <= 1.5x intact). Same material slot convention as the component. glb 97 KB."
+   "notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1928 tris total, <= 1.5x intact). Same material slot convention as the component. glb 180 KB."
   },
   {
    "id": "SHR-CMP-TRANSFORMER_UNIT-A",
@@ -25524,7 +25524,7 @@
     0.8,
     1.25
    ],
-   "tris": 3006,
+   "tris": 2574,
    "states": [
     "intact",
     "light",
@@ -25533,7 +25533,7 @@
    ],
    "critical": false,
    "dimensions": "0.60 x 0.80 x 0.8 m",
-   "notes": "Nodes: mesh_intact (820 tris), mesh_light (1000), mesh_heavy (1186); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, mat_electronic_module_shr_polymer, trim_burnt_shr, trim_cable_shr, trim_dark_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-TRANSFORMER_UNIT-A. glb 165 KB."
+   "notes": "Nodes: mesh_intact (820 tris), mesh_light (916), mesh_heavy (838); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_shr, mat_electronic_module_shr, mat_electronic_module_shr_light, mat_electronic_module_shr_panel, mat_electronic_module_shr_polymer, trim_burnt_shr, trim_cable_shr, trim_dark_shr, trim_edge_shr. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see SHR-DEB-TRANSFORMER_UNIT-A. glb 235 KB."
   },
   {
    "id": "SHR-DEB-TRANSFORMER_UNIT-A",
@@ -25657,11 +25657,11 @@
     80
    ],
    "depth_m": 0.8,
-   "tris": 1182,
+   "tris": 1186,
    "states": [
     "destroyed"
    ],
-   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1182 tris total, <= 1.5x intact). Same material slot convention as the component. glb 65 KB."
+   "notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 1186 tris total, <= 1.5x intact). Same material slot convention as the component. glb 87 KB."
   },
   {
    "id": "VTA-CMP-BIOREACTOR-A",
