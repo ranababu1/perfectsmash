@@ -15,27 +15,27 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 | Mission rules, damage, structure, objectives, scoring, Research Data | Implemented | `scripts/core/`; suite below |
 | Playable missions | **1 of 100** | `data/missions/helix_01.json` only |
 | Mission catalog (100 slots, linear unlocks) | Implemented (M0) | `scripts/core/mission_catalog.gd`; app boots the first authored mission; `tests/campaign/` |
-| Chapter select / mission select / campaign menu | Not started | ui-ux workstream |
+| Chapter select / mission select / campaign menu | Implemented, reachable via results → Missions | `scripts/ui/campaign/` (PR #5), routed in `main.gd`; app still boots into the mission; no screenshots yet |
 | HUD, pause, results | Implemented | `scripts/mission/mission_hud.gd`; optional `next_pressed` hook not yet in the HUD |
-| Operative + Kinetic Accelerator + Breach Charge | Implemented | production models and clips; 2 weapons only |
+| Operative + Kinetic Accelerator + Breach Charge | Implemented | 2 weapons; reload-ready event and sound (PR #4) |
 | Later chapter weapons | Planned, deferred | plan revision 6 |
 | Upgrades | Rules only | `upgrade_rules.gd`; no UI |
 | Save schema v4 | Implemented | migrates v1-v3 |
-| Audio | Helix implemented | `data/audio.json` plans for `helix_01` only; chapters II-V not started |
+| Audio | Implemented for all five chapters | chapter plans resolve per mission chapter (PR #6); no human listening review |
 | Cinematic player / Story Archive | Not started (deferred) | `data/cinematics.json` has 12 sequences |
-| Settings screen | Not started | music/voice settings exist in save data only |
+| Settings screen | Implemented | sound, music, vibration (`scripts/ui/settings/`); voice not exposed |
 | Legacy 20 levels | Retired, frozen | still in the build for regression |
 
 ## Asset integration (verified 2026-11-11)
 
 - **Library: complete.** All 2,270 files delivered in `origin/assets@f186977:generated_assets/` are on `main` under `assets/`: 2,182 byte-identical, 71 differ only by the `generated_assets/` → `assets/` rewrite, 17 carry further documented edits (handoff notes, app-icon `used_by`). Manifest: 1,473 delivered, 1,464 on `main` (the 9 legacy `ICON-*` entries removed with owner approval in `110c1d0`). Rights, approval and source fields unchanged; none cleared (1,463 `pending_review`, 1 `owner_instructed`).
 - **Validator:** `python assets/tools/validate_asset_manifest.py` → `1464 checked, 1464 present, 417.0 MB … PASS`.
-- **In-game: partial.** `data/integrated_assets.json` 618 ids + 10 presets (A 55, B 40, C 18, D 90, F 3, G 348, dependency 64); all five chapter kits load, only Helix is used by a mission. Coverage matrix (100/100) is asset availability, not playable content.
+- **In-game: partial.** `data/integrated_assets.json` 660 ids + 10 presets (A 55, B 40, C 18, D 90, F 3, G 348, H 42 chapter audio, dependency 64); all five chapter kits load, only Helix is used by a mission. Coverage matrix (100/100) is asset availability, not playable content.
 - **Import:** the local editor cache had stale texture UIDs on 17 Helix GLBs (34 `invalid UID` warnings; committed `.import` files were correct). Fixed by reimporting those GLBs; now 0 warnings. Fresh worktrees import cleanly from the committed metadata. A full clean reimport was not re-run in this session.
 
 ## Build / test status (2026-11-11)
 
-- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **217 passed, 0 failed, 1 skipped** (9.0 s) after M0 (213/0/1 before M0).
+- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **243 passed, 0 failed, 1 skipped** after the M1 merges and campaign routing (217/0/1 at M0, 213/0/1 before).
 - `... -- --unit` → 173 passed, 0 failed, 0 skipped.
 - Windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` on the Windows desktop (before M0) → 214 passed, 0 failed, 0 skipped (253.5 s; the legacy replay test dominates).
 - Boot smoke `godot_console --headless --quit-after 180` → exit 0, no errors before exit.
@@ -61,11 +61,11 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 | Workstream | Branch | Status |
 |---|---|---|
 | Orchestrator M0 (catalog, runner discovery, contracts, asset baseline) | `main` | Complete (this commit) |
-| levels: Helix 02-20 | `agent/levels-100` | Not started |
-| operative-weapons | `agent/operative-weapons` | Not started |
-| ui-ux: campaign navigation, results next-mission, settings | `agent/ui-ux` | Not started |
-| audio-atmosphere: chapter plans and ambience | `agent/audio-atmosphere` | Not started |
-| performance-qa: validators, benchmark, leak triage | `agent/performance-qa` | Not started |
+| levels: Helix 02-20 | `agent/levels-100` | Blocked (subagents get no shell tool) |
+| operative-weapons | `agent/operative-weapons` | Merged (#4) |
+| ui-ux: campaign navigation, results next-mission, settings | `agent/ui-ux` | Merged (#5) |
+| audio-atmosphere: chapter plans and ambience | `agent/audio-atmosphere` | Merged (#6) |
+| performance-qa: validators, benchmark, leak triage | `agent/performance-qa` | Blocked (subagents get no shell tool) |
 
 ## Known issues and risks
 
@@ -73,7 +73,7 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 - `level-design-spec.md` §1-5 describe the retired game; its 2026-11-09 revision section governs.
 - Physics is repeatable on one platform, not bit-identical across platforms (tolerances: `instructions.md` §11).
 - Worktrees: each needs ~411 MB of assets plus a cold Godot import (~0.7 GB `.godot`).
-- `.claude/agents/settings.json` is inert; Claude Code reads `.claude/settings.json` (owner to move it; agents could not modify permission settings).
+- Specialist subagents receive no shell tool (Read/Edit/Write/Glob/Grep only), even after `disallowedTools` was removed; cause unconfirmed (definitions may only load at session start). `.claude/settings.json` allows `Bash(godot:*)`, not `godot_console`.
 - Rights: AI-assisted assets not commercially cleared; `gameplay_bed.ogg` licence unverified (release blocker).
 - Physical-device validation: not done (human task).
 
