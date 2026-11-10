@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 - Full asset integration into the game (owner approval)
+
+- `110c1d0` legacy Perfect Smash app icons removed (`assets/icon/*`, 9 files, and `tools/render_icons.gd`); `config/icon` is `assets/ui/branding/app_icon/gam_logo_app_icon_a_256.png`; library manifest 1,464 entries.
+- `a14afcb` `teaser_2041` added to `data/cinematics.json` (12 sequences, 50 slides).
+- `64ee807` Breach Charge: a launcher that lobs canisters, area damage on contact plus a 2.5 s air-burst fuse (`fuse_seconds`); `ProjectileVisual` draws the slug and canister meshes, the kinetic and breach trails, the breach arming light and the activation flash. Weapon validation: fuse at most 5 s, only blast weapons can have a fuse, lobbed weapons must have a blast.
+- `681016c` the kits, debris, environment pieces, landmarks and texture sets of all five chapters integrated (348 ids) with the trails and arming sprites; tools-only chapter previews and `tools/capture_chapters.gd`; audio hook map reports files wired directly in `data/audio.json`.
+- `449a501` merged `origin/main` (slice C); projectiles keep `ProjectileVisual` with the slice C muzzle flash; slices renamed F (trails, arming) and G (all chapters) so slice E stays free for the planned polish pass; 618 integrated entries, 10 presets.
+- Results: validator PASS with 0 warnings; clean Godot import (no `.godot`) exit 0 with 0 errors, no segfault; load check 1,455 resources, 0 failed; headless tests 211 passed / 0 failed / 1 skipped; windowed (xvfb, GL Compatibility) 212 passed / 0 failed / 0 skipped; chapter captures for all five chapters (13 of 13 production models each); reference check 0 broken references.
+
 ## 2026-11-10 — Asset integration slice C: HUD, operative, weapons
 
 - Production UI theme and fonts on the mission HUD, HUD icons, screen-space critical-asset marker; production operative with its animation clips and live aim; weapon and projectile models; integration tool handles theme/scene dependencies and UI kit 1x variants; export keeps the OFL licences.

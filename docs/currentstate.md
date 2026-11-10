@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Branch `main` (slice B merged from `claude/vigilant-gates-mnfkim`) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+_Last updated: 2026-11-10 · Version 0.1.0 (unreleased) · Branch `main` (full asset integration, owner approval 2026-11-10) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
 
 M1 audit findings (toolchain, architecture, level mapping, identity/signing, risks): see `docs/project-audit.md`.
 
@@ -160,6 +160,16 @@ The owner has approved a revised product direction. This is a design decision, n
 | Online leaderboards | Approved / planned | Later phase; backend not selected/implemented |
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
+
+## Full asset integration into the game (owner approval 2026-11-10)
+
+- Imran gave final creative and usage approval for the delivered assets across all five chapters and 100 levels. Rights fields are unchanged: AI-assisted output is not marked commercially cleared, and `assets/audio/music/gameplay_bed.ogg` rights stay unverified.
+- Library: `assets/` holds the complete delivery from `assets@f186977` (2,270 delivered files; all present, identical apart from the `generated_assets/` to `assets/` path rewrite). Manifest 1,464 entries: the 9 legacy `ICON-*` entries were removed with `assets/icon/*`, replaced by `assets/ui/branding/app_icon/`. Validator PASS, 0 warnings. Coverage 3,236 of 3,236, 100 of 100 levels, 36 of 36 game-wide.
+- In the game: `data/integrated_assets.json` 618 entries (slices A, B, C, D, F trails and arming sprites, G all five chapter kits, environment pieces and texture sets) and 10 presets.
+- Breach Charge: lobbed canister, area damage on contact or after a 2.5 s air-burst fuse; the Kinetic Accelerator stays the precision direct-impact weapon. Visuals in `scripts/mission/view/projectile_visual.gd`.
+- Levels: only `helix_01` is an authored 3D mission. Chapters II to V can be seen through tools-only previews (`tools/chapter_preview/`, `tools/capture_chapters.gd`), which recast `helix_01` with each chapter's kit; they are not game levels. The 100 level mappings are verified by the coverage matrix, not by playable content.
+- Android export preset (local): point `launcher_icons/*` at `assets/ui/branding/app_icon/` (see Export presets below); the old `assets/icon/` PNGs no longer exist.
+- Results: validator PASS with 0 warnings; clean Godot import (no `.godot`) exit 0 with 0 errors, no segfault; load check 1,455 resources, 0 failed; headless tests 211 passed / 0 failed / 1 skipped; windowed (xvfb, GL Compatibility) 212 passed / 0 failed / 0 skipped; chapter captures for all five chapters (13 of 13 production models each); reference check 0 broken references.
 
 ## Asset integration: Helix slice C, HUD, operative and weapons (2026-11-10)
 
