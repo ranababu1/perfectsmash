@@ -161,6 +161,15 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Slice E, part 1: restart cost, lighting balance, warm-ups (2026-11-11)
+
+- Restarts reuse the mission's visual set (environment, sun, set dressing, statics) instead of rebuilding it; components, operative, HUD, effects and physics are still built fresh per attempt.
+- Depth fog behind the facility and a lower sun: the destructible pieces read ahead of the hall. Captures `docs/images/assets/sliceE_*` (`sliceE_lighting_before_after.webp`: top before, bottom after).
+- Projectile models and the hidden weapon model are warmed at load.
+- Tests 207 passed / 0 failed / 1 skipped.
+- Pending in slice E: emulator benchmark of these changes (blocked while the emulator is pinned by another app), the rack-collapse hitch (~160-210 ms on the emulator when two racks fall in one frame; CPU cost on desktop is ~0.1 ms, so it needs an emulator GPU profile), APK texture-format split, first-load time.
+- Physical-device testing: not done (no phone connected).
+
 ## Asset integration: Helix slice C, HUD, operative and weapons (2026-11-10)
 
 - Integrated (slice `C_helix_hud_operative_weapons`, rights unchanged): `GAM-UI-THEME-A` with its fonts (Chakra Petch, Barlow; OFL licence files ship with them) and UI kit textures, 12 HUD icons, `OPR-CHR-OPERATIVE-A`, `OPR-WPN-KINETIC_ACCELERATOR-A`, `OPR-WPN-BREACH_CHARGE-A`, `OPR-PRJ-KINETIC_SLUG-A`, `OPR-PRJ-BREACH_CANISTER-A`. The integration tool now pulls in files referenced by themes/scenes; UI kit 1x files carry their 2x entry's metadata.

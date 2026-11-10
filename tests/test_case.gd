@@ -56,3 +56,9 @@ func free_session(session: GameSession) -> void:
 func wait_physics_frames(count: int) -> void:
 	for i in count:
 		await tree.physics_frame
+
+
+## Rendered frames (warm-ups count these; a slow frame can run several physics steps at once).
+func wait_process_frames(count: int) -> void:
+	for i in count:
+		await tree.process_frame

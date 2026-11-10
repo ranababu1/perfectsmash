@@ -73,4 +73,5 @@ func _run() -> void:
 				for failure in suite.failures:
 					printerr("         " + failure)
 	print("\n%d passed, %d failed, %d skipped (%.1fs)" % [passed, failed, skipped, (Time.get_ticks_msec() - start) / 1000.0])
+	MissionView.release_cached_set()
 	quit(1 if failed > 0 else 0)

@@ -29,6 +29,9 @@ var uses_model := false
 var muzzle: Node3D
 var _animation: AnimationPlayer
 var _one_shot := ""
+## Frames left drawing every weapon model (shader warm-up before the first weapon switch).
+var _warm_frames := 0
+const WARM_FRAMES := 3
 
 var state := State.IDLE
 var aim_angle := 0.0
@@ -171,10 +174,16 @@ func _build_model() -> bool:
 			socket.add_child(weapon)
 			_weapons[id] = weapon
 	uses_model = true
+	# Both weapons are drawn for the first frames so the hidden one's shaders compile at load.
+	_warm_frames = WARM_FRAMES
 	return true
 
 
 func _process_model(delta: float) -> void:
+	if _warm_frames > 0:
+		_warm_frames -= 1
+		for key: String in _weapons:
+			(_weapons[key] as Node3D).visible = _warm_frames > 0 or key == weapon_id
 	_animation.advance(delta)
 	# The arm follows the aim while aiming; other states keep the clip's arm pose.
 	if state == State.AIM and _one_shot != "weapon_switch":

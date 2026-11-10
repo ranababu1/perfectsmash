@@ -80,6 +80,10 @@ func _reveal() -> void:
 	_fade.create_tween().tween_property(_fade, "modulate:a", 0.0, FADE_TIME)
 
 
+func _exit_tree() -> void:
+	MissionView.release_cached_set()
+
+
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:

@@ -200,6 +200,7 @@ func test_mission_view_spawns_debris_overlays_and_effects() -> void:
 	var screen := MissionScreen.new()
 	tree.root.add_child(screen)
 	await wait_physics_frames(4)
+	await wait_process_frames(ComponentVisual.WARM_FRAMES + 1)
 	var view := screen.view
 	for preset: String in MissionVfx.POOLS:
 		assert_true(view.vfx.has_preset(preset), "pool %s" % preset)
@@ -214,3 +215,50 @@ func test_mission_view_spawns_debris_overlays_and_effects() -> void:
 	assert_true(view.debris_spawned.has("HLX-DEB-SERVER_RACK-B"), "destroyed rack leaves its debris set")
 	screen.queue_free()
 	await wait_physics_frames(1)
+
+
+func test_restart_reuses_the_mission_set() -> void:
+	MissionView.release_cached_set()
+	var first := MissionScreen.new()
+	tree.root.add_child(first)
+	await wait_process_frames(2)
+	assert_false(first.view.reused_set, "the first attempt builds the set")
+	var built := first.view.set_root
+	var pieces := first.view.placed_pieces.duplicate()
+	var env := built.find_children("*", "WorldEnvironment", false, false)[0] as WorldEnvironment
+	assert_eq(env.environment.fog_mode, Environment.FOG_MODE_DEPTH, "depth fog keeps the gameplay plane clear")
+	assert_true(env.environment.fog_depth_begin > MissionView.CAMERA_OFFSET.z, "fog starts behind the facility")
+	# The app root's restart: remove the old screen, queue it for deletion, add the next one.
+	tree.root.remove_child(first)
+	first.queue_free()
+	var second := MissionScreen.new()
+	tree.root.add_child(second)
+	assert_true(second.view.reused_set, "a restart reuses the set")
+	assert_true(second.view.set_root == built, "the same set node")
+	assert_eq(built.get_parent(), second.view)
+	assert_eq(second.view.placed_pieces, pieces)
+	assert_eq(second.view.chapter, "helix")
+	await wait_process_frames(2)
+	assert_true(is_instance_valid(built) and built.get_parent() == second.view, "deleting the old screen keeps it")
+	second.queue_free()
+	await wait_process_frames(1)
+	MissionView.release_cached_set()
+	assert_false(is_instance_valid(built), "released on leaving")
+
+
+func test_projectiles_and_hidden_weapon_are_warmed_at_load() -> void:
+	var screen := MissionScreen.new()
+	tree.root.add_child(screen)
+	var warm_ids := screen.view._warm_nodes.map(func(n: Node3D) -> String: return n.name)
+	assert_true(screen.view._warm_nodes.size() >= MissionView.PROJECTILE_MODELS.size(), "projectile models drawn at load: %s" % [warm_ids])
+	await wait_process_frames(1)
+	var rig := screen.view.operative
+	assert_true(rig.uses_model)
+	for id: String in rig._weapons:
+		assert_true((rig._weapons[id] as Node3D).visible, "%s drawn during warm-up" % id)
+	await wait_process_frames(OperativeRig.WARM_FRAMES + 1)
+	assert_true((rig._weapons[rig.weapon_id] as Node3D).visible)
+	assert_false((rig._weapons["breach_charge"] as Node3D).visible, "then only the selected weapon shows")
+	assert_true(screen.view._warm_nodes.is_empty())
+	screen.queue_free()
+	await wait_process_frames(1)

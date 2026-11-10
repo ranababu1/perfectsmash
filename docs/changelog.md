@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — Slice E, part 1: restart cost, lighting balance, warm-ups
+
+- Restart keeps the mission set: `MissionView` builds the environment, sun, set dressing and statics under one `Set` node and hands it to the next attempt of the same mission (cached on leaving the tree, released on leaving missions, at quit and at the end of the test run). Desktop restart after the first: ready ~29 ms → ~6 ms; the emulator saving (sky radiance, shadow light, MultiMesh buffers, materials) is still to be measured.
+- Lighting: depth fog from 12 m to 18 m (behind the facility, which is ~10.5 m from the camera) replaces the exponential fog that hazed the gameplay plane by ~30%; sun lowered from -52° to -36° pitch so the faces of the pieces toward the camera carry more light than the floor. Measured luminance at the start frame: racks 38 → 46, columns 48 → 62, operative 44 → 47, floor 55 → 55, back hall upper area recedes into haze.
+- Warm-ups: projectile models (slug, canister) and the unselected weapon model are drawn for the first frames at load (the first Kinetic shot stalled ~150 ms on the emulator).
+- Tests: `wait_process_frames` helper; the overlay test waits rendered frames (it depended on physics catch-up timing); new `test_restart_reuses_the_mission_set`, `test_projectiles_and_hidden_weapon_are_warmed_at_load`. Headless 207 passed / 0 failed / 1 skipped.
+- `tools/perf/restart_timing.gd` times app-style restarts on desktop.
+- Emulator benchmark not run: the emulator is pinned in lock-task mode by another app (`app.sipsure`), which refuses other launches; left untouched.
+
 ## 2026-11-10 — Asset integration slice C: HUD, operative, weapons
 
 - Production UI theme and fonts on the mission HUD, HUD icons, screen-space critical-asset marker; production operative with its animation clips and live aim; weapon and projectile models; integration tool handles theme/scene dependencies and UI kit 1x variants; export keeps the OFL licences.

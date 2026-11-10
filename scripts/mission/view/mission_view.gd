@@ -39,6 +39,11 @@ const BLAST_LIGHTS := 2
 const BLAST_LIGHT_IDLE_ENERGY := 0.01
 const BLAST_LIGHT_COLOR := Color("ffb060")
 const ENVIRONMENT_DIR := "res://data/environments"
+const SUN_PITCH := -36.0
+const SUN_YAW := -30.0
+const FOG_DENSITY := 0.85
+const FOG_DEPTH_BEGIN := 12.0
+const FOG_DEPTH_END := 18.0
 
 var world: MissionWorld
 var definition: MissionDefinition
@@ -59,6 +64,16 @@ static func assets() -> AssetLibrary:
 var chapter := ""
 ## Asset ids placed by the environment file (set dressing and statics), for reports and tests.
 var placed_pieces: Array[String] = []
+## The mission's set (environment, sun, set dressing, statics). Purely visual and identical on
+## every attempt, so it is kept across restarts of the same mission instead of being rebuilt:
+## rebuilding it re-created the sky radiance, shadow light, MultiMesh buffers and materials,
+## ~650 ms per restart on the Android emulator (slice E).
+var set_root: Node3D
+## True when this view reused the previous attempt's set.
+var reused_set := false
+static var _cached_set: Node3D
+static var _cached_set_key := ""
+static var _cached_set_info := {}
 var _preview: MultiMeshInstance3D
 ## critical asset id -> floating target marker
 var _markers := {}
@@ -98,16 +113,12 @@ func setup(p_world: MissionWorld) -> void:
 	definition = world.definition
 	if _library == null:
 		_library = AssetLibrary.load_from_file()
-	_build_environment()
+	_attach_set()
 	_build_camera()
 	vfx = MissionVfx.new()
 	vfx.name = "MissionVfx"
 	add_child(vfx)
 	vfx.setup(_library, _focus.x)
-	var set_data := _environment_data()
-	for s in definition.statics:
-		if not _add_static_piece(s, set_data):
-			_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
 	for c in definition.components:
 		_add_component(c)
 	operative = OperativeRig.new()
@@ -124,6 +135,68 @@ func setup(p_world: MissionWorld) -> void:
 	world.engine.component_state_changed.connect(_on_component_state_changed)
 	_build_blast_lights()
 	_warm_up_effects()
+
+
+## Reuses the cached set when it was built for this mission, else builds it.
+func _attach_set() -> void:
+	var key := _set_key()
+	if _cached_set != null and is_instance_valid(_cached_set) and _cached_set_key == key:
+		set_root = _cached_set
+		_cached_set = null
+		chapter = str(_cached_set_info.chapter)
+		placed_pieces = _cached_set_info.placed.duplicate()
+		add_child(set_root)
+		reused_set = true
+		return
+	release_cached_set()
+	set_root = Node3D.new()
+	set_root.name = "Set"
+	add_child(set_root)
+	_build_environment()
+	var set_data := _environment_data()
+	for s in definition.statics:
+		if not _add_static_piece(s, set_data):
+			_add_box(ViewMapping.size_to_3d(s.size, STATIC_DEPTH), _flat(Color("4b5158")), ViewMapping.to_3d(s.position, definition.ground_y), s.rotation)
+
+
+func _set_key() -> String:
+	return "%s|%s" % [definition.id, _library.get_instance_id() if _library != null else 0]
+
+
+func _notification(what: int) -> void:
+	# The app root removes the old screen (synchronously) before building the next attempt, so
+	# the set is handed over on leaving the tree; freeing without leaving it does the same.
+	if what == NOTIFICATION_EXIT_TREE or what == NOTIFICATION_PREDELETE:
+		_stash_set()
+	elif what == NOTIFICATION_ENTER_TREE and set_root != null and set_root == _cached_set:
+		# Back in the tree (not a restart): take the set back.
+		_cached_set = null
+		add_child(set_root)
+
+
+func _stash_set() -> void:
+	if set_root == null or not is_instance_valid(set_root) or set_root == _cached_set:
+		return
+	if set_root.get_parent() != null and set_root.get_parent() != self:
+		set_root = null  # the next attempt's view already has it
+		return
+	if set_root.get_parent() == self:
+		remove_child(set_root)
+	release_cached_set()
+	_cached_set = set_root
+	_cached_set_key = _set_key()
+	_cached_set_info = {"chapter": chapter, "placed": placed_pieces.duplicate()}
+	if is_queued_for_deletion() or definition == null:
+		set_root = null
+
+
+## Frees the set kept for the next attempt (leaving missions, quitting, tests).
+static func release_cached_set() -> void:
+	if _cached_set != null and is_instance_valid(_cached_set):
+		_cached_set.free()
+	_cached_set = null
+	_cached_set_key = ""
+	_cached_set_info = {}
 
 
 func _build_blast_lights() -> void:
@@ -169,6 +242,14 @@ func _warm_up_effects() -> void:
 	# One debris set per kind in the mission, motionless under the floor for a few frames.
 	if _library == null:
 		return
+	# Projectile models too: first drawn at the first shot, they stalled ~150 ms on the emulator.
+	for id: String in PROJECTILE_MODELS:
+		var projectile_model := _library.instance_piece(PROJECTILE_MODELS[id], "shared")
+		if projectile_model != null:
+			projectile_model.position = Vector3(_focus.x, -1.2, 0.0)
+			add_child(projectile_model)
+			_warm_nodes.append(projectile_model)
+	_warm_frames = WARM_FRAMES
 	var warmed := {}
 	for c in definition.components:
 		var entry := _library.debris_entry(chapter, c.kind, c.size)
@@ -284,21 +365,28 @@ func _build_environment() -> void:
 		sky.sky_material = sky_material
 		env.sky = sky
 		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+		# Depth fog from just behind the gameplay plane (camera ~10.5 m away) to the back wall:
+		# the facility stays crisp and the hall behind it recedes (slice E; the earlier
+		# exponential fog hazed the gameplay plane ~30% and the back wall barely more).
 		env.fog_enabled = true
-		env.fog_light_color = Color("121820")
-		env.fog_density = 0.035
+		env.fog_mode = Environment.FOG_MODE_DEPTH
+		env.fog_light_color = Color("0e131a")
+		env.fog_density = FOG_DENSITY
+		env.fog_depth_begin = FOG_DEPTH_BEGIN
+		env.fog_depth_end = FOG_DEPTH_END
+		env.fog_depth_curve = 1.0
 		env.fog_sky_affect = 0.0
 	var world_env := WorldEnvironment.new()
 	world_env.environment = env
-	add_child(world_env)
+	set_root.add_child(world_env)
 
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-52.0, -38.0, 0.0)
+	sun.rotation_degrees = Vector3(SUN_PITCH, SUN_YAW, 0.0)
 	sun.light_energy = 1.0 if has_set else 1.15
 	sun.light_color = Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
-	add_child(sun)
+	set_root.add_child(sun)
 
 	if _build_set():
 		return
@@ -366,7 +454,7 @@ func _place_piece(asset_id: String, transforms: Array[Transform3D], shadows: boo
 	var cast := GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if transforms.size() == 1:
 		template.transform = transforms[0]
-		add_child(template)
+		set_root.add_child(template)
 		for mesh_instance: MeshInstance3D in template.find_children("*", "MeshInstance3D", true, false):
 			mesh_instance.cast_shadow = cast
 		return 1
@@ -396,7 +484,7 @@ func _place_piece(asset_id: String, transforms: Array[Transform3D], shadows: boo
 		batch.name = "%s_batch" % asset_id
 		batch.multimesh = multimesh
 		batch.cast_shadow = cast
-		add_child(batch)
+		set_root.add_child(batch)
 	template.free()
 	return transforms.size()
 
@@ -426,7 +514,7 @@ func _add_static_piece(s: Dictionary, data: Dictionary) -> bool:
 	node.scale = Vector3(s.size.x / ViewMapping.PX_PER_METRE / dims.x, s.size.y / ViewMapping.PX_PER_METRE / dims.y, 1.0)
 	node.position = ViewMapping.to_3d(s.position, definition.ground_y)
 	node.rotation = ViewMapping.rotation_to_3d(s.rotation)
-	add_child(node)
+	set_root.add_child(node)
 	placed_pieces.append(asset_id)
 	return true
 
@@ -518,7 +606,7 @@ func _add_box(size: Vector3, material: Material, at: Vector3, rotation_2d: float
 	mesh.material_override = material
 	mesh.position = at
 	mesh.rotation = ViewMapping.rotation_to_3d(rotation_2d)
-	add_child(mesh)
+	set_root.add_child(mesh)
 	return mesh
 
 
