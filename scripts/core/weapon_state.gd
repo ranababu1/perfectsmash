@@ -47,8 +47,15 @@ func fire() -> bool:
 	return true
 
 
+## Emitted exactly once each time a reload cooldown finishes (cooldown goes from >0 to 0).
+signal reload_completed(weapon_id: String)
+
+
 func tick(delta: float) -> void:
+	var was_reloading := cooldown_remaining > 0.0
 	cooldown_remaining = maxf(0.0, cooldown_remaining - maxf(delta, 0.0))
+	if was_reloading and cooldown_remaining <= 0.0:
+		reload_completed.emit(spec.id)
 
 
 ## 0 when ready, 1 right after firing (for the HUD reload indicator).

@@ -353,7 +353,33 @@
 			"loop_overlap": 0.0,
 			"bus": "Music",
 			"loops": false
-		}
+		},
+		"helix_theme": {"file": "res://assets/audio/music/helix/hlx_mus_theme_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": false},
+		"helix_boss": {"file": "res://assets/audio/music/helix/hlx_mus_boss_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"vita_prep": {"file": "res://assets/audio/music/vita/vta_mus_gameplay_prep.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"vita_gameplay": {"file": "res://assets/audio/music/vita/vta_mus_gameplay_tension.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"vita_combat": {"file": "res://assets/audio/music/vita/vta_mus_combat_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"vita_critical_layer": {"file": "res://assets/audio/music/vita/vta_mus_critical_layer_01.ogg", "volume_db": -12.0, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"vita_theme": {"file": "res://assets/audio/music/vita/vta_mus_theme_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": false},
+		"vita_boss": {"file": "res://assets/audio/music/vita/vta_mus_boss_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"nova_grid_prep": {"file": "res://assets/audio/music/nova_grid/nvg_mus_gameplay_prep.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"nova_grid_gameplay": {"file": "res://assets/audio/music/nova_grid/nvg_mus_gameplay_tension.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"nova_grid_combat": {"file": "res://assets/audio/music/nova_grid/nvg_mus_combat_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"nova_grid_critical_layer": {"file": "res://assets/audio/music/nova_grid/nvg_mus_critical_layer_01.ogg", "volume_db": -12.0, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"nova_grid_theme": {"file": "res://assets/audio/music/nova_grid/nvg_mus_theme_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": false},
+		"nova_grid_boss": {"file": "res://assets/audio/music/nova_grid/nvg_mus_boss_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"civitas_prep": {"file": "res://assets/audio/music/civitas/cvt_mus_gameplay_prep.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"civitas_gameplay": {"file": "res://assets/audio/music/civitas/cvt_mus_gameplay_tension.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"civitas_combat": {"file": "res://assets/audio/music/civitas/cvt_mus_combat_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"civitas_critical_layer": {"file": "res://assets/audio/music/civitas/cvt_mus_critical_layer_01.ogg", "volume_db": -12.0, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"civitas_theme": {"file": "res://assets/audio/music/civitas/cvt_mus_theme_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": false},
+		"civitas_boss": {"file": "res://assets/audio/music/civitas/cvt_mus_boss_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"meridian_prep": {"file": "res://assets/audio/music/meridian/mrd_mus_gameplay_prep.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"meridian_gameplay": {"file": "res://assets/audio/music/meridian/mrd_mus_gameplay_tension.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"meridian_combat": {"file": "res://assets/audio/music/meridian/mrd_mus_combat_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"meridian_critical_layer": {"file": "res://assets/audio/music/meridian/mrd_mus_critical_layer_01.ogg", "volume_db": -12.0, "loop_overlap": 0.0, "bus": "Music", "loops": true},
+		"meridian_theme": {"file": "res://assets/audio/music/meridian/mrd_mus_theme_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": false},
+		"meridian_boss": {"file": "res://assets/audio/music/meridian/mrd_mus_boss_01.ogg", "volume_db": -10.5, "loop_overlap": 0.0, "bus": "Music", "loops": true}
 	},
 	"ambience": {
 		"helix_server_hall": {
@@ -376,7 +402,23 @@
 			"loop_overlap": 0.0,
 			"bus": "Ambience",
 			"loops": true
-		}
+		},
+		"vita_bioreactor": {"file": "res://assets/audio/ambience/vita/vta_amb_bioreactor_01.ogg", "volume_db": -4.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"vita_cleanroom": {"file": "res://assets/audio/ambience/vita/vta_amb_cleanroom_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"vita_growth": {"file": "res://assets/audio/ambience/vita/vta_amb_growth_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"vita_archive": {"file": "res://assets/audio/ambience/vita/vta_amb_archive_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"nova_grid_reactor": {"file": "res://assets/audio/ambience/nova_grid/nvg_amb_reactor_01.ogg", "volume_db": -4.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"nova_grid_cooling": {"file": "res://assets/audio/ambience/nova_grid/nvg_amb_cooling_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"nova_grid_intake": {"file": "res://assets/audio/ambience/nova_grid/nvg_amb_intake_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"nova_grid_transformer": {"file": "res://assets/audio/ambience/nova_grid/nvg_amb_transformer_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"civitas_control": {"file": "res://assets/audio/ambience/civitas/cvt_amb_control_01.ogg", "volume_db": -4.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"civitas_plaza": {"file": "res://assets/audio/ambience/civitas/cvt_amb_plaza_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"civitas_spire": {"file": "res://assets/audio/ambience/civitas/cvt_amb_spire_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"civitas_street": {"file": "res://assets/audio/ambience/civitas/cvt_amb_street_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"meridian_cavern": {"file": "res://assets/audio/ambience/meridian/mrd_amb_cavern_01.ogg", "volume_db": -4.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"meridian_anchor": {"file": "res://assets/audio/ambience/meridian/mrd_amb_anchor_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"meridian_convergence": {"file": "res://assets/audio/ambience/meridian/mrd_amb_convergence_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true},
+		"meridian_excavation": {"file": "res://assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true}
 	},
 	"missions": {
 		"helix_01": {
@@ -390,5 +432,12 @@
 			"defeat": "defeat_mission",
 			"ambience": "helix_server_hall"
 		}
+	},
+	"chapters": {
+		"helix": {"intensity": ["helix_prep", "helix_gameplay", "helix_combat"], "critical_layer": "helix_critical_layer", "victory": "victory_mission", "defeat": "defeat_mission", "ambience": "helix_server_hall", "theme": "helix_theme", "boss": "helix_boss"},
+		"vita": {"intensity": ["vita_prep", "vita_gameplay", "vita_combat"], "critical_layer": "vita_critical_layer", "victory": "victory_mission", "defeat": "defeat_mission", "ambience": "vita_bioreactor", "theme": "vita_theme", "boss": "vita_boss"},
+		"nova_grid": {"intensity": ["nova_grid_prep", "nova_grid_gameplay", "nova_grid_combat"], "critical_layer": "nova_grid_critical_layer", "victory": "victory_mission", "defeat": "defeat_mission", "ambience": "nova_grid_reactor", "theme": "nova_grid_theme", "boss": "nova_grid_boss"},
+		"civitas": {"intensity": ["civitas_prep", "civitas_gameplay", "civitas_combat"], "critical_layer": "civitas_critical_layer", "victory": "victory_mission", "defeat": "defeat_mission", "ambience": "civitas_control", "theme": "civitas_theme", "boss": "civitas_boss"},
+		"meridian": {"intensity": ["meridian_prep", "meridian_gameplay", "meridian_combat"], "critical_layer": "meridian_critical_layer", "victory": "victory_mission", "defeat": "defeat_mission", "ambience": "meridian_cavern", "theme": "meridian_theme", "boss": "meridian_boss"}
 	}
 }

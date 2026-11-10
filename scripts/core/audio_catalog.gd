@@ -10,6 +10,8 @@ extends RefCounted
 const DEFAULT_PATH := "res://data/audio.json"
 ## Procedural sounds AudioService synthesizes; every sound's fallback must be one of these.
 const PROCEDURAL := ["launch", "impact", "pop", "shatter", "win", "lose", "click"]
+## Chapter themes in chapter-number order (chapter 1 = helix).
+const CHAPTER_THEMES := ["helix", "vita", "nova_grid", "civitas", "meridian"]
 const MAX_PITCH_VARIANCE := 0.5
 ## Buses in default_bus_layout.tres.
 const BUSES := ["Master", "Music", "Ambience", "SFX", "UI"]
@@ -43,6 +45,8 @@ var destroyed_by_material := {}
 var default_destroyed := ""
 ## mission id -> {intensity: Array[String], critical_layer, victory, defeat, ambience}
 var missions := {}
+## chapter theme (CHAPTER_THEMES) -> plan with the same keys as a mission plan
+var chapters := {}
 var errors := PackedStringArray()
 
 
@@ -106,6 +110,12 @@ static func from_json_text(text: String) -> AudioCatalog:
 	if missions is Dictionary:
 		for mission_id: Variant in missions:
 			catalog._add_mission(mission_id, missions[mission_id])
+	var chapters: Variant = root.get("chapters", {})
+	if chapters is Dictionary:
+		for theme: Variant in chapters:
+			catalog._add_chapter(theme, chapters[theme])
+	else:
+		catalog.errors.append("'chapters' must be an object")
 	return catalog
 
 
@@ -137,6 +147,24 @@ func destroyed_sound_for(material_id: String) -> String:
 ## The audio plan of a mission ({} when it has none).
 func mission_plan(mission_id: String) -> Dictionary:
 	return missions.get(mission_id, {})
+
+
+## The audio plan of a chapter by number (1-5) or theme name ({} when unknown or absent).
+func chapter_plan(chapter: Variant) -> Dictionary:
+	var theme := ""
+	if chapter is int and chapter >= 1 and chapter <= CHAPTER_THEMES.size():
+		theme = CHAPTER_THEMES[chapter - 1]
+	elif chapter is String:
+		theme = chapter
+	return chapters.get(theme, {})
+
+
+## Mission plan, else the plan of the mission's chapter, else {} (callers keep their own fallback).
+func plan_for(mission_id: String, chapter: int = 0) -> Dictionary:
+	var plan := mission_plan(mission_id)
+	if plan.is_empty() and chapter > 0:
+		plan = chapter_plan(chapter)
+	return plan
 
 
 ## The impact sound for a material (the default impact for unknown or empty materials).
@@ -232,13 +260,25 @@ func _add_mission(mission_id: Variant, entry: Variant) -> void:
 	if not mission_id is String or not entry is Dictionary:
 		errors.append("mission audio '%s' must be an object" % str(mission_id))
 		return
-	var prefix := "mission audio '%s': " % mission_id
+	missions[mission_id] = _build_plan("mission audio '%s': " % mission_id, entry)
+
+
+func _add_chapter(theme: Variant, entry: Variant) -> void:
+	if not theme is String or not CHAPTER_THEMES.has(theme) or not entry is Dictionary:
+		errors.append("chapter audio '%s' must be an object keyed by one of %s" % [str(theme), str(CHAPTER_THEMES)])
+		return
+	chapters[theme] = _build_plan("chapter audio '%s': " % theme, entry)
+
+
+## Shared by mission and chapter plans. "theme" and "boss" are optional music cues (chapter themes
+## and hero-mission tracks); MissionAudio does not play them, menus and chapter screens may.
+func _build_plan(prefix: String, entry: Dictionary) -> Dictionary:
 	var intensity: Variant = entry.get("intensity", [])
 	if not intensity is Array or not intensity.all(func(c: Variant) -> bool: return c is String and music.has(c)):
 		errors.append(prefix + "intensity must list known music cues")
 		intensity = []
-	var plan := {"intensity": intensity, "critical_layer": "", "victory": "", "defeat": "", "ambience": ""}
-	for key: String in ["critical_layer", "victory", "defeat"]:
+	var plan := {"intensity": intensity, "critical_layer": "", "victory": "", "defeat": "", "ambience": "", "theme": "", "boss": ""}
+	for key: String in ["critical_layer", "victory", "defeat", "theme", "boss"]:
 		var cue: Variant = entry.get(key, "")
 		if cue is String and (cue.is_empty() or music.has(cue)):
 			plan[key] = cue
@@ -249,4 +289,4 @@ func _add_mission(mission_id: Variant, entry: Variant) -> void:
 		plan.ambience = bed
 	else:
 		errors.append(prefix + "ambience must name a known ambience cue")
-	missions[mission_id] = plan
+	return plan
