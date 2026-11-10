@@ -2,6 +2,11 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-10 — Asset integration slice D: Helix music, ambience, sound effects
+
+- `91d1967` `data/audio.json` on the delivered audio (90 files), buses (`default_bus_layout.tres`), material-aware impact and destruction sounds, one-sound-per-event throttle, `MissionAudio` (intensity steps with position-synced cross-fades, critical layer, stingers), ambience director, loop flags in imports. `AudioCatalog` gains buses, loop flags, ambience, `destroyed_by_material` and mission plans; `MusicDirector` gains a bus, `keep_position` and a layer player.
+- Results: headless 204 passed / 0 failed / 1 skipped; emulator install and play without errors.
+
 ## 2026-11-10 — Slice B verified and merged
 
 - `380cd10` uid files for the new view scripts; `b649204` integrated textures import VRAM-compressed with mipmaps (emulator video memory ~265 MB → ~95 MB).

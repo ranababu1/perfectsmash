@@ -52,3 +52,14 @@ Initial load (first frame) is 9-10 s on the emulator. APK 74.5 MB (only integrat
 - **VFX presets** (ui-vfx, `assets/vfx/godot/presets/`): `breach_explosion`, `impact_metal/glass/electric/concrete` (by physics material), `kinetic_impact`, `kinetic_muzzle`, `component_collapse`, `critical_core_destroyed`, `critical_core_idle`. Pools of 1-3 per preset, restarted on use; every preset and debris set is drawn once under the floor during load. Textures integrated: `OPR-VFX-BREACH_{ACTIVATION,DEBRIS,EXPLOSION,SHOCKWAVE}-A`, `OPR-VFX-KINETIC_{IMPACT,MUZZLE}-A`, `SHR-VFX-{CRITICAL_CORE_DESTRUCTION, CRITICAL_CORE_IDLE, DEBRIS_CHIP_SMALL, DUST_COLLAPSE, DUST_CONCRETE, ENERGY_DISCHARGE, IMPACT_ELECTRIC, IMPACT_GLASS, IMPACT_METAL, PARTICLE_SPARK, SMOKE_PUFF}-A`.
 - **Performance risk to measure:** the overlay `next_pass` adds a transparent draw per damaged main surface; particle quads are alpha-blended or additive. Measure with `mission_benchmark` (breach scenario) on the emulator and a physical device before approving.
 - **Deferred:** CRITICAL sparking loops from `fx_spark_*` empties, emission flicker, projectile trails, upgrade-tier VFX.
+
+## Slice D: Helix music, ambience and sound effects
+
+**Implemented and verified** (`91d1967`): tests, windowed run, Android emulator install and play. Not yet reviewed by ear.
+
+- **Source:** the audio already on `main` (identical to the latest `assets` delivery, checked by file hash). 90 files, slice `D_helix_audio` in `data/integrated_assets.json`.
+- **Music cues:** `helix_prep` (`HLX-MUS-GAMEPLAY-PREP`), `helix_gameplay` (`HLX-MUS-GAMEPLAY-TENSION`), `helix_combat` (`HLX-MUS-COMBAT-01`), `helix_critical_layer` (`HLX-MUS-CRITICAL_LAYER-01`), `victory_mission` / `defeat_mission` (`GAM-MUS-VICTORY-MISSION`, `GAM-MUS-DEFEAT-MISSION`), `menu` (`GAM-MUS-MENU-01`), `cinematic` (`GAM-MUS-OPENING-01`), `legacy_bed` (unchanged legacy file).
+- **Ambience:** `helix_server_hall`, `helix_core`, `helix_cooling` (`HLX-AMB-*-01`); helix_01 plays the server hall.
+- **Sound effects:** `OPR-SFX-KINETIC_FIRE-01..05`, `OPR-SFX-BREACH_LAUNCH-01..04`, `OPR-SFX-BREACH_EXPLOSION-01..05`, `OPR-SFX-WEAPON_SWITCH-01..03`, `OPR-SFX-RELOAD_READY-01..03`, `SHR-SFX-IMPACT_{METAL,GLASS,COMPOSITE,CONCRETE}-*`, `SHR-SFX-ELECTRIC_SHORT-*`, `SHR-SFX-{STRUCTURE_COLLAPSE,MACHINE_FAILURE,ENERGY_DISCHARGE,SECONDARY_BLAST}-*`, `HLX-SFX-CORE_DESTROYED-01..03`, `SHR-SFX-ALARM_PULSE-01`, `GAM-SFX-UI_{CLICK,CONFIRM,BACK,OBJECTIVE_COMPLETE,VICTORY,DEFEAT}-*`.
+- **Scripts:** `scripts/core/audio_catalog.gd`, `scripts/services/audio_service.gd`, `scripts/services/music_director.gd`, new `scripts/mission/mission_audio.gd`, `scripts/mission/mission_screen.gd`, `scripts/main.gd`; `default_bus_layout.tres`; loop flags in 8 Ogg imports.
+- **Rights:** all `pending_review`; the asset notes describe original synthesised and algorithmic work, not commercially cleared until reviewed. `gameplay_bed.ogg` remains unverified.

@@ -161,6 +161,15 @@ The owner has approved a revised product direction. This is a design decision, n
 | Temporal Frontlines asynchronous multiplayer | Approved / planned | Persistent modular institutions and offline attacks; no backend or multiplayer implementation claimed |
 | Real-time synchronized multiplayer | Excluded from initial scope | No simultaneous physics sessions planned |
 
+## Asset integration: Helix slice D, music, ambience and sound effects (2026-11-10, `91d1967`)
+
+- Audio on `main` is identical to the latest `assets` delivery (pass 18 changed only cue-sheet and QC text), so slice D uses the files already on `main`. 90 files integrated (slice `D_helix_audio`, rights unchanged, all `pending_review`).
+- Buses `Music`, `Ambience`, `SFX`, `UI` (`default_bus_layout.tres`); every sound routes to its manifest bus.
+- Sound effects: base Kinetic/Breach variants (upgrade-tier variants wait for upgrades), material-aware impacts (metal, glass, electronic, composite, concrete) and destruction sounds (structure collapse, machine failure, secondary blast, Helix core destroyed), weapon switch, optional objective complete, core-critical alarm, victory/defeat. A sound id does not retrigger within 90 ms: one event, one sound.
+- Music (Helix only): `MissionAudio` raises intensity preparation → tension (first shot) → combat (first destruction), keeping the playback position across the same-length tracks; the critical layer fades in while the core is CRITICAL; victory/defeat stingers. Ambience: the server-hall bed on its own `MusicDirector`. Loop flags set in the imports of looped tracks. The legacy `gameplay_bed.ogg` is untouched and stays as the fallback cue `legacy_bed`.
+- Not yet used: reload-ready (no engine signal yet), alarm variants, ambience layering per zone, upgrade-tier weapon sounds. Not listened to by a human yet: levels were set from the delivered loudness metadata (music −16 LUFS at −10.5 dB, ambience −24 LUFS at −4 dB, effects at 0 dB).
+- Verified: tests 204 passed / 0 failed / 1 skipped; windowed run without errors; Android emulator: install, launch and touch-fired shot without errors, audio output active. Debug APK 149 MB.
+
 ## Asset integration: Helix slice B (verified 2026-11-10, merged `96596ab`)
 
 - Built in a cloud session without Godot (`b69196c`..`a411ef9`); verified here: Godot import clean, headless 199 passed / 0 failed / 1 skipped, gameplay captures show debris sets, light/heavy damage overlays, breach explosion, material impacts, core idle glow and core destruction effects.
