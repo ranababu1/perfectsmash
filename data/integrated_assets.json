@@ -11,7 +11,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "ai_core_module",
@@ -49,7 +49,7 @@
 				0.85,
 				1.25
 			],
-			"tris": 5440,
+			"tris": 5596,
 			"states": [
 				"intact",
 				"light",
@@ -58,7 +58,7 @@
 			],
 			"critical": true,
 			"dimensions": "0.60 x 0.60 x 0.7 m",
-			"notes": "Nodes: mesh_intact (1380 tris), mesh_light (1908), mesh_heavy (2152); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_red_hlx, glass_clear_hlx, mat_ai_core_module_hlx, mat_ai_core_module_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-AI_CORE-A. glb 300 KB.",
+			"notes": "Nodes: mesh_intact (1380 tris), mesh_light (2132), mesh_heavy (2084); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_red_hlx, glass_clear_hlx, mat_ai_core_module_hlx, mat_ai_core_module_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-AI_CORE-A. glb 515 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -70,7 +70,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "reinforced_steel",
@@ -108,7 +108,7 @@
 				0.8,
 				1.3
 			],
-			"tris": 2228,
+			"tris": 4132,
 			"states": [
 				"intact",
 				"light",
@@ -117,7 +117,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.30 x 0.90 x 1.2 m",
-			"notes": "Nodes: mesh_intact (604 tris), mesh_light (668), mesh_heavy (956); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-BLAST_WALL-A. glb 128 KB.",
+			"notes": "Nodes: mesh_intact (1224 tris), mesh_light (1454), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_accent, mat_reinforced_steel_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_hazard_hlx, trim_internal_hlx, trim_rubber_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-BLAST_WALL-A. glb 469 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -129,7 +129,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "reinforced_steel",
@@ -167,7 +167,7 @@
 				0.8,
 				1.6
 			],
-			"tris": 2184,
+			"tris": 3008,
 			"states": [
 				"intact",
 				"light",
@@ -176,7 +176,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.16 x 0.80 x 0.9 m",
-			"notes": "Nodes: mesh_intact (600 tris), mesh_light (752), mesh_heavy (832); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-CORE_SHIELD-A. glb 128 KB.",
+			"notes": "Nodes: mesh_intact (712 tris), mesh_light (1160), mesh_heavy (1136); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_accent, mat_reinforced_steel_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_hazard_hlx, trim_rubber_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-CORE_SHIELD-A. glb 286 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -188,7 +188,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "energy_component",
@@ -226,7 +226,7 @@
 				0.8,
 				1.3
 			],
-			"tris": 3472,
+			"tris": 4450,
 			"states": [
 				"intact",
 				"light",
@@ -235,7 +235,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.36 x 0.40 x 0.5 m",
-			"notes": "Nodes: mesh_intact (1032 tris), mesh_light (1064), mesh_heavy (1376); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_hlx, mat_energy_component_hlx, mat_energy_component_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-POWER_CELL-A. glb 171 KB.",
+			"notes": "Nodes: mesh_intact (1416 tris), mesh_light (1524), mesh_heavy (1510); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_hlx, mat_energy_component_hlx, mat_energy_component_hlx_accent, mat_energy_component_hlx_key, mat_energy_component_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_hazard_hlx, trim_internal_hlx, trim_rubber_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-POWER_CELL-A. glb 421 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -247,7 +247,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "glass_polymer",
@@ -294,7 +294,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.70 x 0.24 x 0.8 m",
-			"notes": "Nodes: mesh_intact (960 tris), mesh_light (1454), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_hlx, mat_glass_polymer_hlx, mat_glass_polymer_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-RELAY_DISH-A. glb 150 KB.",
+			"notes": "Nodes: mesh_intact (960 tris), mesh_light (1454), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_glass_polymer_hlx, mat_glass_polymer_hlx_frame, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-RELAY_DISH-A. glb 396 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -306,7 +306,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "lightweight_alloy",
@@ -344,7 +344,7 @@
 				0.8,
 				1.3
 			],
-			"tris": 2818,
+			"tris": 3212,
 			"states": [
 				"intact",
 				"light",
@@ -353,7 +353,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.22 x 2.20 x 0.3 m",
-			"notes": "Nodes: mesh_intact (828 tris), mesh_light (860), mesh_heavy (1130); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_smoke_01. Material slots: emit_orange_hlx, mat_lightweight_alloy_hlx, mat_lightweight_alloy_hlx_light, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-RELAY_MAST-B. glb 180 KB.",
+			"notes": "Nodes: mesh_intact (876 tris), mesh_light (1092), mesh_heavy (1244); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_smoke_01. Material slots: emit_orange_hlx, mat_lightweight_alloy_hlx, mat_lightweight_alloy_hlx_accent, mat_lightweight_alloy_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_hazard_hlx, trim_internal_hlx, trim_rubber_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-RELAY_MAST-B. glb 298 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -365,7 +365,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "electronic_module",
@@ -403,7 +403,7 @@
 				0.75,
 				1.5
 			],
-			"tris": 3940,
+			"tris": 4146,
 			"states": [
 				"intact",
 				"light",
@@ -412,7 +412,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.40 x 1.00 x 0.8 m",
-			"notes": "Nodes: mesh_intact (1076 tris), mesh_light (1400), mesh_heavy (1464); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_electronic_module_hlx, mat_electronic_module_hlx_accent, mat_electronic_module_hlx_frame, mat_electronic_module_hlx_light, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SERVER_RACK-B. glb 252 KB.",
+			"notes": "Nodes: mesh_intact (1284 tris), mesh_light (1408), mesh_heavy (1454); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_electronic_module_hlx, mat_electronic_module_hlx_accent, mat_electronic_module_hlx_module, mat_electronic_module_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SERVER_RACK-B. glb 425 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -424,7 +424,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "composite",
@@ -462,7 +462,7 @@
 				0.75,
 				1.3
 			],
-			"tris": 1934,
+			"tris": 2096,
 			"states": [
 				"intact",
 				"light",
@@ -471,7 +471,7 @@
 			],
 			"critical": false,
 			"dimensions": "2.00 x 0.24 x 1.4 m",
-			"notes": "Nodes: mesh_intact (508 tris), mesh_light (608), mesh_heavy (818); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_composite_hlx, mat_composite_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SERVICE_DECK-B. glb 138 KB.",
+			"notes": "Nodes: mesh_intact (572 tris), mesh_light (620), mesh_heavy (904); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_smoke_01. Material slots: emit_cyan_hlx, mat_composite_hlx, mat_composite_hlx_accent, mat_composite_hlx_panel, mat_composite_hlx_tread, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SERVICE_DECK-B. glb 203 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -483,7 +483,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "lightweight_alloy",
@@ -521,7 +521,7 @@
 				0.7,
 				1.3
 			],
-			"tris": 1908,
+			"tris": 2464,
 			"states": [
 				"intact",
 				"light",
@@ -530,7 +530,7 @@
 			],
 			"critical": false,
 			"dimensions": "0.26 x 1.60 x 0.5 m",
-			"notes": "Nodes: mesh_intact (460 tris), mesh_light (640), mesh_heavy (808); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_lightweight_alloy_hlx, mat_lightweight_alloy_hlx_frame, mat_lightweight_alloy_hlx_light, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SUPPORT_COLUMN-B. glb 114 KB.",
+			"notes": "Nodes: mesh_intact (692 tris), mesh_light (788), mesh_heavy (984); show one at a time (all three import visible: hide mesh_light and mesh_heavy on instancing). Marker empties: fx_spark_01, fx_spark_02, fx_spark_03, fx_spark_04, fx_spark_05, fx_spark_06, fx_smoke_01. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_lightweight_alloy_hlx, mat_lightweight_alloy_hlx_accent, mat_lightweight_alloy_hlx_panel, trim_burnt_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Heavy state switches some compute light to the warning colour and turns others off (malfunction read); fx_spark_* mark exposed internals for spark VFX. Destroyed state: see HLX-DEB-SUPPORT_COLUMN-B. glb 233 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -542,7 +542,7 @@
 			"format": "glb",
 			"purpose": "Mid-back facility wall module 4 m wide, 6 m tall, 0.5 m thick",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -570,9 +570,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 616,
+			"tris": 968,
 			"dimensions": "4 x 6 x 0.6 m (w x h x d)",
-			"notes": "Single node mesh_intact (616 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 51 KB.",
+			"notes": "Single node mesh_intact (968 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, glass_smoked_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 97 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -584,7 +584,7 @@
 			"format": "glb",
 			"purpose": "Mid-back wall module with an observation window",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -614,7 +614,7 @@
 			"material": "reinforced_steel",
 			"tris": 276,
 			"dimensions": "4 x 6 x 0.6 m (w x h x d)",
-			"notes": "Single node mesh_intact (276 tris) under a root named after the file. Material slots: emit_cyan_hlx, glass_smoked_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 25 KB.",
+			"notes": "Single node mesh_intact (276 tris) under a root named after the file. Material slots: emit_cyan_hlx, glass_smoked_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 34 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -626,7 +626,7 @@
 			"format": "glb",
 			"purpose": "Raised catwalk module 4 m long, deck top at 0.6 m, rail at 1.6 m",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -654,9 +654,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 792,
+			"tris": 1212,
 			"dimensions": "4 x 1.6 x 1.2 m (w x h x d)",
-			"notes": "Single node mesh_intact (792 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_cable_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 60 KB.",
+			"notes": "Single node mesh_intact (1212 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_frame, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 113 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -668,7 +668,7 @@
 			"format": "glb",
 			"purpose": "Ceiling truss 8 m long with light fittings below (origin at the fittings' underside)",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -698,7 +698,7 @@
 			"material": "reinforced_steel",
 			"tris": 1116,
 			"dimensions": "8 x 0.88 x 0.8 m (w x h x d)",
-			"notes": "Single node mesh_intact (1116 tris) under a root named after the file. Material slots: emit_white_hlx, mat_reinforced_steel_hlx, trim_cable_hlx, trim_dark_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 81 KB.",
+			"notes": "Single node mesh_intact (1116 tris) under a root named after the file. Material slots: emit_white_hlx, mat_reinforced_steel_hlx, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 102 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -710,7 +710,7 @@
 			"format": "glb",
 			"purpose": "Floor module 1 x 1 m, top at y 0, left edge at x 0, depth centred",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView floor layer (proposed kit loader, ASSET_CONTRACT 10): top at y = 0, z -9 .. +5",
 			"chapter": "helix",
@@ -738,9 +738,9 @@
 			],
 			"pivot": "top face at y = 0, left edge at x = 0, depth centred on z = 0 (tiles along +x and in z)",
 			"material": "reinforced_steel",
-			"tris": 56,
+			"tris": 80,
 			"dimensions": "1 x 0.3 x 1 m (w x h x d)",
-			"notes": "Single node mesh_intact (56 tris) under a root named after the file. Material slots: mat_reinforced_steel_hlx, trim_dark_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 6 KB.",
+			"notes": "Single node mesh_intact (80 tris) under a root named after the file. Material slots: mat_reinforced_steel_hlx, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 13 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -752,7 +752,7 @@
 			"format": "glb",
 			"purpose": "Floor module 4 x 4 m, top at y 0, left edge at x 0, depth centred",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView floor layer (proposed kit loader, ASSET_CONTRACT 10): top at y = 0, z -9 .. +5",
 			"chapter": "helix",
@@ -780,9 +780,9 @@
 			],
 			"pivot": "top face at y = 0, left edge at x = 0, depth centred on z = 0 (tiles along +x and in z)",
 			"material": "reinforced_steel",
-			"tris": 776,
+			"tris": 1184,
 			"dimensions": "4 x 0.3 x 4 m (w x h x d)",
-			"notes": "Single node mesh_intact (776 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 62 KB.",
+			"notes": "Single node mesh_intact (1184 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 114 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -794,7 +794,7 @@
 			"format": "glb",
 			"purpose": "Floor module 4 x 4 m with a covered service trench along x",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView floor layer (proposed kit loader, ASSET_CONTRACT 10): top at y = 0, z -9 .. +5",
 			"chapter": "helix",
@@ -822,9 +822,9 @@
 			],
 			"pivot": "top face at y = 0, left edge at x = 0, depth centred on z = 0 (tiles along +x and in z)",
 			"material": "reinforced_steel",
-			"tris": 712,
+			"tris": 928,
 			"dimensions": "4 x 0.3 x 4 m (w x h x d)",
-			"notes": "Single node mesh_intact (712 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 56 KB.",
+			"notes": "Single node mesh_intact (928 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_cable_hlx, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 92 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -836,7 +836,7 @@
 			"format": "glb",
 			"purpose": "Static ledge, collision rect 200 x 30 px, depth 1.6 m",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView statics (fixed ledges and plinths), gameplay band, depth 1.6 m",
 			"chapter": "helix",
@@ -871,7 +871,7 @@
 				30
 			],
 			"depth_m": 1.6,
-			"notes": "Single node mesh_intact (100 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 10 KB.",
+			"notes": "Single node mesh_intact (100 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 14 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -883,7 +883,7 @@
 			"format": "glb",
 			"purpose": "Near-back low wall with railing and console faces, 1.1 m tall",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView near-back layer, z -2.5 .. -4 (props, no collision; never taller than 3 m behind a critical asset)",
 			"chapter": "helix",
@@ -911,9 +911,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 376,
+			"tris": 532,
 			"dimensions": "4 x 1.1 x 0.46 m (w x h x d)",
-			"notes": "Single node mesh_intact (376 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 29 KB.",
+			"notes": "Single node mesh_intact (532 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, glass_smoked_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 54 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -925,7 +925,7 @@
 			"format": "glb",
 			"purpose": "Mid/background facility block 6 x 8 x 4 m with stepped tiers and window bands",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -953,9 +953,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 284,
+			"tris": 524,
 			"dimensions": "6 x 10 x 4 m (w x h x d)",
-			"notes": "Single node mesh_intact (284 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 23 KB.",
+			"notes": "Single node mesh_intact (524 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 51 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -967,7 +967,7 @@
 			"format": "glb",
 			"purpose": "Background tower 3 x 12 x 3 m",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -995,9 +995,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 360,
+			"tris": 600,
 			"dimensions": "3 x 14 x 3 m (w x h x d)",
-			"notes": "Single node mesh_intact (360 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 28 KB.",
+			"notes": "Single node mesh_intact (600 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 57 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1009,7 +1009,7 @@
 			"format": "glb",
 			"purpose": "Structural pillar 0.8 m, 6 m tall",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back layer, z -4 .. -8 (facility walls, gantries, massing)",
 			"chapter": "helix",
@@ -1037,9 +1037,9 @@
 			],
 			"pivot": "bottom centre (x and z centred, lowest point at y = 0)",
 			"material": "reinforced_steel",
-			"tris": 412,
+			"tris": 516,
 			"dimensions": "0.96 x 6 x 0.96 m (w x h x d)",
-			"notes": "Single node mesh_intact (412 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_internal_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 29 KB.",
+			"notes": "Single node mesh_intact (516 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_edge_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 49 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1051,7 +1051,7 @@
 			"format": "glb",
 			"purpose": "Static plinth, collision rect 100 x 60 px, depth 1.6 m",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView statics (fixed ledges and plinths), gameplay band, depth 1.6 m",
 			"chapter": "helix",
@@ -1086,7 +1086,7 @@
 				60
 			],
 			"depth_m": 1.6,
-			"notes": "Single node mesh_intact (268 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 18 KB.",
+			"notes": "Single node mesh_intact (268 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 26 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1098,7 +1098,7 @@
 			"format": "glb",
 			"purpose": "Near-back dressing: operator console with three screens",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView near-back layer, z -2.5 .. -4 (props, no collision; never taller than 3 m behind a critical asset)",
 			"chapter": "helix",
@@ -1128,7 +1128,7 @@
 			"material": "electronic_module",
 			"tris": 124,
 			"dimensions": "1.6 x 1.35 x 0.8 m (w x h x d)",
-			"notes": "Single node mesh_intact (124 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_electronic_module_hlx, mat_electronic_module_hlx_panel, trim_dark_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 13 KB.",
+			"notes": "Single node mesh_intact (124 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_electronic_module_hlx, mat_electronic_module_hlx_panel, trim_dark_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 17 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1140,7 +1140,7 @@
 			"format": "glb",
 			"purpose": "Band landmark COOLING_TOWER (mid-back layer, z -4 .. -8)",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back band landmark, z -4 .. -8, one per five levels (ASSET_CONTRACT 19)",
 			"chapter": "helix",
@@ -1155,7 +1155,7 @@
 			"material": "reinforced_steel",
 			"tris": 908,
 			"dimensions": "5.24 x 7.35 x 3.60 m (w x h x d)",
-			"notes": "Single node mesh_intact (908 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 51 KB.",
+			"notes": "Single node mesh_intact (908 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_cable_hlx, trim_dark_hlx, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 73 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1167,7 +1167,7 @@
 			"format": "glb",
 			"purpose": "Near-back dressing: stacked equipment crates",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView near-back layer, z -2.5 .. -4 (props, no collision; never taller than 3 m behind a critical asset)",
 			"chapter": "helix",
@@ -1197,7 +1197,7 @@
 			"material": "composite",
 			"tris": 324,
 			"dimensions": "2.2 x 1.4 x 0.9 m (w x h x d)",
-			"notes": "Single node mesh_intact (324 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_composite_hlx, mat_composite_hlx_frame, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 20 KB.",
+			"notes": "Single node mesh_intact (324 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_composite_hlx, mat_composite_hlx_frame, trim_edge_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 30 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1209,7 +1209,7 @@
 			"format": "glb",
 			"purpose": "Near-back dressing: 3 m pipe run on stands",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView near-back layer, z -2.5 .. -4 (props, no collision; never taller than 3 m behind a critical asset)",
 			"chapter": "helix",
@@ -1239,7 +1239,7 @@
 			"material": "reinforced_steel",
 			"tris": 468,
 			"dimensions": "3 x 1.2 x 0.5 m (w x h x d)",
-			"notes": "Single node mesh_intact (468 tris) under a root named after the file. Material slots: emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 28 KB.",
+			"notes": "Single node mesh_intact (468 tris) under a root named after the file. Material slots: emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_dark_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 39 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1251,7 +1251,7 @@
 			"format": "glb",
 			"purpose": "Band landmark RELAY_ARRAY (mid-back layer, z -4 .. -8)",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView mid-back band landmark, z -4 .. -8, one per five levels (ASSET_CONTRACT 19)",
 			"chapter": "helix",
@@ -1266,7 +1266,7 @@
 			"material": "reinforced_steel",
 			"tris": 1900,
 			"dimensions": "7.00 x 9.99 x 3.03 m (w x h x d)",
-			"notes": "Single node mesh_intact (1900 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_internal_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 128 KB.",
+			"notes": "Single node mesh_intact (1900 tris) under a root named after the file. Material slots: emit_cyan_hlx, emit_orange_hlx, mat_reinforced_steel_hlx, mat_reinforced_steel_hlx_panel, trim_internal_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 161 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1278,7 +1278,7 @@
 			"format": "glb",
 			"purpose": "Near-back dressing: vertical service tank 2.2 m",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (kits/env_kits.py, env_common.py, env_landmarks.py, tfjenv.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"used_by": "MissionView near-back layer, z -2.5 .. -4 (props, no collision; never taller than 3 m behind a critical asset)",
 			"chapter": "helix",
@@ -1308,7 +1308,7 @@
 			"material": "reinforced_steel",
 			"tris": 572,
 			"dimensions": "1.3 x 2.2 x 1.3 m (w x h x d)",
-			"notes": "Single node mesh_intact (572 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_trim_hlx. Colour lives in each slot's baseColorFactor, no COLOR_0 (ASSET_CONTRACT 7, v1.4). mat_<material>_<ch> is the main physics-material surface; mat_<material>_<ch>_<zone> are other finishes of the same material (bind the same material set and damage overlay by prefix); trim_<zone>_<ch> are paint, rubber, cable, internals and burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection, 1 UV unit = 1 m, so tileable sets and the 1 tile/m damage overlays line up. Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 27 KB.",
+			"notes": "Single node mesh_intact (572 tris) under a root named after the file. Material slots: emit_cyan_hlx, mat_reinforced_steel_hlx, trim_dark_hlx, trim_trim_hlx. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 42 KB.",
 			"merged_from": "3d-kits",
 			"slice": "A_helix_structures_environment_materials"
 		},
@@ -1880,7 +1880,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "ai_core_module",
@@ -1914,11 +1914,11 @@
 				60
 			],
 			"depth_m": 0.7,
-			"tris": 1998,
+			"tris": 1996,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1998 tris total, <= 1.5x intact). Same material slot convention as the component. glb 116 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1996 tris total, <= 1.5x intact). Same material slot convention as the component. glb 180 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -1930,7 +1930,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "reinforced_steel",
@@ -1964,11 +1964,11 @@
 				90
 			],
 			"depth_m": 1.2,
-			"tris": 870,
+			"tris": 1770,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 870 tris total, <= 1.5x intact). Same material slot convention as the component. glb 57 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1770 tris total, <= 1.5x intact). Same material slot convention as the component. glb 154 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -1980,7 +1980,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "reinforced_steel",
@@ -2014,11 +2014,11 @@
 				80
 			],
 			"depth_m": 0.9,
-			"tris": 864,
+			"tris": 1026,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 864 tris total, <= 1.5x intact). Same material slot convention as the component. glb 53 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1026 tris total, <= 1.5x intact). Same material slot convention as the component. glb 98 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2030,7 +2030,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "energy_component",
@@ -2064,11 +2064,11 @@
 				40
 			],
 			"depth_m": 0.5,
-			"tris": 1495,
+			"tris": 1610,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1495 tris total, <= 1.5x intact). Same material slot convention as the component. glb 68 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1610 tris total, <= 1.5x intact). Same material slot convention as the component. glb 127 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2080,7 +2080,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "glass_polymer",
@@ -2114,11 +2114,11 @@
 				24
 			],
 			"depth_m": 0.8,
-			"tris": 1394,
+			"tris": 1392,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_02 (3 meshes, 1394 tris total, <= 1.5x intact). Same material slot convention as the component. glb 52 KB.",
+			"notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1392 tris total, <= 1.5x intact). Same material slot convention as the component. glb 68 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2130,7 +2130,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "lightweight_alloy",
@@ -2164,11 +2164,11 @@
 				220
 			],
 			"depth_m": 0.3,
-			"tris": 1042,
+			"tris": 1258,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_03 (4 meshes, 1042 tris total, <= 1.5x intact). Same material slot convention as the component. glb 75 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1258 tris total, <= 1.5x intact). Same material slot convention as the component. glb 121 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2180,7 +2180,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "electronic_module",
@@ -2214,11 +2214,11 @@
 				100
 			],
 			"depth_m": 0.8,
-			"tris": 1552,
+			"tris": 1858,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1552 tris total, <= 1.5x intact). Same material slot convention as the component. glb 97 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 1858 tris total, <= 1.5x intact). Same material slot convention as the component. glb 184 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2230,7 +2230,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "composite",
@@ -2264,11 +2264,11 @@
 				24
 			],
 			"depth_m": 1.4,
-			"tris": 729,
+			"tris": 814,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 729 tris total, <= 1.5x intact). Same material slot convention as the component. glb 50 KB.",
+			"notes": "Nodes: husk + frag_01..frag_06 (7 meshes, 814 tris total, <= 1.5x intact). Same material slot convention as the component. glb 79 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2280,7 +2280,7 @@
 			"render_type": "mesh",
 			"format": "glb",
 			"source": "Scripted Blender 5.2.3 (bpy) procedural modelling by the 3d-kits stream; source: assets/destructibles/source/blender/ (tfjkit, tfjdamage, kits/helix.py)",
-			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared",
+			"rights_status": "original procedural work: scripted Blender (bpy) code written by the 3d-kits asset agent (AI-assisted authorship); no third-party meshes, textures or concept pixels; ownership not legally settled for AI-assisted work; not marked commercially cleared. Premium-pass textures come from the surfaces stream library in this repo (see assets/materials/PRODUCTION_NOTES.md for their rights note)",
 			"approval_status": "pending_review",
 			"chapter": "helix",
 			"material": "lightweight_alloy",
@@ -2314,11 +2314,11 @@
 				160
 			],
 			"depth_m": 0.5,
-			"tris": 661,
+			"tris": 998,
 			"states": [
 				"destroyed"
 			],
-			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 661 tris total, <= 1.5x intact). Same material slot convention as the component. glb 48 KB.",
+			"notes": "Nodes: husk + frag_01..frag_05 (6 meshes, 998 tris total, <= 1.5x intact). Same material slot convention as the component. glb 95 KB.",
 			"merged_from": "3d-kits",
 			"slice": "B_helix_debris_damage_vfx"
 		},
@@ -2338,6 +2338,7 @@
 			"notes": "Alpha coverage 14% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
 			"dimensions": "512x512",
 			"approval_status": "pending_review",
+			"merged_from": "surfaces",
 			"slice": "B_helix_debris_damage_vfx"
 		},
 		{
@@ -2356,6 +2357,7 @@
 			"notes": "Alpha coverage 66% (pixels above 10%). Neutral colours so the overlay can be tinted per chapter.",
 			"dimensions": "512x512",
 			"approval_status": "pending_review",
+			"merged_from": "surfaces",
 			"slice": "B_helix_debris_damage_vfx"
 		},
 		{
@@ -4689,9 +4691,9 @@
 			"bus": "SFX",
 			"sample_rate": 44100,
 			"channels": 1,
-			"loudness_lufs": -23.17,
+			"loudness_lufs": -22.0,
 			"master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_02.wav",
-			"notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use.",
+			"notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.17 to -22.0, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
 			"sound_id": "impact_composite",
 			"merged_from": "audio",
 			"slice": "D_helix_audio"
@@ -4713,9 +4715,9 @@
 			"bus": "SFX",
 			"sample_rate": 44100,
 			"channels": 1,
-			"loudness_lufs": -23.54,
+			"loudness_lufs": -22.3,
 			"master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_03.wav",
-			"notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use.",
+			"notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.54 to -22.3, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
 			"sound_id": "impact_composite",
 			"merged_from": "audio",
 			"slice": "D_helix_audio"
@@ -4737,9 +4739,9 @@
 			"bus": "SFX",
 			"sample_rate": 44100,
 			"channels": 1,
-			"loudness_lufs": -22.87,
+			"loudness_lufs": -21.7,
 			"master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_04.wav",
-			"notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use.",
+			"notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -22.87 to -21.7, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
 			"sound_id": "impact_composite",
 			"merged_from": "audio",
 			"slice": "D_helix_audio"
