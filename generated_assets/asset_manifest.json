@@ -5264,7 +5264,7 @@
       "material": "composite",
       "tris": 96,
       "dimensions": "1 x 0.3 x 1 m (w x h x d)",
-      "notes": "Single node mesh_intact (96 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, trim_dark_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 11 KB.",
+      "notes": "Single node mesh_intact (96 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, trim_dark_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 11 KB. Integration stream, 2026-11-10: baseColorFactor of mat_composite_vta scaled by 0.75 (JSON chunk only; geometry, COLOR_0 and slots unchanged) so the VITA floor no longer clips in the graded showcase frames. The Blender source still has the old value.",
       "merged_from": "3d-kits"
     },
     {
@@ -5305,7 +5305,7 @@
       "material": "composite",
       "tris": 816,
       "dimensions": "4 x 0.3 x 4 m (w x h x d)",
-      "notes": "Single node mesh_intact (816 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, trim_dark_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 62 KB.",
+      "notes": "Single node mesh_intact (816 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, trim_dark_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 62 KB. Integration stream, 2026-11-10: baseColorFactor of mat_composite_vta scaled by 0.75 (JSON chunk only; geometry, COLOR_0 and slots unchanged) so the VITA floor no longer clips in the graded showcase frames. The Blender source still has the old value.",
       "merged_from": "3d-kits"
     },
     {
@@ -5346,7 +5346,7 @@
       "material": "composite",
       "tris": 752,
       "dimensions": "4 x 0.3 x 4 m (w x h x d)",
-      "notes": "Single node mesh_intact (752 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, mat_composite_vta_frame, trim_cable_vta, trim_dark_vta, trim_internal_vta, trim_trim_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 66 KB.",
+      "notes": "Single node mesh_intact (752 tris) under a root named after the file. Material slots: emit_green_vta, mat_composite_vta, mat_composite_vta_frame, trim_cable_vta, trim_dark_vta, trim_internal_vta, trim_trim_vta. Premium pass (2026-11-10): every slot is textured from the surfaces stream library. The glb references the textures by relative URI (../../materials/<ch>/... and ../../materials/shared/...), it does not embed them: Godot resolves them to the res:// library PNGs on import and through runtime GLTFDocument (both tested). baseColorFactor is a palette tint over the library albedo, metallicFactor is set per zone, emissive textures are masks (EMISSION_OP_MULTIPLY). COLOR_0 carries baked ambient occlusion only (valid since v1.7; multiply it with albedo). Slots: mat_<material>_<ch>[_<zone>] main and zone finishes, trim_edge_<ch> is the worn edge highlight on bevels, trim_module_<ch> uses fitted UVs (one rack unit per blade) with the electronic_module emission mask, trim_<zone>_<ch> paint, rubber, cable, internals, burnt metal; emit_ and glass_ as named. UV0 is world-scale box projection (1 UV unit = 1 m) except fitted module faces. Per v1.9, keep emission enabled on every loader-built surface (black when unlit). Background layers are pre-darkened in baseColorFactor so they sit 30-50% below gameplay pieces. Form language follows the project concept frames SV-01 to SV-07 (see their manifest entries); no concept pixels are used in the mesh. glb 66 KB. Integration stream, 2026-11-10: baseColorFactor of mat_composite_vta scaled by 0.75 (JSON chunk only; geometry, COLOR_0 and slots unchanged) so the VITA floor no longer clips in the graded showcase frames. The Blender source still has the old value.",
       "merged_from": "3d-kits"
     },
     {
@@ -34073,9 +34073,9 @@
       "bus": "SFX",
       "sample_rate": 44100,
       "channels": 1,
-      "loudness_lufs": -23.17,
+      "loudness_lufs": -22.0,
       "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_02.wav",
-      "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use.",
+      "notes": "Fibrous crack with plastic resonances. Variation 2 of 4 (pick at random). Momentary max -15.27 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.37 dBTP, sample peak -1.38 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.16 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.17 to -22.0, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
       "sound_id": "impact_composite",
       "merged_from": "audio"
     },
@@ -34096,9 +34096,9 @@
       "bus": "SFX",
       "sample_rate": 44100,
       "channels": 1,
-      "loudness_lufs": -23.54,
+      "loudness_lufs": -22.3,
       "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_03.wav",
-      "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use.",
+      "notes": "Fibrous crack with plastic resonances. Variation 3 of 4 (pick at random). Momentary max -15.3 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.29 dBTP, sample peak -1.29 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -20.53 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -23.54 to -22.3, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
       "sound_id": "impact_composite",
       "merged_from": "audio"
     },
@@ -34119,9 +34119,9 @@
       "bus": "SFX",
       "sample_rate": 44100,
       "channels": 1,
-      "loudness_lufs": -22.87,
+      "loudness_lufs": -21.7,
       "master_path": "/workspace/tfj-masters/audio/sfx/shared/shr_sfx_impact_composite_04.wav",
-      "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use.",
+      "notes": "Fibrous crack with plastic resonances. Variation 4 of 4 (pick at random). Momentary max -14.91 LUFS-M (family impacts and debris (-18 to -14 LUFS-M)), true peak -1.16 dBTP, sample peak -1.17 dBFS. Master 48 kHz 24-bit WAV (box only). loudness_lufs is the file measured as one channel (BS.1770, as ffmpeg ebur128 reports mono); played centred on two speakers it measures -19.86 LUFS integrated, which is the value the family targets use. loudness_lufs corrected by the integration stream on 2026-11-10 from -22.87 to -21.7, the ffmpeg ebur128 integrated value the validator measures (file unchanged).",
       "sound_id": "impact_composite",
       "merged_from": "audio"
     },
@@ -38511,7 +38511,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "VITA gene vault core housing: lab-white composite, 1 x 0.5 m panels with a vertical red light strip. Critical-asset rule: white housing, red #ff3b4e emission (mask in _emission; multiply by the code colour). Slot mat_ai_core_module_<ch>. Texel density 512 px/m.",
+      "notes": "VITA gene vault core housing: lab-white composite, 1 x 0.5 m panels with a vertical red light strip. Critical-asset rule: white housing, red #ff3b4e emission (mask in _emission; multiply by the code colour). Slot mat_ai_core_module_<ch>. Texel density 512 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.70, detail contrast x1.30), mean now 159/161/157 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "ai_core_module",
       "dimensions": "512x512",
@@ -38598,7 +38598,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "Glossy lab-white composite cladding, 1 m panels with soft gasket seams. Lab decks, clean-room walls. Revision 3: albedo lowered x0.86 (mean about 204 sRGB) so it does not clip under the game light. Texel density 512 px/m.",
+      "notes": "Glossy lab-white composite cladding, 1 m panels with soft gasket seams. Lab decks, clean-room walls. Revision 3: albedo lowered x0.86 (mean about 204 sRGB) so it does not clip under the game light. Texel density 512 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.64, detail contrast x1.50), mean now 165/171/165 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "composite",
       "dimensions": "512x512",
@@ -38667,7 +38667,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "White precast architectural concrete. Containment caps, foundations. Texel density 256 px/m.",
+      "notes": "White precast architectural concrete. Containment caps, foundations. Texel density 256 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.66, detail contrast x1.30), mean now 156/156/156 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "concrete",
       "dimensions": "512x512",
@@ -38736,7 +38736,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "Sealed specimen-storage drawers with frosted windows and green status lights. Specimen racks, gene vault housings. Revision 3: albedo lowered x0.86 (mean about 204 sRGB) so it does not clip under the game light. Texel density 512 px/m.",
+      "notes": "Sealed specimen-storage drawers with frosted windows and green status lights. Specimen racks, gene vault housings. Revision 3: albedo lowered x0.86 (mean about 204 sRGB) so it does not clip under the game light. Texel density 512 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.72, detail contrast x1.40), mean now 174/173/174 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "electronic_module",
       "dimensions": "512x512",
@@ -38823,7 +38823,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "Cryo-cell frosted housing with vertical pale-green light channels. Texel density 1024 px/m.",
+      "notes": "Cryo-cell frosted housing with vertical pale-green light channels. Texel density 1024 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.80, detail contrast x1.30), mean now 148/162/159 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "energy_component",
       "dimensions": "512x512",
@@ -38910,7 +38910,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "Clean-room resin floor tiles, 1 m modules (2 m per tile). Revision 3: off-white cool grey (albedo mean about 160 sRGB) and roughness about 0.62 so it does not clip under the game light and the white VITA kit stands off it. Texel density 256 px/m.",
+      "notes": "Clean-room resin floor tiles, 1 m modules (2 m per tile). Revision 3: off-white cool grey (albedo mean about 160 sRGB) and roughness about 0.62 so it does not clip under the game light and the white VITA kit stands off it. Texel density 256 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.65, detail contrast x1.00, warmed by [1.24, 1.09, 0.85] per channel to cancel the blue cast of the sun and ambient), mean now 141/138/126 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "composite",
       "dimensions": "512x512",
@@ -39048,7 +39048,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "Pale satin clinical alloy panels. Lab columns. Metallic capped at 0.75 so it reads in the as-is MissionView (no reflection source). Texel density 512 px/m.",
+      "notes": "Pale satin clinical alloy panels. Lab columns. Metallic capped at 0.75 so it reads in the as-is MissionView (no reflection source). Texel density 512 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.75, detail contrast x1.40), mean now 173/180/181 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "lightweight_alloy",
       "dimensions": "512x512",
@@ -39117,7 +39117,7 @@
       "rights_status": "AI-generated source image (GenerateImage tool, image model), processed by scripts written by the asset agent; provenance in materials/source_log.tsv; rights not verified; not commercially cleared",
       "used_by": "StandardMaterial3D for mesh slots mat_<material>_<ch>, trim_ and emit_ (ASSET_CONTRACT 7); not wired into the game until the owner approves integration",
       "chapter": "vita",
-      "notes": "White powder-coated structural steel with flush stainless fixings. Texel density 512 px/m.",
+      "notes": "White powder-coated structural steel with flush stainless fixings. Texel density 512 px/m. Revision 4 (integration stream, 2026-11-10): albedo toned in linear light (x0.72, detail contrast x1.40), mean now 170/175/172 sRGB, so the VITA kit reads clean white with visible panel detail under the MissionView light (harness_mission_vita.webp, 1.5% of pixels at 250 or above, was 29.1%; tool tools/tone_albedo.py, parameters tools/vita_tone_rev4.json). ORM, normal and emission maps unchanged; the 3x3 tile preview still shows revision 3.",
       "requires_alpha": false,
       "material": "reinforced_steel",
       "dimensions": "512x512",
@@ -48563,6 +48563,64 @@
       "merged_from": "ui-vfx"
     },
     {
+      "id": "GAM-UI-THEME-A",
+      "path": "generated_assets/ui/theme/tfj_theme.tres",
+      "category": "ui",
+      "render_type": "ui",
+      "format": "tres",
+      "purpose": "Godot 4 Theme resource built from tfj_theme_spec.json: default font, 9-slice StyleBoxTexture panels, buttons, tabs, sliders, toggles, progress bars, tooltip, chips; colour, font and size items; type variations (PrimaryButton, DangerButton, IconButton, PanelModal, PanelInset, PanelHeader, Chip, ProgressBarEnergy, ProgressBarIntegrity, ProgressBarSuccess, LabelTitle, LabelBody and the other type roles); palette, chapter accents, spacing and scrim on the custom type TFJ",
+      "source": "generated by ui/theme/build_theme.gd (Godot 4.7.2 headless, ResourceSaver) from ui/theme/tfj_theme_spec.json, 2026-11-10",
+      "rights_status": "original work authored by the asset agent for this project (code-generated, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; references only delivered kit parts, icons and OFL fonts in generated_assets/ui",
+      "used_by": "coding agent: assign as the root Control theme or project GUI theme (proposed)",
+      "chapter": "shared",
+      "notes": "Loads in Godot 4.7.2 (load_check). References res:// paths without uids, so rebuild with build_theme.gd after moving files. Not mapped (node properties, not theme items): TextureProgressBar_Cooldown, minimum sizes, hud_layout, flat_equivalents; see the build script header",
+      "approval_status": "pending_review",
+      "merged_from": "ui-vfx"
+    },
+    {
+      "id": "GAM-UI-THEME_BUILD-A",
+      "path": "generated_assets/ui/theme/build_theme.gd",
+      "category": "ui",
+      "render_type": "ui",
+      "format": "gd",
+      "purpose": "editor-free build tool: rebuilds tfj_theme.tres from tfj_theme_spec.json (godot --headless --path <project> --script res://generated_assets/ui/theme/build_theme.gd)",
+      "source": "written by the asset agent, 2026-11-10",
+      "rights_status": "original work authored by the asset agent for this project (code-generated, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; references only delivered kit parts, icons and OFL fonts in generated_assets/ui",
+      "used_by": "asset pipeline; not loaded by the game",
+      "chapter": "shared",
+      "approval_status": "pending_review",
+      "merged_from": "ui-vfx"
+    },
+    {
+      "id": "GAM-UI-THEME_MOCK_RENDER-A",
+      "path": "generated_assets/ui/theme/render_theme_mock.gd",
+      "category": "ui",
+      "render_type": "ui",
+      "format": "gd",
+      "purpose": "renders the theme-applied mock screen (needs a display, xvfb, opengl3)",
+      "source": "written by the asset agent, 2026-11-10",
+      "rights_status": "original work authored by the asset agent for this project (code-generated, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; references only delivered kit parts, icons and OFL fonts in generated_assets/ui",
+      "used_by": "asset pipeline; not loaded by the game",
+      "chapter": "shared",
+      "approval_status": "pending_review",
+      "merged_from": "ui-vfx"
+    },
+    {
+      "id": "GAM-UI-SCREEN_THEME_APPLIED-MOCK",
+      "path": "generated_assets/ui/screens/webp_1x/gam_ui_screen_theme_applied_mock.webp",
+      "category": "ui",
+      "render_type": "reference",
+      "format": "webp",
+      "dimensions": "1280x720",
+      "purpose": "screen mock rendered in Godot with tfj_theme.tres applied: mission briefing modal with header, chip, type roles, tabs, energy, integrity and default progress bars, slider, toggle, icon, danger, default and primary buttons (placeholder text)",
+      "source": "Godot 4.7.2 render of ui/theme/render_theme_mock.gd under xvfb (opengl3), 2026-11-10; backdrop ui/backgrounds/ui_bg_main_menu_1280x720.webp under the theme scrim",
+      "rights_status": "original work authored by the asset agent for this project (code-generated, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; OFL fonts; the embedded backdrop keeps its own rights status (AI-generated image, rights not verified)",
+      "used_by": "layout reference for the coding agent; not a game texture",
+      "chapter": "shared",
+      "approval_status": "pending_review",
+      "merged_from": "ui-vfx"
+    },
+    {
       "id": "CVT-VFX-SENSOR_DISRUPTION-A",
       "path": "generated_assets/vfx/civitas/cvt_vfx_sensor_disruption_a.png",
       "category": "vfx",
@@ -50286,7 +50344,7 @@
     {
       "stream": "ui-vfx",
       "path": "generated_assets/manifest_parts/ui-vfx.json",
-      "entries": 314
+      "entries": 318
     }
   ]
 }

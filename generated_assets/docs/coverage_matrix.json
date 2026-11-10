@@ -1,8 +1,8 @@
 {
  "generated": "2026-11-10",
  "manifest_updated": "2026-11-10",
- "manifest_entries": 1469,
- "production_entries": 1294,
+ "manifest_entries": 1473,
+ "production_entries": 1296,
  "summary": {
   "levels": 100,
   "fully_covered": 100,
@@ -261,6 +261,8 @@
    "label": "Godot theme spec",
    "status": "available",
    "assets": [
+    "GAM-UI-THEME-A",
+    "GAM-UI-THEME_BUILD-A",
     "GAM-UI-THEME_SPEC-A"
    ],
    "category": "ui"
