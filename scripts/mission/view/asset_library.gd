@@ -175,6 +175,17 @@ func _overlay_material(material_id: String, level: int) -> StandardMaterial3D:
 	return overlay
 
 
+## A texture by asset id (icons, UI art), or null.
+func texture(asset_id: String) -> Texture2D:
+	return _texture(resource_path(asset_id)) if entries.has(asset_id) else null
+
+
+## A Godot resource by asset id (themes), or null.
+func resource(asset_id: String) -> Resource:
+	var path := resource_path(asset_id)
+	return load(path) if not path.is_empty() and ResourceLoader.exists(path) else null
+
+
 ## Instantiates an environment or prop piece by asset id (unscaled), or null.
 func instance_piece(asset_id: String, chapter: String) -> Node3D:
 	if not entries.has(asset_id):
@@ -183,11 +194,6 @@ func instance_piece(asset_id: String, chapter: String) -> Node3D:
 	if root != null:
 		bind_materials(root, chapter)
 	return root
-
-
-## Texture of an integrated image entry (sprite sheets, trails), or null.
-func texture(asset_id: String) -> Texture2D:
-	return _texture(resource_path(asset_id))
 
 
 ## Shows exactly one damage-state node: 0 intact, 1 damaged (light), 2+ critical (heavy), with

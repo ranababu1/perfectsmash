@@ -74,7 +74,7 @@ func _ready() -> void:
 	layer.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(layer)
 	hud = MissionHud.new()
-	hud.theme = UiKit.make_theme()
+	hud.library = MissionView.assets()
 	layer.add_child(hud)
 	var weapon_states: Array[WeaponState] = []
 	for id in engine.weapon_order:
@@ -206,6 +206,9 @@ func _process(delta: float) -> void:
 	_since_input += delta
 	hud.update_weapons(engine.weapons, engine.selected_weapon_id)
 	hud.update_stats(engine.shots_fired(), engine.definition.recommended_shots, engine.elapsed, engine.definition.target_time)
+	view.world_markers = hud.critical_marker == null
+	var critical := engine.definition.critical_asset_ids()
+	hud.place_critical_marker(view.marker_screen_position(critical[0]) if not critical.is_empty() else null)
 	var rig := view.operative
 	if engine.phase == MissionEngine.Phase.SUCCEEDED:
 		rig.set_state(OperativeRig.State.VICTORY)

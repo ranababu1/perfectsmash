@@ -44044,7 +44044,7 @@
       "render_type": "ui",
       "format": "png",
       "dimensions": "256x256",
-      "purpose": "project icon (config/icon) replacement candidate",
+      "purpose": "project icon (config/icon)",
       "source": "hand-authored SVG written by the asset agent (Grok Bot) in assets/ui/_build/*.py, rasterised with resvg 0.49.0",
       "rights_status": "original work authored by the asset agent for this project (code-generated vector art, AI-assisted authorship); ownership not legally settled for AI-assisted work; not marked commercially cleared; no third-party content except OFL fonts outlined in the logo",
       "used_by": "project config/icon (project.godot); replaces the legacy assets/icon set, removed 2026-11-10",

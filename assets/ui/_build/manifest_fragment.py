@@ -51,13 +51,13 @@ def branding():
         p = os.path.join(A, "android_adaptive", f"gam_logo_app_icon_a_{role}_432.png")
         add(id=f"GAM-LOGO-APP_ICON-ADAPTIVE_{role.upper()}", path=rel(p), category="app_icon", render_type="ui", format="png", dimensions=dims(p),
             purpose=f"Android adaptive icon {role} layer (108 dp at xxxhdpi); mark fits the 66 dp (264 px) safe circle", source=SRC_CODE, rights_status=RIGHTS_CODE,
-            used_by="Android export preset launcher_icons/adaptive_* (proposed; assets/icon/* untouched)", chapter="shared", requires_alpha=(role != "background"),
+            used_by="Android export preset launcher_icons/adaptive_* (export_presets.cfg is local; replaces the legacy assets/icon set, removed 2026-11-10)", chapter="shared", requires_alpha=(role != "background"),
             notes="SVG source beside it; background PNG rebuilt with float gradients and dither to avoid banding")
     for n in (512, 256, 192, 48):
         p = os.path.join(A, f"gam_logo_app_icon_a_{n}.png")
         add(id=f"GAM-LOGO-APP_ICON-{n}", path=rel(p), category="app_icon", render_type="ui", format="png", dimensions=dims(p),
-            purpose={512: "Play Store icon / main 512 icon", 256: "project icon (config/icon) replacement candidate", 192: "legacy launcher icon xxxhdpi", 48: "48 px legibility check / mdpi launcher"}[n],
-            source=SRC_CODE, rights_status=RIGHTS_CODE, used_by="app icon replacement candidate (owner approval needed; assets/icon/* untouched)", chapter="shared",
+            purpose={512: "Play Store icon / main 512 icon", 256: "project icon (config/icon)", 192: "legacy launcher icon xxxhdpi", 48: "48 px legibility check / mdpi launcher"}[n],
+            source=SRC_CODE, rights_status=RIGHTS_CODE, used_by={512: "Google Play store icon; replaces the legacy assets/icon set", 256: "project config/icon (project.godot); replaces the legacy assets/icon set, removed 2026-11-10", 192: "Android export preset launcher_icons/main_192x192 (export_presets.cfg is local); replaces the legacy assets/icon set", 48: "app icon (small sizes, notifications and store listings); replaces the legacy assets/icon set"}[n], chapter="shared",
             notes="flattened from the adaptive layers, showing the central 88 dp; source gam_logo_app_icon_a_legacy.svg")
     S = os.path.join(B, "splash")
     for p in sorted(glob.glob(os.path.join(S, "*.png"))):
