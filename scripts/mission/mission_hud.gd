@@ -10,6 +10,10 @@ signal weapon_pressed(weapon_id: String)
 signal pause_pressed
 signal resume_pressed
 signal restart_pressed
+## Result panel: continue to the next unlocked mission (success only).
+signal next_pressed
+## Result panel: leave to the campaign mission list.
+signal exit_pressed
 
 const MARGIN := 24.0
 const WEAPON_BUTTON := Vector2(168.0, 104.0)
@@ -249,7 +253,16 @@ func show_result(success: bool, engine: MissionEngine, score: Dictionary = {}, g
 		var research_label := UiKit.label(research, 18, Color("8fe3f5"))
 		research_label.name = "ResearchData"
 		box.add_child(research_label)
-	box.add_child(_action("Run it again" if success else "Retry", restart_pressed, true))
+	if success:
+		var next := _action("Next mission", next_pressed, true)
+		next.name = "NextButton"
+		box.add_child(next)
+	var again := _action("Run it again" if success else "Retry", restart_pressed, not success)
+	again.name = "RetryButton"
+	box.add_child(again)
+	var missions := _action("Missions", exit_pressed)
+	missions.name = "MissionsButton"
+	box.add_child(missions)
 
 
 func hide_overlay() -> void:
