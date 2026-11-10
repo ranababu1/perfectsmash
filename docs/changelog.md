@@ -2,6 +2,14 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — Campaign routing: menus, settings, Missions/Next, reload-ready sound
+
+- `main.gd` shows `CampaignScreen` (menu, chapter select, mission select) and `SettingsScreen`; the result panel's Missions action (`MissionScreen.exit_requested`) opens the mission's chapter list; Next with no further unlocked mission returns there too; settings toggles update `ProgressData`, the audio service and the music director and are saved; Android back walks settings → campaign → menu → quit.
+- `MissionScreen` plays `reload_ready` when the selected weapon's `reload_completed` fires.
+- The app still boots straight into the first authored mission (existing tests in other workstreams instance Main and expect a mission); booting into the menu is a later change.
+- M1 merged before this: PRs #4 (weapons), #5 (UI screens), #6 (chapter audio, slice H: 42 audio ids, integrated assets 618 → 660). The specialist sessions had no shell tool; the orchestrator ran and committed their work.
+- Results: headless 243 passed / 0 failed / 1 skipped (`tests/campaign/test_campaign_routing.gd` +4); boot smoke clean before the exit-time leak lines. Not captured: screenshots of the new screens.
+
 ## 2026-11-11 — M0: campaign catalog, test discovery, frozen contracts, agent definitions
 
 - `MissionCatalog` (`scripts/core/mission_catalog.gd`): 100 campaign slots from `data/chapters.json`, ids `<chapter theme>_<nn>` (`helix_01`..`meridian_20`), a slot is authored when `data/missions/<id>.json` exists, linear unlocks over authored missions. `main.gd` boots the first authored mission and restarts the current one; `MissionScreen.next_requested` (connected to an optional HUD `next_pressed`) moves to the next unlocked authored mission.
