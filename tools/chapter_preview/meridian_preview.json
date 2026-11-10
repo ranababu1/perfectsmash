@@ -1,0 +1,212 @@
+{
+	"_note": "TOOLS ONLY, not a game level: helix_01 recast onto the meridian kit for asset screenshots (tools/chapter_preview/build_chapter_previews.py).",
+	"id": "meridian_preview",
+	"name": "Meridian kit preview",
+	"chapter": 5,
+	"briefing": "Preview of the meridian kit on the helix_01 layout. Destroy the convergence core.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 75,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 14
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [
+		{
+			"x": 900,
+			"y": 625,
+			"w": 420,
+			"h": 30
+		}
+	],
+	"components": [
+		{
+			"id": "blast_wall",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 590,
+			"y": 595,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "rack_1",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1262,
+			"y": 590,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_2",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1304,
+			"y": 590,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "pillar_l",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 830,
+			"y": 530,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "pillar_r",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 970,
+			"y": 530,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 900,
+			"y": 438,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"pillar_l",
+				"pillar_r"
+			]
+		},
+		{
+			"id": "core_shield",
+			"kind": "phase_shield",
+			"material": "glass_polymer",
+			"x": 842,
+			"y": 386,
+			"w": 16,
+			"h": 80,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "aura_core",
+			"kind": "convergence_core",
+			"material": "energy_component",
+			"x": 885,
+			"y": 396,
+			"w": 60,
+			"h": 60,
+			"health_scale": 3.0,
+			"critical_asset": true,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "power_cell",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 955,
+			"y": 406,
+			"w": 36,
+			"h": 40,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "rack_3",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1030,
+			"y": 560,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_4",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1080,
+			"y": 560,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "relay_mast",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1200,
+			"y": 500,
+			"w": 22,
+			"h": 220
+		},
+		{
+			"id": "relay_dish",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1200,
+			"y": 378,
+			"w": 70,
+			"h": 24,
+			"supports": [
+				"relay_mast"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"aura_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Wipe the racks",
+			"targets": [
+				"rack_1",
+				"rack_2",
+				"rack_3",
+				"rack_4"
+			]
+		},
+		{
+			"id": "relay",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Cut the top link",
+			"targets": [
+				"relay_dish"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 8 shots",
+			"limit": 8
+		}
+	]
+}

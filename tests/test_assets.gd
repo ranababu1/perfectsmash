@@ -214,3 +214,43 @@ func test_mission_view_spawns_debris_overlays_and_effects() -> void:
 	assert_true(view.debris_spawned.has("HLX-DEB-SERVER_RACK-B"), "destroyed rack leaves its debris set")
 	screen.queue_free()
 	await wait_physics_frames(1)
+
+
+## Contract section 5 kind catalogue (chapter II-V kinds are the proposed names the kits use).
+const CHAPTER_KINDS := {
+	"helix": ["server_rack", "support_column", "service_deck", "ai_core", "core_shield", "power_cell", "blast_wall", "relay_mast", "relay_dish", "control_pod_glass", "logistics_gantry", "cooling_stack", "data_crate"],
+	"vita": ["lab_column", "lab_deck", "cleanroom_panel", "specimen_rack", "bioreactor", "containment_cap", "cryo_cell", "gene_vault_core"],
+	"nova_grid": ["grid_pylon", "cable_bridge", "transformer", "cooling_tower_segment", "containment_ring_segment", "capacitor_cell", "containment_wall", "reactor_core"],
+	"civitas": ["civic_column", "relay_bridge", "sensor_mast", "sensor_array", "civic_screen", "data_exchange_rack", "security_wall", "surveillance_core"],
+	"meridian": ["anchor_column", "convergence_deck", "phase_shield", "quantum_stabilizer", "temporal_cell", "monolith_slab", "timeline_relay", "convergence_core"],
+}
+const ENVIRONMENT_SET := ["ENV-BACK_WALL-A", "ENV-BACK_WALL-B", "ENV-CATWALK-A", "ENV-CEILING_TRUSS-A", "ENV-FLOOR_TILE-A", "ENV-FLOOR_TILE-B", "ENV-FLOOR_TRENCH-A", "ENV-LEDGE_STATIC-A", "ENV-LOW_WALL-A", "ENV-MASSING_BLOCK-A", "ENV-MASSING_TOWER-B", "ENV-PILLAR-A", "ENV-PLINTH_STATIC-A"]
+const TEXTURE_SET_MATERIALS := ["composite", "concrete", "electronic_module", "energy_component", "floor", "glass_polymer", "lightweight_alloy", "reinforced_steel"]
+
+
+func test_all_five_chapter_kits_are_integrated() -> void:
+	for chapter: String in CHAPTER_KINDS:
+		var code: String = AssetLibrary.CHAPTER_CODES[chapter].to_upper()
+		for kind: String in CHAPTER_KINDS[chapter]:
+			var entry := _library.component_entry(chapter, kind, Vector2(50, 100))
+			assert_false(entry.is_empty(), "%s %s has a component mesh" % [chapter, kind])
+			assert_false(_library.debris_entry(chapter, kind, Vector2(50, 100)).is_empty(), "%s %s has a debris set" % [chapter, kind])
+		for piece: String in ENVIRONMENT_SET:
+			assert_true(_library.has_entry(code + "-" + piece), "%s-%s integrated" % [code, piece])
+		for material_id: String in TEXTURE_SET_MATERIALS:
+			var texture_set := _library.material_set(chapter, material_id)
+			assert_true(texture_set.has("albedo") and texture_set.has("normal") and texture_set.has("orm"), "%s %s texture set" % [chapter, material_id])
+
+
+func test_projectiles_use_production_meshes_trails_and_arming_light() -> void:
+	for weapon_id: String in ["kinetic_accelerator", "breach_charge"]:
+		var projectile := WeaponProjectile.new(weapon_id, _weapons.get_weapon(weapon_id).effective_stats(), Vector2.ZERO, Vector2(900, -300))
+		var visual := ProjectileVisual.create(projectile, _library)
+		assert_true(visual.has_model, "%s uses its production projectile mesh" % weapon_id)
+		assert_true(visual._trail != null, "%s has a velocity trail" % weapon_id)
+		assert_eq(visual._arming != null, weapon_id == "breach_charge", "%s arming light only on the charge" % weapon_id)
+		var box := ProjectileVisual._bounds(visual._model)
+		var radius_m := float(projectile.stats.projectile_radius) / ViewMapping.PX_PER_METRE
+		assert_near(maxf(box.size.y, box.size.z) * visual._model.scale.y, radius_m * 2.0, 0.005, "%s mesh matches the physics radius" % weapon_id)
+		visual.free()
+		projectile.free()
