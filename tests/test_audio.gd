@@ -6,7 +6,7 @@ extends TestCase
 const BED := "res://assets/audio/music/gameplay_bed.ogg"
 const TENSION := "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg"
 ## Blocks that reference sound or cue ids; cleared when a test replaces "sounds" or "music".
-const DEPENDENT := {"impact_by_material": {}, "destroyed_by_material": {}, "default_destroyed": "", "missions": {}}
+const DEPENDENT := {"impact_by_material": {}, "destroyed_by_material": {}, "default_destroyed": "", "missions": {}, "chapters": {}}
 
 
 func _catalog_text(overrides: Dictionary = {}) -> String:

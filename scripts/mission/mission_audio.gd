@@ -20,7 +20,7 @@ func setup(p_engine: MissionEngine, p_music: MusicDirector, p_ambience: MusicDir
 	engine = p_engine
 	music = p_music
 	ambience = p_ambience
-	plan = catalog.mission_plan(engine.definition.id) if catalog != null else {}
+	plan = catalog.plan_for(engine.definition.id, engine.definition.chapter) if catalog != null else {}
 	if plan.is_empty():
 		return
 	engine.weapon_fired.connect(func(_w: String, _v: Vector2, _s: Dictionary) -> void: raise_to(1))
