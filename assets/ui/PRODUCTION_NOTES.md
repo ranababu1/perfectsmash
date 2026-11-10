@@ -1,7 +1,7 @@
 # UI, branding and typography: production notes (stream ui-vfx)
 
 Branch `assets` only. Everything here is new staging work under `assets/`; nothing is wired
-into the game. `assets/icon/*` is untouched. Approval status of every file: `pending_review`.
+into the game. The legacy `assets/icon/*` set was replaced by `branding/app_icon/` and removed on 2026-11-10 (owner approval). Approval status of every file: `pending_review`.
 
 ## What is here
 
@@ -40,7 +40,7 @@ Fonts are in `assets/fonts/` (see its README): Chakra Petch (display) and Barlow
 ## App icon (Android adaptive)
 
 - Foreground / monochrome 432x432 with the mark inside the 66 dp (264 px) safe circle, so circle, squircle and teardrop masks never clip it. Background: graphite gradient with faint diagonal structure lines and a soft cyan centre, rebuilt with float gradients plus 1 LSB dither so it does not band.
-- Godot 4.7 Android export preset fields: `launcher_icons/adaptive_foreground_432x432`, `launcher_icons/adaptive_background_432x432`, `launcher_icons/adaptive_monochrome_432x432`, `launcher_icons/main_192x192` -> the files in `branding/app_icon/`. Project `config/icon` candidate: `gam_logo_app_icon_a_256.png`. All of this needs owner approval before it touches `assets/icon/` or `project.godot`.
+- Godot 4.7 Android export preset fields: `launcher_icons/adaptive_foreground_432x432`, `launcher_icons/adaptive_background_432x432`, `launcher_icons/adaptive_monochrome_432x432`, `launcher_icons/main_192x192` -> the files in `branding/app_icon/`. Project `config/icon` is `gam_logo_app_icon_a_256.png` (set on 2026-11-10).
 - Note: ASSET_CONTRACT 14 suggests `assets/ui/app_icon/`; this stream's brief put branding under `ui/branding/`, so the icons are in `ui/branding/app_icon/`.
 
 ## Splash and loading

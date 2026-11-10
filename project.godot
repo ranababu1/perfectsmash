@@ -20,7 +20,7 @@ config/quit_on_go_back=false
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.0705882, 0.0862745, 0.14902, 1)
 boot_splash/show_image=false
-config/icon="res://assets/icon/project_256.png"
+config/icon="res://assets/ui/branding/app_icon/gam_logo_app_icon_a_256.png"
 
 [display]
 
