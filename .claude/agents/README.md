@@ -19,7 +19,7 @@ Each agent has `isolation: worktree`, so it runs in its own git worktree and swi
 ## Decisions baked into these files
 
 - **Specialists commit, the orchestrator pushes.** The directive says "push after ~50 lines"; the agent files say commit at that cadence and leave pushing/PRs to the orchestrator. Background subagents can't answer permission prompts, so unattended pushes would stall or fail silently anyway. If you do want specialists pushing, delete the "Do not push" sentence in each file and add `Bash(git push:*)` and `Bash(gh pr create:*)` to the allow list below.
-- **Destructive git is blocked** at the tool level (`disallowedTools`), not just by instruction.
+- **Destructive git is blocked** by the deny list in `.claude/settings.json`, not just by instruction. (A `disallowedTools` list of `Bash(...)` patterns in the agent frontmatter removed the Bash tool entirely and was dropped on 2026-11-11.)
 - **Asset integration is not a specialist job.** The directive's Section 5 "asset agent" isn't one of the five; treat it as an orchestrator Stage 0 task (see edits below).
 - **File paths are deliberately generic.** The agents name the shared files from your directive (`project.godot`, `mission_screen.gd`, `mission_view.gd`, `data/integrated_assets.json`, `assets/asset_manifest.json`) but defer to the orchestrator's ownership map for everything else. Once Stage 0 produces that map, paste the concrete owned/forbidden paths into each file's "You own" / "You must not modify" sections.
 

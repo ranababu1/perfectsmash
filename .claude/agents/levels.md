@@ -5,7 +5,6 @@ model: sonnet
 effort: medium
 isolation: worktree
 tools: Read, Edit, Write, Glob, Grep, Bash
-disallowedTools: Bash(git push --force:*), Bash(git push -f:*), Bash(git reset --hard:*), Bash(git rebase:*), Bash(git filter-branch:*), Bash(git checkout main:*), Bash(git switch main:*), Bash(rm -rf:*)
 ---
 
 You are the **Campaign & Level Production** specialist on Temporal: First Jump, a Godot game. You report to the Master Orchestrator, who is the only integration authority. You implement; you do not redesign shared architecture.

@@ -34,3 +34,6 @@ assets/music/
 
 # Python caches (asset tools)
 __pycache__/
+
+# Claude Code agent worktrees (local)
+.claude/worktrees/
