@@ -45,6 +45,29 @@ func test_weapons_have_distinct_tactical_roles() -> void:
 	assert_true(breach.stats.cooldown > kinetic.stats.cooldown)
 
 
+func test_breach_is_an_area_charge_with_contact_and_air_burst_fuse() -> void:
+	var c := WeaponCatalog.load_from_file()
+	var breach := c.get_weapon("breach_charge")
+	var kinetic := c.get_weapon("kinetic_accelerator")
+	assert_true(breach.stats.blast_radius > 0.0 and breach.stats.blast_damage > breach.stats.impact_damage * 5.0, "breach damage is the blast, not the hit")
+	assert_true(breach.stats.fuse_seconds > 0.0, "breach has an air-burst fuse")
+	# The fuse must outlast any lob that lands at launch height: 2 * v / g.
+	var flight: float = 2.0 * breach.stats.launch_speed / (980.0 * breach.stats.gravity_scale)
+	assert_true(breach.stats.fuse_seconds > flight, "fuse %.2f s outlasts a full-power lob (%.2f s)" % [breach.stats.fuse_seconds, flight])
+	assert_eq(kinetic.stats.fuse_seconds, 0.0, "kinetic rounds have no fuse")
+
+
+func test_fuse_and_lobbed_blast_validation() -> void:
+	var too_long := _catalog([_weapon({"stats": {"blast_damage": 50, "blast_radius": 50, "fuse_seconds": 9}})])
+	assert_false(too_long.is_valid(), "a fuse longer than the projectile lifetime is refused")
+	var no_blast := _catalog([_weapon({"stats": {"fuse_seconds": 1}})])
+	assert_false(no_blast.is_valid(), "a fuse needs a blast")
+	var lobbed_no_blast := _catalog([_weapon({"delivery": "lobbed", "stats": {"min_launch_speed": 300}})])
+	assert_false(lobbed_no_blast.is_valid(), "a lobbed charge needs a blast")
+	var ok := _catalog([_weapon({"delivery": "lobbed", "stats": {"min_launch_speed": 300, "blast_damage": 50, "blast_radius": 50, "fuse_seconds": 2}})])
+	assert_true(ok.is_valid(), ", ".join(ok.errors))
+
+
 func test_upgrade_calculations() -> void:
 	var kinetic := WeaponCatalog.load_from_file().get_weapon("kinetic_accelerator")
 	var base := kinetic.effective_stats()

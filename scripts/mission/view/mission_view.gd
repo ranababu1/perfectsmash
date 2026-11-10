@@ -39,6 +39,9 @@ const BLAST_LIGHTS := 2
 const BLAST_LIGHT_IDLE_ENERGY := 0.01
 const BLAST_LIGHT_COLOR := Color("ffb060")
 const ENVIRONMENT_DIR := "res://data/environments"
+## Folder holding <mission id>.json set files. Tools (tools/chapter_preview) point it at their own
+## sets; the game always uses ENVIRONMENT_DIR.
+static var environment_dir := ENVIRONMENT_DIR
 
 var world: MissionWorld
 var definition: MissionDefinition
@@ -168,6 +171,17 @@ func _warm_up_effects() -> void:
 		model.position = Vector3(_focus.x, -1.2, 0.0)
 		add_child(model)
 		_warm_nodes.append(model)
+	# Both projectile looks (meshes, trails, arming and activation sprites), so the first shot of
+	# each weapon compiles nothing mid-play.
+	for weapon_id: String in ProjectileVisual.ASSETS:
+		if not world.engine.weapons.has(weapon_id):
+			continue
+		var probe := WeaponProjectile.new(weapon_id, world.engine.weapons[weapon_id].stats, Vector2.ZERO, Vector2(1000.0, 0.0))
+		var warm := ProjectileVisual.create(probe, _library)
+		probe.free()
+		add_child(warm)
+		warm.park(Vector3(_focus.x, -0.6, 0.0))
+		_warm_nodes.append(warm)
 	_warm_frames = WARM_FRAMES
 
 
@@ -229,7 +243,7 @@ func _process(delta: float) -> void:
 		visual.animate(_time)
 	for projectile: WeaponProjectile in _projectiles.keys():
 		if is_instance_valid(projectile):
-			(_projectiles[projectile] as Node3D).position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
+			(_projectiles[projectile] as ProjectileVisual).follow(projectile, definition.ground_y, delta)
 
 
 func _build_environment() -> void:
@@ -287,7 +301,7 @@ func _build_environment() -> void:
 
 
 func _environment_data() -> Dictionary:
-	var path := "%s/%s.json" % [ENVIRONMENT_DIR, definition.id]
+	var path := "%s/%s.json" % [environment_dir, definition.id]
 	if not FileAccess.file_exists(path):
 		return {}
 	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
@@ -540,23 +554,12 @@ func _spawn_debris_set(component_id: String, visual: ComponentVisual) -> bool:
 
 
 func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
-	var mesh := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	var radius := float(projectile.stats.projectile_radius) / ViewMapping.PX_PER_METRE
-	sphere.radius = radius
-	sphere.height = radius * 2.0
-	mesh.mesh = sphere
-	var lobbed := projectile.weapon_id == "breach_charge"
-	var material := _flat(Color("e0a040") if lobbed else Color("bdf4ff"))
-	material.emission_enabled = true
-	material.emission = material.albedo_color
-	material.emission_energy_multiplier = 1.6
-	mesh.material_override = material
-	mesh.position = ViewMapping.to_3d(projectile.global_position, definition.ground_y)
-	add_child(mesh)
-	_projectiles[projectile] = mesh
-	if not lobbed:
-		vfx.muzzle(mesh.position, ViewMapping.direction_angle(projectile.linear_velocity))
+	var visual := ProjectileVisual.create(projectile, _library)
+	add_child(visual)
+	visual.follow(projectile, definition.ground_y, 0.0)
+	_projectiles[projectile] = visual
+	if not projectile.weapon_id == "breach_charge":
+		vfx.muzzle(visual.position, ViewMapping.direction_angle(projectile.linear_velocity))
 		projectile.struck.connect(_on_kinetic_struck)
 
 

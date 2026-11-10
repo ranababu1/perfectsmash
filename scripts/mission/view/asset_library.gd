@@ -185,6 +185,11 @@ func instance_piece(asset_id: String, chapter: String) -> Node3D:
 	return root
 
 
+## Texture of an integrated image entry (sprite sheets, trails), or null.
+func texture(asset_id: String) -> Texture2D:
+	return _texture(resource_path(asset_id))
+
+
 ## Shows exactly one damage-state node: 0 intact, 1 damaged (light), 2+ critical (heavy), with
 ## the contract's fallbacks when a node is missing.
 static func set_state_nodes(root: Node, state: int) -> void:

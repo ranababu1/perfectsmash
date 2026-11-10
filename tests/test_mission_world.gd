@@ -251,6 +251,33 @@ func test_detonation_that_damages_nothing_is_not_effective() -> void:
 	_free()
 
 
+func test_charge_bursts_in_the_air_when_its_fuse_runs_out() -> void:
+	var world := _world()
+	var blasts := []
+	world.blast_happened.connect(func(center: Vector2, _radius: float) -> void: blasts.append(center))
+	var stats: Dictionary = world.engine.weapons.breach_charge.stats.duplicate()
+	stats.fuse_seconds = 0.4
+	# Straight up from well above the facility: nothing to hit before the fuse runs out.
+	world.spawn_projectile("breach_charge", stats, Vector2(300, 200), Vector2(0, -600))
+	await wait_physics_frames(36)
+	assert_eq(blasts.size(), 1, "the charge burst once")
+	assert_true(not blasts.is_empty() and blasts[0].y < 200.0, "it burst in the air, above the launch point")
+	await wait_physics_frames(2)
+	assert_true(world.projectiles.is_empty(), "the charge is spent")
+	_free()
+
+
+func test_charge_still_detonates_on_contact_before_its_fuse() -> void:
+	var world := _world()
+	var blasts := []
+	world.blast_happened.connect(func(center: Vector2, _radius: float) -> void: blasts.append(center))
+	_breach(world, Vector2(330, 560), Vector2(0, 200))
+	await wait_physics_frames(30)
+	assert_eq(blasts.size(), 1, "contact detonation")
+	assert_true(not blasts.is_empty() and blasts[0].y > 590.0, "at the floor, not in the air")
+	_free()
+
+
 func test_two_damaging_shots_count_twice() -> void:
 	var world := _world()
 	var e := world.engine

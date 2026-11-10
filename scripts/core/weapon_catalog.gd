@@ -9,6 +9,8 @@ const DEFAULT_PATH := "res://data/weapons.json"
 const MAX_UPGRADE_LEVEL := 3
 ## Straight, fast, direction-only aim vs. a ballistic arc with variable launch power.
 const DELIVERIES := ["direct", "lobbed"]
+## Longest air-burst fuse: it must run out before a projectile expires (WeaponProjectile.MAX_LIFETIME, 6 s).
+const MAX_FUSE_SECONDS := 5.0
 const UPGRADE_ATTRIBUTES := [
 	"impact_energy", "penetration", "blast_efficiency",
 	"energy_capacity", "targeting_assistance", "energy_efficiency",
@@ -188,6 +190,12 @@ func _parse_stats(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
 		errors.append(prefix + "blast needs radius > 0 and edge falloff in 0-1")
 	if spec.delivery == "direct" and s.min_launch_speed != s.launch_speed:
 		errors.append(prefix + "direct weapons fire at a fixed speed (min_launch_speed == launch_speed)")
+	if s.fuse_seconds > MAX_FUSE_SECONDS:
+		errors.append(prefix + "fuse_seconds must be 0 (contact only) or at most %s s" % MAX_FUSE_SECONDS)
+	if spec.delivery == "lobbed" and s.blast_damage <= 0.0:
+		errors.append(prefix + "lobbed charges must have a blast (area damage)")
+	if s.fuse_seconds > 0.0 and s.blast_damage <= 0.0:
+		errors.append(prefix + "only blast weapons can have a fuse")
 
 
 func _parse_upgrades(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
