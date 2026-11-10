@@ -5,9 +5,9 @@ extends Node
 ## Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
-## Music cue for the Helix mission (data/audio.json). Its track fades in over ~3 s and out over
-## ~5 s; the cue's 4.5 s loop overlap lets those fades overlap (measured with ffmpeg astats).
-const GAMEPLAY_CUE := "helix_gameplay"
+## Music for missions comes from each mission's audio plan (data/audio.json "missions", driven by
+## MissionAudio). Missions without a plan fall back to this cue.
+const FALLBACK_CUE := "legacy_bed"
 
 var save := SaveService.new()
 var progress: ProgressData
@@ -16,6 +16,7 @@ var chapters: ChapterCatalog
 var audio_catalog: AudioCatalog
 var audio: AudioService
 var music: MusicDirector
+var ambience: MusicDirector
 var _menu: MenuScreen
 var _game: GameScreen
 var _mission: MissionScreen
@@ -35,9 +36,16 @@ func _ready() -> void:
 	add_child(audio)
 	music = MusicDirector.new()
 	music.catalog = audio_catalog
+	music.bus = "Music"
 	music.enabled = progress.sound_enabled and progress.music_enabled
 	add_child(music)
-	_start_music()
+	ambience = MusicDirector.new()
+	ambience.name = "Ambience"
+	ambience.catalog = audio_catalog
+	ambience.cue_source = "ambience"
+	ambience.bus = "Ambience"
+	ambience.enabled = progress.sound_enabled
+	add_child(ambience)
 	catalog = LevelCatalog.load_from_file()
 	if not catalog.is_valid():
 		push_error("Level catalog invalid: %s" % ", ".join(catalog.errors))
@@ -101,6 +109,8 @@ func _handle_back() -> void:
 func _show_mission() -> void:
 	_clear_screens()
 	_mission = MissionScreen.new(audio, progress, save)
+	_mission.music = music
+	_mission.ambience = ambience
 	_mission.restart_requested.connect(_show_mission)
 	add_child(_mission)
 	_reveal()
@@ -151,7 +161,7 @@ func _on_level_won(level_id: String, stars: int, shots_used: int) -> void:
 
 
 func _start_music() -> void:
-	music.play_cue(GAMEPLAY_CUE, 2.5)
+	music.play_cue(FALLBACK_CUE, 2.5)
 
 
 ## Until the new HUD has its own music control, the sound toggle mutes music too;
@@ -160,6 +170,7 @@ func _set_sound(enabled: bool) -> void:
 	progress.sound_enabled = enabled
 	audio.enabled = enabled
 	music.enabled = enabled and progress.music_enabled
+	ambience.enabled = enabled
 	save.save_progress(progress)
 
 

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/hlx_amb_server_hall_01.ogg-ed2d46145f47d6cd2e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

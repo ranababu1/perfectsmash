@@ -9,6 +9,9 @@ extends Node
 const MIX_RATE := 22050
 const VOICES := 8
 const IMPACT_MIN_INTERVAL_MS := 70
+## One event, one sound: the same sound id does not retrigger within this window (a blast that
+## destroys three racks plays one destruction sound, not three on top of each other).
+const SAME_SOUND_MIN_INTERVAL_MS := 90
 const NOISE_SEED := 1337
 
 var enabled := true
@@ -20,6 +23,8 @@ var _variants := {}
 var _players: Array[AudioStreamPlayer] = []
 var _next_voice := 0
 var _last_impact_ms := -1000
+## sound id -> last play time (ms)
+var _last_played := {}
 var _rng := RandomNumberGenerator.new()
 
 
@@ -53,15 +58,19 @@ func play(sound: String, volume_db: float = 0.0, pitch: float = 1.0) -> void:
 		return
 	var spec := catalog.get_sound(sound) if catalog != null else null
 	if spec != null:
+		var now := Time.get_ticks_msec()
+		if now - int(_last_played.get(sound, -100000)) < SAME_SOUND_MIN_INTERVAL_MS:
+			return
+		_last_played[sound] = now
 		var variants: Array = _variants.get(sound, [])
 		var stream: AudioStream = variants.pick_random() if not variants.is_empty() else _streams.get(spec.fallback)
 		var spread := randf_range(-spec.pitch_variance, spec.pitch_variance)
-		_play_stream(stream, spec.volume_db + volume_db, pitch * (1.0 + spread))
+		_play_stream(stream, spec.volume_db + volume_db, pitch * (1.0 + spread), spec.bus)
 		return
 	if not _streams.has(sound):
 		push_error("AudioService: unknown sound '%s'" % sound)
 		return
-	_play_stream(_streams[sound], volume_db, pitch)
+	_play_stream(_streams[sound], volume_db, pitch, "SFX")
 
 
 ## What `sound` currently plays: "file" when an approved variant is loaded, "procedural:<name>"
@@ -84,15 +93,23 @@ func play_impact(strength: float, material_id: String = "") -> void:
 	play(impact_sound_for(material_id), lerpf(-18.0, 0.0, loudness), randf_range(0.92, 1.08))
 
 
+## The destruction sound of a component made of `material_id` (data/audio.json).
+func play_destroyed(material_id: String) -> void:
+	var sound := catalog.destroyed_sound_for(material_id) if catalog != null and catalog.is_valid() else "pop"
+	if not sound.is_empty():
+		play(sound)
+
+
 func impact_sound_for(material_id: String) -> String:
 	return catalog.impact_sound_for(material_id) if catalog != null and catalog.is_valid() else "impact"
 
 
-func _play_stream(stream: AudioStream, volume_db: float, pitch: float) -> void:
+func _play_stream(stream: AudioStream, volume_db: float, pitch: float, bus: String = "SFX") -> void:
 	if stream == null:
 		return
 	var player := _players[_next_voice]
 	_next_voice = (_next_voice + 1) % _players.size()
+	player.bus = bus if AudioServer.get_bus_index(bus) >= 0 else "Master"
 	player.stream = stream
 	player.volume_db = volume_db
 	player.pitch_scale = maxf(pitch, 0.05)

@@ -19,6 +19,10 @@ const IDLE_AFTER := 4.0
 
 var mission_path := DEFAULT_MISSION
 var audio: AudioService
+## Set by the app root before the screen enters the tree; MissionAudio drives them.
+var music: MusicDirector
+var ambience: MusicDirector
+var mission_audio: MissionAudio
 var progress: ProgressData
 var save: SaveService
 var scoring: MissionScoring
@@ -81,7 +85,14 @@ func _ready() -> void:
 	hud.resume_pressed.connect(resume)
 	hud.restart_pressed.connect(func() -> void: restart_requested.emit())
 
-	engine.objective_changed.connect(func(_id: String, _s: int) -> void: hud.update_objectives(engine.objectives))
+	engine.objective_changed.connect(_on_objective_changed)
+	engine.critical_asset_changed.connect(func(_id: String, state: int) -> void:
+		if state == DamageableComponent.State.CRITICAL:
+			_play("core_critical"))
+	if music != null or ambience != null:
+		mission_audio = MissionAudio.new()
+		add_child(mission_audio)
+		mission_audio.setup(engine, music, ambience, audio.catalog if audio != null else null)
 	engine.mission_finished.connect(_on_mission_finished)
 	engine.component_destroyed.connect(_on_component_destroyed)
 	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("breach_detonate"))
@@ -94,7 +105,7 @@ func _ready() -> void:
 func select_weapon(weapon_id: String) -> void:
 	if engine.select_weapon(weapon_id):
 		view.operative.set_weapon(weapon_id)
-		_play("ui_click")
+		_play("weapon_switch")
 		_cancel_aim()
 		_update_hint()
 
@@ -247,13 +258,24 @@ func _record_result() -> void:
 
 ## Destruction moves goal progress without changing objective status, so refresh here too.
 func _on_component_destroyed(component_id: String) -> void:
-	_play("core_destroyed" if engine.definition.critical_asset_ids().has(component_id) else "component_destroyed")
+	if engine.definition.critical_asset_ids().has(component_id):
+		_play("core_destroyed")
+	elif audio != null:
+		audio.play_destroyed(str(engine.definition.component(component_id).get("material", "")))
 	hud.update_objectives.call_deferred(engine.objectives)
 
 
 func _on_impact(_at: Vector2, strength: float, component_id: String) -> void:
 	if audio != null:
 		audio.play_impact(strength, str(engine.definition.component(component_id).get("material", "")))
+
+
+func _on_objective_changed(objective_id: String, status: int) -> void:
+	hud.update_objectives(engine.objectives)
+	var objective := engine.objectives.get_objective(objective_id)
+	# Optional goals completed mid-mission get a cue; the mission result has its own stinger.
+	if status == MissionObjectives.Status.COMPLETE and engine.is_active() and objective != null and not objective.mandatory:
+		_play("objective_complete")
 
 
 func _play(sound: String) -> void:

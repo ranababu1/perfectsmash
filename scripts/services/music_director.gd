@@ -5,7 +5,11 @@ extends Node
 ## Streams may be loop-ready (loop enabled on import) or a track with its own fade-in and fade-out:
 ## for the latter, set `loop_overlap` and the director restarts the track on the other player that
 ## many seconds before the end, so the track's own fades overlap into a seamless cycle.
-## Named cues (data/audio.json "music") set the track, bed volume and loop overlap in one call.
+## Named cues (data/audio.json "music", or "ambience" when `cue_source` is "ambience") set the
+## track, volume, bus and loop overlap in one call. Same-length tracks of one score (the Helix
+## intensity steps) cross-fade at the same playback position so the music changes intensity
+## without restarting. A separate layer player adds an overlay track (the critical layer) in sync
+## with the current track.
 
 const BED_VOLUME_DB := -12.0
 const SILENT_DB := -60.0
@@ -19,7 +23,14 @@ var loop_overlap := 0.0
 var catalog: AudioCatalog
 ## The cue last started with play_cue ("" for streams played directly).
 var current_cue := ""
+## "music" or "ambience": which catalog block play_cue reads.
+var cue_source := "music"
+## The layer cue playing over the current track ("" when none).
+var current_layer := ""
 var _bed_volume_db := BED_VOLUME_DB
+var _layer: AudioStreamPlayer
+var _layer_volume_db := BED_VOLUME_DB
+var _layer_tween: Tween
 var _enabled := true
 var _duck_db := 0.0
 var _players: Array[AudioStreamPlayer] = []
@@ -34,6 +45,17 @@ func _init() -> void:
 		player.volume_db = SILENT_DB
 		add_child(player)
 		_players.append(player)
+	_layer = AudioStreamPlayer.new()
+	_layer.volume_db = SILENT_DB
+	add_child(_layer)
+
+
+## Audio bus for every player of this director ("Music", "Ambience").
+var bus: String = "Master":
+	set(value):
+		bus = value
+		for player in _players + [_layer]:
+			player.bus = value if AudioServer.get_bus_index(value) >= 0 else "Master"
 
 
 var enabled: bool:
@@ -47,6 +69,7 @@ var enabled: bool:
 			_start_on(_active, current_stream, DEFAULT_FADE * 0.5)
 		elif not _enabled:
 			_fade_out(_active, DEFAULT_FADE * 0.5)
+			set_layer("", DEFAULT_FADE * 0.5)
 
 
 ## Cross-fades to `stream`. Calling again with the stream already requested does nothing;
@@ -68,15 +91,15 @@ func play(stream: AudioStream, fade: float = DEFAULT_FADE) -> void:
 
 func stop(fade: float = DEFAULT_FADE) -> void:
 	current_cue = ""
+	set_layer("", fade)
 	play(null, fade)
 
 
 ## Starts a named cue from the audio catalog. Returns false (and keeps the current music) when
-## the cue is unknown or has no track yet.
-func play_cue(cue_id: String, fade: float = DEFAULT_FADE) -> bool:
-	if catalog == null:
-		catalog = AudioCatalog.load_from_file()
-	var cue := catalog.get_cue(cue_id)
+## the cue is unknown or has no track yet. With `keep_position`, the new track starts where the
+## current one is (same-length tracks of one score change intensity in place).
+func play_cue(cue_id: String, fade: float = DEFAULT_FADE, keep_position: bool = false) -> bool:
+	var cue := _cue(cue_id)
 	if cue == null:
 		push_warning("MusicDirector: unknown music cue '%s'" % cue_id)
 		return false
@@ -85,11 +108,56 @@ func play_cue(cue_id: String, fade: float = DEFAULT_FADE) -> bool:
 		return false
 	if cue_id == current_cue:
 		return true
+	var position := active_player().get_playback_position() if keep_position and active_player().playing else 0.0
 	current_cue = cue_id
 	loop_overlap = cue.loop_overlap
 	_bed_volume_db = cue.volume_db
 	play(load(cue.file) as AudioStream, fade)
+	if position > 0.0 and _enabled:
+		var stream := current_stream
+		if stream != null and position < stream.get_length():
+			active_player().seek(position)
 	return true
+
+
+## Fades a layer cue in over the current track, starting at the current track's position so
+## the two stay in time; "" fades the layer out.
+func set_layer(cue_id: String, fade: float = DEFAULT_FADE) -> bool:
+	if _layer_tween != null and _layer_tween.is_valid():
+		_layer_tween.kill()
+	if cue_id.is_empty():
+		current_layer = ""
+		if _layer.playing:
+			_layer_tween = create_tween()
+			_layer_tween.tween_property(_layer, "volume_db", SILENT_DB, maxf(fade, 0.01))
+			_layer_tween.tween_callback(_layer.stop)
+		return true
+	var cue := _cue(cue_id)
+	if cue == null or cue.file.is_empty() or not ResourceLoader.exists(cue.file):
+		return false
+	if cue_id == current_layer:
+		return true
+	current_layer = cue_id
+	_layer_volume_db = cue.volume_db
+	if not _enabled:
+		return true
+	_layer.stream = load(cue.file) as AudioStream
+	_layer.volume_db = SILENT_DB
+	var position := active_player().get_playback_position() if active_player().playing else 0.0
+	_layer.play(position if position < _layer.stream.get_length() else 0.0)
+	_layer_tween = create_tween()
+	_layer_tween.tween_property(_layer, "volume_db", _layer_volume_db + _duck_db, maxf(fade, 0.01))
+	return true
+
+
+func layer_player() -> AudioStreamPlayer:
+	return _layer
+
+
+func _cue(cue_id: String) -> AudioCatalog.MusicCue:
+	if catalog == null:
+		catalog = AudioCatalog.load_from_file()
+	return catalog.get_ambience(cue_id) if cue_source == "ambience" else catalog.get_cue(cue_id)
 
 
 ## Lowers the bed by `amount_db` (e.g. under narration); duck(0) restores it.

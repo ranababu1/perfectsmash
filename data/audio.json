@@ -1,19 +1,272 @@
 {
-	"_note": "Sound and music ids used by the game. Each sound plays a random variant from 'files' when any exist, otherwise its procedural 'fallback' (synthesized at startup by AudioService, no asset files). Files are added only after the owner approves the asset and its licence record (docs/asset-manifest.md); until then 'files' stays empty. Music cues name one track with its bed volume and loop overlap (seconds before the end at which the next cycle starts; 0 = the stream loops by itself).",
+	"_note": "Sound, music and ambience ids used by the game. A sound plays a random variant from 'files' (production audio from assets/, integrated for development 2026-11-10; rights pending review, see data/integrated_assets.json), or its procedural 'fallback' when no file loads. 'bus' routes to default_bus_layout.tres. Music and ambience cues name one track with its volume; 'loops' marks seamless loops (set in the file's import), 'loop_overlap' > 0 uses MusicDirector's fade handoff instead. 'missions' sets each mission's music intensity steps, critical layer, stingers and ambience bed.",
 	"sounds": {
-		"ui_click": {"fallback": "click", "volume_db": 0.0, "pitch_variance": 0.0, "files": []},
-		"kinetic_fire": {"fallback": "launch", "volume_db": 0.0, "pitch_variance": 0.05, "files": []},
-		"breach_launch": {"fallback": "launch", "volume_db": -3.0, "pitch_variance": 0.05, "files": []},
-		"breach_detonate": {"fallback": "shatter", "volume_db": 0.0, "pitch_variance": 0.08, "files": []},
-		"impact_metal": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
-		"impact_glass": {"fallback": "shatter", "volume_db": -4.0, "pitch_variance": 0.15, "files": []},
-		"impact_electronic": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
-		"impact_generic": {"fallback": "impact", "volume_db": 0.0, "pitch_variance": 0.15, "files": []},
-		"component_destroyed": {"fallback": "pop", "volume_db": 0.0, "pitch_variance": 0.1, "files": []},
-		"core_destroyed": {"fallback": "shatter", "volume_db": 2.0, "pitch_variance": 0.0, "files": []},
-		"reload_ready": {"fallback": "click", "volume_db": -8.0, "pitch_variance": 0.0, "files": []},
-		"mission_success": {"fallback": "win", "volume_db": 0.0, "pitch_variance": 0.0, "files": []},
-		"mission_fail": {"fallback": "lose", "volume_db": 0.0, "pitch_variance": 0.0, "files": []}
+		"ui_click": {
+			"fallback": "click",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_click_01.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_click_02.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_click_03.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_click_04.wav"
+			]
+		},
+		"ui_confirm": {
+			"fallback": "click",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_confirm_01.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_confirm_02.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_confirm_03.wav"
+			]
+		},
+		"ui_back": {
+			"fallback": "click",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_back_01.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_back_02.wav",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_back_03.wav"
+			]
+		},
+		"weapon_switch": {
+			"fallback": "click",
+			"volume_db": 0.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_switch_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_switch_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_switch_03.ogg"
+			]
+		},
+		"kinetic_fire": {
+			"fallback": "launch",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_03.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_04.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_05.ogg"
+			]
+		},
+		"breach_launch": {
+			"fallback": "launch",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_breach_launch_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_launch_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_launch_03.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_launch_04.ogg"
+			]
+		},
+		"breach_detonate": {
+			"fallback": "shatter",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_breach_explosion_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_explosion_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_explosion_03.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_explosion_04.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_explosion_05.ogg"
+			]
+		},
+		"secondary_blast": {
+			"fallback": "shatter",
+			"volume_db": 0.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_secondary_blast_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_secondary_blast_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_secondary_blast_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_secondary_blast_04.ogg"
+			]
+		},
+		"impact_metal": {
+			"fallback": "impact",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_impact_metal_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_metal_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_metal_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_metal_04.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_metal_05.ogg"
+			]
+		},
+		"impact_glass": {
+			"fallback": "shatter",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_impact_glass_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_glass_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_glass_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_glass_04.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_glass_05.ogg"
+			]
+		},
+		"impact_electronic": {
+			"fallback": "impact",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_05.ogg"
+			]
+		},
+		"impact_composite": {
+			"fallback": "impact",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg"
+			]
+		},
+		"impact_concrete": {
+			"fallback": "impact",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_impact_concrete_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_concrete_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_concrete_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_concrete_04.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_concrete_05.ogg"
+			]
+		},
+		"impact_generic": {
+			"fallback": "impact",
+			"volume_db": 0.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_impact_composite_04.ogg"
+			]
+		},
+		"structure_collapse": {
+			"fallback": "pop",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_structure_collapse_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_structure_collapse_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_structure_collapse_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_structure_collapse_04.ogg"
+			]
+		},
+		"machine_failure": {
+			"fallback": "pop",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg"
+			]
+		},
+		"component_destroyed": {
+			"fallback": "pop",
+			"volume_db": 0.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_04.ogg"
+			]
+		},
+		"core_destroyed": {
+			"fallback": "shatter",
+			"volume_db": 1.0,
+			"pitch_variance": 0.0,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/helix/hlx_sfx_core_destroyed_01.ogg",
+				"res://assets/audio/sfx/helix/hlx_sfx_core_destroyed_02.ogg",
+				"res://assets/audio/sfx/helix/hlx_sfx_core_destroyed_03.ogg"
+			]
+		},
+		"core_critical": {
+			"fallback": "click",
+			"volume_db": -4.0,
+			"pitch_variance": 0.0,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_alarm_pulse_01.ogg"
+			]
+		},
+		"objective_complete": {
+			"fallback": "win",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_objective_complete_01.ogg",
+				"res://assets/audio/sfx/shared/gam_sfx_ui_objective_complete_02.ogg"
+			]
+		},
+		"reload_ready": {
+			"fallback": "click",
+			"volume_db": -6.0,
+			"pitch_variance": 0.0,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_03.ogg"
+			]
+		},
+		"mission_success": {
+			"fallback": "win",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_victory_01.ogg"
+			]
+		},
+		"mission_fail": {
+			"fallback": "lose",
+			"volume_db": 0.0,
+			"pitch_variance": 0.0,
+			"bus": "UI",
+			"files": [
+				"res://assets/audio/sfx/shared/gam_sfx_ui_defeat_01.ogg"
+			]
+		}
 	},
 	"impact_by_material": {
 		"reinforced_steel": "impact_metal",
@@ -22,13 +275,120 @@
 		"electronic_module": "impact_electronic",
 		"ai_core_module": "impact_electronic",
 		"energy_component": "impact_electronic",
-		"composite": "impact_generic",
-		"concrete": "impact_generic"
+		"composite": "impact_composite",
+		"concrete": "impact_concrete"
+	},
+	"destroyed_by_material": {
+		"reinforced_steel": "structure_collapse",
+		"lightweight_alloy": "structure_collapse",
+		"composite": "structure_collapse",
+		"concrete": "structure_collapse",
+		"glass_polymer": "impact_glass",
+		"electronic_module": "machine_failure",
+		"energy_component": "secondary_blast",
+		"ai_core_module": "core_destroyed"
 	},
 	"default_impact": "impact_generic",
+	"default_destroyed": "component_destroyed",
 	"music": {
-		"helix_gameplay": {"file": "res://assets/audio/music/gameplay_bed.ogg", "volume_db": -12.0, "loop_overlap": 4.5},
-		"menu": {"file": "", "volume_db": -12.0, "loop_overlap": 0.0},
-		"cinematic": {"file": "", "volume_db": -14.0, "loop_overlap": 0.0}
+		"helix_prep": {
+			"file": "res://assets/audio/music/helix/hlx_mus_gameplay_prep.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": true
+		},
+		"helix_gameplay": {
+			"file": "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": true
+		},
+		"helix_combat": {
+			"file": "res://assets/audio/music/helix/hlx_mus_combat_01.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": true
+		},
+		"helix_critical_layer": {
+			"file": "res://assets/audio/music/helix/hlx_mus_critical_layer_01.ogg",
+			"volume_db": -12.0,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": true
+		},
+		"victory_mission": {
+			"file": "res://assets/audio/music/shared/gam_mus_victory_mission.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": false
+		},
+		"defeat_mission": {
+			"file": "res://assets/audio/music/shared/gam_mus_defeat_mission.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": false
+		},
+		"legacy_bed": {
+			"file": "res://assets/audio/music/gameplay_bed.ogg",
+			"volume_db": -12.0,
+			"loop_overlap": 4.5,
+			"bus": "Music",
+			"loops": false
+		},
+		"menu": {
+			"file": "res://assets/audio/music/shared/gam_mus_menu_01.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": true
+		},
+		"cinematic": {
+			"file": "res://assets/audio/music/shared/gam_mus_opening_01.ogg",
+			"volume_db": -10.5,
+			"loop_overlap": 0.0,
+			"bus": "Music",
+			"loops": false
+		}
+	},
+	"ambience": {
+		"helix_server_hall": {
+			"file": "res://assets/audio/ambience/helix/hlx_amb_server_hall_01.ogg",
+			"volume_db": -4.0,
+			"loop_overlap": 0.0,
+			"bus": "Ambience",
+			"loops": true
+		},
+		"helix_core": {
+			"file": "res://assets/audio/ambience/helix/hlx_amb_core_01.ogg",
+			"volume_db": -6.0,
+			"loop_overlap": 0.0,
+			"bus": "Ambience",
+			"loops": true
+		},
+		"helix_cooling": {
+			"file": "res://assets/audio/ambience/helix/hlx_amb_cooling_01.ogg",
+			"volume_db": -6.0,
+			"loop_overlap": 0.0,
+			"bus": "Ambience",
+			"loops": true
+		}
+	},
+	"missions": {
+		"helix_01": {
+			"intensity": [
+				"helix_prep",
+				"helix_gameplay",
+				"helix_combat"
+			],
+			"critical_layer": "helix_critical_layer",
+			"victory": "victory_mission",
+			"defeat": "defeat_mission",
+			"ambience": "helix_server_hall"
+		}
 	}
 }
