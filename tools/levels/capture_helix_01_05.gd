@@ -23,6 +23,9 @@ func _run() -> void:
 	if FileAccess.file_exists(CAPTURE_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(CAPTURE_SAVE))
 	var solutions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tools/levels/solutions.json"))
+	# Live mouse/touch over the window must not drive the capture.
+	root.gui_disable_input = true
+	root.set_disable_input(true)
 	var main: Node = MainScript.new()
 	main.save = SaveService.new(CAPTURE_SAVE)
 	root.add_child(main)
@@ -50,9 +53,35 @@ func _run() -> void:
 			await process_frame
 		await _frames(30)
 		await _shot("%s_c_result" % id)
-		_log.append("%s: %s, shots %d, effective %d, mission time %.1fs, saved completed=%s" % [
+		_log.append("%s: %s, shots %d, effective %d, mission time %.1fs, saved completed=%s%s" % [
 			id, "WIN" if screen.engine.phase == MissionEngine.Phase.SUCCEEDED else "NOT WON", screen.engine.shots_fired(),
-			screen.engine.effective_shots, screen.engine.elapsed, main.progress.is_mission_completed(id)])
+			screen.engine.effective_shots, screen.engine.elapsed, main.progress.is_mission_completed(id),
+			("  blocked: " + result.blocked) if not result.blocked.is_empty() else ""])
+
+	# Optional-objective decision: helix_02 by the frame column leaves the scanner dish standing.
+	main._show_mission("helix_02")
+	await _frames(45)
+	var decision_screen: MissionScreen = main._mission
+	await Solver.play(self, decision_screen.world, solutions.helix_02[1].steps, false, "leave")
+	for i in 600:
+		if decision_screen.engine.awaiting_decision:
+			break
+		await physics_frame
+	await _frames(20)
+	await _shot("04_decision_prompt")
+	(decision_screen.hud.find_child("DecisionContinueButton", true, false) as Button).pressed.emit()
+	await _frames(20)
+	await _shot("05_after_continue_finish_button")
+	(decision_screen.hud.find_child("FinishButton", true, false) as Button).pressed.emit()
+	for i in 300:
+		if decision_screen.hud.has_overlay():
+			break
+		await process_frame
+	await _frames(30)
+	await _shot("06_results_after_finish")
+	_log.append("decision flow helix_02: prompt shown, Continue kept the mission active, Finish -> %s, scanner objective %s" % [
+		"SUCCEEDED" if decision_screen.engine.phase == MissionEngine.Phase.SUCCEEDED else "not succeeded",
+		["pending", "complete", "failed"][decision_screen.engine.objectives.get_objective("scanner").status]])
 
 	screen_exit(main)
 	await _frames(15)

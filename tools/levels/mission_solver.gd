@@ -54,7 +54,9 @@ static func stand_check(tree: SceneTree, world: MissionWorld, frames: int = 180)
 
 ## Plays `steps`; returns {success, phase, shots, effective, elapsed, log: Array[String], blocked}.
 ## `on_decision`: what the player answers when the optional-objective prompt appears: "finish"
-## ends the mission there, "continue" keeps playing the remaining steps (the prompt is offered once).
+## ends the mission there, "continue" keeps playing the remaining steps (the prompt is offered once),
+## "leave" leaves the prompt open (capture tools); a finished run still answers Finish at the end
+## unless wait_for_finish is false.
 static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_finish: bool = true, on_decision: String = "finish") -> Dictionary:
 	var engine := world.engine
 	# Aiming queries the physics space: let it step once so freshly built bodies are registered.
@@ -106,7 +108,7 @@ static func _answer_decision(engine: MissionEngine, answer: String) -> void:
 		return
 	if answer == "continue":
 		engine.continue_mission()
-	else:
+	elif answer == "finish":
 		engine.finish_mission()
 
 
