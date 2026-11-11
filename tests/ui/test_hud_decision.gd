@@ -80,3 +80,21 @@ func test_finish_button_visibility_and_signal() -> void:
 	hud.set_finish_available(false)
 	assert_false(button.visible, "hidden again")
 	hud.queue_free()
+
+
+## Popups rise into place at the centre of the screen (regression: the rise animation used to
+## read the position before CenterContainer layout and pinned the panel to the top edge).
+func test_decision_panel_ends_vertically_centred() -> void:
+	var hud := MissionHud.new()
+	tree.root.add_child(hud)
+	await tree.process_frame
+	hud.show_decision()
+	for i in 40:
+		await tree.process_frame
+	var button := hud.find_child("DecisionContinueButton", true, false) as Control
+	var panel := button.get_parent().get_parent() as Control
+	var screen := tree.root.get_visible_rect().size
+	var centre := panel.get_global_rect().get_center().y
+	assert_near(centre, screen.y / 2.0, screen.y * 0.08, "panel centred vertically (centre %.0f of %.0f)" % [centre, screen.y])
+	hud.queue_free()
+	await tree.process_frame

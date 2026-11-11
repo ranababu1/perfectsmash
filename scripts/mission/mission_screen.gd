@@ -196,14 +196,35 @@ func update_aim(screen_position: Vector2) -> void:
 	if point == null:
 		return
 	var offset: Vector2 = point - world.muzzle_position()
+	var weapon := engine.selected_weapon()
 	_aim_direction = offset
 	_aim_power = clampf(offset.length() / BREACH_FULL_POWER_DISTANCE, 0.0, 1.0)
 	if offset.length() < CANCEL_DISTANCE:
 		view.hide_preview()
 		return
-	var weapon := engine.selected_weapon()
-	view.operative.set_aim(ViewMapping.direction_angle(offset))
-	view.show_preview(world.muzzle_position(), weapon.launch_velocity(offset, _aim_power), float(weapon.stats.gravity_scale), float(weapon.stats.aim_preview_seconds))
+	# Direct weapons: "touch the target" means the round passes through the touched point, so the
+	# launch angle compensates for the round's (small) gravity drop.
+	if not weapon.spec.is_lobbed():
+		var gravity := float(ProjectSettings.get_setting("physics/2d/default_gravity")) * float(weapon.stats.gravity_scale)
+		_aim_direction = ballistic_direction(offset, float(weapon.stats.launch_speed), gravity) * offset.length()
+	view.operative.set_aim(ViewMapping.direction_angle(_aim_direction))
+	view.show_preview(world.muzzle_position(), weapon.launch_velocity(_aim_direction, _aim_power), float(weapon.stats.gravity_scale), float(weapon.stats.aim_preview_seconds))
+
+
+## Unit launch direction (y down) for a fixed-speed round to pass through `offset` under `gravity`
+## (px/s², downward), on the flatter of the two arcs. Falls back to the straight line when the
+## point is out of reach or there is no gravity.
+static func ballistic_direction(offset: Vector2, speed: float, gravity: float) -> Vector2:
+	var x := absf(offset.x)
+	var y := -offset.y
+	if gravity <= 0.0 or x < 1.0 or speed <= 0.0:
+		return offset.normalized()
+	var v2 := speed * speed
+	var root := v2 * v2 - gravity * (gravity * x * x + 2.0 * y * v2)
+	if root < 0.0:
+		return offset.normalized()
+	var angle := atan((v2 - sqrt(root)) / (gravity * x))
+	return Vector2(cos(angle) * signf(offset.x), -sin(angle))
 
 
 ## Fires on release when the aim is valid and the weapon is ready. Returns true if it fired.

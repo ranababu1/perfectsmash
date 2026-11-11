@@ -163,6 +163,12 @@ static func centered(child: Control) -> CenterContainer:
 ## Fade in with a slight rise; used for panels and screens.
 static func animate_in(node: Control, rise: float = 16.0, duration: float = 0.28) -> void:
 	node.modulate.a = 0.0
+	# Inside a container (e.g. CenterContainer) the resting position is only known after the
+	# container lays the node out; reading it earlier pinned centred panels to the top edge.
+	if rise != 0.0 and node.is_inside_tree() and node.get_parent() is Container:
+		await node.get_tree().process_frame
+		if not is_instance_valid(node) or not node.is_inside_tree():
+			return
 	var tween := node.create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(node, "modulate:a", 1.0, duration)
 	if rise != 0.0:
