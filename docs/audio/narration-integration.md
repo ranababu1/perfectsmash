@@ -1,45 +1,75 @@
 # Narration integration
 
-Owner decision (2026-11-11, `docs/plan.md` revision 8): the story cinematics get spoken narration.
-This page is the hand-off between the narration package (prepared separately by the Asset Agent)
-and the game. **Status: pending assets.** No approved narration clips have been delivered; every
-slide currently plays as subtitles only.
+Owner decision (2026-11-11, `docs/plan.md` revision 8): the story cinematics have spoken narration.
+**Status: integrated (2026-11-12).** The delivered package (`assets/audio/voice/`,
+`assets/audio/music/cinematic/`, manifest `assets/docs/narration/NARRATION_MANIFEST.json`, guide
+`assets/docs/narration/CODING_AGENT_NARRATION_GUIDE.md`) plays in game: 50 lines across 12 cinematics,
+each cinematic with its own music bed. Rights: commercially usable per provider terms, **not legally
+cleared**, pending the owner's review (`assets/docs/narration/LICENSING_PROVENANCE.md`,
+`docs/release/rights-audit.md`).
 
-## How the game plays narration
+## Data
 
-- `data/narration.json` is the only place narration paths live: `"clips"` maps
-  `<sequence id>/<slide number>` (slides numbered from 1 in `data/cinematics.json` order) to a
-  `res://` audio file. `NarrationCatalog` (`scripts/core/narration_catalog.gd`) validates it (unknown
-  slides, non-`res://` paths and missing files are errors reported at boot and by the tests) and
-  writes each clip onto its slide's `voice`.
-- `CinematicPlayer` starts a slide's clip together with its subtitle on the `Voice` bus, keeps the
-  slide up until the clip has ended plus `VOICE_TAIL` (0.6 s), and ducks the music by
-  `duck_db` (default 9 dB, 0.35 s fade) while narration is on screen; music comes back (0.8 s fade)
-  on a slide without a clip, the end card, skip, the end of the sequence or when the player leaves
-  the screen. Tapping to the next slide stops the current clip and starts the next one; Skip and
-  Android back stop it.
-- Settings → **Narration volume** (0–100 %, steps of 10, saved as `settings.narration_volume`)
-  sets the `Voice` bus volume. Sound off, or 0 %, mutes narration; the music and sound toggles are
-  unchanged.
-- The same player and mapping serve the opening, the five chapter introductions, the four chapter
-  endings, the finale and Story Archive replays. A partly delivered package works: slides with a
-  clip are narrated, the rest stay subtitle-only.
+- `data/narration.json` is generated, never hand-edited:
+  `python tools/audio/build_narration_map.py`. It reads the manifest and checks that every manifest
+  line matches its subtitle in `data/cinematics.json` verbatim, that every voice file and bed exists,
+  and that no slide hold cuts its line. Per cinematic it stores the bed and its level (the
+  "cinematic" cue's −10.5 dB). Per slide it stores the voice clip, `voice_at` (seconds after the
+  slide appears; the bed pre-roll on slide 1), `subtitle_at` (`voice_at` + the manifest's
+  `subtitle_sync.start_s`) and `hold`.
+- Holds follow the manifest timeline, so the beds' hits land where they were written. A slide lasts
+  until the next line's `voice_start_s`, including the manifest's dramatic gaps. The last slide lasts
+  until the timeline end card, never less than its line + 1 s.
+- `NarrationCatalog.apply_to()` writes `voice`, `voice_delay`, `subtitle_delay`, `duration` (the
+  hold) and the sequence's `music` and `music_volume_db` onto `CinematicCatalog`. Story text, captions
+  and images are untouched (tested).
 
-## To integrate a delivered package
+## Playback (`CinematicPlayer`)
 
-1. Copy the approved clips under `assets/audio/voice/` (Ogg Vorbis, mono, 44.1 or 48 kHz; one
-   clip per slide, trimmed, loudness-matched to the score's "leaves space for the Control voice"
-   mix). Do not rename slides or edit subtitles to fit a clip.
-2. Add each clip to `"clips"` in `data/narration.json` with the exact delivered path, and set
-   `"status"` to `"integrated"` (or `"partial"`).
-3. Record each clip in `assets/asset_manifest.json` with its real provenance and rights status;
-   never mark rights cleared on the game side.
-4. Run `godot_console --headless --import`, then
-   `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` (the narration suite checks the
-   mapping) and `godot_console --headless -s tools/release/export_manifest.gd` (clips become
-   shipped files), then rebuild and listen on a device: subtitle timing, ducking, volume setting.
+- **Bed:** a narrated cinematic plays its own bed from the first slide
+  (`MusicDirector.play_track`). Without narration data it falls back to the chapter music cue.
+- **Clock:** while the bed plays and nobody has tapped ahead, slide time is the bed's playback
+  position, so every line starts on the bed timeline. Measured within 0.02 s (below). After a tap,
+  timing falls back to the frame clock and the bed runs ahead, as the guide accepts.
+- **Line timing:** each line starts at `voice_delay` on the `Voice` bus, and its subtitle fades in
+  at `subtitle_delay`. A slide never changes while its line is still sounding; a 3 s overrun cap
+  guards against a stalled device.
+- **Duck:** the bed drops 9 dB with a 0.12 s attack when a line starts, holds 0.25 s after the line
+  ends, then releases over 0.6 s. These are the package's duck-envelope parameters.
+- **Tap or accept:** the line fades over 80 ms on one of two voice players, and the next slide's
+  line starts on the other.
+- **Skip and Android back:** the voice fades over 50 ms, the duck is released and the bed fades over
+  0.8 s; the next screen then brings in its own music. Leaving the tree stops everything.
+- **Loading:** all lines of a cinematic are preloaded at its start. The next still loads in the
+  background. While the app is backgrounded, voice, bed and slide clock pause together.
+- **Settings:** Narration volume (0–100 %) sets the `Voice` bus. At 0 %, with Sound off or with
+  narration disabled, no line plays and nothing ducks; slides keep the narrated timing over the bed.
+  The Story Archive replays use the same path.
 
-## Expected clips (50 slides)
+## Verification
+
+- Headless suite: `tests/ui/test_cinematic_narration.gd` covers data integrity, verbatim text, bus,
+  timing, duck, tap, skip, leave, volume, app and archive.
+- Real playback: run
+  `godot_console --resolution 1280x720 -s tools/audio/narration_sync_check.gd -- <out> opening ch01_intro finale`
+  (Master at −80 dB; Voice and Music buses recorded), then
+  `python tools/audio/narration_sync_report.py <out> opening ch01_intro finale`.
+- Results on 2026-11-12, desktop Windows:
+  - all 18 lines started within 0.02 s of their manifest bed time;
+  - each subtitle appeared 0.05–0.09 s before its speech was heard;
+  - each line ended 1.3–3.5 s before its slide changed;
+  - the bed sat 6–14 dB lower under speech than in the gaps, consistent with the 9 dB duck over a
+    bed whose own level moves.
+- A human listening check on a phone is still needed.
+
+## To update the package
+
+Replace files at the same paths, update the manifest, then run `python tools/audio/build_narration_map.py`,
+`godot_console --headless --import`, the test suite,
+`godot_console --headless -s tools/release/export_manifest.gd`, `python tools/release/rights_audit.py`
+and the sync check above.
+
+## Clip keys (50 slides)
 
 Subtitle text is in `data/cinematics.json`; the first words are shown to identify each slide.
 `teaser_2041` is hidden from the Story Archive and not played in the campaign.

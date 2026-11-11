@@ -2,6 +2,36 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-12 — 1.0.0-rc2: delivered narration integrated
+
+Branch `fix/rc2-owner-issues` (PR #16), with `main` merged in for the narration package (`465364d`).
+
+- **Narration plays.** 50 voice lines across 12 cinematics (opening, five intros, four endings, finale, hidden teaser), each cinematic with its own music bed, from `assets/audio/voice/` and `assets/audio/music/cinematic/`. `data/narration.json` is generated from `assets/docs/narration/NARRATION_MANIFEST.json` by `tools/audio/build_narration_map.py`, which checks verbatim text, files and holds. `data/cinematics.json`, missions and gameplay are unchanged.
+- **Timing:**
+  - Each line starts after its slide appears; on slide 1 it waits for the bed's pre-roll.
+  - Its subtitle appears at the manifest's sync point.
+  - Slides hold for the manifest timeline: the line, its gap, and on the last slide the end-card time. A slide is never shorter than its line + 1 s and never changes while the line is sounding.
+  - While the bed plays and nobody has tapped ahead, slide time follows the bed's playback position.
+  - The next still loads in the background. All lines are preloaded.
+  - Voice, bed and clock pause together while the app is backgrounded.
+- **Music:** each cinematic plays its own bed (`MusicDirector.play_track`). The bed ducks 9 dB with a 0.12 s attack, holds 0.25 s after the line and releases over 0.6 s. Narration volume 0, Sound off or narration off: no voice and no duck, same timing.
+- **Skip:**
+  - a tap fades the line over 80 ms (two voice players) and starts the next;
+  - Skip / back fades the voice over 50 ms and the bed over 0.8 s;
+  - leaving the screen stops everything.
+- **Found and fixed by real-time measurement:** lines drifted up to +0.4 s behind the bed over the opening. The causes were frame overshoot lost at each slide change and a synchronous still load. After the fix, all 18 measured lines start within 0.02 s of the manifest.
+- **Tools:**
+  - `tools/audio/narration_sync_check.gd` records the Voice and Music buses during real playback, with Master at −80 dB.
+  - `tools/audio/narration_sync_report.py` compares those recordings with the manifest.
+- **Release data:** shipped-asset manifest regenerated: 898 shipped files, including the 50 lines and 12 beds; mix references and review samples are excluded. Rights audit regenerated: every shipped asset `pending_review`, the narration "commercially usable per provider terms, not legally cleared".
+- **Tests:** narration suite rewritten for the package (18 tests; one needs real audio output and skips headless). Full suite: 326 passed, 0 failed, 1 skipped. `test_cinematic_player.gd` now expects two narration players.
+- **Played and measured** (desktop window, real time, `narration_sync_report.py`): opening, ch01_intro and finale.
+  - Line start vs bed timeline: −0.00 to +0.02 s.
+  - Subtitle vs heard speech: 0.05–0.09 s before.
+  - Speech end to slide change: 1.3–3.5 s.
+  - Bed under speech vs gaps: 6–14 dB lower.
+- **Not done:** human listening on a phone, physical devices, iOS. The rc2 APK was not rebuilt after this integration.
+
 ## 2026-11-11 — 1.0.0-rc2 (candidate, untagged): owner-reported fixes and narration architecture
 
 Branch `fix/rc2-owner-issues` → PR against `main`. Plan revision 8 records the owner's decisions.
