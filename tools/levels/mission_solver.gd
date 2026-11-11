@@ -53,7 +53,7 @@ static func stand_check(tree: SceneTree, world: MissionWorld, frames: int = 180)
 
 
 ## Plays `steps`; returns {success, phase, shots, effective, elapsed, log: Array[String], blocked}.
-static func play(tree: SceneTree, world: MissionWorld, steps: Array) -> Dictionary:
+static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_finish: bool = true) -> Dictionary:
 	var engine := world.engine
 	var log: Array[String] = []
 	var blocked := ""
@@ -79,7 +79,7 @@ static func play(tree: SceneTree, world: MissionWorld, steps: Array) -> Dictiona
 		await tree.physics_frame
 		await _until(tree, func() -> bool: return (world.projectiles.is_empty() and world.is_settled()) or not engine.is_active(), SHOT_TIMEOUT)
 		log.append("%s -> %s: %s" % [weapon_id, step.get("target", step.get("point")), _states(world)])
-	if blocked.is_empty():
+	if blocked.is_empty() and wait_for_finish:
 		await _until(tree, func() -> bool: return not engine.is_active(), FINISH_TIMEOUT)
 	return {
 		"success": engine.phase == MissionEngine.Phase.SUCCEEDED,
