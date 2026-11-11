@@ -1,0 +1,48 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/teaser_2041/bed48.wav",
+ "base": "teaser_2041",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_teaser_2041_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_teaser_2041_02.master.wav",
+   11.838
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_teaser_2041_03.master.wav",
+   19.763
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_teaser_2041_04.master.wav",
+   28.106
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "teaser_morning",
+   "path": "/workspace/tfj-narration-el/sfx/teaser_morning.wav",
+   "start_s": 0.0,
+   "lufs": -32,
+   "fade_in": 1.5,
+   "fade_out": 3.0
+  },
+  {
+   "name": "teaser_machine",
+   "path": "/workspace/tfj-narration-el/sfx/teaser_machine.wav",
+   "start_s": 14.238,
+   "lufs": -28,
+   "fade_in": 0.1,
+   "fade_out": 1.5
+  },
+  {
+   "name": "arrival",
+   "path": "/workspace/tfj-narration-el/sfx/arrival.wav",
+   "start_s": 18.763,
+   "lufs": -26,
+   "fade_in": 0,
+   "fade_out": 0.5
+  }
+ ]
+}

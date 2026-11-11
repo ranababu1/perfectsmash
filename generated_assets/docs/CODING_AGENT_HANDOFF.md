@@ -181,6 +181,15 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 - **Proposed format:** 1920 x 1080 stills (WebP q90), 16:9, with a quiet lower band for subtitles and no baked text (section 16). They need ids `GAM-CIN-OPENING-*`, `<CH>-CIN-INTRO-*`, `<CH>-CIN-OUTRO-*` and `GAM-CIN-FINALE-*`. Subtitles and captions stay as Godot Labels from the JSON. When stills land, add an image id per slide, for example `"still": "HLX-CIN-INTRO-01"`.
 - **Already delivered:** the cinematic scores (`<CH>-MUS-INTRO-01`, `<CH>-MUS-OUTRO-01`, `GAM-MUS-OPENING-01`, `GAM-MUS-FINALE-01`, `GAM-MUS-ENDING-CREDITS`) and `<CH>-MUS-TRANSITION-STINGER`. They are mixed at -16.5 LUFS to leave room for narration.
 
+- **Narration (2026-11-12, on `assets`).** The full package is in place: 50 voice lines across all 12 cinematics (opening, 5 intros, 4 outros, finale, teaser_2041), one music bed per cinematic fitted to the voiced timeline, a duck envelope and a mixed reference. Paths, slide mapping, timing, the Voice bus, ducking, skip/stop, preloading and the fact that **the player currently ignores `slide.voice`** are in [`docs/narration/CODING_AGENT_NARRATION_GUIDE.md`](narration/CODING_AGENT_NARRATION_GUIDE.md). The per-file map (duration, subtitle sync, voice, verbatim text) is [`docs/narration/NARRATION_MANIFEST.json`](narration/NARRATION_MANIFEST.json).
+  - **Imran has approved changing `CinematicPlayer`** so each slide holds until its voice line ends, plus a tail (default 1.2 s; use the longer gaps in the manifest timeline where listed). Play the cinematic bed (not the chapter theme) and duck it about 9 dB under the voice, preferably from the envelope JSON, or with `MusicDirector.duck(9.0, 0.12)` / `duck(0.0, 0.6)`.
+  - Add a **Voice** bus (send to Master, 0 dB). Files are already at −18 LUFS / ≤ −1.5 dBTP.
+  - Set each slide's optional `voice` field to the ogg path in the manifest (and the sequence `music` field to the bed). Do not change subtitle text.
+  - Rights: commercially usable per ElevenLabs Creator-plan terms and our own music; **not legally cleared**; `pending_review`. Details in [`docs/narration/LICENSING_PROVENANCE.md`](narration/LICENSING_PROVENANCE.md).
+  - Review references: `generated_assets/audio/music/cinematic/*_mix_ref.mp3`. Do not play these in game.
+  - The earlier un-voiced cinematic scores (`<CH>-MUS-INTRO-01` etc.) stay as they are; the new `*_cine_*_bed` files replace them for voiced playback.
+
+
 ## 8. TODO, in priority order
 
 1. Create a working branch from `assets` (not `main`). Run `python3 generated_assets/tools/validate_asset_manifest.py --quiet` and `generated_assets/tools/godot/run_import_check.sh`. The first headless import has twice segfaulted (exit 139) and passed on retry. Add `.gdignore` to the `previews/` and `source/` folders in your copy, so Godot skips the review files; animated WebP previews fail to import. Leave the generated files themselves alone.
@@ -192,7 +201,8 @@ Everything below is checked against the files on `assets`. Anything not yet deli
 7. **Audio:** bus layout, the `data/audio.json` changes in section 6, loop flags, and the 3 dB bed dip under the critical layer.
 8. **UI:** apply `ui/theme/tfj_theme.tres`, swap in the HUD kit and the icons.
 9. Optionally, add the reflection-only sky (section 9) and compare it against the harness renders.
-10. **Helix greybox integration test (the deciding step):** play `helix_01` with the Helix kit, damage states, debris, VFX, backgrounds and audio in place, using the placeholder `OperativeRig`. Capture screenshots and an emulator or phone run (frame time, first-detonation stall). Send them to Imran. **The final operative representation is decided from this test**: a full mesh, a stylised low-poly figure, or a refined primitive rig. Until then, keep `OperativeRig` and its state machine as they are.
+10. **Wire the narration package** (Imran approved the player change): follow `docs/narration/CODING_AGENT_NARRATION_GUIDE.md`. Add the Voice bus, hold each slide for voice length plus tail, play the cinematic bed with the 9 dB duck, set `voice` and `music` paths, and add the tests in section 10 of that guide.
+11. **Helix greybox integration test (the deciding step):** play `helix_01` with the Helix kit, damage states, debris, VFX, backgrounds and audio in place, using the placeholder `OperativeRig`. Capture screenshots and an emulator or phone run (frame time, first-detonation stall). Send them to Imran. **The final operative representation is decided from this test**: a full mesh, a stylised low-poly figure, or a refined primitive rig. Until then, keep `OperativeRig` and its state machine as they are.
 
 ## 9. Known gaps and open questions
 

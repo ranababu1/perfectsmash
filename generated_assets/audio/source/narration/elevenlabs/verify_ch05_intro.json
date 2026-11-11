@@ -1,0 +1,64 @@
+{
+ "mrd_vo_intro_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Meridian does not appear in public records. It funded no single invention. It connected them."
+ },
+ "mrd_vo_intro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Helix, Vita, Novagrid and Civitas all received the same predictions, the same research priorities and the same deadlines."
+ },
+ "mrd_vo_intro_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence."
+ },
+ "gam_vo_finale_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing."
+ },
+ "gam_vo_finale_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Temporal intervention successful. All known extinction pathways have been removed."
+ },
+ "gam_vo_finale_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Wait! I'm receiving a new event marker. That is not possible."
+ },
+ "gam_vo_finale_04": {
+  "errs_word_timing_decode": 0,
+  "hyp": "You changed the future. You broke every machine they told you to break. And still, the end is coming."
+ },
+ "gam_vo_finale_05": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Origin event located, 2041. It predates every target. We were sent to the wrong point in history."
+ },
+ "gam_vo_finale_06": {
+  "errs_word_timing_decode": 0,
+  "hyp": "The first mistake was made long before the world knew it was making one."
+ },
+ "gam_vo_finale_07": {
+  "errs_word_timing_decode": 2,
+  "hyp": "Recalculating temporal co -ordinates. New destination confirmed. We need to go further back.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "Recalculating temporal coordinates. New destination confirmed. We need to go further back."
+ },
+ "gam_vo_teaser_2041_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "2041. An ordinary morning. Nobody knows what is about to begin."
+ },
+ "gam_vo_teaser_2041_02": {
+  "errs_word_timing_decode": 2,
+  "hyp": "In a university laboratory, the machine is switched on for the first time.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "In a university laboratory, a small machine is switched on for the first time."
+ },
+ "gam_vo_teaser_2041_03": {
+  "errs_word_timing_decode": 1,
+  "hyp": "Temporal Arrival confirmed. You are earlier than anyone has ever gone. one.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "Temporal Arrival confirmed. You are earlier than anyone has ever gone."
+ },
+ "gam_vo_teaser_2041_04": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Every future you saved began here. Season 2, The First Mistake."
+ }
+}

@@ -1,0 +1,716 @@
+{
+ "seq": "finale",
+ "kind": "finale",
+ "chapter": "meridian",
+ "pre_roll_s": 3.0,
+ "slide_starts_s": [
+  3.0,
+  13.396,
+  21.934,
+  30.452,
+  42.62,
+  53.547,
+  61.383
+ ],
+ "slide_ends_s": [
+  10.896,
+  18.934,
+  27.952,
+  39.42,
+  51.047,
+  58.883,
+  68.01
+ ],
+ "gaps": [
+  [
+   10.896,
+   13.396
+  ],
+  [
+   18.934,
+   21.934
+  ],
+  [
+   27.952,
+   30.452
+  ],
+  [
+   39.42,
+   42.62
+  ],
+  [
+   51.047,
+   53.547
+  ],
+  [
+   58.883,
+   61.383
+  ]
+ ],
+ "end_card_s": 70.01,
+ "end_s": 71.01,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_01.master.wav",
+   "start_s": 3.0,
+   "duration_s": 7.896,
+   "words": [
+    {
+     "w": "Meridian",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "is",
+     "s": 0.48,
+     "e": 0.86
+    },
+    {
+     "w": "silent.",
+     "s": 0.86,
+     "e": 1.32
+    },
+    {
+     "w": "The",
+     "s": 2.4,
+     "e": 2.5
+    },
+    {
+     "w": "four",
+     "s": 2.5,
+     "e": 2.78
+    },
+    {
+     "w": "research",
+     "s": 2.78,
+     "e": 3.24
+    },
+    {
+     "w": "paths",
+     "s": 3.24,
+     "e": 3.62
+    },
+    {
+     "w": "are",
+     "s": 3.62,
+     "e": 3.86
+    },
+    {
+     "w": "broken.",
+     "s": 3.86,
+     "e": 4.2
+    },
+    {
+     "w": "The",
+     "s": 5.4,
+     "e": 5.54
+    },
+    {
+     "w": "revised",
+     "s": 5.54,
+     "e": 5.94
+    },
+    {
+     "w": "timeline",
+     "s": 5.94,
+     "e": 6.44
+    },
+    {
+     "w": "is",
+     "s": 6.44,
+     "e": 6.78
+    },
+    {
+     "w": "stabilizing.",
+     "s": 6.78,
+     "e": 7.54
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Meridian is silent.",
+     "start_s": 0.0,
+     "end_s": 1.32
+    },
+    {
+     "text": "The four research paths are broken.",
+     "start_s": 2.4,
+     "end_s": 4.2
+    },
+    {
+     "text": "The revised timeline is stabilising.",
+     "start_s": 5.4,
+     "end_s": 7.716
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_02.master.wav",
+   "start_s": 13.396,
+   "duration_s": 5.538,
+   "words": [
+    {
+     "w": "Temporal",
+     "s": 0.0,
+     "e": 0.6
+    },
+    {
+     "w": "intervention",
+     "s": 0.6,
+     "e": 1.2
+    },
+    {
+     "w": "successful.",
+     "s": 1.2,
+     "e": 1.96
+    },
+    {
+     "w": "All",
+     "s": 2.8,
+     "e": 3.0
+    },
+    {
+     "w": "known",
+     "s": 3.0,
+     "e": 3.22
+    },
+    {
+     "w": "extinction",
+     "s": 3.22,
+     "e": 3.72
+    },
+    {
+     "w": "pathways",
+     "s": 3.72,
+     "e": 4.26
+    },
+    {
+     "w": "have",
+     "s": 4.26,
+     "e": 4.52
+    },
+    {
+     "w": "been",
+     "s": 4.52,
+     "e": 4.66
+    },
+    {
+     "w": "removed.",
+     "s": 4.66,
+     "e": 5.16
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Temporal intervention successful.",
+     "start_s": 0.0,
+     "end_s": 1.96
+    },
+    {
+     "text": "All known extinction pathways have been removed.",
+     "start_s": 2.8,
+     "end_s": 5.358
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_03.master.wav",
+   "start_s": 21.934,
+   "duration_s": 6.018,
+   "words": [
+    {
+     "w": "Wait!",
+     "s": 0.0,
+     "e": 0.4
+    },
+    {
+     "w": "I'm",
+     "s": 1.22,
+     "e": 1.5
+    },
+    {
+     "w": "receiving",
+     "s": 1.5,
+     "e": 1.88
+    },
+    {
+     "w": "a",
+     "s": 1.88,
+     "e": 2.1
+    },
+    {
+     "w": "new",
+     "s": 2.1,
+     "e": 2.28
+    },
+    {
+     "w": "event",
+     "s": 2.28,
+     "e": 2.58
+    },
+    {
+     "w": "marker.",
+     "s": 2.58,
+     "e": 3.0
+    },
+    {
+     "w": "That",
+     "s": 3.86,
+     "e": 4.06
+    },
+    {
+     "w": "is",
+     "s": 4.06,
+     "e": 4.22
+    },
+    {
+     "w": "not",
+     "s": 4.22,
+     "e": 4.46
+    },
+    {
+     "w": "possible.",
+     "s": 4.46,
+     "e": 4.98
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Wait.",
+     "start_s": 0.0,
+     "end_s": 0.4
+    },
+    {
+     "text": "I'm receiving a new event marker.",
+     "start_s": 1.22,
+     "end_s": 3.0
+    },
+    {
+     "text": "That is not possible.",
+     "start_s": 3.86,
+     "end_s": 5.838
+    }
+   ]
+  },
+  {
+   "slide": 4,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_04.master.wav",
+   "start_s": 30.452,
+   "duration_s": 8.968,
+   "words": [
+    {
+     "w": "You",
+     "s": 0.0,
+     "e": 0.26
+    },
+    {
+     "w": "changed",
+     "s": 0.26,
+     "e": 0.72
+    },
+    {
+     "w": "the",
+     "s": 0.72,
+     "e": 1.0
+    },
+    {
+     "w": "future.",
+     "s": 1.0,
+     "e": 1.38
+    },
+    {
+     "w": "You",
+     "s": 2.58,
+     "e": 2.64
+    },
+    {
+     "w": "broke",
+     "s": 2.64,
+     "e": 2.9
+    },
+    {
+     "w": "every",
+     "s": 2.9,
+     "e": 3.34
+    },
+    {
+     "w": "machine",
+     "s": 3.34,
+     "e": 3.78
+    },
+    {
+     "w": "they",
+     "s": 3.78,
+     "e": 4.0
+    },
+    {
+     "w": "told",
+     "s": 4.0,
+     "e": 4.24
+    },
+    {
+     "w": "you",
+     "s": 4.24,
+     "e": 4.44
+    },
+    {
+     "w": "to",
+     "s": 4.44,
+     "e": 4.58
+    },
+    {
+     "w": "break.",
+     "s": 4.58,
+     "e": 4.92
+    },
+    {
+     "w": "And",
+     "s": 5.96,
+     "e": 6.12
+    },
+    {
+     "w": "still,",
+     "s": 6.12,
+     "e": 6.6
+    },
+    {
+     "w": "the",
+     "s": 7.54,
+     "e": 7.64
+    },
+    {
+     "w": "end",
+     "s": 7.64,
+     "e": 8.0
+    },
+    {
+     "w": "is",
+     "s": 8.0,
+     "e": 8.24
+    },
+    {
+     "w": "coming.",
+     "s": 8.24,
+     "e": 8.58
+    }
+   ],
+   "sentences": [
+    {
+     "text": "You changed the future.",
+     "start_s": 0.0,
+     "end_s": 1.38
+    },
+    {
+     "text": "You broke every machine they told you to break.",
+     "start_s": 2.58,
+     "end_s": 4.92
+    },
+    {
+     "text": "And still, the end is coming.",
+     "start_s": 5.96,
+     "end_s": 8.788
+    }
+   ]
+  },
+  {
+   "slide": 5,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_05.master.wav",
+   "start_s": 42.62,
+   "duration_s": 8.427,
+   "words": [
+    {
+     "w": "Origin",
+     "s": 0.0,
+     "e": 0.44
+    },
+    {
+     "w": "event",
+     "s": 0.44,
+     "e": 0.74
+    },
+    {
+     "w": "located,",
+     "s": 0.74,
+     "e": 1.34
+    },
+    {
+     "w": "2041.",
+     "s": 1.98,
+     "e": 2.78
+    },
+    {
+     "w": "It",
+     "s": 3.54,
+     "e": 3.64
+    },
+    {
+     "w": "predates",
+     "s": 3.64,
+     "e": 4.24
+    },
+    {
+     "w": "every",
+     "s": 4.24,
+     "e": 4.62
+    },
+    {
+     "w": "target.",
+     "s": 4.62,
+     "e": 5.16
+    },
+    {
+     "w": "We",
+     "s": 5.92,
+     "e": 6.02
+    },
+    {
+     "w": "were",
+     "s": 6.02,
+     "e": 6.2
+    },
+    {
+     "w": "sent",
+     "s": 6.2,
+     "e": 6.4
+    },
+    {
+     "w": "to",
+     "s": 6.4,
+     "e": 6.6
+    },
+    {
+     "w": "the",
+     "s": 6.6,
+     "e": 6.8
+    },
+    {
+     "w": "wrong",
+     "s": 6.8,
+     "e": 6.96
+    },
+    {
+     "w": "point",
+     "s": 6.96,
+     "e": 7.38
+    },
+    {
+     "w": "in",
+     "s": 7.38,
+     "e": 7.58
+    },
+    {
+     "w": "history.",
+     "s": 7.58,
+     "e": 7.96
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Origin event located.",
+     "start_s": 0.0,
+     "end_s": 1.34
+    },
+    {
+     "text": "2041.",
+     "start_s": 1.98,
+     "end_s": 4.24
+    },
+    {
+     "text": "It predates every target.",
+     "start_s": 4.24,
+     "end_s": 6.2
+    },
+    {
+     "text": "We were sent to the wrong point in history.",
+     "start_s": 6.2,
+     "end_s": 8.247
+    }
+   ]
+  },
+  {
+   "slide": 6,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_06.master.wav",
+   "start_s": 53.547,
+   "duration_s": 5.336,
+   "words": [
+    {
+     "w": "The",
+     "s": 0.0,
+     "e": 0.22
+    },
+    {
+     "w": "first",
+     "s": 0.22,
+     "e": 0.58
+    },
+    {
+     "w": "mistake",
+     "s": 0.58,
+     "e": 1.06
+    },
+    {
+     "w": "was",
+     "s": 1.06,
+     "e": 1.32
+    },
+    {
+     "w": "made",
+     "s": 1.32,
+     "e": 1.92
+    },
+    {
+     "w": "long",
+     "s": 1.92,
+     "e": 2.7
+    },
+    {
+     "w": "before",
+     "s": 2.7,
+     "e": 3.14
+    },
+    {
+     "w": "the",
+     "s": 3.14,
+     "e": 3.32
+    },
+    {
+     "w": "world",
+     "s": 3.32,
+     "e": 3.66
+    },
+    {
+     "w": "knew",
+     "s": 3.66,
+     "e": 3.96
+    },
+    {
+     "w": "it",
+     "s": 3.96,
+     "e": 4.18
+    },
+    {
+     "w": "was",
+     "s": 4.18,
+     "e": 4.4
+    },
+    {
+     "w": "making",
+     "s": 4.4,
+     "e": 4.72
+    },
+    {
+     "w": "one.",
+     "s": 4.72,
+     "e": 5.02
+    }
+   ],
+   "sentences": [
+    {
+     "text": "The first mistake was made long before the world knew it was making one.",
+     "start_s": 0.0,
+     "end_s": 5.156
+    }
+   ]
+  },
+  {
+   "slide": 7,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/gam_vo_finale_07.master.wav",
+   "start_s": 61.383,
+   "duration_s": 6.628,
+   "words": [
+    {
+     "w": "Recalculating",
+     "s": 0.0,
+     "e": 0.92
+    },
+    {
+     "w": "temporal",
+     "s": 0.92,
+     "e": 1.34
+    },
+    {
+     "w": "co",
+     "s": 1.34,
+     "e": 1.56
+    },
+    {
+     "w": "-ordinates.",
+     "s": 1.56,
+     "e": 2.04
+    },
+    {
+     "w": "New",
+     "s": 2.84,
+     "e": 2.96
+    },
+    {
+     "w": "destination",
+     "s": 2.96,
+     "e": 3.5
+    },
+    {
+     "w": "confirmed.",
+     "s": 3.5,
+     "e": 4.12
+    },
+    {
+     "w": "We",
+     "s": 4.9,
+     "e": 4.98
+    },
+    {
+     "w": "need",
+     "s": 4.98,
+     "e": 5.18
+    },
+    {
+     "w": "to",
+     "s": 5.18,
+     "e": 5.34
+    },
+    {
+     "w": "go",
+     "s": 5.34,
+     "e": 5.52
+    },
+    {
+     "w": "further",
+     "s": 5.52,
+     "e": 5.88
+    },
+    {
+     "w": "back.",
+     "s": 5.88,
+     "e": 6.22
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Recalculating temporal coordinates.",
+     "start_s": 0.0,
+     "end_s": 1.56
+    },
+    {
+     "text": "New destination confirmed.",
+     "start_s": 1.56,
+     "end_s": 3.5
+    },
+    {
+     "text": "We need to go further back.",
+     "start_s": 3.5,
+     "end_s": 6.448
+    }
+   ]
+  }
+ ]
+}

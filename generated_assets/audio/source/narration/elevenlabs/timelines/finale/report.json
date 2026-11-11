@@ -1,0 +1,125 @@
+{
+ "seq": "finale",
+ "voice": [
+  {
+   "base": "gam_vo_finale_01",
+   "take": "s2",
+   "lufs": -18.4,
+   "tp": -3.1,
+   "lra": 2.0,
+   "seconds": 7.896,
+   "kbps": 88,
+   "bytes": 87096,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_02",
+   "take": "s4",
+   "lufs": -18.1,
+   "tp": -1.9,
+   "lra": 0.9,
+   "seconds": 5.538,
+   "kbps": 89,
+   "bytes": 61742,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_03",
+   "take": "s2",
+   "lufs": -17.5,
+   "tp": -3.0,
+   "lra": 4.9,
+   "seconds": 6.018,
+   "kbps": 82,
+   "bytes": 62224,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_04",
+   "take": "s1",
+   "lufs": -18.0,
+   "tp": -1.9,
+   "lra": 3.5,
+   "seconds": 8.968,
+   "kbps": 90,
+   "bytes": 101546,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_05",
+   "take": "s3",
+   "lufs": -18.1,
+   "tp": -1.9,
+   "lra": 1.6,
+   "seconds": 8.427,
+   "kbps": 87,
+   "bytes": 91971,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_06",
+   "take": "s8",
+   "lufs": -17.8,
+   "tp": -3.4,
+   "lra": 0.7,
+   "seconds": 5.336,
+   "kbps": 94,
+   "bytes": 62702,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "gam_vo_finale_07",
+   "take": "s3",
+   "lufs": -17.7,
+   "tp": -2.0,
+   "lra": 1.5,
+   "seconds": 6.628,
+   "kbps": 87,
+   "bytes": 72282,
+   "sr": 44100,
+   "ch": 1
+  }
+ ],
+ "mix": {
+  "mix_lufs": -16.0,
+  "mix_tp": -2.82,
+  "voice_over_ducked_bed_lu": 10.3,
+  "seconds": 85.127
+ },
+ "bed_file": {
+  "lufs": -16.5,
+  "tp": -3.4,
+  "lra": 5.5,
+  "seconds": 85.127,
+  "kbps": 133,
+  "bytes": 1422364,
+  "sr": 44100,
+  "ch": 2
+ },
+ "mix_ogg": {
+  "lufs": -16.0,
+  "tp": -2.8,
+  "lra": 3.8,
+  "seconds": 85.127,
+  "kbps": 128,
+  "bytes": 1367255,
+  "sr": 44100,
+  "ch": 2
+ },
+ "mix_mp3": {
+  "lufs": -16.2,
+  "tp": -3.1,
+  "lra": 3.8,
+  "seconds": 85.159,
+  "kbps": 192,
+  "bytes": 2044490,
+  "sr": 44100,
+  "ch": 2
+ }
+}

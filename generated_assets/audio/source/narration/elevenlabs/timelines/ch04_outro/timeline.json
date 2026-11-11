@@ -5,41 +5,41 @@
  "pre_roll_s": 3.0,
  "slide_starts_s": [
   3.0,
-  11.931,
-  21.773,
-  33.277
+  11.892,
+  21.734,
+  33.238
  ],
  "slide_ends_s": [
-  9.931,
-  19.773,
-  30.777,
-  42.818
+  9.892,
+  19.734,
+  30.738,
+  42.779
  ],
  "gaps": [
   [
-   9.931,
-   11.931
+   9.892,
+   11.892
   ],
   [
-   19.773,
-   21.773
+   19.734,
+   21.734
   ],
   [
-   30.777,
-   33.277
+   30.738,
+   33.238
   ]
  ],
- "end_card_s": 44.018,
- "turn_s": 11.931,
- "shift_s": 33.277,
- "end_s": 45.018,
+ "end_card_s": 43.979,
+ "turn_s": 11.892,
+ "shift_s": 33.238,
+ "end_s": 44.979,
  "items": [
   {
    "slide": 1,
    "speaker": "narrator",
    "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_01.master.wav",
    "start_s": 3.0,
-   "duration_s": 6.931,
+   "duration_s": 6.892,
    "words": [
     {
      "w": "Civitus",
@@ -126,7 +126,7 @@
     {
      "text": "That should be a good thing.",
      "start_s": 5.52,
-     "end_s": 6.751
+     "end_s": 6.712
     }
    ]
   },
@@ -134,7 +134,7 @@
    "slide": 2,
    "speaker": "narrator",
    "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_02.master.wav",
-   "start_s": 11.931,
+   "start_s": 11.892,
    "duration_s": 7.841,
    "words": [
     {
@@ -250,7 +250,7 @@
    "slide": 3,
    "speaker": "narrator",
    "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_03.master.wav",
-   "start_s": 21.773,
+   "start_s": 21.734,
    "duration_s": 9.004,
    "words": [
     {
@@ -366,7 +366,7 @@
    "slide": 4,
    "speaker": "control",
    "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_04.master.wav",
-   "start_s": 33.277,
+   "start_s": 33.238,
    "duration_s": 9.541,
    "words": [
     {

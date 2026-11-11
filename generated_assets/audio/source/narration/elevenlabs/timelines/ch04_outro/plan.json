@@ -8,22 +8,22 @@
   ],
   [
    "/workspace/tfj-narration-el/stems/cvt_vo_outro_02.master.wav",
-   11.931
+   11.892
   ],
   [
    "/workspace/tfj-narration-el/stems/cvt_vo_outro_03.master.wav",
-   21.773
+   21.734
   ],
   [
    "/workspace/tfj-narration-el/stems/cvt_vo_outro_04.master.wav",
-   33.277
+   33.238
   ]
  ],
  "sfx": [
   {
    "name": "civitas_data",
    "path": "/workspace/tfj-narration-el/sfx/civitas_data.wav",
-   "start_s": 17.273,
+   "start_s": 17.234,
    "lufs": -29,
    "fade_in": 1.0,
    "fade_out": 1.0

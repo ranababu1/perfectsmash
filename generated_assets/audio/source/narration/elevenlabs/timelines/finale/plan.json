@@ -1,0 +1,44 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/finale/bed48.wav",
+ "base": "finale",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_02.master.wav",
+   13.396
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_03.master.wav",
+   21.934
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_04.master.wav",
+   30.452
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_05.master.wav",
+   42.62
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_06.master.wav",
+   53.547
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/gam_vo_finale_07.master.wav",
+   61.383
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "finale_alert",
+   "path": "/workspace/tfj-narration-el/sfx/finale_alert.wav",
+   "start_s": 20.734,
+   "lufs": -27,
+   "fade_in": 0.2,
+   "fade_out": 2.0
+  }
+ ]
+}

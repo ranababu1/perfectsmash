@@ -2848,5 +2848,50 @@
   "clip": 0,
   "peak": -1.53,
   "hyp": "Every future used to be began here.  Season 2  The first mistake."
+ },
+ "takes/finale_06_s6.wav": {
+  "mos": 3.86,
+  "errs": 0,
+  "nref": 14,
+  "f0": 80.1,
+  "f0sd": 2.52,
+  "wpm": 165,
+  "dur": 5.12,
+  "lead": 0.0,
+  "tail": 0.02,
+  "maxgap": 0,
+  "clip": 0,
+  "peak": -1.04,
+  "hyp": "The first mistake was made long before the world knew it was making one."
+ },
+ "takes/finale_06_s7.wav": {
+  "mos": 3.78,
+  "errs": 0,
+  "nref": 14,
+  "f0": 78.0,
+  "f0sd": 3.02,
+  "wpm": 165,
+  "dur": 5.12,
+  "lead": 0.0,
+  "tail": 0.02,
+  "maxgap": 0,
+  "clip": 0,
+  "peak": -1.18,
+  "hyp": "The first mistake was made long before the world knew it was making one."
+ },
+ "takes/finale_06_s8.wav": {
+  "mos": 3.91,
+  "errs": 0,
+  "nref": 14,
+  "f0": 86.6,
+  "f0sd": 2.42,
+  "wpm": 166,
+  "dur": 5.2,
+  "lead": 0.0,
+  "tail": 0.14,
+  "maxgap": 0,
+  "clip": 0,
+  "peak": -1.51,
+  "hyp": "The first mistake was made long before the world knew it was making one."
  }
 }

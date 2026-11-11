@@ -948,5 +948,20 @@
   "span_s": 7.43,
   "max_pause_s": 1.27,
   "wpm_e": 89
+ },
+ "takes/finale_06_s6.wav": {
+  "span_s": 5.01,
+  "max_pause_s": 0.52,
+  "wpm_e": 168
+ },
+ "takes/finale_06_s7.wav": {
+  "span_s": 5.0,
+  "max_pause_s": 0.54,
+  "wpm_e": 168
+ },
+ "takes/finale_06_s8.wav": {
+  "span_s": 5.04,
+  "max_pause_s": 0.3,
+  "wpm_e": 167
  }
 }

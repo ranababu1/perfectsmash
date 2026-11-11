@@ -1,0 +1,363 @@
+{
+ "seq": "ch05_intro",
+ "kind": "intro",
+ "chapter": "meridian",
+ "pre_roll_s": 3.5,
+ "slide_starts_s": [
+  3.5,
+  12.923,
+  25.222
+ ],
+ "slide_ends_s": [
+  10.923,
+  23.222,
+  34.788
+ ],
+ "gaps": [
+  [
+   10.923,
+   12.923
+  ],
+  [
+   23.222,
+   25.222
+  ]
+ ],
+ "end_card_s": 36.188,
+ "end_s": 37.188,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/mrd_vo_intro_01.master.wav",
+   "start_s": 3.5,
+   "duration_s": 7.423,
+   "words": [
+    {
+     "w": "Meridian",
+     "s": 0.0,
+     "e": 0.5
+    },
+    {
+     "w": "does",
+     "s": 0.5,
+     "e": 0.82
+    },
+    {
+     "w": "not",
+     "s": 0.82,
+     "e": 1.14
+    },
+    {
+     "w": "appear",
+     "s": 1.14,
+     "e": 1.5
+    },
+    {
+     "w": "in",
+     "s": 1.5,
+     "e": 1.74
+    },
+    {
+     "w": "public",
+     "s": 1.74,
+     "e": 2.02
+    },
+    {
+     "w": "records.",
+     "s": 2.02,
+     "e": 2.58
+    },
+    {
+     "w": "It",
+     "s": 3.34,
+     "e": 3.4
+    },
+    {
+     "w": "funded",
+     "s": 3.4,
+     "e": 3.76
+    },
+    {
+     "w": "no",
+     "s": 3.76,
+     "e": 4.12
+    },
+    {
+     "w": "single",
+     "s": 4.12,
+     "e": 4.6
+    },
+    {
+     "w": "invention.",
+     "s": 4.6,
+     "e": 5.14
+    },
+    {
+     "w": "It",
+     "s": 6.14,
+     "e": 6.18
+    },
+    {
+     "w": "connected",
+     "s": 6.18,
+     "e": 6.72
+    },
+    {
+     "w": "them.",
+     "s": 6.72,
+     "e": 7.04
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Meridian does not appear in public records.",
+     "start_s": 0.0,
+     "end_s": 2.58
+    },
+    {
+     "text": "It funded no single invention.",
+     "start_s": 3.34,
+     "end_s": 5.14
+    },
+    {
+     "text": "It connected them.",
+     "start_s": 6.14,
+     "end_s": 7.243
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/mrd_vo_intro_02.master.wav",
+   "start_s": 12.923,
+   "duration_s": 10.299,
+   "words": [
+    {
+     "w": "Helix,",
+     "s": 0.0,
+     "e": 0.78
+    },
+    {
+     "w": "Vita,",
+     "s": 1.4,
+     "e": 1.7
+    },
+    {
+     "w": "Novagrid",
+     "s": 2.56,
+     "e": 3.1
+    },
+    {
+     "w": "and",
+     "s": 3.1,
+     "e": 3.4
+    },
+    {
+     "w": "Civitas",
+     "s": 3.4,
+     "e": 3.92
+    },
+    {
+     "w": "all",
+     "s": 3.92,
+     "e": 4.32
+    },
+    {
+     "w": "received",
+     "s": 4.32,
+     "e": 4.8
+    },
+    {
+     "w": "the",
+     "s": 4.8,
+     "e": 5.0
+    },
+    {
+     "w": "same",
+     "s": 5.0,
+     "e": 5.32
+    },
+    {
+     "w": "predictions,",
+     "s": 5.32,
+     "e": 5.98
+    },
+    {
+     "w": "the",
+     "s": 6.56,
+     "e": 6.58
+    },
+    {
+     "w": "same",
+     "s": 6.58,
+     "e": 6.94
+    },
+    {
+     "w": "research",
+     "s": 6.94,
+     "e": 7.38
+    },
+    {
+     "w": "priorities",
+     "s": 7.38,
+     "e": 8.0
+    },
+    {
+     "w": "and",
+     "s": 8.0,
+     "e": 8.76
+    },
+    {
+     "w": "the",
+     "s": 8.76,
+     "e": 8.94
+    },
+    {
+     "w": "same",
+     "s": 8.94,
+     "e": 9.3
+    },
+    {
+     "w": "deadlines.",
+     "s": 9.3,
+     "e": 9.76
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+     "start_s": 0.0,
+     "end_s": 10.119
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/mrd_vo_intro_03.master.wav",
+   "start_s": 25.222,
+   "duration_s": 9.567,
+   "words": [
+    {
+     "w": "The",
+     "s": 0.0,
+     "e": 0.2
+    },
+    {
+     "w": "facility",
+     "s": 0.2,
+     "e": 0.64
+    },
+    {
+     "w": "ahead",
+     "s": 0.64,
+     "e": 1.06
+    },
+    {
+     "w": "is",
+     "s": 1.06,
+     "e": 1.36
+    },
+    {
+     "w": "the",
+     "s": 1.36,
+     "e": 1.54
+    },
+    {
+     "w": "coordination",
+     "s": 1.54,
+     "e": 2.02
+    },
+    {
+     "w": "point.",
+     "s": 2.02,
+     "e": 2.64
+    },
+    {
+     "w": "This",
+     "s": 3.4,
+     "e": 3.6
+    },
+    {
+     "w": "is",
+     "s": 3.6,
+     "e": 3.9
+    },
+    {
+     "w": "the",
+     "s": 3.9,
+     "e": 4.08
+    },
+    {
+     "w": "final",
+     "s": 4.08,
+     "e": 4.4
+    },
+    {
+     "w": "target.",
+     "s": 4.4,
+     "e": 4.96
+    },
+    {
+     "w": "Destroy",
+     "s": 5.68,
+     "e": 6.08
+    },
+    {
+     "w": "the",
+     "s": 6.08,
+     "e": 6.38
+    },
+    {
+     "w": "core",
+     "s": 6.38,
+     "e": 6.66
+    },
+    {
+     "w": "infrastructure.",
+     "s": 6.66,
+     "e": 7.44
+    },
+    {
+     "w": "End",
+     "s": 8.0,
+     "e": 8.28
+    },
+    {
+     "w": "the",
+     "s": 8.28,
+     "e": 8.5
+    },
+    {
+     "w": "convergence.",
+     "s": 8.5,
+     "e": 8.96
+    }
+   ],
+   "sentences": [
+    {
+     "text": "The facility ahead is the coordination point.",
+     "start_s": 0.0,
+     "end_s": 2.64
+    },
+    {
+     "text": "This is the final target.",
+     "start_s": 3.4,
+     "end_s": 4.96
+    },
+    {
+     "text": "Destroy the core infrastructure.",
+     "start_s": 5.68,
+     "end_s": 7.44
+    },
+    {
+     "text": "End the convergence.",
+     "start_s": 8.0,
+     "end_s": 9.387
+    }
+   ]
+  }
+ ]
+}

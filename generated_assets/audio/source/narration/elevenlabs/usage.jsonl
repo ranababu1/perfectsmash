@@ -274,3 +274,6 @@
 {"t": "2026-11-12T01:36:33", "kind": "tts", "cost": 58, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 131, "out": "takes/teaser_2041_04_s3.pcm"}
 {"t": "2026-11-12T01:36:33", "kind": "tts", "cost": 58, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 131, "out": "takes/teaser_2041_04_s4.pcm"}
 {"t": "2026-11-12T01:36:34", "kind": "tts", "cost": 58, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 131, "out": "takes/teaser_2041_04_s5.pcm"}
+{"t": "2026-11-12T02:55:10", "kind": "tts", "cost": 45, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 102, "out": "takes/finale_06_s6.pcm"}
+{"t": "2026-11-12T02:55:13", "kind": "tts", "cost": 45, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 102, "out": "takes/finale_06_s7.pcm"}
+{"t": "2026-11-12T02:55:17", "kind": "tts", "cost": 45, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 102, "out": "takes/finale_06_s8.pcm"}

@@ -999,5 +999,355 @@
   "hypB": "Meridian does not appear in public records. It funded no single invention. It connected them.",
   "errsB": 0,
   "errs_min": 0
+ },
+ "takes/ch05_intro_01_s4.wav": {
+  "hypA": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsA": 0,
+  "hypB": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_01_s5.wav": {
+  "hypA": "Meridian does not appear in public records.  It funded no single invention.  It connected them.",
+  "errsA": 0,
+  "hypB": "Ian does not appear in public records. It funded no single invention. It connected them.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_02_s1.wav": {
+  "hypA": "HELIX, VITA, Novagrid and Civitas all received the same predictions, the same research priorities  and the same deadlines.",
+  "errsA": 0,
+  "hypB": "Helix VITA Nova Grid and Civitas received the same predictions. The same research priorities and the same deadlines.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_02_s2.wav": {
+  "hypA": "Helix, Vita, Novagrid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+  "errsA": 0,
+  "hypB": "Helix. VITA Nova Grid and Civitas all received the same predictions. The same research priorities and the same deadlines.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_02_s3.wav": {
+  "hypA": "Helix, Vita, Novogrid and Civitas,  all received the same predictions, the same research priorities and the same deadlines.",
+  "errsA": 0,
+  "hypB": "Helix VITA Nova Grid and Civitas all received the same predictions. The same research priorities and the same deadlines.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_02_s4.wav": {
+  "hypA": "Helix, Vita, Novagrid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+  "errsA": 0,
+  "hypB": "Helix VITA Nova Grid and Civitas all received the same predictions. The same research priorities and the same deadlines.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_02_s5.wav": {
+  "hypA": "Helix, Vita, Novagrid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+  "errsA": 0,
+  "hypB": "Helix VITA Nova Grid and Civitas all received the same predictions,",
+  "errsB": 8,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_03_s1.wav": {
+  "hypA": "This is the final target, destroy the core infrastructure, end the convergence.",
+  "errsA": 7,
+  "hypB": "The facility ahead is the coordination point.  Destroy the core infrastructure. End the Convergence.",
+  "errsB": 5,
+  "errs_min": 5
+ },
+ "takes/ch05_intro_03_s2.wav": {
+  "hypA": "The facility ahead is the coordinationordination point.  This is the final target.  Destroy the core infrastructure.  End the convergence.",
+  "errsA": 1,
+  "hypB": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_03_s3.wav": {
+  "hypA": "The facility ahead is the coordination point.  This is the final target.  Destroy the core infrastructure.  End the convergence.",
+  "errsA": 0,
+  "hypB": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_03_s4.wav": {
+  "hypA": "The facility ahead is the coordination point.  This is the final target.  Destroy the core infrastructure. End the convergence.",
+  "errsA": 0,
+  "hypB": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_03_s5.wav": {
+  "hypA": "The facility ahead is the coordination point.  This is the final target.  Destroy the core infrastructure.  End the convergence.",
+  "errsA": 0,
+  "hypB": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the Convergence.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_01_s1.wav": {
+  "hypA": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsA": 0,
+  "hypB": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_01_s2.wav": {
+  "hypA": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsA": 0,
+  "hypB": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_01_s3.wav": {
+  "hypA": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsA": 0,
+  "hypB": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_01_s4.wav": {
+  "hypA": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsA": 0,
+  "hypB": "Meridian is silent. The four research paths are broken. The revised timeline lysing.",
+  "errsB": 2,
+  "errs_min": 0
+ },
+ "takes/finale_01_s5.wav": {
+  "hypA": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising.",
+  "errsA": 0,
+  "hypB": "Meridian is silent. The four research paths are broken. The revised timeline is stabilizing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_04_s1.wav": {
+  "hypA": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+  "errsA": 0,
+  "hypB": "You changed the future. You broke every machine they told you to break. And still. The end is coming.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_04_s2.wav": {
+  "hypA": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+  "errsA": 0,
+  "hypB": "You changed the future. You broke every machine they told you to break. And still... The end is coming.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_04_s3.wav": {
+  "hypA": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+  "errsA": 0,
+  "hypB": "You changed the future. You broke every machine they told you to break. And still... The end is coming.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_04_s4.wav": {
+  "hypA": "You changed the future, you broke every machine they told you to break, and still the end is coming.",
+  "errsA": 0,
+  "hypB": "You changed the future. V And still... ...",
+  "errsB": 13,
+  "errs_min": 0
+ },
+ "takes/finale_04_s5.wav": {
+  "hypA": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+  "errsA": 0,
+  "hypB": "You change the future. You broke every machine they told you to break. And still... The end is coming.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/finale_06_s1.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s2.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s3.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s4.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s5.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_01_s1.wav": {
+  "hypA": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsA": 0,
+  "hypB": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_01_s2.wav": {
+  "hypA": "2041, an ordinary morning.  Nobody knows what is about to begin.",
+  "errsA": 0,
+  "hypB": "2041. An Ordinary Morning Nobody knows what is about to begin.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_01_s3.wav": {
+  "hypA": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsA": 0,
+  "hypB": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_01_s4.wav": {
+  "hypA": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsA": 0,
+  "hypB": "2041. An Ordinary Morning. Nobody knows what is about to begin.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_01_s5.wav": {
+  "hypA": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsA": 0,
+  "hypB": "2041. An ordinary morning. Nobody knows what is about to begin.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_02_s1.wav": {
+  "hypA": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsA": 0,
+  "hypB": "In a university laboratory. A small machine is switched on for the first time.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_02_s2.wav": {
+  "hypA": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsA": 0,
+  "hypB": "In a university laboratory. A small machine is switched on for the first time.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_02_s3.wav": {
+  "hypA": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsA": 0,
+  "hypB": "In a university laboratory. A small machine is switched on for the first time.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_02_s4.wav": {
+  "hypA": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsA": 0,
+  "hypB": "In a university laboratory. A small machine is switched on for the first time.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_02_s5.wav": {
+  "hypA": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsA": 0,
+  "hypB": "In a university laboratory, a small machine is switched on for the first time.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_03_s1.wav": {
+  "hypA": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+  "errsA": 0,
+  "hypB": "Temporal Arrival Confirmed. You are earlier than anyone has ever gone.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_03_s2.wav": {
+  "hypA": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+  "errsA": 0,
+  "hypB": "Temporal Arrival Confirmed. You are earlier than anyone has ever gone.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_03_s3.wav": {
+  "hypA": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+  "errsA": 0,
+  "hypB": "Temporal Arrival Confirmed. You are earlier than anyone has ever gone.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_03_s4.wav": {
+  "hypA": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+  "errsA": 0,
+  "hypB": "Temporal Arrival Confirmed. You are earlier than anyone has ever gone.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_03_s5.wav": {
+  "hypA": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+  "errsA": 0,
+  "hypB": "Temporal Arrival Confirmed. You are earlier than anyone has ever gone.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_04_s1.wav": {
+  "hypA": "Every future you saved began here.",
+  "errsA": 5,
+  "hypB": "Every future you saved began here. Season 2 The first mistake.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_04_s2.wav": {
+  "hypA": "Every future you saved began here.  Season 2, The First Mistake.",
+  "errsA": 0,
+  "hypB": "Every future you saved began here. Season 2 The first mistake.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_04_s3.wav": {
+  "hypA": "Every future you saved began here.  Season 2, The First Mistake.",
+  "errsA": 0,
+  "hypB": "Every future you saved. Began here. Season 2. The first mistake.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_04_s4.wav": {
+  "hypA": "Every future you saved began here.  Season 2, The First Mistake",
+  "errsA": 0,
+  "hypB": "Every future you saved began here. Season 2 The first mistake.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/teaser_2041_04_s5.wav": {
+  "hypA": "Every future you saved began here.  Season 2, The First Mistake.",
+  "errsA": 0,
+  "hypB": "Every future you saved began here. Season 2 The first mistake.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s6.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made. Long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s7.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made. Long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/finale_06_s8.wav": {
+  "hypA": "The first mistake was made long before the world knew it was making one.",
+  "errsA": 0,
+  "hypB": "The first mistake was made. Long before the world knew it was making one.",
+  "errsB": 0,
+  "errs_min": 0
  }
 }

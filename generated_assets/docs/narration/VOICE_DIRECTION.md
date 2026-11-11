@@ -63,3 +63,15 @@ The existing story has exactly **two voices**: `narrator` (27 slides) and `contr
 - Control keeps a light processing chain (band-limit, presence lift, faint 17/29 ms comb) so it reads as a system voice without sounding robotic.
 
 Details are in [ELEVENLABS_APPROVAL_SAMPLE.md](ELEVENLABS_APPROVAL_SAMPLE.md).
+
+## 6. Full package realisation (2026-11-12)
+
+Every slide of all 12 cinematics is now voiced with the same voices, model and settings as the approval sample (section 5). The tagged input for every line is in `audio/source/narration/elevenlabs/direction.json`; the spoken words are verbatim. The beats were directed as follows:
+
+- **Opening.** As the approval sample: reflective, then regret, then dread, then resolve, then Control's clinical brief and countdown.
+- **Chapter intros.** Control (Helix, Nova Grid, Meridian) or the narrator (VITA, Civitas) arriving in a new year: calm, precise, a hint of warning as the mandate expands.
+- **Chapter outros.** Relief that the intervention worked, then unease as the evidence points elsewhere, then Control's clinical handoff to the next coordinates. The music turns from the relative major to the minor drone on the unease line, and the timeline-shift hit lands on Control's new coordinates.
+- **Finale.** Exhausted relief, Control's satisfaction, then Control shaken ("Wait…", "That is not possible.", "We were sent to the wrong point in history"), the narrator's heavy "And still, the end is coming.", and the resolve to go further back.
+- **Teaser 2041.** Quiet ordinary morning, the first machine switching on, Control's arrival ("You are earlier than anyone has ever gone"), and a cinematic close: "Season two: The First Mistake."
+
+Selection, measurements, rights and engine notes: [ELEVENLABS_APPROVAL_SAMPLE.md](ELEVENLABS_APPROVAL_SAMPLE.md), [LICENSING_PROVENANCE.md](LICENSING_PROVENANCE.md), [CODING_AGENT_NARRATION_GUIDE.md](CODING_AGENT_NARRATION_GUIDE.md), [NARRATION_MANIFEST.json](NARRATION_MANIFEST.json), [FINAL_SCRIPT.md](FINAL_SCRIPT.md).

@@ -1,0 +1,20 @@
+{
+ "cvt_vo_outro_01": {
+  "errs_word_timing_decode": 1,
+  "hyp": "Civitus is offline. The city is uncertain again. That should be a good thing.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "Civitas is offline, the city is uncertain again.  That should be a good thing."
+ },
+ "cvt_vo_outro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events."
+ },
+ "cvt_vo_outro_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "The forecast was written before the event happened. It was not predicting the future. It was preparing it."
+ },
+ "cvt_vo_outro_04": {
+  "errs_word_timing_decode": 0,
+  "hyp": "All four programs point to one location, Meridian 2104. This is the final intervention."
+ }
+}
