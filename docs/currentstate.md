@@ -1,12 +1,12 @@
 # Current State
 
-_Last updated: 2026-11-11 · Version 0.1.0 (unreleased) · Branch `main` · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
+_Last updated: 2026-11-11 · Version 0.1.0 (unreleased) · Branch `campaign/foundation` (PRs #7 and #8 merged into `main`) · Remote `origin` (github.com/ranababu1/temporal-chapter1)_
 
 This file was rewritten on 2026-11-11 as a concise handoff after a Stage 0 verification of the live repository. The previous, batch-by-batch version (Batches 1-5, slices A-G, renderer evaluation tables) is preserved in Git at `99f5ee3:docs/currentstate.md`; its measurements remain valid for the commits they name. Ownership and frozen contracts: `docs/interfaces.md`.
 
 ## Purpose and phase
 
-Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2, 3D presentation over 2D physics, Android + iOS). **Phase:** campaign production, worked directly by one session (the multi-agent/worktree setup is paused, see Known issues). **Current milestone:** Helix missions 01-05 playable from the main menu.
+Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2, 3D presentation over 2D physics, Android + iOS). **Phase:** full-game production under plan revision 7 (owner, 2026-11-11): all 100 missions, four chapter weapons, cinematics, upgrades, release builds; orchestrator plus ad-hoc subagents in the shared checkout. **Current milestone:** foundation (weapons, story, upgrades, tooling) and parallel authoring of all five chapters.
 
 ## Feature status (verified 2026-11-11)
 
@@ -18,12 +18,12 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 | Main menu / chapter select / mission select | Implemented; **the app boots into the main menu** | Continue, Campaign, Settings; results → Next mission / Missions; screenshots `docs/images/helix_01_05/0*.webp` |
 | HUD, pause, results | Implemented | results panel: Next mission, Run it again, Missions |
 | Optional-objective decision | Implemented | Primary done + optional goals pending: "Primary objective complete / Optional objectives remain. What next?" Continue (keeps playing; persistent Finish button) or Finish (results; unfinished optional goals fail). Engine rule in `MissionEngine`; screenshots `docs/images/helix_01_05/04-06_*.webp` |
-| Operative + Kinetic Accelerator + Breach Charge | Implemented | 2 weapons; reload-ready event and sound (PR #4) |
-| Later chapter weapons | Planned, deferred | plan revision 6 |
-| Upgrades | Rules only | `upgrade_rules.gd`; no UI |
+| Operative + Kinetic Accelerator + Breach Charge | Implemented | reload-ready event and sound (PR #4) |
+| Chapter weapons: Penetrator, Pulse Cannon, Disruptor, Temporal Lance | Rules and physics implemented and tested; presentation in progress | piercing, material bonus, cover-ignoring EMP, shield emitters, temporal crystal; `tests/weapons/test_chapter_weapons.gd` |
+| Upgrades | Implemented (screen + rules) | Main menu → Upgrades; base + 3 levels per attribute, chapter-scaled costs |
 | Save schema v4 | Implemented | migrates v1-v3 |
-| Audio | Implemented for all five chapters | chapter plans resolve per mission chapter (PR #6); no human listening review |
-| Cinematic player / Story Archive | Not started (deferred) | `data/cinematics.json` has 12 sequences |
+| Audio | Implemented for all five chapters | chapter plans resolve per mission chapter (PR #6); menu cue on menu screens; `gameplay_bed.ogg` no longer used (licence unverified); no human listening review |
+| Cinematic player / Story Archive | Implemented | stills with pan/zoom, subtitles, music, skip, no voice; opening on first launch, chapter intros/outros, finale; Main menu → Story Archive |
 | Settings screen | Implemented | sound, music, vibration (`scripts/ui/settings/`); voice not exposed |
 | Legacy 20 levels | Retired, frozen | still in the build for regression |
 
@@ -63,7 +63,9 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 | Workstream | Branch | Status |
 |---|---|---|
 | Orchestrator M0 (catalog, runner discovery, contracts, asset baseline) | `main` | Complete |
-| Helix 01-05 + decision flow | `milestone/helix-01-05` | PR #8, ready for review; stacked on PR #7 |
+| Helix 01-05 + decision flow | `milestone/helix-01-05` | Merged (#8, after #7) |
+| Foundation: chapter weapons, upgrades, cinematics, tooling | `campaign/foundation` | In progress |
+| Chapters I-V authoring (Helix 06-20, VITA, Nova Grid, Civitas, Meridian) | `campaign/foundation` (per-chapter files) | In progress (subagents, per-chapter file ownership) |
 | operative-weapons | `agent/operative-weapons` | Merged (#4) |
 | ui-ux: campaign navigation, results next-mission, settings | `agent/ui-ux` | Merged (#5) |
 | audio-atmosphere: chapter plans and ambience | `agent/audio-atmosphere` | Merged (#6) |
@@ -84,11 +86,11 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 
 ## Decisions in force (owner defaults, 2026-11-11)
 
-Owner merges PRs; Kinetic + Breach only for all 100 missions; cinematic player deferred; legacy levels kept frozen; plan revision 6 appended. Earlier owner decisions (platforms, renderer = GL Compatibility, landscape, app id `dev.imrn.temporal1`, Batch 5 rules, full asset integration approval) are unchanged; see `docs/plan.md` and `99f5ee3:docs/currentstate.md`.
+Plan revision 7 (2026-11-11) supersedes the revision 6 defaults: the orchestrator merges its own chapter PRs after the gates; four chapter weapons; cinematics from stills without voice; offline single-player; retired levels leave the shipped game once covered; original helix_01 moves to ~level 8; `gameplay_bed.ogg` retired; APK + unsigned AAB + `1.0.0-rc1`; store materials; distinct chapter worlds. Earlier owner decisions (platforms, renderer = GL Compatibility, landscape, app id `dev.imrn.temporal1`, Batch 5 rules, full asset integration approval) are unchanged; see `docs/plan.md` and `99f5ee3:docs/currentstate.md`.
 
 ## Next actions
 
-1. Owner: merge PR #7 (campaign routing), then the Helix 01-05 PR.
-2. Human play-test of Helix 01-05 on desktop and a phone (aiming feel, readability, target times).
-3. Author Helix 06-10 with the same probe loop.
-4. Physical Android device run of `tools/renderer_eval/mission_benchmark.tscn` (human task).
+1. Finish the foundation: weapon presentation, per-chapter atmospheres, temporal-crystal and shield visuals, move the original helix_01 to slot 08 and author a gentle helix_01.
+2. Integrate and review the five chapters as they land; chapter PRs merged after the gates.
+3. Release milestone: retire legacy content from the shipped game, export filters, APK/AAB, rights audit, privacy audit, store materials, `1.0.0-rc1`.
+4. Human tasks: play-testing, physical Android device runs, signing, rights approval.
