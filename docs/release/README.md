@@ -1,5 +1,14 @@
 # Release 1.0.0-rc1 — build, verification and owner hand-off
 
+> **1.0.0-rc2 (candidate, not tagged).** Fixes the three owner-reported issues (weapon fallback,
+> Main Menu from pause with Android back, cinematic narration playback) — see `docs/changelog.md`.
+> Debug APK: `build/temporal1-1.0.0-rc2-debug.apk` (~198 MB, version name 1.0.0-rc2, code 3), built with
+> `python tools/release/make_export_presets.py --version-name 1.0.0-rc2 --version-code 3` then
+> `godot_console --headless --export-debug "Android Debug" build/temporal1-1.0.0-rc2-debug.apk`.
+> The release AAB was not rebuilt. Narration clips are **pending** (none delivered), so rc2 is not
+> ready to tag: the `v1.0.0-rc2` tag waits for the integrated narration and the owner's approval.
+> The rc1 record below is unchanged.
+
 Release candidate of the complete game: 100 missions in five chapters, six weapons, story
 cinematics with a Story Archive, weapon upgrades, offline single player. Tag `v1.0.0-rc1`.
 
