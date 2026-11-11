@@ -63,7 +63,7 @@ func _run() -> void:
 	main._show_mission("helix_02")
 	await _frames(45)
 	var decision_screen: MissionScreen = main._mission
-	await Solver.play(self, decision_screen.world, solutions.helix_02[1].steps, false, "leave")
+	await Solver.play(self, decision_screen.world, solutions.helix_02[0].steps, false, "leave")
 	for i in 600:
 		if decision_screen.engine.awaiting_decision:
 			break
