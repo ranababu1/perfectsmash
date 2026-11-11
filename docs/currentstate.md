@@ -6,17 +6,17 @@ This file was rewritten on 2026-11-11 as a concise handoff after a Stage 0 verif
 
 ## Purpose and phase
 
-Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2, 3D presentation over 2D physics, Android + iOS). **Phase:** multi-agent campaign production (plan revision 6): grow one playable Helix mission into a 100-mission, five-chapter campaign.
+Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2, 3D presentation over 2D physics, Android + iOS). **Phase:** campaign production, worked directly by one session (the multi-agent/worktree setup is paused, see Known issues). **Current milestone:** Helix missions 01-05 playable from the main menu.
 
 ## Feature status (verified 2026-11-11)
 
 | Feature | Status | Evidence / notes |
 |---|---|---|
 | Mission rules, damage, structure, objectives, scoring, Research Data | Implemented | `scripts/core/`; suite below |
-| Playable missions | **1 of 100** | `data/missions/helix_01.json` only |
-| Mission catalog (100 slots, linear unlocks) | Implemented (M0) | `scripts/core/mission_catalog.gd`; app boots the first authored mission; `tests/campaign/` |
-| Chapter select / mission select / campaign menu | Implemented, reachable via results → Missions | `scripts/ui/campaign/` (PR #5), routed in `main.gd`; app still boots into the mission; no screenshots yet |
-| HUD, pause, results | Implemented | `scripts/mission/mission_hud.gd`; optional `next_pressed` hook not yet in the HUD |
+| Playable missions | **5 of 100** (Helix 01-05) | Each probe-verified: stands untouched, recorded solutions win 3/3 within the recommended shots (`tools/levels/`); played through the app in a window with screenshots (`docs/images/helix_01_05/`). No human play-test yet |
+| Mission catalog (100 slots, linear unlocks) | Implemented | `scripts/core/mission_catalog.gd`; `tests/campaign/` |
+| Main menu / chapter select / mission select | Implemented; **the app boots into the main menu** | Continue, Campaign, Settings; results → Next mission / Missions; screenshots `docs/images/helix_01_05/0*.webp` |
+| HUD, pause, results | Implemented | results panel: Next mission, Run it again, Missions |
 | Operative + Kinetic Accelerator + Breach Charge | Implemented | 2 weapons; reload-ready event and sound (PR #4) |
 | Later chapter weapons | Planned, deferred | plan revision 6 |
 | Upgrades | Rules only | `upgrade_rules.gd`; no UI |
@@ -35,9 +35,10 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 
 ## Build / test status (2026-11-11)
 
-- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **243 passed, 0 failed, 1 skipped** after the M1 merges and campaign routing (217/0/1 at M0, 213/0/1 before).
-- `... -- --unit` → 173 passed, 0 failed, 0 skipped.
-- Windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` on the Windows desktop (before M0) → 214 passed, 0 failed, 0 skipped (253.5 s; the legacy replay test dominates).
+- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **249 passed, 0 failed, 1 skipped** on `milestone/helix-01-05` (243/0/1 after campaign routing, 217/0/1 at M0).
+- `godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve all 3` → exit 0: every stand check OK, every recorded solution wins 3/3 (details in the changelog).
+- `godot_console --resolution 1280x720 -s tools/levels/capture_helix_01_05.gd` (Windows desktop, GL Compatibility, RTX 5060 Ti) → helix_01-05 all WIN through the app, completions saved, Research Data balance 197; 19 screenshots.
+- Windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` on the Windows desktop, `milestone/helix-01-05` → **250 passed, 0 failed, 0 skipped** (285.4 s; the legacy replay test dominates).
 - Boot smoke `godot_console --headless --quit-after 180` → exit 0, no errors before exit.
 - Exit-time leaks (harmless, test teardown): headless 32 ObjectDB instances / 14 resources; windowed also two GL textures (~341 KB each). Owner: performance-qa.
 - Android export: last built from `4e2798a` (slice A era); not rebuilt in this session.
@@ -60,20 +61,23 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 
 | Workstream | Branch | Status |
 |---|---|---|
-| Orchestrator M0 (catalog, runner discovery, contracts, asset baseline) | `main` | Complete (this commit) |
-| levels: Helix 02-20 | `agent/levels-100` | Blocked (subagents get no shell tool) |
+| Orchestrator M0 (catalog, runner discovery, contracts, asset baseline) | `main` | Complete |
+| Helix 01-05 milestone (direct, no subagents) | `milestone/helix-01-05` | Complete, PR pending; stacked on PR #7 |
 | operative-weapons | `agent/operative-weapons` | Merged (#4) |
 | ui-ux: campaign navigation, results next-mission, settings | `agent/ui-ux` | Merged (#5) |
 | audio-atmosphere: chapter plans and ambience | `agent/audio-atmosphere` | Merged (#6) |
-| performance-qa: validators, benchmark, leak triage | `agent/performance-qa` | Blocked (subagents get no shell tool) |
+| performance-qa: validators, benchmark, leak triage | — | Paused with the multi-agent setup |
 
 ## Known issues and risks
 
-- 99 missions to author; each must be physics-validated, not just schema-valid.
+- 95 missions to author; each must be physics-validated (`tools/levels/probe_missions.gd`), not just schema-valid.
+- Difficulty order: `helix_01` (the original prototype, 13 components, recommended 4) is more complex than 02-05; consider moving it later in Chapter I once 06-20 exist.
+- Target times are human estimates; the probe's solution times (3-7 s) exclude aiming time and are no basis for them. Needs human play-testing.
+- In the capture tool the bottom hint can show the previous weapon's text, because the tool switches weapons through the engine instead of the HUD button. The player input path is unaffected.
 - `level-design-spec.md` §1-5 describe the retired game; its 2026-11-09 revision section governs.
 - Physics is repeatable on one platform, not bit-identical across platforms (tolerances: `instructions.md` §11).
 - Worktrees: each needs ~411 MB of assets plus a cold Godot import (~0.7 GB `.godot`).
-- Specialist subagents receive no shell tool (Read/Edit/Write/Glob/Grep only), even after `disallowedTools` was removed; cause unconfirmed (definitions may only load at session start). `.claude/settings.json` allows `Bash(godot:*)`, not `godot_console`.
+- Multi-agent setup paused (owner, 2026-11-11). Established: all seven specialist runs received `Read, Edit, Write, Glob, Grep` without Bash (cause not established); after the VS Code restart, worktree creation is refused because the session's working directory is recorded as lowercase `c:\` while git reports `C:/`. Seven agent worktrees are kept under `.claude/worktrees/` (none holds unmerged work).
 - Rights: AI-assisted assets not commercially cleared; `gameplay_bed.ogg` licence unverified (release blocker).
 - Physical-device validation: not done (human task).
 
@@ -83,6 +87,7 @@ Owner merges PRs; Kinetic + Breach only for all 100 missions; cinematic player d
 
 ## Next actions
 
-1. Launch the five workstreams (M1).
-2. Owner: move `.claude/agents/settings.json` to `.claude/settings.json` (and use `godot_console`).
-3. Physical Android device run of `tools/renderer_eval/mission_benchmark.tscn` (human task).
+1. Owner: merge PR #7 (campaign routing), then the Helix 01-05 PR.
+2. Human play-test of Helix 01-05 on desktop and a phone (aiming feel, readability, target times).
+3. Author Helix 06-10 with the same probe loop.
+4. Physical Android device run of `tools/renderer_eval/mission_benchmark.tscn` (human task).
