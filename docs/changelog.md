@@ -2,6 +2,36 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — Optional-objective decision prompt
+
+- When the primary objective is complete, the scene has settled and optional goals are still pending, the mission no longer ends on its own. A prompt asks: "Primary objective complete" / "Optional objectives remain. What next?" with Continue and Finish.
+  - **Continue** closes the prompt (offered once per attempt), keeps the mission active and shows a persistent Finish button beside Restart and Pause. The mission then ends when all optional goals are done, the ammunition runs out (a success, since the primary is done), or the player presses Finish.
+  - **Finish** ends the mission successfully with the score so far; unfinished optional goals fail, intact optional constraints complete (existing `finalize`).
+  - While the prompt is open the clock is held and firing is blocked; pause leaves the prompt in place; Android back means Continue.
+  - No prompt when there are no optional goals or all are done; constraints (shot/time limits, protect) never count as pending; mandatory failures behave as before.
+- The rule lives in `MissionEngine` (`decision_requested`, `awaiting_decision`, `continue_mission()`, `finish_mission()`, `can_finish_early()`) and `MissionObjectives.pending_optional_goals()`; `MissionHud.show_decision()` / `set_finish_available()`; `MissionScreen` wires them.
+- Tests: `tests/objectives/test_mission_decision.gd` (18 engine cases), `tests/ui/test_hud_decision.gd` (4), `tests/campaign/test_decision_flow_app.gd` (4 through the app, including the save file). Existing tests whose missions end with optional goals open now answer the prompt with Finish (no assertion removed or loosened); the solver and score replay do the same. The solver waits one physics frame before aiming.
+- Delegation: two general-purpose Sonnet subagents in the shared checkout with disjoint files (HUD + its test; engine tests); the orchestrator wrote the engine interface first and reviewed and ran their work. No conflicts.
+- `.claude/` agent definitions and settings removed from the repository (owner removed them).
+- Results: headless `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 275 passed, 0 failed, 1 skipped; windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 276 passed, 0 failed, 0 skipped (one earlier windowed attempt stopped mid-run with no summary when the window closed; rerun complete); `probe_missions.gd -- solve all 3` → exit 0, all 3/3; windowed capture with `--fixed-fps 60` → all five missions won and saved, decision flow prompt → Continue → Finish → SUCCEEDED, 22 frames.
+
+## 2026-11-11 — Helix missions 01-05 playable from the main menu
+
+- The app boots into the campaign menu (Continue / Campaign / Settings). `main.gd` gains `boot_mission` so tests and capture tools can start inside a mission.
+- New missions with set dressing (`data/missions/`, `data/environments/`), all Kinetic + Breach:
+  - `helix_02` The Welcome System: controller high on a gate frame; aim high (3 shots) or drop the frame column (2 shots). Recommended 2.
+  - `helix_03` Traffic of One: steel shield and deck block the controller; the left column is the weak point (3 shots). Recommended 3.
+  - `helix_04` Supply Chain: a blast wall blocks every Kinetic line; Breach lobs onto the crate stack and the power cell (3 shots, 4 charges). Recommended 3.
+  - `helix_05` The Safety Layer: glass pods close the lane; break them and shoot the controller (5 shots), or lob a Breach onto the power cell and finish (3 shots). Recommended 4.
+- `tools/levels/`: `mission_solver.gd` plays a mission like a player through `MissionWorld.fire` (real muzzle, ammunition, cooldowns, settle); `probe_missions.gd` (`scout` / `solve`); `solutions.json`; `capture_helix_01_05.gd` (windowed evidence).
+- `tests/levels/test_helix_missions.gd`: stand checks, every recorded solution wins within budget, both weapons used, and the five missions played back to back through Main (scoring, save file reloaded from disk, linear unlocks, Next mission, restart).
+- Results:
+  - `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` -> 249 passed, 0 failed, 1 skipped.
+  - `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` (windowed, Windows desktop) -> 250 passed, 0 failed, 0 skipped (285.4 s).
+  - `godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve all 3` -> exit 0. Stand checks OK for 01-05. Wins 3/3: 01 column breach + kinetic 2 shots (rec. 4); 02 aim high 3 / aim low 2 (rec. 2); 03 3 (rec. 3); 04 3 (rec. 3); 05 lane 5 / power cell 3 (rec. 4).
+  - `godot_console --resolution 1280x720 -s tools/levels/capture_helix_01_05.gd` (Windows desktop, GL Compatibility, RTX 5060 Ti) -> all five WIN through the app and saved as completed; Research Data balance 197; 19 screenshots in `docs/images/helix_01_05/`.
+- Not done: human play-testing, device testing, Android export of this build.
+
 ## 2026-11-11 — Campaign routing: menus, settings, Missions/Next, reload-ready sound
 
 - `main.gd` shows `CampaignScreen` (menu, chapter select, mission select) and `SettingsScreen`; the result panel's Missions action (`MissionScreen.exit_requested`) opens the mission's chapter list; Next with no further unlocked mission returns there too; settings toggles update `ProgressData`, the audio service and the music director and are saved; Android back walks settings → campaign → menu → quit.

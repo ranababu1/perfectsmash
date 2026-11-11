@@ -11,6 +11,7 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
 	main.save = SaveService.new(TEST_SAVE)
+	main.boot_mission = "helix_01"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -38,10 +39,24 @@ func _motion(at: Vector2) -> void:
 	tree.root.push_input(event, true)
 
 
-func test_app_boots_into_helix_mission() -> void:
+func test_app_boots_into_the_campaign_menu() -> void:
+	if FileAccess.file_exists(TEST_SAVE):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+	var main: Node = MainScript.new()
+	main.save = SaveService.new(TEST_SAVE)
+	tree.root.add_child(main)
+	await tree.process_frame
+	assert_true(main._campaign != null and main._mission == null, "the campaign menu is the first screen")
+	assert_eq(main._campaign.view, CampaignScreen.View.MENU)
+	assert_eq(main._campaign.continue_target(), "helix_01", "Continue starts the first mission on a fresh save")
+	assert_true(main._menu == null, "legacy menu is not shown")
+	await _free(main)
+
+
+func test_boot_mission_starts_helix_01() -> void:
 	var main: Node = await _make_main()
 	var screen: MissionScreen = main._mission
-	assert_true(screen != null, "mission is the first screen")
+	assert_true(screen != null, "boot_mission starts the mission directly")
 	assert_true(main._menu == null, "legacy menu is not shown")
 	assert_eq(screen.engine.definition.id, "helix_01")
 	assert_true(screen.view.operative != null, "operative is in the scene")
@@ -133,9 +148,11 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	var screen: MissionScreen = main._mission
 	screen.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	for i in 600:
-		if not screen.engine.is_active():
+		if not screen.engine.is_active() or screen.engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	assert_true(screen.engine.awaiting_decision, "optional goals pending: the decision prompt is shown")
+	screen.finish_mission()
 	assert_eq(screen.engine.phase, MissionEngine.Phase.SUCCEEDED)
 	assert_true(screen.last_score.mission_points > 1000)
 	assert_true(screen.last_research_granted >= 20, "completion Research Data granted")
@@ -150,9 +167,11 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	var again: MissionScreen = main._mission
 	again.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	for i in 600:
-		if not again.engine.is_active():
+		if not again.engine.is_active() or again.engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	assert_true(again.engine.awaiting_decision, "the prompt is offered again on a fresh attempt")
+	again.finish_mission()
 	assert_eq(int(again.last_score.research_data), int(first_score.research_data), "identical run, identical score")
 	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
 	var reloaded := SaveService.new(TEST_SAVE).load_progress()

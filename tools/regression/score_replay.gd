@@ -82,9 +82,12 @@ static func play(parent: Node, sequence_name: String) -> Dictionary:
 			for i in int(step[2]):
 				await tree.physics_frame
 	for i in MAX_FRAMES:
-		if not engine.is_active():
+		if not engine.is_active() or engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	# Optional goals still open: the scripted player chooses Finish at the decision prompt.
+	if engine.awaiting_decision:
+		engine.finish_mission()
 	return {"engine": engine, "world": world, "viewport": viewport}
 
 

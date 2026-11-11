@@ -24,6 +24,9 @@ signal secondary_blast_requested(component_id: String, blast: Dictionary)
 signal critical_asset_changed(component_id: String, state: int)
 signal objective_changed(objective_id: String, status: int)
 signal mission_finished(success: bool)
+## Mandatory goals are complete and the scene has settled, but optional goals remain. Emitted at
+## most once per mission; the mission stays active until continue_mission() or finish_mission().
+signal decision_requested
 
 enum Phase { ACTIVE, SUCCEEDED, FAILED }
 
@@ -39,6 +42,11 @@ var components := {}
 var structure: StructuralDependencySystem
 var objectives: MissionObjectives
 var _total_health := 0.0
+## True while the decision prompt is open (the clock is held and the mission cannot finish on
+## its own). The prompt is offered once; after Continue, a later finish needs finish_mission(),
+## all optional goals complete, or the ammunition running out.
+var awaiting_decision := false
+var _decision_offered := false
 
 
 ## `upgrade_levels`: weapon id -> {attribute: level}. Callers must pass a valid definition.
@@ -84,7 +92,7 @@ func select_weapon(weapon_id: String) -> bool:
 
 
 func can_fire() -> bool:
-	return is_active() and selected_weapon() != null and selected_weapon().can_fire()
+	return is_active() and not awaiting_decision and selected_weapon() != null and selected_weapon().can_fire()
 
 
 ## Fires the selected weapon. Returns the launch velocity, or Vector2.ZERO when the shot is
@@ -123,7 +131,8 @@ func has_ammo_left() -> bool:
 func tick(delta: float, scene_settled: bool) -> void:
 	if not is_active():
 		return
-	elapsed += maxf(delta, 0.0)
+	if not awaiting_decision:
+		elapsed += maxf(delta, 0.0)
 	for weapon: WeaponState in weapons.values():
 		weapon.tick(delta)
 	_evaluate(scene_settled)
@@ -191,10 +200,36 @@ func _evaluate(scene_settled: bool) -> void:
 	if objectives.mandatory_failed():
 		_finish(false)
 	elif objectives.mandatory_goals_complete():
-		if scene_settled:
+		if not scene_settled or awaiting_decision:
+			return
+		if objectives.pending_optional_goals().is_empty() or (_decision_offered and not has_ammo_left()):
 			_finish(true)
+		elif not _decision_offered:
+			_decision_offered = true
+			awaiting_decision = true
+			decision_requested.emit()
 	elif scene_settled and not has_ammo_left():
 		_finish(false)
+
+
+## True once the primary objective is done, so the player may end the mission early.
+func can_finish_early() -> bool:
+	return is_active() and objectives.mandatory_goals_complete()
+
+
+## Decision prompt: Continue. Keeps the mission active; the prompt is not offered again.
+func continue_mission() -> void:
+	awaiting_decision = false
+
+
+## Decision prompt (or a later Finish action): ends the mission successfully. Unfinished optional
+## goals fail (finalize). Returns false when the primary objective is not complete.
+func finish_mission() -> bool:
+	if not can_finish_early():
+		return false
+	awaiting_decision = false
+	_finish(true)
+	return true
 
 
 func _finish(success: bool) -> void:

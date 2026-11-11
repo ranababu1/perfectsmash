@@ -1,5 +1,9 @@
 # Frozen interfaces and ownership (multi-agent run, 2026-11-11)
 
+> **Status (2026-11-11, later):** the `.claude/` agent definitions were removed by the owner and the
+> fixed five-workstream setup is paused. The contracts below still hold. The ownership map in §10
+> applies whenever work is split across agents; the orchestrator assigns it per task.
+
 Owner: Master Orchestrator. Frozen at baseline commit recorded in `docs/currentstate.md`.
 Any change to a contract below is a **shared-interface proposal** (Problem · Current implementation ·
 Proposed change · Affected workstreams · Backward compatibility · Tests required). Additive changes
@@ -42,7 +46,12 @@ needs a `destroy_critical` objective. Weapons available in the campaign: `kineti
 
 - `MissionEngine`: `weapon_selected, weapon_fired, ammo_changed, component_state_changed,
   component_destroyed, components_released, secondary_blast_requested, critical_asset_changed,
-  objective_changed, mission_finished`; `apply_damage(id, raw, damage_type, penetration)`.
+  objective_changed, mission_finished, decision_requested`; `apply_damage(id, raw, damage_type, penetration)`.
+- Optional-objective decision (engine-owned rule): mandatory goals complete + scene settled + optional
+  goals pending → `decision_requested` once; `awaiting_decision` holds the clock and blocks firing.
+  `continue_mission()`; `finish_mission()` (allowed when `can_finish_early()`). After Continue the
+  mission ends when all optional goals are done, the ammunition runs out, or `finish_mission()`.
+  Constraints never count as pending; mandatory failures win as before.
 - `MissionWorld`: `projectile_spawned, projectile_removed, component_removed, blast_happened,
   impact_happened`; `blast(...)`, `fire(direction, power)`.
 - Component states: `DamageableComponent.State` INTACT → DAMAGED → CRITICAL → DESTROYED.
@@ -56,7 +65,11 @@ needs a `destroy_critical` objective. Weapons available in the campaign: `kineti
 `show_result(success, engine, score, granted, balance)`, `hide_overlay()`, property `library`.
 Signals: `weapon_pressed(id)`, `pause_pressed`, `resume_pressed`, `restart_pressed`, and the optional
 `next_pressed` (connected only if the HUD declares it; `MissionScreen.next_requested` → main.gd → next
-unlocked authored mission). Additions to the HUD are free; removals or signature changes are proposals.
+unlocked authored mission), `exit_pressed` (results → Missions).
+Decision flow (2026-11-11): `show_decision()` (title "Primary objective complete", subtitle "Optional
+objectives remain. What next?", buttons Continue / Finish; the HUD closes the panel itself),
+`set_finish_available(bool)` (persistent Finish button in the top-right row), signals `continue_pressed`,
+`finish_pressed`. Additions to the HUD are free; removals or signature changes are proposals.
 
 ## 5. Weapons — `data/weapons.json`, `WeaponCatalog`, `WeaponState` (owned by operative-weapons)
 
@@ -101,7 +114,7 @@ A suite that needs physics frames declares `const PHYSICS_SUITE := true`.
 | `scripts/mission/{mission_screen,mission_world,component_body}.gd`, `scripts/mission/view/{mission_view,asset_library,component_visual,debris_set,mission_vfx,view_mapping}.gd` | orchestrator |
 | `data/missions/helix_01.json`, `data/environments/helix_01.json` | orchestrator (frozen) |
 | Legacy: `scripts/game/**`, `scripts/ui/{game_screen,hud,menu_screen,star_row}.gd`, `data/levels.json`, `tools/solve_levels.gd`, legacy suites | orchestrator (frozen) |
-| `docs/*.md` at top level, `.claude/**`, `tests/campaign/**` | orchestrator |
+| `docs/*.md` at top level, `tests/campaign/**`, `tests/objectives/**` | orchestrator |
 | `data/missions/*.json` (others), `data/environments/*.json` (others), `data/chapters.json`, `tools/levels/**`, `tests/levels/**`, `docs/levels/**` | levels |
 | `scripts/mission/view/{operative_rig,projectile_visual}.gd`, `scripts/mission/weapon_projectile.gd`, `scripts/core/{weapon_catalog,weapon_state}.gd`, `data/weapons.json`, `tests/{test_weapons,test_weapon_state}.gd`, `tests/weapons/**`, `docs/operative/**` | operative-weapons |
 | `scripts/mission/mission_hud.gd`, `scripts/ui/{ui_kit,icon}.gd`, new `scripts/ui/{campaign,settings,upgrades,common}/**`, `scenes/ui/**`, `tests/ui/**`, `docs/ui/**` | ui-ux |

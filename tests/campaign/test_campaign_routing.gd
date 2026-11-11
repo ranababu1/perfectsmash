@@ -12,6 +12,7 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
 	main.save = SaveService.new(TEST_SAVE)
+	main.boot_mission = "helix_01"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -26,7 +27,7 @@ func _free(main: Node) -> void:
 
 func test_missions_action_opens_the_chapter_list_and_selection_starts_a_mission() -> void:
 	var main: Node = await _make_main()
-	assert_true(main._mission != null, "boots into the first authored mission")
+	assert_true(main._mission != null, "boot_mission starts helix_01")
 	main._mission.exit_requested.emit()
 	await tree.process_frame
 	assert_true(main._mission == null and main._campaign != null, "Missions opens the campaign")

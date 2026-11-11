@@ -52,7 +52,10 @@ func _finish_core_with_kinetic(world: MissionWorld) -> void:
 	var plan: Dictionary = ProbeAim.aim(world, world.body_for("aura_core"))
 	assert_true(plan.direction != Vector2.ZERO, "a clear kinetic line to the exposed core (blocked by %s)" % plan.blocker)
 	world.fire(plan.direction)
-	await _until(func() -> bool: return not world.engine.is_active(), 10.0)
+	await _until(func() -> bool: return not world.engine.is_active() or world.engine.awaiting_decision, 10.0)
+	# Optional goals (racks, relay) are still open: answer the decision prompt with Finish.
+	if world.engine.awaiting_decision:
+		world.engine.finish_mission()
 
 
 ## Waits until `condition` holds or `seconds` of physics time pass.
