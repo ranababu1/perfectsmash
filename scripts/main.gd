@@ -21,6 +21,8 @@ var ambience: MusicDirector
 var _menu: MenuScreen
 var _game: GameScreen
 var _mission: MissionScreen
+var _campaign: CampaignScreen
+var _settings: SettingsScreen
 var _level_index := -1
 var _fade: ColorRect
 
@@ -104,7 +106,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _handle_back() -> void:
-	if _mission != null:
+	if _settings != null:
+		_show_campaign()
+	elif _campaign != null:
+		if not _campaign.go_back() and OS.get_name() == "Android":
+			get_tree().quit()
+	elif _mission != null:
 		_mission.handle_back()
 	elif _game != null:
 		_game.handle_back()
@@ -123,6 +130,7 @@ func _show_mission(mission_id: String = "") -> void:
 	_mission.ambience = ambience
 	_mission.restart_requested.connect(_show_mission.bind(mission_id))
 	_mission.next_requested.connect(_show_next_mission.bind(mission_id))
+	_mission.exit_requested.connect(_show_campaign.bind(_chapter_of(mission_id)))
 	add_child(_mission)
 	_reveal()
 
@@ -130,9 +138,41 @@ func _show_mission(mission_id: String = "") -> void:
 func _show_next_mission(after_id: String) -> void:
 	var next := missions.next_authored_id(after_id) if missions != null else ""
 	if next.is_empty() or not missions.is_unlocked(next, progress):
-		_show_mission(after_id)
+		_show_campaign(_chapter_of(after_id))
 	else:
 		_show_mission(next)
+
+
+func _chapter_of(mission_id: String) -> int:
+	var entry := missions.slot(mission_id) if missions != null else null
+	return entry.chapter.number if entry != null else 0
+
+
+## Main menu / chapter select / mission select. `chapter` > 0 opens that chapter's mission list.
+func _show_campaign(chapter: int = 0) -> void:
+	_clear_screens()
+	_campaign = CampaignScreen.new(missions, chapters, progress)
+	_campaign.library = MissionView.assets()
+	_campaign.audio = audio
+	_campaign.mission_selected.connect(_show_mission)
+	_campaign.settings_requested.connect(_show_settings)
+	add_child(_campaign)
+	if chapter > 0:
+		_campaign.show_missions(chapter)
+	_reveal()
+
+
+func _show_settings() -> void:
+	_clear_screens()
+	_settings = SettingsScreen.new(progress)
+	_settings.library = MissionView.assets()
+	_settings.audio = audio
+	_settings.sound_toggled.connect(_set_sound)
+	_settings.music_toggled.connect(_set_music)
+	_settings.vibration_toggled.connect(_set_vibration)
+	_settings.back_pressed.connect(_show_campaign)
+	add_child(_settings)
+	_reveal()
 
 
 func _show_menu() -> void:
@@ -193,6 +233,12 @@ func _set_sound(enabled: bool) -> void:
 	save.save_progress(progress)
 
 
+func _set_music(enabled: bool) -> void:
+	progress.music_enabled = enabled
+	music.enabled = progress.sound_enabled and enabled
+	save.save_progress(progress)
+
+
 func _set_vibration(enabled: bool) -> void:
 	progress.vibration_enabled = enabled
 	save.save_progress(progress)
@@ -200,10 +246,12 @@ func _set_vibration(enabled: bool) -> void:
 
 func _clear_screens() -> void:
 	get_tree().paused = false
-	for screen: Node in [_menu, _game, _mission]:
+	for screen: Node in [_menu, _game, _mission, _campaign, _settings]:
 		if screen != null:
 			remove_child(screen)
 			screen.queue_free()
 	_menu = null
 	_game = null
 	_mission = null
+	_campaign = null
+	_settings = null

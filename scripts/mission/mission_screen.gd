@@ -11,6 +11,8 @@ extends Node
 signal restart_requested
 ## The player asked for the next campaign mission (main.gd resolves it through MissionCatalog).
 signal next_requested
+## The player asked to leave to the campaign mission list.
+signal exit_requested
 
 const DEFAULT_MISSION := "res://data/missions/helix_01.json"
 const CANCEL_DISTANCE := 70.0
@@ -89,6 +91,10 @@ func _ready() -> void:
 	# Optional HUD signal (HUD contract, docs/interfaces.md): a results-panel "next mission" action.
 	if hud.has_signal("next_pressed"):
 		hud.connect("next_pressed", func() -> void: next_requested.emit())
+	if hud.has_signal("exit_pressed"):
+		hud.connect("exit_pressed", func() -> void: exit_requested.emit())
+	for weapon_id in engine.weapon_order:
+		engine.weapons[weapon_id].reload_completed.connect(_on_reload_completed)
 
 	engine.objective_changed.connect(_on_objective_changed)
 	engine.critical_asset_changed.connect(func(_id: String, state: int) -> void:
@@ -284,6 +290,11 @@ func _on_objective_changed(objective_id: String, status: int) -> void:
 	# Optional goals completed mid-mission get a cue; the mission result has its own stinger.
 	if status == MissionObjectives.Status.COMPLETE and engine.is_active() and objective != null and not objective.mandatory:
 		_play("objective_complete")
+
+
+func _on_reload_completed(weapon_id: String) -> void:
+	if weapon_id == engine.selected_weapon_id and engine.is_active():
+		_play("reload_ready")
 
 
 func _play(sound: String) -> void:
