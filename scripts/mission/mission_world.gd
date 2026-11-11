@@ -239,6 +239,9 @@ func _physics_process(delta: float) -> void:
 		pass
 	elif monitor.step(delta, max_linear, max_angular) != SimulationMonitor.Status.RUNNING:
 		_settled = true
+	# The shot that used a weapon's last round has resolved: the engine switches weapons now.
+	if engine.auto_select_pending and projectiles.is_empty():
+		engine.apply_pending_auto_select()
 	engine.tick(delta, _settled)
 
 

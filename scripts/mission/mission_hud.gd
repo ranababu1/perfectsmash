@@ -18,6 +18,14 @@ signal exit_pressed
 signal continue_pressed
 ## Decision panel and top-bar Finish button: end the mission now.
 signal finish_pressed
+## Pause menu → Main Menu, confirmed: leave the mission without recording it.
+signal menu_pressed
+
+const OVERLAY_PAUSE := "pause"
+const OVERLAY_CONFIRM_MENU := "confirm_menu"
+const OVERLAY_CONFIRM_RESTART := "confirm_restart"
+const OVERLAY_DECISION := "decision"
+const OVERLAY_RESULT := "result"
 
 const MARGIN := 24.0
 const WEAPON_BUTTON := Vector2(168.0, 104.0)
@@ -68,6 +76,8 @@ var _hint: Label
 var _weapon_buttons := {}
 var _reload_bars := {}
 var _overlay: Control
+## Which panel is open (OVERLAY_* or "" when none): Android back acts on it.
+var overlay_kind := ""
 var _top_buttons: HBoxContainer
 var _finish_button: Button
 
@@ -314,6 +324,7 @@ func set_finish_available(available: bool) -> void:
 ## Primary objective done, optional ones remain: keep playing or finish now. Either choice closes the panel.
 func show_decision() -> void:
 	var box := _open_panel("Primary objective complete", "Optional objectives remain. What next?")
+	overlay_kind = OVERLAY_DECISION
 	var keep_going := _action("Continue", continue_pressed, true)
 	keep_going.name = "DecisionContinueButton"
 	keep_going.pressed.connect(hide_overlay)
@@ -324,10 +335,54 @@ func show_decision() -> void:
 	box.add_child(finish)
 
 
+## Pause menu: Resume, Restart Mission, Main Menu. Restart and Main Menu ask for confirmation
+## first (the attempt in progress is abandoned); Cancel comes back here.
 func show_pause() -> void:
 	var box := _open_panel("PAUSED", "")
-	box.add_child(_action("Resume", resume_pressed, true))
-	box.add_child(_action("Restart mission", restart_pressed))
+	overlay_kind = OVERLAY_PAUSE
+	var resume := _action("Resume", resume_pressed, true)
+	resume.name = "PauseResumeButton"
+	box.add_child(resume)
+	var restart := UiKit.button("Restart Mission", 280.0)
+	restart.name = "PauseRestartButton"
+	restart.pressed.connect(confirm_restart)
+	box.add_child(restart)
+	var menu := UiKit.button("Main Menu", 280.0)
+	menu.name = "PauseMenuButton"
+	menu.pressed.connect(confirm_main_menu)
+	box.add_child(menu)
+	UiKit.focus_default(resume)
+
+
+func confirm_restart() -> void:
+	_confirm(OVERLAY_CONFIRM_RESTART, "Restart Mission?", "This attempt ends and the mission starts again from the beginning. Your saved progress is kept.", "Restart", restart_pressed)
+
+
+func confirm_main_menu() -> void:
+	_confirm(OVERLAY_CONFIRM_MENU, "Return to Main Menu?", "This mission will not be recorded as completed. Progress you have already earned is kept.", "Main Menu", menu_pressed)
+
+
+## Confirmation panel: the confirm action emits `sig`; Cancel (or Android back) returns to pause.
+func _confirm(kind: String, title: String, detail: String, confirm_text: String, sig: Signal) -> void:
+	var box := _open_panel(title, "")
+	overlay_kind = kind
+	var body := UiKit.label(detail, 17, Palette.TEXT_DIM)
+	body.name = "ConfirmDetail"
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size.x = UiKit.PANEL_WIDTH
+	box.add_child(body)
+	var confirm := _action(confirm_text, sig, true)
+	confirm.name = "ConfirmButton"
+	box.add_child(confirm)
+	var cancel := UiKit.button("Cancel", 280.0)
+	cancel.name = "CancelButton"
+	cancel.pressed.connect(show_pause)
+	box.add_child(cancel)
+	UiKit.focus_default(cancel)
+
+
+func is_confirming() -> bool:
+	return overlay_kind == OVERLAY_CONFIRM_MENU or overlay_kind == OVERLAY_CONFIRM_RESTART
 
 
 ## `score` is a MissionScoring breakdown; `granted` the Research Data actually added this run.
@@ -336,6 +391,7 @@ func show_result(success: bool, engine: MissionEngine, score: Dictionary = {}, g
 	var detail := "Shots %d (recommended %d)  ·  %s (target %s)" % [
 		engine.shots_fired(), engine.definition.recommended_shots, _clock(engine.elapsed), _clock(engine.definition.target_time)]
 	var box := _open_panel(title, detail)
+	overlay_kind = OVERLAY_RESULT
 	for o in engine.objectives.objectives:
 		var ok := o.status == MissionObjectives.Status.COMPLETE
 		var line := UiKit.label("%s  %s" % ["✓" if ok else "✗", o.label], 16, DONE if ok else Palette.TEXT_FAINT)
@@ -367,6 +423,7 @@ func show_result(success: bool, engine: MissionEngine, score: Dictionary = {}, g
 
 
 func hide_overlay() -> void:
+	overlay_kind = ""
 	if _overlay != null:
 		_overlay.queue_free()
 		_overlay = null

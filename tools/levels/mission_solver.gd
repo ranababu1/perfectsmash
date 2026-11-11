@@ -75,6 +75,9 @@ static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_fi
 				or engine.component_state(step.target) == DamageableComponent.State.DESTROYED):
 			continue
 		var weapon_id: String = step.weapon
+		# A player cannot fire an empty weapon (selecting it falls back to another): skip the step.
+		if engine.weapons.has(weapon_id) and not (engine.weapons[weapon_id] as WeaponState).has_ammo():
+			continue
 		if not engine.select_weapon(weapon_id) and engine.selected_weapon_id != weapon_id:
 			blocked = "cannot select %s" % weapon_id
 			break

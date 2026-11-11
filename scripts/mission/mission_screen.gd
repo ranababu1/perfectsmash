@@ -13,6 +13,8 @@ signal restart_requested
 signal next_requested
 ## The player asked to leave to the campaign mission list.
 signal exit_requested
+## Pause → Main Menu, confirmed. The attempt is abandoned: nothing is recorded or saved.
+signal menu_requested
 
 ## Bottom hint per weapon: what it is for and how to aim it.
 const BUZZ_FIRE_MS := 18
@@ -56,6 +58,7 @@ var _aim_direction := Vector2.ZERO
 var _aim_power := 1.0
 var _since_input := 0.0
 var _result_shown := false
+var _leaving := false
 
 
 ## `p_progress`/`p_save` may be null (e.g. tools); results are then scored but not stored.
@@ -100,14 +103,16 @@ func _ready() -> void:
 		weapon_states.append(engine.weapons[id])
 	hud.set_weapons(weapon_states)
 	hud.weapon_pressed.connect(select_weapon)
+	engine.weapon_selected.connect(_on_weapon_selected)
 	hud.pause_pressed.connect(pause)
 	hud.resume_pressed.connect(resume)
-	hud.restart_pressed.connect(func() -> void: restart_requested.emit())
+	hud.restart_pressed.connect(_leave.bind(restart_requested))
+	hud.menu_pressed.connect(_leave.bind(menu_requested))
 	# Optional HUD signal (HUD contract, docs/interfaces.md): a results-panel "next mission" action.
 	if hud.has_signal("next_pressed"):
-		hud.connect("next_pressed", func() -> void: next_requested.emit())
+		hud.connect("next_pressed", _leave.bind(next_requested))
 	if hud.has_signal("exit_pressed"):
-		hud.connect("exit_pressed", func() -> void: exit_requested.emit())
+		hud.connect("exit_pressed", _leave.bind(exit_requested))
 	for weapon_id in engine.weapon_order:
 		engine.weapons[weapon_id].reload_completed.connect(_on_reload_completed)
 
@@ -143,22 +148,34 @@ func _ready() -> void:
 	_update_hint()
 
 
+## HUD weapon button. The engine decides the actual selection (an empty weapon falls back to the
+## next usable one); the presentation follows engine.weapon_selected.
 func select_weapon(weapon_id: String) -> void:
-	if engine.select_weapon(weapon_id):
-		view.operative.set_weapon(weapon_id)
-		_play("weapon_switch")
-		_cancel_aim()
-		_update_hint()
+	if engine != null:
+		engine.select_weapon(weapon_id)
+
+
+## Every selection change, manual or automatic (last round used), lands here: operative model,
+## aim preview, hint and the switch sound stay in step with MissionEngine.selected_weapon_id.
+func _on_weapon_selected(weapon_id: String) -> void:
+	view.operative.set_weapon(weapon_id)
+	_play("weapon_switch")
+	_cancel_aim()
+	_update_hint()
+	hud.update_weapons(engine.weapons, weapon_id)
 
 
 func pause() -> void:
 	if engine == null or not engine.is_active():
 		return
 	# The decision prompt already holds the mission (clock stopped, no firing); keep it on screen.
-	if engine.awaiting_decision:
+	if engine.awaiting_decision or _leaving:
 		return
 	_cancel_aim()
 	get_tree().paused = true
+	# Already paused (e.g. the app lost focus while a confirmation is open): keep that panel.
+	if hud.overlay_kind == MissionHud.OVERLAY_PAUSE or hud.is_confirming():
+		return
 	hud.show_pause()
 
 
@@ -171,14 +188,37 @@ func is_paused() -> bool:
 	return get_tree().paused
 
 
-## Android back: close an open panel or pause.
+## Android back, by what is on screen:
+##   playing → pause; pause menu → resume; a Restart/Main Menu confirmation → back to the pause
+##   menu; decision prompt → Continue; results → the mission list (as the Missions button).
 func handle_back() -> void:
-	if engine != null and engine.awaiting_decision:
+	if engine == null or hud == null or _leaving:
+		return
+	if engine.awaiting_decision:
 		continue_mission()
-	elif hud != null and hud.has_overlay() and engine.is_active():
+	elif hud.is_confirming():
+		hud.show_pause()
+	elif not engine.is_active():
+		if hud.overlay_kind == MissionHud.OVERLAY_RESULT:
+			_leave(exit_requested)
+	elif hud.has_overlay():
 		resume()
 	else:
 		pause()
+
+
+## Emits one navigation request (restart, next, mission list, main menu) at most once per screen,
+## so a double tap or back press during the change can never start two transitions.
+func _leave(request: Signal) -> void:
+	if _leaving:
+		return
+	_leaving = true
+	_cancel_aim()
+	request.emit()
+
+
+func is_leaving() -> bool:
+	return _leaving
 
 
 func begin_aim(screen_position: Vector2) -> void:
@@ -236,7 +276,12 @@ func release_aim() -> bool:
 	if _aim_direction.length() < CANCEL_DISTANCE:
 		return false
 	if not engine.can_fire():
-		hud.set_hint("Reloading..." if engine.selected_weapon().has_ammo() else "Out of ammunition: switch weapon")
+		if engine.selected_weapon().has_ammo():
+			hud.set_hint("Reloading...")
+		elif engine.needs_fallback():
+			hud.set_hint("Switching weapon...")
+		else:
+			hud.set_hint("Out of ammunition")
 		return false
 	var weapon_id := engine.selected_weapon_id
 	var projectile := world.fire(_aim_direction, _aim_power)

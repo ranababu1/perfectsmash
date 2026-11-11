@@ -32,6 +32,9 @@ var sound_enabled := true
 var vibration_enabled := true
 var music_enabled := true
 var voice_enabled := true
+## Story narration volume, 0.0 (silent) to 1.0 (full); applied to the Voice bus. Added to the v4
+## settings block in rc2: saves without it load the default, so no schema bump is needed.
+var narration_volume := 1.0
 ## Story sequence ids (cinematics) the player has seen; they become replayable in the Story Archive.
 var seen_sequences := {}
 ## Schema version the data was loaded from (equals SCHEMA_VERSION for fresh or current saves).
@@ -169,6 +172,7 @@ func to_dict() -> Dictionary:
 			"vibration": vibration_enabled,
 			"music": music_enabled,
 			"voice": voice_enabled,
+			"narration_volume": narration_volume,
 		},
 		"story": {"seen": seen},
 		"missions": mission_results.duplicate(true),
@@ -215,6 +219,11 @@ static func from_dict(data: Variant) -> ProgressData:
 			progress.music_enabled = settings.music
 		if settings.get("voice") is bool:
 			progress.voice_enabled = settings.voice
+		var volume: Variant = settings.get("narration_volume", 1.0)
+		if (volume is float or volume is int) and volume >= 0.0 and volume <= 1.0:
+			progress.narration_volume = float(volume)
+		else:
+			progress.load_warnings.append("invalid narration volume; using full volume")
 	else:
 		progress.load_warnings.append("'settings' is not an object")
 

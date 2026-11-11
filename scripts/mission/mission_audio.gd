@@ -70,6 +70,13 @@ static func play_weapon_event(audio: AudioService, weapon_id: String, event: Str
 
 
 ## Moves the music up to intensity step `target` (never down during a mission).
+## Leaving a mission mid-attempt (Main Menu, Restart) must not leave the critical layer playing
+## over the next screen's music; the next screen starts its own cue.
+func _exit_tree() -> void:
+	if music != null and is_instance_valid(music) and not music.current_layer.is_empty():
+		music.set_layer("", STINGER_FADE)
+
+
 func raise_to(target: int) -> void:
 	var steps: Array = plan.get("intensity", [])
 	if music == null or steps.is_empty():

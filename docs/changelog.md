@@ -2,6 +2,49 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-12 — 1.0.0-rc2: delivered narration integrated
+
+Branch `fix/rc2-owner-issues` (PR #16), with `main` merged in for the narration package (`465364d`).
+
+- **Narration plays.** 50 voice lines across 12 cinematics (opening, five intros, four endings, finale, hidden teaser), each cinematic with its own music bed, from `assets/audio/voice/` and `assets/audio/music/cinematic/`. `data/narration.json` is generated from `assets/docs/narration/NARRATION_MANIFEST.json` by `tools/audio/build_narration_map.py`, which checks verbatim text, files and holds. `data/cinematics.json`, missions and gameplay are unchanged.
+- **Timing:**
+  - Each line starts after its slide appears; on slide 1 it waits for the bed's pre-roll.
+  - Its subtitle appears at the manifest's sync point.
+  - Slides hold for the manifest timeline: the line, its gap, and on the last slide the end-card time. A slide is never shorter than its line + 1 s and never changes while the line is sounding.
+  - While the bed plays and nobody has tapped ahead, slide time follows the bed's playback position.
+  - The next still loads in the background. All lines are preloaded.
+  - Voice, bed and clock pause together while the app is backgrounded.
+- **Music:** each cinematic plays its own bed (`MusicDirector.play_track`). The bed ducks 9 dB with a 0.12 s attack, holds 0.25 s after the line and releases over 0.6 s. Narration volume 0, Sound off or narration off: no voice and no duck, same timing.
+- **Skip:**
+  - a tap fades the line over 80 ms (two voice players) and starts the next;
+  - Skip / back fades the voice over 50 ms and the bed over 0.8 s;
+  - leaving the screen stops everything.
+- **Found and fixed by real-time measurement:** lines drifted up to +0.4 s behind the bed over the opening. The causes were frame overshoot lost at each slide change and a synchronous still load. After the fix, all 18 measured lines start within 0.02 s of the manifest.
+- **Tools:**
+  - `tools/audio/narration_sync_check.gd` records the Voice and Music buses during real playback, with Master at −80 dB.
+  - `tools/audio/narration_sync_report.py` compares those recordings with the manifest.
+- **Release data:** shipped-asset manifest regenerated: 898 shipped files, including the 50 lines and 12 beds; mix references and review samples are excluded. Rights audit regenerated: every shipped asset `pending_review`, the narration "commercially usable per provider terms, not legally cleared".
+- **Tests:** narration suite rewritten for the package (18 tests; one needs real audio output and skips headless). Full suite: 326 passed, 0 failed, 1 skipped. `test_cinematic_player.gd` now expects two narration players.
+- **Played and measured** (desktop window, real time, `narration_sync_report.py`): opening, ch01_intro and finale.
+  - Line start vs bed timeline: −0.00 to +0.02 s.
+  - Subtitle vs heard speech: 0.05–0.09 s before.
+  - Speech end to slide change: 1.3–3.5 s.
+  - Bed under speech vs gaps: 6–14 dB lower.
+- **APK:** `build/temporal1-1.0.0-rc2-debug.apk` rebuilt with narration (~216 MB, was ~198 MB; 50 voice lines and 12 beds inside, no review-only audio). Android 17 emulator: fresh install plays the narrated opening on the manifest timeline; no Godot errors in logcat.
+- **Not done:** human listening on a phone, physical devices, iOS; release AAB not rebuilt.
+
+## 2026-11-11 — 1.0.0-rc2 (candidate, untagged): owner-reported fixes and narration architecture
+
+Branch `fix/rc2-owner-issues` → PR against `main`. Plan revision 8 records the owner's decisions.
+`v1.0.0-rc1` is untouched; no `v1.0.0-rc2` tag until the owner approves.
+
+- **Weapon fallback (critical):** an empty weapon never stays selected while another has ammunition. `MissionEngine` owns it: the shot that uses the selected weapon's last round schedules a switch that `MissionWorld` applies once no round is in flight (never mid-shot); pressing an empty weapon selects the next usable one; order is mission weapon order after the empty weapon, wrapping; reloading weapons with ammunition count as usable and their reload is untouched; a manual choice with ammunition is kept and cancels a pending switch; with every weapon empty the selection is kept and the out-of-ammunition failure is unchanged. The operative model, hint, aim preview, switch sound and HUD follow `weapon_selected` only (no recursion through `ammo_changed`). The level solver now skips steps for empty weapons (previously a refused no-op shot; same outcome). Files: `scripts/core/mission_engine.gd`, `scripts/mission/mission_world.gd`, `scripts/mission/mission_screen.gd`, `tools/levels/mission_solver.gd`.
+- **Main menu from gameplay (critical):** the pause menu has Resume, Restart Mission and Main Menu. Restart and Main Menu ask for confirmation ("Return to Main Menu?" states the mission will not be recorded as completed); Cancel returns to pause. Main Menu returns to the campaign main menu with the tree unpaused, records nothing and leaves the save untouched. A mission screen emits each navigation request at most once (no double transitions). Android back: gameplay → pause, pause → resume, confirmation → pause, decision → Continue, results → mission list (previously a dead end). Leaving mid-mission clears the critical music layer, which could otherwise keep playing over the menu. `UiKit.focus_default` no longer focuses a control that left the tree in the same frame. The top-bar Restart icon keeps its existing instant restart. Files: `scripts/mission/mission_hud.gd`, `scripts/mission/mission_screen.gd`, `scripts/mission/mission_audio.gd`, `scripts/main.gd`, `scripts/ui/ui_kit.gd`.
+- **Cinematic narration (critical) — architecture integrated, assets pending:** `data/narration.json` maps `<sequence>/<slide>` to clip paths and is the only place narration paths live; `NarrationCatalog` validates it and sets each slide's `voice`. `CinematicPlayer` plays the clip on the new `Voice` bus as the subtitle appears, holds the slide until the clip ends (+0.6 s), ducks the music 9 dB (0.35 s) and restores it (0.8 s) on silent slides, the end card, skip, finish or leaving the screen; tapping on stops the clip with its slide. Settings → Narration volume (0-100 %, steps of 10) persists as `settings.narration_volume` (additive v4 key; rc1 saves load 1.0); Sound off or 0 % mutes the Voice bus; music, sound and vibration settings unchanged. Opening, five introductions, four endings, finale and Story Archive replays share the path. **No approved narration clips have been delivered**: the mapping is empty (`status: pending_assets`), every slide still plays subtitles only, and narration is not complete. The 50 expected clip keys and the integration steps are in `docs/audio/narration-integration.md`; the export manifest now treats mapped clips as shipped files. Files: `scripts/core/narration_catalog.gd`, `data/narration.json`, `scripts/ui/cinematic/cinematic_player.gd`, `scripts/core/progress_data.gd`, `scripts/ui/settings/settings_screen.gd`, `scripts/main.gd`, `default_bus_layout.tres`, `tools/release/export_manifest.gd`.
+- **Tests:** new `tests/weapons/test_weapon_fallback.gd` (8), `tests/campaign/test_pause_navigation.gd` (6), `tests/ui/test_cinematic_narration.gd` (10; uses two existing library sounds as stand-in clips, never mapped for shipping). `test_cinematic_player.gd::test_plays_music_cue_but_never_voice` asserted the revision-7 rule (no audio player at all); the owner reversed that rule, so it became `test_plays_music_cue_and_no_voice_without_clips` (one narration player, no voice and no ducking without a mapped clip).
+- **Version:** `config/version` 1.0.0-rc2; Android version code 3 at export.
+- **Verification:** headless suite 320 passed, 0 failed, 0 skipped; mission probe (`probe_missions.gd -- solve all 3`) after the weapon change and again on the final branch code: 100/100 stand, 381/381 replays won, exit 0; windowed captures of the pause menu, both confirmations, the HUD after an automatic switch and Settings (1600x720); debug APK `build/temporal1-1.0.0-rc2-debug.apk` (~198 MB) installed as an upgrade over rc1 on the Android 17 emulator (Pixel 10 Pro image): opening cinematic skipped with back, Settings slider set to 50 % and saved, helix_01 won by touch, back on results → mission list, helix_02 last Breach charge → automatic switch to Kinetic, pressing the empty Breach keeps Kinetic, back → pause, Main Menu → confirm → back → pause, Main Menu confirmed with the save byte-identical, Restart Mission confirmed → fresh attempt. Not verified: narration audio (no clips), physical devices, iOS.
+
 ## 2026-11-11 — 1.0.0-rc1: complete campaign and release candidate
 
 - **All 100 missions** merged chapter by chapter (PRs #10 Helix, #11 VITA, #12 Nova Grid, #13 Civitas, #14 Meridian), each verified before merge (probe 3/3 on every recorded line, campaign gate, windowed capture). Chapter design tables in `docs/levels/`. Authored by five Sonnet subagents with per-chapter file ownership; difficulty revised once after the engine fixes (reactor housing, collapse floor).

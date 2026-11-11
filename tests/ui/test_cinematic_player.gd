@@ -1,5 +1,6 @@
 extends TestCase
-## CinematicPlayer: image resolution, slide advance, tap/skip/natural end, subtitles, no voice.
+## CinematicPlayer: image resolution, slide advance, tap/skip/natural end, subtitles; slides with
+## no narration clip play no voice (narration itself: tests/ui/test_cinematic_narration.gd).
 
 var _ended: Array = []
 
@@ -134,13 +135,19 @@ func test_missing_image_and_unknown_motion_do_not_crash() -> void:
 	player.queue_free()
 
 
-func test_plays_music_cue_but_never_voice() -> void:
+## Revision 7 forbade narration and this test asserted the player owned no audio player. The owner
+## approved narration on 2026-11-11 (docs/plan.md revision 8): the player now owns one narration
+## player, and a slide without a mapped clip must still play no voice and leave the music alone.
+func test_plays_music_cue_and_no_voice_without_clips() -> void:
 	var music := MusicDirector.new()
 	tree.root.add_child(music)
 	var player := _player()
 	player.music = music
 	player.play_id("opening", _catalog())
 	assert_eq(music.current_cue, "cinematic")
-	assert_true(player.find_children("*", "AudioStreamPlayer", true, false).is_empty(), "the player owns no audio players")
+	assert_eq(player.find_children("*", "AudioStreamPlayer", true, false).size(), 2, "two narration players (cross-fade on tap), nothing else")
+	assert_false(player.voice_player().playing, "no clip mapped: no voice")
+	assert_eq(player.current_voice, "")
+	assert_false(player.is_music_ducked(), "the music is not ducked without narration")
 	player.queue_free()
 	music.queue_free()

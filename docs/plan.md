@@ -1,6 +1,6 @@
 # Temporal: First Jump: Product and Engineering Plan
 
-**Document status:** Owner-approved revision 4 (2026-11-09). The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
+**Document status:** Owner-approved revision 4 (2026-11-09), extended by owner revisions 5-8 at the end of this document; revision 8 (2026-11-11) is the current owner direction. The original product/engineering baseline is preserved in Git history (commit `e26dd91`); revision history is retained below.  
 **Product name:** Temporal: First Jump (owner-approved 2026-11-09)  
 **Application ID / bundle ID:** `dev.imrn.temporal1` (Android and iOS)  
 **Repository:** github.com/ranababu1/temporal-chapter1, branch `main`  
@@ -612,7 +612,7 @@ Implementation batches for the prototype: (1) materials, weapons, damage, damage
 - **Mandate:** deliver the complete game (100 integrated, playable, balanced and verified missions in five chapters) in one autonomous cycle; milestone summaries are not approval gates.
 - **Git:** the orchestrator may merge its own PRs into `main` once the quality gates pass; work goes through chapter-level branches and PRs (review history); never push directly to `main`, never force-push or rewrite history.
 - **Weapons:** build all four chapter weapons — Penetrator (II), Pulse Cannon (III), Disruptor (IV), Temporal Lance (V) — each unlocked at the start of its chapter, implemented, balanced, upgradable and tested before levels depend on it; levels are designed around them.
-- **Cinematics:** a cinematic player and Story Archive built from the existing stills with slow pan and zoom, subtitles, music and skip. No AI-generated narration or voice recordings; voice settings stay hidden.
+- **Cinematics:** a cinematic player and Story Archive built from the existing stills with slow pan and zoom, subtitles, music and skip. ~~No AI-generated narration or voice recordings; voice settings stay hidden.~~ *Superseded by revision 8 (2026-11-11): the owner approved narration; see §14.*
 - **Online:** release one is fully offline and single-player: no accounts, leaderboards, Temporal Frontlines, cloud saves, advertisements, in-app purchases or analytics. The architecture stays extensible.
 - **Retired levels:** removed from shipped content once the 100 missions have independent coverage; regression tests that validate engine behaviour are kept.
 - **Helix 01:** the original prototype moves to about level 8 with its gameplay and physics identity intact; a new, approachable level 1 teaches the basics.
@@ -620,3 +620,12 @@ Implementation batches for the prototype: (1) materials, weapons, damage, damage
 - **Builds:** debug Android APK, unsigned release Android AAB, release candidate tag `1.0.0-rc1`. Signing keys are the owner's and are never accessed. iOS is recorded as unverified (no macOS environment).
 - **Store materials:** screenshots, descriptions, short and long copy, release notes, feature graphics and privacy documentation; the privacy statement must reflect the audited behaviour of the final application and its dependencies. The owner submits and publishes.
 - **Visual direction:** keep the Helix camera, HUD, results presentation and visual language; evolve environments, palettes, atmosphere and identity so each chapter feels like a different world.
+
+## 14. Revision 8: narration and release-candidate fixes (owner, 2026-11-11)
+
+**Status:** Owner-approved. Supersedes the revision 7 cinematics restriction on narration; every other revision 7 decision stands.
+
+- **Narration approved.** Cinematics play spoken narration per slide, in step with the existing subtitles (the story and subtitle text are not rewritten), with music ducked under the voice and restored afterwards, a separate persisted narration volume control, and clean stop on skip or exit. Coverage: opening, five chapter introductions, four chapter endings, finale, Story Archive replays. Clips come only from the narration package prepared separately (Asset Agent) and are integrated at their exact delivered paths through one data mapping (`data/narration.json`); no placeholder or invented audio. Narration is not complete until approved clips are integrated and tested.
+- **Automatic weapon fallback.** An empty weapon never stays selected while another has ammunition; the switch happens once the shot that used the last round has resolved, in deterministic mission weapon order, centrally in `MissionEngine`.
+- **Main menu from gameplay.** The pause menu offers Resume, Restart Mission and Main Menu (both confirmed); leaving never records the mission or changes earned progress; Android back is handled on every mission panel.
+- **Release:** the next candidate is `1.0.0-rc2`, prepared through a PR against `main`. `v1.0.0-rc1` is not overwritten, and the `v1.0.0-rc2` tag is created only after the owner approves the completed scope.

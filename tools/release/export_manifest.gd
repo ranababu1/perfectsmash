@@ -4,7 +4,7 @@ extends SceneTree
 ## files) and the rights audit can list exactly what ships.
 ##   godot_console --headless -s tools/release/export_manifest.gd
 ## Roots: every integrated asset (data/integrated_assets.json), every audio file (data/audio.json),
-## every cinematic still (data/cinematics.json), every res://assets path written in scripts/ and
+## every cinematic still (data/cinematics.json), every narration clip (data/narration.json), every res://assets path written in scripts/ and
 ## scenes/, and project.godot. Dependencies are followed with ResourceLoader.get_dependencies.
 ## Writes docs/release/shipped-assets.json ({used: [...], excluded: [...], bytes}) and prints the
 ## exclude filter for export_presets.cfg.
@@ -26,6 +26,7 @@ func _run() -> void:
 	_from_json("res://data/integrated_assets.json", roots)
 	_from_json("res://data/audio.json", roots)
 	_from_json("res://data/cinematics.json", roots)
+	_from_json("res://data/narration.json", roots)
 	for folder: String in ["res://scripts", "res://scenes"]:
 		_from_sources(folder, roots)
 	_from_text(FileAccess.get_file_as_string("res://project.godot"), roots)

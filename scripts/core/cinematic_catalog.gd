@@ -23,6 +23,10 @@ class Slide:
 	var motion := "push_in"
 	var image := ""
 	var voice := ""
+	## Seconds after the slide appears that its voice line starts / its subtitle appears
+	## (NarrationCatalog sets them from the narration manifest; 0 without narration).
+	var voice_delay := 0.0
+	var subtitle_delay := 0.0
 	## Explicit duration in seconds; 0 means derive it from the subtitle length.
 	var duration := 0.0
 
@@ -40,6 +44,8 @@ class Sequence:
 	var title := ""
 	var theme := ChapterTheme.DEFAULT_KEY
 	var music := ""
+	## Level of `music` (a cinematic music bed) on the Music bus.
+	var music_volume_db := -10.5
 	## Music cue id from data/audio.json "music" (e.g. "cinematic", "helix_theme").
 	var music_cue := ""
 	var slides: Array[Slide] = []
