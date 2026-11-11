@@ -14,6 +14,15 @@ signal next_requested
 ## The player asked to leave to the campaign mission list.
 signal exit_requested
 
+## Bottom hint per weapon: what it is for and how to aim it.
+const HINTS := {
+	"kinetic_accelerator": "Kinetic Accelerator: touch the target · release to fire",
+	"breach_charge": "Breach Charge: touch where to throw · farther = stronger · release to fire",
+	"penetrator": "Penetrator: punches through glass and light panels · touch the target · release to fire",
+	"pulse_cannon": "Pulse Cannon: overloads energy cells · touch the target · release to fire",
+	"disruptor": "Disruptor: EMP through walls, burns out electronics and shield emitters · release to fire",
+	"temporal_lance": "Temporal Lance: passes through three pieces, breaks temporal crystal · release to fire",
+}
 const DEFAULT_MISSION := "res://data/missions/helix_01.json"
 const CANCEL_DISTANCE := 70.0
 ## Finger distance from the muzzle (px in the physics plane) for a full-power Breach throw.
@@ -50,6 +59,7 @@ func _init(p_audio: AudioService = null, p_progress: ProgressData = null, p_save
 	progress = p_progress
 	save = p_save
 	mission_path = p_mission_path
+
 
 
 func _ready() -> void:
@@ -112,7 +122,15 @@ func _ready() -> void:
 	if hud.has_signal("finish_pressed"):
 		hud.connect("finish_pressed", finish_mission)
 	engine.component_destroyed.connect(_on_component_destroyed)
-	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("breach_detonate"))
+	# The view resolves which weapon caused a blast (after its own handler); chain blasts keep the
+	# Breach detonation sound.
+	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void:
+		var source: String = view.last_blast_weapon if view != null else ""
+		if MissionAudio.weapon_sounds(source, "blast").is_empty():
+			_play("breach_detonate")
+		else:
+			MissionAudio.play_weapon_event(audio, source, "blast"))
+
 	world.impact_happened.connect(_on_impact)
 	hud.update_objectives.call_deferred(engine.objectives)
 	view.operative.set_weapon(engine.selected_weapon_id)
@@ -193,11 +211,16 @@ func release_aim() -> bool:
 	if not engine.can_fire():
 		hud.set_hint("Reloading..." if engine.selected_weapon().has_ammo() else "Out of ammunition: switch weapon")
 		return false
+	var weapon_id := engine.selected_weapon_id
 	var projectile := world.fire(_aim_direction, _aim_power)
 	if projectile == null:
 		return false
 	view.operative.fire()
-	_play("breach_launch" if engine.selected_weapon().spec.is_lobbed() else "kinetic_fire")
+	MissionAudio.play_weapon_event(audio, weapon_id, "fire")
+	# Every strike of this round (a piercing round strikes several times) plays its strike sound.
+	projectile.struck.connect(func(_p: WeaponProjectile, target: Node, _speed: float) -> void:
+		if target is ComponentBody:
+			MissionAudio.play_weapon_event(audio, weapon_id, "strike"))
 	_update_hint()
 	return true
 
@@ -247,10 +270,7 @@ func _process(delta: float) -> void:
 
 
 func _update_hint() -> void:
-	if engine.selected_weapon().spec.is_lobbed():
-		hud.set_hint("Breach Charge: touch where to throw · farther = stronger · release to fire")
-	else:
-		hud.set_hint("Kinetic Accelerator: touch the target · release to fire")
+	hud.set_hint(HINTS.get(engine.selected_weapon_id, "Breach Charge: touch where to throw · farther = stronger · release to fire" 			if engine.selected_weapon().spec.is_lobbed() else "Kinetic Accelerator: touch the target · release to fire"))
 
 
 ## Primary objective done, scene settled, optional goals remain: ask the player.
@@ -336,7 +356,7 @@ func _on_objective_changed(objective_id: String, status: int) -> void:
 
 func _on_reload_completed(weapon_id: String) -> void:
 	if weapon_id == engine.selected_weapon_id and engine.is_active():
-		_play("reload_ready")
+		MissionAudio.play_weapon_event(audio, weapon_id, "ready")
 
 
 func _play(sound: String) -> void:

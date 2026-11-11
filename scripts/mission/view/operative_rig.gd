@@ -16,7 +16,18 @@ const BODY_COLOR := Color("2b3138")
 const ARMOR_COLOR := Color("3d4650")
 const VISOR_COLOR := Color("5fd4e8")
 const MODEL_ID := "OPR-CHR-OPERATIVE-A"
-const WEAPON_MODELS := {"kinetic_accelerator": "OPR-WPN-KINETIC_ACCELERATOR-A", "breach_charge": "OPR-WPN-BREACH_CHARGE-A"}
+const WEAPON_MODELS := {
+	"kinetic_accelerator": "OPR-WPN-KINETIC_ACCELERATOR-A", "breach_charge": "OPR-WPN-BREACH_CHARGE-A",
+	"penetrator": "OPR-WPN-PENETRATOR-A", "pulse_cannon": "OPR-WPN-PULSE_CANNON-A",
+	"disruptor": "OPR-WPN-DISRUPTOR-A", "temporal_lance": "OPR-WPN-TEMPORAL_LANCE-A",
+}
+## Placeholder weapons without a production model: [length, thickness, body colour, accent colour].
+const PLACEHOLDER_WEAPONS := {
+	"penetrator": [0.9, 0.06, Color("56606a"), Color("e8fbff")],
+	"pulse_cannon": [0.42, 0.14, Color("4d4a44"), Color("ffa22e")],
+	"disruptor": [0.4, 0.13, Color("3a4552"), Color("4f8cff")],
+	"temporal_lance": [1.0, 0.07, Color("4a4658"), Color("b48cff")],
+}
 ## Looping clip per state; one-shot clips play over them and hand back.
 const STATE_CLIPS := {0: "idle", 1: "ready", 2: "aim_pose", 3: "reload", 4: "victory", 5: "defeat"}
 const BLEND := 0.15
@@ -88,9 +99,19 @@ func _ready() -> void:
 	(band.material_override as StandardMaterial3D).emission = Color("e0a040")
 	_arm.add_child(breach)
 	_weapons["breach_charge"] = breach
+	for id: String in PLACEHOLDER_WEAPONS:
+		var spec: Array = PLACEHOLDER_WEAPONS[id]
+		var weapon := Node3D.new()
+		_add_box(weapon, Vector3(spec[0], spec[1], spec[1]), Vector3(0.2 + spec[0] / 2.0, 0.02, 0.12), spec[2])
+		var accent := _add_box(weapon, Vector3(0.1, spec[1] * 1.3, spec[1] * 1.3), Vector3(0.2 + spec[0] * 0.7, 0.02, 0.12), spec[3])
+		(accent.material_override as StandardMaterial3D).emission_enabled = true
+		(accent.material_override as StandardMaterial3D).emission = spec[3]
+		_arm.add_child(weapon)
+		_weapons[id] = weapon
 	set_weapon(weapon_id)
 
 
+## Shows the model of weapon `id` (every weapon in WEAPON_MODELS has one on the socket).
 func set_weapon(id: String) -> void:
 	var changed := id != weapon_id
 	weapon_id = id

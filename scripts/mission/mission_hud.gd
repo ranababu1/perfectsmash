@@ -21,6 +21,21 @@ signal finish_pressed
 
 const MARGIN := 24.0
 const WEAPON_BUTTON := Vector2(168.0, 104.0)
+const WEAPON_GAP := 12.0
+## Weapon bar budget (px of HUD width, 1280 at the narrowest): the rest is kept for the aim hint.
+const WEAPON_BAR_WIDTH := 850.0
+## Narrowest weapon button; 4 or more weapons use the compact layout (icon above the name).
+const WEAPON_BUTTON_MIN_WIDTH := 112.0
+const COMPACT_FROM := 4
+const HINT_MIN_WIDTH := 300.0
+## Short button titles where the first word of the display name is not enough.
+const SHORT_NAMES := {"temporal_lance": "LANCE"}
+## Reload bar colour per weapon (the weapon's colour language).
+const RELOAD_COLOURS := {
+	"kinetic_accelerator": Color(0.75, 0.93, 1.0, 0.5), "breach_charge": Color(1.0, 0.78, 0.44, 0.5),
+	"penetrator": Color(0.9, 1.0, 1.0, 0.5), "pulse_cannon": Color(1.0, 0.64, 0.18, 0.5),
+	"disruptor": Color(0.42, 0.64, 1.0, 0.5), "temporal_lance": Color(0.72, 0.58, 1.0, 0.5),
+}
 const DONE := Color("7cf0a8")
 const FAILED := Color("ff7a6a")
 const THEME_ID := "GAM-UI-THEME-A"
@@ -30,6 +45,8 @@ const ICONS := {
 	"critical": "GAM-ICN-CRITICAL_ASSET-A", "shots": "GAM-ICN-SHOTS_FIRED-A", "time": "GAM-ICN-TIME_LIMIT-A",
 	"ammo": "GAM-ICN-AMMO-A", "pause": "GAM-ICN-PAUSE-A", "retry": "GAM-ICN-RETRY-A",
 	"kinetic_accelerator": "GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A", "breach_charge": "GAM-ICN-WEAPON_BREACH_CHARGE-A",
+	"penetrator": "GAM-ICN-WEAPON_PENETRATOR-A", "pulse_cannon": "GAM-ICN-WEAPON_PULSE_CANNON-A",
+	"disruptor": "GAM-ICN-WEAPON_DISRUPTOR-A", "temporal_lance": "GAM-ICN-WEAPON_TEMPORAL_LANCE-A",
 }
 const FINISH_BUTTON_WIDTH := 120.0
 const ICON_SIZE := 22.0
@@ -124,12 +141,26 @@ func _ready() -> void:
 	add_child(_hint)
 
 
-## Creates one large button per weapon (bottom right), in mission order.
+## Width of one weapon button for `count` weapons: the full 168 px while they fit the weapon bar
+## budget, narrower (never below WEAPON_BUTTON_MIN_WIDTH, far above the 64 px touch minimum) after.
+static func weapon_button_width(count: int) -> float:
+	if count <= 1:
+		return WEAPON_BUTTON.x
+	var fit := (WEAPON_BAR_WIDTH - WEAPON_GAP * (count - 1)) / count
+	return clampf(fit, WEAPON_BUTTON_MIN_WIDTH, WEAPON_BUTTON.x)
+
+
+## Creates one large button per weapon (bottom right), in mission order. Up to 3 weapons use the
+## icon-left layout; 4 or more switch to icon-above-name so six buttons fit at 1280 px wide.
 func set_weapons(weapons: Array[WeaponState]) -> void:
+	var compact := weapons.size() >= COMPACT_FROM
+	var width := weapon_button_width(weapons.size())
 	var row := HBoxContainer.new()
+	row.name = "WeaponRow"
 	row.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
-	row.add_theme_constant_override("separation", 12)
-	row.offset_left = -(WEAPON_BUTTON.x * weapons.size() + 12.0 * (weapons.size() - 1) + MARGIN)
+	row.add_theme_constant_override("separation", int(WEAPON_GAP))
+	row.custom_minimum_size.x = width * weapons.size() + WEAPON_GAP * maxi(weapons.size() - 1, 0)
+	row.offset_left = -(row.custom_minimum_size.x + MARGIN)
 	row.offset_top = -(WEAPON_BUTTON.y + MARGIN)
 	row.offset_right = -MARGIN
 	row.offset_bottom = -MARGIN
@@ -137,19 +168,25 @@ func set_weapons(weapons: Array[WeaponState]) -> void:
 	row.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	add_child(row)
 	for weapon in weapons:
-		var button := UiKit.button("", WEAPON_BUTTON.x)
+		var button := UiKit.button("", width)
 		button.name = "Weapon_%s" % weapon.id()
-		button.custom_minimum_size = WEAPON_BUTTON
-		button.add_theme_font_size_override("font_size", 17)
+		button.custom_minimum_size = Vector2(width, WEAPON_BUTTON.y)
+		button.add_theme_font_size_override("font_size", 14 if compact else 17)
 		var weapon_icon := icon(weapon.id())
 		if weapon_icon != null:
 			button.icon = weapon_icon
 			button.expand_icon = true
-			button.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-			button.add_theme_constant_override("icon_max_width", 44)
+			if compact:
+				button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+				button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+				button.add_theme_constant_override("icon_max_width", 34)
+				button.add_theme_constant_override("h_separation", 0)
+			else:
+				button.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+				button.add_theme_constant_override("icon_max_width", 44)
 		button.pressed.connect(weapon_pressed.emit.bind(weapon.id()))
 		var bar := ColorRect.new()
-		bar.color = Color(0.75, 0.93, 1.0, 0.5)
+		bar.color = RELOAD_COLOURS.get(weapon.id(), Color(0.75, 0.93, 1.0, 0.5))
 		bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		bar.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 		bar.offset_top = -6.0
@@ -157,6 +194,18 @@ func set_weapons(weapons: Array[WeaponState]) -> void:
 		row.add_child(button)
 		_weapon_buttons[weapon.id()] = button
 		_reload_bars[weapon.id()] = bar
+	# Long titles can make a button wider than its minimum, so the bar grows to its real content
+	# (towards the left); the aim hint takes the free space left of it.
+	_hint.anchor_left = 0.0
+	_hint.anchor_right = 1.0
+	_hint.offset_left = MARGIN
+	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	row.resized.connect(_fit_hint.bind(row))
+	_fit_hint(row)
+
+
+func _fit_hint(row: Control) -> void:
+	_hint.offset_right = -(maxf(row.size.x, row.custom_minimum_size.x) + MARGIN * 2.0)
 
 
 func update_weapons(weapons: Dictionary, selected_id: String) -> void:
@@ -164,7 +213,7 @@ func update_weapons(weapons: Dictionary, selected_id: String) -> void:
 		var weapon: WeaponState = weapons[id]
 		var button: Button = _weapon_buttons[id]
 		# Short label so the button never outgrows its slot on phones.
-		var title := weapon.spec.display_name.get_slice(" ", 0).to_upper()
+		var title: String = SHORT_NAMES.get(id, weapon.spec.display_name.get_slice(" ", 0).to_upper())
 		button.text = "%s\n%d / %d" % [title, weapon.ammo, weapon.ammo_capacity]
 		button.theme_type_variation = UiKit.PRIMARY if id == selected_id else ""
 		button.disabled = not weapon.has_ammo()

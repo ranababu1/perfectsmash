@@ -250,7 +250,10 @@ func test_projectiles_and_hidden_weapon_are_warmed_at_load() -> void:
 	var screen := MissionScreen.new()
 	tree.root.add_child(screen)
 	var warm_projectiles := screen.view._warm_nodes.filter(func(n: Node3D) -> bool: return n is ProjectileVisual)
-	assert_eq(warm_projectiles.size(), ProjectileVisual.ASSETS.size(), "both projectile looks drawn at load")
+	# One look per weapon the mission carries (all weapons have one: see test_weapon_presentation).
+	var carried := screen.engine.weapon_order.filter(func(id: String) -> bool: return ProjectileVisual.ASSETS.has(id))
+	assert_eq(warm_projectiles.size(), carried.size(), "every projectile look in the mission drawn at load")
+	assert_true(carried.size() >= 2)
 	await wait_process_frames(1)
 	var rig := screen.view.operative
 	assert_true(rig.uses_model)

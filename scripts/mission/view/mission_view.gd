@@ -31,6 +31,17 @@ const CAMERA_FOV := 40.0
 ## Camera placement relative to the framed point: slightly left, raised, pulled back.
 const CAMERA_OFFSET := Vector3(-2.2, 2.3, 10.5)
 const PREVIEW_DOTS := 14
+## Aim-preview dot colour per weapon (the weapon's colour language); others use the default.
+const PREVIEW_COLOURS := {
+	"kinetic_accelerator": Color("bfefff"), "breach_charge": Color("ffc870"), "penetrator": Color("f4ffff"),
+	"pulse_cannon": Color("ffa22e"), "disruptor": Color("6da2ff"), "temporal_lance": Color("c4a2ff"),
+}
+## Blast flash tint and light per weapon: [flash colour, light energy]; no entry = the Breach look.
+## The Disruptor EMP is a shock field, not a fire: no flash sphere and no light.
+const BLAST_LOOKS := {
+	"pulse_cannon": [Color(1.0, 0.62, 0.2), 2.5],
+	"disruptor": [Color(0.3, 0.55, 1.0), 0.0],
+}
 ## Blast lights are a fixed pool created with the view and reused: adding or freeing an
 ## OmniLight3D per detonation cost about 300 ms per blast on GL Compatibility (Android emulator,
 ## spike log 2026-11-10). Idle lights keep a tiny energy so they are never culled and the set of
@@ -106,6 +117,8 @@ var _warm_frames := 0
 const WARM_FRAMES := 3
 ## Hard impacts below this strength (px/s or impulse) show no effect.
 const IMPACT_EFFECT_MIN := 400.0
+const CRYSTAL_AURA := Color("c27dff")
+const SHIELD_AURA := Color("5fd4ff")
 
 
 func setup(p_world: MissionWorld) -> void:
@@ -121,8 +134,10 @@ func setup(p_world: MissionWorld) -> void:
 	vfx.setup(_library, _focus.x)
 	for c in definition.components:
 		_add_component(c)
+	world.engine.shield_dropped.connect(_on_shield_dropped)
 	operative = OperativeRig.new()
 	operative.library = _library
+	operative.weapon_id = world.engine.selected_weapon_id
 	operative.position = ViewMapping.to_3d(definition.operative, definition.ground_y, 0.3)
 	add_child(operative)
 	_build_preview()
@@ -131,6 +146,7 @@ func setup(p_world: MissionWorld) -> void:
 	world.projectile_removed.connect(_on_projectile_removed)
 	world.component_removed.connect(_on_component_removed)
 	world.blast_happened.connect(_on_blast)
+	world.engine.weapon_selected.connect(operative.set_weapon)
 	world.impact_happened.connect(_on_impact)
 	world.engine.component_state_changed.connect(_on_component_state_changed)
 	_build_blast_lights()
@@ -284,6 +300,7 @@ func plane_to_screen(point: Vector2) -> Vector2:
 
 ## Shows the predicted path for a launch velocity (empty array hides it).
 func show_preview(start: Vector2, velocity: Vector2, gravity_scale: float, seconds: float) -> void:
+	(_preview.material_override as StandardMaterial3D).albedo_color = PREVIEW_COLOURS.get(operative.weapon_id, PREVIEW_COLOURS.kinetic_accelerator)
 	var gravity := float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)) * gravity_scale
 	var multimesh := _preview.multimesh
 	multimesh.visible_instance_count = PREVIEW_DOTS
@@ -351,27 +368,17 @@ func _build_environment() -> void:
 	env.ambient_light_color = Color("8090a0")
 	env.ambient_light_energy = 0.55
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	var atmosphere := ChapterAtmosphere.for_theme(str(_environment_data().get("chapter", "helix")))
 	if has_set:
-		# Production set (dark graphite hall): lower fill, a reflection-only sky so metals read
-		# as metal (ASSET_CONTRACT 9, proposed source), and depth fog so the back recedes.
-		env.ambient_light_color = Color("6c7a88")
-		env.ambient_light_energy = 0.42
-		var sky_material := ProceduralSkyMaterial.new()
-		sky_material.sky_top_color = Color("4a5866")
-		sky_material.sky_horizon_color = Color("8090a0")
-		sky_material.ground_horizon_color = Color("3a4048")
-		sky_material.ground_bottom_color = Color("1b2026")
-		var sky := Sky.new()
-		sky.sky_material = sky_material
-		env.sky = sky
-		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+		# Production set: the chapter's palette (data/atmospheres.json; Helix keeps the approved
+		# slice-E graphite hall): fill, a reflection-only sky so metals read as metal
+		# (ASSET_CONTRACT 9), and depth fog so the back recedes.
+		atmosphere.apply_environment(env)
 		# Depth fog from just behind the gameplay plane (camera ~10.5 m away) to the back wall:
 		# the facility stays crisp and the hall behind it recedes (slice E; the earlier
 		# exponential fog hazed the gameplay plane ~30% and the back wall barely more).
 		env.fog_enabled = true
 		env.fog_mode = Environment.FOG_MODE_DEPTH
-		env.fog_light_color = Color("0e131a")
-		env.fog_density = FOG_DENSITY
 		env.fog_depth_begin = FOG_DEPTH_BEGIN
 		env.fog_depth_end = FOG_DEPTH_END
 		env.fog_depth_curve = 1.0
@@ -386,6 +393,11 @@ func _build_environment() -> void:
 	sun.light_color = Color("dfe8f0")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 40.0
+	if has_set:
+		atmosphere.apply_sun(sun)
+		var rim := atmosphere.make_rim()
+		if rim != null:
+			set_root.add_child(rim)
 	set_root.add_child(sun)
 
 	if _build_set():
@@ -570,6 +582,12 @@ func _build_preview() -> void:
 	add_child(_preview)
 
 
+func _on_shield_dropped(component_id: String) -> void:
+	var visual: ComponentVisual = _meshes.get(component_id)
+	if visual != null and is_instance_valid(visual):
+		visual.remove_aura("shield")
+
+
 func _add_component(c: Dictionary) -> void:
 	var look: Array = KINDS.get(c.kind, DEFAULT_KIND)
 	var visual := ComponentVisual.create(c, look, _library, chapter)
@@ -578,6 +596,11 @@ func _add_component(c: Dictionary) -> void:
 	add_child(visual)
 	_meshes[c.id] = visual
 	_material_of[c.id] = str(c.get("material", ""))
+	# Rules that must read at a glance: Lance-only crystal and shield-protected pieces.
+	if str(c.get("material", "")) == "temporal_crystal":
+		visual.add_aura("crystal", CRYSTAL_AURA)
+	if not (c.get("shielded_by", []) as Array).is_empty():
+		visual.add_aura("shield", SHIELD_AURA)
 	if c.critical_asset:
 		_markers[c.id] = _add_marker()
 		vfx.start_core_idle(c.id, _library, visual.position + Vector3(0.0, 0.0, 0.4))
@@ -663,12 +686,23 @@ func _on_projectile_spawned(projectile: WeaponProjectile) -> void:
 	_projectiles[projectile] = visual
 	if not projectile.weapon_id == "breach_charge":
 		var flash_at: Vector3 = operative.muzzle.global_position if operative != null and operative.muzzle != null else visual.position
-		vfx.muzzle(flash_at, ViewMapping.direction_angle(projectile.linear_velocity))
-		projectile.struck.connect(_on_kinetic_struck)
+		vfx.weapon_muzzle(projectile.weapon_id, flash_at, ViewMapping.direction_angle(projectile.linear_velocity))
+		projectile.struck.connect(_on_weapon_struck)
 
 
-func _on_kinetic_struck(projectile: WeaponProjectile, _target: Node, _impact_speed: float) -> void:
-	vfx.kinetic_hit(ViewMapping.to_3d(projectile.global_position, definition.ground_y, 0.3))
+## Direct-fire strikes (every strike of a piercing round, and its final one). Blast weapons also
+## get their discharge / EMP from `_on_blast`.
+func _on_weapon_struck(projectile: WeaponProjectile, _target: Node, _impact_speed: float) -> void:
+	var at := ViewMapping.to_3d(projectile.global_position, definition.ground_y, 0.3)
+	match projectile.weapon_id:
+		"penetrator":
+			vfx.pierce_spark(at)
+		"temporal_lance":
+			vfx.lance_strike(at)
+		"pulse_cannon", "disruptor":
+			pass
+		_:
+			vfx.kinetic_hit(at)
 
 
 func _on_projectile_removed(projectile: WeaponProjectile) -> void:
@@ -678,21 +712,49 @@ func _on_projectile_removed(projectile: WeaponProjectile) -> void:
 		mesh.queue_free()
 
 
+## The weapon whose blast was last shown ("" for secondary blasts); MissionScreen reads it to pick
+## the blast sound, since the blast signal itself names no weapon.
+var last_blast_weapon := ""
+
+
 func _on_blast(center: Vector2, radius: float) -> void:
 	var at := ViewMapping.to_3d(center, definition.ground_y)
+	last_blast_weapon = _blast_source(center, radius)
+	if BLAST_LOOKS.has(last_blast_weapon):
+		var look: Array = BLAST_LOOKS[last_blast_weapon]
+		var shown := false
+		if last_blast_weapon == "disruptor":
+			shown = vfx.emp_burst(at + Vector3(0.0, 0.0, 0.3), radius)
+		else:
+			shown = vfx.pulse_discharge(at + Vector3(0.0, 0.0, 0.3), radius)
+		_spawn_flash(at, radius / ViewMapping.PX_PER_METRE * 2.0, 0.0 if shown else 0.5, float(look[1]), look[0])
+		return
 	# With the preset the fireball replaces the flash sphere; the pooled light still lights the set.
 	var preset := vfx.breach_explosion(at + Vector3(0.0, 0.0, 0.3), radius)
 	_spawn_flash(at, radius / ViewMapping.PX_PER_METRE * 2.0, 0.0 if preset else 0.7, 4.0)
 
 
-func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float) -> void:
+## The weapon that caused a blast: the struck projectile sitting at its centre; failing that the
+## blast weapon whose radius matches; "" for a secondary (chain) blast.
+func _blast_source(center: Vector2, radius: float) -> String:
+	for projectile: WeaponProjectile in _projectiles.keys():
+		if is_instance_valid(projectile) and projectile.has_struck() and projectile.global_position.distance_to(center) < 2.0:
+			return projectile.weapon_id
+	for id: String in world.engine.weapons:
+		var stats: Dictionary = world.engine.weapons[id].stats
+		if float(stats.blast_damage) > 0.0 and is_equal_approx(float(stats.blast_radius), radius):
+			return id
+	return ""
+
+
+func _spawn_flash(at: Vector3, size: float, alpha: float, light_energy: float, tint: Color = Color(1.0, 0.72, 0.35)) -> void:
 	if not _blast_flashes.is_empty():
 		var entry: Array = _blast_flashes[_next_blast_flash]
 		_next_blast_flash = (_next_blast_flash + 1) % _blast_flashes.size()
 		var flash: MeshInstance3D = entry[0]
 		var material: StandardMaterial3D = entry[1]
 		flash.position = at
-		material.albedo_color.a = alpha
+		material.albedo_color = Color(tint, alpha)
 		var tween := flash.create_tween().set_parallel()
 		tween.tween_property(flash, "scale", Vector3.ONE * size, 0.3).from(Vector3.ONE * 0.2)
 		tween.tween_property(material, "albedo_color:a", 0.0, 0.35)
