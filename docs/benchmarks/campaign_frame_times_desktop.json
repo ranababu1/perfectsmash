@@ -1,0 +1,1061 @@
+{
+	"environment": {
+		"gpu": "NVIDIA GeForce RTX 5060 Ti",
+		"os": "Windows",
+		"renderer": "gl_compatibility"
+	},
+	"missions": [
+		{
+			"frames": 345,
+			"id": "helix_01",
+			"load_ms": 422.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 9.2,
+			"worst_ms": 17.0
+		},
+		{
+			"frames": 705,
+			"id": "helix_02",
+			"load_ms": 59.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 15.8
+		},
+		{
+			"frames": 2656,
+			"id": "helix_03",
+			"load_ms": 37.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.0,
+			"p99_ms": 7.1,
+			"worst_ms": 15.9
+		},
+		{
+			"frames": 546,
+			"id": "helix_04",
+			"load_ms": 47.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 21.3
+		},
+		{
+			"frames": 691,
+			"id": "helix_05",
+			"load_ms": 31.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 18.1
+		},
+		{
+			"frames": 1280,
+			"id": "helix_06",
+			"load_ms": 49.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 20.7
+		},
+		{
+			"frames": 815,
+			"id": "helix_07",
+			"load_ms": 36.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.7,
+			"worst_ms": 15.5
+		},
+		{
+			"frames": 520,
+			"id": "helix_08",
+			"load_ms": 30.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.9,
+			"worst_ms": 15.7
+		},
+		{
+			"frames": 956,
+			"id": "helix_09",
+			"load_ms": 33.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.7,
+			"worst_ms": 16.1
+		},
+		{
+			"frames": 872,
+			"id": "helix_10",
+			"load_ms": 30.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.2,
+			"worst_ms": 19.6
+		},
+		{
+			"frames": 933,
+			"id": "helix_11",
+			"load_ms": 28.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.6,
+			"worst_ms": 15.4
+		},
+		{
+			"frames": 1316,
+			"id": "helix_12",
+			"load_ms": 29.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 16.1
+		},
+		{
+			"frames": 657,
+			"id": "helix_13",
+			"load_ms": 28.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.7,
+			"worst_ms": 14.9
+		},
+		{
+			"frames": 975,
+			"id": "helix_14",
+			"load_ms": 31.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 15.5
+		},
+		{
+			"frames": 718,
+			"id": "helix_15",
+			"load_ms": 29.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 26.5
+		},
+		{
+			"frames": 1029,
+			"id": "helix_16",
+			"load_ms": 28.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.6,
+			"worst_ms": 25.6
+		},
+		{
+			"frames": 1133,
+			"id": "helix_17",
+			"load_ms": 28.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.7,
+			"worst_ms": 22.3
+		},
+		{
+			"frames": 842,
+			"id": "helix_18",
+			"load_ms": 30.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 22.9
+		},
+		{
+			"frames": 732,
+			"id": "helix_19",
+			"load_ms": 28.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.4,
+			"worst_ms": 21.2
+		},
+		{
+			"frames": 2300,
+			"id": "helix_20",
+			"load_ms": 32.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.6,
+			"worst_ms": 17.8
+		},
+		{
+			"frames": 489,
+			"id": "vita_01",
+			"load_ms": 81.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.2,
+			"worst_ms": 15.9
+		},
+		{
+			"frames": 639,
+			"id": "vita_02",
+			"load_ms": 42.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.7,
+			"worst_ms": 15.7
+		},
+		{
+			"frames": 552,
+			"id": "vita_03",
+			"load_ms": 33.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.9,
+			"worst_ms": 16.0
+		},
+		{
+			"frames": 570,
+			"id": "vita_04",
+			"load_ms": 51.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.1,
+			"worst_ms": 16.1
+		},
+		{
+			"frames": 584,
+			"id": "vita_05",
+			"load_ms": 30.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.7,
+			"worst_ms": 17.8
+		},
+		{
+			"frames": 953,
+			"id": "vita_06",
+			"load_ms": 31.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 16.8
+		},
+		{
+			"frames": 829,
+			"id": "vita_07",
+			"load_ms": 32.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 16.1
+		},
+		{
+			"frames": 733,
+			"id": "vita_08",
+			"load_ms": 32.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.9,
+			"worst_ms": 17.9
+		},
+		{
+			"frames": 705,
+			"id": "vita_09",
+			"load_ms": 27.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.1,
+			"worst_ms": 16.4
+		},
+		{
+			"frames": 1038,
+			"id": "vita_10",
+			"load_ms": 28.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.8,
+			"worst_ms": 15.8
+		},
+		{
+			"frames": 724,
+			"id": "vita_11",
+			"load_ms": 27.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.8,
+			"worst_ms": 24.7
+		},
+		{
+			"frames": 1096,
+			"id": "vita_12",
+			"load_ms": 27.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.7,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 1132,
+			"id": "vita_13",
+			"load_ms": 28.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 8.6,
+			"worst_ms": 15.6
+		},
+		{
+			"frames": 624,
+			"id": "vita_14",
+			"load_ms": 26.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.8,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 812,
+			"id": "vita_15",
+			"load_ms": 27.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 16.2
+		},
+		{
+			"frames": 1190,
+			"id": "vita_16",
+			"load_ms": 28.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 8.0,
+			"worst_ms": 23.6
+		},
+		{
+			"frames": 1112,
+			"id": "vita_17",
+			"load_ms": 28.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.7,
+			"worst_ms": 19.7
+		},
+		{
+			"frames": 8349,
+			"id": "vita_18",
+			"load_ms": 28.6,
+			"median_ms": 6.9,
+			"over_33ms": 1,
+			"p95_ms": 7.0,
+			"p99_ms": 7.2,
+			"worst_ms": 48.2
+		},
+		{
+			"frames": 1027,
+			"id": "vita_19",
+			"load_ms": 26.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 15.6
+		},
+		{
+			"frames": 8992,
+			"id": "vita_20",
+			"load_ms": 30.2,
+			"median_ms": 6.9,
+			"over_33ms": 1,
+			"p95_ms": 7.1,
+			"p99_ms": 7.2,
+			"worst_ms": 34.2
+		},
+		{
+			"frames": 605,
+			"id": "nova_grid_01",
+			"load_ms": 87.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 17.2
+		},
+		{
+			"frames": 498,
+			"id": "nova_grid_02",
+			"load_ms": 50.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.6,
+			"worst_ms": 16.8
+		},
+		{
+			"frames": 855,
+			"id": "nova_grid_03",
+			"load_ms": 46.9,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 18.4
+		},
+		{
+			"frames": 617,
+			"id": "nova_grid_04",
+			"load_ms": 43.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 16.2
+		},
+		{
+			"frames": 440,
+			"id": "nova_grid_05",
+			"load_ms": 45.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 11.5,
+			"worst_ms": 18.0
+		},
+		{
+			"frames": 851,
+			"id": "nova_grid_06",
+			"load_ms": 38.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 16.1
+		},
+		{
+			"frames": 436,
+			"id": "nova_grid_07",
+			"load_ms": 44.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.6,
+			"worst_ms": 17.0
+		},
+		{
+			"frames": 681,
+			"id": "nova_grid_08",
+			"load_ms": 46.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.3,
+			"worst_ms": 16.6
+		},
+		{
+			"frames": 618,
+			"id": "nova_grid_09",
+			"load_ms": 37.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 17.1
+		},
+		{
+			"frames": 788,
+			"id": "nova_grid_10",
+			"load_ms": 45.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 16.5
+		},
+		{
+			"frames": 682,
+			"id": "nova_grid_11",
+			"load_ms": 39.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 32.8
+		},
+		{
+			"frames": 624,
+			"id": "nova_grid_12",
+			"load_ms": 40.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 8.5,
+			"worst_ms": 16.7
+		},
+		{
+			"frames": 692,
+			"id": "nova_grid_13",
+			"load_ms": 38.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 18.1
+		},
+		{
+			"frames": 610,
+			"id": "nova_grid_14",
+			"load_ms": 41.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 18.4
+		},
+		{
+			"frames": 815,
+			"id": "nova_grid_15",
+			"load_ms": 39.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 17.2
+		},
+		{
+			"frames": 750,
+			"id": "nova_grid_16",
+			"load_ms": 39.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.7,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 1125,
+			"id": "nova_grid_17",
+			"load_ms": 38.2,
+			"median_ms": 6.9,
+			"over_33ms": 1,
+			"p95_ms": 7.2,
+			"p99_ms": 7.4,
+			"worst_ms": 39.3
+		},
+		{
+			"frames": 913,
+			"id": "nova_grid_18",
+			"load_ms": 41.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 16.8
+		},
+		{
+			"frames": 810,
+			"id": "nova_grid_19",
+			"load_ms": 41.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 16.2
+		},
+		{
+			"frames": 1518,
+			"id": "nova_grid_20",
+			"load_ms": 41.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.8,
+			"worst_ms": 16.4
+		},
+		{
+			"frames": 509,
+			"id": "civitas_01",
+			"load_ms": 101.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 23.7
+		},
+		{
+			"frames": 377,
+			"id": "civitas_02",
+			"load_ms": 54.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.2,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 381,
+			"id": "civitas_03",
+			"load_ms": 50.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.4,
+			"worst_ms": 18.2
+		},
+		{
+			"frames": 596,
+			"id": "civitas_04",
+			"load_ms": 40.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.5,
+			"worst_ms": 15.6
+		},
+		{
+			"frames": 645,
+			"id": "civitas_05",
+			"load_ms": 34.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.3,
+			"worst_ms": 16.4
+		},
+		{
+			"frames": 519,
+			"id": "civitas_06",
+			"load_ms": 43.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.7,
+			"worst_ms": 19.4
+		},
+		{
+			"frames": 467,
+			"id": "civitas_07",
+			"load_ms": 27.7,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 15.9
+		},
+		{
+			"frames": 1014,
+			"id": "civitas_08",
+			"load_ms": 27.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 16.7
+		},
+		{
+			"frames": 602,
+			"id": "civitas_09",
+			"load_ms": 27.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 17.1
+		},
+		{
+			"frames": 659,
+			"id": "civitas_10",
+			"load_ms": 40.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.4,
+			"worst_ms": 16.6
+		},
+		{
+			"frames": 847,
+			"id": "civitas_11",
+			"load_ms": 32.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.3,
+			"p99_ms": 8.7,
+			"worst_ms": 16.2
+		},
+		{
+			"frames": 611,
+			"id": "civitas_12",
+			"load_ms": 43.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.4,
+			"worst_ms": 24.1
+		},
+		{
+			"frames": 635,
+			"id": "civitas_13",
+			"load_ms": 30.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.0,
+			"worst_ms": 17.0
+		},
+		{
+			"frames": 705,
+			"id": "civitas_14",
+			"load_ms": 45.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.4,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 1135,
+			"id": "civitas_15",
+			"load_ms": 28.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.3,
+			"p99_ms": 7.8,
+			"worst_ms": 15.9
+		},
+		{
+			"frames": 664,
+			"id": "civitas_16",
+			"load_ms": 43.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.5,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 759,
+			"id": "civitas_17",
+			"load_ms": 45.9,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.8,
+			"worst_ms": 16.7
+		},
+		{
+			"frames": 784,
+			"id": "civitas_18",
+			"load_ms": 29.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.1,
+			"worst_ms": 15.7
+		},
+		{
+			"frames": 793,
+			"id": "civitas_19",
+			"load_ms": 44.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.1,
+			"worst_ms": 16.8
+		},
+		{
+			"frames": 1400,
+			"id": "civitas_20",
+			"load_ms": 44.9,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 17.1
+		},
+		{
+			"frames": 496,
+			"id": "meridian_01",
+			"load_ms": 86.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.3,
+			"p99_ms": 11.5,
+			"worst_ms": 15.1
+		},
+		{
+			"frames": 550,
+			"id": "meridian_02",
+			"load_ms": 52.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.4,
+			"worst_ms": 14.8
+		},
+		{
+			"frames": 609,
+			"id": "meridian_03",
+			"load_ms": 40.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.6,
+			"worst_ms": 15.7
+		},
+		{
+			"frames": 1437,
+			"id": "meridian_04",
+			"load_ms": 32.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.4,
+			"worst_ms": 14.7
+		},
+		{
+			"frames": 606,
+			"id": "meridian_05",
+			"load_ms": 35.6,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.3,
+			"worst_ms": 15.0
+		},
+		{
+			"frames": 619,
+			"id": "meridian_06",
+			"load_ms": 36.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.9,
+			"worst_ms": 16.3
+		},
+		{
+			"frames": 632,
+			"id": "meridian_07",
+			"load_ms": 35.3,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 15.0
+		},
+		{
+			"frames": 1171,
+			"id": "meridian_08",
+			"load_ms": 39.2,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.7,
+			"worst_ms": 15.6
+		},
+		{
+			"frames": 835,
+			"id": "meridian_09",
+			"load_ms": 35.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 14.5
+		},
+		{
+			"frames": 753,
+			"id": "meridian_10",
+			"load_ms": 44.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.5,
+			"worst_ms": 14.8
+		},
+		{
+			"frames": 628,
+			"id": "meridian_11",
+			"load_ms": 33.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.8,
+			"worst_ms": 14.9
+		},
+		{
+			"frames": 979,
+			"id": "meridian_12",
+			"load_ms": 38.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.9,
+			"worst_ms": 15.3
+		},
+		{
+			"frames": 1205,
+			"id": "meridian_13",
+			"load_ms": 46.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 7.9,
+			"worst_ms": 14.5
+		},
+		{
+			"frames": 972,
+			"id": "meridian_14",
+			"load_ms": 47.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 17.9
+		},
+		{
+			"frames": 1009,
+			"id": "meridian_15",
+			"load_ms": 51.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 17.3
+		},
+		{
+			"frames": 1246,
+			"id": "meridian_16",
+			"load_ms": 27.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.1,
+			"p99_ms": 7.2,
+			"worst_ms": 18.9
+		},
+		{
+			"frames": 627,
+			"id": "meridian_17",
+			"load_ms": 33.8,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 9.0,
+			"worst_ms": 14.7
+		},
+		{
+			"frames": 666,
+			"id": "meridian_18",
+			"load_ms": 37.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.6,
+			"worst_ms": 15.4
+		},
+		{
+			"frames": 859,
+			"id": "meridian_19",
+			"load_ms": 35.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.0,
+			"worst_ms": 15.1
+		},
+		{
+			"frames": 1687,
+			"id": "meridian_20",
+			"load_ms": 48.5,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 8.5,
+			"worst_ms": 16.1
+		}
+	],
+	"worst_p99": [
+		{
+			"frames": 440,
+			"id": "nova_grid_05",
+			"load_ms": 45.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 11.5,
+			"worst_ms": 18.0
+		},
+		{
+			"frames": 496,
+			"id": "meridian_01",
+			"load_ms": 86.4,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.3,
+			"p99_ms": 11.5,
+			"worst_ms": 15.1
+		},
+		{
+			"frames": 664,
+			"id": "civitas_16",
+			"load_ms": 43.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.5,
+			"worst_ms": 16.9
+		},
+		{
+			"frames": 659,
+			"id": "civitas_10",
+			"load_ms": 40.0,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.4,
+			"worst_ms": 16.6
+		},
+		{
+			"frames": 681,
+			"id": "nova_grid_08",
+			"load_ms": 46.1,
+			"median_ms": 6.9,
+			"over_33ms": 0,
+			"p95_ms": 7.2,
+			"p99_ms": 10.3,
+			"worst_ms": 16.6
+		}
+	]
+}

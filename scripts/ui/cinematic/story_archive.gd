@@ -18,6 +18,8 @@ const SPACE_XL := 32
 
 var _catalog: CinematicCatalog
 var _progress: ProgressData
+## Integrated assets (production UI theme, like CampaignScreen); set before entering the tree.
+var library: AssetLibrary
 var _list: VBoxContainer
 var _back_button: Button
 
@@ -29,7 +31,8 @@ func _init(catalog: CinematicCatalog = null, progress: ProgressData = null) -> v
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	theme = UiKit.make_theme()
+	var production_theme := library.resource(CampaignScreen.THEME_ID) as Theme if library != null else null
+	theme = production_theme if production_theme != null else UiKit.make_theme()
 	var background := ColorRect.new()
 	background.color = BACKGROUND
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

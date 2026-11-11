@@ -15,13 +15,18 @@ signal next_requested
 signal exit_requested
 
 ## Bottom hint per weapon: what it is for and how to aim it.
+const BUZZ_FIRE_MS := 18
+const BUZZ_BLAST_MS := 45
+const BUZZ_CORE_MS := 90
+## Last requested vibration (ms, 0 when vibration is off): lets tests check the setting.
+var last_buzz_ms := 0
 const HINTS := {
 	"kinetic_accelerator": "Kinetic Accelerator: touch the target · release to fire",
 	"breach_charge": "Breach Charge: touch where to throw · farther = stronger · release to fire",
-	"penetrator": "Penetrator: punches through glass and light panels · touch the target · release to fire",
-	"pulse_cannon": "Pulse Cannon: overloads energy cells · touch the target · release to fire",
-	"disruptor": "Disruptor: EMP through walls, burns out electronics and shield emitters · release to fire",
-	"temporal_lance": "Temporal Lance: passes through three pieces, breaks temporal crystal · release to fire",
+	"penetrator": "Penetrator: pierces glass and light panels · release to fire",
+	"pulse_cannon": "Pulse Cannon: overloads energy cells · release to fire",
+	"disruptor": "Disruptor: EMP through walls · burns out electronics",
+	"temporal_lance": "Temporal Lance: pierces three · breaks temporal crystal",
 }
 const DEFAULT_MISSION := "res://data/missions/helix_08.json"
 const CANCEL_DISTANCE := 70.0
@@ -125,6 +130,7 @@ func _ready() -> void:
 	# The view resolves which weapon caused a blast (after its own handler); chain blasts keep the
 	# Breach detonation sound.
 	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void:
+		buzz(BUZZ_BLAST_MS)
 		var source: String = view.last_blast_weapon if view != null else ""
 		if MissionAudio.weapon_sounds(source, "blast").is_empty():
 			_play("breach_detonate")
@@ -190,14 +196,35 @@ func update_aim(screen_position: Vector2) -> void:
 	if point == null:
 		return
 	var offset: Vector2 = point - world.muzzle_position()
+	var weapon := engine.selected_weapon()
 	_aim_direction = offset
 	_aim_power = clampf(offset.length() / BREACH_FULL_POWER_DISTANCE, 0.0, 1.0)
 	if offset.length() < CANCEL_DISTANCE:
 		view.hide_preview()
 		return
-	var weapon := engine.selected_weapon()
-	view.operative.set_aim(ViewMapping.direction_angle(offset))
-	view.show_preview(world.muzzle_position(), weapon.launch_velocity(offset, _aim_power), float(weapon.stats.gravity_scale), float(weapon.stats.aim_preview_seconds))
+	# Direct weapons: "touch the target" means the round passes through the touched point, so the
+	# launch angle compensates for the round's (small) gravity drop.
+	if not weapon.spec.is_lobbed():
+		var gravity := float(ProjectSettings.get_setting("physics/2d/default_gravity")) * float(weapon.stats.gravity_scale)
+		_aim_direction = ballistic_direction(offset, float(weapon.stats.launch_speed), gravity) * offset.length()
+	view.operative.set_aim(ViewMapping.direction_angle(_aim_direction))
+	view.show_preview(world.muzzle_position(), weapon.launch_velocity(_aim_direction, _aim_power), float(weapon.stats.gravity_scale), float(weapon.stats.aim_preview_seconds))
+
+
+## Unit launch direction (y down) for a fixed-speed round to pass through `offset` under `gravity`
+## (px/s², downward), on the flatter of the two arcs. Falls back to the straight line when the
+## point is out of reach or there is no gravity.
+static func ballistic_direction(offset: Vector2, speed: float, gravity: float) -> Vector2:
+	var x := absf(offset.x)
+	var y := -offset.y
+	if gravity <= 0.0 or x < 1.0 or speed <= 0.0:
+		return offset.normalized()
+	var v2 := speed * speed
+	var root := v2 * v2 - gravity * (gravity * x * x + 2.0 * y * v2)
+	if root < 0.0:
+		return offset.normalized()
+	var angle := atan((v2 - sqrt(root)) / (gravity * x))
+	return Vector2(cos(angle) * signf(offset.x), -sin(angle))
 
 
 ## Fires on release when the aim is valid and the weapon is ready. Returns true if it fired.
@@ -217,6 +244,7 @@ func release_aim() -> bool:
 		return false
 	view.operative.fire()
 	MissionAudio.play_weapon_event(audio, weapon_id, "fire")
+	buzz(BUZZ_FIRE_MS)
 	# Every strike of this round (a piercing round strikes several times) plays its strike sound.
 	projectile.struck.connect(func(_p: WeaponProjectile, target: Node, _speed: float) -> void:
 		if target is ComponentBody:
@@ -336,6 +364,7 @@ func _record_result() -> void:
 func _on_component_destroyed(component_id: String) -> void:
 	if engine.definition.critical_asset_ids().has(component_id):
 		_play("core_destroyed")
+		buzz(BUZZ_CORE_MS)
 	elif audio != null:
 		audio.play_destroyed(str(engine.definition.component(component_id).get("material", "")))
 	hud.update_objectives.call_deferred(engine.objectives)
@@ -357,6 +386,13 @@ func _on_objective_changed(objective_id: String, status: int) -> void:
 func _on_reload_completed(weapon_id: String) -> void:
 	if weapon_id == engine.selected_weapon_id and engine.is_active():
 		MissionAudio.play_weapon_event(audio, weapon_id, "ready")
+
+
+## Haptic feedback (Settings → Vibration). Durations in ms; no-op on desktop or when switched off.
+func buzz(milliseconds: int) -> void:
+	last_buzz_ms = milliseconds if progress == null or progress.vibration_enabled else 0
+	if last_buzz_ms > 0 and OS.has_feature("mobile"):
+		Input.vibrate_handheld(milliseconds)
 
 
 func _play(sound: String) -> void:

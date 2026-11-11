@@ -21,6 +21,8 @@ const SPACE_L := 24
 const SPACE_XL := 32
 ## Minimum touch target height.
 const TARGET_HEIGHT := 88.0
+## Main-menu column width (fits two half-width buttons side by side).
+const MENU_WIDTH := 560.0
 const ROMAN := ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 const BACKGROUND := Color("121626")
 
@@ -121,11 +123,14 @@ func show_menu() -> void:
 	upgrades.name = "UpgradesButton"
 	var archive := _action("Story Archive", _request.bind(archive_requested))
 	archive.name = "ArchiveButton"
-	var settings := _action("Settings", _request_settings)
-	settings.name = "SettingsButton"
-	for b: Button in [upgrades, archive, settings]:
+	for b: Button in [upgrades, archive]:
+		# Two half-width buttons share the column (the default 420 px minimum would overflow).
+		b.custom_minimum_size.x = 0.0
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(b)
+	var settings := _action("Settings", _request_settings)
+	settings.name = "SettingsButton"
+	box.add_child(settings)
 	if not continue_button.disabled:
 		UiKit.focus_default(continue_button)
 	else:
@@ -223,7 +228,7 @@ func _reset(node_name: String, with_back: bool = false) -> VBoxContainer:
 		return column
 	var center := CenterContainer.new()
 	margin.add_child(center)
-	column.custom_minimum_size.x = 420.0
+	column.custom_minimum_size.x = MENU_WIDTH
 	center.add_child(column)
 	return column
 
@@ -264,7 +269,7 @@ func _tile(text: String, node_name: String) -> Button:
 
 
 func _action(text: String, on_press: Callable, primary: bool = false) -> Button:
-	var b := UiKit.primary_button(text, 420.0) if primary else UiKit.button(text, 420.0)
+	var b := UiKit.primary_button(text, MENU_WIDTH) if primary else UiKit.button(text, MENU_WIDTH)
 	b.custom_minimum_size.y = TARGET_HEIGHT
 	b.pressed.connect(on_press)
 	return b
@@ -304,7 +309,8 @@ func _slot_title(s: MissionCatalog.Slot) -> String:
 
 
 func _slot_text(s: MissionCatalog.Slot, state: SlotState) -> String:
-	var head := "%02d" % s.index
+	var title := s.display_name()
+	var head := "%02d" % s.index if title.is_empty() else "%02d  %s" % [s.index, title]
 	match state:
 		SlotState.COMPLETED:
 			return "%s  ✓\nBest %d pts" % [head, int(_progress.mission_result(s.id).get("best_points", 0))]

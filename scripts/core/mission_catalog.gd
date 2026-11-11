@@ -20,6 +20,14 @@ class Slot:
 	## 1-based position in the whole campaign (chapter.first_level + index - 1).
 	var level_number := 0
 	var authored := false
+	var _name := ""
+
+	## The mission's display name from its file ("" when not authored); read once.
+	func display_name() -> String:
+		if _name.is_empty() and authored and FileAccess.file_exists(path):
+			var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+			_name = str((data as Dictionary).get("name", "")) if data is Dictionary else ""
+		return _name
 
 
 var chapters: ChapterCatalog

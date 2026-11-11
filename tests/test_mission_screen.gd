@@ -218,3 +218,29 @@ func test_drag_starting_on_a_hud_button_never_fires() -> void:
 	assert_eq(screen.engine.weapons.kinetic_accelerator.ammo, ammo, "a drag that starts on a HUD button never fires")
 	assert_true(screen.world.projectiles.is_empty())
 	await _free(main)
+
+
+## The Settings vibration switch drives mission haptics (firing, blasts, core destroyed).
+func test_vibration_follows_the_setting() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	main.progress.vibration_enabled = true
+	screen.buzz(MissionScreen.BUZZ_FIRE_MS)
+	assert_eq(screen.last_buzz_ms, MissionScreen.BUZZ_FIRE_MS)
+	main.progress.vibration_enabled = false
+	screen.buzz(MissionScreen.BUZZ_CORE_MS)
+	assert_eq(screen.last_buzz_ms, 0, "no vibration when switched off")
+	await _free(main)
+
+
+## "Touch the target · release to fire": a direct round passes through the touched point.
+func test_direct_aim_compensates_gravity_drop() -> void:
+	var gravity := 980.0 * 0.25
+	var offset := Vector2(700.0, -40.0)
+	var direction := MissionScreen.ballistic_direction(offset, 1700.0, gravity)
+	var velocity := direction * 1700.0
+	var t := offset.x / velocity.x
+	var y_at_target := velocity.y * t + 0.5 * gravity * t * t
+	assert_near(y_at_target, offset.y, 0.5, "trajectory passes through the touched point")
+	assert_true(direction.y < offset.normalized().y, "aims slightly above the straight line")
+	assert_eq(MissionScreen.ballistic_direction(Vector2(-300, 0), 1700.0, 0.0), Vector2(-1, 0), "no gravity: straight")
