@@ -1,0 +1,160 @@
+{
+	"id": "helix_04",
+	"name": "Supply Chain",
+	"chapter": 1,
+	"briefing": "Food and medicine for the district are sorted here, by AURA's rules. The sorting controller rides a stack of crates behind a blast wall. Lob a charge over the wall and let the stack fall.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 10
+		},
+		"breach_charge": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "loading_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 720,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "crate_a1",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 840,
+			"y": 615,
+			"w": 50,
+			"h": 50
+		},
+		{
+			"id": "crate_a2",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 840,
+			"y": 565,
+			"w": 50,
+			"h": 50,
+			"supports": [
+				"crate_a1"
+			]
+		},
+		{
+			"id": "crate_a3",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 840,
+			"y": 515,
+			"w": 50,
+			"h": 50,
+			"supports": [
+				"crate_a2"
+			]
+		},
+		{
+			"id": "sort_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 840,
+			"y": 460,
+			"w": 60,
+			"h": 60,
+			"health_scale": 3.0,
+			"critical_asset": true,
+			"supports": [
+				"crate_a3"
+			]
+		},
+		{
+			"id": "crate_b1",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 960,
+			"y": 615,
+			"w": 50,
+			"h": 50
+		},
+		{
+			"id": "crate_b2",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 960,
+			"y": 565,
+			"w": 50,
+			"h": 50,
+			"supports": [
+				"crate_b1"
+			]
+		},
+		{
+			"id": "sort_cell",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 960,
+			"y": 520,
+			"w": 36,
+			"h": 40,
+			"supports": [
+				"crate_b2"
+			]
+		},
+		{
+			"id": "gantry",
+			"kind": "logistics_gantry",
+			"material": "lightweight_alloy",
+			"x": 1140,
+			"y": 590,
+			"w": 120,
+			"h": 100
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the sorting controller",
+			"targets": [
+				"sort_core"
+			]
+		},
+		{
+			"id": "stock",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scatter the crate stacks",
+			"targets": [
+				"crate_a1",
+				"crate_a2",
+				"crate_a3",
+				"crate_b1",
+				"crate_b2"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

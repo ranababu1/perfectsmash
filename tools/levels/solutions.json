@@ -1,0 +1,199 @@
+{
+	"helix_01": [
+		{
+			"name": "column breach + kinetic finish",
+			"steps": [
+				{
+					"weapon": "breach_charge",
+					"target": "pillar_l"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "aura_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "aura_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "aura_core"
+				}
+			]
+		}
+	],
+	"helix_02": [
+		{
+			"name": "aim high: controller",
+			"steps": [
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				}
+			]
+		},
+		{
+			"name": "aim low: frame column",
+			"steps": [
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_col_l"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_col_l"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "gate_core"
+				}
+			]
+		}
+	],
+	"helix_03": [
+		{
+			"name": "weak point: left column",
+			"steps": [
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "tower_col_l"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "tower_col_l"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "traffic_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "traffic_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "traffic_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "traffic_core"
+				}
+			]
+		}
+	],
+	"helix_04": [
+		{
+			"name": "lob onto the stack",
+			"steps": [
+				{
+					"weapon": "breach_charge",
+					"target": "sort_core"
+				},
+				{
+					"weapon": "breach_charge",
+					"target": "sort_core"
+				},
+				{
+					"weapon": "breach_charge",
+					"target": "sort_cell"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "sort_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "sort_core"
+				}
+			]
+		}
+	],
+	"helix_05": [
+		{
+			"name": "open the lane",
+			"steps": [
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "pod_1"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "pod_2"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				}
+			]
+		},
+		{
+			"name": "lob onto the power cell",
+			"steps": [
+				{
+					"weapon": "breach_charge",
+					"target": "relay_cell"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "pod_1"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "pod_2"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				},
+				{
+					"weapon": "kinetic_accelerator",
+					"target": "relay_core"
+				}
+			]
+		}
+	]
+}
