@@ -1,0 +1,13 @@
+[
+	{
+		"name": "weak point: left column",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "tower_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "tower_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "traffic_core"},
+			{"weapon": "kinetic_accelerator", "target": "traffic_core"},
+			{"weapon": "kinetic_accelerator", "target": "traffic_core"},
+			{"weapon": "kinetic_accelerator", "target": "traffic_core"}
+		]
+	}
+]

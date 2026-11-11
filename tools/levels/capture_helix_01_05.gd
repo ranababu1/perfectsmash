@@ -1,6 +1,6 @@
 extends SceneTree
 ## Gameplay evidence for Helix 01-05 through the real app: main menu, chapter and mission select,
-## then each mission played with its first recorded solution (tools/levels/solutions.json):
+## then each mission played with its first recorded solution (tools/levels/solutions/<id>.json):
 ## start frame, after the first shot, and the result panel. Writes WebP to docs/images/helix_01_05/.
 ## Needs a window (not --headless):
 ##   godot_console --resolution 1280x720 -s tools/levels/capture_helix_01_05.gd
@@ -22,7 +22,7 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR))
 	if FileAccess.file_exists(CAPTURE_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(CAPTURE_SAVE))
-	var solutions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tools/levels/solutions.json"))
+	var solutions: Dictionary = preload("res://tools/levels/solution_book.gd").load_all()
 	# Live mouse/touch over the window must not drive the capture.
 	root.gui_disable_input = true
 	root.set_disable_input(true)

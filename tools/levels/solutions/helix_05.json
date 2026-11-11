@@ -1,0 +1,26 @@
+[
+	{
+		"name": "open the lane",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "pod_1"},
+			{"weapon": "kinetic_accelerator", "target": "pod_2"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
+		]
+	},
+	{
+		"name": "lob onto the power cell",
+		"steps": [
+			{"weapon": "breach_charge", "target": "relay_cell"},
+			{"weapon": "kinetic_accelerator", "target": "pod_1"},
+			{"weapon": "kinetic_accelerator", "target": "pod_2"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
+		]
+	}
+]

@@ -1,0 +1,13 @@
+[
+	{
+		"name": "lob onto the stack",
+		"steps": [
+			{"weapon": "breach_charge", "target": "sort_core"},
+			{"weapon": "breach_charge", "target": "sort_core"},
+			{"weapon": "breach_charge", "target": "sort_cell"},
+			{"weapon": "breach_charge", "target": "sort_core"},
+			{"weapon": "kinetic_accelerator", "target": "sort_core"},
+			{"weapon": "kinetic_accelerator", "target": "sort_core"}
+		]
+	}
+]

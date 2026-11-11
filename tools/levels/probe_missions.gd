@@ -3,14 +3,15 @@ extends SceneTree
 ##   godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- scout helix_02
 ##   godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve helix_02 [replays]
 ##   godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve all [replays]
+##   godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve vita [replays]   (a whole chapter)
 ## scout: for every component, whether the Kinetic Accelerator has a clear line and whether a
 ##        Breach lob can make first contact with it (nothing is fired).
 ## solve: stand check (180 frames untouched), then plays each recorded solution in
-##        tools/levels/solutions.json `replays` times and prints success, shots, time.
+##        tools/levels/solutions/<id>.json `replays` times and prints success, shots, time.
 ## Exit code 1 when a stand check fails or a solution wins fewer than ceil(2/3) of its replays.
 
 const Solver := preload("res://tools/levels/mission_solver.gd")
-const SOLUTIONS := "res://tools/levels/solutions.json"
+const SolutionBook := preload("res://tools/levels/solution_book.gd")
 
 
 func _initialize() -> void:
@@ -22,8 +23,11 @@ func _run() -> void:
 	var mode := args[0] if args.size() > 0 else "solve"
 	var which := args[1] if args.size() > 1 else "all"
 	var replays := int(args[2]) if args.size() > 2 else 3
-	var solutions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SOLUTIONS))
-	var ids: Array = solutions.keys() if which == "all" else [which]
+	var solutions: Dictionary = SolutionBook.load_all()
+	# "all", one mission id, or a chapter theme prefix such as "vita" (vita_01..vita_20).
+	var ids: Array = solutions.keys() if which == "all" else solutions.keys().filter(func(k: String) -> bool: return k.begins_with(which + "_"))
+	if which != "all" and ids.is_empty():
+		ids = [which]
 	ids.sort()
 	var failed := false
 	for id: String in ids:

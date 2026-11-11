@@ -1,6 +1,6 @@
 extends TestCase
 ## Helix missions 01-05: each facility stands until attacked, each recorded solution in
-## tools/levels/solutions.json wins, and the five play back to back through the real app
+## tools/levels/solutions/<id>.json wins, and the five play back to back through the real app
 ## (MissionScreen scoring, save file, linear unlocks, Next mission, restart).
 ## Physics assertions are outcome categories (win / within budget), never exact values.
 
@@ -10,7 +10,7 @@ const MainScript := preload("res://scripts/main.gd")
 const TEST_SAVE := "user://test_helix_missions_progress.json"
 const MISSIONS := ["helix_01", "helix_02", "helix_03", "helix_04", "helix_05"]
 
-var _solutions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tools/levels/solutions.json"))
+var _solutions: Dictionary = preload("res://tools/levels/solution_book.gd").load_all()
 
 
 func _path(id: String) -> String:

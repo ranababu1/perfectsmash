@@ -1,0 +1,21 @@
+[
+	{
+		"name": "aim high: controller",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"}
+		]
+	},
+	{
+		"name": "aim low: frame column",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "gate_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "gate_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "kinetic_accelerator", "target": "gate_core"}
+		]
+	}
+]

@@ -6,6 +6,9 @@ extends RefCounted
 ##   {"weapon": "breach_charge", "target": "<component id>"}         lobbed; first contact = target
 ##   {"weapon": "breach_charge", "point": [x, y]}                     lobbed through a plane point
 ## Optional "lift": [px, ...] overrides the kinetic aim offsets tried above the target centre.
+## Optional "through": [component ids] a piercing round (Penetrator, Temporal Lance) is aimed through.
+## Every direct weapon (Kinetic, Penetrator, Pulse Cannon, Disruptor, Lance) aims with the arc
+## preview; lobbed blast weapons (Breach) use the lob sweep.
 
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 const SHOT_TIMEOUT := 12.0
@@ -121,7 +124,7 @@ static func aim(world: MissionWorld, step: Dictionary) -> Dictionary:
 		return _lob(world, weapon, point, target)
 	if target == null:
 		return {"direction": Vector2.ZERO, "power": 1.0, "blocker": "no target"}
-	var plan: Dictionary = ProbeAim.aim(world, target)
+	var plan: Dictionary = ProbeAim.aim(world, target, step.get("through", []))
 	plan["power"] = 1.0
 	return plan
 
