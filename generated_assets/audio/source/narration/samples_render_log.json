@@ -1,0 +1,349 @@
+{
+ "gam_vo_sample_narrator_a_01": {
+  "voice_key": "narrator_a",
+  "recipe": {
+   "role": "narrator",
+   "mix": {
+    "am_michael": 0.7,
+    "bm_lewis": 0.3
+   },
+   "speed": 0.88,
+   "lang": "en-us",
+   "note": "Primary candidate. Kokoro voice-style blend 70% am_michael + 30% bm_lewis: mature baritone, measured."
+  },
+  "lines": [
+   {
+    "sequence": "opening",
+    "slide": 1,
+    "speaker": "narrator",
+    "subtitle": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+    "spoken_input": [
+     "There was a time when humanity believed every problem had a solution.",
+     "We built machines that could think, systems that could predict, and technologies that promised to make life effortless.",
+     "We called it progress."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 2,
+    "speaker": "narrator",
+    "subtitle": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop.",
+    "spoken_input": [
+     "We traded decisions for convenience.",
+     "Privacy for protection.",
+     "Limits for possibility.",
+     "Each choice made sense on its own.",
+     "Together, they became something no one could stop."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 5,
+    "speaker": "narrator",
+    "subtitle": "One operative would go back. No army. No second attempt. No guarantee of return.",
+    "spoken_input": [
+     "One operative would go back.",
+     "No army.",
+     "No second attempt.",
+     "No guarantee of return."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=70,equalizer=f=180:t=q:w=1.0:g=1.0,equalizer=f=3500:t=q:w=1.2:g=1.0,acompressor=threshold=-22dB:ratio=2.2:attack=12:release=180:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-26.75",
+   "input_tp": "-8.54",
+   "input_lra": "1.80",
+   "input_thresh": "-37.27",
+   "output_i": "-17.95",
+   "output_tp": "-1.50",
+   "output_lra": "1.80",
+   "output_thresh": "-28.46",
+   "normalization_type": "dynamic",
+   "target_offset": "-0.05"
+  }
+ },
+ "gam_vo_sample_narrator_b_01": {
+  "voice_key": "narrator_b",
+  "recipe": {
+   "role": "narrator",
+   "mix": {
+    "bm_george": 1.0
+   },
+   "speed": 0.9,
+   "lang": "en-gb",
+   "note": "Alternate. Stock Kokoro bm_george: British documentary colour."
+  },
+  "lines": [
+   {
+    "sequence": "opening",
+    "slide": 1,
+    "speaker": "narrator",
+    "subtitle": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+    "spoken_input": [
+     "There was a time when humanity believed every problem had a solution.",
+     "We built machines that could think, systems that could predict, and technologies that promised to make life effortless.",
+     "We called it progress."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 2,
+    "speaker": "narrator",
+    "subtitle": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop.",
+    "spoken_input": [
+     "We traded decisions for convenience.",
+     "Privacy for protection.",
+     "Limits for possibility.",
+     "Each choice made sense on its own.",
+     "Together, they became something no one could stop."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 5,
+    "speaker": "narrator",
+    "subtitle": "One operative would go back. No army. No second attempt. No guarantee of return.",
+    "spoken_input": [
+     "One operative would go back.",
+     "No army.",
+     "No second attempt.",
+     "No guarantee of return."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=70,equalizer=f=180:t=q:w=1.0:g=1.0,equalizer=f=3500:t=q:w=1.2:g=1.0,acompressor=threshold=-22dB:ratio=2.2:attack=12:release=180:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-25.17",
+   "input_tp": "-7.86",
+   "input_lra": "1.60",
+   "input_thresh": "-35.48",
+   "output_i": "-18.04",
+   "output_tp": "-1.50",
+   "output_lra": "1.50",
+   "output_thresh": "-28.36",
+   "normalization_type": "dynamic",
+   "target_offset": "0.04"
+  }
+ },
+ "ca_op": {
+  "voice_key": "control_a",
+  "recipe": {
+   "role": "control",
+   "mix": {
+    "bf_emma": 1.0
+   },
+   "speed": 0.86,
+   "lang": "en-gb",
+   "note": "Primary candidate. Stock Kokoro bf_emma, narrow pitch range, plus the Control treatment."
+  },
+  "lines": [
+   {
+    "sequence": "opening",
+    "slide": 6,
+    "speaker": "control",
+    "subtitle": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
+    "spoken_input": [
+     "Your temporal charge is synchronised.",
+     "Your destination is twenty eighty-nine.",
+     "The marked facilities are critical nodes in the extinction chain.",
+     "Destroy the structures.",
+     "Break the research path.",
+     "Do not improvise beyond the mission."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 8,
+    "speaker": "control",
+    "subtitle": "Temporal insertion in three... two... one.",
+    "spoken_input": [
+     "Temporal insertion in three...",
+     "two...",
+     "one."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-28.63",
+   "input_tp": "-8.73",
+   "input_lra": "4.00",
+   "input_thresh": "-39.23",
+   "output_i": "-18.13",
+   "output_tp": "-1.50",
+   "output_lra": "2.40",
+   "output_thresh": "-28.58",
+   "normalization_type": "dynamic",
+   "target_offset": "0.13"
+  }
+ },
+ "ca_fin": {
+  "voice_key": "control_a",
+  "recipe": {
+   "role": "control",
+   "mix": {
+    "bf_emma": 1.0
+   },
+   "speed": 0.86,
+   "lang": "en-gb",
+   "note": "Primary candidate. Stock Kokoro bf_emma, narrow pitch range, plus the Control treatment."
+  },
+  "lines": [
+   {
+    "sequence": "finale",
+    "slide": 3,
+    "speaker": "control",
+    "subtitle": "Wait. I'm receiving a new event marker. That is not possible.",
+    "spoken_input": [
+     "Wait.",
+     "I'm receiving a new event marker.",
+     "That is not possible."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-28.81",
+   "input_tp": "-11.09",
+   "input_lra": "1.90",
+   "input_thresh": "-39.33",
+   "output_i": "-18.05",
+   "output_tp": "-1.50",
+   "output_lra": "1.90",
+   "output_thresh": "-28.66",
+   "normalization_type": "dynamic",
+   "target_offset": "0.05"
+  }
+ },
+ "cb_op": {
+  "voice_key": "control_b",
+  "recipe": {
+   "role": "control",
+   "mix": {
+    "bf_emma": 0.7,
+    "af_heart": 0.3
+   },
+   "speed": 0.86,
+   "lang": "en-gb",
+   "note": "Alternate. Blend 70% bf_emma + 30% af_heart: smoother, slightly warmer."
+  },
+  "lines": [
+   {
+    "sequence": "opening",
+    "slide": 6,
+    "speaker": "control",
+    "subtitle": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
+    "spoken_input": [
+     "Your temporal charge is synchronised.",
+     "Your destination is twenty eighty-nine.",
+     "The marked facilities are critical nodes in the extinction chain.",
+     "Destroy the structures.",
+     "Break the research path.",
+     "Do not improvise beyond the mission."
+    ]
+   },
+   {
+    "sequence": "opening",
+    "slide": 8,
+    "speaker": "control",
+    "subtitle": "Temporal insertion in three... two... one.",
+    "spoken_input": [
+     "Temporal insertion in three...",
+     "two...",
+     "one."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-29.09",
+   "input_tp": "-9.34",
+   "input_lra": "3.20",
+   "input_thresh": "-39.52",
+   "output_i": "-18.11",
+   "output_tp": "-1.50",
+   "output_lra": "1.90",
+   "output_thresh": "-28.51",
+   "normalization_type": "dynamic",
+   "target_offset": "0.11"
+  }
+ },
+ "cb_fin": {
+  "voice_key": "control_b",
+  "recipe": {
+   "role": "control",
+   "mix": {
+    "bf_emma": 0.7,
+    "af_heart": 0.3
+   },
+   "speed": 0.86,
+   "lang": "en-gb",
+   "note": "Alternate. Blend 70% bf_emma + 30% af_heart: smoother, slightly warmer."
+  },
+  "lines": [
+   {
+    "sequence": "finale",
+    "slide": 3,
+    "speaker": "control",
+    "subtitle": "Wait. I'm receiving a new event marker. That is not possible.",
+    "spoken_input": [
+     "Wait.",
+     "I'm receiving a new event marker.",
+     "That is not possible."
+    ]
+   }
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-29.26",
+   "input_tp": "-11.75",
+   "input_lra": "2.50",
+   "input_thresh": "-39.84",
+   "output_i": "-18.14",
+   "output_tp": "-1.50",
+   "output_lra": "1.50",
+   "output_thresh": "-28.83",
+   "normalization_type": "dynamic",
+   "target_offset": "0.14"
+  }
+ },
+ "gam_vo_sample_control_a_01": {
+  "stitched_from": [
+   "ca_op",
+   "ca_fin"
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-28.64",
+   "input_tp": "-8.73",
+   "input_lra": "3.70",
+   "input_thresh": "-39.14",
+   "output_i": "-18.10",
+   "output_tp": "-1.50",
+   "output_lra": "3.40",
+   "output_thresh": "-28.60",
+   "normalization_type": "dynamic",
+   "target_offset": "0.10"
+  }
+ },
+ "gam_vo_sample_control_b_01": {
+  "stitched_from": [
+   "cb_op",
+   "cb_fin"
+  ],
+  "ffmpeg_chain": "highpass=f=150,lowpass=f=10500,equalizer=f=2800:t=q:w=1.0:g=1.5,equalizer=f=400:t=q:w=1.2:g=-2.0,aecho=0.9:0.7:17|29:0.10|0.06,acompressor=threshold=-24dB:ratio=3:attack=8:release=150:makeup=1",
+  "loudnorm_first_pass": {
+   "input_i": "-29.16",
+   "input_tp": "-9.34",
+   "input_lra": "3.20",
+   "input_thresh": "-39.57",
+   "output_i": "-18.12",
+   "output_tp": "-1.50",
+   "output_lra": "3.10",
+   "output_thresh": "-28.54",
+   "normalization_type": "dynamic",
+   "target_offset": "0.12"
+  }
+ }
+}

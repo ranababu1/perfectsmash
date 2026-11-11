@@ -1,0 +1,10 @@
+{
+ "narrator_a": {"role": "narrator", "mix": {"am_michael": 0.7, "bm_lewis": 0.3}, "speed": 0.88, "lang": "en-us",
+                "note": "Primary candidate. Kokoro voice-style blend 70% am_michael + 30% bm_lewis: mature baritone, measured."},
+ "narrator_b": {"role": "narrator", "mix": {"bm_george": 1.0}, "speed": 0.9, "lang": "en-gb",
+                "note": "Alternate. Stock Kokoro bm_george: British documentary colour."},
+ "control_a":  {"role": "control", "mix": {"bf_emma": 1.0}, "speed": 0.86, "lang": "en-gb",
+                "note": "Primary candidate. Stock Kokoro bf_emma, narrow pitch range, plus the Control treatment."},
+ "control_b":  {"role": "control", "mix": {"bf_emma": 0.7, "af_heart": 0.3}, "speed": 0.86, "lang": "en-gb",
+                "note": "Alternate. Blend 70% bf_emma + 30% af_heart: smoother, slightly warmer."}
+}
