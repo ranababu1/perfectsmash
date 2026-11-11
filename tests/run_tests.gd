@@ -2,6 +2,7 @@ extends SceneTree
 ## Headless test runner. Run from the project root:
 ##   godot --headless --fixed-fps 60 -s tests/run_tests.gd            (all suites)
 ##   godot --headless --fixed-fps 60 -s tests/run_tests.gd -- --unit  (skip physics playthroughs)
+##   godot --headless --fixed-fps 60 -s tests/run_tests.gd -- --only test_hud  (suites whose path contains the text)
 ##   godot --fixed-fps 60 -s tests/run_tests.gd                       (windowed: also runs GUI input routing checks)
 ## --fixed-fps disables real-time sync so physics suites run faster than real time.
 ## Exit code is 0 only when every test passes.
@@ -66,7 +67,12 @@ static func discover_suites() -> Array[String]:
 
 
 func _run() -> void:
-	var unit_only := OS.get_cmdline_user_args().has("--unit")
+	var args := OS.get_cmdline_user_args()
+	var unit_only := args.has("--unit")
+	# `--only <text>`: run just the suites whose path contains <text> (workstream runs).
+	var only := ""
+	if args.has("--only") and args.find("--only") + 1 < args.size():
+		only = args[args.find("--only") + 1]
 	var suites: Array = UNIT_SUITES.duplicate()
 	if not unit_only:
 		suites.append_array(PHYSICS_SUITES)
@@ -75,6 +81,8 @@ func _run() -> void:
 		if unit_only and discovered != null and discovered.get_script_constant_map().get("PHYSICS_SUITE", false):
 			continue
 		suites.append(path)
+	if not only.is_empty():
+		suites = suites.filter(func(p: String) -> bool: return only in p)
 	var passed := 0
 	var failed := 0
 	var skipped := 0
