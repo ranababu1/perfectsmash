@@ -1,0 +1,189 @@
+{
+	"id": "vita_13",
+	"name": "The Upgrade",
+	"chapter": 2,
+	"briefing": "Updates are issued from a production tower wrapped in glass. The glass hides the interior supports; it does not stop a round.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "int_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 900,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "int_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "tower_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 950,
+			"y": 388,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"int_l",
+				"int_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 950,
+			"y": 321.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"supports": [
+				"tower_deck"
+			]
+		},
+		{
+			"id": "skin_a",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 800,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "skin_b",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 800,
+			"y": 460.0,
+			"w": 60,
+			"h": 120,
+			"supports": [
+				"skin_a"
+			]
+		},
+		{
+			"id": "skin_c",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1100,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "skin_d",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1100,
+			"y": 460.0,
+			"w": 60,
+			"h": 120,
+			"supports": [
+				"skin_c"
+			]
+		},
+		{
+			"id": "treat_wall_1",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 480,
+			"y": 620,
+			"w": 80,
+			"h": 40
+		},
+		{
+			"id": "treat_wall_2",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 480,
+			"y": 580,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"treat_wall_1"
+			]
+		},
+		{
+			"id": "treat_wall_3",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 480,
+			"y": 540,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"treat_wall_2"
+			]
+		},
+		{
+			"id": "treat_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 580,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the treatment rack",
+			"targets": [
+				"treat_rack"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

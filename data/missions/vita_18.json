@@ -1,0 +1,169 @@
+{
+	"id": "vita_18",
+	"name": "The Last Batch",
+	"chapter": 2,
+	"briefing": "Two separated lab towers carry the final production cycle. Clear the near tower without burying the line to the far one.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 5,
+	"target_time": 70,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 6
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "near_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 760,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "near_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 860,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "near_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 810,
+			"y": 468,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"near_l",
+				"near_r"
+			]
+		},
+		{
+			"id": "batch_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 810,
+			"y": 406.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"near_deck"
+			]
+		},
+		{
+			"id": "far_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1200,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "far_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1320,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "far_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 1260,
+			"y": 468,
+			"w": 140,
+			"h": 24,
+			"supports": [
+				"far_l",
+				"far_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1260,
+			"y": 401.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"supports": [
+				"far_deck"
+			]
+		},
+		{
+			"id": "lane_pane",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 960,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "lane_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 570.0,
+			"w": 50,
+			"h": 140,
+			"health_scale": 0.5
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "batch",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the batch and lane racks",
+			"targets": [
+				"batch_rack",
+				"lane_rack"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 7 shots",
+			"limit": 7
+		}
+	]
+}

@@ -1,0 +1,59 @@
+[
+	{
+		"name": "through the skin",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "int_l",
+				"through": [
+					"skin_b"
+				],
+				"lift": [
+					100,
+					90,
+					80
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "int_l",
+				"through": [
+					"skin_b"
+				],
+				"lift": [
+					100,
+					90,
+					80
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					950,
+					580
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					580,
+					560
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					950,
+					580
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					580,
+					560
+				]
+			}
+		]
+	}
+]

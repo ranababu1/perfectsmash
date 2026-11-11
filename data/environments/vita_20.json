@@ -1,0 +1,157 @@
+{
+	"_note": "vita_20 (VITA research core). Presentation only, no collision; the gameplay band |z| <= 0.8 is clear.",
+	"chapter": "vita",
+	"statics": {
+		"low": "VTA-ENV-LEDGE_STATIC-A",
+		"tall": "VTA-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "VTA-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 28,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 28,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-FLOOR_TRENCH-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 28,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 28,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 36,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-BACK_WALL-B",
+			"repeat": {
+				"x_from": -6,
+				"x_to": 36,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-PILLAR-A",
+			"repeat": {
+				"x_from": -6,
+				"x_to": 36,
+				"step": 8
+			},
+			"z": -5.8
+		},
+		{
+			"id": "VTA-ENV-CATWALK-A",
+			"x": 2.0,
+			"y": 3.0,
+			"z": -4.8
+		},
+		{
+			"id": "VTA-ENV-CATWALK-A",
+			"x": 6.0,
+			"y": 3.6,
+			"z": -4.8
+		},
+		{
+			"id": "VTA-ENV-CATWALK-A",
+			"x": 10.0,
+			"y": 3.6,
+			"z": -5.2
+		},
+		{
+			"id": "VTA-ENV-CATWALK-A",
+			"x": 15.0,
+			"y": 3.6,
+			"z": -4.8
+		},
+		{
+			"id": "VTA-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 32,
+				"step": 8
+			},
+			"y": 6.2,
+			"z": -4.5
+		},
+		{
+			"id": "VTA-ENV-MASSING_TOWER-B",
+			"x": -3.0,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-MASSING_BLOCK-A",
+			"x": 10.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-MASSING_TOWER-B",
+			"x": 26.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "VTA-ENV-LOW_WALL-A",
+			"x": 15.8,
+			"z": -2.9
+		},
+		{
+			"id": "VTA-PRP-GROWTH_CHAMBER-A",
+			"x": -4.5,
+			"z": -5.4
+		},
+		{
+			"id": "VTA-PRP-BIOREACTOR_BANK-A",
+			"x": 6.5,
+			"z": -4.6
+		},
+		{
+			"id": "VTA-PRP-CONSOLE-A",
+			"x": 8.0,
+			"z": -3.8
+		},
+		{
+			"id": "VTA-PRP-PIPE_RUN-A",
+			"x": 11.5,
+			"z": -3.0
+		}
+	]
+}

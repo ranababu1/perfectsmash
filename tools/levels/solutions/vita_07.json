@@ -1,0 +1,31 @@
+[
+	{
+		"name": "pull the far end",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_end_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_end_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "cold_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "cold_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

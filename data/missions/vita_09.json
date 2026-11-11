@@ -1,0 +1,139 @@
+{
+	"id": "vita_09",
+	"name": "Replication Error",
+	"chapter": 2,
+	"briefing": "Two towers share a middle support and a top beam. The error is in the shared load.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "col_a",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 780,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "col_m",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 920,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "col_b",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1060,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "deck_a",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 850,
+			"y": 468,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"col_a",
+				"col_m"
+			]
+		},
+		{
+			"id": "deck_b",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 990,
+			"y": 468,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"col_m",
+				"col_b"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 850,
+			"y": 401.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 3.0,
+			"critical_asset": true,
+			"supports": [
+				"deck_a"
+			]
+		},
+		{
+			"id": "rack_b",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 990,
+			"y": 406.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"deck_b"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the tower rack",
+			"targets": [
+				"rack_b"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

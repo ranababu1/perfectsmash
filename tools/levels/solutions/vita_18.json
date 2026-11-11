@@ -1,0 +1,51 @@
+[
+	{
+		"name": "near then far",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "lane_rack",
+				"through": [
+					"near_l",
+					"near_r",
+					"lane_pane"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "lane_rack",
+				"through": [
+					"near_l",
+					"near_r"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "near_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "batch_rack"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "far_l",
+				"through": [
+					"far_r"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "far_l"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

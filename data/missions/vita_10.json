@@ -1,0 +1,148 @@
+{
+	"id": "vita_10",
+	"name": "Controlled Growth",
+	"chapter": 2,
+	"briefing": "The production line is scaled before anyone has the results. Three stations, each behind its own glass.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1600,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 10
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "pane_1",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 700,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "station_rack_1",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "pane_2",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 860,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "station_rack_2",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 940,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "pane_3",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1020,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1120,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true
+		},
+		{
+			"id": "line_cap_col",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1300,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "line_cell",
+			"kind": "cryo_cell",
+			"material": "energy_component",
+			"x": 1300,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"line_cap_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy both station racks",
+			"targets": [
+				"station_rack_1",
+				"station_rack_2"
+			],
+			"count": 2
+		},
+		{
+			"id": "cell",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the line cell",
+			"targets": [
+				"line_cell"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

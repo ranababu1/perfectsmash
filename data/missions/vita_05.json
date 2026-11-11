@@ -1,0 +1,148 @@
+{
+	"id": "vita_05",
+	"name": "Trial Run",
+	"chapter": 2,
+	"briefing": "Two small containment frames hold the first cohort's equipment. One frame can be made to fall on the other.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "frame_a_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 700,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "frame_a_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 800,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "frame_a_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 750,
+			"y": 468,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"frame_a_l",
+				"frame_a_r"
+			]
+		},
+		{
+			"id": "trial_cell",
+			"kind": "cryo_cell",
+			"material": "energy_component",
+			"x": 750,
+			"y": 431.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"frame_a_deck"
+			]
+		},
+		{
+			"id": "frame_b_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 590.0,
+			"w": 26,
+			"h": 100
+		},
+		{
+			"id": "frame_b_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1100,
+			"y": 590.0,
+			"w": 26,
+			"h": 100
+		},
+		{
+			"id": "frame_b_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 1050,
+			"y": 528,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"frame_b_l",
+				"frame_b_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1050,
+			"y": 461.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.2,
+			"critical_asset": true,
+			"supports": [
+				"frame_b_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "cell",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the trial cell",
+			"targets": [
+				"trial_cell"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

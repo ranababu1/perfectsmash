@@ -1,0 +1,123 @@
+{
+	"id": "vita_04",
+	"name": "Growth Chamber",
+	"chapter": 2,
+	"briefing": "The chamber's heavy cap rests on glass tanks that nobody expects to fail. Cut the glass and the cap does the rest.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "tank_l",
+			"kind": "bioreactor",
+			"material": "glass_polymer",
+			"x": 800,
+			"y": 570.0,
+			"w": 60,
+			"h": 140
+		},
+		{
+			"id": "tank_r",
+			"kind": "bioreactor",
+			"material": "glass_polymer",
+			"x": 970,
+			"y": 570.0,
+			"w": 60,
+			"h": 140
+		},
+		{
+			"id": "chamber_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 885,
+			"y": 488,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"tank_l",
+				"tank_r"
+			]
+		},
+		{
+			"id": "chamber_cap",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 885,
+			"y": 461.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"chamber_deck"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 885,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true
+		},
+		{
+			"id": "feed_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1200,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "feed",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the feed rack",
+			"targets": [
+				"feed_rack"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

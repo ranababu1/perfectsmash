@@ -1,0 +1,55 @@
+[
+	{
+		"name": "pierce the glass",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "vault_core",
+				"through": [
+					"lab_panel_front"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "display_tank"
+			}
+		]
+	},
+	{
+		"name": "break the pane",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "lab_panel_front"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "display_tank"
+			}
+		]
+	}
+]

@@ -1,0 +1,125 @@
+{
+	"id": "vita_14",
+	"name": "The Price",
+	"chapter": 2,
+	"briefing": "Two heavy caps balance at the ends of one beam, and the beam stands on a single support. The cost is carried by the centre.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "price_col",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 900,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "price_beam",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 900,
+			"y": 388,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"price_col"
+			]
+		},
+		{
+			"id": "cap_l",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 780,
+			"y": 361.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"price_beam"
+			]
+		},
+		{
+			"id": "cap_r",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 1020,
+			"y": 361.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"price_beam"
+			]
+		},
+		{
+			"id": "left_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1020,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Crush the left rack",
+			"targets": [
+				"left_rack"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

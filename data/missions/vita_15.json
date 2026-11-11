@@ -1,0 +1,139 @@
+{
+	"id": "vita_15",
+	"name": "No Consent",
+	"chapter": 2,
+	"briefing": "Consent is a continuous status in a tall control enclosure with a narrow opening. Three targets, two angles.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [
+		{
+			"x": 690,
+			"y": 430,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"x": 690,
+			"y": 600,
+			"w": 40,
+			"h": 80
+		}
+	],
+	"components": [
+		{
+			"id": "ctl_low",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 900,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "ctl_col_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "ctl_col_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1120,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "ctl_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 1060,
+			"y": 388,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"ctl_col_l",
+				"ctl_col_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1060,
+			"y": 321.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"supports": [
+				"ctl_deck"
+			]
+		},
+		{
+			"id": "far_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1300,
+			"y": 590.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.6
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the control and far racks",
+			"targets": [
+				"ctl_low",
+				"far_rack"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

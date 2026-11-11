@@ -1,0 +1,46 @@
+[
+	{
+		"name": "lob the shelf",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "archive_rack_1",
+				"through": [
+					"archive_rack_2"
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "archive_rack_2"
+			}
+		]
+	},
+	{
+		"name": "racks first",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "archive_rack_1",
+				"through": [
+					"archive_rack_2"
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "vault_core"
+			}
+		]
+	}
+]

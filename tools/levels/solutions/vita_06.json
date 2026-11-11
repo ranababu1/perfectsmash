@@ -1,0 +1,51 @@
+[
+	{
+		"name": "kick out the foot",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "frame_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "frame_l"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core",
+				"through": [
+					"guard_tank"
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "lab_rack"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "lab_rack"
+			}
+		]
+	},
+	{
+		"name": "straight at the vault",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "lab_rack"
+			}
+		]
+	}
+]

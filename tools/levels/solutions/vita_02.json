@@ -1,0 +1,55 @@
+[
+	{
+		"name": "through the pane",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "vault_core",
+				"through": [
+					"pane_high"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "sample_rack"
+			}
+		]
+	},
+	{
+		"name": "break the pane",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pane_high"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "sample_rack"
+			}
+		]
+	}
+]

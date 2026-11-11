@@ -1,0 +1,125 @@
+{
+	"id": "vita_03",
+	"name": "The Sequence",
+	"chapter": 2,
+	"briefing": "Genomics output is generated from templates, one rack after another. The vault sits at the end of the line.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rack_1",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 740,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_2",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 782,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_3",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 824,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "rack_4",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 866,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 960,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "spare_col",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1200,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "spare_cell",
+			"kind": "cryo_cell",
+			"material": "energy_component",
+			"x": 1200,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"spare_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "spare",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the cold sample",
+			"targets": [
+				"spare_cell"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,58 @@
+[
+	{
+		"name": "shared support",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "col_m",
+				"through": [
+					"col_a"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "col_m",
+				"through": [
+					"col_a"
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_b"
+			}
+		]
+	},
+	{
+		"name": "direct",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_b"
+			}
+		]
+	}
+]

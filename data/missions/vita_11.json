@@ -1,0 +1,132 @@
+{
+	"id": "vita_11",
+	"name": "The Patent Wall",
+	"chapter": 2,
+	"briefing": "Key research rights sit on one narrow shelf of the archive, behind a standing divider. Go over it.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [
+		{
+			"x": 660,
+			"y": 490,
+			"w": 40,
+			"h": 300
+		}
+	],
+	"components": [
+		{
+			"id": "shelf_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 900,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "shelf_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1040,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "shelf_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 970,
+			"y": 388,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"shelf_l",
+				"shelf_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 970,
+			"y": 321.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"supports": [
+				"shelf_deck"
+			]
+		},
+		{
+			"id": "archive_rack_1",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 480,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "archive_rack_2",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 540,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy both archive racks",
+			"targets": [
+				"archive_rack_1",
+				"archive_rack_2"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}
