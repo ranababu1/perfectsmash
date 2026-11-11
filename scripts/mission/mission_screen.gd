@@ -23,10 +23,10 @@ var last_buzz_ms := 0
 const HINTS := {
 	"kinetic_accelerator": "Kinetic Accelerator: touch the target · release to fire",
 	"breach_charge": "Breach Charge: touch where to throw · farther = stronger · release to fire",
-	"penetrator": "Penetrator: punches through glass and light panels · touch the target · release to fire",
-	"pulse_cannon": "Pulse Cannon: overloads energy cells · touch the target · release to fire",
-	"disruptor": "Disruptor: EMP through walls, burns out electronics and shield emitters · release to fire",
-	"temporal_lance": "Temporal Lance: passes through three pieces, breaks temporal crystal · release to fire",
+	"penetrator": "Penetrator: pierces glass and light panels · release to fire",
+	"pulse_cannon": "Pulse Cannon: overloads energy cells · release to fire",
+	"disruptor": "Disruptor: EMP through walls · burns out electronics",
+	"temporal_lance": "Temporal Lance: pierces three · breaks temporal crystal",
 }
 const DEFAULT_MISSION := "res://data/missions/helix_08.json"
 const CANCEL_DISTANCE := 70.0

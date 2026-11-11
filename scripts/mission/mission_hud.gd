@@ -54,6 +54,9 @@ const MARKER_SIZE := 44.0
 const MARKER_COLOR := Color("ff3b4e")
 
 ## Integrated assets (theme, icons); set before the HUD enters the tree. Null = built-in look.
+## Screen bands the critical-asset marker never enters (px on the 720 p base).
+const MARKER_TOP_CLEARANCE := 104.0
+const MARKER_BOTTOM_CLEARANCE := 150.0
 var library: AssetLibrary
 ## The critical-asset marker (a tinted icon following the core on screen), when icons exist.
 var critical_marker: TextureRect
@@ -138,8 +141,12 @@ func _ready() -> void:
 	_hint.add_theme_color_override("font_outline_color", Color(0.02, 0.03, 0.05, 0.85))
 	_hint.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	_hint.offset_top = -MARGIN - 30.0
+	_hint.offset_bottom = -MARGIN
 	_hint.offset_left = -300.0
 	_hint.offset_right = 300.0
+	# Wrapped hints grow upwards from the bottom margin instead of running off the screen.
+	_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	_hint.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 	_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_hint)
 
@@ -203,6 +210,8 @@ func set_weapons(weapons: Array[WeaponState]) -> void:
 	_hint.anchor_right = 1.0
 	_hint.offset_left = MARGIN
 	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if _weapon_buttons.size() >= 4:
+		_hint.add_theme_font_size_override("font_size", 15)
 	row.resized.connect(_fit_hint.bind(row))
 	_fit_hint(row)
 
@@ -237,7 +246,13 @@ func place_critical_marker(at: Variant) -> void:
 		return
 	critical_marker.visible = at != null and not has_overlay()
 	if at != null:
-		critical_marker.position = (at as Vector2) - critical_marker.size / 2.0 + Vector2(0.0, sin(Time.get_ticks_msec() / 320.0) * 4.0)
+		var pos := (at as Vector2) - critical_marker.size / 2.0 + Vector2(0.0, sin(Time.get_ticks_msec() / 320.0) * 4.0)
+		# Keep the marker on screen and out of the top HUD band (objectives, stats, Restart/Pause)
+		# and the weapon bar, so a core near the frame edge never hides a button.
+		var screen := get_viewport_rect().size
+		pos.x = clampf(pos.x, MARGIN, screen.x - critical_marker.size.x - MARGIN)
+		pos.y = clampf(pos.y, MARKER_TOP_CLEARANCE, screen.y - critical_marker.size.y - MARKER_BOTTOM_CLEARANCE)
+		critical_marker.position = pos
 
 
 ## An integrated icon texture by key (ICONS), or null.

@@ -13,11 +13,11 @@ const CAPTURE_SAVE := "user://capture_store_progress.json"
 
 ## mission id -> [shot index (0-based) in the first solution, frames after firing to capture].
 const MOMENTS := {
-	"helix_20": [2, 30],
-	"vita_20": [2, 30],
-	"nova_grid_20": [3, 30],
-	"civitas_20": [1, 30],
-	"meridian_20": [1, 30],
+	"helix_20": [2, 15],
+	"vita_20": [2, 15],
+	"nova_grid_20": [4, 30],
+	"civitas_20": [0, 30],
+	"meridian_20": [2, 30],
 }
 const SEEN := ["opening", "ch01_intro", "ch01_outro", "ch02_intro", "ch02_outro", "ch03_intro"]
 
@@ -74,6 +74,8 @@ func _run() -> void:
 	for id in MOMENTS:
 		main._show_mission(id)
 		await _frames(60)
+		# The aim hint wraps and overlaps itself with five weapon buttons (known HUD issue); keep it out of store frames.
+		main._mission.hud._hint.visible = false
 		await _shot("%02d_%s_a_start" % [n, id])
 		var plans: Array = solutions.get(id, [])
 		if not plans.is_empty():

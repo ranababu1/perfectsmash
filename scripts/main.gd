@@ -269,6 +269,7 @@ func _highest_unlocked_chapter() -> int:
 func _show_archive() -> void:
 	_clear_screens()
 	_archive = StoryArchive.new(cinematics, progress)
+	_archive.library = MissionView.assets()
 	_archive.play_requested.connect(func(id: String) -> void: _show_cinematic(id, _show_archive))
 	_archive.closed.connect(_show_campaign)
 	add_child(_archive)
