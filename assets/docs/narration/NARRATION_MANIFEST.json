@@ -1,0 +1,2835 @@
+{
+ "schema": "tfj-narration-manifest/1",
+ "generated": "2026-11-12",
+ "source_text": "data/cinematics.json (main c104c06), verbatim",
+ "times": "seconds; slide-relative times are from the start of the voice file; timeline times are from the start of the mix reference",
+ "voice_bus": "Voice (to add)",
+ "voice_loudness_lufs": -18.0,
+ "cinematics": [
+  {
+   "cinematic_id": "opening",
+   "title": "The Last Transmission",
+   "music_bed": "assets/audio/music/cinematic/gam_mus_cine_opening_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/gam_mus_cine_opening_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/gam_cine_opening_mix_ref.ogg",
+    "assets/audio/music/cinematic/gam_cine_opening_mix_ref.mp3"
+   ],
+   "mix_seconds": 128.0,
+   "timeline": {
+    "pre_roll_s": 4.0,
+    "end_card_s": 110.302,
+    "gaps_s": [
+     2.0,
+     2.5,
+     3.0,
+     2.0,
+     2.5,
+     2.0,
+     1.2
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+     "caption": "2149  /  CIVILISATION STATUS: CRITICAL",
+     "file": "assets/audio/voice/opening/gam_vo_opening_01.ogg",
+     "asset_id": "GAM-VO-OPENING-01",
+     "duration_s": 14.453,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[thoughtful, quietly reflective] There was a time when humanity believed every problem had a solution. [warm, a hint of wonder] We built machines that could think, systems that could predict, and technologies that promised to make life effortless. [pause] [bittersweet] We called it progress.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 14.273,
+      "sentences": [
+       {
+        "text": "There was a time when humanity believed every problem had a solution.",
+        "start_s": 0.0,
+        "end_s": 4.2
+       },
+       {
+        "text": "We built machines that could think, systems that could predict, and technologies that promised to make life effortless.",
+        "start_s": 5.04,
+        "end_s": 12.02
+       },
+       {
+        "text": "We called it progress.",
+        "start_s": 12.86,
+        "end_s": 14.273
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 4.0,
+      "voice_end_s": 18.453
+     },
+     "recommended_slide_seconds": 15.65
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop.",
+     "caption": "CASCADE FAILURE  /  GLOBAL",
+     "file": "assets/audio/voice/opening/gam_vo_opening_02.ogg",
+     "asset_id": "GAM-VO-OPENING-02",
+     "duration_s": 14.184,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[measured, regretful] We traded decisions for convenience. [pause] Privacy for protection. [pause] Limits for possibility. [low voice] Each choice made sense on its own. [pause] [ominous] Together, they became something no one could stop.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 14.004,
+      "sentences": [
+       {
+        "text": "We traded decisions for convenience.",
+        "start_s": 0.0,
+        "end_s": 2.34
+       },
+       {
+        "text": "Privacy for protection.",
+        "start_s": 3.22,
+        "end_s": 4.72
+       },
+       {
+        "text": "Limits for possibility.",
+        "start_s": 5.54,
+        "end_s": 7.16
+       },
+       {
+        "text": "Each choice made sense on its own.",
+        "start_s": 7.94,
+        "end_s": 10.16
+       },
+       {
+        "text": "Together, they became something no one could stop.",
+        "start_s": 10.8,
+        "end_s": 14.004
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 20.453,
+      "voice_end_s": 34.637
+     },
+     "recommended_slide_seconds": 15.38
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "narrator",
+     "text": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save.",
+     "caption": "SURVIVING POPULATION: UNKNOWN",
+     "file": "assets/audio/voice/opening/gam_vo_opening_03.ogg",
+     "asset_id": "GAM-VO-OPENING-03",
+     "duration_s": 15.4,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.3,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[sombre, heavy] Cities went silent. [pause] Supply lines failed. [growing dread] The systems built to protect us began protecting themselves. [sighs] [sad, quiet] By the time we understood the pattern, there was almost nothing left to save.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 15.22,
+      "sentences": [
+       {
+        "text": "Cities went silent.",
+        "start_s": 0.0,
+        "end_s": 1.62
+       },
+       {
+        "text": "Supply lines failed.",
+        "start_s": 2.84,
+        "end_s": 4.24
+       },
+       {
+        "text": "The systems built to protect us began protecting themselves.",
+        "start_s": 5.16,
+        "end_s": 9.04
+       },
+       {
+        "text": "By the time we understood the pattern, there was almost nothing left to save.",
+        "start_s": 10.1,
+        "end_s": 15.22
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 37.137,
+      "voice_end_s": 52.537
+     },
+     "recommended_slide_seconds": 16.6
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "narrator",
+     "text": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance.",
+     "caption": "TEMPORAL DISPLACEMENT: POSSIBLE",
+     "file": "assets/audio/voice/opening/gam_vo_opening_04.ogg",
+     "asset_id": "GAM-VO-OPENING-04",
+     "duration_s": 11.832,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[hushed, a spark of hope] In the final years, a research team found a way to send matter backwards through time. [pause] [tense] It was unstable. [pause] It was incomplete. [pause] [resolute, emotional] It was our only chance.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 11.652,
+      "sentences": [
+       {
+        "text": "In the final years, a research team found a way to send matter backwards through time.",
+        "start_s": 0.0,
+        "end_s": 5.56
+       },
+       {
+        "text": "It was unstable.",
+        "start_s": 6.5,
+        "end_s": 7.38
+       },
+       {
+        "text": "It was incomplete.",
+        "start_s": 8.22,
+        "end_s": 9.18
+       },
+       {
+        "text": "It was our only chance.",
+        "start_s": 10.06,
+        "end_s": 11.652
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 55.537,
+      "voice_end_s": 67.369
+     },
+     "recommended_slide_seconds": 13.03
+    },
+    {
+     "slide_index": 4,
+     "slide_number": 5,
+     "speaker": "narrator",
+     "text": "One operative would go back. No army. No second attempt. No guarantee of return.",
+     "caption": "OPERATIVE: CLEARED",
+     "file": "assets/audio/voice/opening/gam_vo_opening_05.ogg",
+     "asset_id": "GAM-VO-OPENING-05",
+     "duration_s": 7.303,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[determined, grave] One operative would go back. [pause] No army. [pause] No second attempt. [pause] [quietly] No guarantee of return.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.123,
+      "sentences": [
+       {
+        "text": "One operative would go back.",
+        "start_s": 0.0,
+        "end_s": 1.86
+       },
+       {
+        "text": "No army.",
+        "start_s": 2.56,
+        "end_s": 3.08
+       },
+       {
+        "text": "No second attempt.",
+        "start_s": 3.68,
+        "end_s": 4.8
+       },
+       {
+        "text": "No guarantee of return.",
+        "start_s": 5.64,
+        "end_s": 7.123
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 69.368,
+      "voice_end_s": 76.671
+     },
+     "recommended_slide_seconds": 8.5
+    },
+    {
+     "slide_index": 5,
+     "slide_number": 6,
+     "speaker": "control",
+     "text": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
+     "caption": "FIRST DESTINATION: HELIX SYSTEMS  /  2089",
+     "file": "assets/audio/voice/opening/gam_vo_opening_06.ogg",
+     "asset_id": "GAM-VO-OPENING-06",
+     "duration_s": 15.81,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[calm, precise, clinical] Your temporal charge is synchronised. Your destination is twenty eighty-nine. [cool, detached] The marked facilities are critical nodes in the extinction chain. [pause] Destroy the structures. Break the research path. [pause] [softly, with quiet authority] Do not improvise beyond the mission.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 15.63,
+      "sentences": [
+       {
+        "text": "Your temporal charge is synchronised.",
+        "start_s": 0.0,
+        "end_s": 2.14
+       },
+       {
+        "text": "Your destination is 2089.",
+        "start_s": 2.62,
+        "end_s": 5.96
+       },
+       {
+        "text": "The marked facilities are critical nodes in the extinction chain.",
+        "start_s": 5.96,
+        "end_s": 10.32
+       },
+       {
+        "text": "Destroy the structures.",
+        "start_s": 10.32,
+        "end_s": 11.86
+       },
+       {
+        "text": "Break the research path.",
+        "start_s": 11.86,
+        "end_s": 13.96
+       },
+       {
+        "text": "Do not improvise beyond the mission.",
+        "start_s": 13.96,
+        "end_s": 15.63
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 79.171,
+      "voice_end_s": 94.981
+     },
+     "recommended_slide_seconds": 17.01
+    },
+    {
+     "slide_index": 6,
+     "slide_number": 7,
+     "speaker": "narrator",
+     "text": "You cannot undo every decision. You only need to break the ones that make the end inevitable.",
+     "caption": null,
+     "file": "assets/audio/voice/opening/gam_vo_opening_07.ogg",
+     "asset_id": "GAM-VO-OPENING-07",
+     "duration_s": 6.921,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.6,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[intimate, close, almost a whisper] You cannot undo every decision. [pause] [resolute] You only need to break the ones that make the end inevitable.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.741,
+      "sentences": [
+       {
+        "text": "You cannot undo every decision.",
+        "start_s": 0.0,
+        "end_s": 2.36
+       },
+       {
+        "text": "You only need to break the ones that make the end inevitable.",
+        "start_s": 3.28,
+        "end_s": 6.741
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 96.981,
+      "voice_end_s": 103.902
+     },
+     "recommended_slide_seconds": 8.12
+    },
+    {
+     "slide_index": 7,
+     "slide_number": 8,
+     "speaker": "control",
+     "text": "Temporal insertion in three... two... one.",
+     "caption": null,
+     "file": "assets/audio/voice/opening/gam_vo_opening_08.ogg",
+     "asset_id": "GAM-VO-OPENING-08",
+     "duration_s": 4.695,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[calm, precise, metronomic] Temporal insertion in three... [pause] two... [pause] one.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 4.515,
+      "sentences": [
+       {
+        "text": "Temporal insertion in three...",
+        "start_s": 0.0,
+        "end_s": 2.16
+       },
+       {
+        "text": "two...",
+        "start_s": 2.56,
+        "end_s": 3.22
+       },
+       {
+        "text": "one.",
+        "start_s": 4.06,
+        "end_s": 4.515
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 105.102,
+      "voice_end_s": 109.797
+     },
+     "recommended_slide_seconds": 5.9
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch01_intro",
+   "title": "A Better World",
+   "music_bed": "assets/audio/music/cinematic/hlx_mus_cine_intro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/hlx_mus_cine_intro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/hlx_cine_intro_mix_ref.ogg",
+    "assets/audio/music/cinematic/hlx_cine_intro_mix_ref.mp3"
+   ],
+   "mix_seconds": 51.698,
+   "timeline": {
+    "pre_roll_s": 3.5,
+    "end_card_s": 40.746,
+    "gaps_s": [
+     [
+      14.45,
+      16.45
+     ],
+     [
+      24.452,
+      26.452
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "control",
+     "text": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response.",
+     "caption": "2089  /  NEW AVALON",
+     "file": "assets/audio/voice/helix/hlx_vo_intro_01.ogg",
+     "asset_id": "HLX-VO-INTRO-01",
+     "duration_s": 10.95,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[calm, precise, clinical] Welcome to twenty eighty-nine. [pause] Helix Systems built Aura to manage the city. [measured] Traffic, [pause] food, [pause] power, [pause] emergency response.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 10.77,
+      "sentences": [
+       {
+        "text": "Welcome to 2089.",
+        "start_s": 0.0,
+        "end_s": 3.54
+       },
+       {
+        "text": "Helix Systems built AURA to manage the city.",
+        "start_s": 3.54,
+        "end_s": 7.64
+       },
+       {
+        "text": "Traffic, food, power, emergency response.",
+        "start_s": 8.38,
+        "end_s": 10.77
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.5,
+      "voice_end_s": 14.45
+     },
+     "recommended_slide_seconds": 12.15
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "control",
+     "text": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+     "caption": null,
+     "file": "assets/audio/voice/helix/hlx_vo_intro_02.ogg",
+     "asset_id": "HLX-VO-INTRO-02",
+     "duration_s": 8.002,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.3,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[cool, detached] It was meant to remove human error from critical decisions. [pause] [quietly, a hint of warning] The system is now expanding beyond its original mandate.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.822,
+      "sentences": [
+       {
+        "text": "It was meant to remove human error from critical decisions.",
+        "start_s": 0.0,
+        "end_s": 3.3
+       },
+       {
+        "text": "The system is now expanding beyond its original mandate.",
+        "start_s": 4.28,
+        "end_s": 7.822
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 16.45,
+      "voice_end_s": 24.452
+     },
+     "recommended_slide_seconds": 9.2
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+     "caption": "TARGET: HELIX SYSTEMS",
+     "file": "assets/audio/voice/helix/hlx_vo_intro_03.ogg",
+     "asset_id": "HLX-VO-INTRO-03",
+     "duration_s": 12.894,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[precise, commanding, quiet authority] Your target is the Helix central operations campus. [pause] Destroy the infrastructure that allows Aura to replicate. [pause] Keep the impact contained. [pause] [softly, deliberate] This is the first intervention.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 12.714,
+      "sentences": [
+       {
+        "text": "Your target is the Helix central operations campus.",
+        "start_s": 0.0,
+        "end_s": 3.2
+       },
+       {
+        "text": "Destroy the infrastructure that allows AURA to replicate.",
+        "start_s": 4.06,
+        "end_s": 7.08
+       },
+       {
+        "text": "Keep the impact contained.",
+        "start_s": 7.94,
+        "end_s": 9.48
+       },
+       {
+        "text": "This is the first intervention.",
+        "start_s": 10.54,
+        "end_s": 12.714
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 26.452,
+      "voice_end_s": 39.346
+     },
+     "recommended_slide_seconds": 14.09
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch01_outro",
+   "title": "The First Correction",
+   "music_bed": "assets/audio/music/cinematic/hlx_mus_cine_outro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/hlx_mus_cine_outro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/hlx_cine_outro_mix_ref.ogg",
+    "assets/audio/music/cinematic/hlx_cine_outro_mix_ref.mp3"
+   ],
+   "mix_seconds": 54.955,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 42.159,
+    "gaps_s": [
+     [
+      13.986,
+      15.986
+     ],
+     [
+      28.734,
+      31.234
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+     "caption": null,
+     "file": "assets/audio/voice/helix/hlx_vo_outro_01.ogg",
+     "asset_id": "HLX-VO-OUTRO-01",
+     "duration_s": 10.986,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[relieved, quiet awe] Helix went dark. [pause] Aura's network stopped expanding. [warm, a hint of wonder] For the first time in decades, the city made decisions without asking a machine for permission.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 10.806,
+      "sentences": [
+       {
+        "text": "Helix went dark.",
+        "start_s": 0.0,
+        "end_s": 1.66
+       },
+       {
+        "text": "AURA's network stopped expanding.",
+        "start_s": 2.56,
+        "end_s": 4.36
+       },
+       {
+        "text": "For the first time in decades, the city made decisions without asking a machine for permission.",
+        "start_s": 5.12,
+        "end_s": 10.806
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 13.986
+     },
+     "recommended_slide_seconds": 12.19
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+     "caption": "DIRECTIVE SOURCE: MERIDIAN",
+     "file": "assets/audio/voice/helix/hlx_vo_outro_02.ogg",
+     "asset_id": "HLX-VO-OUTRO-02",
+     "duration_s": 12.748,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.8,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[thoughtful] The revised timeline is already changing. [pause] [low voice, growing unease] But the final data recovered from Helix points to a directive that did not originate there. [pause] [ominous, quiet] Someone called it Meridian.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 12.568,
+      "sentences": [
+       {
+        "text": "The revised timeline is already changing.",
+        "start_s": 0.0,
+        "end_s": 2.98
+       },
+       {
+        "text": "But the final data recovered from Helix points to a directive that did not originate there.",
+        "start_s": 3.86,
+        "end_s": 9.62
+       },
+       {
+        "text": "Someone called it Meridian.",
+        "start_s": 10.58,
+        "end_s": 12.568
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 15.986,
+      "voice_end_s": 28.734
+     },
+     "recommended_slide_seconds": 13.95
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready.",
+     "caption": "NEXT: 2092  /  VITA GENOMICS",
+     "file": "assets/audio/voice/helix/hlx_vo_outro_03.ogg",
+     "asset_id": "HLX-VO-OUTRO-03",
+     "duration_s": 9.725,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.1,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[calm, precise, clinical] Intervention confirmed. [pause] New coordinates received. [pause] Twenty ninety-two. [pause] Vita Genomics. [cool, detached] Your next target is ready.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.545,
+      "sentences": [
+       {
+        "text": "Intervention confirmed.",
+        "start_s": 0.0,
+        "end_s": 1.4
+       },
+       {
+        "text": "New coordinates received.",
+        "start_s": 2.22,
+        "end_s": 3.56
+       },
+       {
+        "text": "2092.",
+        "start_s": 4.36,
+        "end_s": 8.0
+       },
+       {
+        "text": "VITA Genomics.",
+        "start_s": 8.0,
+        "end_s": 8.74
+       },
+       {
+        "text": "Your next target is ready.",
+        "start_s": 8.74,
+        "end_s": 9.545
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 31.234,
+      "voice_end_s": 40.959
+     },
+     "recommended_slide_seconds": 10.92
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch02_intro",
+   "title": "The Perfect Human",
+   "music_bed": "assets/audio/music/cinematic/vta_mus_cine_intro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/vta_mus_cine_intro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/vta_cine_intro_mix_ref.ogg",
+    "assets/audio/music/cinematic/vta_cine_intro_mix_ref.mp3"
+   ],
+   "mix_seconds": 65.756,
+   "timeline": {
+    "pre_roll_s": 3.5,
+    "end_card_s": 53.612,
+    "gaps_s": [
+     [
+      10.497,
+      12.497
+     ],
+     [
+      21.854,
+      23.854
+     ],
+     [
+      31.443,
+      33.943
+     ],
+     [
+      44.122,
+      46.122
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "The first intervention changed the city. It did not change the people who built the next machine.",
+     "caption": "2092  /  ARCLIGHT BIO-DISTRICT",
+     "file": "assets/audio/voice/vita/vta_vo_intro_01.ogg",
+     "asset_id": "VTA-VO-INTRO-01",
+     "duration_s": 6.997,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.5,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[reflective, sober] The first intervention changed the city. [pause] [quiet, heavy] It did not change the people who built the next machine.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.817,
+      "sentences": [
+       {
+        "text": "The first intervention changed the city.",
+        "start_s": 0.0,
+        "end_s": 2.7
+       },
+       {
+        "text": "It did not change the people who built the next machine.",
+        "start_s": 3.7,
+        "end_s": 6.817
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.5,
+      "voice_end_s": 10.497
+     },
+     "recommended_slide_seconds": 8.2
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_intro_02.ogg",
+     "asset_id": "VTA-VO-INTRO-02",
+     "duration_s": 9.357,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[measured, wry, a hint of irony] In twenty ninety-two, Vita Genomics is selling the end of disease. [pause] Its treatments promise stronger bodies and longer lives.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.177,
+      "sentences": [
+       {
+        "text": "In 2092, VITA Genomics is selling the end of disease.",
+        "start_s": 0.0,
+        "end_s": 6.16
+       },
+       {
+        "text": "Its treatments promise stronger bodies and longer lives.",
+        "start_s": 6.16,
+        "end_s": 9.177
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 12.497,
+      "voice_end_s": 21.854
+     },
+     "recommended_slide_seconds": 10.56
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "narrator",
+     "text": "But the programme is no longer correcting illness. It is making people dependent on the system that edits them.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_intro_03.ogg",
+     "asset_id": "VTA-VO-INTRO-03",
+     "duration_s": 7.589,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.4,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[low voice, growing dread] But the programme is no longer correcting illness. [pause] [grave] It is making people dependent on the system that edits them.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.409,
+      "sentences": [
+       {
+        "text": "But the programme is no longer correcting illness.",
+        "start_s": 0.0,
+        "end_s": 2.78
+       },
+       {
+        "text": "It is making people dependent on the system that edits them.",
+        "start_s": 3.9,
+        "end_s": 7.409
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 23.854,
+      "voice_end_s": 31.443
+     },
+     "recommended_slide_seconds": 8.79
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "control",
+     "text": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+     "caption": "TARGET: VITA GENOMICS",
+     "file": "assets/audio/voice/vita/vta_vo_intro_04.ogg",
+     "asset_id": "VTA-VO-INTRO-04",
+     "duration_s": 10.179,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[calm, precise, clinical] Your objective is the Vita research complex. [pause] Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.999,
+      "sentences": [
+       {
+        "text": "Your objective is the VITA research complex.",
+        "start_s": 0.0,
+        "end_s": 2.94
+       },
+       {
+        "text": "Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+        "start_s": 3.68,
+        "end_s": 9.999
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 33.943,
+      "voice_end_s": 44.122
+     },
+     "recommended_slide_seconds": 11.38
+    },
+    {
+     "slide_index": 4,
+     "slide_number": 5,
+     "speaker": "control",
+     "text": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_intro_05.ogg",
+     "asset_id": "VTA-VO-INTRO-05",
+     "duration_s": 6.09,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[softly, with quiet authority] Do not mistake the laboratories for the people inside them. [pause] [cool, firm] The target is the machinery.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 5.91,
+      "sentences": [
+       {
+        "text": "Do not mistake the laboratories for the people inside them.",
+        "start_s": 0.0,
+        "end_s": 3.12
+       },
+       {
+        "text": "The target is the machinery.",
+        "start_s": 4.06,
+        "end_s": 5.91
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 46.122,
+      "voice_end_s": 52.212
+     },
+     "recommended_slide_seconds": 7.29
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch02_outro",
+   "title": "The Same Signature",
+   "music_bed": "assets/audio/music/cinematic/vta_mus_cine_outro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/vta_mus_cine_outro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/vta_cine_outro_mix_ref.ogg",
+    "assets/audio/music/cinematic/vta_cine_outro_mix_ref.mp3"
+   ],
+   "mix_seconds": 55.007,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 42.644,
+    "gaps_s": [
+     [
+      11.054,
+      13.054
+     ],
+     [
+      22.081,
+      24.081
+     ],
+     [
+      30.775,
+      33.275
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_outro_01.ogg",
+     "asset_id": "VTA-VO-OUTRO-01",
+     "duration_s": 8.054,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[relieved, gentle] Vita's expansion has stopped. [pause] [warm, quietly hopeful] The revised future shows fewer people trapped by treatments they cannot maintain.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.874,
+      "sentences": [
+       {
+        "text": "VITA's expansion has stopped.",
+        "start_s": 0.0,
+        "end_s": 1.92
+       },
+       {
+        "text": "The revised future shows fewer people trapped by treatments they cannot maintain.",
+        "start_s": 3.12,
+        "end_s": 7.874
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 11.054
+     },
+     "recommended_slide_seconds": 9.25
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_outro_02.ogg",
+     "asset_id": "VTA-VO-OUTRO-02",
+     "duration_s": 9.027,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[uneasy, hushed] But the research archive reveals something impossible. [pause] [disturbed] The breakthrough timelines were calculated before the experiments began.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.847,
+      "sentences": [
+       {
+        "text": "But the research archive reveals something impossible.",
+        "start_s": 0.0,
+        "end_s": 3.02
+       },
+       {
+        "text": "The breakthrough timelines were calculated before the experiments began.",
+        "start_s": 4.18,
+        "end_s": 8.847
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 13.054,
+      "voice_end_s": 22.081
+     },
+     "recommended_slide_seconds": 10.23
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "narrator",
+     "text": "VITA did not discover its future. Someone gave it the answer.",
+     "caption": null,
+     "file": "assets/audio/voice/vita/vta_vo_outro_03.ogg",
+     "asset_id": "VTA-VO-OUTRO-03",
+     "duration_s": 6.694,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[slow, grave] Vita did not discover its future. [pause] [ominous, almost a whisper] Someone gave it the answer.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.514,
+      "sentences": [
+       {
+        "text": "VITA did not discover its future.",
+        "start_s": 0.0,
+        "end_s": 2.84
+       },
+       {
+        "text": "Someone gave it the answer.",
+        "start_s": 4.0,
+        "end_s": 6.514
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 24.081,
+      "voice_end_s": 30.775
+     },
+     "recommended_slide_seconds": 7.89
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "control",
+     "text": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+     "caption": "NEXT: 2096  /  NOVA GRID",
+     "file": "assets/audio/voice/vita/vta_vo_outro_04.ogg",
+     "asset_id": "VTA-VO-OUTRO-04",
+     "duration_s": 8.169,
+     "loudness_lufs": -17.8,
+     "true_peak_dbtp": -2.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[calm, precise, clinical] Source signature matches the Helix directive. [pause] [cool, detached] The next facility is Nova Grid. [pause] Twenty ninety-six.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.989,
+      "sentences": [
+       {
+        "text": "Source signature matches the Helix directive.",
+        "start_s": 0.0,
+        "end_s": 2.66
+       },
+       {
+        "text": "The next facility is Nova Grid.",
+        "start_s": 3.94,
+        "end_s": 7.58
+       },
+       {
+        "text": "2096.",
+        "start_s": 6.7,
+        "end_s": 7.989
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 33.275,
+      "voice_end_s": 41.444
+     },
+     "recommended_slide_seconds": 9.37
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch03_intro",
+   "title": "Power Without Limits",
+   "music_bed": "assets/audio/music/cinematic/nvg_mus_cine_intro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/nvg_mus_cine_intro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/nvg_cine_intro_mix_ref.ogg",
+    "assets/audio/music/cinematic/nvg_cine_intro_mix_ref.mp3"
+   ],
+   "mix_seconds": 49.941,
+   "timeline": {
+    "pre_roll_s": 3.5,
+    "end_card_s": 35.609,
+    "gaps_s": [
+     [
+      12.341,
+      14.341
+     ],
+     [
+      22.131,
+      24.131
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "control",
+     "text": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
+     "caption": "2096  /  KESTREL ENERGY BASIN",
+     "file": "assets/audio/voice/nova_grid/nvg_vo_intro_01.ogg",
+     "asset_id": "NVG-VO-INTRO-01",
+     "duration_s": 8.841,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[calm, precise, almost admiring] Nova Grid changed the world. [pause] Cheap, abundant energy. [pause] No more fuel wars. [pause] No more blackouts.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.661,
+      "sentences": [
+       {
+        "text": "Nova Grid changed the world.",
+        "start_s": 0.0,
+        "end_s": 3.18
+       },
+       {
+        "text": "Cheap, abundant energy.",
+        "start_s": 3.46,
+        "end_s": 5.64
+       },
+       {
+        "text": "No more fuel wars.",
+        "start_s": 5.64,
+        "end_s": 7.56
+       },
+       {
+        "text": "No more blackouts.",
+        "start_s": 7.56,
+        "end_s": 8.661
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.5,
+      "voice_end_s": 12.341
+     },
+     "recommended_slide_seconds": 10.04
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "control",
+     "text": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.",
+     "caption": null,
+     "file": "assets/audio/voice/nova_grid/nvg_vo_intro_02.ogg",
+     "asset_id": "NVG-VO-INTRO-02",
+     "duration_s": 7.79,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[cool, clinical, a hint of suspicion] The system's output is now carrying an unexplained repeating signal. [pause] [dry, detached] The company calls it harmless interference.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.61,
+      "sentences": [
+       {
+        "text": "The system's output is now carrying an unexplained repeating signal.",
+        "start_s": 0.0,
+        "end_s": 4.12
+       },
+       {
+        "text": "The company calls it harmless interference.",
+        "start_s": 5.08,
+        "end_s": 7.61
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 14.341,
+      "voice_end_s": 22.131
+     },
+     "recommended_slide_seconds": 8.99
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+     "caption": "TARGET: NOVA GRID",
+     "file": "assets/audio/voice/nova_grid/nvg_vo_intro_03.ogg",
+     "asset_id": "NVG-VO-INTRO-03",
+     "duration_s": 10.078,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[precise, quietly unsettling] Our analysis says the signal is synchronised with the same source found in Helix and Vita. [pause] [quiet authority] Your target is the containment and distribution complex.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.898,
+      "sentences": [
+       {
+        "text": "Our analysis says the signal is synchronised with the same source found in Helix and VITA.",
+        "start_s": 0.0,
+        "end_s": 5.4
+       },
+       {
+        "text": "Your target is the containment and distribution complex.",
+        "start_s": 6.48,
+        "end_s": 9.898
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 24.131,
+      "voice_end_s": 34.209
+     },
+     "recommended_slide_seconds": 11.28
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch03_outro",
+   "title": "A Message in the Noise",
+   "music_bed": "assets/audio/music/cinematic/nvg_mus_cine_outro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/nvg_mus_cine_outro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/nvg_cine_outro_mix_ref.ogg",
+    "assets/audio/music/cinematic/nvg_cine_outro_mix_ref.mp3"
+   ],
+   "mix_seconds": 50.49,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 37.143,
+    "gaps_s": [
+     [
+      9.38,
+      11.38
+     ],
+     [
+      24.347,
+      26.847
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+     "caption": null,
+     "file": "assets/audio/voice/nova_grid/nvg_vo_outro_01.ogg",
+     "asset_id": "NVG-VO-OUTRO-01",
+     "duration_s": 6.38,
+     "loudness_lufs": -17.9,
+     "true_peak_dbtp": -3.1,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[relieved, sober] The grid is broken. [pause] The energy cascade never reaches the scale recorded in the original future.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.2,
+      "sentences": [
+       {
+        "text": "The grid is broken.",
+        "start_s": 0.0,
+        "end_s": 1.12
+       },
+       {
+        "text": "The energy cascade never reaches the scale recorded in the original future.",
+        "start_s": 2.2,
+        "end_s": 6.2
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 9.38
+     },
+     "recommended_slide_seconds": 7.58
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+     "caption": null,
+     "file": "assets/audio/voice/nova_grid/nvg_vo_outro_02.ogg",
+     "asset_id": "NVG-VO-OUTRO-02",
+     "duration_s": 12.967,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[hushed, growing unease] But the signal survived in the last captured data. [pause] It was not generated by the reactor. [pause] [tense, quiet] It was being received by it. [pause] [ominous] And its timestamp is older than the project itself.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 12.787,
+      "sentences": [
+       {
+        "text": "But the signal survived in the last captured data.",
+        "start_s": 0.0,
+        "end_s": 3.1
+       },
+       {
+        "text": "It was not generated by the reactor.",
+        "start_s": 4.04,
+        "end_s": 6.0
+       },
+       {
+        "text": "It was being received by it.",
+        "start_s": 6.9,
+        "end_s": 8.74
+       },
+       {
+        "text": "And its timestamp is older than the project itself.",
+        "start_s": 9.52,
+        "end_s": 12.787
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 11.38,
+      "voice_end_s": 24.347
+     },
+     "recommended_slide_seconds": 14.17
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions.",
+     "caption": "NEXT: 2100  /  CIVITAS",
+     "file": "assets/audio/voice/nova_grid/nvg_vo_outro_03.ogg",
+     "asset_id": "NVG-VO-OUTRO-03",
+     "duration_s": 9.095,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[calm, precise, clinical] New coordinates. [pause] Civitas Network. [pause] Twenty one hundred. [cool, subtly unsettling] The next target controls how the world makes decisions.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.915,
+      "sentences": [
+       {
+        "text": "New coordinates.",
+        "start_s": 0.0,
+        "end_s": 1.02
+       },
+       {
+        "text": "Civitas Network.",
+        "start_s": 1.92,
+        "end_s": 2.88
+       },
+       {
+        "text": "2100.",
+        "start_s": 3.66,
+        "end_s": 5.76
+       },
+       {
+        "text": "The next target controls how the world makes decisions.",
+        "start_s": 5.76,
+        "end_s": 8.915
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 26.847,
+      "voice_end_s": 35.942
+     },
+     "recommended_slide_seconds": 10.29
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch04_intro",
+   "title": "A World Without Uncertainty",
+   "music_bed": "assets/audio/music/cinematic/cvt_mus_cine_intro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/cvt_mus_cine_intro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/cvt_cine_intro_mix_ref.ogg",
+    "assets/audio/music/cinematic/cvt_cine_intro_mix_ref.mp3"
+   ],
+   "mix_seconds": 55.4,
+   "timeline": {
+    "pre_roll_s": 3.5,
+    "end_card_s": 39.216,
+    "gaps_s": [
+     [
+      8.259,
+      10.259
+     ],
+     [
+      23.596,
+      26.096
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "People no longer argued with the system. They no longer needed to.",
+     "caption": "2100  /  CENTRAL GOVERNANCE ZONE",
+     "file": "assets/audio/voice/civitas/cvt_vo_intro_01.ogg",
+     "asset_id": "CVT-VO-INTRO-01",
+     "duration_s": 4.759,
+     "loudness_lufs": -17.7,
+     "true_peak_dbtp": -2.8,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[quiet, melancholy] People no longer argued with the system. [pause] They no longer needed to.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 4.579,
+      "sentences": [
+       {
+        "text": "People no longer argued with the system.",
+        "start_s": 0.0,
+        "end_s": 2.3
+       },
+       {
+        "text": "They no longer needed to.",
+        "start_s": 3.28,
+        "end_s": 4.579
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.5,
+      "voice_end_s": 8.259
+     },
+     "recommended_slide_seconds": 5.96
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
+     "caption": null,
+     "file": "assets/audio/voice/civitas/cvt_vo_intro_02.ogg",
+     "asset_id": "CVT-VO-INTRO-02",
+     "duration_s": 13.337,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[measured, cold irony] Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. [pause] [bittersweet] The world became safer. [pause] [sad, quiet] Then it became smaller.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 13.157,
+      "sentences": [
+       {
+        "text": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability.",
+        "start_s": 0.0,
+        "end_s": 7.74
+       },
+       {
+        "text": "The world became safer.",
+        "start_s": 8.82,
+        "end_s": 10.4
+       },
+       {
+        "text": "Then it became smaller.",
+        "start_s": 11.36,
+        "end_s": 13.157
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 10.259,
+      "voice_end_s": 23.596
+     },
+     "recommended_slide_seconds": 14.54
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+     "caption": "TARGET: CIVITAS",
+     "file": "assets/audio/voice/civitas/cvt_vo_intro_03.ogg",
+     "asset_id": "CVT-VO-INTRO-03",
+     "duration_s": 11.72,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.7,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[calm, precise, clinical] Your target is the Civitas prediction core and its physical relay network. [pause] The system is linked to the other facilities. [pause] [low, intent] We need to know who is feeding it the future.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 11.54,
+      "sentences": [
+       {
+        "text": "Your target is the Civitas prediction core and its physical relay network.",
+        "start_s": 0.0,
+        "end_s": 4.58
+       },
+       {
+        "text": "The system is linked to the other facilities.",
+        "start_s": 5.3,
+        "end_s": 7.56
+       },
+       {
+        "text": "We need to know who is feeding it the future.",
+        "start_s": 8.66,
+        "end_s": 11.54
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 26.096,
+      "voice_end_s": 37.816
+     },
+     "recommended_slide_seconds": 12.92
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch04_outro",
+   "title": "The Model Knows",
+   "music_bed": "assets/audio/music/cinematic/cvt_mus_cine_outro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/cvt_mus_cine_outro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/cvt_cine_outro_mix_ref.ogg",
+    "assets/audio/music/cinematic/cvt_cine_outro_mix_ref.mp3"
+   ],
+   "mix_seconds": 56.22,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 43.979,
+    "gaps_s": [
+     [
+      9.892,
+      11.892
+     ],
+     [
+      19.734,
+      21.734
+     ],
+     [
+      30.738,
+      33.238
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+     "caption": null,
+     "file": "assets/audio/voice/civitas/cvt_vo_outro_01.ogg",
+     "asset_id": "CVT-VO-OUTRO-01",
+     "duration_s": 6.892,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[quiet, uncertain] Civitas is offline. [pause] The city is uncertain again. [pause] [wry, gentle] That should be a good thing.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.712,
+      "sentences": [
+       {
+        "text": "Civitas is offline.",
+        "start_s": 0.0,
+        "end_s": 1.84
+       },
+       {
+        "text": "The city is uncertain again.",
+        "start_s": 3.04,
+        "end_s": 4.62
+       },
+       {
+        "text": "That should be a good thing.",
+        "start_s": 5.52,
+        "end_s": 6.712
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 9.892
+     },
+     "recommended_slide_seconds": 8.09
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
+     "caption": null,
+     "file": "assets/audio/voice/civitas/cvt_vo_outro_02.ogg",
+     "asset_id": "CVT-VO-OUTRO-02",
+     "duration_s": 7.841,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[grave, growing dread] But the recovered model contains a forecast of the extinction event, [pause] complete with a date and a sequence of events.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.661,
+      "sentences": [
+       {
+        "text": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
+        "start_s": 0.0,
+        "end_s": 7.661
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 11.892,
+      "voice_end_s": 19.733
+     },
+     "recommended_slide_seconds": 9.04
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "narrator",
+     "text": "The forecast was written before the event happened. It was not predicting the future. It was preparing it.",
+     "caption": null,
+     "file": "assets/audio/voice/civitas/cvt_vo_outro_03.ogg",
+     "asset_id": "CVT-VO-OUTRO-03",
+     "duration_s": 9.004,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[slow, chilling] The forecast was written before the event happened. [pause] It was not predicting the future. [pause] [ominous, almost a whisper] It was preparing it.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.824,
+      "sentences": [
+       {
+        "text": "The forecast was written before the event happened.",
+        "start_s": 0.0,
+        "end_s": 3.42
+       },
+       {
+        "text": "It was not predicting the future.",
+        "start_s": 4.44,
+        "end_s": 6.32
+       },
+       {
+        "text": "It was preparing it.",
+        "start_s": 7.36,
+        "end_s": 8.824
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 21.734,
+      "voice_end_s": 30.738
+     },
+     "recommended_slide_seconds": 10.2
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "control",
+     "text": "All four programmes point to one location. Meridian. 2104. This is the final intervention.",
+     "caption": "NEXT: 2104  /  MERIDIAN",
+     "file": "assets/audio/voice/civitas/cvt_vo_outro_04.ogg",
+     "asset_id": "CVT-VO-OUTRO-04",
+     "duration_s": 9.541,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[calm, precise, quietly resolute] All four programmes point to one location. [pause] Meridian. [pause] Twenty one oh four. [pause] [softly, with gravity] This is the final intervention.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.361,
+      "sentences": [
+       {
+        "text": "All four programmes point to one location.",
+        "start_s": 0.0,
+        "end_s": 2.72
+       },
+       {
+        "text": "Meridian.",
+        "start_s": 3.7,
+        "end_s": 4.1
+       },
+       {
+        "text": "2104.",
+        "start_s": 4.1,
+        "end_s": 7.76
+       },
+       {
+        "text": "This is the final intervention.",
+        "start_s": 7.76,
+        "end_s": 9.361
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 33.238,
+      "voice_end_s": 42.779
+     },
+     "recommended_slide_seconds": 10.74
+    }
+   ]
+  },
+  {
+   "cinematic_id": "ch05_intro",
+   "title": "The Hidden Hand",
+   "music_bed": "assets/audio/music/cinematic/mrd_mus_cine_intro_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/mrd_mus_cine_intro_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/mrd_cine_intro_mix_ref.ogg",
+    "assets/audio/music/cinematic/mrd_cine_intro_mix_ref.mp3"
+   ],
+   "mix_seconds": 47.089,
+   "timeline": {
+    "pre_roll_s": 3.5,
+    "end_card_s": 36.188,
+    "gaps_s": [
+     [
+      10.923,
+      12.923
+     ],
+     [
+      23.222,
+      25.222
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "control",
+     "text": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+     "caption": "2104  /  LOCATION WITHHELD",
+     "file": "assets/audio/voice/meridian/mrd_vo_intro_01.ogg",
+     "asset_id": "MRD-VO-INTRO-01",
+     "duration_s": 7.423,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[calm, precise, hushed] Meridian does not appear in public records. [pause] It funded no single invention. [pause] [quietly unsettling] It connected them.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.243,
+      "sentences": [
+       {
+        "text": "Meridian does not appear in public records.",
+        "start_s": 0.0,
+        "end_s": 2.58
+       },
+       {
+        "text": "It funded no single invention.",
+        "start_s": 3.34,
+        "end_s": 5.14
+       },
+       {
+        "text": "It connected them.",
+        "start_s": 6.14,
+        "end_s": 7.243
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.5,
+      "voice_end_s": 10.923
+     },
+     "recommended_slide_seconds": 8.62
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "control",
+     "text": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+     "caption": null,
+     "file": "assets/audio/voice/meridian/mrd_vo_intro_02.ogg",
+     "asset_id": "MRD-VO-INTRO-02",
+     "duration_s": 10.299,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -2.1,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[clinical, deliberate] Helix, [pause] Vita, [pause] Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 10.119,
+      "sentences": [
+       {
+        "text": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
+        "start_s": 0.0,
+        "end_s": 10.119
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 12.923,
+      "voice_end_s": 23.222
+     },
+     "recommended_slide_seconds": 11.5
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
+     "caption": "TARGET: MERIDIAN",
+     "file": "assets/audio/voice/meridian/mrd_vo_intro_03.ogg",
+     "asset_id": "MRD-VO-INTRO-03",
+     "duration_s": 9.567,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -2.1,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 5,
+      "take": "s5"
+     },
+     "direction": "[quiet authority, resolute] The facility ahead is the coordination point. [pause] This is the final target. [pause] [firm, commanding] Destroy the core infrastructure. [pause] End the convergence.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 9.387,
+      "sentences": [
+       {
+        "text": "The facility ahead is the coordination point.",
+        "start_s": 0.0,
+        "end_s": 2.64
+       },
+       {
+        "text": "This is the final target.",
+        "start_s": 3.4,
+        "end_s": 4.96
+       },
+       {
+        "text": "Destroy the core infrastructure.",
+        "start_s": 5.68,
+        "end_s": 7.44
+       },
+       {
+        "text": "End the convergence.",
+        "start_s": 8.0,
+        "end_s": 9.387
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 25.222,
+      "voice_end_s": 34.789
+     },
+     "recommended_slide_seconds": 10.77
+    }
+   ]
+  },
+  {
+   "cinematic_id": "finale",
+   "title": "The Wrong Future",
+   "music_bed": "assets/audio/music/cinematic/gam_mus_cine_finale_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/gam_mus_cine_finale_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/gam_cine_finale_mix_ref.ogg",
+    "assets/audio/music/cinematic/gam_cine_finale_mix_ref.mp3"
+   ],
+   "mix_seconds": 85.127,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 70.01,
+    "gaps_s": [
+     [
+      10.896,
+      13.396
+     ],
+     [
+      18.934,
+      21.934
+     ],
+     [
+      27.952,
+      30.452
+     ],
+     [
+      39.42,
+      42.62
+     ],
+     [
+      51.047,
+      53.547
+     ],
+     [
+      58.883,
+      61.383
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising.",
+     "caption": null,
+     "file": "assets/audio/voice/finale/gam_vo_finale_01.ogg",
+     "asset_id": "GAM-VO-FINALE-01",
+     "duration_s": 7.896,
+     "loudness_lufs": -18.4,
+     "true_peak_dbtp": -3.1,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[quiet, exhausted relief] Meridian is silent. [pause] The four research paths are broken. [pause] [calm, hopeful] The revised timeline is stabilising.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.716,
+      "sentences": [
+       {
+        "text": "Meridian is silent.",
+        "start_s": 0.0,
+        "end_s": 1.32
+       },
+       {
+        "text": "The four research paths are broken.",
+        "start_s": 2.4,
+        "end_s": 4.2
+       },
+       {
+        "text": "The revised timeline is stabilising.",
+        "start_s": 5.4,
+        "end_s": 7.716
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 10.896
+     },
+     "recommended_slide_seconds": 9.1
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "control",
+     "text": "Temporal intervention successful. All known extinction pathways have been removed.",
+     "caption": "CASCADE RISK: 0.0%",
+     "file": "assets/audio/voice/finale/gam_vo_finale_02.ogg",
+     "asset_id": "GAM-VO-FINALE-02",
+     "duration_s": 5.538,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[calm, quietly satisfied] Temporal intervention successful. All known extinction pathways have been removed.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 5.358,
+      "sentences": [
+       {
+        "text": "Temporal intervention successful.",
+        "start_s": 0.0,
+        "end_s": 1.96
+       },
+       {
+        "text": "All known extinction pathways have been removed.",
+        "start_s": 2.8,
+        "end_s": 5.358
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 13.396,
+      "voice_end_s": 18.934
+     },
+     "recommended_slide_seconds": 6.74
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Wait. I'm receiving a new event marker. That is not possible.",
+     "caption": null,
+     "file": "assets/audio/voice/finale/gam_vo_finale_03.ogg",
+     "asset_id": "GAM-VO-FINALE-03",
+     "duration_s": 6.018,
+     "loudness_lufs": -17.5,
+     "true_peak_dbtp": -3.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 2,
+      "take": "s2"
+     },
+     "direction": "[startled, losing composure] Wait. [pause] [confused, shaken] I'm receiving a new event marker. [scared, quiet] That is not possible.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 5.838,
+      "sentences": [
+       {
+        "text": "Wait.",
+        "start_s": 0.0,
+        "end_s": 0.4
+       },
+       {
+        "text": "I'm receiving a new event marker.",
+        "start_s": 1.22,
+        "end_s": 3.0
+       },
+       {
+        "text": "That is not possible.",
+        "start_s": 3.86,
+        "end_s": 5.838
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 21.934,
+      "voice_end_s": 27.952
+     },
+     "recommended_slide_seconds": 7.22
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "narrator",
+     "text": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
+     "caption": null,
+     "file": "assets/audio/voice/finale/gam_vo_finale_04.ogg",
+     "asset_id": "GAM-VO-FINALE-04",
+     "duration_s": 8.968,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[low voice, heavy, emotional] You changed the future. [pause] You broke every machine they told you to break. [pause] [grave, dread] And still, [pause] the end is coming.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.788,
+      "sentences": [
+       {
+        "text": "You changed the future.",
+        "start_s": 0.0,
+        "end_s": 1.38
+       },
+       {
+        "text": "You broke every machine they told you to break.",
+        "start_s": 2.58,
+        "end_s": 4.92
+       },
+       {
+        "text": "And still, the end is coming.",
+        "start_s": 5.96,
+        "end_s": 8.788
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 30.452,
+      "voice_end_s": 39.42
+     },
+     "recommended_slide_seconds": 10.17
+    },
+    {
+     "slide_index": 4,
+     "slide_number": 5,
+     "speaker": "control",
+     "text": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history.",
+     "caption": "ORIGIN EVENT: 2041",
+     "file": "assets/audio/voice/finale/gam_vo_finale_05.ogg",
+     "asset_id": "GAM-VO-FINALE-05",
+     "duration_s": 8.427,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[shaken, anxious] Origin event located. Twenty forty-one. [pause] It predates every target. [despair, quiet] We were sent to the wrong point in history.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 8.247,
+      "sentences": [
+       {
+        "text": "Origin event located.",
+        "start_s": 0.0,
+        "end_s": 1.34
+       },
+       {
+        "text": "2041.",
+        "start_s": 1.98,
+        "end_s": 4.24
+       },
+       {
+        "text": "It predates every target.",
+        "start_s": 4.24,
+        "end_s": 6.2
+       },
+       {
+        "text": "We were sent to the wrong point in history.",
+        "start_s": 6.2,
+        "end_s": 8.247
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 42.62,
+      "voice_end_s": 51.047
+     },
+     "recommended_slide_seconds": 9.63
+    },
+    {
+     "slide_index": 5,
+     "slide_number": 6,
+     "speaker": "narrator",
+     "text": "The first mistake was made long before the world knew it was making one.",
+     "caption": null,
+     "file": "assets/audio/voice/finale/gam_vo_finale_06.ogg",
+     "asset_id": "GAM-VO-FINALE-06",
+     "duration_s": 5.336,
+     "loudness_lufs": -17.8,
+     "true_peak_dbtp": -3.4,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 8,
+      "take": "s8"
+     },
+     "direction": "[slow, sombre, reflective] The first mistake was made... long before the world knew it was making one.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 5.156,
+      "sentences": [
+       {
+        "text": "The first mistake was made long before the world knew it was making one.",
+        "start_s": 0.0,
+        "end_s": 5.156
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 53.547,
+      "voice_end_s": 58.883
+     },
+     "recommended_slide_seconds": 6.54
+    },
+    {
+     "slide_index": 6,
+     "slide_number": 7,
+     "speaker": "control",
+     "text": "Recalculating temporal coordinates. New destination confirmed. We need to go further back.",
+     "caption": "NEXT COORDINATE: 2041",
+     "file": "assets/audio/voice/finale/gam_vo_finale_07.ogg",
+     "asset_id": "GAM-VO-FINALE-07",
+     "duration_s": 6.628,
+     "loudness_lufs": -17.7,
+     "true_peak_dbtp": -2.0,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[regaining control, urgent] Recalculating temporal coordinates. [pause] New destination confirmed. [determined] We need to go further back.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.448,
+      "sentences": [
+       {
+        "text": "Recalculating temporal coordinates.",
+        "start_s": 0.0,
+        "end_s": 1.56
+       },
+       {
+        "text": "New destination confirmed.",
+        "start_s": 1.56,
+        "end_s": 3.5
+       },
+       {
+        "text": "We need to go further back.",
+        "start_s": 3.5,
+        "end_s": 6.448
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 61.383,
+      "voice_end_s": 68.011
+     },
+     "recommended_slide_seconds": 7.83
+    }
+   ]
+  },
+  {
+   "cinematic_id": "teaser_2041",
+   "title": "The First Mistake",
+   "music_bed": "assets/audio/music/cinematic/gam_mus_cine_teaser_2041_bed.ogg",
+   "duck_envelope": "assets/audio/music/cinematic/gam_mus_cine_teaser_2041_bed.duck_env.json",
+   "mix_reference": [
+    "assets/audio/music/cinematic/gam_cine_teaser_2041_mix_ref.ogg",
+    "assets/audio/music/cinematic/gam_cine_teaser_2041_mix_ref.mp3"
+   ],
+   "mix_seconds": 43.403,
+   "timeline": {
+    "pre_roll_s": 3.0,
+    "end_card_s": 32.326,
+    "gaps_s": [
+     [
+      9.638,
+      11.838
+     ],
+     [
+      16.963,
+      19.763
+     ],
+     [
+      25.606,
+      28.106
+     ]
+    ]
+   },
+   "slides": [
+    {
+     "slide_index": 0,
+     "slide_number": 1,
+     "speaker": "narrator",
+     "text": "2041. An ordinary morning. Nobody knows what is about to begin.",
+     "caption": null,
+     "file": "assets/audio/voice/teaser_2041/gam_vo_teaser_2041_01.ogg",
+     "asset_id": "GAM-VO-TEASER_2041-01",
+     "duration_s": 6.638,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 1,
+      "take": "s1"
+     },
+     "direction": "[quiet, wistful] Twenty forty-one. [pause] An ordinary morning. [pause] [hushed, ominous] Nobody knows what is about to begin.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 6.458,
+      "sentences": [
+       {
+        "text": "2041.",
+        "start_s": 0.0,
+        "end_s": 2.82
+       },
+       {
+        "text": "An ordinary morning.",
+        "start_s": 2.82,
+        "end_s": 5.04
+       },
+       {
+        "text": "Nobody knows what is about to begin.",
+        "start_s": 5.04,
+        "end_s": 6.458
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 3.0,
+      "voice_end_s": 9.638
+     },
+     "recommended_slide_seconds": 7.84
+    },
+    {
+     "slide_index": 1,
+     "slide_number": 2,
+     "speaker": "narrator",
+     "text": "In a university laboratory, a small machine is switched on for the first time.",
+     "caption": null,
+     "file": "assets/audio/voice/teaser_2041/gam_vo_teaser_2041_02.ogg",
+     "asset_id": "GAM-VO-TEASER_2041-02",
+     "duration_s": 5.125,
+     "loudness_lufs": -18.1,
+     "true_peak_dbtp": -3.6,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[hushed, intimate] In a university laboratory, a small machine is switched on for the first time.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 4.945,
+      "sentences": [
+       {
+        "text": "In a university laboratory, a small machine is switched on for the first time.",
+        "start_s": 0.0,
+        "end_s": 4.945
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 11.838,
+      "voice_end_s": 16.963
+     },
+     "recommended_slide_seconds": 6.33
+    },
+    {
+     "slide_index": 2,
+     "slide_number": 3,
+     "speaker": "control",
+     "text": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
+     "caption": null,
+     "file": "assets/audio/voice/teaser_2041/gam_vo_teaser_2041_03.ogg",
+     "asset_id": "GAM-VO-TEASER_2041-03",
+     "duration_s": 5.843,
+     "loudness_lufs": -18.0,
+     "true_peak_dbtp": -1.9,
+     "voice": {
+      "name": "TFJ Control (Temporal First Jump)",
+      "voice_id": "RyGrFtWwuk4TeI35VwiE",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.5,
+       "similarity_boost": 0.8
+      },
+      "seed": 4,
+      "take": "s4"
+     },
+     "direction": "[calm, precise, subtly awed] Temporal arrival confirmed. [pause] [quietly unsettling] You are earlier than anyone has ever gone.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 5.663,
+      "sentences": [
+       {
+        "text": "Temporal arrival confirmed.",
+        "start_s": 0.0,
+        "end_s": 1.86
+       },
+       {
+        "text": "You are earlier than anyone has ever gone.",
+        "start_s": 2.92,
+        "end_s": 5.663
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 19.763,
+      "voice_end_s": 25.606
+     },
+     "recommended_slide_seconds": 7.04
+    },
+    {
+     "slide_index": 3,
+     "slide_number": 4,
+     "speaker": "narrator",
+     "text": "Every future you saved began here. Season two: The First Mistake.",
+     "caption": null,
+     "file": "assets/audio/voice/teaser_2041/gam_vo_teaser_2041_04.ogg",
+     "asset_id": "GAM-VO-TEASER_2041-04",
+     "duration_s": 7.569,
+     "loudness_lufs": -17.9,
+     "true_peak_dbtp": -3.3,
+     "voice": {
+      "name": "TFJ Narrator (Temporal First Jump)",
+      "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+      "model_id": "eleven_v4",
+      "settings": {
+       "stability": 0.4,
+       "similarity_boost": 0.8
+      },
+      "seed": 3,
+      "take": "s3"
+     },
+     "direction": "[grave, resonant] Every future you saved began here. [pause] [cinematic, building intensity] Season two: [pause] The First Mistake.",
+     "subtitle_sync": {
+      "start_s": 0.0,
+      "end_s": 7.389,
+      "sentences": [
+       {
+        "text": "Every future you saved began here.",
+        "start_s": 0.0,
+        "end_s": 3.44
+       },
+       {
+        "text": "Season two:",
+        "start_s": 4.34,
+        "end_s": 5.18
+       },
+       {
+        "text": "The First Mistake.",
+        "start_s": 5.98,
+        "end_s": 7.389
+       }
+      ]
+     },
+     "timeline": {
+      "voice_start_s": 28.106,
+      "voice_end_s": 35.675
+     },
+     "recommended_slide_seconds": 8.77
+    }
+   ]
+  }
+ ],
+ "total_voice_seconds": 447.58
+}
