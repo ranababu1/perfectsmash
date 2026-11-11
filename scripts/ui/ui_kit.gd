@@ -131,7 +131,11 @@ static func add_press_feedback(b: Button) -> void:
 ## on a button nobody touched just looks like a stray highlight.
 static func focus_default(b: Control) -> void:
 	if not DisplayServer.is_touchscreen_available():
-		b.grab_focus.call_deferred()
+		# Deferred, and only if the control is still shown: a panel replaced in the same frame
+		# (pause → confirmation) must not try to focus a button that already left the tree.
+		(func() -> void:
+			if is_instance_valid(b) and b.is_inside_tree():
+				b.grab_focus()).call_deferred()
 
 
 static func label(text: String, font_size: int = 24, color: Color = Palette.TEXT) -> Label:

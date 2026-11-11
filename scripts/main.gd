@@ -140,6 +140,8 @@ func _show_mission(mission_id: String = "") -> void:
 	_mission.restart_requested.connect(_show_mission.bind(mission_id))
 	_mission.next_requested.connect(_show_next_mission.bind(mission_id))
 	_mission.exit_requested.connect(_exit_mission.bind(mission_id))
+	# Pause → Main Menu: the abandoned attempt records nothing; saved progress is untouched.
+	_mission.menu_requested.connect(_show_campaign)
 	add_child(_mission)
 	_reveal()
 
