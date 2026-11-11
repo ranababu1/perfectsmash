@@ -1,0 +1,133 @@
+{
+	"id": "meridian_02",
+	"name": "Beneath the City",
+	"chapter": 5,
+	"briefing": "Meridian sits under the infrastructure it coordinates. The core is shielded by two stabilisers that stand beneath a loaded deck. The nearer anchor is phase crystal. Take the support, not the stabilisers.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 620,
+			"y": 580.0,
+			"w": 80,
+			"h": 120,
+			"critical_asset": true,
+			"health_scale": 0.32,
+			"shielded_by": [
+				"stab_a"
+			]
+		},
+		{
+			"id": "anchor_l",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 770,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "anchor_r",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1050,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "under_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 910.0,
+			"y": 365.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"anchor_l",
+				"anchor_r"
+			]
+		},
+		{
+			"id": "cap",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 910,
+			"y": 330.0,
+			"w": 140,
+			"h": 40,
+			"supports": [
+				"under_deck"
+			]
+		},
+		{
+			"id": "stab_a",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 910,
+			"y": 600.0,
+			"w": 50,
+			"h": 80
+		},
+		{
+			"id": "cell_a",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1300,
+			"y": 615.0,
+			"w": 36,
+			"h": 50
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the upper deck",
+			"targets": [
+				"under_deck"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

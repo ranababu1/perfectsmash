@@ -1,0 +1,9 @@
+[
+	{"name": "ignite, then break the crystal link", "steps": [
+		{"weapon": "pulse_cannon", "target": "cell_a"},
+		{"weapon": "temporal_lance", "target": "cell_c"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

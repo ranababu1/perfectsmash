@@ -1,0 +1,10 @@
+[
+	{"name": "fell the centre tower", "steps": [
+		{"weapon": "temporal_lance", "target": "t_c", "through": ["t_l"]},
+		{"weapon": "kinetic_accelerator", "target": "node_1"},
+		{"weapon": "kinetic_accelerator", "target": "node_2"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

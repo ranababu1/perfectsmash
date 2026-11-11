@@ -1,0 +1,9 @@
+[
+	{"name": "lance, breach, core", "steps": [
+		{"weapon": "temporal_lance", "target": "tower_a", "through": ["tower_b"]},
+		{"weapon": "breach_charge", "target": "tower_b"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

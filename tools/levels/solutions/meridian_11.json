@@ -1,0 +1,9 @@
+[
+	{"name": "collapse from the spine", "steps": [
+		{"weapon": "temporal_lance", "target": "spine"},
+		{"weapon": "kinetic_accelerator", "target": "node_c"},
+		{"weapon": "kinetic_accelerator", "target": "node_c"},
+		{"weapon": "kinetic_accelerator", "target": "node_a"},
+		{"weapon": "kinetic_accelerator", "target": "node_b"}
+	]}
+]

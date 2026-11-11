@@ -1,0 +1,178 @@
+{
+	"id": "meridian_15",
+	"name": "The Core Directive",
+	"chapter": 5,
+	"briefing": "The directive chamber holds three cores in a layered frame: an exposed one on the near tower, one on the central deck, and one behind it on the far tower. The central deck stands on a single phase-crystal support.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 5,
+	"target_time": 70,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"disruptor": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "col_l",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 780,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "deck_l",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 780.0,
+			"y": 468.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"col_l"
+			]
+		},
+		{
+			"id": "node_l",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 780,
+			"y": 396.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"deck_l"
+			],
+			"health_scale": 0.4
+		},
+		{
+			"id": "cs",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 1000,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "cd",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1000.0,
+			"y": 365.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"cs"
+			]
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1000,
+			"y": 290.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"cd"
+			],
+			"critical_asset": true,
+			"health_scale": 0.4
+		},
+		{
+			"id": "col_r",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1220,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "deck_r",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1220.0,
+			"y": 468.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"col_r"
+			]
+		},
+		{
+			"id": "node_r",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1220,
+			"y": 396.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"deck_r"
+			],
+			"health_scale": 0.4,
+			"shielded_by": [
+				"em_r"
+			]
+		},
+		{
+			"id": "em_r",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 640,
+			"y": 600.0,
+			"w": 50,
+			"h": 80,
+			"health_scale": 0.8
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the central core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "side",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the near and far cores",
+			"targets": [
+				"node_l",
+				"node_r"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

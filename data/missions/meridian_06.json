@@ -1,0 +1,197 @@
+{
+	"id": "meridian_06",
+	"name": "The First Directive",
+	"chapter": 5,
+	"briefing": "The original instructions are older than the facility that carries them. A ring of cells relays the order from foundation to foundation, but one link is phase crystal and the chain stops there. Restart it and break the link.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"pulse_cannon": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "found_a",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 600,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "cell_a",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 600,
+			"y": 575.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"found_a"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "found_b",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 710,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "cell_b",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 710,
+			"y": 575.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"found_b"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "found_c",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 820,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "cell_c",
+			"kind": "temporal_cell",
+			"material": "temporal_crystal",
+			"x": 820,
+			"y": 575.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"found_c"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "found_d",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 930,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "cell_d",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 930,
+			"y": 575.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"found_d"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "found_e",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1040,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "cell_e",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1040,
+			"y": 575.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"found_e"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "core_base",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1150,
+			"y": 620.0,
+			"w": 108,
+			"h": 40
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1150,
+			"y": 540.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_base"
+			],
+			"critical_asset": true,
+			"health_scale": 0.88
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "relay",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burst three relay cells",
+			"targets": [
+				"cell_a",
+				"cell_b",
+				"cell_d",
+				"cell_e"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

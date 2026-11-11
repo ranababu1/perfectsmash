@@ -1,0 +1,149 @@
+{
+	"id": "meridian_18",
+	"name": "No Return Path",
+	"chapter": 5,
+	"briefing": "When the core is damaged the return path becomes unstable. A tall, narrow tower carries a crystal synchroniser on a heavy cap; the core below is screened by glass. The glass is the lesser problem.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "glass_a",
+			"kind": "phase_shield",
+			"material": "glass_polymer",
+			"x": 930,
+			"y": 580.0,
+			"w": 20,
+			"h": 120
+		},
+		{
+			"id": "glass_b",
+			"kind": "phase_shield",
+			"material": "glass_polymer",
+			"x": 958,
+			"y": 580.0,
+			"w": 20,
+			"h": 120
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1040,
+			"y": 580.0,
+			"w": 80,
+			"h": 120,
+			"critical_asset": true,
+			"health_scale": 0.64,
+			"shielded_by": [
+				"sync"
+			]
+		},
+		{
+			"id": "col_a",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1160,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "col_b",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1260,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1130,
+			"y": 465.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"col_a",
+				"col_b"
+			]
+		},
+		{
+			"id": "cap",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1130,
+			"y": 430.0,
+			"w": 140,
+			"h": 40,
+			"supports": [
+				"deck"
+			]
+		},
+		{
+			"id": "sync",
+			"kind": "temporal_cell",
+			"material": "temporal_crystal",
+			"x": 1130,
+			"y": 385.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"cap"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "glass",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Break the glass screen",
+			"targets": [
+				"glass_a",
+				"glass_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

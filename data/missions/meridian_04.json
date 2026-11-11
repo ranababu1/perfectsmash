@@ -1,0 +1,150 @@
+{
+	"id": "meridian_04",
+	"name": "The Common Model",
+	"chapter": 5,
+	"briefing": "One model fed all four programmes. Its memory nodes stand at three heights behind a crystal baffle. The baffle takes the Lance; everything behind it takes what you choose.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "baffle",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 600,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "node_low",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 770,
+			"y": 600.0,
+			"w": 50,
+			"h": 80
+		},
+		{
+			"id": "mid_col",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 890,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "mid_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 890.0,
+			"y": 428.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"mid_col"
+			]
+		},
+		{
+			"id": "node_mid",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 890,
+			"y": 376.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"mid_deck"
+			],
+			"health_scale": 0.7
+		},
+		{
+			"id": "hi_col",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1020,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "hi_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1020.0,
+			"y": 368.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"hi_col"
+			]
+		},
+		{
+			"id": "node_hi",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1020,
+			"y": 316.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"hi_deck"
+			],
+			"health_scale": 0.7
+		}
+	],
+	"objectives": [
+		{
+			"id": "nodes",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy all three memory nodes",
+			"targets": [
+				"node_low",
+				"node_mid",
+				"node_hi"
+			],
+			"count": 3
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the middle deck",
+			"targets": [
+				"mid_deck"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,10 @@
+[
+	{"name": "layer by layer", "steps": [
+		{"weapon": "kinetic_accelerator", "target": "node_l"},
+		{"weapon": "temporal_lance", "target": "cs", "through": ["col_l"]},
+		{"weapon": "kinetic_accelerator", "target": "em_r"},
+		{"weapon": "kinetic_accelerator", "target": "node_r"},
+		{"weapon": "temporal_lance", "target": "core", "through": ["col_l"]},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

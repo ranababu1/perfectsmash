@@ -1,0 +1,142 @@
+{
+	"id": "meridian_11",
+	"name": "The Chosen Outcome",
+	"chapter": 5,
+	"briefing": "One future is marked as preferred, and three nodes hold the forecast. Two ride a deck on a single phase-crystal support; the third stands apart on armour. One precise shot starts the collapse.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "spine",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 950,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "forecast_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 950.0,
+			"y": 365.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"spine"
+			]
+		},
+		{
+			"id": "node_a",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 850,
+			"y": 310.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"forecast_deck"
+			],
+			"health_scale": 1.6
+		},
+		{
+			"id": "node_b",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1050,
+			"y": 310.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"forecast_deck"
+			],
+			"health_scale": 1.6
+		},
+		{
+			"id": "side_col",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1250,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "side_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1250.0,
+			"y": 468.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"side_col"
+			]
+		},
+		{
+			"id": "node_c",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1250,
+			"y": 416.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"side_deck"
+			],
+			"health_scale": 1.5
+		}
+	],
+	"objectives": [
+		{
+			"id": "nodes",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the three forecast nodes",
+			"targets": [
+				"node_a",
+				"node_b",
+				"node_c"
+			],
+			"count": 3
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the forecast deck",
+			"targets": [
+				"forecast_deck"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,15 @@
+[
+	{"name": "lance the baffle line, then straight shots", "steps": [
+		{"weapon": "temporal_lance", "target": "node_low", "through": ["baffle"]},
+		{"weapon": "kinetic_accelerator", "target": "node_mid"},
+		{"weapon": "kinetic_accelerator", "target": "node_hi"},
+		{"weapon": "kinetic_accelerator", "target": "node_mid"},
+		{"weapon": "kinetic_accelerator", "target": "node_hi"}
+	]},
+	{"name": "lance, then a lob", "steps": [
+		{"weapon": "temporal_lance", "target": "node_low", "through": ["baffle"]},
+		{"weapon": "breach_charge", "target": "node_mid"},
+		{"weapon": "kinetic_accelerator", "target": "node_hi"},
+		{"weapon": "kinetic_accelerator", "target": "node_hi"}
+	]}
+]

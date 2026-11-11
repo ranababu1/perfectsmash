@@ -1,0 +1,126 @@
+{
+	"id": "meridian_17",
+	"name": "The Final Relay",
+	"chapter": 5,
+	"briefing": "The signal appears to travel in both directions. A relay frame holds two targets: a node behind a phase screen, and the core behind a phase anchor in the same line. One action opens the second shot.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "screen",
+			"kind": "phase_shield",
+			"material": "temporal_crystal",
+			"x": 640,
+			"y": 560.0,
+			"w": 24,
+			"h": 160
+		},
+		{
+			"id": "node_1",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 600.0,
+			"w": 50,
+			"h": 80
+		},
+		{
+			"id": "anchor",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 850,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "core_base",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1060,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1060,
+			"y": 420.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_base"
+			],
+			"critical_asset": true,
+			"health_scale": 0.5
+		},
+		{
+			"id": "rel_a",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1190,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "rel_b",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1260,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the relay core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "node",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Burn out the signal node",
+			"targets": [
+				"node_1"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

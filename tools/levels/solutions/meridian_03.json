@@ -1,0 +1,13 @@
+[
+	{"name": "lance the ring", "steps": [
+		{"weapon": "temporal_lance", "target": "cell_1", "through": ["screen"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]},
+	{"name": "lob into the ring", "steps": [
+		{"weapon": "breach_charge", "target": "cell_2"},
+		{"weapon": "breach_charge", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

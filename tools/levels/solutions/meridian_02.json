@@ -1,0 +1,12 @@
+[
+	{"name": "lance the nearer anchor", "steps": [
+		{"weapon": "temporal_lance", "target": "anchor_l"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]},
+	{"name": "lance through both anchors", "steps": [
+		{"weapon": "temporal_lance", "target": "anchor_r", "through": ["anchor_l"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

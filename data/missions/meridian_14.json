@@ -1,0 +1,268 @@
+{
+	"id": "meridian_14",
+	"name": "Break the Chain",
+	"chapter": 5,
+	"briefing": "The network is one chain of cells in three groups, and the gaps between the groups are wider than a blast. Bridge each gap with the right tool: start the first, soak the second, break the crystal link of the third.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"pulse_cannon": {
+			"ammunition": 4
+		},
+		"disruptor": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "g1_col1",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 480,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "g1_cell1",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 480,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g1_col1"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g1_col2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 560,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "g1_cell2",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 560,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g1_col2"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g1_col3",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 640,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "g1_cell3",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 640,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g1_col3"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g2_col1",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 820,
+			"y": 540.0,
+			"w": 30,
+			"h": 200
+		},
+		{
+			"id": "g2_cell1",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 820,
+			"y": 415.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g2_col1"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g2_col2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 900,
+			"y": 540.0,
+			"w": 30,
+			"h": 200
+		},
+		{
+			"id": "g2_cell2",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 900,
+			"y": 415.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g2_col2"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g2_col3",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 980,
+			"y": 540.0,
+			"w": 30,
+			"h": 200
+		},
+		{
+			"id": "g2_cell3",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 980,
+			"y": 415.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g2_col3"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "g3_col1",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1150,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "g3_cell1",
+			"kind": "temporal_cell",
+			"material": "temporal_crystal",
+			"x": 1150,
+			"y": 355.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g3_col1"
+			]
+		},
+		{
+			"id": "g3_col2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1230,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "g3_cell2",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1230,
+			"y": 355.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"g3_col2"
+			],
+			"health_scale": 0.3
+		},
+		{
+			"id": "core_col",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1330,
+			"y": 510.0,
+			"w": 40,
+			"h": 260
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1330,
+			"y": 320.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_col"
+			],
+			"critical_asset": true,
+			"health_scale": 0.88
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "chain",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burst six chain cells",
+			"targets": [
+				"g1_cell1",
+				"g1_cell2",
+				"g1_cell3",
+				"g2_cell1",
+				"g2_cell2",
+				"g2_cell3",
+				"g3_cell2"
+			],
+			"count": 6
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

@@ -1,0 +1,10 @@
+[
+	{"name": "outer emitters first", "steps": [
+		{"weapon": "temporal_lance", "target": "em_a", "through": ["screen"]},
+		{"weapon": "temporal_lance", "target": "anchor_l"},
+		{"weapon": "disruptor", "target": "wall"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

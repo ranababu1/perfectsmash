@@ -1,0 +1,152 @@
+{
+	"id": "meridian_05",
+	"name": "The Hidden Budget",
+	"chapter": 5,
+	"briefing": "Power for Meridian is routed through channels that do not exist. A heavy slab rests on two phase relays above the ledger cells; the core stands clear on the far side. Take both supports in one pass.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "relay_l",
+			"kind": "timeline_relay",
+			"material": "temporal_crystal",
+			"x": 900,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "relay_r",
+			"kind": "timeline_relay",
+			"material": "temporal_crystal",
+			"x": 1040,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "budget_slab",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 970,
+			"y": 420.0,
+			"w": 175,
+			"h": 40,
+			"supports": [
+				"relay_l",
+				"relay_r"
+			]
+		},
+		{
+			"id": "cell_a",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 945,
+			"y": 615.0,
+			"w": 36,
+			"h": 50,
+			"health_scale": 0.6
+		},
+		{
+			"id": "cell_b",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 995,
+			"y": 615.0,
+			"w": 36,
+			"h": 50,
+			"health_scale": 0.6
+		},
+		{
+			"id": "core_base",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1250,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1250,
+			"y": 420.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_base"
+			],
+			"critical_asset": true,
+			"health_scale": 0.3
+		},
+		{
+			"id": "rel_far",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1400,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "ledger",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Burst both ledger cells",
+			"targets": [
+				"cell_a",
+				"cell_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "slab",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the slab",
+			"targets": [
+				"budget_slab"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

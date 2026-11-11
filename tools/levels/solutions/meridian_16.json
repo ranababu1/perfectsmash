@@ -1,0 +1,8 @@
+[
+	{"name": "three lobs", "steps": [
+		{"weapon": "breach_charge", "target": "em_a"},
+		{"weapon": "breach_charge", "target": "em_b"},
+		{"weapon": "breach_charge", "target": "core"},
+		{"weapon": "breach_charge", "target": "core"}
+	]}
+]
