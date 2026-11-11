@@ -1,0 +1,15 @@
+[
+	{
+		"name": "deck, spark, archive, signers",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "ov_l"},
+			{"weapon": "kinetic_accelerator", "target": "ov_l"},
+			{"weapon": "breach_charge", "target": "run_5"},
+			{"weapon": "kinetic_accelerator", "target": "sign_1"},
+			{"weapon": "kinetic_accelerator", "target": "sign_2"},
+			{"weapon": "kinetic_accelerator", "target": "ar_l"},
+			{"weapon": "kinetic_accelerator", "target": "ar_l"},
+			{"weapon": "kinetic_accelerator", "target": "ar_deck"}
+		]
+	}
+]

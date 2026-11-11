@@ -1,0 +1,129 @@
+{
+	"id": "helix_11",
+	"name": "Priority One",
+	"chapter": 1,
+	"briefing": "AURA ranks continuity above every human request. The allocation core sits behind a full-height blast wall; its terminals stand taller than the wall.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "great_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 700,
+			"y": 604.0,
+			"w": 30,
+			"h": 72
+		},
+		{
+			"id": "alloc_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1010,
+			"y": 610.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 2.5,
+			"critical_asset": true
+		},
+		{
+			"id": "crate_1",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 1090,
+			"y": 615.0,
+			"w": 50,
+			"h": 50
+		},
+		{
+			"id": "crate_2",
+			"kind": "data_crate",
+			"material": "composite",
+			"x": 1090,
+			"y": 565.0,
+			"w": 50,
+			"h": 50,
+			"supports": [
+				"crate_1"
+			]
+		},
+		{
+			"id": "term_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1300,
+			"y": 560.0,
+			"w": 50,
+			"h": 160,
+			"health_scale": 0.9
+		},
+		{
+			"id": "term_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1430,
+			"y": 560.0,
+			"w": 50,
+			"h": 160,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the allocation core",
+			"targets": [
+				"alloc_core"
+			]
+		},
+		{
+			"id": "terms",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy both allocation terminals",
+			"targets": [
+				"term_1",
+				"term_2"
+			]
+		},
+		{
+			"id": "crates",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scatter the queue crates",
+			"targets": [
+				"crate_1",
+				"crate_2"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

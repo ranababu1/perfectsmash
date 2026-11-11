@@ -1,0 +1,12 @@
+[
+	{
+		"name": "drop both towers",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "p_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "p_col_l"},
+			{"weapon": "breach_charge", "target": "mirror_core"},
+			{"weapon": "kinetic_accelerator", "target": "b_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "b_col_l"}
+		]
+	}
+]

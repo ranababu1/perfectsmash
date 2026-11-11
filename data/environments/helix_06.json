@@ -1,0 +1,138 @@
+{
+	"_note": "Set dressing for helix_06 (server-cooling array).",
+	"chapter": "helix",
+	"statics": {
+		"low": "HLX-ENV-LEDGE_STATIC-A",
+		"tall": "HLX-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "HLX-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TRENCH-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 30,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-BACK_WALL-B",
+			"repeat": {
+				"x_from": -6,
+				"x_to": 30,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-PILLAR-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 30,
+				"step": 8
+			},
+			"z": -6.2
+		},
+		{
+			"id": "HLX-ENV-CATWALK-A",
+			"x": 10.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "HLX-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 28,
+				"step": 8
+			},
+			"z": -4.5,
+			"y": 6.2
+		},
+		{
+			"id": "HLX-ENV-MASSING_TOWER-B",
+			"x": -3.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-MASSING_BLOCK-A",
+			"x": 14.0,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-PRP-COOLING_TOWER-A",
+			"x": 3.0,
+			"z": -5.0
+		},
+		{
+			"id": "HLX-PRP-COOLING_TOWER-A",
+			"x": 12.5,
+			"z": -5.2
+		},
+		{
+			"id": "HLX-ENV-LOW_WALL-A",
+			"x": 8.0,
+			"z": -2.9
+		},
+		{
+			"id": "HLX-PRP-PIPE_RUN-A",
+			"x": 7.0,
+			"z": -3.4
+		},
+		{
+			"id": "HLX-PRP-TANK-A",
+			"x": 16.0,
+			"z": -3.3
+		},
+		{
+			"id": "HLX-PRP-RELAY_ARRAY-A",
+			"x": 19.0,
+			"z": -5.4
+		}
+	]
+}

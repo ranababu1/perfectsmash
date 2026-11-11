@@ -1,0 +1,12 @@
+[
+	{
+		"name": "fell the tall tower",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "a_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "a_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "b_rack"},
+			{"weapon": "kinetic_accelerator", "target": "b_rack"},
+			{"weapon": "breach_charge", "target": "cold_core"}
+		]
+	}
+]

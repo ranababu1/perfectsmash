@@ -1,0 +1,12 @@
+[
+	{
+		"name": "find the central support",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "mid_a"},
+			{"weapon": "kinetic_accelerator", "target": "mid_a"},
+			{"weapon": "kinetic_accelerator", "target": "mid_b"},
+			{"weapon": "kinetic_accelerator", "target": "mid_b"},
+			{"weapon": "breach_charge", "target": "score_core"}
+		]
+	}
+]

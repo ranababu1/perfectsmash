@@ -1,0 +1,260 @@
+{
+	"id": "helix_18",
+	"name": "Cascade",
+	"chapter": 1,
+	"briefing": "Several support systems must fall in the right order. A wall hides the operations floor; above it, one overhead deck holds a weight directly over the head of a cell line that runs the length of the hall.",
+	"width": 1750,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 14
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "hall_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 650,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "ov_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 800,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ov_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 940,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ov_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 870,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"ov_l",
+				"ov_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "ov_weight",
+			"kind": "cooling_stack",
+			"material": "composite",
+			"x": 870,
+			"y": 316.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"ov_deck"
+			]
+		},
+		{
+			"id": "line_0",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 840,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_1",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 890,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_2",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 940,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_3",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 990,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_4",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1040,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_5",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1090,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_6",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1140,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_7",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1190,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_8",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1240,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "line_9",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1290,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "hall_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1342,
+			"y": 610.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 0.8,
+			"critical_asset": true
+		},
+		{
+			"id": "node_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1500,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		},
+		{
+			"id": "node_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1600,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the operations core",
+			"targets": [
+				"hall_core"
+			]
+		},
+		{
+			"id": "nodes",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy both operations nodes",
+			"targets": [
+				"node_1",
+				"node_2"
+			]
+		},
+		{
+			"id": "line",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the cell line",
+			"targets": [
+				"line_0",
+				"line_1",
+				"line_2",
+				"line_3",
+				"line_4",
+				"line_5",
+				"line_6",
+				"line_7",
+				"line_8",
+				"line_9"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

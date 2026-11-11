@@ -1,0 +1,10 @@
+[
+	{
+		"name": "one spark per section",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "run_0"},
+			{"weapon": "breach_charge", "target": "run_4"},
+			{"weapon": "breach_charge", "target": "run_7"}
+		]
+	}
+]

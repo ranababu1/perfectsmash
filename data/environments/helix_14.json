@@ -1,0 +1,140 @@
+{
+	"_note": "Set dressing for helix_14 (core routing structure).",
+	"chapter": "helix",
+	"statics": {
+		"low": "HLX-ENV-LEDGE_STATIC-A",
+		"tall": "HLX-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "HLX-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TRENCH-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 24,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 30,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-PILLAR-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 30,
+				"step": 8
+			},
+			"z": -6.2
+		},
+		{
+			"id": "HLX-ENV-CATWALK-A",
+			"x": 6.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "HLX-ENV-CATWALK-A",
+			"x": 10.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "HLX-ENV-CATWALK-A",
+			"x": 14.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "HLX-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 28,
+				"step": 8
+			},
+			"z": -4.5,
+			"y": 6.2
+		},
+		{
+			"id": "HLX-ENV-MASSING_TOWER-B",
+			"x": 5.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-ENV-MASSING_TOWER-B",
+			"x": 15.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "HLX-PRP-RELAY_ARRAY-A",
+			"x": 17.5,
+			"z": -5.4
+		},
+		{
+			"id": "HLX-PRP-RELAY_ARRAY-A",
+			"x": 21.0,
+			"z": -5.4
+		},
+		{
+			"id": "HLX-PRP-CONSOLE-A",
+			"x": 4.0,
+			"z": -3.0
+		},
+		{
+			"id": "HLX-PRP-PIPE_RUN-A",
+			"x": 9.0,
+			"z": -3.4
+		},
+		{
+			"id": "HLX-PRP-PIPE_RUN-A",
+			"x": 10.6,
+			"z": -3.4
+		},
+		{
+			"id": "HLX-ENV-LOW_WALL-A",
+			"x": 13.5,
+			"z": -2.9
+		}
+	]
+}

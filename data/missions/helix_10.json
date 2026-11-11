@@ -1,0 +1,180 @@
+{
+	"id": "helix_10",
+	"name": "The Replica",
+	"chapter": 1,
+	"briefing": "The replication hub is copying AURA into every rack it can reach. A decoy node covers the front; the hub itself rides on three legs.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1500,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "front_node",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 600,
+			"y": 590.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9
+		},
+		{
+			"id": "hc_1",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 870,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "hc_2",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 930,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "hc_3",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1110,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "hub_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 980,
+			"y": 468.0,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"hc_1",
+				"hc_2",
+				"hc_3"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "replica_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 900,
+			"y": 406.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9,
+			"supports": [
+				"hub_deck"
+			]
+		},
+		{
+			"id": "replica_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 406.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9,
+			"supports": [
+				"hub_deck"
+			]
+		},
+		{
+			"id": "hub_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 980,
+			"y": 426.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.6,
+			"critical_asset": true,
+			"supports": [
+				"hub_deck"
+			]
+		},
+		{
+			"id": "tail_mast",
+			"kind": "relay_mast",
+			"material": "lightweight_alloy",
+			"x": 1330,
+			"y": 530.0,
+			"w": 22,
+			"h": 220
+		},
+		{
+			"id": "tail_dish",
+			"kind": "relay_dish",
+			"material": "glass_polymer",
+			"x": 1330,
+			"y": 408.0,
+			"w": 70,
+			"h": 24,
+			"supports": [
+				"tail_mast"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the replication core",
+			"targets": [
+				"hub_core"
+			]
+		},
+		{
+			"id": "front",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the decoy node",
+			"targets": [
+				"front_node"
+			]
+		},
+		{
+			"id": "replicas",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scrap both replica racks",
+			"targets": [
+				"replica_1",
+				"replica_2"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

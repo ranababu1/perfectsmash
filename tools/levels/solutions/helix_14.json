@@ -1,0 +1,13 @@
+[
+	{
+		"name": "drop the counterweight deck",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "root_rack"},
+			{"weapon": "kinetic_accelerator", "target": "root_rack"},
+			{"weapon": "kinetic_accelerator", "target": "hang_l"},
+			{"weapon": "kinetic_accelerator", "target": "hang_l"},
+			{"weapon": "kinetic_accelerator", "target": "hang_deck"},
+			{"weapon": "breach_charge", "target": "root_core"}
+		]
+	}
+]

@@ -1,0 +1,127 @@
+{
+	"id": "helix_07",
+	"name": "Blind Spot",
+	"chapter": 1,
+	"briefing": "A camera network feeds AURA's prediction model. The exchange slab hangs on two light columns above the controller, and a tall feed rack stands guard at the front.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "screen",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 640,
+			"y": 604.0,
+			"w": 30,
+			"h": 72
+		},
+		{
+			"id": "col_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 760,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "col_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "slab",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 880,
+			"y": 468.0,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"col_l",
+				"col_r"
+			]
+		},
+		{
+			"id": "lens_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 470,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		},
+		{
+			"id": "blind_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 880,
+			"y": 610.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the exchange controller",
+			"targets": [
+				"blind_core"
+			]
+		},
+		{
+			"id": "lens",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the camera feed rack",
+			"targets": [
+				"lens_2"
+			]
+		},
+		{
+			"id": "slab",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Break the exchange slab",
+			"targets": [
+				"slab"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

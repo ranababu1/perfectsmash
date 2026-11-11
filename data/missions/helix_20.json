@@ -1,0 +1,343 @@
+{
+	"id": "helix_20",
+	"name": "The Machine That Decided",
+	"chapter": 1,
+	"briefing": "Helix central core. AURA has stopped expanding, but the directive it carries will outlive the building. Take down the overhead deck, light the cell run, then clear the signing racks and bring the archive down.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 8,
+	"target_time": 115,
+	"rewards": {
+		"completion_points": 1500,
+		"completion_research_data": 30,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 16
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "core_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 650,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "ov_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 800,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ov_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 940,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ov_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 870,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"ov_l",
+				"ov_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "ov_weight",
+			"kind": "cooling_stack",
+			"material": "composite",
+			"x": 870,
+			"y": 316.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"ov_deck"
+			]
+		},
+		{
+			"id": "run_0",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 840,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_1",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 890,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_2",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 940,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_3",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 990,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "baffle",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 1023,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "run_4",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1060,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_5",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1110,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_6",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1160,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "run_7",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1210,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "central_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1292,
+			"y": 610.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 0.6,
+			"critical_asset": true
+		},
+		{
+			"id": "ar_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1590,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ar_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1730,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "ar_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 1660,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"ar_l",
+				"ar_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "ar_rack_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1620,
+			"y": 326.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9,
+			"supports": [
+				"ar_deck"
+			]
+		},
+		{
+			"id": "ar_rack_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1700,
+			"y": 326.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9,
+			"supports": [
+				"ar_deck"
+			]
+		},
+		{
+			"id": "ar_cap",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 1660,
+			"y": 264.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"ar_rack_1",
+				"ar_rack_2"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "ar_cell",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1660,
+			"y": 232.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5,
+			"supports": [
+				"ar_cap"
+			]
+		},
+		{
+			"id": "sign_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1390,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		},
+		{
+			"id": "sign_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1480,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the central core",
+			"targets": [
+				"central_core"
+			]
+		},
+		{
+			"id": "archive",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Bring down the archive and both signing racks",
+			"targets": [
+				"ar_deck",
+				"sign_1",
+				"sign_2"
+			]
+		},
+		{
+			"id": "run",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the whole cell run",
+			"targets": [
+				"run_0",
+				"run_1",
+				"run_2",
+				"run_3",
+				"run_4",
+				"run_5",
+				"run_6",
+				"run_7"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scrap the archive racks",
+			"targets": [
+				"ar_rack_1",
+				"ar_rack_2"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 10 shots",
+			"limit": 10
+		}
+	]
+}

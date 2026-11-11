@@ -1,0 +1,12 @@
+[
+	{
+		"name": "topple the pillars near to far",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "p1_l"},
+			{"weapon": "kinetic_accelerator", "target": "p1_l"},
+			{"weapon": "kinetic_accelerator", "target": "p3_l"},
+			{"weapon": "kinetic_accelerator", "target": "p3_l"},
+			{"weapon": "breach_charge", "target": "vault_core"}
+		]
+	}
+]
