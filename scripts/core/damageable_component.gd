@@ -45,6 +45,11 @@ func receive_damage(raw: float, damage_type: String, penetration: float = 0.0) -
 		return 0.0
 	var resistance := DamageRules.resistance_for(material, damage_type)
 	var amount := DamageRules.resisted_damage(raw, resistance, penetration, material.min_damage)
+	# A critical asset is never finished by a collapse alone: falls and debris leave it at 1 health
+	# (critical, exposed); a weapon hit or a blast must finish it (approved Batch 5 rule, applied to
+	# every chapter on 2026-11-11). Leaving the mission area still destroys it (force_destroy).
+	if is_critical_asset and damage_type == DamageRules.TYPE_STRUCTURAL:
+		amount = minf(amount, health - 1.0)
 	if amount <= 0.0:
 		return 0.0
 	var applied := minf(amount, health)

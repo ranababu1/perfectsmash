@@ -51,7 +51,6 @@ func test_app_boots_into_the_campaign_menu() -> void:
 	assert_true(main._campaign != null and main._mission == null, "the campaign menu is the first screen")
 	assert_eq(main._campaign.view, CampaignScreen.View.MENU)
 	assert_eq(main._campaign.continue_target(), "helix_01", "Continue starts the first mission on a fresh save")
-	assert_true(main._menu == null, "legacy menu is not shown")
 	await _free(main)
 
 
@@ -59,7 +58,6 @@ func test_boot_mission_starts_the_requested_mission() -> void:
 	var main: Node = await _make_main()
 	var screen: MissionScreen = main._mission
 	assert_true(screen != null, "boot_mission starts the mission directly")
-	assert_true(main._menu == null, "legacy menu is not shown")
 	assert_eq(screen.engine.definition.id, "helix_08")
 	assert_true(screen.view.operative != null, "operative is in the scene")
 	assert_true(screen.view.camera.current)

@@ -1,10 +1,10 @@
 [
 	{
-		"name": "aim low: frame column",
+		"name": "aim low: frame column, then lob onto the fallen controller",
 		"steps": [
 			{"weapon": "kinetic_accelerator", "target": "gate_col_l"},
 			{"weapon": "kinetic_accelerator", "target": "gate_col_l"},
-			{"weapon": "kinetic_accelerator", "target": "gate_core"},
+			{"weapon": "breach_charge", "target": "gate_core"},
 			{"weapon": "kinetic_accelerator", "target": "gate_core"},
 			{"weapon": "kinetic_accelerator", "target": "gate_core"}
 		]

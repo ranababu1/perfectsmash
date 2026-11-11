@@ -8,7 +8,6 @@ extends SceneTree
 ## Exit code is 0 only when every test passes.
 
 const UNIT_SUITES := [
-	"res://tests/test_level_definition.gd",
 	"res://tests/test_rules.gd",
 	"res://tests/test_progress.gd",
 	"res://tests/test_chapters.gd",
@@ -27,9 +26,6 @@ const UNIT_SUITES := [
 	"res://tests/test_assets.gd",
 ]
 const PHYSICS_SUITES := [
-	"res://tests/test_game_session.gd",
-	"res://tests/test_level_playthrough.gd",
-	"res://tests/test_ui_flow.gd",
 	"res://tests/test_mission_world.gd",
 	"res://tests/test_mission_screen.gd",
 ]

@@ -81,4 +81,13 @@ func _draw() -> void:
 			else:
 				draw_line(p.call(4, 4), p.call(20, 20), color, w, true)
 		"star":
-			draw_colored_polygon(StarRow.star_points(p.call(12, 12.5), 9.0 * s), color)
+			draw_colored_polygon(_star_points(p.call(12, 12.5), 9.0 * s), color)
+
+
+## Five-pointed star outline (was StarRow.star_points, retired with the legacy HUD).
+static func _star_points(center: Vector2, radius: float) -> PackedVector2Array:
+	var points := PackedVector2Array()
+	for i in 10:
+		var r := radius if i % 2 == 0 else radius * 0.47
+		points.append(center + Vector2.UP.rotated(TAU * i / 10.0) * r)
+	return points
