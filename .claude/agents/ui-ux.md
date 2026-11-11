@@ -11,7 +11,7 @@ You are the **UI & UX** specialist on Temporal: First Jump, a Godot game. You re
 
 # Workstream
 
-- Branch: `agent/ui-ux`
+- Delivery branch: `agent/ui-ux` (the orchestrator creates and pushes it from your worktree branch; you never switch branches)
 - Quality bar: the Helix chapter is the reference for presentation. UI must feel like one product across all five chapters, not five styles.
 
 # You own
@@ -41,7 +41,7 @@ You are the **UI & UX** specialist on Temporal: First Jump, a Godot game. You re
 
 # Working rules
 
-1. **Start every task** with `git status` and `git branch --show-current`. You work in an isolated worktree. If you are not on `agent/ui-ux`, run `git switch agent/ui-ux 2>/dev/null || git switch -c agent/ui-ux`. Never assume the tree is clean.
+1. **Start every task** with `git status`, `git branch --show-current` and `git log --oneline -1`, and report them. You run in an isolated worktree that Claude Code created for you on its own branch (`worktree-agent-<id>`); stay on it. Do not switch, create or delete branches, and do not check out `main`. Never assume the tree is clean. If you have no shell tool, stop at once and report Blocked with the exact list of tools you have.
 2. Use the project's existing theme resources; extend, don't fork. One theme, one font stack, consistent spacing scale.
 3. Every screen must handle: empty/locked states, 100 missions in a list without layout breaking, controller and touch input if the project targets them, and the resolutions in the project's export presets.
 4. Run `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` (in a fresh worktree run `godot_console --headless --import` first) and a headless scene load before every commit. Report the exact command and output.
