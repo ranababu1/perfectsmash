@@ -40,6 +40,9 @@ var effective_shots := 0
 var weapons := {}
 var weapon_order: Array[String] = []
 var selected_weapon_id := ""
+## Set when a shot used the selected weapon's last round; apply_pending_auto_select() performs the
+## switch once the shot has resolved. A manual selection clears it.
+var auto_select_pending := false
 var components := {}
 var structure: StructuralDependencySystem
 var objectives: MissionObjectives
@@ -89,13 +92,59 @@ func selected_weapon() -> WeaponState:
 	return weapons.get(selected_weapon_id)
 
 
+## Selects `weapon_id`. An empty weapon is never left selected while another has ammunition:
+## asking for one selects usable_weapon_after(weapon_id) instead. Returns true when a weapon with
+## ammunition is selected afterwards (the requested one or its fallback); false for an unknown
+## weapon, an inactive mission, or when no weapon has ammunition (the selection is then kept and
+## the normal out-of-ammunition failure applies).
 func select_weapon(weapon_id: String) -> bool:
 	if not weapons.has(weapon_id) or not is_active():
 		return false
+	var target := weapon_id if (weapons[weapon_id] as WeaponState).has_ammo() else usable_weapon_after(weapon_id)
+	if target.is_empty():
+		return false
+	auto_select_pending = false
+	_set_selected(target)
+	return true
+
+
+## The weapon that replaces `weapon_id` when it is empty: the first weapon with ammunition in
+## mission weapon order, starting after `weapon_id` and wrapping around (deterministic). Reload
+## cooldowns do not matter: a reloading weapon with ammunition is still usable. "" when no
+## other weapon has ammunition.
+func usable_weapon_after(weapon_id: String) -> String:
+	var start := weapon_order.find(weapon_id)
+	for step in range(1, weapon_order.size() + 1):
+		var id := weapon_order[(start + step) % weapon_order.size()]
+		if id != weapon_id and (weapons[id] as WeaponState).has_ammo():
+			return id
+	return ""
+
+
+## True when the selected weapon is out of ammunition and another weapon can replace it.
+func needs_fallback() -> bool:
+	var weapon := selected_weapon()
+	return is_active() and weapon != null and not weapon.has_ammo() and not usable_weapon_after(selected_weapon_id).is_empty()
+
+
+## Applies the automatic switch that fire() scheduled when it used the selected weapon's last
+## round. The physics layer calls it once that shot has resolved (no round in flight), so the
+## selection never changes mid-shot. Returns the newly selected weapon id, or "".
+func apply_pending_auto_select() -> String:
+	if not auto_select_pending:
+		return ""
+	auto_select_pending = false
+	if not needs_fallback():
+		return ""
+	var target := usable_weapon_after(selected_weapon_id)
+	_set_selected(target)
+	return target
+
+
+func _set_selected(weapon_id: String) -> void:
 	if weapon_id != selected_weapon_id:
 		selected_weapon_id = weapon_id
 		weapon_selected.emit(weapon_id)
-	return true
 
 
 func can_fire() -> bool:
@@ -113,6 +162,9 @@ func fire(direction: Vector2, power: float = 1.0) -> Vector2:
 		return Vector2.ZERO
 	weapon_fired.emit(weapon.id(), velocity, weapon.stats)
 	ammo_changed.emit(weapon.id(), weapon.ammo, weapon.ammo_capacity)
+	# The last round: switch to the next usable weapon once this shot has resolved.
+	if not weapon.has_ammo():
+		auto_select_pending = true
 	_evaluate(false)
 	return velocity
 

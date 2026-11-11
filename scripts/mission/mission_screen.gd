@@ -100,6 +100,7 @@ func _ready() -> void:
 		weapon_states.append(engine.weapons[id])
 	hud.set_weapons(weapon_states)
 	hud.weapon_pressed.connect(select_weapon)
+	engine.weapon_selected.connect(_on_weapon_selected)
 	hud.pause_pressed.connect(pause)
 	hud.resume_pressed.connect(resume)
 	hud.restart_pressed.connect(func() -> void: restart_requested.emit())
@@ -143,12 +144,21 @@ func _ready() -> void:
 	_update_hint()
 
 
+## HUD weapon button. The engine decides the actual selection (an empty weapon falls back to the
+## next usable one); the presentation follows engine.weapon_selected.
 func select_weapon(weapon_id: String) -> void:
-	if engine.select_weapon(weapon_id):
-		view.operative.set_weapon(weapon_id)
-		_play("weapon_switch")
-		_cancel_aim()
-		_update_hint()
+	if engine != null:
+		engine.select_weapon(weapon_id)
+
+
+## Every selection change, manual or automatic (last round used), lands here: operative model,
+## aim preview, hint and the switch sound stay in step with MissionEngine.selected_weapon_id.
+func _on_weapon_selected(weapon_id: String) -> void:
+	view.operative.set_weapon(weapon_id)
+	_play("weapon_switch")
+	_cancel_aim()
+	_update_hint()
+	hud.update_weapons(engine.weapons, weapon_id)
 
 
 func pause() -> void:
@@ -236,7 +246,12 @@ func release_aim() -> bool:
 	if _aim_direction.length() < CANCEL_DISTANCE:
 		return false
 	if not engine.can_fire():
-		hud.set_hint("Reloading..." if engine.selected_weapon().has_ammo() else "Out of ammunition: switch weapon")
+		if engine.selected_weapon().has_ammo():
+			hud.set_hint("Reloading...")
+		elif engine.needs_fallback():
+			hud.set_hint("Switching weapon...")
+		else:
+			hud.set_hint("Out of ammunition")
 		return false
 	var weapon_id := engine.selected_weapon_id
 	var projectile := world.fire(_aim_direction, _aim_power)
