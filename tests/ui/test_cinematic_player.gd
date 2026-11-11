@@ -145,7 +145,7 @@ func test_plays_music_cue_and_no_voice_without_clips() -> void:
 	player.music = music
 	player.play_id("opening", _catalog())
 	assert_eq(music.current_cue, "cinematic")
-	assert_eq(player.find_children("*", "AudioStreamPlayer", true, false).size(), 1, "one narration player, nothing else")
+	assert_eq(player.find_children("*", "AudioStreamPlayer", true, false).size(), 2, "two narration players (cross-fade on tap), nothing else")
 	assert_false(player.voice_player().playing, "no clip mapped: no voice")
 	assert_eq(player.current_voice, "")
 	assert_false(player.is_music_ducked(), "the music is not ducked without narration")

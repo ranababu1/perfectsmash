@@ -3,11 +3,14 @@ extends Control
 ## Plays one CinematicCatalog.Sequence: full-screen stills with slow camera motion, cross-fades,
 ## subtitles in a lower band, an optional caption line and a closing end card. It only emits
 ## `finished`; the app decides what happens next and owns saving.
-## Narration (owner-approved 2026-11-11): a slide whose `voice` is set (NarrationCatalog maps the
-## clips) plays that clip on the Voice bus as its subtitle appears; the slide stays up until the
-## clip has finished (plus a short tail) and the music is ducked while narration is on screen.
-## Advancing, skipping, finishing or leaving the tree stops the clip and restores the music.
-## Slides without a clip play as subtitles only, at reading pace.
+## Narration (owner-approved 2026-11-11; data from NarrationCatalog / the narration manifest):
+## a narrated sequence plays its own music bed from the first slide; each slide's voice line starts
+## `voice_delay` after the slide appears (the bed pre-roll on slide 1) on the Voice bus, its
+## subtitle appears at `subtitle_delay` (the manifest's sync point), and the slide holds for its
+## manifest time (never less than the line plus MIN_VOICE_TAIL; never cut while the line plays).
+## The bed ducks while a line speaks (attack/hold/release from the package's duck envelope).
+## Tapping on fades the line out quickly and shows the next slide; Skip / back fades the voice and
+## the bed out; leaving the tree stops everything. Slides without a clip play at reading pace.
 ## Input: tap/click/accept shows the next slide, the Skip button (top-right) and ui_cancel
 ## (Android back) end the sequence. Slides advance on their own after their reading time.
 
@@ -27,10 +30,19 @@ const SUBTITLE_SIZE := 30
 const CAPTION_SIZE := 18
 const SAFE_MARGIN_MAX := 96.0
 const CONTROL_TINT := Color("bfe9ff")
-## Silence kept after a narration clip before the slide moves on.
-const VOICE_TAIL := 0.6
-const DUCK_FADE := 0.35
+## Minimum silence kept after a voice line before its slide moves on (the manifest's own gaps are
+## longer where the music needs them).
+const MIN_VOICE_TAIL := 1.0
+## A line still sounding this long after its slide time (late audio start on a slow device) no
+## longer holds the slide.
+const VOICE_OVERRUN_LIMIT := 3.0
+## Fade of a line cut by a tap, and of the voice when the sequence is skipped.
+const TAP_VOICE_FADE := 0.08
+const SKIP_VOICE_FADE := 0.05
+## Fade of the music bed when the sequence is skipped.
+const SKIP_MUSIC_FADE := 0.8
 const RESTORE_FADE := 0.8
+const SILENT_DB := -60.0
 
 ## Optional MusicDirector; when set, the sequence's music cue plays on start. Nothing is stopped
 ## or restored afterwards: the app root restores its own music.
@@ -39,8 +51,11 @@ var music: MusicDirector
 ## Voice bus volume, set by the app from the narration volume setting.
 var narration_enabled := true
 var narration_bus := NarrationCatalog.DEFAULT_BUS
-## How far the music is lowered under narration (dB).
+## Live duck under each voice line: depth (dB), attack, hold after the line, release (seconds).
 var duck_db := NarrationCatalog.DEFAULT_DUCK_DB
+var duck_attack := NarrationCatalog.DEFAULT_DUCK_ATTACK
+var duck_hold := NarrationCatalog.DEFAULT_DUCK_HOLD
+var duck_release := NarrationCatalog.DEFAULT_DUCK_RELEASE
 ## Path of the clip playing for the current slide ("" when none).
 var current_voice := ""
 var sequence: CinematicCatalog.Sequence
@@ -62,8 +77,20 @@ var _subtitle_tween: Tween
 var _title_label: Label
 var _margins: MarginContainer
 var _pending: CinematicCatalog.Sequence
-var _voice: AudioStreamPlayer
+## Two voice players: a line cut by a tap fades out on one while the next starts on the other.
+var _voices: Array[AudioStreamPlayer] = []
+var _voice_index := 0
+var _voice_fades: Array[Tween] = [null, null]
+## Preloaded voice streams of the sequence (path -> AudioStream).
+var _streams := {}
 var _ducked := false
+## Stage-relative times of the current stage (seconds; -1 = none).
+var _voice_due := -1.0
+var _voice_end := -1.0
+var _voice_started := false
+var _subtitle_due := 0.0
+var _subtitle_shown := false
+var _suspended := false
 
 
 func _ready() -> void:
@@ -90,6 +117,7 @@ func play(new_sequence: CinematicCatalog.Sequence) -> void:
 	_finished = false
 	_playing = true
 	slide_index = -1
+	_preload_voices()
 	_start_music()
 	_show_stage(0)
 
@@ -109,11 +137,22 @@ func is_playing() -> bool:
 
 ## True while a narration clip is playing.
 func is_narrating() -> bool:
-	return _voice != null and _voice.playing and not current_voice.is_empty()
+	return not current_voice.is_empty() and voice_player() != null and voice_player().playing
 
 
+## The player of the current (or last) line.
 func voice_player() -> AudioStreamPlayer:
-	return _voice
+	return _voices[_voice_index] if not _voices.is_empty() else null
+
+
+## Seconds the current stage holds before moving on by itself.
+func stage_seconds() -> float:
+	return _stage_seconds
+
+
+## True once the current slide's subtitle has appeared (narrated slides wait for their line).
+func subtitle_visible() -> bool:
+	return _subtitle_shown
 
 
 ## True while the music is lowered for narration.
@@ -153,11 +192,16 @@ func skip() -> void:
 
 ## Advances the reading clock by `delta` seconds (called from _process; tests call it directly).
 func tick(delta: float) -> void:
-	if not _playing:
+	if not _playing or _suspended:
 		return
 	_elapsed += delta
-	if _elapsed >= _stage_seconds:
-		advance()
+	_update_timed()
+	if _elapsed < _stage_seconds:
+		return
+	# Never cut a line that is still speaking (late start on a slow device), within a limit.
+	if is_narrating() and _elapsed < _stage_seconds + VOICE_OVERRUN_LIMIT:
+		return
+	advance()
 
 
 func _process(delta: float) -> void:
@@ -189,17 +233,23 @@ func _notification(what: int) -> void:
 	elif what == NOTIFICATION_EXIT_TREE:
 		# Leaving by any route (the app changes screen, the node is freed): no orphan narration and
 		# no music left ducked.
-		_stop_voice()
+		_stop_all_voices()
 		_restore_music(RESTORE_FADE)
+	elif what == NOTIFICATION_APPLICATION_PAUSED:
+		_suspend(true)
+	elif what == NOTIFICATION_APPLICATION_RESUMED:
+		_suspend(false)
 
 
 # --- Building -----------------------------------------------------------------------------------
 
 func _build() -> void:
-	_voice = AudioStreamPlayer.new()
-	_voice.name = "Narration"
-	_voice.bus = narration_bus if AudioServer.get_bus_index(narration_bus) >= 0 else "Master"
-	add_child(_voice)
+	for i in 2:
+		var voice := AudioStreamPlayer.new()
+		voice.name = "Narration%d" % i
+		voice.bus = narration_bus if AudioServer.get_bus_index(narration_bus) >= 0 else "Master"
+		add_child(voice)
+		_voices.append(voice)
 	var black := ColorRect.new()
 	black.color = Color.BLACK
 	black.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -347,6 +397,10 @@ func _has_end_card() -> bool:
 func _start_music() -> void:
 	if music == null:
 		return
+	# A narrated sequence has its own bed, written around the narration timeline.
+	if not sequence.music.is_empty() and ResourceLoader.exists(sequence.music):
+		music.play_track(load(sequence.music) as AudioStream, sequence.music_volume_db)
+		return
 	var cue := sequence.music_cue
 	if cue.is_empty():
 		cue = "%s_theme" % sequence.theme
@@ -359,9 +413,20 @@ func _show_stage(index: int) -> void:
 	var slide := current_slide()
 	var path := ""
 	var motion := "push_in"
-	_stop_voice()
+	_fade_out_voice(TAP_VOICE_FADE)
+	_voice_due = -1.0
+	_voice_end = -1.0
+	_voice_started = false
+	_subtitle_due = 0.0
+	_subtitle_shown = false
 	if slide != null:
-		_stage_seconds = maxf(slide.reading_seconds(), _start_voice(slide.voice))
+		_stage_seconds = slide.reading_seconds()
+		var stream := _voice_stream(slide.voice)
+		if stream != null:
+			_voice_due = slide.voice_delay
+			_voice_end = slide.voice_delay + stream.get_length()
+			_stage_seconds = maxf(_stage_seconds, _voice_end + MIN_VOICE_TAIL)
+		_subtitle_due = slide.subtitle_delay
 		path = slide.image
 		motion = slide.motion
 		subtitle_label.text = slide.subtitle
@@ -376,10 +441,11 @@ func _show_stage(index: int) -> void:
 		subtitle_label.add_theme_color_override("font_color", Palette.ACCENT)
 		caption_label.text = ""
 		_title_label.text = sequence.end_title
-	# A stage without narration brings the music back up (consecutive narrated slides stay ducked).
-	if current_voice.is_empty():
-		_restore_music(RESTORE_FADE)
+	# The music stays ducked only when the next line starts straight away.
+	if _voice_due != 0.0:
+		_restore_music(duck_release)
 	_transition_to(_load_texture(path), motion, _stage_seconds)
+	_update_timed()
 
 
 func _load_texture(path: String) -> Texture2D:
@@ -437,8 +503,8 @@ func _transition_to(texture: Texture2D, motion: String, seconds: float) -> void:
 		_subtitle_tween.kill()
 	subtitle_label.modulate.a = 0.0
 	caption_label.modulate.a = 0.0
-	_subtitle_tween = create_tween().set_parallel()
-	_subtitle_tween.tween_property(subtitle_label, "modulate:a", 1.0, SUBTITLE_FADE_SECONDS)
+	# The caption comes with the still; the subtitle comes with its line (_update_timed).
+	_subtitle_tween = create_tween()
 	_subtitle_tween.tween_property(caption_label, "modulate:a", 1.0, SUBTITLE_FADE_SECONDS)
 
 
@@ -453,8 +519,16 @@ func _finish(skipped: bool) -> void:
 		return
 	_finished = true
 	_playing = false
-	_stop_voice()
-	_restore_music(RESTORE_FADE)
+	if skipped:
+		# Skip fades everything out: the line quickly, the bed over SKIP_MUSIC_FADE (the next screen
+		# then brings in its own music).
+		_fade_out_voice(SKIP_VOICE_FADE)
+		_restore_music(SKIP_VOICE_FADE)
+		if music != null and is_instance_valid(music) and not sequence.music.is_empty():
+			music.stop(SKIP_MUSIC_FADE)
+	else:
+		_fade_out_voice(TAP_VOICE_FADE)
+		_restore_music(RESTORE_FADE)
 	if _tween != null:
 		_tween.kill()
 	if _subtitle_tween != null:
@@ -464,31 +538,101 @@ func _finish(skipped: bool) -> void:
 
 # --- Narration ----------------------------------------------------------------------------------
 
-## Starts `path` for the slide now on screen and lowers the music. Returns how long the slide must
-## stay up for the clip to finish (0 when there is no clip or narration is off).
-func _start_voice(path: String) -> float:
-	if path.is_empty() or not narration_enabled or _voice == null:
-		return 0.0
-	var stream: AudioStream = load(path) as AudioStream if ResourceLoader.exists(path) else null
+## Loads every voice line of the sequence before the first slide, so no clip streams from disk
+## mid-slide (low-end Android).
+func _preload_voices() -> void:
+	_streams.clear()
+	if not narration_enabled:
+		return
+	for slide in sequence.slides:
+		if slide.voice.is_empty() or _streams.has(slide.voice):
+			continue
+		var stream: AudioStream = load(slide.voice) as AudioStream if ResourceLoader.exists(slide.voice) else null
+		if stream == null:
+			push_warning("CinematicPlayer: narration clip missing '%s'" % slide.voice)
+			continue
+		_streams[slide.voice] = stream
+
+
+func _voice_stream(path: String) -> AudioStream:
+	if path.is_empty() or not narration_enabled:
+		return null
+	return _streams.get(path)
+
+
+## Shows the subtitle, starts the line and moves the duck at their stage times.
+func _update_timed() -> void:
+	if slide_index < 0 or current_slide() == null:
+		return
+	if not _subtitle_shown and _elapsed >= _subtitle_due:
+		_subtitle_shown = true
+		_fade_in_subtitle()
+	if _voice_due >= 0.0 and not _voice_started and _elapsed >= _voice_due:
+		_voice_started = true
+		_play_line(current_slide().voice)
+	if _ducked and _voice_started and _elapsed >= _voice_end + duck_hold:
+		_restore_music(duck_release)
+
+
+func _fade_in_subtitle() -> void:
+	var tween := create_tween()
+	tween.tween_property(subtitle_label, "modulate:a", 1.0, SUBTITLE_FADE_SECONDS)
+
+
+func _play_line(path: String) -> void:
+	var stream := _voice_stream(path)
 	if stream == null:
-		push_warning("CinematicPlayer: narration clip missing '%s'" % path)
-		return 0.0
-	_voice.stream = stream
-	_voice.play()
+		return
+	_voice_index = 1 - _voice_index
+	var voice := _voices[_voice_index]
+	if _voice_fades[_voice_index] != null and _voice_fades[_voice_index].is_valid():
+		_voice_fades[_voice_index].kill()
+	voice.stream = stream
+	voice.volume_db = 0.0
+	voice.play()
 	current_voice = path
 	_duck_music()
-	return stream.get_length() + VOICE_TAIL
 
 
-func _stop_voice() -> void:
+## Fades the current line out over `fade` seconds and stops it (a tap or skip, never a natural end).
+func _fade_out_voice(fade: float) -> void:
 	current_voice = ""
-	if _voice != null and _voice.playing:
-		_voice.stop()
+	if _voices.is_empty():
+		return
+	var voice := _voices[_voice_index]
+	if not voice.playing:
+		return
+	if not is_inside_tree():
+		voice.stop()
+		return
+	var tween := create_tween()
+	tween.tween_property(voice, "volume_db", SILENT_DB, fade)
+	tween.tween_callback(voice.stop)
+	_voice_fades[_voice_index] = tween
+
+
+func _stop_all_voices() -> void:
+	current_voice = ""
+	for i in _voices.size():
+		if _voice_fades[i] != null and _voice_fades[i].is_valid():
+			_voice_fades[i].kill()
+		_voices[i].stop()
+
+
+## App backgrounded: voice, bed and the slide clock wait together.
+func _suspend(on: bool) -> void:
+	if not _playing or on == _suspended:
+		return
+	_suspended = on
+	for voice in _voices:
+		voice.stream_paused = on
+	if music != null and is_instance_valid(music):
+		music.active_player().stream_paused = on
 
 
 func _duck_music() -> void:
 	if music != null and is_instance_valid(music) and not _ducked:
-		music.duck(duck_db, DUCK_FADE)
+		music.duck(duck_db, duck_attack)
 	_ducked = true
 
 

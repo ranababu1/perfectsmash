@@ -89,6 +89,21 @@ func play(stream: AudioStream, fade: float = DEFAULT_FADE) -> void:
 	_start_on(_active, stream, fade)
 
 
+## Plays a track that is not a catalog cue (a cinematic's music bed) once, at `volume_db`, from
+## the start. The next play_cue() cross-fades away from it as usual.
+func play_track(stream: AudioStream, volume_db: float, fade: float = 0.3) -> void:
+	if stream == null:
+		return
+	current_cue = ""
+	set_layer("", fade)
+	loop_overlap = 0.0
+	_bed_volume_db = volume_db
+	if stream == current_stream:
+		# Same bed again (Story Archive replay): restart it so its hits line up with the slides.
+		current_stream = null
+	play(stream, fade)
+
+
 func stop(fade: float = DEFAULT_FADE) -> void:
 	current_cue = ""
 	set_layer("", fade)

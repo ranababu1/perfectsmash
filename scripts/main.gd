@@ -22,7 +22,7 @@ var boot_mission := ""
 ## before its first mission, its ending once the chapter is complete). Tests switch it off.
 var cinematics_enabled := true
 var cinematics: CinematicCatalog
-## Narration clips per cinematic slide (data/narration.json), applied onto `cinematics`.
+## Narration per cinematic (data/narration.json: voice lines, timings, music beds), applied onto `cinematics`.
 var narration: NarrationCatalog
 var _upgrades: UpgradesScreen
 var _archive: StoryArchive
@@ -72,7 +72,7 @@ func _ready() -> void:
 		push_error("Narration catalog invalid: %s" % ", ".join(narration.errors))
 	var unknown := narration.unknown_keys(cinematics)
 	if not unknown.is_empty():
-		push_error("Narration clips for unknown slides: %s" % ", ".join(unknown))
+		push_error("Narration for unknown or mismatched sequences: %s" % ", ".join(unknown))
 	narration.apply_to(cinematics)
 	_apply_narration_volume()
 	_add_fade_layer()
@@ -231,10 +231,15 @@ func _show_cinematic(sequence_id: String, then: Callable) -> void:
 	_clear_screens()
 	_cinematic = CinematicPlayer.new()
 	_cinematic.music = music
-	_cinematic.narration_enabled = progress.sound_enabled and progress.voice_enabled
+	# Volume 0 counts as narration off: no line plays and the music is not ducked (the slides keep
+	# their narrated timing, so subtitles still match the music).
+	_cinematic.narration_enabled = progress.sound_enabled and progress.voice_enabled and progress.narration_volume > 0.0
 	if narration != null:
 		_cinematic.narration_bus = narration.bus
 		_cinematic.duck_db = narration.duck_db
+		_cinematic.duck_attack = narration.duck_attack
+		_cinematic.duck_hold = narration.duck_hold
+		_cinematic.duck_release = narration.duck_release
 	if ambience != null:
 		ambience.stop(0.6)
 	add_child(_cinematic)
