@@ -1,0 +1,23 @@
+[
+	{
+		"name": "cut the left supports",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "ring_s1"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "ring_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "ring_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "ring_core"
+			}
+		]
+	}
+]

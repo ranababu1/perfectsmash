@@ -1,0 +1,27 @@
+[
+	{
+		"name": "drop the span",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "mon_xfmr_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "mon_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "mon_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "far_panel"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "alarm_panel"
+			}
+		]
+	}
+]

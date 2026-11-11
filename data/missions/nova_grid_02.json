@@ -1,0 +1,116 @@
+{
+	"id": "nova_grid_02",
+	"name": "The Intake",
+	"chapter": 3,
+	"briefing": "The facility draws power from a source it cannot name. The intake frame holds the core on a deck; one side rests on soft equipment. Come in low.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "frame_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 990,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "sump_cap_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 820,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "sump_cap_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 820,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"sump_cap_a"
+			]
+		},
+		{
+			"id": "intake_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 905,
+			"y": 425,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"frame_pylon",
+				"sump_cap_b"
+			]
+		},
+		{
+			"id": "intake_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 905,
+			"y": 350,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"intake_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the intake core",
+			"targets": [
+				"intake_core"
+			]
+		},
+		{
+			"id": "sump",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Short both sump transformers",
+			"targets": [
+				"sump_cap_a",
+				"sump_cap_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

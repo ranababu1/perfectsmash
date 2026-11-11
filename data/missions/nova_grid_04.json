@@ -1,0 +1,142 @@
+{
+	"id": "nova_grid_04",
+	"name": "Cooling the Future",
+	"chapter": 3,
+	"briefing": "Cooling systems are operating beyond their designed load. Two stacks stand between you and the core; the pump cell low in the near stack is the only soft point.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "near_base",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 760,
+			"y": 580,
+			"w": 80,
+			"h": 120
+		},
+		{
+			"id": "near_pump",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 490,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"near_base"
+			]
+		},
+		{
+			"id": "near_top",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 760,
+			"y": 400,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"near_pump"
+			]
+		},
+		{
+			"id": "far_base",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 1000,
+			"y": 580,
+			"w": 80,
+			"h": 120
+		},
+		{
+			"id": "far_pump",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1000,
+			"y": 490,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"far_base"
+			]
+		},
+		{
+			"id": "far_top",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 1000,
+			"y": 400,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"far_pump"
+			]
+		},
+		{
+			"id": "far_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 1000,
+			"y": 280,
+			"w": 80,
+			"h": 120,
+			"health_scale": 0.6,
+			"critical_asset": true,
+			"supports": [
+				"far_top"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the cooling-loop core",
+			"targets": [
+				"far_core"
+			]
+		},
+		{
+			"id": "pumps",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload both pumps",
+			"targets": [
+				"near_pump",
+				"far_pump"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

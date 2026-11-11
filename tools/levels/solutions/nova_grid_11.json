@@ -1,0 +1,60 @@
+[
+	{
+		"name": "over the wall",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"target": "array_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			}
+		]
+	},
+	{
+		"name": "cell first",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "mast_cap_l"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "array_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_core"
+			}
+		]
+	}
+]

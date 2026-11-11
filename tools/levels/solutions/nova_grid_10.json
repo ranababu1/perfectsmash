@@ -1,0 +1,27 @@
+[
+	{
+		"name": "break the ring",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "sl_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "vault_door"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "res_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "res_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "res_core"
+			}
+		]
+	}
+]

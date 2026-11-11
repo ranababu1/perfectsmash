@@ -1,0 +1,202 @@
+{
+	"id": "nova_grid_07",
+	"name": "Deep Storage",
+	"chapter": 3,
+	"briefing": "Stored output contains the same pulse. The storage racks stack three layers high over the core, held up by two soft pillars. Take the side, and let the weight do the rest.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "pier_l_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 600,
+			"w": 60,
+			"h": 80
+		},
+		{
+			"id": "pier_l",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 530,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"pier_l_x"
+			]
+		},
+		{
+			"id": "pier_r_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1040,
+			"y": 600,
+			"w": 60,
+			"h": 80
+		},
+		{
+			"id": "pier_r",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1040,
+			"y": 530,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"pier_r_x"
+			]
+		},
+		{
+			"id": "slab_a",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 780,
+			"y": 460,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"pier_l"
+			]
+		},
+		{
+			"id": "slab_b",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 900,
+			"y": 460,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"pier_l",
+				"pier_r"
+			]
+		},
+		{
+			"id": "slab_c",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 1020,
+			"y": 460,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"pier_r"
+			]
+		},
+		{
+			"id": "rack_a",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 840,
+			"y": 380,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"slab_a",
+				"slab_b"
+			]
+		},
+		{
+			"id": "rack_b",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 960,
+			"y": 380,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"slab_b",
+				"slab_c"
+			]
+		},
+		{
+			"id": "store_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 840,
+			"y": 290,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"rack_a"
+			]
+		},
+		{
+			"id": "store_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 960,
+			"y": 290,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"rack_b"
+			]
+		},
+		{
+			"id": "store_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 900,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the storage core",
+			"targets": [
+				"store_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Short both storage racks",
+			"targets": [
+				"store_a",
+				"store_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,27 @@
+[
+	{
+		"name": "open then blast",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_near"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "relay_far"
+			}
+		]
+	}
+]

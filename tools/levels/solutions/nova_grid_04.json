@@ -1,0 +1,23 @@
+[
+	{
+		"name": "drop the near stack",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "near_pump"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "far_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "far_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "far_core"
+			}
+		]
+	}
+]

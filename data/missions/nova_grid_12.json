@@ -1,0 +1,161 @@
+{
+	"id": "nova_grid_12",
+	"name": "The Wrong Frequency",
+	"chapter": 3,
+	"briefing": "No known source matches the frequency. Two perches carry the signal array: a dish on the near one, the core on the far one. The dish stands in the way of the core.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "fa_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "fa_y",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"fa_x"
+			]
+		},
+		{
+			"id": "fa_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 780,
+			"y": 428,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"fa_y"
+			]
+		},
+		{
+			"id": "dish_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 366,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"fa_deck"
+			]
+		},
+		{
+			"id": "fb_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "fb_y",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"fb_x"
+			]
+		},
+		{
+			"id": "fb_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1060,
+			"y": 428,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"fb_y"
+			]
+		},
+		{
+			"id": "fb_cap_l",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1020,
+			"y": 386,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"fb_deck"
+			]
+		},
+		{
+			"id": "fb_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 1090,
+			"y": 356,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"fb_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the array core",
+			"targets": [
+				"fb_core"
+			]
+		},
+		{
+			"id": "dish",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence the near dish",
+			"targets": [
+				"dish_a"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

@@ -1,0 +1,32 @@
+[
+	{
+		"name": "drop in from above",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"point": [
+					800,
+					330
+				]
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "up_xfmr"
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					800,
+					330
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					800,
+					330
+				]
+			}
+		]
+	}
+]

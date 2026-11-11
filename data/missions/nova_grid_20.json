@@ -1,0 +1,281 @@
+{
+	"id": "nova_grid_20",
+	"name": "The Energy Beneath",
+	"chapter": 3,
+	"briefing": "The grid is broken, but the signal survives in the captured data. A broad reactor platform carries an upper ring over the signal chamber. Strip it in stages and reach the core beneath.",
+	"width": 2200,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 7,
+	"target_time": 105,
+	"rewards": {
+		"completion_points": 1700,
+		"completion_research_data": 45,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 12
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		},
+		"penetrator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "sig_relay_l",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 330,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8
+		},
+		{
+			"id": "sig_relay_m",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 460,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8
+		},
+		{
+			"id": "sig_relay_n",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 590,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8
+		},
+		{
+			"id": "pier_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 700,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "pier_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 700,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"pier_a"
+			]
+		},
+		{
+			"id": "post_r",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1250,
+			"y": 540,
+			"w": 50,
+			"h": 200
+		},
+		{
+			"id": "plat_l",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 850,
+			"y": 425,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"pier_b"
+			]
+		},
+		{
+			"id": "plat_r",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1150,
+			"y": 425,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"post_r",
+				"plat_l"
+			]
+		},
+		{
+			"id": "vault_door_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "vault_door",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 780,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"vault_door_x"
+			]
+		},
+		{
+			"id": "vault_back",
+			"kind": "containment_wall",
+			"material": "concrete",
+			"x": 940,
+			"y": 560,
+			"w": 40,
+			"h": 160
+		},
+		{
+			"id": "vault_roof",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 860,
+			"y": 465,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"vault_door",
+				"vault_back"
+			]
+		},
+		{
+			"id": "sig_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 860,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "ring_a",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 810,
+			"y": 385,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"plat_l"
+			]
+		},
+		{
+			"id": "ring_cap_l",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 930,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"plat_l"
+			]
+		},
+		{
+			"id": "ring_b",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 1070,
+			"y": 385,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"plat_r"
+			]
+		},
+		{
+			"id": "ring_cap_r",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1160,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"plat_r"
+			]
+		},
+		{
+			"id": "sig_relay_r",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1250,
+			"y": 360,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8,
+			"supports": [
+				"plat_r"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the Nova Grid core",
+			"targets": [
+				"sig_core"
+			]
+		},
+		{
+			"id": "relays",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence the signal relays",
+			"targets": [
+				"sig_relay_l",
+				"sig_relay_m",
+				"sig_relay_n",
+				"sig_relay_r"
+			]
+		},
+		{
+			"id": "ring",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Strip the upper ring",
+			"targets": [
+				"ring_a",
+				"ring_b",
+				"ring_cap_l",
+				"ring_cap_r"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 9 shots",
+			"limit": 9
+		}
+	]
+}

@@ -1,0 +1,48 @@
+[
+	{
+		"name": "drop the weak side",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_xfmr_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			}
+		]
+	},
+	{
+		"name": "lob the beam",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"target": "lb_beam"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "lb_core"
+			}
+		]
+	}
+]

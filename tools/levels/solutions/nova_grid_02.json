@@ -1,0 +1,40 @@
+[
+	{
+		"name": "drop the deck",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "sump_cap_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			}
+		]
+	},
+	{
+		"name": "straight overload",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "intake_core"
+			}
+		]
+	}
+]

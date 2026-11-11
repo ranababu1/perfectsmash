@@ -1,0 +1,23 @@
+[
+	{
+		"name": "drop the canopy",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "pier_f_cap"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "dc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "dc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "dc_core"
+			}
+		]
+	}
+]

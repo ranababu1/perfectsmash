@@ -1,0 +1,140 @@
+{
+	"id": "nova_grid_06",
+	"name": "Load Balancing",
+	"chapter": 3,
+	"briefing": "The grid has become dependent on a single source. A long distribution beam rests on two unequal supports above the core. One side is built to hold. The other is not.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "lb_xfmr_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 790,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "lb_xfmr_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 790,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"lb_xfmr_a"
+			]
+		},
+		{
+			"id": "lb_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1030,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "lb_beam",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 910,
+			"y": 425,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"lb_xfmr_b",
+				"lb_pylon"
+			]
+		},
+		{
+			"id": "load_a",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 850,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"lb_beam"
+			]
+		},
+		{
+			"id": "load_b",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 970,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"lb_beam"
+			]
+		},
+		{
+			"id": "lb_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 910,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the balancing core",
+			"targets": [
+				"lb_core"
+			]
+		},
+		{
+			"id": "loads",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload both load cells",
+			"targets": [
+				"load_a",
+				"load_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

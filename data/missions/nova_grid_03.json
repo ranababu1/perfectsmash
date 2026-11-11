@@ -1,0 +1,186 @@
+{
+	"id": "nova_grid_03",
+	"name": "Containment Ring",
+	"chapter": 3,
+	"briefing": "The core is stable only while several supports remain active. Three of them carry the ring above it. Not all three are equal.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "ring_s1_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 690,
+			"y": 600,
+			"w": 60,
+			"h": 80
+		},
+		{
+			"id": "ring_s1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 690,
+			"y": 530,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ring_s1_x"
+			]
+		},
+		{
+			"id": "ring_s2_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1130,
+			"y": 600,
+			"w": 60,
+			"h": 80
+		},
+		{
+			"id": "ring_s2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1130,
+			"y": 530,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ring_s2_x"
+			]
+		},
+		{
+			"id": "ring_s3_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1010,
+			"y": 600,
+			"w": 60,
+			"h": 80
+		},
+		{
+			"id": "ring_s3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1010,
+			"y": 530,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ring_s3_x"
+			]
+		},
+		{
+			"id": "ring_1",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 720,
+			"y": 475,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"ring_s1"
+			]
+		},
+		{
+			"id": "ring_2",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 840,
+			"y": 475,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"ring_s1"
+			]
+		},
+		{
+			"id": "ring_3",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 960,
+			"y": 475,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"ring_s3"
+			]
+		},
+		{
+			"id": "ring_4",
+			"kind": "containment_ring_segment",
+			"material": "reinforced_steel",
+			"x": 1080,
+			"y": 475,
+			"w": 120,
+			"h": 50,
+			"supports": [
+				"ring_s3",
+				"ring_s2"
+			]
+		},
+		{
+			"id": "ring_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 900,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the ring core",
+			"targets": [
+				"ring_core"
+			]
+		},
+		{
+			"id": "supports",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Drop the ring supports",
+			"targets": [
+				"ring_s1",
+				"ring_s2",
+				"ring_s3"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

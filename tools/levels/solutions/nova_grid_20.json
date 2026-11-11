@@ -1,0 +1,43 @@
+[
+	{
+		"name": "strip it in stages",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_relay_l"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_relay_m"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_relay_n"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "pier_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "vault_door"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "sig_relay_r"
+			}
+		]
+	}
+]

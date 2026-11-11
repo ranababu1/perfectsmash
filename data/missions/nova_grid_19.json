@@ -1,0 +1,139 @@
+{
+	"id": "nova_grid_19",
+	"name": "Final Containment",
+	"chapter": 3,
+	"briefing": "The last stable output path is exposed. Three assets sit along one wide structure: the near relay, the core, and the far relay. Take them in an order that lets the blast do the third.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		},
+		"penetrator": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rel_f_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "relay_near",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8,
+			"supports": [
+				"rel_f_x"
+			]
+		},
+		{
+			"id": "fc_ped",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 960,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "fc_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 960,
+			"y": 480,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"fc_ped"
+			]
+		},
+		{
+			"id": "rel_r_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1090,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "relay_far",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1090,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.6,
+			"supports": [
+				"rel_r_x"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the containment core",
+			"targets": [
+				"fc_core"
+			]
+		},
+		{
+			"id": "near",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence the near relay",
+			"targets": [
+				"relay_near"
+			]
+		},
+		{
+			"id": "far",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence the far relay",
+			"targets": [
+				"relay_far"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

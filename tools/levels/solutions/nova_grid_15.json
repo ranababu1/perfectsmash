@@ -1,0 +1,27 @@
+[
+	{
+		"name": "start the echo",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "low_1"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "echo_ped_x"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "echo_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "echo_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "echo_core"
+			}
+		]
+	}
+]

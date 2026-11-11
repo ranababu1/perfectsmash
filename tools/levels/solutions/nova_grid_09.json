@@ -1,0 +1,19 @@
+[
+	{
+		"name": "through the slot",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "conv_1"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "conv_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "conv_core"
+			}
+		]
+	}
+]

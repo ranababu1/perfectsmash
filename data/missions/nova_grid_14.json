@@ -1,0 +1,195 @@
+{
+	"id": "nova_grid_14",
+	"name": "Blackout Protocol",
+	"chapter": 3,
+	"briefing": "Emergency backups have been tied to the same source. A tall bank of primed cells carries one end of the long beam above the core. When the bank goes, the beam goes with it.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "bank_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 610,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5
+		},
+		{
+			"id": "bank_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 550,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"bank_1"
+			]
+		},
+		{
+			"id": "bank_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 490,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"bank_2"
+			]
+		},
+		{
+			"id": "bank_4",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 430,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"bank_3"
+			]
+		},
+		{
+			"id": "bo_beam",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 910,
+			"y": 385,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"bank_4",
+				"bo_post"
+			]
+		},
+		{
+			"id": "bo_post",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1060,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "farbank_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 620,
+			"y": 610,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5
+		},
+		{
+			"id": "farbank_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 620,
+			"y": 550,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"farbank_1"
+			]
+		},
+		{
+			"id": "farbank_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 620,
+			"y": 490,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"farbank_2"
+			]
+		},
+		{
+			"id": "farbank_4",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 620,
+			"y": 430,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"farbank_3"
+			]
+		},
+		{
+			"id": "bo_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 910,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the backup core",
+			"targets": [
+				"bo_core"
+			]
+		},
+		{
+			"id": "bank",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Overload the far bank",
+			"targets": [
+				"farbank_1",
+				"farbank_2",
+				"farbank_3",
+				"farbank_4"
+			],
+			"count": 4
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

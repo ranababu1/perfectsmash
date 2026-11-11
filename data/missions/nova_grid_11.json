@@ -1,0 +1,157 @@
+{
+	"id": "nova_grid_11",
+	"name": "Beyond the Grid",
+	"chapter": 3,
+	"briefing": "The signal is travelling outside the energy network. The long-distance relay stands past a retaining wall, high on its mast. Nothing low will reach it. Shoot over the wall.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [
+		{
+			"x": 880,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		}
+	],
+	"components": [
+		{
+			"id": "array_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1000,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.5
+		},
+		{
+			"id": "array_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1080,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.5
+		},
+		{
+			"id": "mast",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1380,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "mast_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1380,
+			"y": 368,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"mast"
+			]
+		},
+		{
+			"id": "mast_cap_l",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1330,
+			"y": 326,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.8,
+			"supports": [
+				"mast_deck"
+			]
+		},
+		{
+			"id": "mast_cap_r",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1430,
+			"y": 326,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.8,
+			"supports": [
+				"mast_deck"
+			]
+		},
+		{
+			"id": "relay_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 1380,
+			"y": 296,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"mast_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the relay core",
+			"targets": [
+				"relay_core"
+			]
+		},
+		{
+			"id": "array",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Short the ground array",
+			"targets": [
+				"array_a"
+			]
+		},
+		{
+			"id": "array2",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Short the second array unit",
+			"targets": [
+				"array_b"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}
