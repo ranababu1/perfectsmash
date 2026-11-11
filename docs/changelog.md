@@ -2,6 +2,19 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — Optional-objective decision prompt
+
+- When the primary objective is complete, the scene has settled and optional goals are still pending, the mission no longer ends on its own. A prompt asks: "Primary objective complete" / "Optional objectives remain. What next?" with Continue and Finish.
+  - **Continue** closes the prompt (offered once per attempt), keeps the mission active and shows a persistent Finish button beside Restart and Pause. The mission then ends when all optional goals are done, the ammunition runs out (a success, since the primary is done), or the player presses Finish.
+  - **Finish** ends the mission successfully with the score so far; unfinished optional goals fail, intact optional constraints complete (existing `finalize`).
+  - While the prompt is open the clock is held and firing is blocked; pause leaves the prompt in place; Android back means Continue.
+  - No prompt when there are no optional goals or all are done; constraints (shot/time limits, protect) never count as pending; mandatory failures behave as before.
+- The rule lives in `MissionEngine` (`decision_requested`, `awaiting_decision`, `continue_mission()`, `finish_mission()`, `can_finish_early()`) and `MissionObjectives.pending_optional_goals()`; `MissionHud.show_decision()` / `set_finish_available()`; `MissionScreen` wires them.
+- Tests: `tests/objectives/test_mission_decision.gd` (18 engine cases), `tests/ui/test_hud_decision.gd` (4), `tests/campaign/test_decision_flow_app.gd` (4 through the app, including the save file). Existing tests whose missions end with optional goals open now answer the prompt with Finish (no assertion removed or loosened); the solver and score replay do the same. The solver waits one physics frame before aiming.
+- Delegation: two general-purpose Sonnet subagents in the shared checkout with disjoint files (HUD + its test; engine tests); the orchestrator wrote the engine interface first and reviewed and ran their work. No conflicts.
+- `.claude/` agent definitions and settings removed from the repository (owner removed them).
+- Results: headless `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → 275 passed, 0 failed, 1 skipped; windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` → 276 passed, 0 failed, 0 skipped (one earlier windowed attempt stopped mid-run with no summary when the window closed; rerun complete); `probe_missions.gd -- solve all 3` → exit 0, all 3/3; windowed capture with `--fixed-fps 60` → all five missions won and saved, decision flow prompt → Continue → Finish → SUCCEEDED, 22 frames.
+
 ## 2026-11-11 — Helix missions 01-05 playable from the main menu
 
 - The app boots into the campaign menu (Continue / Campaign / Settings). `main.gd` gains `boot_mission` so tests and capture tools can start inside a mission.

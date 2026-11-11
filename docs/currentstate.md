@@ -17,6 +17,7 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 | Mission catalog (100 slots, linear unlocks) | Implemented | `scripts/core/mission_catalog.gd`; `tests/campaign/` |
 | Main menu / chapter select / mission select | Implemented; **the app boots into the main menu** | Continue, Campaign, Settings; results → Next mission / Missions; screenshots `docs/images/helix_01_05/0*.webp` |
 | HUD, pause, results | Implemented | results panel: Next mission, Run it again, Missions |
+| Optional-objective decision | Implemented | Primary done + optional goals pending: "Primary objective complete / Optional objectives remain. What next?" Continue (keeps playing; persistent Finish button) or Finish (results; unfinished optional goals fail). Engine rule in `MissionEngine`; screenshots `docs/images/helix_01_05/04-06_*.webp` |
 | Operative + Kinetic Accelerator + Breach Charge | Implemented | 2 weapons; reload-ready event and sound (PR #4) |
 | Later chapter weapons | Planned, deferred | plan revision 6 |
 | Upgrades | Rules only | `upgrade_rules.gd`; no UI |
@@ -35,10 +36,10 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 
 ## Build / test status (2026-11-11)
 
-- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **249 passed, 0 failed, 1 skipped** on `milestone/helix-01-05` (243/0/1 after campaign routing, 217/0/1 at M0).
+- `godot_console --headless --fixed-fps 60 -s tests/run_tests.gd` → **275 passed, 0 failed, 1 skipped** on `milestone/helix-01-05` with the decision flow (249/0/1 before it, 243/0/1 after campaign routing).
 - `godot_console --headless --fixed-fps 60 -s tools/levels/probe_missions.gd -- solve all 3` → exit 0: every stand check OK, every recorded solution wins 3/3 (details in the changelog).
-- `godot_console --resolution 1280x720 -s tools/levels/capture_helix_01_05.gd` (Windows desktop, GL Compatibility, RTX 5060 Ti) → helix_01-05 all WIN through the app, completions saved, Research Data balance 197; 19 screenshots.
-- Windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` on the Windows desktop, `milestone/helix-01-05` → **250 passed, 0 failed, 0 skipped** (285.4 s; the legacy replay test dominates).
+- `godot_console --resolution 1280x720 --fixed-fps 60 -s tools/levels/capture_helix_01_05.gd` (Windows desktop, GL Compatibility, RTX 5060 Ti) → helix_01-05 all WIN through the app and saved; decision flow prompt → Continue → Finish → SUCCEEDED; 22 screenshots. Without `--fixed-fps`, one earlier windowed run did not win helix_01 with the scripted line (real-time physics stepping differs); the automated replays use fixed-step physics.
+- Windowed `godot_console --resolution 1280x720 --fixed-fps 60 -s tests/run_tests.gd` on the Windows desktop, `milestone/helix-01-05` → **276 passed, 0 failed, 0 skipped** (287.8 s; the legacy replay test dominates). One earlier windowed run ended mid-suite with no summary (window closed, not a test failure); the rerun completed.
 - Boot smoke `godot_console --headless --quit-after 180` → exit 0, no errors before exit.
 - Exit-time leaks (harmless, test teardown): headless 32 ObjectDB instances / 14 resources; windowed also two GL textures (~341 KB each). Owner: performance-qa.
 - Android export: last built from `4e2798a` (slice A era); not rebuilt in this session.
@@ -62,7 +63,7 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 | Workstream | Branch | Status |
 |---|---|---|
 | Orchestrator M0 (catalog, runner discovery, contracts, asset baseline) | `main` | Complete |
-| Helix 01-05 milestone (direct, no subagents) | `milestone/helix-01-05` | Complete, PR pending; stacked on PR #7 |
+| Helix 01-05 + decision flow | `milestone/helix-01-05` | PR #8, ready for review; stacked on PR #7 |
 | operative-weapons | `agent/operative-weapons` | Merged (#4) |
 | ui-ux: campaign navigation, results next-mission, settings | `agent/ui-ux` | Merged (#5) |
 | audio-atmosphere: chapter plans and ambience | `agent/audio-atmosphere` | Merged (#6) |
@@ -77,7 +78,7 @@ All measurements are **desktop or Android emulator; no physical-device measureme
 - `level-design-spec.md` §1-5 describe the retired game; its 2026-11-09 revision section governs.
 - Physics is repeatable on one platform, not bit-identical across platforms (tolerances: `instructions.md` §11).
 - Worktrees: each needs ~411 MB of assets plus a cold Godot import (~0.7 GB `.godot`).
-- Multi-agent setup paused (owner, 2026-11-11). Established: all seven specialist runs received `Read, Edit, Write, Glob, Grep` without Bash (cause not established); after the VS Code restart, worktree creation is refused because the session's working directory is recorded as lowercase `c:\` while git reports `C:/`. Seven agent worktrees are kept under `.claude/worktrees/` (none holds unmerged work).
+- Fixed multi-agent setup paused and `.claude/` removed by the owner (2026-11-11). The custom specialist definitions never received a shell (cause not established); general-purpose subagents do have one and were used for the decision flow (HUD, engine tests). Worktree isolation fails in VS Code sessions whose working directory is recorded as lowercase `c:\`, so subagents share the checkout with strict per-file ownership. Stale git worktree registrations (folders deleted) remain; `git worktree prune` would clear them (not run).
 - Rights: AI-assisted assets not commercially cleared; `gameplay_bed.ogg` licence unverified (release blocker).
 - Physical-device validation: not done (human task).
 
