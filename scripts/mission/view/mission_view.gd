@@ -379,8 +379,10 @@ func _build_environment() -> void:
 		# exponential fog hazed the gameplay plane ~30% and the back wall barely more).
 		env.fog_enabled = true
 		env.fog_mode = Environment.FOG_MODE_DEPTH
-		env.fog_depth_begin = FOG_DEPTH_BEGIN
-		env.fog_depth_end = FOG_DEPTH_END
+		# A wider shot moves the camera back: move the fog with it so the plane stays crisp.
+		var pull_back := (camera_distance_scale() - 1.0) * CAMERA_OFFSET.length()
+		env.fog_depth_begin = FOG_DEPTH_BEGIN + pull_back
+		env.fog_depth_end = FOG_DEPTH_END + pull_back
 		env.fog_depth_curve = 1.0
 		env.fog_sky_affect = 0.0
 	var world_env := WorldEnvironment.new()
@@ -541,14 +543,35 @@ func _piece_size_m(asset_id: String) -> Vector2:
 func _build_camera() -> void:
 	camera = Camera3D.new()
 	camera.fov = CAMERA_FOV
-	var left := minf(definition.operative.x, _facility_left())
-	var right := _facility_right()
-	var focus := Vector3((left + right) / 2.0 / ViewMapping.PX_PER_METRE, 1.6, 0.0)
+	var scale := camera_distance_scale()
+	var span := _frame_span()
+	# Standard shots keep the approved framing; pulled-back shots centre on the padded span so the
+	# operative stays on screen.
+	var center := (minf(definition.operative.x, _facility_left()) + _facility_right()) / 2.0 if scale <= 1.0 else (span.x + span.y) / 2.0
+	var focus := Vector3(center / ViewMapping.PX_PER_METRE, 1.6, 0.0)
 	_focus = focus
-	camera.position = focus + CAMERA_OFFSET
+	camera.position = focus + CAMERA_OFFSET * scale
 	add_child(camera)
 	camera.look_at(focus + Vector3(0.0, -0.4, 0.0), Vector3.UP)
 	camera.current = true
+
+
+## How far the camera pulls back (1 = the standard 10.5 m framing) so the operative and the
+## whole facility fit the screen width, with a margin, at the current aspect ratio. Wide finales
+## (up to 2200 px) and narrow (4:3) screens get a wider shot; nothing is ever framed closer.
+func camera_distance_scale() -> float:
+	var span := _frame_span()
+	var span_m := (span.y - span.x) / ViewMapping.PX_PER_METRE
+	var viewport_size := get_viewport().get_visible_rect().size if is_inside_tree() else Vector2(1280, 720)
+	var aspect := viewport_size.x / maxf(viewport_size.y, 1.0)
+	var half_h := atan(tan(deg_to_rad(CAMERA_FOV) / 2.0) * aspect)
+	var needed := span_m / (2.0 * tan(half_h))
+	return maxf(1.0, needed / CAMERA_OFFSET.length())
+
+
+## Left and right edge (px) that must be on screen: the operative and the facility, with margins.
+func _frame_span() -> Vector2:
+	return Vector2(minf(definition.operative.x - 220.0, _facility_left() - 80.0), _facility_right() + 120.0)
 
 
 func _facility_left() -> float:
