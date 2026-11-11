@@ -1,0 +1,43 @@
+{
+	"_note": "Per-chapter lighting and atmosphere for the 3D mission view (MissionView via ChapterAtmosphere), keyed by chapter theme. Colours are hex; energies are Godot light energies. 'sun' is the key light (pitch/yaw in degrees), 'rim' an unshadowed back light in the chapter's accent colour, 'fog' the depth fog behind the gameplay plane (the plane itself stays crisp). Helix values are the approved slice-E look; the other chapters keep the same structure and contrast rules (background low-contrast, gameplay pieces brighter) with their own palette.",
+	"helix": {
+		"background": "15191e",
+		"ambient": {"color": "6c7a88", "energy": 0.42},
+		"sky": {"top": "4a5866", "horizon": "8090a0", "ground_horizon": "3a4048", "ground_bottom": "1b2026"},
+		"fog": {"color": "0e131a", "density": 0.85},
+		"sun": {"color": "dfe8f0", "energy": 1.0, "pitch": -36.0, "yaw": -30.0},
+		"rim": {"color": "3fd0ff", "energy": 0.0}
+	},
+	"vita": {
+		"background": "1b2628",
+		"ambient": {"color": "a9c6c8", "energy": 0.55},
+		"sky": {"top": "8fb9bc", "horizon": "e2f1ee", "ground_horizon": "6f8f90", "ground_bottom": "26363a"},
+		"fog": {"color": "33494c", "density": 0.7},
+		"sun": {"color": "f4fbff", "energy": 1.1, "pitch": -48.0, "yaw": -20.0},
+		"rim": {"color": "7ff0dc", "energy": 0.35}
+	},
+	"nova_grid": {
+		"background": "1a120e",
+		"ambient": {"color": "8a6f58", "energy": 0.4},
+		"sky": {"top": "3a2a22", "horizon": "c0773e", "ground_horizon": "4a3426", "ground_bottom": "1a120e"},
+		"fog": {"color": "2a170c", "density": 0.8},
+		"sun": {"color": "ffd09a", "energy": 1.1, "pitch": -24.0, "yaw": -42.0},
+		"rim": {"color": "ff8a2a", "energy": 0.45}
+	},
+	"civitas": {
+		"background": "141b24",
+		"ambient": {"color": "8ea3bd", "energy": 0.5},
+		"sky": {"top": "5a7290", "horizon": "c8d6e6", "ground_horizon": "485868", "ground_bottom": "1a222c"},
+		"fog": {"color": "1a2533", "density": 0.8},
+		"sun": {"color": "eaf1ff", "energy": 1.05, "pitch": -56.0, "yaw": -12.0},
+		"rim": {"color": "9cc4ff", "energy": 0.3}
+	},
+	"meridian": {
+		"background": "0e0a18",
+		"ambient": {"color": "5e4c82", "energy": 0.4},
+		"sky": {"top": "2a1f40", "horizon": "6c4ca0", "ground_horizon": "2a2040", "ground_bottom": "0e0a18"},
+		"fog": {"color": "140c24", "density": 0.85},
+		"sun": {"color": "cdbcff", "energy": 0.9, "pitch": -40.0, "yaw": -34.0},
+		"rim": {"color": "b46bff", "energy": 0.55}
+	}
+}

@@ -32,6 +32,8 @@ var _state := 0
 ## Frames left showing every state node (shader warm-up), then the real state is applied.
 var _warm_frames := 0
 const WARM_FRAMES := 2
+## aura name -> {node, material, color, pulse}
+var _auras := {}
 
 
 ## look = [depth m, colour, emission colour or null, emission energy] (MissionView.KINDS).
@@ -84,8 +86,51 @@ func set_state(state: int) -> void:
 			_box_material.emission_energy_multiplier = 0.8
 
 
+## A translucent glowing shell around the component that reads a rule at a glance:
+## "crystal" (temporal crystal: only the Temporal Lance breaks it) or "shield" (protected by a
+## standing shield emitter). One aura per name; `pulse` animates its glow.
+func add_aura(aura_name: String, color: Color, pulse: bool = true) -> void:
+	if _auras.has(aura_name):
+		return
+	var shell := MeshInstance3D.new()
+	shell.name = "Aura_" + aura_name
+	var box := BoxMesh.new()
+	var grow := 0.06 if aura_name == "crystal" else 0.14
+	box.size = Vector3(size_m.x + grow, size_m.y + grow, size_m.z + grow)
+	shell.mesh = box
+	shell.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	material.albedo_color = Color(color, 0.22)
+	shell.material_override = material
+	add_child(shell)
+	_auras[aura_name] = {"node": shell, "material": material, "color": color, "pulse": pulse}
+
+
+## Fades an aura out and removes it (e.g. its shield emitter fell).
+func remove_aura(aura_name: String) -> void:
+	var aura: Dictionary = _auras.get(aura_name, {})
+	if aura.is_empty():
+		return
+	_auras.erase(aura_name)
+	var node: MeshInstance3D = aura.node
+	var tween := node.create_tween()
+	tween.tween_property(aura.material, "albedo_color:a", 0.0, 0.35)
+	tween.tween_callback(node.queue_free)
+
+
+func has_aura(aura_name: String) -> bool:
+	return _auras.has(aura_name)
+
+
 ## Per-frame emphasis for critical assets (greybox: pulsing emission).
 func animate(time: float) -> void:
+	for aura: Dictionary in _auras.values():
+		if aura.pulse:
+			(aura.material as StandardMaterial3D).albedo_color.a = 0.16 + 0.08 * sin(time * 3.0)
 	if _warm_frames > 0:
 		_warm_frames -= 1
 		if _warm_frames == 0:
