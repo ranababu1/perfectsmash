@@ -1,0 +1,162 @@
+{
+	"id": "nova_grid_05",
+	"name": "The First Pulse",
+	"chapter": 3,
+	"briefing": "A repeating pulse appears in the output. The relay core hides behind the containment wall and nothing flat reaches it; its uplink stands high enough to see over. Work both.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 6
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [
+		{
+			"x": 640,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		}
+	],
+	"components": [
+		{
+			"id": "relay_c1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 900,
+			"y": 610,
+			"w": 40,
+			"h": 60
+		},
+		{
+			"id": "relay_c2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 900,
+			"y": 550,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"relay_c1"
+			]
+		},
+		{
+			"id": "relay_c3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 900,
+			"y": 490,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"relay_c2"
+			]
+		},
+		{
+			"id": "relay_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 990,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 0.6,
+			"critical_asset": true
+		},
+		{
+			"id": "relay_xfmr",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1100,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "uplink_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1200,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "uplink_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1200,
+			"y": 368,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"uplink_pylon"
+			]
+		},
+		{
+			"id": "uplink_xfmr",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1200,
+			"y": 306,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"uplink_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the resonance relay core",
+			"targets": [
+				"relay_core"
+			]
+		},
+		{
+			"id": "uplink",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence the relay uplink",
+			"targets": [
+				"uplink_xfmr"
+			]
+		},
+		{
+			"id": "xfmr",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Short the ground transformer",
+			"targets": [
+				"relay_xfmr"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

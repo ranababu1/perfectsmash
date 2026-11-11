@@ -1,0 +1,132 @@
+{
+	"_note": "Set dressing for nova_grid_11; presentation only, no collision. Gameplay band |z| <= 0.8 kept clear.",
+	"chapter": "nova_grid",
+	"statics": {
+		"low": "NVG-ENV-LEDGE_STATIC-A",
+		"tall": "NVG-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "NVG-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 26,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 26,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 26,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 26,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 32,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-CATWALK-A",
+			"x": 8.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "NVG-ENV-CATWALK-A",
+			"x": 12.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "NVG-ENV-CATWALK-A",
+			"x": 15.0,
+			"y": 3.6,
+			"z": -5.6
+		},
+		{
+			"id": "NVG-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 26,
+				"step": 8
+			},
+			"y": 6.2,
+			"z": -4.5
+		},
+		{
+			"id": "NVG-ENV-MASSING_TOWER-B",
+			"x": 3.0,
+			"z": -11.5,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-MASSING_TOWER-B",
+			"x": 11.0,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-ENV-MASSING_BLOCK-A",
+			"x": 20.0,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "NVG-PRP-TRANSFORMER_YARD-A",
+			"x": 6.4,
+			"z": -6.0
+		},
+		{
+			"id": "NVG-PRP-PIPE_RUN-A",
+			"x": 2.0,
+			"z": -3.0
+		},
+		{
+			"id": "NVG-PRP-TANK-A",
+			"x": 10.4,
+			"z": -3.4
+		},
+		{
+			"id": "NVG-PRP-CRATE_STACK-A",
+			"x": 16.4,
+			"z": -3.1
+		},
+		{
+			"id": "NVG-ENV-LOW_WALL-A",
+			"x": 1.0,
+			"z": -2.9
+		}
+	]
+}

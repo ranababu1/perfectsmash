@@ -1,0 +1,19 @@
+[
+	{
+		"name": "lob over the wall",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "uplink_xfmr"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "relay_core"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "relay_core"
+			}
+		]
+	}
+]

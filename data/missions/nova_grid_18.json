@@ -1,0 +1,216 @@
+{
+	"id": "nova_grid_18",
+	"name": "The Listening Machine",
+	"chapter": 3,
+	"briefing": "The reactor was built to receive as well as generate. Primed piers hold the receiving frame over the core. Bring one pier down and the frame folds inward.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		},
+		"penetrator": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rcv_l_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 770,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "rcv_l_a",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 770,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"rcv_l_x"
+			]
+		},
+		{
+			"id": "rcv_l_b",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 770,
+			"y": 450,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"rcv_l_a"
+			]
+		},
+		{
+			"id": "rcv_r_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1050,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "rcv_r_a",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1050,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"rcv_r_x"
+			]
+		},
+		{
+			"id": "rcv_r_b",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1050,
+			"y": 450,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"rcv_r_a"
+			]
+		},
+		{
+			"id": "frame_l",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 830,
+			"y": 408,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"rcv_l_b"
+			]
+		},
+		{
+			"id": "frame_r",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 990,
+			"y": 408,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"rcv_r_b",
+				"frame_l"
+			]
+		},
+		{
+			"id": "frame_wt",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 910,
+			"y": 356,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"frame_l",
+				"frame_r"
+			]
+		},
+		{
+			"id": "listen_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 430,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8
+		},
+		{
+			"id": "listen_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 560,
+			"y": 590,
+			"w": 80,
+			"h": 100,
+			"health_scale": 0.8
+		},
+		{
+			"id": "rcv_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 910,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the receiving core",
+			"targets": [
+				"rcv_core"
+			]
+		},
+		{
+			"id": "ears",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence both listening relays",
+			"targets": [
+				"listen_a",
+				"listen_b"
+			]
+		},
+		{
+			"id": "piers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload both primed piers",
+			"targets": [
+				"rcv_l_a",
+				"rcv_l_b",
+				"rcv_r_a",
+				"rcv_r_b"
+			],
+			"count": 4
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

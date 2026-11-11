@@ -1,0 +1,97 @@
+{
+	"id": "nova_grid_01",
+	"name": "Endless Power",
+	"chapter": 3,
+	"briefing": "Nova Grid ended the old energy shortage. Its perimeter reactor still runs the district, and its core sits exposed on a single pylon. Overload it.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "perimeter_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 900,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "perimeter_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 900,
+			"y": 320,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"perimeter_pylon"
+			]
+		},
+		{
+			"id": "cell_a",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 700,
+			"y": 610,
+			"w": 40,
+			"h": 60
+		},
+		{
+			"id": "cell_b",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 770,
+			"y": 610,
+			"w": 40,
+			"h": 60
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the perimeter reactor core",
+			"targets": [
+				"perimeter_core"
+			]
+		},
+		{
+			"id": "cells",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload the capacitor pair",
+			"targets": [
+				"cell_a",
+				"cell_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

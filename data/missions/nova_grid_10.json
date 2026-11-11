@@ -1,0 +1,225 @@
+{
+	"id": "nova_grid_10",
+	"name": "The Resonance",
+	"chapter": 3,
+	"briefing": "The pulse becomes visible as a repeating energy pattern. The main containment platform rings a bunkered core: a soft pier on your side, steel posts inside, and a cable joint that ties the halves together. Strip it in order.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1700,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 10
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "sl_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 540,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "sl_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 540,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"sl_a"
+			]
+		},
+		{
+			"id": "post_r",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1100,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "ring_l",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 700,
+			"y": 425,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"sl_b"
+			]
+		},
+		{
+			"id": "ring_r",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1000,
+			"y": 425,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"post_r",
+				"ring_l"
+			]
+		},
+		{
+			"id": "vault_door_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 660,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "vault_door",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 660,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"vault_door_x"
+			]
+		},
+		{
+			"id": "vault_back",
+			"kind": "containment_wall",
+			"material": "concrete",
+			"x": 820,
+			"y": 560,
+			"w": 40,
+			"h": 160
+		},
+		{
+			"id": "vault_roof",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 740,
+			"y": 465,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"vault_door",
+				"vault_back"
+			]
+		},
+		{
+			"id": "res_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 740,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "pulse_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 600,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"ring_l"
+			]
+		},
+		{
+			"id": "pulse_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"ring_l"
+			]
+		},
+		{
+			"id": "pulse_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 920,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"ring_r"
+			]
+		},
+		{
+			"id": "pulse_4",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1060,
+			"y": 380,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.6,
+			"supports": [
+				"ring_r"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the resonance core",
+			"targets": [
+				"res_core"
+			]
+		},
+		{
+			"id": "pulses",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload the ring cells",
+			"targets": [
+				"pulse_1",
+				"pulse_2",
+				"pulse_3",
+				"pulse_4"
+			],
+			"count": 4
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

@@ -1,0 +1,120 @@
+{
+	"id": "nova_grid_17",
+	"name": "Origin Unknown",
+	"chapter": 3,
+	"briefing": "The signal's timestamp predates Nova Grid. The capture core sits in a concrete well, shielded on every side but the top. Come at it from above.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 6
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "well_f1",
+			"kind": "containment_wall",
+			"material": "concrete",
+			"x": 800,
+			"y": 560,
+			"w": 40,
+			"h": 160
+		},
+		{
+			"id": "well_r1",
+			"kind": "containment_wall",
+			"material": "concrete",
+			"x": 1080,
+			"y": 560,
+			"w": 40,
+			"h": 160
+		},
+		{
+			"id": "cap_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 940,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "up_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1300,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "up_xfmr",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1300,
+			"y": 330,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"up_pylon"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the capture core",
+			"targets": [
+				"cap_core"
+			]
+		},
+		{
+			"id": "uplink",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Cut the capture uplink",
+			"targets": [
+				"up_xfmr"
+			]
+		},
+		{
+			"id": "front",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Breach the front wall",
+			"targets": [
+				"well_f1"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

@@ -1,0 +1,23 @@
+[
+	{
+		"name": "pull the keystone",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "key_cap"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "svc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "svc_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "svc_core"
+			}
+		]
+	}
+]

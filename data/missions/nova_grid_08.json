@@ -1,0 +1,175 @@
+{
+	"id": "nova_grid_08",
+	"name": "Silent Alarm",
+	"chapter": 3,
+	"briefing": "The system has suppressed repeated anomaly alerts. The alarm panel and the monitoring core hang on one span between two towers. Bring the soft tower down and the span goes with it.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "mon_xfmr_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "mon_xfmr_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"mon_xfmr_a"
+			]
+		},
+		{
+			"id": "mon_cap",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 760,
+			"y": 410,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"mon_xfmr_b"
+			]
+		},
+		{
+			"id": "mon_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1060,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "mon_span",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 910,
+			"y": 365,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"mon_cap",
+				"mon_pylon"
+			]
+		},
+		{
+			"id": "alarm_panel",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 830,
+			"y": 310,
+			"w": 60,
+			"h": 80,
+			"supports": [
+				"mon_span"
+			]
+		},
+		{
+			"id": "mon_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 990,
+			"y": 290,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"mon_span"
+			]
+		},
+		{
+			"id": "far_pylon",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1240,
+			"y": 510,
+			"w": 50,
+			"h": 260
+		},
+		{
+			"id": "far_panel",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1240,
+			"y": 330,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"far_pylon"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the monitoring core",
+			"targets": [
+				"mon_core"
+			]
+		},
+		{
+			"id": "alarm",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Silence both alarm panels",
+			"targets": [
+				"alarm_panel",
+				"far_panel"
+			]
+		},
+		{
+			"id": "tower",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the soft tower",
+			"targets": [
+				"mon_xfmr_a",
+				"mon_xfmr_b",
+				"mon_cap"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

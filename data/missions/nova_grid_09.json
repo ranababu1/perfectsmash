@@ -1,0 +1,171 @@
+{
+	"id": "nova_grid_09",
+	"name": "Overload Window",
+	"chapter": 3,
+	"briefing": "The structure is designed to redirect overload, not stop it. A concrete bulkhead covers the conversion array. It has one slot, and the slot faces you.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [
+		{
+			"x": 700,
+			"y": 590,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"x": 700,
+			"y": 280,
+			"w": 40,
+			"h": 320
+		}
+	],
+	"components": [
+		{
+			"id": "ped_1",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 820,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "conv_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 820,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ped_1"
+			]
+		},
+		{
+			"id": "ped_2",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 900,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "conv_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 900,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ped_2"
+			]
+		},
+		{
+			"id": "ped_3",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 980,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "conv_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 980,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"ped_3"
+			]
+		},
+		{
+			"id": "ped_c",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "conv_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 1060,
+			"y": 480,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"ped_c"
+			]
+		},
+		{
+			"id": "plate",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 1200,
+			"y": 580,
+			"w": 80,
+			"h": 120
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the conversion core",
+			"targets": [
+				"conv_core"
+			]
+		},
+		{
+			"id": "conv",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Overload the conversion cells",
+			"targets": [
+				"conv_1",
+				"conv_2",
+				"conv_3"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

@@ -1,0 +1,35 @@
+[
+	{
+		"name": "fold the frame",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "listen_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "listen_b"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "rcv_l_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "rcv_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "rcv_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "rcv_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "rcv_core"
+			}
+		]
+	}
+]

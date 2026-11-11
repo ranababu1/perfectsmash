@@ -1,0 +1,190 @@
+{
+	"id": "nova_grid_15",
+	"name": "The Echo",
+	"chapter": 3,
+	"briefing": "The signal repeats with an identical timing pattern. Two rows of primed cells sit one above the other in the resonance chamber. Start the lower row and the upper one answers.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "low_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 680,
+			"y": 610,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5
+		},
+		{
+			"id": "low_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 750,
+			"y": 610,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5
+		},
+		{
+			"id": "low_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 820,
+			"y": 610,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5
+		},
+		{
+			"id": "echo_ped_x",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 890,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "echo_ped",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 890,
+			"y": 510,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"echo_ped_x"
+			]
+		},
+		{
+			"id": "echo_post",
+			"kind": "grid_pylon",
+			"material": "reinforced_steel",
+			"x": 1130,
+			"y": 540,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "echo_deck",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 1010,
+			"y": 465,
+			"w": 240,
+			"h": 30,
+			"supports": [
+				"echo_ped",
+				"echo_post"
+			]
+		},
+		{
+			"id": "up_1",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 930,
+			"y": 420,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"echo_deck"
+			]
+		},
+		{
+			"id": "up_2",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1000,
+			"y": 420,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"echo_deck"
+			]
+		},
+		{
+			"id": "up_3",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1070,
+			"y": 420,
+			"w": 40,
+			"h": 60,
+			"health_scale": 0.5,
+			"supports": [
+				"echo_deck"
+			]
+		},
+		{
+			"id": "echo_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 1010,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the echo core",
+			"targets": [
+				"echo_core"
+			]
+		},
+		{
+			"id": "rows",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Fire both rows",
+			"targets": [
+				"low_1",
+				"low_2",
+				"low_3",
+				"up_1",
+				"up_2",
+				"up_3"
+			],
+			"count": 6
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

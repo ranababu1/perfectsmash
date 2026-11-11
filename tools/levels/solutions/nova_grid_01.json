@@ -1,0 +1,19 @@
+[
+	{
+		"name": "overload the core",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "perimeter_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "perimeter_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "perimeter_core"
+			}
+		]
+	}
+]

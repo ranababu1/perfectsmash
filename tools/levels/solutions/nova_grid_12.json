@@ -1,0 +1,23 @@
+[
+	{
+		"name": "dish then core",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "dish_a"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fb_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "fb_core"
+			}
+		]
+	}
+]

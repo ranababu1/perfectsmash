@@ -1,0 +1,162 @@
+{
+	"id": "nova_grid_16",
+	"name": "Dead Circuit",
+	"chapter": 3,
+	"briefing": "The pulse continues after local systems are shut down. The core sits under a heavy canopy, hidden behind the near pier. Do not dig for it: bring the canopy down on it.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1200,
+		"completion_research_data": 30,
+		"optional_research_data": 7
+	},
+	"weapons": {
+		"pulse_cannon": {
+			"ammunition": 8
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "pier_f_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 830,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "pier_f_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 830,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"pier_f_a"
+			]
+		},
+		{
+			"id": "pier_f_cap",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 830,
+			"y": 410,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"pier_f_b"
+			]
+		},
+		{
+			"id": "pier_r_a",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1010,
+			"y": 590,
+			"w": 80,
+			"h": 100
+		},
+		{
+			"id": "pier_r_b",
+			"kind": "transformer",
+			"material": "electronic_module",
+			"x": 1010,
+			"y": 490,
+			"w": 80,
+			"h": 100,
+			"supports": [
+				"pier_r_a"
+			]
+		},
+		{
+			"id": "pier_r_cap",
+			"kind": "capacitor_cell",
+			"material": "energy_component",
+			"x": 1010,
+			"y": 410,
+			"w": 40,
+			"h": 60,
+			"supports": [
+				"pier_r_b"
+			]
+		},
+		{
+			"id": "canopy",
+			"kind": "cable_bridge",
+			"material": "composite",
+			"x": 920,
+			"y": 365,
+			"w": 300,
+			"h": 30,
+			"supports": [
+				"pier_f_cap",
+				"pier_r_cap"
+			]
+		},
+		{
+			"id": "canopy_wt",
+			"kind": "cooling_tower_segment",
+			"material": "concrete",
+			"x": 920,
+			"y": 310,
+			"w": 120,
+			"h": 80,
+			"supports": [
+				"canopy"
+			]
+		},
+		{
+			"id": "dc_core",
+			"kind": "reactor_core",
+			"material": "reactor_housing",
+			"x": 920,
+			"y": 580,
+			"w": 80,
+			"h": 120,
+			"health_scale": 1.0,
+			"critical_asset": true
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the transmission core",
+			"targets": [
+				"dc_core"
+			]
+		},
+		{
+			"id": "canopy",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the canopy",
+			"targets": [
+				"canopy"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

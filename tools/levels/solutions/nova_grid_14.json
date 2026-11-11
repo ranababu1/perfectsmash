@@ -1,0 +1,27 @@
+[
+	{
+		"name": "trip the bank",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "farbank_1"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "bank_1"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "bo_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "bo_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "bo_core"
+			}
+		]
+	}
+]

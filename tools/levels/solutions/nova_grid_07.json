@@ -1,0 +1,23 @@
+[
+	{
+		"name": "side hit",
+		"steps": [
+			{
+				"weapon": "pulse_cannon",
+				"target": "pier_l"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "store_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "store_core"
+			},
+			{
+				"weapon": "pulse_cannon",
+				"target": "store_core"
+			}
+		]
+	}
+]
