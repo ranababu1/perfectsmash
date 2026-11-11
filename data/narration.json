@@ -1,0 +1,7 @@
+{
+	"status": "pending_assets",
+	"note": "Owner-approved narration (2026-11-11). No approved narration clips have been delivered yet; every slide plays as subtitles only until clips are added here. Keys: <sequence id>/<slide number from 1>. Values: res:// paths of delivered, reviewed clips. See docs/audio/narration-integration.md.",
+	"bus": "Voice",
+	"duck_db": 9.0,
+	"clips": {}
+}

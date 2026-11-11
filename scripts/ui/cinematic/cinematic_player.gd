@@ -2,8 +2,12 @@ class_name CinematicPlayer
 extends Control
 ## Plays one CinematicCatalog.Sequence: full-screen stills with slow camera motion, cross-fades,
 ## subtitles in a lower band, an optional caption line and a closing end card. It only emits
-## `finished`; the app decides what happens next and owns saving. Subtitles are the narration:
-## the player never plays voice audio (slide.voice is ignored on purpose).
+## `finished`; the app decides what happens next and owns saving.
+## Narration (owner-approved 2026-11-11): a slide whose `voice` is set (NarrationCatalog maps the
+## clips) plays that clip on the Voice bus as its subtitle appears; the slide stays up until the
+## clip has finished (plus a short tail) and the music is ducked while narration is on screen.
+## Advancing, skipping, finishing or leaving the tree stops the clip and restores the music.
+## Slides without a clip play as subtitles only, at reading pace.
 ## Input: tap/click/accept shows the next slide, the Skip button (top-right) and ui_cancel
 ## (Android back) end the sequence. Slides advance on their own after their reading time.
 
@@ -23,10 +27,22 @@ const SUBTITLE_SIZE := 30
 const CAPTION_SIZE := 18
 const SAFE_MARGIN_MAX := 96.0
 const CONTROL_TINT := Color("bfe9ff")
+## Silence kept after a narration clip before the slide moves on.
+const VOICE_TAIL := 0.6
+const DUCK_FADE := 0.35
+const RESTORE_FADE := 0.8
 
 ## Optional MusicDirector; when set, the sequence's music cue plays on start. Nothing is stopped
 ## or restored afterwards: the app root restores its own music.
 var music: MusicDirector
+## Narration on/off (the app turns it off with Sound, or when narration is disabled). Volume is the
+## Voice bus volume, set by the app from the narration volume setting.
+var narration_enabled := true
+var narration_bus := NarrationCatalog.DEFAULT_BUS
+## How far the music is lowered under narration (dB).
+var duck_db := NarrationCatalog.DEFAULT_DUCK_DB
+## Path of the clip playing for the current slide ("" when none).
+var current_voice := ""
 var sequence: CinematicCatalog.Sequence
 ## Index of the stage on screen: 0..slides-1, then one more for the end card when there is one.
 var slide_index := -1
@@ -46,6 +62,8 @@ var _subtitle_tween: Tween
 var _title_label: Label
 var _margins: MarginContainer
 var _pending: CinematicCatalog.Sequence
+var _voice: AudioStreamPlayer
+var _ducked := false
 
 
 func _ready() -> void:
@@ -87,6 +105,20 @@ func play_id(sequence_id: String, catalog: CinematicCatalog) -> bool:
 
 func is_playing() -> bool:
 	return _playing
+
+
+## True while a narration clip is playing.
+func is_narrating() -> bool:
+	return _voice != null and _voice.playing and not current_voice.is_empty()
+
+
+func voice_player() -> AudioStreamPlayer:
+	return _voice
+
+
+## True while the music is lowered for narration.
+func is_music_ducked() -> bool:
+	return _ducked
 
 
 ## Number of stages: the slides plus the end card when the sequence has one.
@@ -154,11 +186,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED and _margins != null:
 		_apply_safe_area()
+	elif what == NOTIFICATION_EXIT_TREE:
+		# Leaving by any route (the app changes screen, the node is freed): no orphan narration and
+		# no music left ducked.
+		_stop_voice()
+		_restore_music(RESTORE_FADE)
 
 
 # --- Building -----------------------------------------------------------------------------------
 
 func _build() -> void:
+	_voice = AudioStreamPlayer.new()
+	_voice.name = "Narration"
+	_voice.bus = narration_bus if AudioServer.get_bus_index(narration_bus) >= 0 else "Master"
+	add_child(_voice)
 	var black := ColorRect.new()
 	black.color = Color.BLACK
 	black.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -318,8 +359,9 @@ func _show_stage(index: int) -> void:
 	var slide := current_slide()
 	var path := ""
 	var motion := "push_in"
+	_stop_voice()
 	if slide != null:
-		_stage_seconds = slide.reading_seconds()
+		_stage_seconds = maxf(slide.reading_seconds(), _start_voice(slide.voice))
 		path = slide.image
 		motion = slide.motion
 		subtitle_label.text = slide.subtitle
@@ -334,6 +376,9 @@ func _show_stage(index: int) -> void:
 		subtitle_label.add_theme_color_override("font_color", Palette.ACCENT)
 		caption_label.text = ""
 		_title_label.text = sequence.end_title
+	# A stage without narration brings the music back up (consecutive narrated slides stay ducked).
+	if current_voice.is_empty():
+		_restore_music(RESTORE_FADE)
 	_transition_to(_load_texture(path), motion, _stage_seconds)
 
 
@@ -408,8 +453,48 @@ func _finish(skipped: bool) -> void:
 		return
 	_finished = true
 	_playing = false
+	_stop_voice()
+	_restore_music(RESTORE_FADE)
 	if _tween != null:
 		_tween.kill()
 	if _subtitle_tween != null:
 		_subtitle_tween.kill()
 	finished.emit(sequence.id, skipped)
+
+
+# --- Narration ----------------------------------------------------------------------------------
+
+## Starts `path` for the slide now on screen and lowers the music. Returns how long the slide must
+## stay up for the clip to finish (0 when there is no clip or narration is off).
+func _start_voice(path: String) -> float:
+	if path.is_empty() or not narration_enabled or _voice == null:
+		return 0.0
+	var stream: AudioStream = load(path) as AudioStream if ResourceLoader.exists(path) else null
+	if stream == null:
+		push_warning("CinematicPlayer: narration clip missing '%s'" % path)
+		return 0.0
+	_voice.stream = stream
+	_voice.play()
+	current_voice = path
+	_duck_music()
+	return stream.get_length() + VOICE_TAIL
+
+
+func _stop_voice() -> void:
+	current_voice = ""
+	if _voice != null and _voice.playing:
+		_voice.stop()
+
+
+func _duck_music() -> void:
+	if music != null and is_instance_valid(music) and not _ducked:
+		music.duck(duck_db, DUCK_FADE)
+	_ducked = true
+
+
+func _restore_music(fade: float) -> void:
+	if not _ducked:
+		return
+	_ducked = false
+	if music != null and is_instance_valid(music):
+		music.duck(0.0, fade)

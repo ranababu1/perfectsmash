@@ -22,6 +22,8 @@ var boot_mission := ""
 ## before its first mission, its ending once the chapter is complete). Tests switch it off.
 var cinematics_enabled := true
 var cinematics: CinematicCatalog
+## Narration clips per cinematic slide (data/narration.json), applied onto `cinematics`.
+var narration: NarrationCatalog
 var _upgrades: UpgradesScreen
 var _archive: StoryArchive
 var _cinematic: CinematicPlayer
@@ -65,6 +67,14 @@ func _ready() -> void:
 	cinematics = CinematicCatalog.load_from_file()
 	if not cinematics.is_valid():
 		push_error("Cinematic catalog invalid: %s" % ", ".join(cinematics.errors))
+	narration = NarrationCatalog.load_from_file()
+	if not narration.is_valid():
+		push_error("Narration catalog invalid: %s" % ", ".join(narration.errors))
+	var unknown := narration.unknown_keys(cinematics)
+	if not unknown.is_empty():
+		push_error("Narration clips for unknown slides: %s" % ", ".join(unknown))
+	narration.apply_to(cinematics)
+	_apply_narration_volume()
 	_add_fade_layer()
 	if not boot_mission.is_empty():
 		_show_mission(boot_mission)
@@ -221,6 +231,10 @@ func _show_cinematic(sequence_id: String, then: Callable) -> void:
 	_clear_screens()
 	_cinematic = CinematicPlayer.new()
 	_cinematic.music = music
+	_cinematic.narration_enabled = progress.sound_enabled and progress.voice_enabled
+	if narration != null:
+		_cinematic.narration_bus = narration.bus
+		_cinematic.duck_db = narration.duck_db
 	if ambience != null:
 		ambience.stop(0.6)
 	add_child(_cinematic)
@@ -287,6 +301,7 @@ func _show_settings() -> void:
 	_settings.sound_toggled.connect(_set_sound)
 	_settings.music_toggled.connect(_set_music)
 	_settings.vibration_toggled.connect(_set_vibration)
+	_settings.narration_volume_changed.connect(_set_narration_volume)
 	_settings.back_pressed.connect(_show_campaign)
 	add_child(_settings)
 	_reveal()
@@ -308,6 +323,7 @@ func _set_sound(enabled: bool) -> void:
 	audio.enabled = enabled
 	music.enabled = enabled and progress.music_enabled
 	ambience.enabled = enabled
+	_apply_narration_volume()
 	save.save_progress(progress)
 
 
@@ -315,6 +331,22 @@ func _set_music(enabled: bool) -> void:
 	progress.music_enabled = enabled
 	music.enabled = progress.sound_enabled and enabled
 	save.save_progress(progress)
+
+
+func _set_narration_volume(volume: float) -> void:
+	progress.narration_volume = clampf(volume, 0.0, 1.0)
+	_apply_narration_volume()
+	save.save_progress(progress)
+
+
+## Narration volume lives on the Voice bus; Sound off, narration off or volume 0 mutes it.
+func _apply_narration_volume() -> void:
+	var bus := AudioServer.get_bus_index(narration.bus if narration != null else NarrationCatalog.DEFAULT_BUS)
+	if bus < 0:
+		return
+	var volume := clampf(progress.narration_volume, 0.0, 1.0)
+	AudioServer.set_bus_volume_db(bus, linear_to_db(maxf(volume, 0.0001)))
+	AudioServer.set_bus_mute(bus, volume <= 0.0 or not progress.sound_enabled or not progress.voice_enabled)
 
 
 func _set_vibration(enabled: bool) -> void:
