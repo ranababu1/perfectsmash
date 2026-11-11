@@ -2,6 +2,15 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — 1.0.0-rc1: complete campaign and release candidate
+
+- **All 100 missions** merged chapter by chapter (PRs #10 Helix, #11 VITA, #12 Nova Grid, #13 Civitas, #14 Meridian), each verified before merge (probe 3/3 on every recorded line, campaign gate, windowed capture). Chapter design tables in `docs/levels/`. Authored by five Sonnet subagents with per-chapter file ownership; difficulty revised once after the engine fixes (reactor housing, collapse floor).
+- **Camera** pulls back (aspect-aware) so wide finales (up to 2200 px) and the operative fit the screen; depth fog follows.
+- **Touch aiming** compensates gravity: a direct round passes through the touched point (found on the Android emulator — touching a core's centre fired ~20 px low). **Popups** are centred (the rise animation pinned them to the top edge; regression test added).
+- **UI polish:** main menu fits every 16:9 size, aim hint stays one line with five weapons and grows upward, the core marker never covers HUD buttons, Story Archive uses the production UI theme, mission tiles show mission names, mission haptics follow the Vibration setting (the setting had no effect after the legacy game's removal).
+- **Release:** version 1.0.0-rc1 (code 2); unsigned release AAB preset (Gradle, arm64); export filters generated from the shipped-asset manifest; size reduced (music/ambience re-encoded Vorbis q1 126 → 46 MB, lossy cinematic stills, 1024 px VFX caps): debug APK 332 → 198 MB, release AAB 145 MB. Rights audit (`docs/release/rights-audit.md`), privacy/data-safety and store listing with screenshots and feature graphic (`docs/store/`, Sonnet subagent), release guide (`docs/release/README.md`).
+- **Verification:** suite 296/0/0; probe 381/381; 100/100 missions won through the app; desktop frame-time sweep (median 6.9 ms); Android 17 emulator run (install, cinematic, menu, chapter intro, helix_01 by touch, results). Not verified: physical devices, iOS, human play-test, listening review, rights approval.
+
 ## 2026-11-11 — Full-game production: weapon presentation, chapter worlds, engine fixes, legacy removal
 
 - **Weapon presentation** (Sonnet subagent, reviewed and integrated): the four chapter weapons have their production models on the operative, HUD icons and short names (the weapon bar re-flows for 4-6 weapons), distinct projectiles and trails, impact/blast effects (Pulse discharge ring, Disruptor EMP shell with arcs and no push, Lance flash, Penetrator pass-through sparks), coloured aim preview, and per-weapon fire / strike / blast / ready sounds built from existing library files with distinct pitches (no dedicated recordings exist). 33 assets integrated with their manifest rights fields copied verbatim (`slice: E_chapter_weapons`). Per-weapon bottom hints. Tests: `tests/weapons/test_weapon_presentation.gd` (7).
