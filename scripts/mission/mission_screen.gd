@@ -15,6 +15,11 @@ signal next_requested
 signal exit_requested
 
 ## Bottom hint per weapon: what it is for and how to aim it.
+const BUZZ_FIRE_MS := 18
+const BUZZ_BLAST_MS := 45
+const BUZZ_CORE_MS := 90
+## Last requested vibration (ms, 0 when vibration is off): lets tests check the setting.
+var last_buzz_ms := 0
 const HINTS := {
 	"kinetic_accelerator": "Kinetic Accelerator: touch the target · release to fire",
 	"breach_charge": "Breach Charge: touch where to throw · farther = stronger · release to fire",
@@ -125,6 +130,7 @@ func _ready() -> void:
 	# The view resolves which weapon caused a blast (after its own handler); chain blasts keep the
 	# Breach detonation sound.
 	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void:
+		buzz(BUZZ_BLAST_MS)
 		var source: String = view.last_blast_weapon if view != null else ""
 		if MissionAudio.weapon_sounds(source, "blast").is_empty():
 			_play("breach_detonate")
@@ -217,6 +223,7 @@ func release_aim() -> bool:
 		return false
 	view.operative.fire()
 	MissionAudio.play_weapon_event(audio, weapon_id, "fire")
+	buzz(BUZZ_FIRE_MS)
 	# Every strike of this round (a piercing round strikes several times) plays its strike sound.
 	projectile.struck.connect(func(_p: WeaponProjectile, target: Node, _speed: float) -> void:
 		if target is ComponentBody:
@@ -336,6 +343,7 @@ func _record_result() -> void:
 func _on_component_destroyed(component_id: String) -> void:
 	if engine.definition.critical_asset_ids().has(component_id):
 		_play("core_destroyed")
+		buzz(BUZZ_CORE_MS)
 	elif audio != null:
 		audio.play_destroyed(str(engine.definition.component(component_id).get("material", "")))
 	hud.update_objectives.call_deferred(engine.objectives)
@@ -357,6 +365,13 @@ func _on_objective_changed(objective_id: String, status: int) -> void:
 func _on_reload_completed(weapon_id: String) -> void:
 	if weapon_id == engine.selected_weapon_id and engine.is_active():
 		MissionAudio.play_weapon_event(audio, weapon_id, "ready")
+
+
+## Haptic feedback (Settings → Vibration). Durations in ms; no-op on desktop or when switched off.
+func buzz(milliseconds: int) -> void:
+	last_buzz_ms = milliseconds if progress == null or progress.vibration_enabled else 0
+	if last_buzz_ms > 0 and OS.has_feature("mobile"):
+		Input.vibrate_handheld(milliseconds)
 
 
 func _play(sound: String) -> void:

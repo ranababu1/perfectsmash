@@ -218,3 +218,16 @@ func test_drag_starting_on_a_hud_button_never_fires() -> void:
 	assert_eq(screen.engine.weapons.kinetic_accelerator.ammo, ammo, "a drag that starts on a HUD button never fires")
 	assert_true(screen.world.projectiles.is_empty())
 	await _free(main)
+
+
+## The Settings vibration switch drives mission haptics (firing, blasts, core destroyed).
+func test_vibration_follows_the_setting() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	main.progress.vibration_enabled = true
+	screen.buzz(MissionScreen.BUZZ_FIRE_MS)
+	assert_eq(screen.last_buzz_ms, MissionScreen.BUZZ_FIRE_MS)
+	main.progress.vibration_enabled = false
+	screen.buzz(MissionScreen.BUZZ_CORE_MS)
+	assert_eq(screen.last_buzz_ms, 0, "no vibration when switched off")
+	await _free(main)

@@ -304,7 +304,8 @@ func _slot_title(s: MissionCatalog.Slot) -> String:
 
 
 func _slot_text(s: MissionCatalog.Slot, state: SlotState) -> String:
-	var head := "%02d" % s.index
+	var title := s.display_name()
+	var head := "%02d" % s.index if title.is_empty() else "%02d  %s" % [s.index, title]
 	match state:
 		SlotState.COMPLETED:
 			return "%s  ✓\nBest %d pts" % [head, int(_progress.mission_result(s.id).get("best_points", 0))]

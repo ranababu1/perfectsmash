@@ -37,3 +37,6 @@ __pycache__/
 
 # Claude Code agent worktrees (local)
 .claude/worktrees/
+
+# Godot Android Gradle template (regenerate: godot --headless --install-android-build-template --export-release "Android Release AAB" ...)
+android/
