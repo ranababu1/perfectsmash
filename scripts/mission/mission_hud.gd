@@ -132,7 +132,10 @@ func _ready() -> void:
 	buttons.add_child(restart)
 	buttons.add_child(pause)
 
-	_hint = UiKit.label("", 17, Palette.TEXT_DIM)
+	_hint = UiKit.label("", 17, Palette.TEXT)
+	# Readable over any chapter floor (VITA's pale clean rooms included).
+	_hint.add_theme_constant_override("outline_size", 6)
+	_hint.add_theme_color_override("font_outline_color", Color(0.02, 0.03, 0.05, 0.85))
 	_hint.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	_hint.offset_top = -MARGIN - 30.0
 	_hint.offset_left = -300.0
