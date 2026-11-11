@@ -1,0 +1,112 @@
+{
+	"id": "civitas_04",
+	"name": "Access Denied",
+	"chapter": 4,
+	"briefing": "Access to services is granted by score. This node's shield emitter stands in the open on a mast; the core behind a glass access screen is sealed until it falls.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "ac_screen",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 860,
+			"y": 590.0,
+			"w": 60,
+			"h": 100,
+			"health_scale": 3.0
+		},
+		{
+			"id": "ac_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 960,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true,
+			"shielded_by": [
+				"ac_emitter"
+			]
+		},
+		{
+			"id": "ac_rack",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1030,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "ac_mast",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1120,
+			"y": 540.0,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "ac_emitter",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1120,
+			"y": 410.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"ac_mast"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the access core",
+			"targets": [
+				"ac_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the scoring rack",
+			"targets": [
+				"ac_rack"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

@@ -1,0 +1,9 @@
+[
+	{
+		"name": "EMP over the wall",
+		"steps": [
+			{"weapon": "disruptor", "target": "gate_wall"},
+			{"weapon": "disruptor", "target": "gate_wall"}
+		]
+	}
+]

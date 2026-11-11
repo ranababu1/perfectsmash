@@ -1,0 +1,122 @@
+{
+	"id": "civitas_05",
+	"name": "The Invisible Rule",
+	"chapter": 4,
+	"briefing": "Policy is rewritten by a tower no one can see into. Its core stands in plain sight, and nothing touches it while the two emitters beneath the hanging span still run.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rule_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1010,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.8,
+			"critical_asset": true,
+			"shielded_by": [
+				"emit_a",
+				"emit_b"
+			]
+		},
+		{
+			"id": "post_near",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1150,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "post_far",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1430,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "rule_span",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1290,
+			"y": 388.0,
+			"w": 300,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"post_near",
+				"post_far"
+			]
+		},
+		{
+			"id": "emit_a",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1240,
+			"y": 580.0,
+			"w": 40,
+			"h": 120,
+			"health_scale": 0.8
+		},
+		{
+			"id": "emit_b",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1340,
+			"y": 580.0,
+			"w": 40,
+			"h": 120,
+			"health_scale": 0.8
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the policy core",
+			"targets": [
+				"rule_core"
+			]
+		},
+		{
+			"id": "emitters",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Drop both emitters",
+			"targets": [
+				"emit_a",
+				"emit_b"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

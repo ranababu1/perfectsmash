@@ -1,0 +1,125 @@
+{
+	"id": "civitas_02",
+	"name": "The Profile",
+	"chapter": 4,
+	"briefing": "Every citizen is a continuously updated profile, filed on two narrow towers of different height. The core rides the taller one.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "mast_hi",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 960,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "deck_hi",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 960,
+			"y": 388.0,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"mast_hi"
+			]
+		},
+		{
+			"id": "profile_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 960,
+			"y": 321.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.5,
+			"critical_asset": true,
+			"supports": [
+				"deck_hi"
+			]
+		},
+		{
+			"id": "mast_lo",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1110,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "deck_lo",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1110,
+			"y": 468.0,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"mast_lo"
+			]
+		},
+		{
+			"id": "profile_rack",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1110,
+			"y": 396.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"deck_lo"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the profile core",
+			"targets": [
+				"profile_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the profile rack",
+			"targets": [
+				"profile_rack"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

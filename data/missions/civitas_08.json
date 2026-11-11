@@ -1,0 +1,139 @@
+{
+	"id": "civitas_08",
+	"name": "The Exception",
+	"chapter": 4,
+	"briefing": "Human review is reduced to approving what the machine recommends. The review stack is staggered and the core sits at the top of it. Bring the stack down, not the building.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rev_col_a",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "rev_col_b",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1120,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "rev_deck_1",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1060,
+			"y": 468.0,
+			"w": 160,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"rev_col_a",
+				"rev_col_b"
+			]
+		},
+		{
+			"id": "rev_rack_a",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1020,
+			"y": 396.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"rev_deck_1"
+			]
+		},
+		{
+			"id": "rev_rack_b",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 1100,
+			"y": 396.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"rev_deck_1"
+			]
+		},
+		{
+			"id": "rev_deck_2",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1060,
+			"y": 324.0,
+			"w": 160,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"rev_rack_a",
+				"rev_rack_b"
+			]
+		},
+		{
+			"id": "rev_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1060,
+			"y": 257.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.2,
+			"critical_asset": true,
+			"supports": [
+				"rev_deck_2"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the review core",
+			"targets": [
+				"rev_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scatter both review racks",
+			"targets": [
+				"rev_rack_a",
+				"rev_rack_b"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,141 @@
+{
+	"id": "civitas_14",
+	"name": "The Quiet Cage",
+	"chapter": 4,
+	"briefing": "The central exchange shapes what counts as acceptable behaviour through four racks. Two stand in the open, two behind a wall, and the core answers to all four.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		},
+		"pulse_cannon": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "ex_open_a",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 595.0,
+			"w": 50,
+			"h": 90,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ex_open_b",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 810,
+			"y": 595.0,
+			"w": 50,
+			"h": 90,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ex_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 860,
+			"y": 580.0,
+			"w": 30,
+			"h": 120
+		},
+		{
+			"id": "ex_hid_a",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 930,
+			"y": 595.0,
+			"w": 50,
+			"h": 90,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ex_hid_b",
+			"kind": "data_exchange_rack",
+			"material": "electronic_module",
+			"x": 980,
+			"y": 595.0,
+			"w": 50,
+			"h": 90,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ex_col",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1100,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "ex_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1100,
+			"y": 465.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.55,
+			"critical_asset": true,
+			"shielded_by": [
+				"ex_open_a",
+				"ex_open_b",
+				"ex_hid_a",
+				"ex_hid_b"
+			],
+			"supports": [
+				"ex_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the central exchange core",
+			"targets": [
+				"ex_core"
+			]
+		},
+		{
+			"id": "racks",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out all four racks",
+			"targets": [
+				"ex_open_a",
+				"ex_open_b",
+				"ex_hid_a",
+				"ex_hid_b"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

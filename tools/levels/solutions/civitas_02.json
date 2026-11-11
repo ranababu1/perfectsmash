@@ -1,0 +1,21 @@
+[
+	{
+		"name": "EMP then finish",
+		"steps": [
+			{"weapon": "disruptor", "target": "profile_core"},
+			{"weapon": "kinetic_accelerator", "target": "profile_core"},
+			{"weapon": "kinetic_accelerator", "target": "profile_core"}
+		]
+	},
+	{
+		"name": "topple the tall tower",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "mast_hi"},
+			{"weapon": "kinetic_accelerator", "target": "mast_hi"},
+			{"weapon": "kinetic_accelerator", "target": "profile_core"},
+			{"weapon": "kinetic_accelerator", "target": "profile_core"},
+			{"weapon": "kinetic_accelerator", "target": "profile_core"},
+			{"weapon": "disruptor", "target": "profile_core"}
+		]
+	}
+]

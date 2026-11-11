@@ -1,0 +1,141 @@
+{
+	"id": "civitas_06",
+	"name": "Quiet Signals",
+	"chapter": 4,
+	"briefing": "Small changes in behaviour are counted at scale: three signal towers feed one shielded core across a wide platform. Plan the order; a field covers two of them at once.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "sig_mast_1",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1000,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "sig_emit_1",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1000,
+			"y": 450.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_mast_1"
+			]
+		},
+		{
+			"id": "sig_mast_2",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1130,
+			"y": 540.0,
+			"w": 22,
+			"h": 200
+		},
+		{
+			"id": "sig_emit_2",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1130,
+			"y": 410.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_mast_2"
+			]
+		},
+		{
+			"id": "sig_col_3",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1260,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "sig_emit_3",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1260,
+			"y": 370.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_col_3"
+			]
+		},
+		{
+			"id": "sig_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 700,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.8,
+			"critical_asset": true,
+			"shielded_by": [
+				"sig_emit_1",
+				"sig_emit_2",
+				"sig_emit_3"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the signal core",
+			"targets": [
+				"sig_core"
+			]
+		},
+		{
+			"id": "towers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out all three signal arrays",
+			"targets": [
+				"sig_emit_1",
+				"sig_emit_2",
+				"sig_emit_3"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

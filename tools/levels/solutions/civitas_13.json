@@ -1,0 +1,11 @@
+[
+	{
+		"name": "cut the near end",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "end_l"},
+			{"weapon": "kinetic_accelerator", "target": "end_l"},
+			{"weapon": "kinetic_accelerator", "target": "sig_core"},
+			{"weapon": "kinetic_accelerator", "target": "sig_core"}
+		]
+	}
+]

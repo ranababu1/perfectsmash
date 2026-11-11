@@ -1,0 +1,11 @@
+[
+	{
+		"name": "pulse the open pair, field the rest",
+		"steps": [
+			{"weapon": "pulse_cannon", "target": "ex_open_a"},
+			{"weapon": "pulse_cannon", "target": "ex_open_b"},
+			{"weapon": "disruptor", "target": "ex_wall"},
+			{"weapon": "kinetic_accelerator", "target": "ex_core"}
+		]
+	}
+]

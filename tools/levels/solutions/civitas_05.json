@@ -1,0 +1,10 @@
+[
+	{
+		"name": "drop the span",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "post_near"},
+			{"weapon": "kinetic_accelerator", "target": "post_near"},
+			{"weapon": "kinetic_accelerator", "target": "rule_core"}
+		]
+	}
+]

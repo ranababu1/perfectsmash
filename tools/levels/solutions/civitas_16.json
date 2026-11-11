@@ -1,0 +1,10 @@
+[
+	{
+		"name": "shoot the roof emitter, field through the wall",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "vault_emit_l"},
+			{"weapon": "disruptor", "target": "vault_wall"},
+			{"weapon": "disruptor", "target": "vault_wall"}
+		]
+	}
+]

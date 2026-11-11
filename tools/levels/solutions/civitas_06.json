@@ -1,0 +1,23 @@
+[
+	{
+		"name": "field over the near pair",
+		"steps": [
+			{"weapon": "disruptor", "target": "sig_emit_1"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_3"},
+			{"weapon": "kinetic_accelerator", "target": "sig_core"}
+		]
+	},
+	{
+		"name": "one by one",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_1"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_1"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_2"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_2"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_3"},
+			{"weapon": "kinetic_accelerator", "target": "sig_emit_3"},
+			{"weapon": "kinetic_accelerator", "target": "sig_core"},
+			{"weapon": "kinetic_accelerator", "target": "sig_core"}
+		]
+	}
+]

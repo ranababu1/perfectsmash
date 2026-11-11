@@ -1,0 +1,20 @@
+[
+	{
+		"name": "down the corridor",
+		"steps": [
+			{"weapon": "penetrator", "target": "path_emitter", "through": ["gate_a"]},
+			{"weapon": "penetrator", "target": "path_core", "through": ["gate_a"]},
+			{"weapon": "penetrator", "target": "gate_b"}
+		]
+	},
+	{
+		"name": "open the gate first",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "gate_a"},
+			{"weapon": "kinetic_accelerator", "target": "gate_a"},
+			{"weapon": "penetrator", "target": "path_emitter"},
+			{"weapon": "penetrator", "target": "path_core"},
+			{"weapon": "penetrator", "target": "path_core"}
+		]
+	}
+]

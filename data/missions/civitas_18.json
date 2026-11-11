@@ -1,0 +1,123 @@
+{
+	"id": "civitas_18",
+	"name": "Source Code",
+	"chapter": 4,
+	"briefing": "The engine's source references Meridian. Its core stands on a narrow ledge beyond a tall barrier, sealed by an emitter beside it. One high shot for the seal, then a strike at the support that carries it all.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "src_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 880,
+			"y": 570.0,
+			"w": 30,
+			"h": 140
+		},
+		{
+			"id": "src_mast",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1060,
+			"y": 490.0,
+			"w": 22,
+			"h": 300
+		},
+		{
+			"id": "src_ledge",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1060,
+			"y": 328.0,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"src_mast"
+			]
+		},
+		{
+			"id": "src_emit",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 286.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"src_ledge"
+			]
+		},
+		{
+			"id": "src_col",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1140,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "src_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1140,
+			"y": 465.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.55,
+			"critical_asset": true,
+			"shielded_by": [
+				"src_emit"
+			],
+			"supports": [
+				"src_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the engine core",
+			"targets": [
+				"src_core"
+			]
+		},
+		{
+			"id": "ledge",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the ledge",
+			"targets": [
+				"src_ledge"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

@@ -1,0 +1,12 @@
+[
+	{
+		"name": "field first, then the foot",
+		"steps": [
+			{"weapon": "disruptor", "target": "fore_wall"},
+			{"weapon": "penetrator", "target": "fore_foot", "through": ["fore_screen_a", "fore_screen_b"]},
+			{"weapon": "penetrator", "target": "fore_foot", "through": ["fore_screen_a", "fore_screen_b"]},
+			{"weapon": "penetrator", "target": "fore_foot"},
+			{"weapon": "kinetic_accelerator", "target": "fore_core"}
+		]
+	}
+]

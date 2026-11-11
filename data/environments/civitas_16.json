@@ -1,0 +1,140 @@
+{
+	"_note": "Set dressing for civitas_16 (vault site); presentation only, no collision. Same layers and units as helix_01; the gameplay band |z| <= 0.8 is kept clear.",
+	"chapter": "civitas",
+	"statics": {
+		"low": "CVT-ENV-LEDGE_STATIC-A",
+		"tall": "CVT-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "CVT-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 38.0,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 38.0,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-FLOOR_TRENCH-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 38.0,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-FLOOR_TILE-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 38.0,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-BACK_WALL-B",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 40.0,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -6,
+				"x_to": 40.0,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-PILLAR-A",
+			"repeat": {
+				"x_from": -7,
+				"x_to": 40.0,
+				"step": 8
+			},
+			"z": -6.2
+		},
+		{
+			"id": "CVT-ENV-CATWALK-A",
+			"x": 7.0,
+			"y": 4.2,
+			"z": -5.6
+		},
+		{
+			"id": "CVT-ENV-CATWALK-A",
+			"x": 11.5,
+			"y": 3.0,
+			"z": -5.6
+		},
+		{
+			"id": "CVT-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 38.0,
+				"step": 6
+			},
+			"y": 6.2,
+			"z": -4.5
+		},
+		{
+			"id": "CVT-ENV-MASSING_TOWER-B",
+			"x": 16.0,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-MASSING_BLOCK-A",
+			"x": 29.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-ENV-MASSING_TOWER-B",
+			"x": 30.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "CVT-PRP-PREDICTION_ROOM-A",
+			"x": -0.8,
+			"z": -5.4
+		},
+		{
+			"id": "CVT-PRP-SCREEN_WALL-A",
+			"x": 5.0,
+			"z": -5.4
+		},
+		{
+			"id": "CVT-PRP-PIPE_RUN-A",
+			"x": 15.4,
+			"z": -3.6
+		},
+		{
+			"id": "CVT-PRP-TANK-A",
+			"x": 7.4,
+			"z": -3.3
+		}
+	]
+}

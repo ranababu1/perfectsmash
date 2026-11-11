@@ -1,0 +1,10 @@
+[
+	{
+		"name": "fell the base",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "rev_col_a"},
+			{"weapon": "kinetic_accelerator", "target": "rev_col_a"},
+			{"weapon": "kinetic_accelerator", "target": "rev_core"}
+		]
+	}
+]

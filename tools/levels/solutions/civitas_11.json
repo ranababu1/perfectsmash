@@ -1,0 +1,12 @@
+[
+	{
+		"name": "start at the foot",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "fc_low"},
+			{"weapon": "kinetic_accelerator", "target": "t1_a", "lift": [-60]},
+			{"weapon": "kinetic_accelerator", "target": "t1_a"},
+			{"weapon": "kinetic_accelerator", "target": "fc_core"},
+			{"weapon": "kinetic_accelerator", "target": "fc_core"}
+		]
+	}
+]

@@ -1,0 +1,21 @@
+[
+	{
+		"name": "emitter, then through the screen",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "ac_emitter"},
+			{"weapon": "penetrator", "target": "ac_core", "through": ["ac_screen"]},
+			{"weapon": "penetrator", "target": "ac_core", "through": ["ac_screen"]}
+		]
+	},
+	{
+		"name": "break the screen",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "ac_emitter"},
+			{"weapon": "kinetic_accelerator", "target": "ac_screen"},
+			{"weapon": "kinetic_accelerator", "target": "ac_screen"},
+			{"weapon": "kinetic_accelerator", "target": "ac_core"},
+			{"weapon": "kinetic_accelerator", "target": "ac_core"},
+			{"weapon": "kinetic_accelerator", "target": "ac_core"}
+		]
+	}
+]

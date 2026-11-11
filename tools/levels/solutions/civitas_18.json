@@ -1,0 +1,11 @@
+[
+	{
+		"name": "seal, arc, support",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "src_emit"},
+			{"weapon": "kinetic_accelerator", "target": "src_mast"},
+			{"weapon": "kinetic_accelerator", "target": "src_mast"},
+			{"weapon": "kinetic_accelerator", "target": "src_core"}
+		]
+	}
+]
