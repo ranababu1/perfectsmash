@@ -1,0 +1,129 @@
+{
+	"id": "civitas_17",
+	"name": "The Missing Year",
+	"chapter": 4,
+	"briefing": "The earliest data point is gone from the public archive, and two towers stand between you and the emitter that hides it. One window, taken in the right order.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"disruptor": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "near_mast",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 820,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "near_emit",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 820,
+			"y": 370.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"near_mast"
+			]
+		},
+		{
+			"id": "far_mast",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1130,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "far_emit",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1130,
+			"y": 370.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"far_mast"
+			]
+		},
+		{
+			"id": "year_col",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1260,
+			"y": 500.0,
+			"w": 40,
+			"h": 280
+		},
+		{
+			"id": "year_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1260,
+			"y": 305.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.7,
+			"critical_asset": true,
+			"shielded_by": [
+				"near_emit",
+				"far_emit"
+			],
+			"supports": [
+				"year_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the indexing core",
+			"targets": [
+				"year_core"
+			]
+		},
+		{
+			"id": "emitters",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out both emitters",
+			"targets": [
+				"near_emit",
+				"far_emit"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

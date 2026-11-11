@@ -1,0 +1,190 @@
+{
+	"id": "civitas_11",
+	"name": "The Model Knows",
+	"chapter": 4,
+	"briefing": "The forecast compute tower stacks its emitters in three tiers, and the core stands apart, answering to all of them. One round at the right foot starts the tower down.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 7
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "fc_low_col",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 860,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "fc_low",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 860,
+			"y": 490.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"fc_low_col"
+			]
+		},
+		{
+			"id": "t1_a",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 980,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "t1_b",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1120,
+			"y": 560.0,
+			"w": 22,
+			"h": 160
+		},
+		{
+			"id": "deck_1",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1050,
+			"y": 468.0,
+			"w": 240,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"t1_a",
+				"t1_b"
+			]
+		},
+		{
+			"id": "fc_mid",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1050,
+			"y": 426.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"deck_1"
+			]
+		},
+		{
+			"id": "t2_a",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 990,
+			"y": 376.0,
+			"w": 22,
+			"h": 160,
+			"supports": [
+				"deck_1"
+			]
+		},
+		{
+			"id": "t2_b",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1110,
+			"y": 376.0,
+			"w": 22,
+			"h": 160,
+			"supports": [
+				"deck_1"
+			]
+		},
+		{
+			"id": "deck_2",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1050,
+			"y": 284.0,
+			"w": 240,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"t2_a",
+				"t2_b"
+			]
+		},
+		{
+			"id": "fc_high",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1050,
+			"y": 242.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"deck_2"
+			]
+		},
+		{
+			"id": "fc_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 640,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.8,
+			"critical_asset": true,
+			"shielded_by": [
+				"fc_low",
+				"fc_mid",
+				"fc_high"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the forecast core",
+			"targets": [
+				"fc_core"
+			]
+		},
+		{
+			"id": "tiers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out every tier",
+			"targets": [
+				"fc_low",
+				"fc_mid",
+				"fc_high"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

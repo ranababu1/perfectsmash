@@ -1,0 +1,10 @@
+[
+	{
+		"name": "drop the shield",
+		"steps": [
+			{"weapon": "disruptor", "target": "fc_wall"},
+			{"weapon": "kinetic_accelerator", "target": "fc_core"},
+			{"weapon": "kinetic_accelerator", "target": "fc_core"}
+		]
+	}
+]

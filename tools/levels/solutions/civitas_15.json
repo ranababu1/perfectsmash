@@ -1,0 +1,12 @@
+[
+	{
+		"name": "through the glass",
+		"steps": [
+			{"weapon": "penetrator", "target": "weak_foot", "through": ["foot_screen_a", "foot_screen_b"]},
+			{"weapon": "penetrator", "target": "weak_foot", "through": ["foot_screen_a", "foot_screen_b"]},
+			{"weapon": "penetrator", "target": "weak_foot"},
+			{"weapon": "kinetic_accelerator", "target": "weak_foot"},
+			{"weapon": "kinetic_accelerator", "target": "hall_core"}
+		]
+	}
+]

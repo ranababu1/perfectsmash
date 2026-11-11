@@ -1,0 +1,214 @@
+{
+	"id": "civitas_20",
+	"name": "The Quiet Cage",
+	"chapter": 4,
+	"briefing": "The prediction core sits at the end of the whole relay network: a screened line of fire, a crossbeam on two side masts and a central tower, and three emitters that keep it blind to you. Take the network down in stages, then the core.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 6,
+	"target_time": 95,
+	"rewards": {
+		"completion_points": 1800,
+		"completion_research_data": 52,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 2
+		},
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		},
+		"pulse_cannon": {
+			"ammunition": 2
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "cage_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 540,
+			"y": 584.0,
+			"w": 30,
+			"h": 112
+		},
+		{
+			"id": "cage_emit_1",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 620,
+			"y": 610.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7
+		},
+		{
+			"id": "cage_screen_a",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 740,
+			"y": 590.0,
+			"w": 60,
+			"h": 100,
+			"health_scale": 3.0
+		},
+		{
+			"id": "cage_screen_b",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 790,
+			"y": 590.0,
+			"w": 60,
+			"h": 100,
+			"health_scale": 3.0
+		},
+		{
+			"id": "relay_mast_l",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 880,
+			"y": 520.0,
+			"w": 22,
+			"h": 240,
+			"health_scale": 1.5
+		},
+		{
+			"id": "cage_tower",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1040,
+			"y": 520.0,
+			"w": 40,
+			"h": 240
+		},
+		{
+			"id": "relay_mast_r",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1170,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "cage_beam",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 960,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"relay_mast_l",
+				"cage_tower"
+			]
+		},
+		{
+			"id": "cage_emit_2",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 960,
+			"y": 346.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"cage_beam"
+			]
+		},
+		{
+			"id": "cage_emit_3",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1170,
+			"y": 370.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"relay_mast_r"
+			]
+		},
+		{
+			"id": "cage_col",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1290,
+			"y": 500.0,
+			"w": 40,
+			"h": 280
+		},
+		{
+			"id": "cage_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1290,
+			"y": 305.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.1,
+			"critical_asset": true,
+			"shielded_by": [
+				"cage_emit_1",
+				"cage_emit_2",
+				"cage_emit_3"
+			],
+			"supports": [
+				"cage_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the prediction core",
+			"targets": [
+				"cage_core"
+			]
+		},
+		{
+			"id": "network",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the whole relay network",
+			"targets": [
+				"relay_mast_l",
+				"relay_mast_r",
+				"cage_beam"
+			]
+		},
+		{
+			"id": "emitters",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out all three emitters",
+			"targets": [
+				"cage_emit_1",
+				"cage_emit_2",
+				"cage_emit_3"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 8 shots",
+			"limit": 8
+		}
+	]
+}

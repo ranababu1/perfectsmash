@@ -1,0 +1,28 @@
+[
+	{
+		"name": "field, collapse, pulse, finish",
+		"steps": [
+			{"weapon": "disruptor", "target": "cage_wall"},
+			{"weapon": "penetrator", "target": "relay_mast_l", "through": ["cage_screen_a", "cage_screen_b"]},
+			{"weapon": "penetrator", "target": "relay_mast_l", "through": ["cage_screen_a", "cage_screen_b"]},
+			{"weapon": "penetrator", "target": "relay_mast_l"},
+			{"weapon": "pulse_cannon", "target": "cage_emit_3"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"}
+		]
+	},
+	{
+		"name": "lob instead of the field",
+		"steps": [
+			{"weapon": "breach_charge", "target": "cage_emit_1"},
+			{"weapon": "penetrator", "target": "relay_mast_l", "through": ["cage_screen_a", "cage_screen_b"]},
+			{"weapon": "penetrator", "target": "relay_mast_l", "through": ["cage_screen_a", "cage_screen_b"]},
+			{"weapon": "penetrator", "target": "relay_mast_l"},
+			{"weapon": "pulse_cannon", "target": "cage_emit_3"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"},
+			{"weapon": "kinetic_accelerator", "target": "cage_core"}
+		]
+	}
+]

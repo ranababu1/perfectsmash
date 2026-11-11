@@ -1,0 +1,10 @@
+[
+	{
+		"name": "drop the crossbeam",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "ps_mast_a"},
+			{"weapon": "kinetic_accelerator", "target": "ps_mast_a"},
+			{"weapon": "kinetic_accelerator", "target": "ps_core"}
+		]
+	}
+]

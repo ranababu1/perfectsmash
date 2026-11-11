@@ -1,0 +1,11 @@
+[
+	{
+		"name": "clear the window first",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "near_mast"},
+			{"weapon": "kinetic_accelerator", "target": "near_mast"},
+			{"weapon": "kinetic_accelerator", "target": "far_emit"},
+			{"weapon": "kinetic_accelerator", "target": "year_core"}
+		]
+	}
+]

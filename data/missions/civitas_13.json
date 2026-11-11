@@ -1,0 +1,182 @@
+{
+	"id": "civitas_13",
+	"name": "The Shared Signature",
+	"chapter": 4,
+	"briefing": "Helix, VITA and Nova Grid carry the same signature, and three towers here share one long beam. Take away one end and the signature goes with it.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "end_l",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 990,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "end_r",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1290,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "shared_beam",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1140,
+			"y": 388.0,
+			"w": 300,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"end_l",
+				"end_r"
+			]
+		},
+		{
+			"id": "sig_mast_1",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1040,
+			"y": 312.0,
+			"w": 22,
+			"h": 128,
+			"supports": [
+				"shared_beam"
+			]
+		},
+		{
+			"id": "sig_emit_1",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1040,
+			"y": 218.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_mast_1"
+			]
+		},
+		{
+			"id": "sig_mast_2",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1140,
+			"y": 312.0,
+			"w": 22,
+			"h": 128,
+			"supports": [
+				"shared_beam"
+			]
+		},
+		{
+			"id": "sig_emit_2",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1140,
+			"y": 218.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_mast_2"
+			]
+		},
+		{
+			"id": "sig_mast_3",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1240,
+			"y": 312.0,
+			"w": 22,
+			"h": 128,
+			"supports": [
+				"shared_beam"
+			]
+		},
+		{
+			"id": "sig_emit_3",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1240,
+			"y": 218.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"sig_mast_3"
+			]
+		},
+		{
+			"id": "sig_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 700,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 0.8,
+			"critical_asset": true,
+			"shielded_by": [
+				"sig_emit_1",
+				"sig_emit_2",
+				"sig_emit_3"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the shared-signature core",
+			"targets": [
+				"sig_core"
+			]
+		},
+		{
+			"id": "towers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down all three towers",
+			"targets": [
+				"sig_mast_1",
+				"sig_mast_2",
+				"sig_mast_3"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

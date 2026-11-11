@@ -1,0 +1,126 @@
+{
+	"id": "civitas_16",
+	"name": "The Future File",
+	"chapter": 4,
+	"briefing": "The timeline vault keeps the extinction event on file. A steel wall closes its front and a heavy slab roofs it; the emitter that seals the core rides on top.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "vault_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 960,
+			"y": 570.0,
+			"w": 30,
+			"h": 140
+		},
+		{
+			"id": "vault_col_l",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1020,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "vault_col_r",
+			"kind": "civic_column",
+			"material": "concrete",
+			"x": 1180,
+			"y": 580.0,
+			"w": 40,
+			"h": 120
+		},
+		{
+			"id": "vault_slab",
+			"kind": "relay_bridge",
+			"material": "concrete",
+			"x": 1100,
+			"y": 508.0,
+			"w": 240,
+			"h": 24,
+			"health_scale": 1.5,
+			"min_supports": 2,
+			"supports": [
+				"vault_col_l",
+				"vault_col_r"
+			]
+		},
+		{
+			"id": "vault_emit_l",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 466.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7,
+			"supports": [
+				"vault_slab"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1085,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"shielded_by": [
+				"vault_emit_l"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the timeline core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "emitters",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the roof emitter",
+			"targets": [
+				"vault_emit_l"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

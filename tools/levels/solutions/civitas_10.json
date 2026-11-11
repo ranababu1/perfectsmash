@@ -1,0 +1,10 @@
+[
+	{
+		"name": "open the lane, then the field",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "mir_emit_l"},
+			{"weapon": "disruptor", "target": "mir_core"},
+			{"weapon": "disruptor", "target": "mir_core"}
+		]
+	}
+]

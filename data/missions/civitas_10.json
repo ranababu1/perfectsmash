@@ -1,0 +1,101 @@
+{
+	"id": "civitas_10",
+	"name": "The Mirror",
+	"chapter": 4,
+	"briefing": "The archive holds a future that has not happened yet. Its two emitters mirror each other either side of the core, and a steel screen hides one of them.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1800,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"disruptor": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "mir_emit_l",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 880,
+			"y": 610.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.7
+		},
+		{
+			"id": "mir_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1040,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"shielded_by": [
+				"mir_emit_l",
+				"mir_emit_r"
+			]
+		},
+		{
+			"id": "mir_wall",
+			"kind": "security_wall",
+			"material": "reinforced_steel",
+			"x": 1095,
+			"y": 540.0,
+			"w": 40,
+			"h": 200
+		},
+		{
+			"id": "mir_emit_r",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1165,
+			"y": 610.0,
+			"w": 90,
+			"h": 60
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the model archive core",
+			"targets": [
+				"mir_core"
+			]
+		},
+		{
+			"id": "emitters",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out both emitters",
+			"targets": [
+				"mir_emit_l",
+				"mir_emit_r"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 3 shots",
+			"limit": 3
+		}
+	]
+}

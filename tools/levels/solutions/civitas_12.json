@@ -1,0 +1,17 @@
+[
+	{
+		"name": "lob behind the wall",
+		"steps": [
+			{"weapon": "breach_charge", "target": "arc_emitter"},
+			{"weapon": "breach_charge", "target": "arc_core"}
+		]
+	},
+	{
+		"name": "field through the wall",
+		"steps": [
+			{"weapon": "disruptor", "target": "arc_wall"},
+			{"weapon": "breach_charge", "target": "arc_core"},
+			{"weapon": "breach_charge", "target": "arc_core"}
+		]
+	}
+]

@@ -1,0 +1,128 @@
+{
+	"id": "civitas_09",
+	"name": "Public Safety",
+	"chapter": 4,
+	"briefing": "Risk scores decide which emergencies are heard. Two sensor towers carry the node's emitters on one crossbeam; the core below answers to both.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "ps_mast_a",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 920,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "ps_mast_b",
+			"kind": "sensor_mast",
+			"material": "lightweight_alloy",
+			"x": 1220,
+			"y": 520.0,
+			"w": 22,
+			"h": 240
+		},
+		{
+			"id": "ps_beam",
+			"kind": "relay_bridge",
+			"material": "composite",
+			"x": 1070,
+			"y": 388.0,
+			"w": 300,
+			"h": 24,
+			"min_supports": 2,
+			"supports": [
+				"ps_mast_a",
+				"ps_mast_b"
+			]
+		},
+		{
+			"id": "ps_emit_a",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 980,
+			"y": 346.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 2.5,
+			"supports": [
+				"ps_beam"
+			]
+		},
+		{
+			"id": "ps_emit_b",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1160,
+			"y": 346.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 2.5,
+			"supports": [
+				"ps_beam"
+			]
+		},
+		{
+			"id": "ps_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1070,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.2,
+			"critical_asset": true,
+			"shielded_by": [
+				"ps_emit_a",
+				"ps_emit_b"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the emergency core",
+			"targets": [
+				"ps_core"
+			]
+		},
+		{
+			"id": "towers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down both sensor towers",
+			"targets": [
+				"ps_mast_a",
+				"ps_mast_b"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

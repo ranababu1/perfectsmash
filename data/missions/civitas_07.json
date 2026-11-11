@@ -1,0 +1,102 @@
+{
+	"id": "civitas_07",
+	"name": "The Approved Path",
+	"chapter": 4,
+	"briefing": "The city blocks unpredicted movement with a corridor of gates. The gate, the emitter behind it and the core behind that stand on one line, and a round that passes through glass follows it.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1300,
+		"completion_research_data": 35,
+		"optional_research_data": 8
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "gate_a",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 950,
+			"y": 590.0,
+			"w": 60,
+			"h": 100,
+			"health_scale": 3.0
+		},
+		{
+			"id": "path_emitter",
+			"kind": "sensor_array",
+			"material": "electronic_module",
+			"x": 1050,
+			"y": 610.0,
+			"w": 90,
+			"h": 60,
+			"health_scale": 0.8
+		},
+		{
+			"id": "path_core",
+			"kind": "surveillance_core",
+			"material": "ai_core_module",
+			"x": 1160,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"shielded_by": [
+				"path_emitter"
+			]
+		},
+		{
+			"id": "gate_b",
+			"kind": "civic_screen",
+			"material": "glass_polymer",
+			"x": 1260,
+			"y": 590.0,
+			"w": 60,
+			"h": 100,
+			"health_scale": 2.0
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the mobility core",
+			"targets": [
+				"path_core"
+			]
+		},
+		{
+			"id": "gates",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Shatter both gates",
+			"targets": [
+				"gate_a",
+				"gate_b"
+			]
+		},
+		{
+			"id": "eff",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 3 shots",
+			"limit": 3
+		}
+	]
+}
