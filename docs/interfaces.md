@@ -52,6 +52,12 @@ needs a `destroy_critical` objective. Weapons available in the campaign: `kineti
   `continue_mission()`; `finish_mission()` (allowed when `can_finish_early()`). After Continue the
   mission ends when all optional goals are done, the ammunition runs out, or `finish_mission()`.
   Constraints never count as pending; mandatory failures win as before.
+- Weapon fallback (engine-owned, rc2): `select_weapon(id)` never leaves an empty weapon selected while
+  another has ammunition (it selects `usable_weapon_after(id)`: next in mission weapon order, wrapping;
+  reloading weapons with ammunition count as usable); returns false when no weapon has ammunition.
+  The shot that uses the selected weapon's last round sets `auto_select_pending`; `MissionWorld`
+  calls `apply_pending_auto_select()` once no round is in flight. A manual selection clears it.
+  Presentation (operative, hint, switch sound, HUD) follows `weapon_selected` only.
 - `MissionWorld`: `projectile_spawned, projectile_removed, component_removed, blast_happened,
   impact_happened`; `blast(...)`, `fire(direction, power)`.
 - Component states: `DamageableComponent.State` INTACT → DAMAGED → CRITICAL → DESTROYED.
@@ -69,7 +75,14 @@ unlocked authored mission), `exit_pressed` (results → Missions).
 Decision flow (2026-11-11): `show_decision()` (title "Primary objective complete", subtitle "Optional
 objectives remain. What next?", buttons Continue / Finish; the HUD closes the panel itself),
 `set_finish_available(bool)` (persistent Finish button in the top-right row), signals `continue_pressed`,
-`finish_pressed`. Additions to the HUD are free; removals or signature changes are proposals.
+`finish_pressed`.
+Pause and navigation (rc2): `show_pause()` offers Resume / Restart Mission / Main Menu; Restart and
+Main Menu open a confirmation (`confirm_restart()`, `confirm_main_menu()`; Cancel returns to the pause
+menu). Confirmed Main Menu emits `menu_pressed` → `MissionScreen.menu_requested` → main.gd main menu,
+recording nothing. `overlay_kind` (`OVERLAY_PAUSE`, `OVERLAY_CONFIRM_MENU`, `OVERLAY_CONFIRM_RESTART`,
+`OVERLAY_DECISION`, `OVERLAY_RESULT` or "") and `is_confirming()` let `MissionScreen.handle_back()`
+act on the open panel. MissionScreen emits each navigation request at most once.
+Additions to the HUD are free; removals or signature changes are proposals.
 
 ## 5. Weapons — `data/weapons.json`, `WeaponCatalog`, `WeaponState` (owned by operative-weapons)
 
@@ -89,7 +102,15 @@ secondary_blast, structure_collapse, ui_back, ui_click, ui_confirm, weapon_switc
 ## 7. Save schema v4 — `scripts/core/progress_data.gd` (orchestrator)
 
 Any change needs a migration and orchestrator review. Settings fields: `sound_enabled,
-vibration_enabled, music_enabled, voice_enabled`.
+vibration_enabled, music_enabled, voice_enabled, narration_volume` (0.0-1.0, added in rc2 as an
+optional key: saves without it load 1.0, invalid values load 1.0 with a warning).
+
+## 7a. Narration (rc2) — `data/narration.json`, `NarrationCatalog`, `CinematicPlayer`
+
+Clip keys `<sequence id>/<slide number from 1>` → `res://` paths; `NarrationCatalog.apply_to(cinematics)`
+sets `Slide.voice`. `CinematicPlayer` plays it on the `Voice` bus with the subtitle, holds the slide
+for the clip + `VOICE_TAIL`, ducks `MusicDirector` by `duck_db` and restores on silent stages, skip,
+finish and exit. Hand-off and expected keys: `docs/audio/narration-integration.md`.
 
 ## 8. Asset baseline
 
