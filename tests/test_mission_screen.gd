@@ -11,6 +11,7 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
 	main.save = SaveService.new(TEST_SAVE)
+	main.boot_mission = "helix_01"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -38,10 +39,24 @@ func _motion(at: Vector2) -> void:
 	tree.root.push_input(event, true)
 
 
-func test_app_boots_into_helix_mission() -> void:
+func test_app_boots_into_the_campaign_menu() -> void:
+	if FileAccess.file_exists(TEST_SAVE):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
+	var main: Node = MainScript.new()
+	main.save = SaveService.new(TEST_SAVE)
+	tree.root.add_child(main)
+	await tree.process_frame
+	assert_true(main._campaign != null and main._mission == null, "the campaign menu is the first screen")
+	assert_eq(main._campaign.view, CampaignScreen.View.MENU)
+	assert_eq(main._campaign.continue_target(), "helix_01", "Continue starts the first mission on a fresh save")
+	assert_true(main._menu == null, "legacy menu is not shown")
+	await _free(main)
+
+
+func test_boot_mission_starts_helix_01() -> void:
 	var main: Node = await _make_main()
 	var screen: MissionScreen = main._mission
-	assert_true(screen != null, "mission is the first screen")
+	assert_true(screen != null, "boot_mission starts the mission directly")
 	assert_true(main._menu == null, "legacy menu is not shown")
 	assert_eq(screen.engine.definition.id, "helix_01")
 	assert_true(screen.view.operative != null, "operative is in the scene")

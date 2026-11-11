@@ -1,7 +1,7 @@
 extends Node
-## App root: owns persistence, audio and the level catalogs; boots into the Helix tactical
-## mission (the new game). The legacy menu/levels remain reachable only through their old code
-## paths, for regression reference.
+## App root: owns persistence, audio and the catalogs; boots into the campaign menu
+## (CampaignScreen) and routes between it, missions and settings. The legacy menu/levels remain
+## reachable only through their old code paths, for regression reference.
 ## Handles Android back and app backgrounding (auto-pause).
 
 const FADE_TIME := 0.22
@@ -14,6 +14,9 @@ var progress: ProgressData
 var catalog: LevelCatalog
 var chapters: ChapterCatalog
 var missions: MissionCatalog
+## Mission id to start in instead of the main menu (tests and capture tools set it before
+## adding the node). Empty = boot into the campaign menu.
+var boot_mission := ""
 var audio_catalog: AudioCatalog
 var audio: AudioService
 var music: MusicDirector
@@ -62,7 +65,10 @@ func _ready() -> void:
 		push_error("Chapter catalog invalid: %s" % ", ".join(chapters.errors))
 	missions = MissionCatalog.from_chapters(chapters)
 	_add_fade_layer()
-	_show_mission(missions.first_authored_id() if missions.is_valid() else "")
+	if boot_mission.is_empty():
+		_show_campaign()
+	else:
+		_show_mission(boot_mission)
 
 
 ## A full-screen veil that fades out after every screen change. It never takes input.

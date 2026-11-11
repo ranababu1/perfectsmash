@@ -16,6 +16,7 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
 	main.save = SaveService.new(TEST_SAVE)
+	main.boot_mission = "helix_01"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
