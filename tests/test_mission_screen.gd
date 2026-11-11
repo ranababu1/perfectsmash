@@ -12,7 +12,7 @@ func _make_main() -> Node:
 	var main: Node = MainScript.new()
 	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -55,12 +55,12 @@ func test_app_boots_into_the_campaign_menu() -> void:
 	await _free(main)
 
 
-func test_boot_mission_starts_helix_01() -> void:
+func test_boot_mission_starts_the_requested_mission() -> void:
 	var main: Node = await _make_main()
 	var screen: MissionScreen = main._mission
 	assert_true(screen != null, "boot_mission starts the mission directly")
 	assert_true(main._menu == null, "legacy menu is not shown")
-	assert_eq(screen.engine.definition.id, "helix_01")
+	assert_eq(screen.engine.definition.id, "helix_08")
 	assert_true(screen.view.operative != null, "operative is in the scene")
 	assert_true(screen.view.camera.current)
 	await _free(main)
@@ -159,7 +159,7 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	assert_true(screen.last_score.mission_points > 1000)
 	assert_true(screen.last_research_granted >= 20, "completion Research Data granted")
 	var stored := SaveService.new(TEST_SAVE).load_progress()
-	assert_true(stored.is_mission_completed("helix_01"), "result written to disk")
+	assert_true(stored.is_mission_completed("helix_08"), "result written to disk")
 	assert_eq(stored.research_data, screen.last_research_granted)
 	var first_score: Dictionary = screen.last_score.duplicate()
 	var first_granted := screen.last_research_granted
@@ -178,8 +178,8 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
 	var reloaded := SaveService.new(TEST_SAVE).load_progress()
 	assert_eq(reloaded.research_data, first_granted)
-	assert_eq(reloaded.mission_result("helix_01").attempts, 2, "both runs counted")
-	assert_eq(reloaded.mission_result("helix_01").completions, 2)
+	assert_eq(reloaded.mission_result("helix_08").attempts, 2, "both runs counted")
+	assert_eq(reloaded.mission_result("helix_08").completions, 2)
 	await _free(main)
 
 

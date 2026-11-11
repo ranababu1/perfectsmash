@@ -7,7 +7,7 @@ extends Node
 ## Desktop:  godot_console --headless --fixed-fps 60 tools/regression/score_replay.tscn
 ## Android:  build an isolated copy with make_eval_project.py --main tools/regression/score_replay.tscn
 
-const MISSION := "res://data/missions/helix_01.json"
+const MISSION := "res://data/missions/helix_08.json"
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 ## name -> list of [weapon_id, aim, frames_to_wait_after]. `aim` is a point in the physics plane,
 ## or "core": aim at wherever the AI core rests, the way a player uses the arc preview (so a

@@ -559,7 +559,7 @@
 		"meridian_excavation": {"file": "res://assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true}
 	},
 	"missions": {
-		"helix_01": {
+		"helix_08": {
 			"intensity": [
 				"helix_prep",
 				"helix_gameplay",

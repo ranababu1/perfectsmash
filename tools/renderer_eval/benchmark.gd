@@ -129,7 +129,7 @@ func _make_main() -> Node:
 	var main: Node = MainScript.new()
 	main.cinematics_enabled = false
 	main.save = SaveService.new(SAVE_PATH)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	return main
 
 

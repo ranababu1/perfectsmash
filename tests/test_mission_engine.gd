@@ -2,7 +2,7 @@ extends TestCase
 ## MissionEngine and MissionObjectives: weapon state, damage routing, structural releases,
 ## critical assets, objectives, success and failure. Headless, no physics.
 
-const HELIX := "res://data/missions/helix_01.json"
+const HELIX := "res://data/missions/helix_08.json"
 
 var _materials := MaterialCatalog.load_from_file()
 var _weapons := WeaponCatalog.load_from_file()

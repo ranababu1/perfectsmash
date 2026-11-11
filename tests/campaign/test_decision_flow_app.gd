@@ -14,7 +14,7 @@ func _make_main() -> Node:
 	var main: Node = MainScript.new()
 	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -60,7 +60,7 @@ func test_prompt_shows_with_exact_copy_and_holds_the_mission() -> void:
 	assert_false(screen.engine.can_fire())
 	screen.pause()
 	assert_false(tree.paused, "pause does not replace the prompt")
-	assert_eq(main.progress.is_mission_completed("helix_01"), false, "nothing recorded yet")
+	assert_eq(main.progress.is_mission_completed("helix_08"), false, "nothing recorded yet")
 	await _free(main)
 
 
@@ -91,9 +91,9 @@ func test_continue_then_finish_button_ends_with_results_and_saves() -> void:
 		await tree.process_frame
 	assert_true(_button(screen, "NextButton") != null, "normal results panel with Next mission")
 	var saved := SaveService.new(TEST_SAVE).load_progress()
-	assert_true(saved.is_mission_completed("helix_01"))
+	assert_true(saved.is_mission_completed("helix_08"))
 	# Stored sorted; the unfinished "relay" goal is not saved as completed.
-	assert_eq(saved.mission_result("helix_01").get("optional_completed", []), ["efficient", "racks"], str(saved.mission_result("helix_01")))
+	assert_eq(saved.mission_result("helix_08").get("optional_completed", []), ["efficient", "racks"], str(saved.mission_result("helix_08")))
 	await _free(main)
 
 
@@ -109,7 +109,7 @@ func test_finish_from_the_prompt_goes_to_results() -> void:
 			break
 		await tree.process_frame
 	assert_true(_button(screen, "NextButton") != null, "results after Finish")
-	assert_true(main.progress.is_mission_completed("helix_01"))
+	assert_true(main.progress.is_mission_completed("helix_08"))
 	await _free(main)
 
 

@@ -1,5 +1,5 @@
 {
-	"_note": "Set dressing for helix_04 (logistics sorting hall); presentation only, no collision. Same layers and units as helix_01 (see its note); the gameplay band |z| <= 0.8 is kept clear.",
+	"_note": "Set dressing for helix_04 (logistics sorting hall); presentation only, no collision. Same layers and units as helix_08, the original prototype (see its note); the gameplay band |z| <= 0.8 is kept clear.",
 	"chapter": "helix",
 	"statics": {
 		"low": "HLX-ENV-LEDGE_STATIC-A",

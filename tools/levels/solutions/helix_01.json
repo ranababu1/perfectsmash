@@ -1,11 +1,19 @@
 [
 	{
-		"name": "column breach + kinetic finish",
+		"name": "direct: the exposed controller",
 		"steps": [
-			{"weapon": "breach_charge", "target": "pillar_l"},
-			{"weapon": "kinetic_accelerator", "target": "aura_core"},
-			{"weapon": "kinetic_accelerator", "target": "aura_core"},
-			{"weapon": "kinetic_accelerator", "target": "aura_core"}
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
+		]
+	},
+	{
+		"name": "weak point: left column",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "relay_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "relay_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
 		]
 	}
 ]

@@ -10,7 +10,7 @@ const MainScene := preload("res://scenes/main.tscn")
 const CAPTURE_SAVE := "user://capture_chapters_progress.json"
 const PREVIEW_DIR := "res://tools/chapter_preview"
 const MISSIONS := [
-	["helix", "res://data/missions/helix_01.json", MissionView.ENVIRONMENT_DIR],
+	["helix", "res://data/missions/helix_08.json", MissionView.ENVIRONMENT_DIR],
 	["vita", PREVIEW_DIR + "/vita_preview.json", PREVIEW_DIR + "/environments"],
 	["nova_grid", PREVIEW_DIR + "/nova_grid_preview.json", PREVIEW_DIR + "/environments"],
 	["civitas", PREVIEW_DIR + "/civitas_preview.json", PREVIEW_DIR + "/environments"],

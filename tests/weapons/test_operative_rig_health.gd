@@ -17,7 +17,7 @@ func _make_main() -> Node:
 	var main: Node = MainScript.new()
 	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main

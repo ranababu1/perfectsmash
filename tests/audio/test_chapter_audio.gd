@@ -57,7 +57,7 @@ func test_chapters_have_distinct_beds_and_music() -> void:
 
 func test_mission_without_a_plan_gets_its_chapter_plan() -> void:
 	var catalog := AudioCatalog.load_from_file()
-	assert_eq(catalog.plan_for("helix_01", 1), catalog.mission_plan("helix_01"), "a mission plan wins")
+	assert_eq(catalog.plan_for("helix_08", 1), catalog.mission_plan("helix_08"), "a mission plan wins")
 	assert_eq(catalog.plan_for("helix_02", 1), catalog.chapter_plan(1))
 	assert_eq(catalog.plan_for("vita_03", 2), catalog.chapter_plan(2))
 	assert_eq(catalog.plan_for("nova_grid_20", 3), catalog.chapter_plan(3))
@@ -93,6 +93,6 @@ func test_baseline_ids_unchanged() -> void:
 		assert_true(catalog.get_cue(id) != null, "baseline music %s" % id)
 	for id in BASELINE_AMBIENCE:
 		assert_true(catalog.get_ambience(id) != null, "baseline ambience %s" % id)
-	assert_eq(catalog.mission_plan("helix_01").ambience, "helix_server_hall")
-	assert_eq(catalog.mission_plan("helix_01").intensity, ["helix_prep", "helix_gameplay", "helix_combat"])
+	assert_eq(catalog.mission_plan("helix_08").ambience, "helix_server_hall")
+	assert_eq(catalog.mission_plan("helix_08").intensity, ["helix_prep", "helix_gameplay", "helix_combat"])
 	assert_eq(catalog.get_cue("helix_gameplay").file, "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg")

@@ -23,7 +23,7 @@ const HINTS := {
 	"disruptor": "Disruptor: EMP through walls, burns out electronics and shield emitters · release to fire",
 	"temporal_lance": "Temporal Lance: passes through three pieces, breaks temporal crystal · release to fire",
 }
-const DEFAULT_MISSION := "res://data/missions/helix_01.json"
+const DEFAULT_MISSION := "res://data/missions/helix_08.json"
 const CANCEL_DISTANCE := 70.0
 ## Finger distance from the muzzle (px in the physics plane) for a full-power Breach throw.
 const BREACH_FULL_POWER_DISTANCE := 760.0

@@ -3,7 +3,7 @@ extends TestCase
 ## validation, ASSET_CONTRACT conformance (variant choice, physics-to-3D alignment, state nodes,
 ## material slots), rights metadata carried through unchanged, and the mission view using them.
 
-const HELIX := "res://data/missions/helix_01.json"
+const HELIX := "res://data/missions/helix_08.json"
 ## Tolerance for the front face against the physics rectangle (contract: 1 cm, plus bevel slack).
 const FRONT_TOLERANCE_M := 0.02
 

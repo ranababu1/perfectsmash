@@ -6,7 +6,7 @@ extends SceneTree
 ##   godot_console --resolution 1280x720 -s tools/regression/rack_capture.gd [-- --layouts=a,b]
 
 const OUT_DIR := "res://tests/output/racks"
-const MISSION := "res://data/missions/helix_01.json"
+const MISSION := "res://data/missions/helix_08.json"
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 const Layouts := preload("res://tools/regression/probe_layouts.gd")
 

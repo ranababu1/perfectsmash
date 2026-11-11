@@ -60,7 +60,7 @@ func test_shipped_catalog_is_valid_and_complete() -> void:
 	assert_eq(catalog.get_ambience("helix_server_hall").bus, "Ambience")
 	for id: String in catalog.sounds:
 		assert_true(AudioServer.get_bus_index(catalog.get_sound(id).bus) >= 0, "%s bus exists" % id)
-	var plan := catalog.mission_plan("helix_01")
+	var plan := catalog.mission_plan("helix_08")
 	assert_eq(plan.intensity, ["helix_prep", "helix_gameplay", "helix_combat"])
 	assert_eq(plan.ambience, "helix_server_hall")
 	for cue: String in plan.intensity:

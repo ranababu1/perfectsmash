@@ -1,6 +1,6 @@
 extends TestCase
 
-const HELIX := "res://data/missions/helix_01.json"
+const HELIX := "res://data/missions/helix_08.json"
 
 var _materials := MaterialCatalog.load_from_file()
 var _weapons := WeaponCatalog.load_from_file()

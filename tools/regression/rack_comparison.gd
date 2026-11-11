@@ -10,7 +10,7 @@ extends SceneTree
 ## --sweep also fires every Breach trajectory of the tactics probe (14 angles x 8 powers) and the
 ## kinetic route at each aim angle, and classifies how each one ends.
 
-const MISSION := "res://data/missions/helix_01.json"
+const MISSION := "res://data/missions/helix_08.json"
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 const Layouts := preload("res://tools/regression/probe_layouts.gd")
 const MAX_FINISH := 6
