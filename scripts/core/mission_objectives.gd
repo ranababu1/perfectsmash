@@ -96,6 +96,12 @@ func mandatory_failed() -> bool:
 	return objectives.any(func(o: Objective) -> bool: return o.mandatory and o.status == Status.FAILED)
 
 
+## Optional goals still open (constraints such as shot or time limits are not counted: they
+## cannot be pursued, only kept or broken).
+func pending_optional_goals() -> Array[Objective]:
+	return objectives.filter(func(o: Objective) -> bool: return not o.mandatory and o.is_goal() and o.status == Status.PENDING)
+
+
 func completed_optional_count() -> int:
 	return objectives.filter(func(o: Objective) -> bool: return not o.mandatory and o.status == Status.COMPLETE).size()
 

@@ -105,6 +105,12 @@ func _ready() -> void:
 		add_child(mission_audio)
 		mission_audio.setup(engine, music, ambience, audio.catalog if audio != null else null)
 	engine.mission_finished.connect(_on_mission_finished)
+	engine.decision_requested.connect(_on_decision_requested)
+	# Decision prompt and the persistent Finish action (HUD contract, docs/interfaces.md).
+	if hud.has_signal("continue_pressed"):
+		hud.connect("continue_pressed", continue_mission)
+	if hud.has_signal("finish_pressed"):
+		hud.connect("finish_pressed", finish_mission)
 	engine.component_destroyed.connect(_on_component_destroyed)
 	world.blast_happened.connect(func(_c: Vector2, _r: float) -> void: _play("breach_detonate"))
 	world.impact_happened.connect(_on_impact)
@@ -124,6 +130,9 @@ func select_weapon(weapon_id: String) -> void:
 func pause() -> void:
 	if engine == null or not engine.is_active():
 		return
+	# The decision prompt already holds the mission (clock stopped, no firing); keep it on screen.
+	if engine.awaiting_decision:
+		return
 	_cancel_aim()
 	get_tree().paused = true
 	hud.show_pause()
@@ -140,14 +149,16 @@ func is_paused() -> bool:
 
 ## Android back: close an open panel or pause.
 func handle_back() -> void:
-	if hud != null and hud.has_overlay() and engine.is_active():
+	if engine != null and engine.awaiting_decision:
+		continue_mission()
+	elif hud != null and hud.has_overlay() and engine.is_active():
 		resume()
 	else:
 		pause()
 
 
 func begin_aim(screen_position: Vector2) -> void:
-	if engine == null or not engine.is_active() or get_tree().paused:
+	if engine == null or not engine.is_active() or engine.awaiting_decision or get_tree().paused:
 		return
 	_aiming = true
 	_since_input = 0.0
@@ -242,8 +253,39 @@ func _update_hint() -> void:
 		hud.set_hint("Kinetic Accelerator: touch the target · release to fire")
 
 
+## Primary objective done, scene settled, optional goals remain: ask the player.
+func _on_decision_requested() -> void:
+	_cancel_aim()
+	if hud.has_method("show_decision"):
+		hud.show_decision()
+	else:
+		finish_mission()
+
+
+## Decision: Continue. The prompt closes and is not offered again; Finish stays available.
+func continue_mission() -> void:
+	if engine == null or not engine.is_active():
+		return
+	engine.continue_mission()
+	if hud.has_overlay():
+		hud.hide_overlay()
+	if hud.has_method("set_finish_available"):
+		hud.set_finish_available(true)
+
+
+## Decision: Finish (from the prompt or the persistent Finish action). The engine finalizes the
+## objectives and mission_finished drives scoring, saving and the result panel as usual.
+func finish_mission() -> void:
+	if engine == null or not engine.finish_mission():
+		return
+	if hud.has_method("set_finish_available"):
+		hud.set_finish_available(false)
+
+
 func _on_mission_finished(success: bool) -> void:
 	_cancel_aim()
+	if hud.has_method("set_finish_available"):
+		hud.set_finish_available(false)
 	_play("mission_success" if success else "mission_fail")
 	_record_result()
 	await get_tree().create_timer(RESULT_DELAY).timeout

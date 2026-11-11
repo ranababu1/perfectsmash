@@ -14,6 +14,10 @@ signal restart_pressed
 signal next_pressed
 ## Result panel: leave to the campaign mission list.
 signal exit_pressed
+## Decision panel: keep playing for the optional objectives.
+signal continue_pressed
+## Decision panel and top-bar Finish button: end the mission now.
+signal finish_pressed
 
 const MARGIN := 24.0
 const WEAPON_BUTTON := Vector2(168.0, 104.0)
@@ -27,6 +31,7 @@ const ICONS := {
 	"ammo": "GAM-ICN-AMMO-A", "pause": "GAM-ICN-PAUSE-A", "retry": "GAM-ICN-RETRY-A",
 	"kinetic_accelerator": "GAM-ICN-WEAPON_KINETIC_ACCELERATOR-A", "breach_charge": "GAM-ICN-WEAPON_BREACH_CHARGE-A",
 }
+const FINISH_BUTTON_WIDTH := 120.0
 const ICON_SIZE := 22.0
 const MARKER_SIZE := 44.0
 const MARKER_COLOR := Color("ff3b4e")
@@ -43,6 +48,8 @@ var _hint: Label
 var _weapon_buttons := {}
 var _reload_bars := {}
 var _overlay: Control
+var _top_buttons: HBoxContainer
+var _finish_button: Button
 
 
 func _ready() -> void:
@@ -88,11 +95,17 @@ func _ready() -> void:
 
 	var buttons := HBoxContainer.new()
 	buttons.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	buttons.offset_left = -(UiKit.ICON_BUTTON * 2.0 + 12.0 + MARGIN)
+	_top_buttons = buttons
+	buttons.offset_left = _top_buttons_offset_left(false)
 	buttons.offset_top = MARGIN
 	buttons.offset_right = -MARGIN
 	buttons.add_theme_constant_override("separation", 12)
 	add_child(buttons)
+	_finish_button = UiKit.button("Finish", FINISH_BUTTON_WIDTH)
+	_finish_button.name = "FinishButton"
+	_finish_button.visible = false
+	_finish_button.pressed.connect(finish_pressed.emit)
+	buttons.add_child(_finish_button)
 	var restart := _hud_icon_button("retry", "restart")
 	restart.name = "RestartButton"
 	restart.pressed.connect(restart_pressed.emit)
@@ -223,6 +236,27 @@ func has_overlay() -> bool:
 	return _overlay != null
 
 
+## Shows or hides the persistent Finish button beside Restart and Pause (hidden by default).
+func set_finish_available(available: bool) -> void:
+	if _finish_button == null:
+		return
+	_finish_button.visible = available
+	_top_buttons.offset_left = _top_buttons_offset_left(available)
+
+
+## Primary objective done, optional ones remain: keep playing or finish now. Either choice closes the panel.
+func show_decision() -> void:
+	var box := _open_panel("Primary objective complete", "Optional objectives remain. What next?")
+	var keep_going := _action("Continue", continue_pressed, true)
+	keep_going.name = "DecisionContinueButton"
+	keep_going.pressed.connect(hide_overlay)
+	box.add_child(keep_going)
+	var finish := _action("Finish", finish_pressed)
+	finish.name = "DecisionFinishButton"
+	finish.pressed.connect(hide_overlay)
+	box.add_child(finish)
+
+
 func show_pause() -> void:
 	var box := _open_panel("PAUSED", "")
 	box.add_child(_action("Resume", resume_pressed, true))
@@ -322,6 +356,13 @@ func _hud_icon_button(key: String, fallback: String) -> Button:
 	button.custom_minimum_size = Vector2.ONE * UiKit.ICON_BUTTON
 	button.add_theme_constant_override("icon_max_width", 30)
 	return button
+
+
+func _top_buttons_offset_left(with_finish: bool) -> float:
+	var width := UiKit.ICON_BUTTON * 2.0 + 12.0
+	if with_finish:
+		width += FINISH_BUTTON_WIDTH + 12.0
+	return -(width + MARGIN)
 
 
 func _chip() -> PanelContainer:
