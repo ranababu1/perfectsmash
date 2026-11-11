@@ -1,0 +1,11 @@
+[
+	{
+		"name": "light the cell line",
+		"steps": [
+			{"weapon": "breach_charge", "target": "cell_0"},
+			{"weapon": "kinetic_accelerator", "target": "sign_1"},
+			{"weapon": "kinetic_accelerator", "target": "sign_2"},
+			{"weapon": "kinetic_accelerator", "target": "sign_3"}
+		]
+	}
+]

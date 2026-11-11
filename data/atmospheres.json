@@ -126,13 +126,13 @@
 		},
 		"sun": {
 			"color": "cdbcff",
-			"energy": 0.9,
+			"energy": 0.72,
 			"pitch": -40.0,
 			"yaw": -34.0
 		},
 		"rim": {
 			"color": "b46bff",
-			"energy": 0.55
+			"energy": 0.45
 		}
 	}
 }

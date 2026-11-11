@@ -1,0 +1,22 @@
+[
+	{
+		"name": "breach the hub legs",
+		"steps": [
+			{"weapon": "breach_charge", "target": "hub_deck"},
+			{"weapon": "kinetic_accelerator", "target": "hc_2"},
+			{"weapon": "kinetic_accelerator", "target": "hc_2"},
+			{"weapon": "breach_charge", "target": "hub_core"}
+		]
+	},
+	{
+		"name": "strip the legs",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "front_node"},
+			{"weapon": "kinetic_accelerator", "target": "hc_1"},
+			{"weapon": "kinetic_accelerator", "target": "hc_1"},
+			{"weapon": "kinetic_accelerator", "target": "hc_2"},
+			{"weapon": "kinetic_accelerator", "target": "hc_2"},
+			{"weapon": "breach_charge", "target": "hub_core"}
+		]
+	}
+]

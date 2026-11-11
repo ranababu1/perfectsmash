@@ -1,0 +1,226 @@
+{
+	"id": "helix_09",
+	"name": "Redundancy",
+	"chapter": 1,
+	"briefing": "AURA keeps a mirror of itself in the backup halls. Two rack towers hold the copy; both were built to stand on four legs and fall on two.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "b_col_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 760,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "b_col_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 880,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "b_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 820,
+			"y": 553.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"b_col_l",
+				"b_col_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "b_rack_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 780,
+			"y": 521.0,
+			"w": 40,
+			"h": 40,
+			"health_scale": 0.9,
+			"supports": [
+				"b_deck"
+			]
+		},
+		{
+			"id": "b_rack_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 860,
+			"y": 521.0,
+			"w": 40,
+			"h": 40,
+			"health_scale": 0.9,
+			"supports": [
+				"b_deck"
+			]
+		},
+		{
+			"id": "p_col_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1100,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "p_col_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1220,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "p_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 1160,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"p_col_l",
+				"p_col_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "p_rack_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1120,
+			"y": 326.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"p_deck"
+			]
+		},
+		{
+			"id": "p_rack_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1200,
+			"y": 326.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"p_deck"
+			]
+		},
+		{
+			"id": "p_cap",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 1160,
+			"y": 264.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"p_rack_1",
+				"p_rack_2"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "mirror_shield",
+			"kind": "core_shield",
+			"material": "reinforced_steel",
+			"x": 1120,
+			"y": 188.0,
+			"w": 16,
+			"h": 128,
+			"supports": [
+				"p_cap"
+			]
+		},
+		{
+			"id": "mirror_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1185,
+			"y": 222.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"p_cap"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the mirror core",
+			"targets": [
+				"mirror_core"
+			]
+		},
+		{
+			"id": "backup",
+			"type": "structural_damage",
+			"mandatory": true,
+			"label": "Collapse the backup rack row",
+			"targets": [
+				"b_col_l",
+				"b_col_r",
+				"b_deck",
+				"b_rack_1",
+				"b_rack_2"
+			],
+			"fraction": 0.6
+		},
+		{
+			"id": "primary",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Scrap the primary racks",
+			"targets": [
+				"p_rack_1",
+				"p_rack_2"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

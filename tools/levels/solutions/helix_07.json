@@ -1,0 +1,11 @@
+[
+	{
+		"name": "feed rack first, then drop the slab",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "lens_2"},
+			{"weapon": "kinetic_accelerator", "target": "col_l"},
+			{"weapon": "kinetic_accelerator", "target": "col_l"},
+			{"weapon": "breach_charge", "target": "blind_core"}
+		]
+	}
+]

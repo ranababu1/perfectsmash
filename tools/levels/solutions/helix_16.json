@@ -1,0 +1,11 @@
+[
+	{
+		"name": "cells, then lob the controller",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "cell_a"},
+			{"weapon": "kinetic_accelerator", "target": "cell_c"},
+			{"weapon": "breach_charge", "target": "fail_core"},
+			{"weapon": "breach_charge", "target": "fail_core"}
+		]
+	}
+]

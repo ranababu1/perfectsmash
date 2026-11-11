@@ -1,0 +1,153 @@
+{
+	"id": "helix_14",
+	"name": "Root Access",
+	"chapter": 1,
+	"briefing": "A physical relay ties AURA to a model nobody can name. A steel wall covers the root controller, but a counterweight deck hangs over it from two tall columns.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 5,
+	"target_time": 70,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "root_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 700,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "hang_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 900,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "hang_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1040,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "hang_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 970,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"hang_l",
+				"hang_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "weight_1",
+			"kind": "cooling_stack",
+			"material": "composite",
+			"x": 930,
+			"y": 316.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"hang_deck"
+			]
+		},
+		{
+			"id": "weight_2",
+			"kind": "cooling_stack",
+			"material": "composite",
+			"x": 1010,
+			"y": 316.0,
+			"w": 40,
+			"h": 120,
+			"supports": [
+				"hang_deck"
+			]
+		},
+		{
+			"id": "root_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 970,
+			"y": 610.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "root_rack",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 500,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the root controller",
+			"targets": [
+				"root_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the gate rack",
+			"targets": [
+				"root_rack"
+			]
+		},
+		{
+			"id": "weights",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Drop both counterweights",
+			"targets": [
+				"weight_1",
+				"weight_2"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

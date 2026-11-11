@@ -1,0 +1,202 @@
+{
+	"id": "helix_12",
+	"name": "No Exceptions",
+	"chapter": 1,
+	"briefing": "Every citizen is scored against a prediction, and the scoring engine is stacked into one tier-by-tier pyramid. Steel guards flank the base, but the weight rests on something else.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 5,
+	"target_time": 70,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "guard_l",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 880,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "guard_r",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 1100,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "mid_a",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 960,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "mid_b",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1020,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "tier_1",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 990,
+			"y": 468.0,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"mid_a",
+				"mid_b"
+			],
+			"min_supports": 1
+		},
+		{
+			"id": "tier_2",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 990,
+			"y": 444.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"tier_1"
+			]
+		},
+		{
+			"id": "tier_3",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 990,
+			"y": 420.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"tier_2"
+			]
+		},
+		{
+			"id": "score_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1020,
+			"y": 378.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"tier_3"
+			]
+		},
+		{
+			"id": "score_shield",
+			"kind": "core_shield",
+			"material": "reinforced_steel",
+			"x": 962,
+			"y": 344.0,
+			"w": 16,
+			"h": 128,
+			"supports": [
+				"tier_3"
+			]
+		},
+		{
+			"id": "ledger_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1250,
+			"y": 590.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ledger_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1310,
+			"y": 590.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9
+		},
+		{
+			"id": "ledger_3",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1370,
+			"y": 590.0,
+			"w": 40,
+			"h": 100,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the scoring engine",
+			"targets": [
+				"score_core"
+			]
+		},
+		{
+			"id": "ledgers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Wipe two score ledgers",
+			"targets": [
+				"ledger_1",
+				"ledger_2",
+				"ledger_3"
+			],
+			"count": 2
+		},
+		{
+			"id": "tiers",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring the pyramid down",
+			"targets": [
+				"tier_1",
+				"tier_2",
+				"tier_3"
+			],
+			"count": 3
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 7 shots",
+			"limit": 7
+		}
+	]
+}

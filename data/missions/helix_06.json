@@ -1,0 +1,163 @@
+{
+	"id": "helix_06",
+	"name": "Cold Storage",
+	"chapter": 1,
+	"briefing": "The core is spread across several buildings, and this cooling array keeps one of them alive. Two stacks stand shoulder to shoulder; the controller sits on the far one.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 10
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "b_col_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 700,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "b_col_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 760,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "b_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 730,
+			"y": 553.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"b_col_l",
+				"b_col_r"
+			]
+		},
+		{
+			"id": "b_rack",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 600,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "a_col_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 830,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "a_col_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 930,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "a_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 880,
+			"y": 388.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"a_col_l",
+				"a_col_r"
+			]
+		},
+		{
+			"id": "cold_shield",
+			"kind": "core_shield",
+			"material": "reinforced_steel",
+			"x": 840,
+			"y": 312.0,
+			"w": 16,
+			"h": 128,
+			"supports": [
+				"a_deck"
+			]
+		},
+		{
+			"id": "cold_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 895,
+			"y": 346.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"a_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the cold-storage controller",
+			"targets": [
+				"cold_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Wreck the near rack",
+			"targets": [
+				"b_rack"
+			]
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Break the tower's landing deck",
+			"targets": [
+				"b_deck"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

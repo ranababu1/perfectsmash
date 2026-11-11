@@ -1,0 +1,199 @@
+{
+	"id": "helix_17",
+	"name": "Last Backup",
+	"chapter": 1,
+	"briefing": "The cold vault keeps three archive pillars, each a step taller than the one before. A project name is stamped on the deepest: MERIDIAN.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 5,
+	"target_time": 70,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 14
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "p1_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 700,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "p1_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 790,
+			"y": 602.5,
+			"w": 26,
+			"h": 75
+		},
+		{
+			"id": "p1_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 745,
+			"y": 553.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"p1_l",
+				"p1_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "p2_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 880,
+			"y": 575.0,
+			"w": 26,
+			"h": 130
+		},
+		{
+			"id": "p2_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 970,
+			"y": 575.0,
+			"w": 26,
+			"h": 130
+		},
+		{
+			"id": "p2_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 925,
+			"y": 498.0,
+			"w": 120,
+			"h": 24,
+			"supports": [
+				"p2_l",
+				"p2_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "p3_l",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1070,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "p3_r",
+			"kind": "support_column",
+			"material": "lightweight_alloy",
+			"x": 1190,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "p3_deck",
+			"kind": "service_deck",
+			"material": "composite",
+			"x": 1130,
+			"y": 388.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"p3_l",
+				"p3_r"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "vault_cell",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1090,
+			"y": 356.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5,
+			"supports": [
+				"p3_deck"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1150,
+			"y": 346.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"p3_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "pillars",
+			"type": "structural_damage",
+			"mandatory": true,
+			"label": "Bring down the archive pillars",
+			"targets": [
+				"p1_l",
+				"p1_r",
+				"p1_deck",
+				"p2_l",
+				"p2_r",
+				"p2_deck",
+				"p3_l",
+				"p3_r",
+				"p3_deck",
+				"vault_cell"
+			],
+			"fraction": 0.5
+		},
+		{
+			"id": "cell",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Detonate the vault cell",
+			"targets": [
+				"vault_cell"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 7 shots",
+			"limit": 7
+		}
+	]
+}

@@ -1,0 +1,11 @@
+[
+	{
+		"name": "break the roof's supports",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "pod_high"},
+			{"weapon": "kinetic_accelerator", "target": "relay_rack"},
+			{"weapon": "kinetic_accelerator", "target": "relay_rack"},
+			{"weapon": "breach_charge", "target": "quiet_core"}
+		]
+	}
+]

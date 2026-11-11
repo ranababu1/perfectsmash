@@ -1,0 +1,197 @@
+{
+	"id": "helix_15",
+	"name": "The Directive",
+	"chapter": 1,
+	"briefing": "The instruction set is signed by a source Helix cannot name. The signing racks stand tall; the archive that stores the directive sits behind a wall, wired to a string of power cells.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1000,
+		"completion_research_data": 20,
+		"optional_research_data": 5
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 12
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "archive_wall",
+			"kind": "blast_wall",
+			"material": "reinforced_steel",
+			"x": 640,
+			"y": 595.0,
+			"w": 30,
+			"h": 90
+		},
+		{
+			"id": "cell_0",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 740,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_1",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 790,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_2",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 840,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_3",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 890,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_4",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 940,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_5",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 990,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "cell_6",
+			"kind": "power_cell",
+			"material": "energy_component",
+			"x": 1040,
+			"y": 620.0,
+			"w": 36,
+			"h": 40,
+			"health_scale": 0.5
+		},
+		{
+			"id": "archive_core",
+			"kind": "ai_core",
+			"material": "ai_core_module",
+			"x": 1040,
+			"y": 570.0,
+			"w": 60,
+			"h": 60,
+			"health_scale": 1.0,
+			"critical_asset": true,
+			"supports": [
+				"cell_6"
+			]
+		},
+		{
+			"id": "sign_1",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1180,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		},
+		{
+			"id": "sign_2",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1270,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		},
+		{
+			"id": "sign_3",
+			"kind": "server_rack",
+			"material": "electronic_module",
+			"x": 1360,
+			"y": 540.0,
+			"w": 62,
+			"h": 200,
+			"health_scale": 0.9
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the directive archive",
+			"targets": [
+				"archive_core"
+			]
+		},
+		{
+			"id": "sign",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy all three signing racks",
+			"targets": [
+				"sign_1",
+				"sign_2",
+				"sign_3"
+			]
+		},
+		{
+			"id": "cells",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burn out the whole cell line",
+			"targets": [
+				"cell_0",
+				"cell_1",
+				"cell_2",
+				"cell_3",
+				"cell_4",
+				"cell_5",
+				"cell_6"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

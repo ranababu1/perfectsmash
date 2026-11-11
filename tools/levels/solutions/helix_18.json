@@ -1,0 +1,11 @@
+[
+	{
+		"name": "drop the deck on the cell line",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "ov_l"},
+			{"weapon": "kinetic_accelerator", "target": "ov_l"},
+			{"weapon": "kinetic_accelerator", "target": "node_1"},
+			{"weapon": "kinetic_accelerator", "target": "node_2"}
+		]
+	}
+]

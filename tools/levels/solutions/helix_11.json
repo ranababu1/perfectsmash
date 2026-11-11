@@ -1,0 +1,11 @@
+[
+	{
+		"name": "terminals over the wall, then lob the core",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "term_1"},
+			{"weapon": "kinetic_accelerator", "target": "term_2"},
+			{"weapon": "breach_charge", "target": "alloc_core"},
+			{"weapon": "breach_charge", "target": "alloc_core"}
+		]
+	}
+]
