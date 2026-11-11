@@ -1,0 +1,73 @@
+{"t": "2026-11-12T00:21:47", "kind": "design", "cost": null, "key": "nar_uk", "chars": 212}
+{"t": "2026-11-12T00:21:56", "kind": "design", "cost": null, "key": "nar_us", "chars": 212}
+{"t": "2026-11-12T00:22:08", "kind": "design", "cost": null, "key": "ctl_f", "chars": 229}
+{"t": "2026-11-12T00:22:25", "kind": "tts", "cost": 93, "voice": "JBFqnCBsd6RMkjVDRZzb", "model": "eleven_v4", "chars": 212, "out": "aud/nar_george.pcm"}
+{"t": "2026-11-12T00:22:30", "kind": "tts", "cost": 93, "voice": "onwK4e9ZLuTAKqWW03F9", "model": "eleven_v4", "chars": 212, "out": "aud/nar_daniel.pcm"}
+{"t": "2026-11-12T00:22:35", "kind": "tts", "cost": 93, "voice": "pqHfZKP75CvOlQylNhV4", "model": "eleven_v4", "chars": 212, "out": "aud/nar_bill.pcm"}
+{"t": "2026-11-12T00:22:40", "kind": "tts", "cost": 93, "voice": "nPczCjzI2devNBz1zQrb", "model": "eleven_v4", "chars": 212, "out": "aud/nar_brian.pcm"}
+{"t": "2026-11-12T00:22:47", "kind": "tts", "cost": 93, "voice": "auq43ws1oslv0tO4BDa7", "model": "eleven_v4", "chars": 212, "out": "aud/nar_adamstone.pcm"}
+{"t": "2026-11-12T00:22:52", "kind": "tts", "cost": 101, "voice": "pFZP5JQG7iQjIQuC4Bku", "model": "eleven_v4", "chars": 229, "out": "aud/ctl_lily.pcm"}
+{"t": "2026-11-12T00:22:57", "kind": "tts", "cost": 101, "voice": "Xb7hH8MSUJpSbSDYk0k2", "model": "eleven_v4", "chars": 229, "out": "aud/ctl_alice.pcm"}
+{"t": "2026-11-12T00:25:45", "kind": "tts", "cost": 128, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 292, "out": "takes/opening_01_s3.pcm"}
+{"t": "2026-11-12T00:25:46", "kind": "tts", "cost": 128, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 292, "out": "takes/opening_01_s1.pcm"}
+{"t": "2026-11-12T00:25:46", "kind": "tts", "cost": 128, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 292, "out": "takes/opening_01_s2.pcm"}
+{"t": "2026-11-12T00:25:51", "kind": "tts", "cost": 105, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 238, "out": "takes/opening_02_s1.pcm"}
+{"t": "2026-11-12T00:25:51", "kind": "tts", "cost": 128, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 292, "out": "takes/opening_01_s4.pcm"}
+{"t": "2026-11-12T00:25:52", "kind": "tts", "cost": 128, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 292, "out": "takes/opening_01_s5.pcm"}
+{"t": "2026-11-12T00:25:56", "kind": "tts", "cost": 105, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 238, "out": "takes/opening_02_s2.pcm"}
+{"t": "2026-11-12T00:25:57", "kind": "tts", "cost": 105, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 238, "out": "takes/opening_02_s3.pcm"}
+{"t": "2026-11-12T00:25:58", "kind": "tts", "cost": 105, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 238, "out": "takes/opening_02_s4.pcm"}
+{"t": "2026-11-12T00:26:02", "kind": "tts", "cost": 105, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 238, "out": "takes/opening_02_s5.pcm"}
+{"t": "2026-11-12T00:26:03", "kind": "tts", "cost": 106, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 240, "out": "takes/opening_03_s1.pcm"}
+{"t": "2026-11-12T00:26:04", "kind": "tts", "cost": 106, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 240, "out": "takes/opening_03_s2.pcm"}
+{"t": "2026-11-12T00:26:07", "kind": "tts", "cost": 106, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 240, "out": "takes/opening_03_s3.pcm"}
+{"t": "2026-11-12T00:26:08", "kind": "tts", "cost": 106, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 240, "out": "takes/opening_03_s4.pcm"}
+{"t": "2026-11-12T00:26:10", "kind": "tts", "cost": 106, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 240, "out": "takes/opening_03_s5.pcm"}
+{"t": "2026-11-12T00:26:12", "kind": "tts", "cost": 99, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 226, "out": "takes/opening_04_s1.pcm"}
+{"t": "2026-11-12T00:26:14", "kind": "tts", "cost": 99, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 226, "out": "takes/opening_04_s2.pcm"}
+{"t": "2026-11-12T00:26:15", "kind": "tts", "cost": 99, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 226, "out": "takes/opening_04_s3.pcm"}
+{"t": "2026-11-12T00:26:19", "kind": "tts", "cost": 99, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 226, "out": "takes/opening_04_s4.pcm"}
+{"t": "2026-11-12T00:26:19", "kind": "tts", "cost": 99, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 226, "out": "takes/opening_04_s5.pcm"}
+{"t": "2026-11-12T00:26:20", "kind": "tts", "cost": 59, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 134, "out": "takes/opening_05_s1.pcm"}
+{"t": "2026-11-12T00:26:23", "kind": "tts", "cost": 59, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 134, "out": "takes/opening_05_s2.pcm"}
+{"t": "2026-11-12T00:26:23", "kind": "tts", "cost": 59, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 134, "out": "takes/opening_05_s3.pcm"}
+{"t": "2026-11-12T00:26:24", "kind": "tts", "cost": 59, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 134, "out": "takes/opening_05_s4.pcm"}
+{"t": "2026-11-12T00:26:27", "kind": "tts", "cost": 59, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 134, "out": "takes/opening_05_s5.pcm"}
+{"t": "2026-11-12T00:27:23", "kind": "tts", "cost": 140, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 319, "out": "takes/opening_06_s1.pcm"}
+{"t": "2026-11-12T00:27:24", "kind": "tts", "cost": 140, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 319, "out": "takes/opening_06_s3.pcm"}
+{"t": "2026-11-12T00:27:30", "kind": "tts", "cost": 140, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 319, "out": "takes/opening_06_s4.pcm"}
+{"t": "2026-11-12T00:27:30", "kind": "tts", "cost": 140, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 319, "out": "takes/opening_06_s2.pcm"}
+{"t": "2026-11-12T00:27:30", "kind": "tts", "cost": 140, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 319, "out": "takes/opening_06_s5.pcm"}
+{"t": "2026-11-12T00:27:34", "kind": "tts", "cost": 65, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 148, "out": "takes/opening_07_s1.pcm"}
+{"t": "2026-11-12T00:27:34", "kind": "tts", "cost": 65, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 148, "out": "takes/opening_07_s2.pcm"}
+{"t": "2026-11-12T00:27:34", "kind": "tts", "cost": 65, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 148, "out": "takes/opening_07_s3.pcm"}
+{"t": "2026-11-12T00:27:37", "kind": "tts", "cost": 38, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 86, "out": "takes/opening_08_s1.pcm"}
+{"t": "2026-11-12T00:27:37", "kind": "tts", "cost": 65, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 148, "out": "takes/opening_07_s5.pcm"}
+{"t": "2026-11-12T00:27:37", "kind": "tts", "cost": 65, "voice": "ekSI8bXMs4l0ajdl4bMT", "model": "eleven_v4", "chars": 148, "out": "takes/opening_07_s4.pcm"}
+{"t": "2026-11-12T00:27:40", "kind": "tts", "cost": 38, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 86, "out": "takes/opening_08_s2.pcm"}
+{"t": "2026-11-12T00:27:40", "kind": "tts", "cost": 38, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 86, "out": "takes/opening_08_s3.pcm"}
+{"t": "2026-11-12T00:27:41", "kind": "tts", "cost": 38, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 86, "out": "takes/opening_08_s4.pcm"}
+{"t": "2026-11-12T00:27:42", "kind": "tts", "cost": 48, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 108, "out": "takes/finale_02_s1.pcm"}
+{"t": "2026-11-12T00:27:43", "kind": "tts", "cost": 38, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 86, "out": "takes/opening_08_s5.pcm"}
+{"t": "2026-11-12T00:27:45", "kind": "tts", "cost": 48, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 108, "out": "takes/finale_02_s2.pcm"}
+{"t": "2026-11-12T00:27:46", "kind": "tts", "cost": 48, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 108, "out": "takes/finale_02_s3.pcm"}
+{"t": "2026-11-12T00:27:46", "kind": "tts", "cost": 48, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 108, "out": "takes/finale_02_s4.pcm"}
+{"t": "2026-11-12T00:27:48", "kind": "tts", "cost": 48, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 108, "out": "takes/finale_02_s5.pcm"}
+{"t": "2026-11-12T00:27:50", "kind": "tts", "cost": 59, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 133, "out": "takes/finale_03_s1.pcm"}
+{"t": "2026-11-12T00:27:50", "kind": "tts", "cost": 59, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 133, "out": "takes/finale_03_s2.pcm"}
+{"t": "2026-11-12T00:27:52", "kind": "tts", "cost": 59, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 133, "out": "takes/finale_03_s3.pcm"}
+{"t": "2026-11-12T00:27:53", "kind": "tts", "cost": 59, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 133, "out": "takes/finale_03_s4.pcm"}
+{"t": "2026-11-12T00:27:54", "kind": "tts", "cost": 59, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 133, "out": "takes/finale_03_s5.pcm"}
+{"t": "2026-11-12T00:27:56", "kind": "tts", "cost": 67, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 152, "out": "takes/finale_05_s1.pcm"}
+{"t": "2026-11-12T00:27:57", "kind": "tts", "cost": 67, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 152, "out": "takes/finale_05_s2.pcm"}
+{"t": "2026-11-12T00:27:58", "kind": "tts", "cost": 67, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 152, "out": "takes/finale_05_s3.pcm"}
+{"t": "2026-11-12T00:28:00", "kind": "tts", "cost": 67, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 152, "out": "takes/finale_05_s4.pcm"}
+{"t": "2026-11-12T00:28:02", "kind": "tts", "cost": 61, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 139, "out": "takes/finale_07_s1.pcm"}
+{"t": "2026-11-12T00:28:02", "kind": "tts", "cost": 67, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 152, "out": "takes/finale_05_s5.pcm"}
+{"t": "2026-11-12T00:28:03", "kind": "tts", "cost": 61, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 139, "out": "takes/finale_07_s2.pcm"}
+{"t": "2026-11-12T00:28:05", "kind": "tts", "cost": 61, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 139, "out": "takes/finale_07_s3.pcm"}
+{"t": "2026-11-12T00:28:06", "kind": "tts", "cost": 61, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 139, "out": "takes/finale_07_s4.pcm"}
+{"t": "2026-11-12T00:28:07", "kind": "tts", "cost": 61, "voice": "RyGrFtWwuk4TeI35VwiE", "model": "eleven_v4", "chars": 139, "out": "takes/finale_07_s5.pcm"}
+{"t": "2026-11-12T00:37:35", "kind": "sfx", "cost": "154", "key": "amb_ruins"}
+{"t": "2026-11-12T00:37:40", "kind": "sfx", "cost": "88", "key": "charge_powerup"}
+{"t": "2026-11-12T00:37:44", "kind": "sfx", "cost": "66", "key": "time_jump"}

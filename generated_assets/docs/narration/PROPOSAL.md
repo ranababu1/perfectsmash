@@ -123,3 +123,15 @@ The contract (§6) id is `<CH>-VO-<NAME>-<NN>`, with the file name as the id in 
 5. **Scope:** voice `teaser_2041` (including "Season two: The First Mistake.")? Voice any end-card taglines (I recommend not)?
 6. **Player change:** do you approve the coding agent changing `CinematicPlayer` and `cinematics.json` timing so the voice plays and slides wait for it? Without this, the narration cannot be heard.
 7. **Length:** the voiced opening runs ≈ 96 s, against the bible's 70-85 s target. Is that acceptable, or do you want to approve cuts? (I will not cut text without approval.)
+
+## 9. Update 2026-11-12: ElevenLabs approval sample
+
+Following Imran's direction, an ElevenLabs approval sample was produced on his paid plan. The tier was inferred from the API as Creator; the key cannot read quota. It contains:
+
+- the opening cinematic voiced (8 stems);
+- the finale's Control lines (4 stems);
+- an opening music bed fitted to the voice;
+- a ducked full-mix reference;
+- a Control-only showcase.
+
+The voices, take selection, measurements, terms and full-package estimate are in [ELEVENLABS_APPROVAL_SAMPLE.md](ELEVENLABS_APPROVAL_SAMPLE.md). The Kokoro samples above stay as the local fallback. Everything is `pending_review`, and rights read "commercially usable per provider terms; not legally cleared".

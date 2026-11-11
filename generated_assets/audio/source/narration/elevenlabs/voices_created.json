@@ -1,0 +1,24 @@
+{
+ "nar_uk": {
+  "voice_id": "ekSI8bXMs4l0ajdl4bMT",
+  "name": "TFJ Narrator (Temporal First Jump)",
+  "generated_voice_id": "ekSI8bXMs4l0ajdl4bMT",
+  "preview_file": "design/nar_uk_2.mp3",
+  "description": "A mature British man in his fifties with a deep, warm, resonant baritone. Composed, authoritative and intimate, like the narrator of a prestige science-fiction documentary or thriller. Quiet gravity and controlled emotion, measured deliberate pacing, never theatrical. Clean, dry, close-microphone studio recording.",
+  "design_model": "eleven_ttv_v3",
+  "guidance_scale": 5,
+  "loudness": 0.5,
+  "seed": 11
+ },
+ "ctl_f": {
+  "voice_id": "RyGrFtWwuk4TeI35VwiE",
+  "name": "TFJ Control (Temporal First Jump)",
+  "generated_voice_id": "RyGrFtWwuk4TeI35VwiE",
+  "preview_file": "design/ctl_f_2.mp3",
+  "description": "A calm, precise female artificial intelligence in her thirties with a neutral British accent. Even, cool and controlled, narrow pitch range, softly spoken and clinically polite, subtly unsettling, as if completely certain she is in control. Perfectly clear diction. Clean, dry studio recording.",
+  "design_model": "eleven_ttv_v3",
+  "guidance_scale": 5,
+  "loudness": 0.5,
+  "seed": 11
+ }
+}

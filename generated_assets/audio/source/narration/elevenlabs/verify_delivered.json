@@ -1,0 +1,4 @@
+{"model":"faster-whisper medium.en int8, beam 5, condition_on_previous_text=False, temperatures 0.0 and 0.2",
+ "files":"generated_assets/audio/voice/{opening,finale}/gam_vo_*.ogg (q6 encodes)",
+ "word_errors_per_pass":{"opening_01":[0,0],"opening_02":[0,0],"opening_03":[0,0],"opening_04":[0,0],"opening_05":[0,0],"opening_06":[0,0],"opening_07":[0,0],"opening_08":[0,0],"finale_02":[0,0],"finale_03":[0,0],"finale_05":[0,0],"finale_07":[0,0]},
+ "notes":"Only differences found were transcription formatting, not speech: 'twenty eighty-nine' -> '2089', 'twenty forty-one' -> '2041', 'synchronised' -> 'synchronized'. A first run that stripped digits counted those as errors; an isolated one-pass miss on opening_01 and finale_07 did not reproduce (Whisper non-determinism). Machine check only, not a listening test."}

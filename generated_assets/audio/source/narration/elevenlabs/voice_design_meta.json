@@ -1,0 +1,65 @@
+{
+ "nar_uk": {
+  "description": "A mature British man in his fifties with a deep, warm, resonant baritone. Composed, authoritative and intimate, like the narrator of a prestige science-fiction documentary or thriller. Quiet gravity and controlled emotion, measured deliberate pacing, never theatrical. Clean, dry, close-microphone studio recording.",
+  "text": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+  "previews": [
+   {
+    "generated_voice_id": "3qWR1gu8kF8Obmug7tQG",
+    "file": "design/nar_uk_0.mp3",
+    "duration": 16.589583333333334
+   },
+   {
+    "generated_voice_id": "3ZssSzIMFrXQP5BGvpZH",
+    "file": "design/nar_uk_1.mp3",
+    "duration": 14.369166666666667
+   },
+   {
+    "generated_voice_id": "ekSI8bXMs4l0ajdl4bMT",
+    "file": "design/nar_uk_2.mp3",
+    "duration": 15.492416666666667
+   }
+  ]
+ },
+ "nar_us": {
+  "description": "A mature North American man in his fifties with a deep, warm, resonant baritone. Composed, authoritative and intimate, like the narrator of a prestige science-fiction documentary or thriller. Quiet gravity and controlled emotion, measured deliberate pacing, never theatrical. Clean, dry, close-microphone studio recording.",
+  "text": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
+  "previews": [
+   {
+    "generated_voice_id": "xUp53sLIKrmNkIviW49F",
+    "file": "design/nar_us_0.mp3",
+    "duration": 15.727541666666667
+   },
+   {
+    "generated_voice_id": "4hnuI5HThlv7zvh4kLdn",
+    "file": "design/nar_us_1.mp3",
+    "duration": 14.212416666666666
+   },
+   {
+    "generated_voice_id": "AlmijM3OXjCFku8xMuwa",
+    "file": "design/nar_us_2.mp3",
+    "duration": 15.88425
+   }
+  ]
+ },
+ "ctl_f": {
+  "description": "A calm, precise female artificial intelligence in her thirties with a neutral British accent. Even, cool and controlled, narrow pitch range, softly spoken and clinically polite, subtly unsettling, as if completely certain she is in control. Perfectly clear diction. Clean, dry studio recording.",
+  "text": "Your temporal charge is synchronised. Your destination is twenty eighty-nine. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
+  "previews": [
+   {
+    "generated_voice_id": "oofM0yXZpNooUHUmdTNz",
+    "file": "design/ctl_f_0.mp3",
+    "duration": 19.72425
+   },
+   {
+    "generated_voice_id": "ozSm1CgyIXUfKxBP7Sc8",
+    "file": "design/ctl_f_1.mp3",
+    "duration": 18.287541666666666
+   },
+   {
+    "generated_voice_id": "RyGrFtWwuk4TeI35VwiE",
+    "file": "design/ctl_f_2.mp3",
+    "duration": 18.130791666666667
+   }
+  ]
+ }
+}

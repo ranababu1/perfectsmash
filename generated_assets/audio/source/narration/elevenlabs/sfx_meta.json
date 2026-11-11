@@ -1,0 +1,23 @@
+{
+ "amb_ruins": {
+  "prompt": "Desolate wind moving through an empty ruined city at night, distant metal creaking, very sparse, no voices, no music",
+  "duration_seconds": 14.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "154"
+ },
+ "charge_powerup": {
+  "prompt": "Futuristic temporal energy charge slowly powering up, deep electrical hum rising with soft crackling, sci-fi, no music",
+  "duration_seconds": 8.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "88"
+ },
+ "time_jump": {
+  "prompt": "Cinematic time jump: a deep reverse whoosh sucking inward into a heavy sub-bass impact with a long dark reverb tail, sci-fi trailer, no music",
+  "duration_seconds": 6.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "66"
+ }
+}

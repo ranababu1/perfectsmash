@@ -47,3 +47,19 @@ The existing story has exactly **two voices**: `narrator` (27 slides) and `contr
 - Integrated loudness -18 LUFS per clip (ASSET_CONTRACT §"Voice -18 LUFS"), true peak at -1.5 dBTP or lower before encoding (at -1 dBTP or lower after encoding), LRA under 6 LU.
 - About 60 ms of silence before the first word and about 180 ms after the last; no long pads, no breaths clipped, no fades over words.
 - Identical recipe (same voice, settings and chain) for every line of a role, so any line can be re-rendered or picked up alone without a noticeable change.
+
+## 5. ElevenLabs realisation (approval sample, 2026-11-12)
+
+| Role | Voice | voice_id | Model | Settings |
+|---|---|---|---|---|
+| Narrator | TFJ Narrator (Voice Design, British baritone) | `ekSI8bXMs4l0ajdl4bMT` | `eleven_v4` | stability 0.4, similarity 0.8 |
+| Control | TFJ Control (Voice Design, cool British female AI) | `RyGrFtWwuk4TeI35VwiE` | `eleven_v4` | stability 0.5, similarity 0.8 |
+
+- Direction uses v4 audio tags, for example:
+  - `[thoughtful, quietly reflective]`, `[ominous]`, `[intimate, close, almost a whisper]`;
+  - for Control: `[calm, precise, clinical]`, `[calm, precise, metronomic]`;
+  - for the finale: `[startled, losing composure]`, `[shaken, anxious]`.
+- Pauses use `[pause]` and ellipses. Per-line tagged text is in `audio/source/narration/elevenlabs/direction.json`, and the spoken words are verbatim.
+- Control keeps a light processing chain (band-limit, presence lift, faint 17/29 ms comb) so it reads as a system voice without sounding robotic.
+
+Details are in [ELEVENLABS_APPROVAL_SAMPLE.md](ELEVENLABS_APPROVAL_SAMPLE.md).
