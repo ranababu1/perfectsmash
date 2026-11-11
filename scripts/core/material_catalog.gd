@@ -28,9 +28,17 @@ class MaterialSpec:
 	var secondary_blast_damage := 0.0
 	var secondary_blast_radius := 0.0
 	var secondary_blast_impulse := 0.0
+	## When non-empty, only damage from these weapon ids reaches a component of this material:
+	## other weapons, secondary blasts and structural collisions leave it untouched
+	## (e.g. the Meridian temporal crystal, which only the Temporal Lance can break).
+	var vulnerable_to: Array[String] = []
 
 	func has_secondary_blast() -> bool:
 		return secondary_blast_damage > 0.0 and secondary_blast_radius > 0.0
+
+	## Whether damage from `source` (a weapon id, or "" for blasts/collisions without one) applies.
+	func accepts_damage_from(source: String) -> bool:
+		return vulnerable_to.is_empty() or vulnerable_to.has(source)
 
 	func mass_for(size: Vector2) -> float:
 		return size.x * size.y * density
@@ -110,6 +118,11 @@ func _add(entry: Variant) -> void:
 			spec.secondary_blast_impulse = _number(secondary, "blast_impulse", prefix + "on_destroyed ", 0.0, INF, true)
 		else:
 			errors.append(prefix + "on_destroyed must be an object")
+	var vulnerable: Variant = entry.get("vulnerable_to", [])
+	if vulnerable is Array and vulnerable.all(func(v: Variant) -> bool: return v is String and not v.is_empty()):
+		spec.vulnerable_to.assign(vulnerable)
+	else:
+		errors.append(prefix + "vulnerable_to must be an array of weapon ids")
 	if materials.has(spec.id):
 		errors.append(prefix + "duplicate id")
 		return

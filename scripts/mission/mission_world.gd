@@ -111,7 +111,10 @@ func body_for(component_id: String) -> ComponentBody:
 
 ## Applies blast damage and knockback to every component whose nearest edge is in range.
 ## Returns the total damage applied.
-func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_fraction: float, penetration: float = 0.0) -> float:
+## `weapon_stats` (optional) adds the weapon's material bonus and `blast_ignores_cover`; `source`
+## is the weapon id (secondary blasts pass none).
+func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_fraction: float, penetration: float = 0.0, weapon_stats: Dictionary = {}, source: String = "") -> float:
+	var ignore_cover := float(weapon_stats.get("blast_ignores_cover", 0.0)) > 0.0
 	var applied := 0.0
 	blast_happened.emit(center, radius)
 	for id: String in bodies.keys():
@@ -121,13 +124,14 @@ func blast(center: Vector2, damage: float, radius: float, impulse: float, edge_f
 		var distance := DamageRules.distance_to_box(center, body.global_position, body.size / 2.0, body.global_rotation)
 		if distance > radius:
 			continue
-		var transmission := blast_transmission(center, body, penetration) if blast_occlusion else 1.0
-		applied += engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction) * transmission, DamageRules.TYPE_BLAST, penetration)
+		var transmission := blast_transmission(center, body, penetration) if blast_occlusion and not ignore_cover else 1.0
+		var bonus := WeaponCatalog.material_multiplier(weapon_stats, body.material_id)
+		applied += engine.apply_damage(id, DamageRules.blast_damage(damage, distance, radius, edge_fraction) * transmission * bonus, DamageRules.TYPE_BLAST, penetration, source)
 		body = body_for(id)
 		if body == null or body.is_queued_for_deletion():
 			continue
 		var push := DamageRules.blast_impulse(impulse, center, body.global_position, radius + body.size.length() / 2.0, edge_fraction)
-		if blast_occlusion:
+		if blast_occlusion and not ignore_cover:
 			push *= blast_transmission(center, body, penetration)
 		var pushed_mass := supported_mass(id) if load_aware_push else body.mass
 		if push.length() / pushed_mass >= MIN_PUSH_SPEED:
@@ -243,15 +247,34 @@ func _on_projectile_struck(projectile: WeaponProjectile, target: Node, impact_sp
 	var at := projectile.global_position
 	impact_happened.emit(at, impact_speed, (target as ComponentBody).component_id if target is ComponentBody else "")
 	var applied := 0.0
+	var source := projectile.weapon_id
 	if target is ComponentBody and float(stats.impact_damage) > 0.0:
+		var body := target as ComponentBody
 		var damage := DamageRules.projectile_impact_damage(float(stats.impact_damage), impact_speed, float(stats.launch_speed))
-		applied += engine.apply_damage((target as ComponentBody).component_id, damage, DamageRules.TYPE_IMPACT, float(stats.penetration))
+		damage *= WeaponCatalog.material_multiplier(stats, body.material_id)
+		applied += engine.apply_damage(body.component_id, damage, DamageRules.TYPE_IMPACT, float(stats.penetration), source)
+		if projectile.pierces_left > 0 and _can_pierce(projectile, body):
+			if applied > 0.0 and not projectile.counted_effective:
+				projectile.counted_effective = true
+				engine.record_effective_shot()
+			projectile.pass_through(body)
+			return
 	if float(stats.blast_damage) > 0.0:
-		applied += blast(at, float(stats.blast_damage), float(stats.blast_radius), float(stats.blast_impulse), float(stats.blast_edge_falloff), float(stats.penetration))
-	if applied > 0.0:
+		applied += blast(at, float(stats.blast_damage), float(stats.blast_radius), float(stats.blast_impulse), float(stats.blast_edge_falloff), float(stats.penetration), stats, source)
+	if applied > 0.0 and not projectile.counted_effective:
+		projectile.counted_effective = true
 		engine.record_effective_shot()
-	# Rounds and charges are spent on their first strike.
+	# Rounds and charges are spent on their (final) strike.
 	_remove_projectile.call_deferred(projectile)
+
+
+## A piercing round passes through a component it destroyed, or one whose material is no
+## tougher than the weapon's `pierce_max_resistance` (impact resistance).
+func _can_pierce(projectile: WeaponProjectile, body: ComponentBody) -> bool:
+	if not is_instance_valid(body) or body.is_queued_for_deletion() or engine.component_state(body.component_id) == DamageableComponent.State.DESTROYED:
+		return true
+	var material := materials.get_material(body.material_id) if materials != null else null
+	return material != null and material.impact_resistance <= float(projectile.stats.get("pierce_max_resistance", 0.95))
 
 
 func _on_component_impacted(body: ComponentBody, impulse: float, others: Array) -> void:

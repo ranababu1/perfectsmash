@@ -21,11 +21,14 @@ func _catalog(entries: Array) -> WeaponCatalog:
 	return WeaponCatalog.from_json_text(JSON.stringify({"weapons": entries}))
 
 
-func test_shipped_catalog_has_exactly_two_weapons() -> void:
+## Owner decision 2026-11-11: one new weapon per chapter II-V, unlocked at the chapter start.
+func test_shipped_catalog_has_one_new_weapon_per_chapter() -> void:
 	var c := WeaponCatalog.load_from_file()
 	assert_true(c.is_valid(), ", ".join(c.errors))
-	assert_eq(c.order, ["kinetic_accelerator", "breach_charge"] as Array[String])
+	assert_eq(c.order, ["kinetic_accelerator", "breach_charge", "penetrator", "pulse_cannon", "disruptor", "temporal_lance"] as Array[String])
 	assert_eq(c.unlocked_by_chapter(1).size(), 2)
+	for chapter in range(2, 6):
+		assert_eq(c.unlocked_by_chapter(chapter).size(), chapter + 1, "chapter %d adds exactly one weapon" % chapter)
 
 
 func test_weapons_have_distinct_tactical_roles() -> void:

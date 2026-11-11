@@ -13,7 +13,7 @@ const DELIVERIES := ["direct", "lobbed"]
 const MAX_FUSE_SECONDS := 5.0
 const UPGRADE_ATTRIBUTES := [
 	"impact_energy", "penetration", "blast_efficiency",
-	"energy_capacity", "targeting_assistance", "energy_efficiency",
+	"energy_capacity", "targeting_assistance", "energy_efficiency", "piercing",
 ]
 const OPS := ["multiply", "add"]
 const REQUIRED_STATS := [
@@ -21,7 +21,14 @@ const REQUIRED_STATS := [
 	"impact_damage", "penetration", "blast_damage", "blast_radius", "blast_impulse",
 	"blast_edge_falloff", "fuse_seconds", "ammunition", "cooldown", "aim_preview_seconds",
 ]
-const INTEGER_STATS := ["ammunition"]
+## Optional stats (chapter II-V weapons) and their defaults:
+## pierce_count - components a round passes through after damaging them (0 = spent on first hit);
+## pierce_speed_keep - share of its speed a round keeps after each pierce (0-1);
+## pierce_max_resistance - a round passes through components it destroys, or whose material's
+## impact resistance is at most this (0.95 = anything);
+## blast_ignores_cover - 1 = the blast is not attenuated by components in between (Disruptor EMP).
+const OPTIONAL_STATS := {"pierce_count": 0.0, "pierce_speed_keep": 0.75, "pierce_max_resistance": 0.95, "blast_ignores_cover": 0.0}
+const INTEGER_STATS := ["ammunition", "pierce_count"]
 const MAX_PENETRATION := 0.9
 
 
@@ -33,6 +40,9 @@ class WeaponSpec:
 	var stats := {}
 	## attribute -> {stat: String, op: String, levels: Array[float], costs: Array[int]} (3 entries each)
 	var upgrades := {}
+	## material id -> damage multiplier for this weapon's impact and blast damage ("*" = every
+	## other material; default 1). How strongly a weapon suits a material is weapon data.
+	var material_bonus := {}
 
 	func has_blast() -> bool:
 		return float(stats.get("blast_damage", 0.0)) > 0.0
@@ -63,6 +73,7 @@ class WeaponSpec:
 		result["penetration"] = clampf(float(result.penetration), 0.0, MAX_PENETRATION)
 		for stat: String in INTEGER_STATS:
 			result[stat] = int(round(float(result[stat])))
+		result["material_bonus"] = material_bonus
 		return result
 
 	func validate_levels(levels: Dictionary) -> PackedStringArray:
@@ -120,6 +131,14 @@ func get_weapon(weapon_id: String) -> WeaponSpec:
 	return weapons.get(weapon_id)
 
 
+## Damage multiplier of a weapon (its effective stats) against a material.
+static func material_multiplier(stats: Dictionary, material_id: String) -> float:
+	var bonus: Dictionary = stats.get("material_bonus", {})
+	if bonus.is_empty():
+		return 1.0
+	return float(bonus.get(material_id, bonus.get("*", 1.0)))
+
+
 ## Weapons available in a chapter (automatic technology unlocks), in catalog order.
 func unlocked_by_chapter(chapter_number: int) -> Array[String]:
 	var ids: Array[String] = []
@@ -155,6 +174,12 @@ func _add(entry: Variant) -> void:
 		errors.append(prefix + "delivery must be one of %s" % ", ".join(DELIVERIES))
 	_parse_stats(spec, entry.get("stats"), prefix)
 	_parse_upgrades(spec, entry.get("upgrades", {}), prefix)
+	var bonus: Variant = entry.get("material_bonus", {})
+	if bonus is Dictionary and bonus.values().all(func(v: Variant) -> bool: return (v is float or v is int) and v >= 0.0):
+		for key: Variant in bonus:
+			spec.material_bonus[str(key)] = float(bonus[key])
+	else:
+		errors.append(prefix + "material_bonus must map material ids to numbers >= 0")
 	if weapons.has(spec.id):
 		errors.append(prefix + "duplicate id")
 		return
@@ -173,7 +198,15 @@ func _parse_stats(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
 			spec.stats[key] = 0.0
 		else:
 			spec.stats[key] = float(value)
+	for key: String in OPTIONAL_STATS:
+		var optional: Variant = raw.get(key, OPTIONAL_STATS[key])
+		if not (optional is float or optional is int) or float(optional) < 0.0:
+			errors.append(prefix + "stat '%s' must be a non-negative number" % key)
+			optional = OPTIONAL_STATS[key]
+		spec.stats[key] = float(optional)
 	var s := spec.stats
+	if s.pierce_speed_keep > 1.0 or s.pierce_count != floorf(s.pierce_count):
+		errors.append(prefix + "pierce_count must be whole and pierce_speed_keep at most 1")
 	if s.launch_speed <= 0.0 or s.min_launch_speed <= 0.0 or s.min_launch_speed > s.launch_speed:
 		errors.append(prefix + "need 0 < min_launch_speed <= launch_speed")
 	if s.projectile_radius <= 0.0 or s.projectile_mass <= 0.0:
@@ -219,7 +252,7 @@ func _parse_upgrades(spec: WeaponSpec, raw: Variant, prefix: String) -> void:
 		if not costs is Array or costs.size() != MAX_UPGRADE_LEVEL 				or not costs.all(func(v: Variant) -> bool: return (v is float or v is int) and v >= 1 and v == floorf(v)):
 			errors.append(where + "needs %d whole Research Data costs >= 1" % MAX_UPGRADE_LEVEL)
 			ok = false
-		if not REQUIRED_STATS.has(stat):
+		if not REQUIRED_STATS.has(stat) and not OPTIONAL_STATS.has(stat):
 			errors.append(where + "unknown stat '%s'" % str(stat))
 			ok = false
 		if not OPS.has(op):

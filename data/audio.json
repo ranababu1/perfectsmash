@@ -276,7 +276,8 @@
 		"ai_core_module": "impact_electronic",
 		"energy_component": "impact_electronic",
 		"composite": "impact_composite",
-		"concrete": "impact_concrete"
+		"concrete": "impact_concrete",
+		"temporal_crystal": "impact_glass"
 	},
 	"destroyed_by_material": {
 		"reinforced_steel": "structure_collapse",
@@ -286,7 +287,8 @@
 		"glass_polymer": "impact_glass",
 		"electronic_module": "machine_failure",
 		"energy_component": "secondary_blast",
-		"ai_core_module": "core_destroyed"
+		"ai_core_module": "core_destroyed",
+		"temporal_crystal": "impact_glass"
 	},
 	"default_impact": "impact_generic",
 	"default_destroyed": "component_destroyed",

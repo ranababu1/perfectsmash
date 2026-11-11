@@ -5,6 +5,9 @@ extends RigidBody2D
 ## decides what the strike does (direct damage, or a blast for charges).
 ## Charges with `fuse_seconds` > 0 also go off in the air when the fuse runs out before they hit
 ## anything (a timed air burst); the strike then has no target.
+## Piercing rounds (`pierce_count` > 0) report every component they hit; while pierces remain and
+## MissionWorld lets them (pass_through), they keep flying with `pierce_speed_keep` of their speed.
+## A round is spent (`has_struck`) on its final strike.
 
 signal struck(projectile: WeaponProjectile, target: Node, impact_speed: float)
 
@@ -17,7 +20,14 @@ var age := 0.0
 ## Seconds after launch at which an unexploded charge bursts in the air; 0 = contact fuse only.
 var fuse_seconds := 0.0
 var _previous_speed := 0.0
+var _previous_velocity := Vector2.ZERO
 var _has_struck := false
+## Pierces left; MissionWorld spends them through pass_through().
+var pierces_left := 0
+## Whether this round already counted as an effective shot (a piercing round hits several times).
+var counted_effective := false
+var _restore_velocity := Vector2.ZERO
+var _restore := false
 
 
 func _init(p_weapon_id: String, p_stats: Dictionary, start: Vector2, velocity: Vector2) -> void:
@@ -29,6 +39,8 @@ func _init(p_weapon_id: String, p_stats: Dictionary, start: Vector2, velocity: V
 	mass = float(stats.projectile_mass)
 	gravity_scale = float(stats.gravity_scale)
 	fuse_seconds = float(stats.get("fuse_seconds", 0.0))
+	pierces_left = int(stats.get("pierce_count", 0))
+	_previous_velocity = velocity
 	continuous_cd = RigidBody2D.CCD_MODE_CAST_SHAPE
 	contact_monitor = true
 	max_contacts_reported = 2
@@ -50,10 +62,26 @@ func has_struck() -> bool:
 	return _has_struck
 
 
+## Lets the round continue through `body` (already damaged by the caller) at reduced speed.
+func pass_through(body: PhysicsBody2D) -> void:
+	pierces_left -= 1
+	_has_struck = false
+	add_collision_exception_with(body)
+	_restore_velocity = _previous_velocity * float(stats.get("pierce_speed_keep", 0.75))
+	_restore = true
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if _restore:
+		_restore = false
+		state.linear_velocity = _restore_velocity
+
+
 func _physics_process(delta: float) -> void:
 	age += delta
 	if not _has_struck:
 		_previous_speed = linear_velocity.length()
+		_previous_velocity = linear_velocity
 		if fuse_seconds > 0.0 and age >= fuse_seconds:
 			_has_struck = true
 			struck.emit(self, null, _previous_speed)
