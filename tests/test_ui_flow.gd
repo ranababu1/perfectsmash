@@ -36,6 +36,7 @@ func _make_main() -> Node:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
 	tree.root.add_child(main)
 	return main

@@ -10,6 +10,7 @@ func _make_main() -> Node:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
 	main.boot_mission = "helix_01"
 	tree.root.add_child(main)
@@ -43,6 +44,7 @@ func test_app_boots_into_the_campaign_menu() -> void:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
 	tree.root.add_child(main)
 	await tree.process_frame

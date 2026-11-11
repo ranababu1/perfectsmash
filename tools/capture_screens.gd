@@ -28,6 +28,7 @@ func _run() -> void:
 	save.save_progress(progress)
 
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = save
 	root.add_child(main)
 	await _settle(20)

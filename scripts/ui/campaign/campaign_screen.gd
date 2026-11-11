@@ -6,6 +6,8 @@ extends Control
 
 signal mission_selected(mission_id: String)
 signal settings_requested
+signal upgrades_requested
+signal archive_requested
 
 enum View { MENU, CHAPTERS, MISSIONS }
 enum SlotState { UNAVAILABLE, LOCKED, AVAILABLE, COMPLETED }
@@ -112,9 +114,18 @@ func show_menu() -> void:
 	var campaign := _action("Campaign", show_chapters)
 	campaign.name = "CampaignButton"
 	box.add_child(campaign)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", SPACE_M)
+	box.add_child(row)
+	var upgrades := _action("Upgrades", _request.bind(upgrades_requested))
+	upgrades.name = "UpgradesButton"
+	var archive := _action("Story Archive", _request.bind(archive_requested))
+	archive.name = "ArchiveButton"
 	var settings := _action("Settings", _request_settings)
 	settings.name = "SettingsButton"
-	box.add_child(settings)
+	for b: Button in [upgrades, archive, settings]:
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(b)
 	if not continue_button.disabled:
 		UiKit.focus_default(continue_button)
 	else:
@@ -276,6 +287,11 @@ func _select(id: String) -> void:
 func _request_settings() -> void:
 	_sfx("ui_click")
 	settings_requested.emit()
+
+
+func _request(which: Signal) -> void:
+	_sfx("ui_click")
+	which.emit()
 
 
 func _sfx(id: String) -> void:

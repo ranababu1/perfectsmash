@@ -8,7 +8,8 @@ const BASELINE_SOUNDS := ["breach_detonate", "breach_launch", "component_destroy
 		"kinetic_fire", "machine_failure", "mission_fail", "mission_success", "objective_complete", "reload_ready",
 		"secondary_blast", "structure_collapse", "ui_back", "ui_click", "ui_confirm", "weapon_switch"]
 const BASELINE_MUSIC := ["helix_prep", "helix_gameplay", "helix_combat", "helix_critical_layer", "victory_mission",
-		"defeat_mission", "legacy_bed", "menu", "cinematic"]
+		"defeat_mission", "menu", "cinematic"]
+## legacy_bed (gameplay_bed.ogg) was removed on 2026-11-11: its licence is unverified (owner decision).
 const BASELINE_AMBIENCE := ["helix_server_hall", "helix_core", "helix_cooling"]
 
 

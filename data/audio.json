@@ -335,13 +335,6 @@
 			"bus": "Music",
 			"loops": false
 		},
-		"legacy_bed": {
-			"file": "res://assets/audio/music/gameplay_bed.ogg",
-			"volume_db": -12.0,
-			"loop_overlap": 4.5,
-			"bus": "Music",
-			"loops": false
-		},
 		"menu": {
 			"file": "res://assets/audio/music/shared/gam_mus_menu_01.ogg",
 			"volume_db": -10.5,

@@ -7,7 +7,9 @@ extends Node
 const FADE_TIME := 0.22
 ## Music for missions comes from each mission's audio plan (data/audio.json "missions", driven by
 ## MissionAudio). Missions without a plan fall back to this cue.
-const FALLBACK_CUE := "legacy_bed"
+const FALLBACK_CUE := "helix_gameplay"
+## Main menu, chapter/mission select, upgrades and Story Archive.
+const MENU_CUE := "menu"
 
 var save := SaveService.new()
 var progress: ProgressData
@@ -17,6 +19,13 @@ var missions: MissionCatalog
 ## Mission id to start in instead of the main menu (tests and capture tools set it before
 ## adding the node). Empty = boot into the campaign menu.
 var boot_mission := ""
+## Story cinematics play automatically (the opening on first launch, a chapter's introduction
+## before its first mission, its ending once the chapter is complete). Tests switch it off.
+var cinematics_enabled := true
+var cinematics: CinematicCatalog
+var _upgrades: UpgradesScreen
+var _archive: StoryArchive
+var _cinematic: CinematicPlayer
 var audio_catalog: AudioCatalog
 var audio: AudioService
 var music: MusicDirector
@@ -64,11 +73,16 @@ func _ready() -> void:
 		# Chapters only drive presentation, so the game stays playable with default scenery.
 		push_error("Chapter catalog invalid: %s" % ", ".join(chapters.errors))
 	missions = MissionCatalog.from_chapters(chapters)
+	cinematics = CinematicCatalog.load_from_file()
+	if not cinematics.is_valid():
+		push_error("Cinematic catalog invalid: %s" % ", ".join(cinematics.errors))
 	_add_fade_layer()
-	if boot_mission.is_empty():
-		_show_campaign()
-	else:
+	if not boot_mission.is_empty():
 		_show_mission(boot_mission)
+	elif _should_play(chapters.opening_sequence if chapters != null else "opening"):
+		_show_cinematic(chapters.opening_sequence, _show_campaign)
+	else:
+		_show_campaign()
 
 
 ## A full-screen veil that fades out after every screen change. It never takes input.
@@ -112,7 +126,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _handle_back() -> void:
-	if _settings != null:
+	if _cinematic != null:
+		_cinematic.skip()
+	elif _upgrades != null or _archive != null:
+		_show_campaign()
+	elif _settings != null:
 		_show_campaign()
 	elif _campaign != null:
 		if not _campaign.go_back() and OS.get_name() == "Android":
@@ -136,17 +154,33 @@ func _show_mission(mission_id: String = "") -> void:
 	_mission.ambience = ambience
 	_mission.restart_requested.connect(_show_mission.bind(mission_id))
 	_mission.next_requested.connect(_show_next_mission.bind(mission_id))
-	_mission.exit_requested.connect(_show_campaign.bind(_chapter_of(mission_id)))
+	_mission.exit_requested.connect(_exit_mission.bind(mission_id))
 	add_child(_mission)
 	_reveal()
 
 
 func _show_next_mission(after_id: String) -> void:
+	var outro := _chapter_outro_due(after_id)
+	if not outro.is_empty():
+		_show_cinematic(outro, _show_next_mission.bind(after_id))
+		return
 	var next := missions.next_authored_id(after_id) if missions != null else ""
+	if not next.is_empty() and _chapter_of(next) != _chapter_of(after_id) and missions.is_unlocked(next, progress):
+		_select_mission(next)
+		return
 	if next.is_empty() or not missions.is_unlocked(next, progress):
 		_show_campaign(_chapter_of(after_id))
 	else:
 		_show_mission(next)
+
+
+## Results → Missions: a just-completed chapter plays its ending first.
+func _exit_mission(mission_id: String) -> void:
+	var outro := _chapter_outro_due(mission_id)
+	if outro.is_empty():
+		_show_campaign(_chapter_of(mission_id))
+	else:
+		_show_cinematic(outro, _show_campaign.bind(_chapter_of(mission_id)))
 
 
 func _chapter_of(mission_id: String) -> int:
@@ -160,11 +194,100 @@ func _show_campaign(chapter: int = 0) -> void:
 	_campaign = CampaignScreen.new(missions, chapters, progress)
 	_campaign.library = MissionView.assets()
 	_campaign.audio = audio
-	_campaign.mission_selected.connect(_show_mission)
+	_campaign.mission_selected.connect(_select_mission)
 	_campaign.settings_requested.connect(_show_settings)
+	_campaign.upgrades_requested.connect(_show_upgrades)
+	_campaign.archive_requested.connect(_show_archive)
 	add_child(_campaign)
 	if chapter > 0:
 		_campaign.show_missions(chapter)
+	_play_menu_music()
+	_reveal()
+
+
+func _play_menu_music() -> void:
+	if music != null:
+		music.play_cue(MENU_CUE, 1.5)
+	if ambience != null:
+		ambience.stop(1.0)
+
+
+## A mission chosen in the menu: its chapter's introduction plays first the first time.
+func _select_mission(mission_id: String) -> void:
+	var entry := missions.slot(mission_id) if missions != null else null
+	var intro := entry.chapter.intro_sequence if entry != null else ""
+	if _should_play(intro):
+		_show_cinematic(intro, _show_mission.bind(mission_id))
+	else:
+		_show_mission(mission_id)
+
+
+## True when automatic cinematics are on and `sequence_id` exists and has not been seen.
+func _should_play(sequence_id: String) -> bool:
+	return cinematics_enabled and cinematics != null and not sequence_id.is_empty() \
+			and cinematics.has_sequence(sequence_id) and not progress.has_seen_sequence(sequence_id)
+
+
+## Plays a story sequence full screen, marks it seen (unlocking it in the Story Archive) and
+## calls `then` when it ends or is skipped.
+func _show_cinematic(sequence_id: String, then: Callable) -> void:
+	_clear_screens()
+	_cinematic = CinematicPlayer.new()
+	_cinematic.music = music
+	if ambience != null:
+		ambience.stop(0.6)
+	add_child(_cinematic)
+	_cinematic.finished.connect(func(id: String, _skipped: bool) -> void:
+		if progress.mark_sequence_seen(id):
+			save.save_progress(progress)
+		then.call(), CONNECT_ONE_SHOT | CONNECT_DEFERRED)
+	if not _cinematic.play_id(sequence_id, cinematics):
+		_cinematic.finished.emit(sequence_id, true)
+	_reveal()
+
+
+## The chapter's ending (the finale for the last chapter) once all its missions are complete.
+func _chapter_outro_due(mission_id: String) -> String:
+	var entry := missions.slot(mission_id) if missions != null else null
+	if entry == null or not progress.is_mission_completed(mission_id):
+		return ""
+	for s in missions.chapter_slots(entry.chapter.number):
+		if not progress.is_mission_completed(s.id):
+			return ""
+	var outro := entry.chapter.outro_sequence
+	return outro if _should_play(outro) else ""
+
+
+func _show_upgrades() -> void:
+	_clear_screens()
+	var unlocked := _highest_unlocked_chapter()
+	_upgrades = UpgradesScreen.new(WeaponCatalog.load_from_file(), progress, unlocked)
+	_upgrades.library = MissionView.assets()
+	_upgrades.audio = audio
+	_upgrades.purchased.connect(func(_w: String, _a: String) -> void: save.save_progress(progress))
+	_upgrades.closed.connect(_show_campaign)
+	add_child(_upgrades)
+	_reveal()
+
+
+func _highest_unlocked_chapter() -> int:
+	var best := 1
+	if missions == null or chapters == null:
+		return best
+	for chapter in chapters.chapters:
+		var first := missions.chapter_slots(chapter.number)
+		if not first.is_empty() and missions.is_unlocked(first[0].id, progress):
+			best = maxi(best, chapter.number)
+	return best
+
+
+func _show_archive() -> void:
+	_clear_screens()
+	_archive = StoryArchive.new(cinematics, progress)
+	_archive.play_requested.connect(func(id: String) -> void: _show_cinematic(id, _show_archive))
+	_archive.closed.connect(_show_campaign)
+	add_child(_archive)
+	_play_menu_music()
 	_reveal()
 
 
@@ -252,10 +375,13 @@ func _set_vibration(enabled: bool) -> void:
 
 func _clear_screens() -> void:
 	get_tree().paused = false
-	for screen: Node in [_menu, _game, _mission, _campaign, _settings]:
+	for screen: Node in [_menu, _game, _mission, _campaign, _settings, _upgrades, _archive, _cinematic]:
 		if screen != null:
 			remove_child(screen)
 			screen.queue_free()
+	_upgrades = null
+	_archive = null
+	_cinematic = null
 	_menu = null
 	_game = null
 	_mission = null

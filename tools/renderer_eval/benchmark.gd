@@ -127,6 +127,7 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUTPUT_DIR))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(SAVE_PATH)
 	main.boot_mission = "helix_01"
 	return main

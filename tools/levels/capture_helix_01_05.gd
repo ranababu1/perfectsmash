@@ -27,6 +27,7 @@ func _run() -> void:
 	root.gui_disable_input = true
 	root.set_disable_input(true)
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(CAPTURE_SAVE)
 	root.add_child(main)
 	await _frames(30)

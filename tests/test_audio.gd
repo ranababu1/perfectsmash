@@ -3,7 +3,9 @@ extends TestCase
 ## variants and buses, material-aware impacts and destruction sounds, MusicDirector cues, synced
 ## intensity changes, the critical layer, ambience and the per-mission audio plan (MissionAudio).
 
+## Retired 2026-11-11 (licence unverified, owner decision): nothing may reference it.
 const BED := "res://assets/audio/music/gameplay_bed.ogg"
+const MENU := "res://assets/audio/music/shared/gam_mus_menu_01.ogg"
 const TENSION := "res://assets/audio/music/helix/hlx_mus_gameplay_tension.ogg"
 ## Blocks that reference sound or cue ids; cleared when a test replaces "sounds" or "music".
 const DEPENDENT := {"impact_by_material": {}, "destroyed_by_material": {}, "default_destroyed": "", "missions": {}, "chapters": {}}
@@ -52,8 +54,9 @@ func test_shipped_catalog_is_valid_and_complete() -> void:
 	assert_eq(catalog.destroyed_sound_for("composite"), "structure_collapse")
 	assert_eq(catalog.destroyed_sound_for("energy_component"), "secondary_blast")
 	assert_eq(catalog.get_cue("helix_gameplay").file, TENSION)
-	assert_eq(catalog.get_cue("legacy_bed").file, BED, "the legacy bed is kept, unchanged")
-	assert_near(catalog.get_cue("legacy_bed").loop_overlap, 4.5, 0.001)
+	assert_false(catalog.music.has("legacy_bed"), "the unverified legacy bed is retired")
+	for cue_id: String in catalog.music:
+		assert_true(catalog.get_cue(cue_id).file != BED, "%s must not use gameplay_bed.ogg" % cue_id)
 	assert_eq(catalog.get_ambience("helix_server_hall").bus, "Ambience")
 	for id: String in catalog.sounds:
 		assert_true(AudioServer.get_bus_index(catalog.get_sound(id).bus) >= 0, "%s bus exists" % id)
@@ -147,10 +150,22 @@ func test_impacts_and_destruction_follow_the_material() -> void:
 
 func test_music_cues_set_track_volume_and_overlap() -> void:
 	var director := _director()
-	assert_true(director.play_cue("legacy_bed", 0.01))
-	assert_eq(director.current_stream.resource_path, BED)
-	assert_near(director.loop_overlap, 4.5, 0.001)
-	assert_near(director.target_volume_db(), -12.0, 0.001)
+	# Loop overlap and volume come from the cue (a test cue on a shipped track).
+	var overlap := MusicDirector.new()
+	overlap.catalog = AudioCatalog.load_from_file()
+	var cue := AudioCatalog.MusicCue.new()
+	cue.id = "overlap_test"
+	cue.file = MENU
+	cue.volume_db = -12.0
+	cue.loop_overlap = 4.5
+	cue.bus = "Music"
+	overlap.catalog.music["overlap_test"] = cue
+	tree.root.add_child(overlap)
+	assert_true(overlap.play_cue("overlap_test", 0.01))
+	assert_eq(overlap.current_stream.resource_path, MENU)
+	assert_near(overlap.loop_overlap, 4.5, 0.001)
+	assert_near(overlap.target_volume_db(), -12.0, 0.001)
+	overlap.queue_free()
 	assert_true(director.play_cue("helix_gameplay", 0.01))
 	assert_eq(director.current_stream.resource_path, TENSION)
 	assert_near(director.loop_overlap, 0.0, 0.001, "the Helix tracks loop by themselves")
