@@ -56,6 +56,13 @@ var duck_db := NarrationCatalog.DEFAULT_DUCK_DB
 var duck_attack := NarrationCatalog.DEFAULT_DUCK_ATTACK
 var duck_hold := NarrationCatalog.DEFAULT_DUCK_HOLD
 var duck_release := NarrationCatalog.DEFAULT_DUCK_RELEASE
+## Slide timing follows the music bed's playback position while it plays (see _bed_clock). Tests
+## that drive tick() with simulated time turn it off.
+var sync_to_bed := true:
+	set(value):
+		sync_to_bed = value
+		if not value:
+			_follow_bed = false
 ## Path of the clip playing for the current slide ("" when none).
 var current_voice := ""
 var sequence: CinematicCatalog.Sequence
@@ -91,6 +98,16 @@ var _voice_started := false
 var _subtitle_due := 0.0
 var _subtitle_shown := false
 var _suspended := false
+## The music bed this player started, and whether slide timing still follows it: while the bed
+## plays and nobody has tapped ahead, the slide clock is the bed's playback position, so lines
+## land on the music exactly (the beds' hits are written around the manifest timeline) and frame
+## hitches cannot accumulate. A tap hands timing back to the frame clock.
+var _bed: AudioStream
+var _follow_bed := false
+## Sequence time at which the current stage started (bed time while following the bed).
+var _stage_start := 0.0
+## Stills requested in the background (path -> true), so a slide change never stalls on a load.
+var _requested := {}
 
 
 func _ready() -> void:
@@ -117,6 +134,9 @@ func play(new_sequence: CinematicCatalog.Sequence) -> void:
 	_finished = false
 	_playing = true
 	slide_index = -1
+	_stage_start = 0.0
+	_follow_bed = false
+	_bed = null
 	_preload_voices()
 	_start_music()
 	_show_stage(0)
@@ -174,8 +194,14 @@ func current_slide() -> CinematicCatalog.Slide:
 	return sequence.slides[slide_index]
 
 
-## Shows the next slide (or the end card); finishes after the last one.
+## Shows the next slide (or the end card) now, as a tap does; finishes after the last one.
+## From here on the slides follow the frame clock (the bed simply runs ahead).
 func advance() -> void:
+	_follow_bed = false
+	_next_stage()
+
+
+func _next_stage() -> void:
 	if not _playing:
 		return
 	if slide_index + 1 >= stage_count():
@@ -194,14 +220,46 @@ func skip() -> void:
 func tick(delta: float) -> void:
 	if not _playing or _suspended:
 		return
-	_elapsed += delta
+	var clock := _bed_clock()
+	if clock >= 0.0:
+		_elapsed = clock - _stage_start
+	else:
+		_elapsed += delta
 	_update_timed()
 	if _elapsed < _stage_seconds:
 		return
 	# Never cut a line that is still speaking (late start on a slow device), within a limit.
 	if is_narrating() and _elapsed < _stage_seconds + VOICE_OVERRUN_LIMIT:
 		return
-	advance()
+	_auto_advance()
+
+
+## The stage time is up: the next stage starts where this one was planned to end, and the part of
+## a frame that overshot carries over (on the frame clock nothing is lost between slides).
+func _auto_advance() -> void:
+	var carry := _elapsed - _stage_seconds
+	var next_start := _stage_start + _stage_seconds
+	_next_stage()
+	if not _playing:
+		return
+	_stage_start = next_start
+	_elapsed = maxf(carry, 0.0)
+	_update_timed()
+
+
+## Bed playback position (seconds) while slides follow the bed, else -1. A bed that is not
+## actually advancing (no audio output, e.g. headless) leaves timing on the frame clock.
+func _bed_clock() -> float:
+	if not _follow_bed or music == null or not is_instance_valid(music) or _bed == null:
+		return -1.0
+	var bed_player := music.active_player()
+	if bed_player.stream != _bed or not bed_player.playing:
+		return -1.0
+	# Time since the last mix refines the position between mixes; it grows without bound when the
+	# driver does not mix (headless, a stalled device), so it only counts while it is small.
+	var since_mix := AudioServer.get_time_since_last_mix()
+	var position := bed_player.get_playback_position() + (since_mix if since_mix < 0.1 else 0.0)
+	return position if position > 0.05 else -1.0
 
 
 func _process(delta: float) -> void:
@@ -399,7 +457,9 @@ func _start_music() -> void:
 		return
 	# A narrated sequence has its own bed, written around the narration timeline.
 	if not sequence.music.is_empty() and ResourceLoader.exists(sequence.music):
-		music.play_track(load(sequence.music) as AudioStream, sequence.music_volume_db)
+		_bed = load(sequence.music) as AudioStream
+		music.play_track(_bed, sequence.music_volume_db)
+		_follow_bed = _bed != null and sync_to_bed
 		return
 	var cue := sequence.music_cue
 	if cue.is_empty():
@@ -446,9 +506,26 @@ func _show_stage(index: int) -> void:
 		_restore_music(duck_release)
 	_transition_to(_load_texture(path), motion, _stage_seconds)
 	_update_timed()
+	_prefetch_still(index + 1)
+
+
+## Starts loading the still of stage `index` in the background.
+func _prefetch_still(index: int) -> void:
+	if sequence == null or index >= stage_count():
+		return
+	var path := sequence.slides[index].image if index < sequence.slides.size() else sequence.end_image
+	if path.is_empty() or _requested.has(path) or not ResourceLoader.exists(path):
+		return
+	if ResourceLoader.load_threaded_request(path) == OK:
+		_requested[path] = true
 
 
 func _load_texture(path: String) -> Texture2D:
+	if _requested.has(path):
+		_requested.erase(path)
+		var prefetched := ResourceLoader.load_threaded_get(path) as Texture2D
+		if prefetched != null:
+			return prefetched
 	if not path.is_empty() and ResourceLoader.exists(path):
 		var texture := load(path) as Texture2D
 		if texture != null:

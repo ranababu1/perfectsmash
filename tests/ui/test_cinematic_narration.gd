@@ -24,10 +24,13 @@ func _music() -> MusicDirector:
 	return music
 
 
+## Drives the slides with simulated time (tick); test_slides_follow_the_bed_clock covers the
+## real-time bed-locked clock.
 func _player(music: MusicDirector = null, narration := true) -> CinematicPlayer:
 	var player := CinematicPlayer.new()
 	player.music = music
 	player.narration_enabled = narration
+	player.sync_to_bed = false
 	tree.root.add_child(player)
 	_ended = []
 	player.finished.connect(func(id: String, skipped: bool) -> void: _ended.append([id, skipped]))
@@ -141,6 +144,30 @@ func test_opening_bed_pre_roll_then_voice_subtitle_and_duck_together() -> void:
 		player.tick(0.01)
 	assert_eq(player.slide_index, 1, "next slide after the line and its gap")
 	assert_eq(player.current_voice, opening.slides[1].voice, "its line starts with it")
+	player.queue_free()
+	music.queue_free()
+
+
+func test_slides_follow_the_bed_clock() -> void:
+	var music := _music()
+	var player := CinematicPlayer.new()
+	player.music = music
+	tree.root.add_child(player)
+	var opening := _narrated().get_sequence("opening")
+	player.play(opening)
+	await _wait(0.6)
+	var bed := music.active_player()
+	if bed.get_playback_position() <= 0.05:
+		skip("no audio output advances the bed here")
+	else:
+		player.tick(0.0)
+		var since_mix := AudioServer.get_time_since_last_mix()
+		var position := bed.get_playback_position() + (since_mix if since_mix < 0.1 else 0.0)
+		assert_near(player._elapsed, position, 0.05, "slide time is the bed's playback position")
+		player.advance()
+		var before := player._elapsed
+		player.tick(0.5)
+		assert_near(player._elapsed, before + 0.5, 0.001, "after a tap the frame clock takes over")
 	player.queue_free()
 	music.queue_free()
 
@@ -314,6 +341,7 @@ func test_app_cinematics_and_story_archive_replay_are_narrated() -> void:
 	var player: CinematicPlayer = main._cinematic
 	assert_true(player != null, "the archive replays through the cinematic player")
 	assert_eq(main.music.current_stream.resource_path, opening.music, "with the opening's bed")
+	player.sync_to_bed = false
 	player.tick(opening.slides[0].voice_delay + 0.05)
 	assert_eq(player.current_voice, opening.slides[0].voice, "and its narration")
 	assert_true(player.is_music_ducked())
@@ -323,6 +351,7 @@ func test_app_cinematics_and_story_archive_replay_are_narrated() -> void:
 	assert_eq(main.music.current_cue, MainScript.MENU_CUE, "menu music comes back")
 	main.progress.narration_volume = 0.0
 	main._show_cinematic("opening", main._show_archive)
+	(main._cinematic as CinematicPlayer).sync_to_bed = false
 	(main._cinematic as CinematicPlayer).tick(opening.slides[0].voice_delay + 0.05)
 	assert_eq((main._cinematic as CinematicPlayer).current_voice, "", "volume 0: subtitles only")
 	await _free_main(main)
