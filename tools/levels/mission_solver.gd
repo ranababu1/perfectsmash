@@ -53,11 +53,16 @@ static func stand_check(tree: SceneTree, world: MissionWorld, frames: int = 180)
 
 
 ## Plays `steps`; returns {success, phase, shots, effective, elapsed, log: Array[String], blocked}.
-static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_finish: bool = true) -> Dictionary:
+## `on_decision`: what the player answers when the optional-objective prompt appears: "finish"
+## ends the mission there, "continue" keeps playing the remaining steps (the prompt is offered once).
+static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_finish: bool = true, on_decision: String = "finish") -> Dictionary:
 	var engine := world.engine
+	# Aiming queries the physics space: let it step once so freshly built bodies are registered.
+	await tree.physics_frame
 	var log: Array[String] = []
 	var blocked := ""
 	for step: Dictionary in steps:
+		_answer_decision(engine, on_decision)
 		if not engine.is_active():
 			break
 		# A player does not aim at something already destroyed: skip the step.
@@ -77,10 +82,14 @@ static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_fi
 			break
 		world.fire(plan.direction, plan.power)
 		await tree.physics_frame
-		await _until(tree, func() -> bool: return (world.projectiles.is_empty() and world.is_settled()) or not engine.is_active(), SHOT_TIMEOUT)
+		await _until(tree, func() -> bool: return (world.projectiles.is_empty() and world.is_settled()) or not engine.is_active() or engine.awaiting_decision, SHOT_TIMEOUT)
 		log.append("%s -> %s: %s" % [weapon_id, step.get("target", step.get("point")), _states(world)])
 	if blocked.is_empty() and wait_for_finish:
-		await _until(tree, func() -> bool: return not engine.is_active(), FINISH_TIMEOUT)
+		await _until(tree, func() -> bool: return not engine.is_active() or engine.awaiting_decision, FINISH_TIMEOUT)
+		# Out of steps: a player at the prompt (asked now or after an earlier Continue) finishes.
+		_answer_decision(engine, "finish")
+		if engine.is_active() and engine.can_finish_early():
+			engine.finish_mission()
 	return {
 		"success": engine.phase == MissionEngine.Phase.SUCCEEDED,
 		"phase": engine.phase,
@@ -90,6 +99,15 @@ static func play(tree: SceneTree, world: MissionWorld, steps: Array, wait_for_fi
 		"log": log,
 		"blocked": blocked,
 	}
+
+
+static func _answer_decision(engine: MissionEngine, answer: String) -> void:
+	if not engine.awaiting_decision:
+		return
+	if answer == "continue":
+		engine.continue_mission()
+	else:
+		engine.finish_mission()
 
 
 ## {direction, power, blocker}. Direction is ZERO when no clear shot was found.

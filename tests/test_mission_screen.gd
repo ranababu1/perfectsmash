@@ -148,9 +148,11 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	var screen: MissionScreen = main._mission
 	screen.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	for i in 600:
-		if not screen.engine.is_active():
+		if not screen.engine.is_active() or screen.engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	assert_true(screen.engine.awaiting_decision, "optional goals pending: the decision prompt is shown")
+	screen.finish_mission()
 	assert_eq(screen.engine.phase, MissionEngine.Phase.SUCCEEDED)
 	assert_true(screen.last_score.mission_points > 1000)
 	assert_true(screen.last_research_granted >= 20, "completion Research Data granted")
@@ -165,9 +167,11 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	var again: MissionScreen = main._mission
 	again.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	for i in 600:
-		if not again.engine.is_active():
+		if not again.engine.is_active() or again.engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	assert_true(again.engine.awaiting_decision, "the prompt is offered again on a fresh attempt")
+	again.finish_mission()
 	assert_eq(int(again.last_score.research_data), int(first_score.research_data), "identical run, identical score")
 	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
 	var reloaded := SaveService.new(TEST_SAVE).load_progress()

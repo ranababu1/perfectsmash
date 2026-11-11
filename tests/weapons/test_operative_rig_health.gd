@@ -123,9 +123,11 @@ func test_rig_walks_through_every_state_and_clip() -> void:
 	_started.clear()
 	screen.engine.apply_damage("aura_core", 9999.0, DamageRules.TYPE_IMPACT, 0.9)
 	for i in 600:
-		if not screen.engine.is_active():
+		if not screen.engine.is_active() or screen.engine.awaiting_decision:
 			break
 		await tree.physics_frame
+	assert_true(screen.engine.awaiting_decision, "optional goals pending: the decision prompt is shown")
+	screen.finish_mission()
 	await _settle(rig)
 	await tree.process_frame
 	await tree.process_frame

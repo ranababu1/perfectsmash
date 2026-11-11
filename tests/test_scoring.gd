@@ -91,6 +91,8 @@ func test_inefficient_and_slow_still_rewarded() -> void:
 	e.tick(200.0, false)
 	_kill(e, "core")
 	e.tick(0.0, true)
+	assert_true(e.awaiting_decision, "optional rack pending: decision prompt")
+	e.finish_mission()
 	var r := _scoring.score(e)
 	assert_true(r.success)
 	assert_eq(r.points.shot_efficiency, 0)
