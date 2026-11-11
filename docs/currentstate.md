@@ -13,7 +13,7 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 | Feature | Status | Evidence / notes |
 |---|---|---|
 | Mission rules, damage, structure, objectives, scoring, Research Data | Implemented | `scripts/core/`; suite below |
-| Playable missions | **5 of 100** (Helix 01-05) | Each probe-verified: stands untouched, recorded solutions win 3/3 within the recommended shots (`tools/levels/`); played through the app in a window with screenshots (`docs/images/helix_01_05/`). No human play-test yet |
+| Playable missions | Helix 01-05 + 08 committed; Nova Grid, Civitas, VITA authored (60), Helix 06-20 and Meridian in progress; curve revisions under way | Each probe-verified: stands untouched, recorded solutions win 3/3 within the recommended shots (`tools/levels/`); played through the app in a window with screenshots (`docs/images/helix_01_05/`). No human play-test yet |
 | Mission catalog (100 slots, linear unlocks) | Implemented | `scripts/core/mission_catalog.gd`; `tests/campaign/` |
 | Main menu / chapter select / mission select | Implemented; **the app boots into the main menu** | Continue, Campaign, Settings; results → Next mission / Missions; screenshots `docs/images/helix_01_05/0*.webp` |
 | HUD, pause, results | Implemented | results panel: Next mission, Run it again, Missions |
@@ -25,7 +25,7 @@ Temporal: First Jump is an angled 2.5D tactical destruction puzzle (Godot 4.7.2,
 | Audio | Implemented for all five chapters | chapter plans resolve per mission chapter (PR #6); menu cue on menu screens; `gameplay_bed.ogg` no longer used (licence unverified); no human listening review |
 | Cinematic player / Story Archive | Implemented | stills with pan/zoom, subtitles, music, skip, no voice; opening on first launch, chapter intros/outros, finale; Main menu → Story Archive |
 | Settings screen | Implemented | sound, music, vibration (`scripts/ui/settings/`); voice not exposed |
-| Legacy 20 levels | Retired, frozen | still in the build for regression |
+| Legacy 20 levels | Removed from the game (2026-11-11) | engine-level tests kept |
 
 ## Asset integration (verified 2026-11-11)
 

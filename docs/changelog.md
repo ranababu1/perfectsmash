@@ -2,6 +2,20 @@
 
 All meaningful changes, newest first.
 
+## 2026-11-11 — Full-game production: weapon presentation, chapter worlds, engine fixes, legacy removal
+
+- **Weapon presentation** (Sonnet subagent, reviewed and integrated): the four chapter weapons have their production models on the operative, HUD icons and short names (the weapon bar re-flows for 4-6 weapons), distinct projectiles and trails, impact/blast effects (Pulse discharge ring, Disruptor EMP shell with arcs and no push, Lance flash, Penetrator pass-through sparks), coloured aim preview, and per-weapon fire / strike / blast / ready sounds built from existing library files with distinct pitches (no dedicated recordings exist). 33 assets integrated with their manifest rights fields copied verbatim (`slice: E_chapter_weapons`). Per-weapon bottom hints. Tests: `tests/weapons/test_weapon_presentation.gd` (7).
+- **Chapter worlds:** `data/atmospheres.json` + `ChapterAtmosphere` give each chapter its own light, sky, fog and accent rim (VITA sterile teal-white, Nova Grid furnace amber, Civitas cold institutional blue, Meridian violet underground); Helix keeps the approved look. Checked in a window with the chapter preview captures; VITA and Nova Grid toned down after the first look so gameplay pieces stay brighter than the floor. The aim hint has an outline so it reads on bright floors.
+- **Rule visuals:** temporal-crystal components glow violet, shielded components carry a cyan shell that fades when their last emitter falls.
+- **Helix 01 / 08:** the original prototype moved to `helix_08` ("Human Override", gameplay and physics unchanged; its pinned tests and tools follow it); a new gentle `helix_01` ("First Contact", Kinetic only, recommended 2, two lines win 3/3).
+- **Engine fixes found by the chapter authors:**
+  - Projectiles no longer have air drag: real flight follows the aim preview arc exactly (Godot's default 2D linear damp made lobs land 25-50 px short of the shown arc — a player-facing bug).
+  - New material `reactor_housing` for the Nova Grid and Meridian energy cores (260 health, survives falls, large secondary blast; Pulse ×1.6, Disruptor ×1.5): plain energy cells made the cores one-shot.
+  - A critical asset is never destroyed by a collapse alone: falls and debris leave it at 1 health (critical, exposed) and a weapon hit or blast must finish it (the approved Batch 5 Helix rule, now for every chapter). `helix_02` retuned to 3 shots (column, column, Breach onto the fallen controller).
+- **Retired slingshot game removed** from the build: legacy gameplay, UI, level catalog, rules, `data/levels.json`, its solver and capture tool, and four legacy-only suites (49 files). Kept and still tested: settle monitor, legacy star score (old-save migration), palette, static boxes, chapter themes. The HUD-press safety test was ported to `MissionScreen`; the renderer benchmark keeps its harness and proxies.
+- **Chapters authored so far (subagents, per-chapter file ownership):** Nova Grid 20/20, Civitas 20/20, VITA 20/20 pass the gate; revision passes are under way to raise the difficulty curves to the guide's bands and to re-tune lines affected by the engine fixes. Helix 06-20 and Meridian in progress.
+- Tests: full headless suite 290 passed, 0 failed (excluding in-progress chapter missions in the campaign gate) — the drop from 325 is the removed legacy suites.
+
 ## 2026-11-11 — Full-game production: foundation (branch `campaign/foundation`)
 
 - PRs #7 (campaign routing) and #8 (Helix 01-05, decision prompt) validated (headless suite 275 passed, 0 failed, 1 skipped) and merged into `main` under the owner's new merge permission. Plan revision 7 records the owner's final decisions.
