@@ -1,0 +1,10 @@
+[
+	{"name": "shield first, then both piers", "steps": [
+		{"weapon": "kinetic_accelerator", "target": "em_n"},
+		{"weapon": "temporal_lance", "target": "pier_r", "through": ["pier_l"]},
+		{"weapon": "temporal_lance", "target": "pier2_l", "through": ["pier2_r"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "node"}
+	]}
+]

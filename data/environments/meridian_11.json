@@ -1,0 +1,145 @@
+{
+	"_note": "Set dressing for meridian_11 (forecast selection array); presentation only, no collision. Same layers and units as helix_01; the gameplay band |z| <= 0.8 is kept clear.",
+	"chapter": "meridian",
+	"statics": {
+		"low": "MRD-ENV-LEDGE_STATIC-A",
+		"tall": "MRD-ENV-PLINTH_STATIC-A",
+		"low_max_height_m": 0.45
+	},
+	"pieces": [
+		{
+			"id": "MRD-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 25.0,
+				"step": 4
+			},
+			"z": 4.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 25.0,
+				"step": 4
+			},
+			"z": 0.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-FLOOR_TRENCH-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 25.0,
+				"step": 4
+			},
+			"z": -4.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-FLOOR_TILE-B",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 25.0,
+				"step": 4
+			},
+			"z": -8.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-BACK_WALL-A",
+			"repeat": {
+				"x_from": -10,
+				"x_to": 31.0,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-BACK_WALL-B",
+			"repeat": {
+				"x_from": -6,
+				"x_to": 31.0,
+				"step": 8
+			},
+			"z": -7.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-PILLAR-A",
+			"repeat": {
+				"x_from": -8,
+				"x_to": 31.0,
+				"step": 8
+			},
+			"z": -6.6
+		},
+		{
+			"id": "MRD-ENV-CATWALK-A",
+			"x": 2.4,
+			"y": 3.8,
+			"z": -5.6
+		},
+		{
+			"id": "MRD-ENV-CATWALK-A",
+			"x": 6.0,
+			"y": 3.8,
+			"z": -5.6
+		},
+		{
+			"id": "MRD-ENV-CEILING_TRUSS-A",
+			"repeat": {
+				"x_from": -4,
+				"x_to": 27.0,
+				"step": 8
+			},
+			"y": 6.0,
+			"z": -4.2
+		},
+		{
+			"id": "MRD-ENV-MASSING_TOWER-B",
+			"x": -3.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-MASSING_BLOCK-A",
+			"x": 8.5,
+			"z": -12.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-ENV-MASSING_TOWER-B",
+			"x": 20.0,
+			"z": -11.0,
+			"shadows": false
+		},
+		{
+			"id": "MRD-PRP-HYBRID_STACK-A",
+			"x": 15.2,
+			"z": -5.4
+		},
+		{
+			"id": "MRD-PRP-CONSOLE-A",
+			"x": 4.4,
+			"z": -3.0
+		},
+		{
+			"id": "MRD-PRP-TANK-A",
+			"x": 8.2,
+			"z": -3.3
+		},
+		{
+			"id": "MRD-PRP-TEMPORAL_ANCHOR-A",
+			"x": 0.4,
+			"z": -5.2
+		},
+		{
+			"id": "MRD-ENV-LOW_WALL-A",
+			"x": 12.0,
+			"z": -2.9
+		}
+	]
+}

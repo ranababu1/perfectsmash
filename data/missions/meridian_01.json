@@ -1,0 +1,134 @@
+{
+	"id": "meridian_01",
+	"name": "No Public Record",
+	"chapter": 5,
+	"briefing": "Meridian is absent from every map. The outer access hall is sealed behind a phase shield that nothing we carried before can touch. The Lance can. Open the line, then finish the core.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "phase_wall",
+			"kind": "phase_shield",
+			"material": "temporal_crystal",
+			"x": 780,
+			"y": 560.0,
+			"w": 24,
+			"h": 160
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 960,
+			"y": 580.0,
+			"w": 80,
+			"h": 120,
+			"critical_asset": true,
+			"health_scale": 0.72
+		},
+		{
+			"id": "rel_a",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1100,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "rel_b",
+			"kind": "timeline_relay",
+			"material": "lightweight_alloy",
+			"x": 1260,
+			"y": 540.0,
+			"w": 24,
+			"h": 200
+		},
+		{
+			"id": "stab_deck",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1180.0,
+			"y": 428.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"rel_a",
+				"rel_b"
+			]
+		},
+		{
+			"id": "stab_a",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1130,
+			"y": 376.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"stab_deck"
+			]
+		},
+		{
+			"id": "stab_b",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1230,
+			"y": 376.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"stab_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "stab",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Wreck both stabilisers",
+			"targets": [
+				"stab_a",
+				"stab_b"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

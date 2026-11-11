@@ -1,0 +1,205 @@
+{
+	"id": "meridian_08",
+	"name": "The Convergence Engine",
+	"chapter": 5,
+	"briefing": "The engine coordinates all four programmes from a three-tier frame. The front column of each upper tier is phase crystal. Work from the top down, and let each tier fall on the one below.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "col_a1",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 920,
+			"y": 580.0,
+			"w": 30,
+			"h": 120
+		},
+		{
+			"id": "col_a2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1080,
+			"y": 580.0,
+			"w": 30,
+			"h": 120
+		},
+		{
+			"id": "deck_a",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1000,
+			"y": 508.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"col_a1",
+				"col_a2"
+			]
+		},
+		{
+			"id": "node_a",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1000,
+			"y": 456.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"deck_a"
+			],
+			"health_scale": 0.8
+		},
+		{
+			"id": "col_b1",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 940,
+			"y": 436.0,
+			"w": 30,
+			"h": 120,
+			"supports": [
+				"deck_a"
+			]
+		},
+		{
+			"id": "col_b2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1060,
+			"y": 436.0,
+			"w": 30,
+			"h": 120,
+			"supports": [
+				"deck_a"
+			]
+		},
+		{
+			"id": "deck_b",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1000,
+			"y": 364.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"col_b1",
+				"col_b2"
+			]
+		},
+		{
+			"id": "node_b",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1000,
+			"y": 312.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"deck_b"
+			],
+			"health_scale": 0.8
+		},
+		{
+			"id": "col_c1",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 940,
+			"y": 292.0,
+			"w": 30,
+			"h": 120,
+			"supports": [
+				"deck_b"
+			]
+		},
+		{
+			"id": "col_c2",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1060,
+			"y": 292.0,
+			"w": 30,
+			"h": 120,
+			"supports": [
+				"deck_b"
+			]
+		},
+		{
+			"id": "deck_c",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1000,
+			"y": 220.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"col_c1",
+				"col_c2"
+			]
+		},
+		{
+			"id": "node_c",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1000,
+			"y": 168.0,
+			"w": 50,
+			"h": 80,
+			"supports": [
+				"deck_c"
+			],
+			"health_scale": 0.8
+		}
+	],
+	"objectives": [
+		{
+			"id": "nodes",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy all three engine nodes",
+			"targets": [
+				"node_a",
+				"node_b",
+				"node_c"
+			],
+			"count": 3
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the middle deck",
+			"targets": [
+				"deck_b"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

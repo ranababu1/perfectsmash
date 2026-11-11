@@ -1,0 +1,129 @@
+{
+	"id": "meridian_09",
+	"name": "The Failsafe Network",
+	"chapter": 5,
+	"briefing": "When one node fails another takes over. The core is shielded by a crossbeam that stands while either of two redundant towers does. One tower is phase crystal; the other is only armour.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1400,
+		"completion_research_data": 40,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 2
+		},
+		"kinetic_accelerator": {
+			"ammunition": 5
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "tower_a",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 820,
+			"y": 520.0,
+			"w": 40,
+			"h": 240
+		},
+		{
+			"id": "tower_b",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1060,
+			"y": 520.0,
+			"w": 40,
+			"h": 240,
+			"health_scale": 0.35
+		},
+		{
+			"id": "crossbeam",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 940.0,
+			"y": 385.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"tower_a",
+				"tower_b"
+			],
+			"min_supports": 1
+		},
+		{
+			"id": "core_base",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1230,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1230,
+			"y": 420.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_base"
+			],
+			"critical_asset": true,
+			"health_scale": 0.35,
+			"shielded_by": [
+				"crossbeam"
+			]
+		},
+		{
+			"id": "cell_a",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1360,
+			"y": 615.0,
+			"w": 36,
+			"h": 50
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the convergence core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "beam",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the crossbeam",
+			"targets": [
+				"crossbeam"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}

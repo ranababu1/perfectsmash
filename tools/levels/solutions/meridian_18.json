@@ -1,0 +1,8 @@
+[
+	{"name": "lance the synchroniser, pierce the glass", "steps": [
+		{"weapon": "temporal_lance", "target": "sync"},
+		{"weapon": "penetrator", "target": "core", "through": ["glass_a", "glass_b"]},
+		{"weapon": "penetrator", "target": "core", "through": ["glass_a", "glass_b"]},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

@@ -1,0 +1,9 @@
+[
+	{"name": "top down", "steps": [
+		{"weapon": "kinetic_accelerator", "target": "node_c"},
+		{"weapon": "temporal_lance", "target": "col_c1"},
+		{"weapon": "temporal_lance", "target": "col_b1"},
+		{"weapon": "kinetic_accelerator", "target": "node_b"},
+		{"weapon": "kinetic_accelerator", "target": "node_a"}
+	]}
+]

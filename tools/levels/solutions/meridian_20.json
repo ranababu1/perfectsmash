@@ -1,0 +1,24 @@
+[
+	{"name": "emitters in order", "steps": [
+		{"weapon": "disruptor", "target": "wall_w"},
+		{"weapon": "temporal_lance", "target": "em_1", "through": ["wall_w", "node_b", "screen"]},
+		{"weapon": "temporal_lance", "target": "anchor_a", "through": ["wall_w", "node_b"]},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "node_b"}
+	]},
+	{"name": "lob the first emitter", "steps": [
+		{"weapon": "breach_charge", "target": "em_3"},
+		{"weapon": "temporal_lance", "target": "em_1", "through": ["wall_w", "node_b", "screen"]},
+		{"weapon": "temporal_lance", "target": "anchor_a", "through": ["wall_w", "node_b"]},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "pulse_cannon", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "node_b"}
+	]}
+]

@@ -1,0 +1,9 @@
+[
+	{"name": "bridge the gaps", "steps": [
+		{"weapon": "pulse_cannon", "target": "g1_cell1"},
+		{"weapon": "disruptor", "target": "g2_cell1"},
+		{"weapon": "temporal_lance", "target": "g3_cell1"},
+		{"weapon": "temporal_lance", "target": "core", "through": ["g1_col1", "g2_col1"]},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

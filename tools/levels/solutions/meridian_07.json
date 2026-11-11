@@ -1,0 +1,8 @@
+[
+	{"name": "strip the shield, drop the cradle", "steps": [
+		{"weapon": "kinetic_accelerator", "target": "stab_front"},
+		{"weapon": "temporal_lance", "target": "anchor_l"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

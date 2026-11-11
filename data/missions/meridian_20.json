@@ -1,0 +1,288 @@
+{
+	"id": "meridian_20",
+	"name": "The Wrong Future",
+	"chapter": 5,
+	"briefing": "This is the Meridian central core, and every system that fed it. Three emitters hold its shield: one behind a low wall, one behind a phase screen, one under a loaded deck. A second core stands guard on the approach. Take them in the order the facility gives you, then end the convergence.",
+	"width": 2000,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 7,
+	"target_time": 105,
+	"rewards": {
+		"completion_points": 1900,
+		"completion_research_data": 60,
+		"optional_research_data": 9
+	},
+	"weapons": {
+		"temporal_lance": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 4
+		},
+		"breach_charge": {
+			"ammunition": 2
+		},
+		"pulse_cannon": {
+			"ammunition": 6
+		},
+		"disruptor": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "wall_w",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 480,
+			"y": 580.0,
+			"w": 60,
+			"h": 120,
+			"health_scale": 4.0
+		},
+		{
+			"id": "em_3",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 570,
+			"y": 600.0,
+			"w": 50,
+			"h": 80,
+			"health_scale": 0.8
+		},
+		{
+			"id": "node_b",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 710,
+			"y": 580.0,
+			"w": 80,
+			"h": 120,
+			"health_scale": 0.6,
+			"shielded_by": [
+				"em_3"
+			]
+		},
+		{
+			"id": "screen",
+			"kind": "phase_shield",
+			"material": "temporal_crystal",
+			"x": 830,
+			"y": 560.0,
+			"w": 24,
+			"h": 160
+		},
+		{
+			"id": "em_1",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 920,
+			"y": 600.0,
+			"w": 50,
+			"h": 80,
+			"health_scale": 0.8
+		},
+		{
+			"id": "anchor_a",
+			"kind": "anchor_column",
+			"material": "temporal_crystal",
+			"x": 1060,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "anchor_b",
+			"kind": "anchor_column",
+			"material": "reinforced_steel",
+			"x": 1300,
+			"y": 560.0,
+			"w": 30,
+			"h": 160
+		},
+		{
+			"id": "deck_f",
+			"kind": "convergence_deck",
+			"material": "composite",
+			"x": 1180,
+			"y": 465.0,
+			"w": 320,
+			"h": 30,
+			"supports": [
+				"anchor_a",
+				"anchor_b"
+			]
+		},
+		{
+			"id": "cap",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1180,
+			"y": 430.0,
+			"w": 140,
+			"h": 40,
+			"supports": [
+				"deck_f"
+			]
+		},
+		{
+			"id": "em_2",
+			"kind": "quantum_stabilizer",
+			"material": "electronic_module",
+			"x": 1180,
+			"y": 600.0,
+			"w": 50,
+			"h": 80,
+			"health_scale": 0.8
+		},
+		{
+			"id": "core_base",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1640,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "core",
+			"kind": "convergence_core",
+			"material": "reactor_housing",
+			"x": 1640,
+			"y": 420.0,
+			"w": 80,
+			"h": 120,
+			"supports": [
+				"core_base"
+			],
+			"critical_asset": true,
+			"health_scale": 1.8,
+			"shielded_by": [
+				"em_1",
+				"em_2",
+				"em_3"
+			]
+		},
+		{
+			"id": "ring_base_a",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1740,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "ring_a",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1740,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"ring_base_a"
+			],
+			"health_scale": 0.5
+		},
+		{
+			"id": "ring_base_b",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1810,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "ring_b",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1810,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"ring_base_b"
+			],
+			"health_scale": 0.5
+		},
+		{
+			"id": "ring_base_c",
+			"kind": "monolith_slab",
+			"material": "concrete",
+			"x": 1880,
+			"y": 560.0,
+			"w": 60,
+			"h": 160
+		},
+		{
+			"id": "ring_c",
+			"kind": "temporal_cell",
+			"material": "energy_component",
+			"x": 1880,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"ring_base_c"
+			],
+			"health_scale": 0.5
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the Meridian core",
+			"targets": [
+				"core"
+			]
+		},
+		{
+			"id": "guard",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the guardian core",
+			"targets": [
+				"node_b"
+			],
+			"count": 1
+		},
+		{
+			"id": "ring",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Burst the containment ring",
+			"targets": [
+				"ring_a",
+				"ring_b",
+				"ring_c"
+			],
+			"count": 2
+		},
+		{
+			"id": "deck",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the loaded deck",
+			"targets": [
+				"deck_f"
+			],
+			"count": 1
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 8 shots",
+			"limit": 8
+		}
+	]
+}

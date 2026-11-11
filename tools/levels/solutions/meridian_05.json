@@ -1,0 +1,7 @@
+[
+	{"name": "one lance, both relays", "steps": [
+		{"weapon": "temporal_lance", "target": "cell_b", "through": ["relay_l"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

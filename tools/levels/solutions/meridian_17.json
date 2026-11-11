@@ -1,0 +1,8 @@
+[
+	{"name": "one lance opens both", "steps": [
+		{"weapon": "temporal_lance", "target": "node_1", "through": ["screen"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]

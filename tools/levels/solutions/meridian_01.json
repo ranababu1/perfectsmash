@@ -1,0 +1,7 @@
+[
+	{"name": "lance through the shield, then finish", "steps": [
+		{"weapon": "temporal_lance", "target": "core", "through": ["phase_wall"]},
+		{"weapon": "kinetic_accelerator", "target": "core"},
+		{"weapon": "kinetic_accelerator", "target": "core"}
+	]}
+]
