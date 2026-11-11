@@ -1,0 +1,467 @@
+{
+ "seq": "ch04_outro",
+ "kind": "outro",
+ "chapter": "civitas",
+ "pre_roll_s": 3.0,
+ "slide_starts_s": [
+  3.0,
+  11.931,
+  21.773,
+  33.277
+ ],
+ "slide_ends_s": [
+  9.931,
+  19.773,
+  30.777,
+  42.818
+ ],
+ "gaps": [
+  [
+   9.931,
+   11.931
+  ],
+  [
+   19.773,
+   21.773
+  ],
+  [
+   30.777,
+   33.277
+  ]
+ ],
+ "end_card_s": 44.018,
+ "turn_s": 11.931,
+ "shift_s": 33.277,
+ "end_s": 45.018,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_01.master.wav",
+   "start_s": 3.0,
+   "duration_s": 6.931,
+   "words": [
+    {
+     "w": "Civitus",
+     "s": 0.0,
+     "e": 0.78
+    },
+    {
+     "w": "is",
+     "s": 0.78,
+     "e": 1.22
+    },
+    {
+     "w": "offline.",
+     "s": 1.22,
+     "e": 1.84
+    },
+    {
+     "w": "The",
+     "s": 3.04,
+     "e": 3.2
+    },
+    {
+     "w": "city",
+     "s": 3.2,
+     "e": 3.46
+    },
+    {
+     "w": "is",
+     "s": 3.46,
+     "e": 3.72
+    },
+    {
+     "w": "uncertain",
+     "s": 3.72,
+     "e": 4.2
+    },
+    {
+     "w": "again.",
+     "s": 4.2,
+     "e": 4.62
+    },
+    {
+     "w": "That",
+     "s": 5.52,
+     "e": 5.7
+    },
+    {
+     "w": "should",
+     "s": 5.7,
+     "e": 5.92
+    },
+    {
+     "w": "be",
+     "s": 5.92,
+     "e": 6.1
+    },
+    {
+     "w": "a",
+     "s": 6.1,
+     "e": 6.24
+    },
+    {
+     "w": "good",
+     "s": 6.24,
+     "e": 6.4
+    },
+    {
+     "w": "thing.",
+     "s": 6.4,
+     "e": 6.7
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Civitas is offline.",
+     "start_s": 0.0,
+     "end_s": 1.84
+    },
+    {
+     "text": "The city is uncertain again.",
+     "start_s": 3.04,
+     "end_s": 4.62
+    },
+    {
+     "text": "That should be a good thing.",
+     "start_s": 5.52,
+     "end_s": 6.751
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_02.master.wav",
+   "start_s": 11.931,
+   "duration_s": 7.841,
+   "words": [
+    {
+     "w": "But",
+     "s": 0.0,
+     "e": 0.2
+    },
+    {
+     "w": "the",
+     "s": 0.2,
+     "e": 0.36
+    },
+    {
+     "w": "recovered",
+     "s": 0.36,
+     "e": 0.78
+    },
+    {
+     "w": "model",
+     "s": 0.78,
+     "e": 1.22
+    },
+    {
+     "w": "contains",
+     "s": 1.22,
+     "e": 1.68
+    },
+    {
+     "w": "a",
+     "s": 1.68,
+     "e": 1.98
+    },
+    {
+     "w": "forecast",
+     "s": 1.98,
+     "e": 2.44
+    },
+    {
+     "w": "of",
+     "s": 2.44,
+     "e": 2.68
+    },
+    {
+     "w": "the",
+     "s": 2.68,
+     "e": 2.82
+    },
+    {
+     "w": "extinction",
+     "s": 2.82,
+     "e": 3.34
+    },
+    {
+     "w": "event,",
+     "s": 3.34,
+     "e": 3.84
+    },
+    {
+     "w": "complete",
+     "s": 4.62,
+     "e": 4.98
+    },
+    {
+     "w": "with",
+     "s": 4.98,
+     "e": 5.26
+    },
+    {
+     "w": "a",
+     "s": 5.26,
+     "e": 5.46
+    },
+    {
+     "w": "date",
+     "s": 5.46,
+     "e": 5.76
+    },
+    {
+     "w": "and",
+     "s": 5.76,
+     "e": 6.24
+    },
+    {
+     "w": "a",
+     "s": 6.24,
+     "e": 6.32
+    },
+    {
+     "w": "sequence",
+     "s": 6.32,
+     "e": 6.58
+    },
+    {
+     "w": "of",
+     "s": 6.58,
+     "e": 7.1
+    },
+    {
+     "w": "events.",
+     "s": 7.1,
+     "e": 7.42
+    }
+   ],
+   "sentences": [
+    {
+     "text": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
+     "start_s": 0.0,
+     "end_s": 7.661
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_03.master.wav",
+   "start_s": 21.773,
+   "duration_s": 9.004,
+   "words": [
+    {
+     "w": "The",
+     "s": 0.0,
+     "e": 0.22
+    },
+    {
+     "w": "forecast",
+     "s": 0.22,
+     "e": 0.72
+    },
+    {
+     "w": "was",
+     "s": 0.72,
+     "e": 1.12
+    },
+    {
+     "w": "written",
+     "s": 1.12,
+     "e": 1.52
+    },
+    {
+     "w": "before",
+     "s": 1.52,
+     "e": 2.08
+    },
+    {
+     "w": "the",
+     "s": 2.08,
+     "e": 2.46
+    },
+    {
+     "w": "event",
+     "s": 2.46,
+     "e": 2.8
+    },
+    {
+     "w": "happened.",
+     "s": 2.8,
+     "e": 3.42
+    },
+    {
+     "w": "It",
+     "s": 4.44,
+     "e": 4.56
+    },
+    {
+     "w": "was",
+     "s": 4.56,
+     "e": 4.78
+    },
+    {
+     "w": "not",
+     "s": 4.78,
+     "e": 5.0
+    },
+    {
+     "w": "predicting",
+     "s": 5.0,
+     "e": 5.64
+    },
+    {
+     "w": "the",
+     "s": 5.64,
+     "e": 5.94
+    },
+    {
+     "w": "future.",
+     "s": 5.94,
+     "e": 6.32
+    },
+    {
+     "w": "It",
+     "s": 7.36,
+     "e": 7.44
+    },
+    {
+     "w": "was",
+     "s": 7.44,
+     "e": 7.72
+    },
+    {
+     "w": "preparing",
+     "s": 7.72,
+     "e": 8.32
+    },
+    {
+     "w": "it.",
+     "s": 8.32,
+     "e": 8.7
+    }
+   ],
+   "sentences": [
+    {
+     "text": "The forecast was written before the event happened.",
+     "start_s": 0.0,
+     "end_s": 3.42
+    },
+    {
+     "text": "It was not predicting the future.",
+     "start_s": 4.44,
+     "end_s": 6.32
+    },
+    {
+     "text": "It was preparing it.",
+     "start_s": 7.36,
+     "end_s": 8.824
+    }
+   ]
+  },
+  {
+   "slide": 4,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_outro_04.master.wav",
+   "start_s": 33.277,
+   "duration_s": 9.541,
+   "words": [
+    {
+     "w": "All",
+     "s": 0.0,
+     "e": 0.3
+    },
+    {
+     "w": "four",
+     "s": 0.3,
+     "e": 0.66
+    },
+    {
+     "w": "programs",
+     "s": 0.66,
+     "e": 1.28
+    },
+    {
+     "w": "point",
+     "s": 1.28,
+     "e": 1.6
+    },
+    {
+     "w": "to",
+     "s": 1.6,
+     "e": 1.86
+    },
+    {
+     "w": "one",
+     "s": 1.86,
+     "e": 2.08
+    },
+    {
+     "w": "location,",
+     "s": 2.08,
+     "e": 2.72
+    },
+    {
+     "w": "Meridian",
+     "s": 3.7,
+     "e": 4.1
+    },
+    {
+     "w": "2104.",
+     "s": 4.1,
+     "e": 5.8
+    },
+    {
+     "w": "This",
+     "s": 7.06,
+     "e": 7.42
+    },
+    {
+     "w": "is",
+     "s": 7.42,
+     "e": 7.76
+    },
+    {
+     "w": "the",
+     "s": 7.76,
+     "e": 7.96
+    },
+    {
+     "w": "final",
+     "s": 7.96,
+     "e": 8.36
+    },
+    {
+     "w": "intervention.",
+     "s": 8.36,
+     "e": 9.06
+    }
+   ],
+   "sentences": [
+    {
+     "text": "All four programmes point to one location.",
+     "start_s": 0.0,
+     "end_s": 2.72
+    },
+    {
+     "text": "Meridian.",
+     "start_s": 3.7,
+     "end_s": 4.1
+    },
+    {
+     "text": "2104.",
+     "start_s": 4.1,
+     "end_s": 7.76
+    },
+    {
+     "text": "This is the final intervention.",
+     "start_s": 7.76,
+     "end_s": 9.361
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,453 @@
+{
+ "seq": "ch04_intro",
+ "kind": "intro",
+ "chapter": "civitas",
+ "pre_roll_s": 3.5,
+ "slide_starts_s": [
+  3.5,
+  10.259,
+  26.096
+ ],
+ "slide_ends_s": [
+  8.259,
+  23.596,
+  37.816
+ ],
+ "gaps": [
+  [
+   8.259,
+   10.259
+  ],
+  [
+   23.596,
+   26.096
+  ]
+ ],
+ "end_card_s": 39.216,
+ "end_s": 40.216,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_intro_01.master.wav",
+   "start_s": 3.5,
+   "duration_s": 4.759,
+   "words": [
+    {
+     "w": "People",
+     "s": 0.0,
+     "e": 0.36
+    },
+    {
+     "w": "no",
+     "s": 0.36,
+     "e": 0.64
+    },
+    {
+     "w": "longer",
+     "s": 0.64,
+     "e": 0.98
+    },
+    {
+     "w": "argued",
+     "s": 0.98,
+     "e": 1.46
+    },
+    {
+     "w": "with",
+     "s": 1.46,
+     "e": 1.74
+    },
+    {
+     "w": "the",
+     "s": 1.74,
+     "e": 1.9
+    },
+    {
+     "w": "system.",
+     "s": 1.9,
+     "e": 2.3
+    },
+    {
+     "w": "They",
+     "s": 3.28,
+     "e": 3.42
+    },
+    {
+     "w": "no",
+     "s": 3.42,
+     "e": 3.58
+    },
+    {
+     "w": "longer",
+     "s": 3.58,
+     "e": 3.84
+    },
+    {
+     "w": "needed",
+     "s": 3.84,
+     "e": 4.16
+    },
+    {
+     "w": "to.",
+     "s": 4.16,
+     "e": 4.5
+    }
+   ],
+   "sentences": [
+    {
+     "text": "People no longer argued with the system.",
+     "start_s": 0.0,
+     "end_s": 2.3
+    },
+    {
+     "text": "They no longer needed to.",
+     "start_s": 3.28,
+     "end_s": 4.579
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_intro_02.master.wav",
+   "start_s": 10.259,
+   "duration_s": 13.337,
+   "words": [
+    {
+     "w": "Civitas",
+     "s": 0.0,
+     "e": 0.6
+    },
+    {
+     "w": "predicted",
+     "s": 0.6,
+     "e": 1.18
+    },
+    {
+     "w": "what",
+     "s": 1.18,
+     "e": 1.46
+    },
+    {
+     "w": "they",
+     "s": 1.46,
+     "e": 1.62
+    },
+    {
+     "w": "would",
+     "s": 1.62,
+     "e": 1.78
+    },
+    {
+     "w": "want,",
+     "s": 1.78,
+     "e": 2.16
+    },
+    {
+     "w": "where",
+     "s": 2.62,
+     "e": 2.74
+    },
+    {
+     "w": "they",
+     "s": 2.74,
+     "e": 2.9
+    },
+    {
+     "w": "would",
+     "s": 2.9,
+     "e": 3.08
+    },
+    {
+     "w": "go,",
+     "s": 3.08,
+     "e": 3.42
+    },
+    {
+     "w": "what",
+     "s": 3.88,
+     "e": 3.96
+    },
+    {
+     "w": "they",
+     "s": 3.96,
+     "e": 4.12
+    },
+    {
+     "w": "would",
+     "s": 4.12,
+     "e": 4.28
+    },
+    {
+     "w": "buy,",
+     "s": 4.28,
+     "e": 4.7
+    },
+    {
+     "w": "and",
+     "s": 5.28,
+     "e": 5.42
+    },
+    {
+     "w": "which",
+     "s": 5.42,
+     "e": 5.64
+    },
+    {
+     "w": "choices",
+     "s": 5.64,
+     "e": 6.2
+    },
+    {
+     "w": "would",
+     "s": 6.2,
+     "e": 6.5
+    },
+    {
+     "w": "cause",
+     "s": 6.5,
+     "e": 6.9
+    },
+    {
+     "w": "instability.",
+     "s": 6.9,
+     "e": 7.74
+    },
+    {
+     "w": "The",
+     "s": 8.82,
+     "e": 8.96
+    },
+    {
+     "w": "world",
+     "s": 8.96,
+     "e": 9.3
+    },
+    {
+     "w": "became",
+     "s": 9.3,
+     "e": 9.7
+    },
+    {
+     "w": "safer.",
+     "s": 9.7,
+     "e": 10.4
+    },
+    {
+     "w": "Then",
+     "s": 11.36,
+     "e": 11.66
+    },
+    {
+     "w": "it",
+     "s": 11.66,
+     "e": 12.14
+    },
+    {
+     "w": "became",
+     "s": 12.14,
+     "e": 12.48
+    },
+    {
+     "w": "smaller.",
+     "s": 12.48,
+     "e": 13.02
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability.",
+     "start_s": 0.0,
+     "end_s": 7.74
+    },
+    {
+     "text": "The world became safer.",
+     "start_s": 8.82,
+     "end_s": 10.4
+    },
+    {
+     "text": "Then it became smaller.",
+     "start_s": 11.36,
+     "end_s": 13.157
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/cvt_vo_intro_03.master.wav",
+   "start_s": 26.096,
+   "duration_s": 11.72,
+   "words": [
+    {
+     "w": "Your",
+     "s": 0.0,
+     "e": 0.32
+    },
+    {
+     "w": "target",
+     "s": 0.32,
+     "e": 0.76
+    },
+    {
+     "w": "is",
+     "s": 0.76,
+     "e": 1.14
+    },
+    {
+     "w": "the",
+     "s": 1.14,
+     "e": 1.32
+    },
+    {
+     "w": "Civitas",
+     "s": 1.32,
+     "e": 1.78
+    },
+    {
+     "w": "prediction",
+     "s": 1.78,
+     "e": 2.22
+    },
+    {
+     "w": "core",
+     "s": 2.22,
+     "e": 2.68
+    },
+    {
+     "w": "and",
+     "s": 2.68,
+     "e": 2.98
+    },
+    {
+     "w": "its",
+     "s": 2.98,
+     "e": 3.18
+    },
+    {
+     "w": "physical",
+     "s": 3.18,
+     "e": 3.62
+    },
+    {
+     "w": "relay",
+     "s": 3.62,
+     "e": 4.02
+    },
+    {
+     "w": "network.",
+     "s": 4.02,
+     "e": 4.58
+    },
+    {
+     "w": "The",
+     "s": 5.3,
+     "e": 5.44
+    },
+    {
+     "w": "system",
+     "s": 5.44,
+     "e": 5.74
+    },
+    {
+     "w": "is",
+     "s": 5.74,
+     "e": 6.02
+    },
+    {
+     "w": "linked",
+     "s": 6.02,
+     "e": 6.34
+    },
+    {
+     "w": "to",
+     "s": 6.34,
+     "e": 6.62
+    },
+    {
+     "w": "the",
+     "s": 6.62,
+     "e": 6.76
+    },
+    {
+     "w": "other",
+     "s": 6.76,
+     "e": 7.0
+    },
+    {
+     "w": "facilities.",
+     "s": 7.0,
+     "e": 7.56
+    },
+    {
+     "w": "We",
+     "s": 8.66,
+     "e": 8.8
+    },
+    {
+     "w": "need",
+     "s": 8.8,
+     "e": 9.02
+    },
+    {
+     "w": "to",
+     "s": 9.02,
+     "e": 9.26
+    },
+    {
+     "w": "know",
+     "s": 9.26,
+     "e": 9.54
+    },
+    {
+     "w": "who",
+     "s": 9.54,
+     "e": 9.9
+    },
+    {
+     "w": "is",
+     "s": 9.9,
+     "e": 10.18
+    },
+    {
+     "w": "feeding",
+     "s": 10.18,
+     "e": 10.54
+    },
+    {
+     "w": "it",
+     "s": 10.54,
+     "e": 10.74
+    },
+    {
+     "w": "the",
+     "s": 10.74,
+     "e": 10.88
+    },
+    {
+     "w": "future.",
+     "s": 10.88,
+     "e": 11.24
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Your target is the Civitas prediction core and its physical relay network.",
+     "start_s": 0.0,
+     "end_s": 4.58
+    },
+    {
+     "text": "The system is linked to the other facilities.",
+     "start_s": 5.3,
+     "end_s": 7.56
+    },
+    {
+     "text": "We need to know who is feeding it the future.",
+     "start_s": 8.66,
+     "end_s": 11.54
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch03_outro/bed48.wav",
+ "base": "ch03_outro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_outro_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_outro_02.master.wav",
+   11.38
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_outro_03.master.wav",
+   26.847
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "nova_signal",
+   "path": "/workspace/tfj-narration-el/sfx/nova_signal.wav",
+   "start_s": 11.38,
+   "lufs": -31,
+   "fade_in": 2.0,
+   "fade_out": 3.0
+  }
+ ]
+}

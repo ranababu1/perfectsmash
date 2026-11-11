@@ -1,0 +1,36 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch03_intro/bed48.wav",
+ "base": "ch03_intro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_intro_01.master.wav",
+   3.5
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_intro_02.master.wav",
+   14.341
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/nvg_vo_intro_03.master.wav",
+   24.131
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "arrival",
+   "path": "/workspace/tfj-narration-el/sfx/arrival.wav",
+   "start_s": 0.0,
+   "lufs": -24,
+   "fade_in": 0,
+   "fade_out": 0.5
+  },
+  {
+   "name": "nova_reactor",
+   "path": "/workspace/tfj-narration-el/sfx/nova_reactor.wav",
+   "start_s": 12.841,
+   "lufs": -32,
+   "fade_in": 2.0,
+   "fade_out": 3.0
+  }
+ ]
+}

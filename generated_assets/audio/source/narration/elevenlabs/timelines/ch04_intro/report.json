@@ -1,0 +1,77 @@
+{
+ "seq": "ch04_intro",
+ "voice": [
+  {
+   "base": "cvt_vo_intro_01",
+   "take": "s2",
+   "lufs": -17.7,
+   "tp": -2.8,
+   "lra": 1.2,
+   "seconds": 4.759,
+   "kbps": 96,
+   "bytes": 57361,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "cvt_vo_intro_02",
+   "take": "s3",
+   "lufs": -18.0,
+   "tp": -1.9,
+   "lra": 2.1,
+   "seconds": 13.337,
+   "kbps": 94,
+   "bytes": 157357,
+   "sr": 44100,
+   "ch": 1
+  },
+  {
+   "base": "cvt_vo_intro_03",
+   "take": "s3",
+   "lufs": -18.0,
+   "tp": -2.7,
+   "lra": 1.6,
+   "seconds": 11.72,
+   "kbps": 89,
+   "bytes": 130863,
+   "sr": 44100,
+   "ch": 1
+  }
+ ],
+ "mix": {
+  "mix_lufs": -16.0,
+  "mix_tp": -1.74,
+  "voice_over_ducked_bed_lu": 11.1,
+  "seconds": 55.4
+ },
+ "bed_file": {
+  "lufs": -16.5,
+  "tp": -3.4,
+  "lra": 8.1,
+  "seconds": 55.4,
+  "kbps": 140,
+  "bytes": 969772,
+  "sr": 44100,
+  "ch": 2
+ },
+ "mix_ogg": {
+  "lufs": -16.0,
+  "tp": -1.8,
+  "lra": 5.5,
+  "seconds": 55.4,
+  "kbps": 135,
+  "bytes": 937779,
+  "sr": 44100,
+  "ch": 2
+ },
+ "mix_mp3": {
+  "lufs": -16.2,
+  "tp": -2.0,
+  "lra": 5.2,
+  "seconds": 55.432,
+  "kbps": 192,
+  "bytes": 1331034,
+  "sr": 44100,
+  "ch": 2
+ }
+}

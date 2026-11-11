@@ -13,5 +13,18 @@
  "ch02_outro_01": "s4",
  "ch02_outro_02": "s5",
  "ch02_outro_03": "s5",
- "ch02_outro_04": "s4"
+ "ch02_outro_04": "s4",
+ "ch03_intro_01": "s1",
+ "ch03_intro_02": "s4",
+ "ch03_intro_03": "s5",
+ "ch03_outro_01": "s2",
+ "ch03_outro_02": "s5",
+ "ch03_outro_03": "s2",
+ "ch04_intro_01": "s2",
+ "ch04_intro_02": "s3",
+ "ch04_intro_03": "s3",
+ "ch04_outro_01": "s3",
+ "ch04_outro_02": "s2",
+ "ch04_outro_03": "s3",
+ "ch04_outro_04": "s1"
 }

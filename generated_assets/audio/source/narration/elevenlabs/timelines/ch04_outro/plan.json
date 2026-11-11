@@ -1,0 +1,32 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch04_outro/bed48.wav",
+ "base": "ch04_outro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/cvt_vo_outro_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/cvt_vo_outro_02.master.wav",
+   11.931
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/cvt_vo_outro_03.master.wav",
+   21.773
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/cvt_vo_outro_04.master.wav",
+   33.277
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "civitas_data",
+   "path": "/workspace/tfj-narration-el/sfx/civitas_data.wav",
+   "start_s": 17.273,
+   "lufs": -29,
+   "fade_in": 1.0,
+   "fade_out": 1.0
+  }
+ ]
+}

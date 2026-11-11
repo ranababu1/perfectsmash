@@ -537,5 +537,467 @@
   "hypB": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
   "errsB": 0,
   "errs_min": 0
+ },
+ "takes/ch03_intro_01_s3.wav": {
+  "hypA": "Novagrid changed the world.  Cheap, abundant energy.  No more fuel wars.  No more blackouts.",
+  "errsA": 0,
+  "hypB": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No More Blackouts.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_01_s4.wav": {
+  "hypA": "Novagrid, Novagrid changed the world.  Cheap, abundant energy.  No more fuel wars.  No more blackouts.",
+  "errsA": 2,
+  "hypB": "Nova Grid, Nova Grid changed the world. Cheap and energy. No more fuel wars. ",
+  "errsB": 6,
+  "errs_min": 2
+ },
+ "takes/ch03_intro_01_s5.wav": {
+  "hypA": "Novagrid changed the world, cheap, abundant energy, no more fuel wars, no more blackouts.",
+  "errsA": 0,
+  "hypB": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_02_s1.wav": {
+  "hypA": "The system's output is now carrying an unexplained repeating signal.  The company calls it harmless interference.",
+  "errsA": 0,
+  "hypB": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_02_s2.wav": {
+  "hypA": "The system's output is now carrying an unexplained repeating signal.  The company calls it harmless interference.",
+  "errsA": 0,
+  "hypB": "The system's output is now unexplained repeating signal. The company calls it harmless interference. AURA, VITA, Civitas, Meridian.",
+  "errsB": 6,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_02_s3.wav": {
+  "hypA": "The system's output is now carrying an unexplained repeating signal.  The company calls it harmless interference.",
+  "errsA": 0,
+  "hypB": "The system's output is now carrying an unexplained repeating signal. The company calls it Harmless Interference.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_02_s4.wav": {
+  "hypA": "The system's output is now carrying an unexplained repeating signal.  The company calls it harmless interference.",
+  "errsA": 0,
+  "hypB": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_02_s5.wav": {
+  "hypA": "The system's output is now carrying an unexplained repeating signal.  The company calls it harmless interference.",
+  "errsA": 0,
+  "hypB": "The system's output is now carrying an unexplained repeating signal. The company calls it Harmless Interference.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_03_s1.wav": {
+  "hypA": "Our analysis says the signal is synchronized with  with the  same source found in Helix and Vita.",
+  "errsA": 9,
+  "hypB": "Our analysis says the signal is with the same source found in Helix and VITA Your target is the containment fusion complex.",
+  "errsB": 3,
+  "errs_min": 3
+ },
+ "takes/ch03_intro_03_s2.wav": {
+  "hypA": "Our analysis says the signal is synchronized with the same source found in HELIX and VITA.  Your target is the containment and distribution complex.",
+  "errsA": 0,
+  "hypB": "Our analysis says the signal is synchronized with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_03_s3.wav": {
+  "hypA": "Our analysis says the signal is synchronized with the same source found in HELIX and VITA.  Your target is the containment and distribution complex.",
+  "errsA": 0,
+  "hypB": "Our analysis says the signal is synchronized with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_03_s4.wav": {
+  "hypA": "Our analysis says the signal is synchronized with the same source found in HELIX and VITA.  Your target is the containment and distribution complex.",
+  "errsA": 0,
+  "hypB": "Our analysis says the signal is synchronized with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_03_s5.wav": {
+  "hypA": "Our analysis says the signal is synchronised with the same source found in HEWITA.  Your target is the containment and distribution complex.",
+  "errsA": 3,
+  "hypB": "Our analysis says the signal is synchronized with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_01_s1.wav": {
+  "hypA": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsA": 0,
+  "hypB": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_01_s2.wav": {
+  "hypA": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsA": 0,
+  "hypB": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_01_s3.wav": {
+  "hypA": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsA": 0,
+  "hypB": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_01_s4.wav": {
+  "hypA": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsA": 0,
+  "hypB": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_01_s5.wav": {
+  "hypA": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
+  "errsA": 0,
+  "hypB": "The grid is broken. The energy never reaches the scale recorded in the original future.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_02_s1.wav": {
+  "hypA": "But the signal survived in the last captured data.  It was not generated by the reactor.  It was being received by it.  And its timestamp is older than the project it's-",
+  "errsA": 1,
+  "hypB": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_02_s2.wav": {
+  "hypA": "But the signal survived in the last captured data.  It was not generated by the reactor.  It was being received by it.  And its timestamp is older than the project itself.",
+  "errsA": 0,
+  "hypB": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_02_s3.wav": {
+  "hypA": "But the signal survived in the last captured data.  It was not generated by the reactor.  It was being received by it.  And its timestamp is older than the project itself.",
+  "errsA": 0,
+  "hypB": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_02_s4.wav": {
+  "hypA": "But the signal survived in the last captured data.  It was not generated by the reactor.  It was being received by it.  And its timestamp is older than the project itself.",
+  "errsA": 0,
+  "hypB": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_02_s5.wav": {
+  "hypA": "But the signal survived in the last captured data.  It was not generated by the reactor.  It was being received by it.  And its timestamp is older than the project itself.",
+  "errsA": 0,
+  "hypB": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_03_s1.wav": {
+  "hypA": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions.",
+  "errsA": 0,
+  "hypB": "New coordinates. Civitas Network 2100. The next target controls how the world makes decisions.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_03_s2.wav": {
+  "hypA": "New coordinates. Civitas Network, 2100.  The next target controls how the world makes decisions.",
+  "errsA": 0,
+  "hypB": "New coordinates. Civitas Network 2100. The next target controls how the world makes decisions.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_03_s3.wav": {
+  "hypA": "New coordinates. Civitas Network, 2100.  The next target controls how the world makes decisions.",
+  "errsA": 0,
+  "hypB": "New coordinates. Civitas Network 2100. The next target controls how the world makes decisions.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_03_s4.wav": {
+  "hypA": "New coordinates. Civitas Network, 2100. The next target controls how the world makes decisions.",
+  "errsA": 0,
+  "hypB": "New coordinates. Civitas Network. 2100 The next target controls how the world makes decisions.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_outro_03_s5.wav": {
+  "hypA": "New coordinates, Civitas Network, 2100.  The next target controls how the world makes decisions.",
+  "errsA": 0,
+  "hypB": "New coordinates. Civitas Network  The next target controls how the world makes decisions.",
+  "errsB": 3,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_01_s1.wav": {
+  "hypA": "People no longer argued with the",
+  "errsA": 6,
+  "hypB": "People no longer argued with the system. ",
+  "errsB": 5,
+  "errs_min": 5
+ },
+ "takes/ch04_intro_01_s2.wav": {
+  "hypA": "People no longer argued with the system, they no longer  needed to.",
+  "errsA": 0,
+  "hypB": "People no longer argued with the system. They no longer needed to.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_01_s3.wav": {
+  "hypA": "People no longer argued with the system, they no longer needed to.",
+  "errsA": 0,
+  "hypB": "People no longer argued with the system. They no longer needed to.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_01_s4.wav": {
+  "hypA": "People no longer argued with the system. They no longer needed to.",
+  "errsA": 0,
+  "hypB": "People no longer argued with the system. They no longer needed to.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_01_s5.wav": {
+  "hypA": "People no longer argued with the system. They no longer needed to.",
+  "errsA": 0,
+  "hypB": "People no longer argued with the system. They no longer needed to.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_02_s1.wav": {
+  "hypA": "Civitas predicted what they would want, where they would go, what they would buy,  and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsA": 0,
+  "hypB": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_02_s2.wav": {
+  "hypA": "Civitas predicted what they would want, where they would go, what they would buy,  and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsA": 0,
+  "hypB": "Civitas predicted what they would want, where they would go. What they would buy and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_02_s3.wav": {
+  "hypA": "See you in the next video.",
+  "errsA": 27,
+  "hypB": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_02_s4.wav": {
+  "hypA": "Civitas predicted what they would want, where they would go, what they would buy,  and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsA": 0,
+  "hypB": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_02_s5.wav": {
+  "hypA": "Civitas predicted what they would want, where they would go, what they would buy, and which  choices would cause instability.  The world became safer.  Then it became smaller.",
+  "errsA": 0,
+  "hypB": "Civitas predicted what they would want, where they would go, what they would buy. And which choices would cause instability? The world became safer. Then it became smaller.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_03_s1.wav": {
+  "hypA": "Your target is the Civitas prediction core and its physical relay network.  The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsA": 0,
+  "hypB": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_03_s2.wav": {
+  "hypA": "Your target is the Civitas prediction core and its physical relay network.  The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsA": 0,
+  "hypB": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_03_s3.wav": {
+  "hypA": "Your target is the Civitas prediction core and its physical relay network.  The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsA": 0,
+  "hypB": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_03_s4.wav": {
+  "hypA": "Your target is the Civitas prediction core and its physical relay network.  The system is linked to the other facilities.  We need to know who is feeding it the future.",
+  "errsA": 0,
+  "hypB": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_intro_03_s5.wav": {
+  "hypA": "Your target is the Civitas prediction core and its physical relay network.  The system is linked to the other. We need to know who is feeding it the future.",
+  "errsA": 1,
+  "hypB": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_01_s1.wav": {
+  "hypA": "Civetas is offline. The city is uncertain again. That should be a good thing.",
+  "errsA": 1,
+  "hypB": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_01_s2.wav": {
+  "hypA": "Civitas is offline, the city is uncertain again.  That should be a good thing.",
+  "errsA": 0,
+  "hypB": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_01_s3.wav": {
+  "hypA": "Sivitus is offline, the city is uncertain again, that should be a good thing.",
+  "errsA": 1,
+  "hypB": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_01_s4.wav": {
+  "hypA": "The princess is offline. The city is uncertain again. Should be a good thing.",
+  "errsA": 3,
+  "hypB": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_01_s5.wav": {
+  "hypA": "Sivitas is offline.  The city is uncertain again.  That should be a good thing.",
+  "errsA": 1,
+  "hypB": "Civitas is offline. The city is uncertain again. That should be a good thing.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_02_s1.wav": {
+  "hypA": "But the recovered model contains a forecast of the extinction event,  complete with a date and a sequence of events.",
+  "errsA": 0,
+  "hypB": "But the recovered model contains a forecast of the extinction event. Complete with a date and a sequence of events.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_02_s2.wav": {
+  "hypA": "But the recovered model contains a forecast of the extinction event,  complete with a date and a sequence of events.",
+  "errsA": 0,
+  "hypB": "But the recovered model contains a forecast of the extinction event. Complete with a date and a sequence of events.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_02_s3.wav": {
+  "hypA": "But the recovered model contains a forecast of the extinction event,  complete with a date and a sequence of events.",
+  "errsA": 0,
+  "hypB": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_02_s4.wav": {
+  "hypA": "But the recovered model contains a forecast of the extinction event,  complete with a date and a sequence of events.",
+  "errsA": 0,
+  "hypB": "But the recovered model contains a forecast of the extinction event. Complete with a date and a sequence of events.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_02_s5.wav": {
+  "hypA": "But the recovered model contains a forecast of the extinction event,  complete with a date and a sequence of events.",
+  "errsA": 0,
+  "hypB": "But the recovered model contains a forecast of the extinction event. Complete with a date and a sequence of events.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_03_s1.wav": {
+  "hypA": "The forecast was written before the event happened.  It was not predicting the future, it was preparing it.",
+  "errsA": 0,
+  "hypB": "The forecast was written before the event happened. It was not predicting the future. It was preparing it. Hello, everyone.",
+  "errsB": 2,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_03_s2.wav": {
+  "hypA": "The forecast was written before the event happened.  It was not predicting the future.  It was preparing it.",
+  "errsA": 0,
+  "hypB": "It was written before the event happened. It was not predicting the future. It was preparing it.",
+  "errsB": 2,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_03_s3.wav": {
+  "hypA": "The forecast was written before the event happened.  It was not predicting the future, it was preparing it.",
+  "errsA": 0,
+  "hypB": "The forecast was written before the event happened. It was not predicting the future. It was preparing it.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_03_s4.wav": {
+  "hypA": "The forecast was written before the event happened.  It was not predicting the future.  It was preparing it.",
+  "errsA": 0,
+  "hypB": "The 4 was written before the event happened. It was not predicting the future. It was preparing it.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_03_s5.wav": {
+  "hypA": "The forecast was written before the event happened.  It was not predicting the future, it was preparing it.",
+  "errsA": 0,
+  "hypB": "The forecast was written before the event happened. It was not predicting the future. It was preparing it.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_04_s1.wav": {
+  "hypA": "All four programs point to one location. Meridian 2104. This is the final intervention.",
+  "errsA": 0,
+  "hypB": "All four programs point to one location. Meridian. 2104. This is the final intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_04_s2.wav": {
+  "hypA": "All four programs point to one location, Meridian 2104. This is the final intervention.",
+  "errsA": 0,
+  "hypB": "All four programs point to one location. Meridian. 2104. This is the final intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_04_s3.wav": {
+  "hypA": "All four programs point to one location, Meridian 2104. This is the final intervention.",
+  "errsA": 0,
+  "hypB": "All four programs point to one location. Meridian. 2104. This is the final intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_04_s4.wav": {
+  "hypA": "All four programs point to one location. Meridian 2104. This is the final intervention.",
+  "errsA": 0,
+  "hypB": "All four programs point to one location. Meridian. 2104. This is the final intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch04_outro_04_s5.wav": {
+  "hypA": "All four programs point to one location. Meridian 2104. This is the final intervention.",
+  "errsA": 0,
+  "hypB": "All four programs point to one location. Meridian. 2104. This is the final intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_01_s1.wav": {
+  "hypA": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsA": 0,
+  "hypB": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_01_s2.wav": {
+  "hypA": "Meridian does not appear in public records.  It funded no single invention.  It connected them.",
+  "errsA": 0,
+  "hypB": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch05_intro_01_s3.wav": {
+  "hypA": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsA": 0,
+  "hypB": "Meridian does not appear in public records. It funded no single invention. It connected them.",
+  "errsB": 0,
+  "errs_min": 0
  }
 }
