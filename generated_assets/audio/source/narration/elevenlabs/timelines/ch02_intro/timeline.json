@@ -1,0 +1,597 @@
+{
+ "seq": "ch02_intro",
+ "kind": "intro",
+ "chapter": "vita",
+ "pre_roll_s": 3.5,
+ "slide_starts_s": [
+  3.5,
+  12.497,
+  23.854,
+  33.943,
+  46.122
+ ],
+ "slide_ends_s": [
+  10.497,
+  21.854,
+  31.443,
+  44.122,
+  52.212
+ ],
+ "gaps": [
+  [
+   10.497,
+   12.497
+  ],
+  [
+   21.854,
+   23.854
+  ],
+  [
+   31.443,
+   33.943
+  ],
+  [
+   44.122,
+   46.122
+  ]
+ ],
+ "end_card_s": 53.612,
+ "end_s": 54.612,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_intro_01.master.wav",
+   "start_s": 3.5,
+   "duration_s": 6.997,
+   "words": [
+    {
+     "w": "The",
+     "s": 0.0,
+     "e": 0.22
+    },
+    {
+     "w": "first",
+     "s": 0.22,
+     "e": 0.58
+    },
+    {
+     "w": "intervention",
+     "s": 0.58,
+     "e": 1.28
+    },
+    {
+     "w": "changed",
+     "s": 1.28,
+     "e": 2.04
+    },
+    {
+     "w": "the",
+     "s": 2.04,
+     "e": 2.34
+    },
+    {
+     "w": "city,",
+     "s": 2.34,
+     "e": 2.7
+    },
+    {
+     "w": "it",
+     "s": 3.7,
+     "e": 3.82
+    },
+    {
+     "w": "did",
+     "s": 3.82,
+     "e": 3.94
+    },
+    {
+     "w": "not",
+     "s": 3.94,
+     "e": 4.18
+    },
+    {
+     "w": "change",
+     "s": 4.18,
+     "e": 4.58
+    },
+    {
+     "w": "the",
+     "s": 4.58,
+     "e": 4.78
+    },
+    {
+     "w": "people",
+     "s": 4.78,
+     "e": 5.08
+    },
+    {
+     "w": "who",
+     "s": 5.08,
+     "e": 5.34
+    },
+    {
+     "w": "built",
+     "s": 5.34,
+     "e": 5.6
+    },
+    {
+     "w": "the",
+     "s": 5.6,
+     "e": 5.82
+    },
+    {
+     "w": "next",
+     "s": 5.82,
+     "e": 6.06
+    },
+    {
+     "w": "machine.",
+     "s": 6.06,
+     "e": 6.52
+    }
+   ],
+   "sentences": [
+    {
+     "text": "The first intervention changed the city.",
+     "start_s": 0.0,
+     "end_s": 2.7
+    },
+    {
+     "text": "It did not change the people who built the next machine.",
+     "start_s": 3.7,
+     "end_s": 6.817
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_intro_02.master.wav",
+   "start_s": 12.497,
+   "duration_s": 9.357,
+   "words": [
+    {
+     "w": "In",
+     "s": 0.0,
+     "e": 0.22
+    },
+    {
+     "w": "2092,",
+     "s": 0.22,
+     "e": 1.3
+    },
+    {
+     "w": "Vita",
+     "s": 1.92,
+     "e": 2.12
+    },
+    {
+     "w": "Genomics",
+     "s": 2.12,
+     "e": 2.78
+    },
+    {
+     "w": "is",
+     "s": 2.78,
+     "e": 3.0
+    },
+    {
+     "w": "selling",
+     "s": 3.0,
+     "e": 3.34
+    },
+    {
+     "w": "the",
+     "s": 3.34,
+     "e": 3.6
+    },
+    {
+     "w": "end",
+     "s": 3.6,
+     "e": 4.04
+    },
+    {
+     "w": "of",
+     "s": 4.04,
+     "e": 4.28
+    },
+    {
+     "w": "disease.",
+     "s": 4.28,
+     "e": 4.84
+    },
+    {
+     "w": "Its",
+     "s": 5.54,
+     "e": 5.7
+    },
+    {
+     "w": "treatments",
+     "s": 5.7,
+     "e": 6.16
+    },
+    {
+     "w": "promise",
+     "s": 6.16,
+     "e": 6.56
+    },
+    {
+     "w": "stronger",
+     "s": 6.56,
+     "e": 7.14
+    },
+    {
+     "w": "bodies",
+     "s": 7.14,
+     "e": 7.64
+    },
+    {
+     "w": "and",
+     "s": 7.64,
+     "e": 8.04
+    },
+    {
+     "w": "longer",
+     "s": 8.04,
+     "e": 8.46
+    },
+    {
+     "w": "lives.",
+     "s": 8.46,
+     "e": 9.02
+    }
+   ],
+   "sentences": [
+    {
+     "text": "In 2092, VITA Genomics is selling the end of disease.",
+     "start_s": 0.0,
+     "end_s": 6.16
+    },
+    {
+     "text": "Its treatments promise stronger bodies and longer lives.",
+     "start_s": 6.16,
+     "end_s": 9.177
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_intro_03.master.wav",
+   "start_s": 23.854,
+   "duration_s": 7.589,
+   "words": [
+    {
+     "w": "But",
+     "s": 0.0,
+     "e": 0.18
+    },
+    {
+     "w": "the",
+     "s": 0.18,
+     "e": 0.42
+    },
+    {
+     "w": "program",
+     "s": 0.42,
+     "e": 0.78
+    },
+    {
+     "w": "is",
+     "s": 0.78,
+     "e": 1.06
+    },
+    {
+     "w": "no",
+     "s": 1.06,
+     "e": 1.26
+    },
+    {
+     "w": "longer",
+     "s": 1.26,
+     "e": 1.64
+    },
+    {
+     "w": "correcting",
+     "s": 1.64,
+     "e": 2.2
+    },
+    {
+     "w": "illness.",
+     "s": 2.2,
+     "e": 2.78
+    },
+    {
+     "w": "It",
+     "s": 3.9,
+     "e": 4.0
+    },
+    {
+     "w": "is",
+     "s": 4.0,
+     "e": 4.2
+    },
+    {
+     "w": "making",
+     "s": 4.2,
+     "e": 4.44
+    },
+    {
+     "w": "people",
+     "s": 4.44,
+     "e": 4.84
+    },
+    {
+     "w": "dependent",
+     "s": 4.84,
+     "e": 5.42
+    },
+    {
+     "w": "on",
+     "s": 5.42,
+     "e": 5.78
+    },
+    {
+     "w": "the",
+     "s": 5.78,
+     "e": 5.98
+    },
+    {
+     "w": "system",
+     "s": 5.98,
+     "e": 6.28
+    },
+    {
+     "w": "that",
+     "s": 6.28,
+     "e": 6.54
+    },
+    {
+     "w": "edits",
+     "s": 6.54,
+     "e": 6.96
+    },
+    {
+     "w": "them.",
+     "s": 6.96,
+     "e": 7.26
+    }
+   ],
+   "sentences": [
+    {
+     "text": "But the programme is no longer correcting illness.",
+     "start_s": 0.0,
+     "end_s": 2.78
+    },
+    {
+     "text": "It is making people dependent on the system that edits them.",
+     "start_s": 3.9,
+     "end_s": 7.409
+    }
+   ]
+  },
+  {
+   "slide": 4,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_intro_04.master.wav",
+   "start_s": 33.943,
+   "duration_s": 10.179,
+   "words": [
+    {
+     "w": "Your",
+     "s": 0.0,
+     "e": 0.32
+    },
+    {
+     "w": "objective",
+     "s": 0.32,
+     "e": 0.82
+    },
+    {
+     "w": "is",
+     "s": 0.82,
+     "e": 1.2
+    },
+    {
+     "w": "the",
+     "s": 1.2,
+     "e": 1.4
+    },
+    {
+     "w": "VITA",
+     "s": 1.4,
+     "e": 1.74
+    },
+    {
+     "w": "research",
+     "s": 1.74,
+     "e": 2.18
+    },
+    {
+     "w": "complex.",
+     "s": 2.18,
+     "e": 2.94
+    },
+    {
+     "w": "Destroy",
+     "s": 3.68,
+     "e": 4.06
+    },
+    {
+     "w": "the",
+     "s": 4.06,
+     "e": 4.36
+    },
+    {
+     "w": "primary",
+     "s": 4.36,
+     "e": 4.74
+    },
+    {
+     "w": "research",
+     "s": 4.74,
+     "e": 5.28
+    },
+    {
+     "w": "infrastructure",
+     "s": 5.28,
+     "e": 5.98
+    },
+    {
+     "w": "and",
+     "s": 5.98,
+     "e": 6.44
+    },
+    {
+     "w": "the",
+     "s": 6.44,
+     "e": 6.58
+    },
+    {
+     "w": "production",
+     "s": 6.58,
+     "e": 6.96
+    },
+    {
+     "w": "systems",
+     "s": 6.96,
+     "e": 7.5
+    },
+    {
+     "w": "linked",
+     "s": 7.5,
+     "e": 7.84
+    },
+    {
+     "w": "to",
+     "s": 7.84,
+     "e": 8.14
+    },
+    {
+     "w": "the",
+     "s": 8.14,
+     "e": 8.28
+    },
+    {
+     "w": "enhancement",
+     "s": 8.28,
+     "e": 8.74
+    },
+    {
+     "w": "programme.",
+     "s": 8.74,
+     "e": 9.28
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Your objective is the VITA research complex.",
+     "start_s": 0.0,
+     "end_s": 2.94
+    },
+    {
+     "text": "Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+     "start_s": 3.68,
+     "end_s": 9.999
+    }
+   ]
+  },
+  {
+   "slide": 5,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_intro_05.master.wav",
+   "start_s": 46.122,
+   "duration_s": 6.09,
+   "words": [
+    {
+     "w": "Do",
+     "s": 0.0,
+     "e": 0.2
+    },
+    {
+     "w": "not",
+     "s": 0.2,
+     "e": 0.46
+    },
+    {
+     "w": "mistake",
+     "s": 0.46,
+     "e": 0.88
+    },
+    {
+     "w": "the",
+     "s": 0.88,
+     "e": 1.08
+    },
+    {
+     "w": "laboris",
+     "s": 1.08,
+     "e": 1.78
+    },
+    {
+     "w": "for",
+     "s": 1.78,
+     "e": 1.92
+    },
+    {
+     "w": "the",
+     "s": 1.92,
+     "e": 2.02
+    },
+    {
+     "w": "people",
+     "s": 2.02,
+     "e": 2.28
+    },
+    {
+     "w": "inside",
+     "s": 2.28,
+     "e": 2.74
+    },
+    {
+     "w": "them.",
+     "s": 2.74,
+     "e": 3.12
+    },
+    {
+     "w": "The",
+     "s": 4.06,
+     "e": 4.2
+    },
+    {
+     "w": "target",
+     "s": 4.2,
+     "e": 4.6
+    },
+    {
+     "w": "is",
+     "s": 4.6,
+     "e": 5.0
+    },
+    {
+     "w": "the",
+     "s": 5.0,
+     "e": 5.14
+    },
+    {
+     "w": "machinery.",
+     "s": 5.14,
+     "e": 5.56
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Do not mistake the laboratories for the people inside them.",
+     "start_s": 0.0,
+     "end_s": 3.12
+    },
+    {
+     "text": "The target is the machinery.",
+     "start_s": 4.06,
+     "end_s": 5.91
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch02_outro/bed48.wav",
+ "base": "ch02_outro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/vta_vo_outro_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/vta_vo_outro_02.master.wav",
+   13.054
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/vta_vo_outro_03.master.wav",
+   24.081
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/vta_vo_outro_04.master.wav",
+   33.275
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "vita_heartbeat",
+   "path": "/workspace/tfj-narration-el/sfx/vita_heartbeat.wav",
+   "start_s": 0.2,
+   "lufs": -30,
+   "fade_in": 1.0,
+   "fade_out": 3.0
+  }
+ ]
+}

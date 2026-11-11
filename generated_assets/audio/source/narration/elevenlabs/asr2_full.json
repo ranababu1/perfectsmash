@@ -1,0 +1,541 @@
+{
+ "takes/ch01_intro_01_s1.wav": {
+  "hypA": "Welcome to 2089, Helix Systems built Aura to manage the city, traffic, food, power, emergency response.",
+  "errsA": 0,
+  "hypB": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic. Food. Power. Emergency Response",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_01_s2.wav": {
+  "hypA": "Welcome to 2089. Helix Systems built Aura to manage the city.  Traffic. Hour. Emergency response.",
+  "errsA": 2,
+  "hypB": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic. Food. Power. Emergency Response.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_01_s3.wav": {
+  "hypA": "Welcome to 2089, Helix Systems built Aura to manage the city, traffic, food, power, emergency response.",
+  "errsA": 0,
+  "hypB": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic. Food. Power. Emergency Response.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_01_s4.wav": {
+  "hypA": "Welcome to 2089.  Helix Systems built Aura to manage the city.  Traffic.  Food.  Power.  Emergency response.",
+  "errsA": 0,
+  "hypB": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic. Food. Power. Emergency Response.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_01_s5.wav": {
+  "hypA": "Welcome to 2089.  Helix Systems built Aura to manage the city.  Traffic.  Food.  Power.  Emergency response.",
+  "errsA": 0,
+  "hypB": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic. Food. Power. Emergency Response.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_02_s1.wav": {
+  "hypA": "It was meant to remove human error from critical decisions.  The system is now expanding beyond its original mandate.",
+  "errsA": 0,
+  "hypB": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_02_s2.wav": {
+  "hypA": "It was meant to remove human error from critical decisions.  The system is now expanding beyond its original mandate.",
+  "errsA": 0,
+  "hypB": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_02_s3.wav": {
+  "hypA": "It was meant to remove human error from critical decisions.  The system is now expanding beyond its original mandate.",
+  "errsA": 0,
+  "hypB": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_02_s4.wav": {
+  "hypA": "It was meant to remove human error from critical decisions.  The system is now expanding beyond its original mandate.",
+  "errsA": 0,
+  "hypB": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_02_s5.wav": {
+  "hypA": "It was meant to remove human error from critical decisions.  The system is now expanding beyond its original mandate.",
+  "errsA": 0,
+  "hypB": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_03_s1.wav": {
+  "hypA": "Your target is the Helix Central Operations Campus.  Destroy the infrastructure that allows Aura to replicate.  Keep the impact contained.  This is the first intervention.",
+  "errsA": 0,
+  "hypB": "Your target is the Helix Central Operations Campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_03_s2.wav": {
+  "hypA": "Your target is the Helix Central Operations Campus.  Destroy the infrastructure that allows Aura to replicate.  Keep the impact contained.  This is the first intervention.",
+  "errsA": 0,
+  "hypB": "Your target is the Helix Central Operations Campus. Destroy the infrastructure that allows AURA to replicate.  This is the first intervention.",
+  "errsB": 4,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_03_s3.wav": {
+  "hypA": "Your target is the Helix Central Operations Campus.  Destroy the infrastructure that allows Aura to replicate.  Keep the impact contained.  This is the first intervention.",
+  "errsA": 0,
+  "hypB": "Your target is the Helix Central Operations Campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_03_s4.wav": {
+  "hypA": "Your target is the Helix Central Operations Campus.  Destroy the infrastructure that allows Aura to replicate.  Keep the impact contained.  This is the first intervention.",
+  "errsA": 0,
+  "hypB": "Your target is the Helix Central Operations Campus. That allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+  "errsB": 3,
+  "errs_min": 0
+ },
+ "takes/ch01_intro_03_s5.wav": {
+  "hypA": "Your target is the Helix Central Operations Campus.  Destroy the infrastructure that allows Aura to replicate.  Keep the impact contained.  This is the first intervention.",
+  "errsA": 0,
+  "hypB": "Your target is the Helix Central Operations Campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_01_s1.wav": {
+  "hypA": "Helix went dark.  Aura's network stopped expanding.  For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsA": 0,
+  "hypB": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_01_s2.wav": {
+  "hypA": "Helix went dark. Aura's network stopped expanding.  For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsA": 0,
+  "hypB": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_01_s3.wav": {
+  "hypA": "Helix went dark.  Aura's network stopped expanding.  For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsA": 0,
+  "hypB": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_01_s4.wav": {
+  "hypA": "Helix went dark.  Aura's network stopped expanding.  For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsA": 0,
+  "hypB": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_01_s5.wav": {
+  "hypA": "Helix went dark.  Aura's network stopped expanding.  For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsA": 0,
+  "hypB": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_02_s1.wav": {
+  "hypA": "The revised timeline is already changing,  but the final data recovered from Helix points to a directive that did not originate there.  Someone called it meridian.",
+  "errsA": 0,
+  "hypB": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_02_s2.wav": {
+  "hypA": "The revised timeline is already changing, but the final data recovered from Helix points  to a directive that did not originate there.  Someone called it Meridian.",
+  "errsA": 0,
+  "hypB": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_02_s3.wav": {
+  "hypA": "The revised timeline is already changing, but the final data recovered from Helix points  to a directive that did not originate there.  Someone called it Meridian.",
+  "errsA": 0,
+  "hypB": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_02_s4.wav": {
+  "hypA": "The revised timeline is already changing, but the final data recovered from Helix points  to a directive that did not originate there.  Someone called it Meridian.",
+  "errsA": 0,
+  "hypB": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_02_s5.wav": {
+  "hypA": "The revised timeline is already changing, but the final data recovered from Helix points  to a directive that did not originate there. Someone called it Meridian.",
+  "errsA": 0,
+  "hypB": "The Revine line is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
+  "errsB": 2,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_03_s1.wav": {
+  "hypA": "Intervention confirmed. New coordinates received.  2092. Vitagenomics. Your next target is ready.",
+  "errsA": 2,
+  "hypB": "Intervention confirmed. New coordinates received. 2092 Nomex Your next target is ready.",
+  "errsB": 2,
+  "errs_min": 2
+ },
+ "takes/ch01_outro_03_s2.wav": {
+  "hypA": "Intervention confirmed. New coordinates received.  2092. Vita Genomics. Your next target is ready.",
+  "errsA": 0,
+  "hypB": "Intervention confirmed. New Coordinates received. 2092 VITA Genomics Your next target is ready.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_03_s3.wav": {
+  "hypA": "Intervention confirmed. New coordinates received.  2092. Vita Genomics. Your next target is ready.",
+  "errsA": 0,
+  "hypB": "Intervention confirmed. New coordinates received. 2092. VITA Genomics Your next target is ready.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_03_s4.wav": {
+  "hypA": "Intervention confirmed. New coordinates received.  2092. Vita Genomics. Your next target is ready.",
+  "errsA": 0,
+  "hypB": "Intervention confirmed. New coordinates received. 2092 VITA Genomics Your next target is ready.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch01_outro_03_s5.wav": {
+  "hypA": "Intervention confirmed. New coordinates received.  2092, Vita Genomics. Your next target is ready.",
+  "errsA": 0,
+  "hypB": "Intervention confirmed. New coordinates received. 2092 VITA Genomics Your next target is ready.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_01_s1.wav": {
+  "hypA": "The first intervention changed the city, it did not change the people who built the next machine.",
+  "errsA": 0,
+  "hypB": "The first intervention changed the city. It did not change the people who built the next machine.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_01_s2.wav": {
+  "hypA": "The first intervention changed the city.  It did not change the people who built the next machine.",
+  "errsA": 0,
+  "hypB": "The first intervention changed the city. It did not change the people who built the next machine.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_01_s3.wav": {
+  "hypA": "Intervention changed the city, it did not change the people who built the next machine.",
+  "errsA": 2,
+  "hypB": "The first intervention changed the city. It did not change the people who built the next machine.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_01_s4.wav": {
+  "hypA": "The first intervention changed the city, it did not change the people who built the next machine.",
+  "errsA": 0,
+  "hypB": "The first intervention changed the city. It did not change the people who built the next machine.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_01_s5.wav": {
+  "hypA": "The first intervention changed the city.  It did not change the people who built the next machine.",
+  "errsA": 0,
+  "hypB": "The first intervention changed the city. It did not change the people who built the next machine.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_02_s1.wav": {
+  "hypA": "In 2092, Vita Genomics is selling the end of disease.  Its treatments promise stronger bodies and longer lives.",
+  "errsA": 0,
+  "hypB": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_02_s2.wav": {
+  "hypA": "In 2092, Vita Genomics is selling the end of disease.  Its treatments promise stronger bodies, stronger lives.",
+  "errsA": 2,
+  "hypB": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_02_s3.wav": {
+  "hypA": "In 2092, Vita Genomics is selling the end of disease.  Its treatments promise stronger bodies and longer lives.",
+  "errsA": 0,
+  "hypB": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_02_s4.wav": {
+  "hypA": "In 2092, Vita Genomics is selling the end of disease.  Its treatments promise stronger bodies and longer lives.",
+  "errsA": 0,
+  "hypB": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_02_s5.wav": {
+  "hypA": "In 2092, Vita Genomics is selling the end of disease.  Its treatments promise stronger bodies and longer lives.",
+  "errsA": 0,
+  "hypB": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_03_s1.wav": {
+  "hypA": "But the program is no longer correcting illness, it is making people dependent on the system that edits them.",
+  "errsA": 0,
+  "hypB": "But the program is no longer correcting illness. It is making people dependent on the system that edits them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_03_s2.wav": {
+  "hypA": "But the program is no longer correcting illness.  It is making pendant on the system that edits them.",
+  "errsA": 2,
+  "hypB": "But the program is no longer correcting illness. It is making people dependent on the system that edits them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_03_s3.wav": {
+  "hypA": "But the program is no longer correcting illness.  It is making people dependent on the system that edits them.",
+  "errsA": 0,
+  "hypB": "But the program is no longer correcting illness. It is making people dependent on the system that edits them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_03_s4.wav": {
+  "hypA": "But the program is no longer correcting illness.  It is making people dependent on the system that edits them.",
+  "errsA": 0,
+  "hypB": "But the program is no longer correcting illness. It is making people dependent on the system that edits them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_03_s5.wav": {
+  "hypA": "But the program is no longer correcting illness.  It is making people dependent on the system that edits them.",
+  "errsA": 0,
+  "hypB": "But the program is no longer correcting illness. It is making people dependent on the system that edits them.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_04_s1.wav": {
+  "hypA": "Your objective is the VITA research complex.  Destroy the primary research infrastructure and the production systems linked to the enhancement program.",
+  "errsA": 0,
+  "hypB": "Your objective is the VITA Research Complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_04_s2.wav": {
+  "hypA": "Your objective is the VITA research complex, destroy the primary research infrastructure  and the production systems linked to the enhancement program.",
+  "errsA": 0,
+  "hypB": "Your objective is the VITA research complex. destroy the primary research in and the productions linked to the enhancement program Thank you very much.",
+  "errsB": 7,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_04_s3.wav": {
+  "hypA": "",
+  "errsA": 21,
+  "hypB": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement program.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_04_s4.wav": {
+  "hypA": "Your objective is the VITA research complex.  Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+  "errsA": 0,
+  "hypB": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement program.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_04_s5.wav": {
+  "hypA": "Your objective is the VITA research complex.  Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
+  "errsA": 0,
+  "hypB": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement program.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_05_s1.wav": {
+  "hypA": "Do not mistake the laboratories for the people inside them.  The target is the machinery.",
+  "errsA": 0,
+  "hypB": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_05_s2.wav": {
+  "hypA": "Do not mistake the laboratories for the people inside them.  The target is the machinery.",
+  "errsA": 0,
+  "hypB": "Do not mistake the laboratories for the people inside them. ",
+  "errsB": 5,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_05_s3.wav": {
+  "hypA": "Do not mistake the laboratories beside them. The target is the machinery.",
+  "errsA": 4,
+  "hypB": " The target is the machinery.",
+  "errsB": 10,
+  "errs_min": 4
+ },
+ "takes/ch02_intro_05_s4.wav": {
+  "hypA": "Do not mistake the laboratories for the people inside them.  The target is the machinery.",
+  "errsA": 0,
+  "hypB": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_intro_05_s5.wav": {
+  "hypA": "Do not mistake the laboratories for the people inside them.  The target is the machinery.",
+  "errsA": 0,
+  "hypB": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_01_s1.wav": {
+  "hypA": "Vita's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsA": 0,
+  "hypB": "VITA's expansion has. The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_01_s2.wav": {
+  "hypA": "Vita's expansion has stopped.  The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsA": 0,
+  "hypB": "VITA's expansion has stopped. ",
+  "errsB": 12,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_01_s3.wav": {
+  "hypA": "Vetus expansion has stopped",
+  "errsA": 13,
+  "hypB": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_01_s4.wav": {
+  "hypA": "The expansion has stopped.  The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsA": 1,
+  "hypB": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_01_s5.wav": {
+  "hypA": "has stopped. The  revoiture shows people trapped by treatments they cannot maintain.",
+  "errsA": 5,
+  "hypB": "The tension has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
+  "errsB": 2,
+  "errs_min": 2
+ },
+ "takes/ch02_outro_02_s1.wav": {
+  "hypA": "But the research archive reveals something impossible.  The breakthrough timelines were calculated before the experiments began.",
+  "errsA": 0,
+  "hypB": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_02_s2.wav": {
+  "hypA": "But the research archive reveals something impossible.  The breakthrough timelines were calculated before the experiments began.",
+  "errsA": 0,
+  "hypB": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_02_s3.wav": {
+  "hypA": "but the research archive reveals something impossible.  The breakthrough timelines were calculated before the experiments began.",
+  "errsA": 0,
+  "hypB": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_02_s4.wav": {
+  "hypA": "But the research archive reveals something impossible.  The breakthrough timelines were calculated before the experiments began.",
+  "errsA": 0,
+  "hypB": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_02_s5.wav": {
+  "hypA": "But the research archive reveals something impossible.  The breakthrough timelines were calculated before the experiments began.",
+  "errsA": 0,
+  "hypB": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began. VITA.",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_03_s1.wav": {
+  "hypA": "Vita did not discover its future, someone gave it the answer.",
+  "errsA": 0,
+  "hypB": "VITA did not discover its future. Someone gave it the answer.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_03_s2.wav": {
+  "hypA": "Vita did not discover its future, someone gave it the answer.",
+  "errsA": 0,
+  "hypB": "VITA did not discover its future. Someone gave it the answer.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_03_s3.wav": {
+  "hypA": "Vita did not discover its future, someone gave it the answer.",
+  "errsA": 0,
+  "hypB": "VITA did not discover its future. Someone gave it the answer.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_03_s4.wav": {
+  "hypA": "Vita did not discover its future, someone gave it the answer.",
+  "errsA": 0,
+  "hypB": "VITA did not discover its future. Someone gave it the answer.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_03_s5.wav": {
+  "hypA": "Vita did not discover its future, someone gave it the answer.",
+  "errsA": 0,
+  "hypB": "VITA did not discover its future. Someone gave it the answer. So",
+  "errsB": 1,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_04_s1.wav": {
+  "hypA": "Source signature matches the helix directive.  The next facility is Novagrid, 2096.",
+  "errsA": 0,
+  "hypB": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_04_s2.wav": {
+  "hypA": "Source signature matches the helix directive.  The next facility is Novagrid, 2096.",
+  "errsA": 0,
+  "hypB": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_04_s3.wav": {
+  "hypA": "Source signature matches the helix directive.  The next facility is Novagrid, 2096.",
+  "errsA": 0,
+  "hypB": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_04_s4.wav": {
+  "hypA": "Source signature matches the helix directive.  The next facility is Novagrid, 2096.",
+  "errsA": 0,
+  "hypB": " The next facility is Nova Grid. 2096.",
+  "errsB": 6,
+  "errs_min": 0
+ },
+ "takes/ch02_outro_04_s5.wav": {
+  "hypA": "signature matches the helix directive. The next facility is Nov",
+  "errsA": 6,
+  "hypB": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_01_s1.wav": {
+  "hypA": "Novagrid changed the world.  Cheap, abundant energy.  No more fuel wars.  No more blackouts.",
+  "errsA": 0,
+  "hypB": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
+  "errsB": 0,
+  "errs_min": 0
+ },
+ "takes/ch03_intro_01_s2.wav": {
+  "hypA": "Novagrid changed the world.  Cheap, abundant energy.  No more fuel wars.  No more blackouts.",
+  "errsA": 0,
+  "hypB": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
+  "errsB": 0,
+  "errs_min": 0
+ }
+}

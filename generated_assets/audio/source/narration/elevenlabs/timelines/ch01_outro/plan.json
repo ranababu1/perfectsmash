@@ -1,0 +1,28 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch01_outro/bed48.wav",
+ "base": "ch01_outro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_outro_01.master.wav",
+   3.0
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_outro_02.master.wav",
+   15.986
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_outro_03.master.wav",
+   31.234
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "helix_powerdown",
+   "path": "/workspace/tfj-narration-el/sfx/helix_powerdown.wav",
+   "start_s": 0.0,
+   "lufs": -24,
+   "fade_in": 0,
+   "fade_out": 2.0
+  }
+ ]
+}

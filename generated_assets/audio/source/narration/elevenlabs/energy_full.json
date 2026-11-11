@@ -1,0 +1,952 @@
+{
+ "takes/ch01_intro_01_s1.wav": {
+  "span_s": 10.26,
+  "max_pause_s": 0.65,
+  "wpm_e": 105
+ },
+ "takes/ch01_intro_01_s2.wav": {
+  "span_s": 10.24,
+  "max_pause_s": 0.61,
+  "wpm_e": 105
+ },
+ "takes/ch01_intro_01_s3.wav": {
+  "span_s": 10.66,
+  "max_pause_s": 0.73,
+  "wpm_e": 101
+ },
+ "takes/ch01_intro_01_s4.wav": {
+  "span_s": 10.32,
+  "max_pause_s": 0.65,
+  "wpm_e": 105
+ },
+ "takes/ch01_intro_01_s5.wav": {
+  "span_s": 10.47,
+  "max_pause_s": 0.68,
+  "wpm_e": 103
+ },
+ "takes/ch01_intro_02_s1.wav": {
+  "span_s": 7.64,
+  "max_pause_s": 0.8,
+  "wpm_e": 149
+ },
+ "takes/ch01_intro_02_s2.wav": {
+  "span_s": 7.58,
+  "max_pause_s": 0.77,
+  "wpm_e": 150
+ },
+ "takes/ch01_intro_02_s3.wav": {
+  "span_s": 7.49,
+  "max_pause_s": 0.69,
+  "wpm_e": 152
+ },
+ "takes/ch01_intro_02_s4.wav": {
+  "span_s": 7.6,
+  "max_pause_s": 0.85,
+  "wpm_e": 150
+ },
+ "takes/ch01_intro_02_s5.wav": {
+  "span_s": 7.67,
+  "max_pause_s": 0.82,
+  "wpm_e": 149
+ },
+ "takes/ch01_intro_03_s1.wav": {
+  "span_s": 12.56,
+  "max_pause_s": 1.09,
+  "wpm_e": 119
+ },
+ "takes/ch01_intro_03_s2.wav": {
+  "span_s": 12.24,
+  "max_pause_s": 0.97,
+  "wpm_e": 123
+ },
+ "takes/ch01_intro_03_s3.wav": {
+  "span_s": 12.4,
+  "max_pause_s": 0.86,
+  "wpm_e": 121
+ },
+ "takes/ch01_intro_03_s4.wav": {
+  "span_s": 12.36,
+  "max_pause_s": 0.99,
+  "wpm_e": 121
+ },
+ "takes/ch01_intro_03_s5.wav": {
+  "span_s": 12.24,
+  "max_pause_s": 0.9,
+  "wpm_e": 123
+ },
+ "takes/ch01_outro_01_s1.wav": {
+  "span_s": 10.31,
+  "max_pause_s": 0.72,
+  "wpm_e": 134
+ },
+ "takes/ch01_outro_01_s2.wav": {
+  "span_s": 10.32,
+  "max_pause_s": 0.83,
+  "wpm_e": 134
+ },
+ "takes/ch01_outro_01_s3.wav": {
+  "span_s": 10.65,
+  "max_pause_s": 0.79,
+  "wpm_e": 130
+ },
+ "takes/ch01_outro_01_s4.wav": {
+  "span_s": 10.18,
+  "max_pause_s": 0.83,
+  "wpm_e": 136
+ },
+ "takes/ch01_outro_01_s5.wav": {
+  "span_s": 10.45,
+  "max_pause_s": 0.8,
+  "wpm_e": 132
+ },
+ "takes/ch01_outro_02_s1.wav": {
+  "span_s": 11.87,
+  "max_pause_s": 0.92,
+  "wpm_e": 131
+ },
+ "takes/ch01_outro_02_s2.wav": {
+  "span_s": 11.55,
+  "max_pause_s": 0.72,
+  "wpm_e": 135
+ },
+ "takes/ch01_outro_02_s3.wav": {
+  "span_s": 12.42,
+  "max_pause_s": 0.89,
+  "wpm_e": 126
+ },
+ "takes/ch01_outro_02_s4.wav": {
+  "span_s": 11.58,
+  "max_pause_s": 0.65,
+  "wpm_e": 135
+ },
+ "takes/ch01_outro_02_s5.wav": {
+  "span_s": 11.97,
+  "max_pause_s": 0.88,
+  "wpm_e": 130
+ },
+ "takes/ch01_outro_03_s1.wav": {
+  "span_s": 9.46,
+  "max_pause_s": 0.65,
+  "wpm_e": 95
+ },
+ "takes/ch01_outro_03_s2.wav": {
+  "span_s": 9.19,
+  "max_pause_s": 0.59,
+  "wpm_e": 98
+ },
+ "takes/ch01_outro_03_s3.wav": {
+  "span_s": 9.39,
+  "max_pause_s": 0.66,
+  "wpm_e": 96
+ },
+ "takes/ch01_outro_03_s4.wav": {
+  "span_s": 9.38,
+  "max_pause_s": 0.63,
+  "wpm_e": 96
+ },
+ "takes/ch01_outro_03_s5.wav": {
+  "span_s": 9.35,
+  "max_pause_s": 0.6,
+  "wpm_e": 96
+ },
+ "takes/ch02_intro_01_s1.wav": {
+  "span_s": 6.28,
+  "max_pause_s": 0.83,
+  "wpm_e": 162
+ },
+ "takes/ch02_intro_01_s2.wav": {
+  "span_s": 6.36,
+  "max_pause_s": 0.78,
+  "wpm_e": 160
+ },
+ "takes/ch02_intro_01_s3.wav": {
+  "span_s": 6.55,
+  "max_pause_s": 0.84,
+  "wpm_e": 156
+ },
+ "takes/ch02_intro_01_s4.wav": {
+  "span_s": 6.41,
+  "max_pause_s": 0.91,
+  "wpm_e": 159
+ },
+ "takes/ch02_intro_01_s5.wav": {
+  "span_s": 6.22,
+  "max_pause_s": 0.77,
+  "wpm_e": 164
+ },
+ "takes/ch02_intro_02_s1.wav": {
+  "span_s": 8.88,
+  "max_pause_s": 0.62,
+  "wpm_e": 135
+ },
+ "takes/ch02_intro_02_s2.wav": {
+  "span_s": 8.98,
+  "max_pause_s": 0.76,
+  "wpm_e": 134
+ },
+ "takes/ch02_intro_02_s3.wav": {
+  "span_s": 9.05,
+  "max_pause_s": 0.56,
+  "wpm_e": 133
+ },
+ "takes/ch02_intro_02_s4.wav": {
+  "span_s": 9.26,
+  "max_pause_s": 0.83,
+  "wpm_e": 130
+ },
+ "takes/ch02_intro_02_s5.wav": {
+  "span_s": 9.38,
+  "max_pause_s": 0.85,
+  "wpm_e": 128
+ },
+ "takes/ch02_intro_03_s1.wav": {
+  "span_s": 7.27,
+  "max_pause_s": 0.84,
+  "wpm_e": 157
+ },
+ "takes/ch02_intro_03_s2.wav": {
+  "span_s": 7.09,
+  "max_pause_s": 0.81,
+  "wpm_e": 161
+ },
+ "takes/ch02_intro_03_s3.wav": {
+  "span_s": 6.93,
+  "max_pause_s": 0.75,
+  "wpm_e": 165
+ },
+ "takes/ch02_intro_03_s4.wav": {
+  "span_s": 7.21,
+  "max_pause_s": 0.89,
+  "wpm_e": 158
+ },
+ "takes/ch02_intro_03_s5.wav": {
+  "span_s": 6.96,
+  "max_pause_s": 0.86,
+  "wpm_e": 164
+ },
+ "takes/ch02_intro_04_s1.wav": {
+  "span_s": 9.32,
+  "max_pause_s": 0.61,
+  "wpm_e": 135
+ },
+ "takes/ch02_intro_04_s2.wav": {
+  "span_s": 9.84,
+  "max_pause_s": 0.6,
+  "wpm_e": 128
+ },
+ "takes/ch02_intro_04_s3.wav": {
+  "span_s": 9.13,
+  "max_pause_s": 0.57,
+  "wpm_e": 138
+ },
+ "takes/ch02_intro_04_s4.wav": {
+  "span_s": 9.3,
+  "max_pause_s": 0.53,
+  "wpm_e": 135
+ },
+ "takes/ch02_intro_04_s5.wav": {
+  "span_s": 9.3,
+  "max_pause_s": 0.59,
+  "wpm_e": 135
+ },
+ "takes/ch02_intro_05_s1.wav": {
+  "span_s": 5.75,
+  "max_pause_s": 0.88,
+  "wpm_e": 157
+ },
+ "takes/ch02_intro_05_s2.wav": {
+  "span_s": 5.93,
+  "max_pause_s": 0.91,
+  "wpm_e": 152
+ },
+ "takes/ch02_intro_05_s3.wav": {
+  "span_s": 5.77,
+  "max_pause_s": 0.92,
+  "wpm_e": 156
+ },
+ "takes/ch02_intro_05_s4.wav": {
+  "span_s": 5.73,
+  "max_pause_s": 0.87,
+  "wpm_e": 157
+ },
+ "takes/ch02_intro_05_s5.wav": {
+  "span_s": 5.86,
+  "max_pause_s": 0.87,
+  "wpm_e": 154
+ },
+ "takes/ch02_outro_01_s1.wav": {
+  "span_s": 7.56,
+  "max_pause_s": 0.8,
+  "wpm_e": 127
+ },
+ "takes/ch02_outro_01_s2.wav": {
+  "span_s": 7.59,
+  "max_pause_s": 0.86,
+  "wpm_e": 126
+ },
+ "takes/ch02_outro_01_s3.wav": {
+  "span_s": 7.56,
+  "max_pause_s": 0.92,
+  "wpm_e": 127
+ },
+ "takes/ch02_outro_01_s4.wav": {
+  "span_s": 7.76,
+  "max_pause_s": 0.98,
+  "wpm_e": 124
+ },
+ "takes/ch02_outro_01_s5.wav": {
+  "span_s": 7.59,
+  "max_pause_s": 0.85,
+  "wpm_e": 126
+ },
+ "takes/ch02_outro_02_s1.wav": {
+  "span_s": 8.29,
+  "max_pause_s": 0.71,
+  "wpm_e": 116
+ },
+ "takes/ch02_outro_02_s2.wav": {
+  "span_s": 8.09,
+  "max_pause_s": 0.58,
+  "wpm_e": 119
+ },
+ "takes/ch02_outro_02_s3.wav": {
+  "span_s": 8.18,
+  "max_pause_s": 0.56,
+  "wpm_e": 117
+ },
+ "takes/ch02_outro_02_s4.wav": {
+  "span_s": 8.07,
+  "max_pause_s": 0.43,
+  "wpm_e": 119
+ },
+ "takes/ch02_outro_02_s5.wav": {
+  "span_s": 8.77,
+  "max_pause_s": 0.63,
+  "wpm_e": 109
+ },
+ "takes/ch02_outro_03_s1.wav": {
+  "span_s": 5.59,
+  "max_pause_s": 0.9,
+  "wpm_e": 118
+ },
+ "takes/ch02_outro_03_s2.wav": {
+  "span_s": 5.52,
+  "max_pause_s": 0.9,
+  "wpm_e": 120
+ },
+ "takes/ch02_outro_03_s3.wav": {
+  "span_s": 5.69,
+  "max_pause_s": 0.97,
+  "wpm_e": 116
+ },
+ "takes/ch02_outro_03_s4.wav": {
+  "span_s": 5.57,
+  "max_pause_s": 0.9,
+  "wpm_e": 118
+ },
+ "takes/ch02_outro_03_s5.wav": {
+  "span_s": 6.43,
+  "max_pause_s": 0.86,
+  "wpm_e": 103
+ },
+ "takes/ch02_outro_04_s1.wav": {
+  "span_s": 7.6,
+  "max_pause_s": 0.76,
+  "wpm_e": 118
+ },
+ "takes/ch02_outro_04_s2.wav": {
+  "span_s": 7.59,
+  "max_pause_s": 0.74,
+  "wpm_e": 119
+ },
+ "takes/ch02_outro_04_s3.wav": {
+  "span_s": 7.98,
+  "max_pause_s": 1.02,
+  "wpm_e": 113
+ },
+ "takes/ch02_outro_04_s4.wav": {
+  "span_s": 7.82,
+  "max_pause_s": 1.01,
+  "wpm_e": 115
+ },
+ "takes/ch02_outro_04_s5.wav": {
+  "span_s": 8.18,
+  "max_pause_s": 1.0,
+  "wpm_e": 110
+ },
+ "takes/ch03_intro_01_s1.wav": {
+  "span_s": 8.5,
+  "max_pause_s": 0.71,
+  "wpm_e": 106
+ },
+ "takes/ch03_intro_01_s2.wav": {
+  "span_s": 8.81,
+  "max_pause_s": 0.65,
+  "wpm_e": 102
+ },
+ "takes/ch03_intro_01_s3.wav": {
+  "span_s": 8.72,
+  "max_pause_s": 0.66,
+  "wpm_e": 103
+ },
+ "takes/ch03_intro_01_s4.wav": {
+  "span_s": 10.34,
+  "max_pause_s": 0.8,
+  "wpm_e": 87
+ },
+ "takes/ch03_intro_01_s5.wav": {
+  "span_s": 8.65,
+  "max_pause_s": 0.63,
+  "wpm_e": 104
+ },
+ "takes/ch03_intro_02_s1.wav": {
+  "span_s": 7.41,
+  "max_pause_s": 0.73,
+  "wpm_e": 130
+ },
+ "takes/ch03_intro_02_s2.wav": {
+  "span_s": 8.15,
+  "max_pause_s": 0.82,
+  "wpm_e": 118
+ },
+ "takes/ch03_intro_02_s3.wav": {
+  "span_s": 7.26,
+  "max_pause_s": 0.66,
+  "wpm_e": 132
+ },
+ "takes/ch03_intro_02_s4.wav": {
+  "span_s": 7.47,
+  "max_pause_s": 0.87,
+  "wpm_e": 129
+ },
+ "takes/ch03_intro_02_s5.wav": {
+  "span_s": 7.16,
+  "max_pause_s": 0.71,
+  "wpm_e": 134
+ },
+ "takes/ch03_intro_03_s1.wav": {
+  "span_s": 9.47,
+  "max_pause_s": 0.8,
+  "wpm_e": 152
+ },
+ "takes/ch03_intro_03_s2.wav": {
+  "span_s": 9.6,
+  "max_pause_s": 0.93,
+  "wpm_e": 150
+ },
+ "takes/ch03_intro_03_s3.wav": {
+  "span_s": 9.67,
+  "max_pause_s": 0.87,
+  "wpm_e": 149
+ },
+ "takes/ch03_intro_03_s4.wav": {
+  "span_s": 9.47,
+  "max_pause_s": 0.91,
+  "wpm_e": 152
+ },
+ "takes/ch03_intro_03_s5.wav": {
+  "span_s": 9.73,
+  "max_pause_s": 0.94,
+  "wpm_e": 148
+ },
+ "takes/ch03_outro_01_s1.wav": {
+  "span_s": 6.1,
+  "max_pause_s": 0.65,
+  "wpm_e": 157
+ },
+ "takes/ch03_outro_01_s2.wav": {
+  "span_s": 6.1,
+  "max_pause_s": 0.69,
+  "wpm_e": 157
+ },
+ "takes/ch03_outro_01_s3.wav": {
+  "span_s": 5.95,
+  "max_pause_s": 0.72,
+  "wpm_e": 161
+ },
+ "takes/ch03_outro_01_s4.wav": {
+  "span_s": 6.04,
+  "max_pause_s": 0.71,
+  "wpm_e": 159
+ },
+ "takes/ch03_outro_01_s5.wav": {
+  "span_s": 6.19,
+  "max_pause_s": 0.34,
+  "wpm_e": 155
+ },
+ "takes/ch03_outro_02_s1.wav": {
+  "span_s": 13.19,
+  "max_pause_s": 0.93,
+  "wpm_e": 141
+ },
+ "takes/ch03_outro_02_s2.wav": {
+  "span_s": 12.53,
+  "max_pause_s": 0.74,
+  "wpm_e": 148
+ },
+ "takes/ch03_outro_02_s3.wav": {
+  "span_s": 13.01,
+  "max_pause_s": 0.94,
+  "wpm_e": 143
+ },
+ "takes/ch03_outro_02_s4.wav": {
+  "span_s": 12.32,
+  "max_pause_s": 0.88,
+  "wpm_e": 151
+ },
+ "takes/ch03_outro_02_s5.wav": {
+  "span_s": 12.66,
+  "max_pause_s": 0.86,
+  "wpm_e": 147
+ },
+ "takes/ch03_outro_03_s1.wav": {
+  "span_s": 8.5,
+  "max_pause_s": 0.65,
+  "wpm_e": 113
+ },
+ "takes/ch03_outro_03_s2.wav": {
+  "span_s": 8.75,
+  "max_pause_s": 0.64,
+  "wpm_e": 110
+ },
+ "takes/ch03_outro_03_s3.wav": {
+  "span_s": 8.76,
+  "max_pause_s": 0.66,
+  "wpm_e": 110
+ },
+ "takes/ch03_outro_03_s4.wav": {
+  "span_s": 8.57,
+  "max_pause_s": 0.64,
+  "wpm_e": 112
+ },
+ "takes/ch03_outro_03_s5.wav": {
+  "span_s": 8.61,
+  "max_pause_s": 0.65,
+  "wpm_e": 111
+ },
+ "takes/ch04_intro_01_s1.wav": {
+  "span_s": 4.45,
+  "max_pause_s": 0.84,
+  "wpm_e": 162
+ },
+ "takes/ch04_intro_01_s2.wav": {
+  "span_s": 4.46,
+  "max_pause_s": 0.73,
+  "wpm_e": 161
+ },
+ "takes/ch04_intro_01_s3.wav": {
+  "span_s": 4.45,
+  "max_pause_s": 0.76,
+  "wpm_e": 162
+ },
+ "takes/ch04_intro_01_s4.wav": {
+  "span_s": 4.74,
+  "max_pause_s": 0.74,
+  "wpm_e": 152
+ },
+ "takes/ch04_intro_01_s5.wav": {
+  "span_s": 4.57,
+  "max_pause_s": 0.83,
+  "wpm_e": 158
+ },
+ "takes/ch04_intro_02_s1.wav": {
+  "span_s": 12.91,
+  "max_pause_s": 0.89,
+  "wpm_e": 130
+ },
+ "takes/ch04_intro_02_s2.wav": {
+  "span_s": 12.64,
+  "max_pause_s": 0.88,
+  "wpm_e": 133
+ },
+ "takes/ch04_intro_02_s3.wav": {
+  "span_s": 13.02,
+  "max_pause_s": 0.95,
+  "wpm_e": 129
+ },
+ "takes/ch04_intro_02_s4.wav": {
+  "span_s": 12.96,
+  "max_pause_s": 0.93,
+  "wpm_e": 130
+ },
+ "takes/ch04_intro_02_s5.wav": {
+  "span_s": 13.32,
+  "max_pause_s": 1.03,
+  "wpm_e": 126
+ },
+ "takes/ch04_intro_03_s1.wav": {
+  "span_s": 11.59,
+  "max_pause_s": 0.88,
+  "wpm_e": 155
+ },
+ "takes/ch04_intro_03_s2.wav": {
+  "span_s": 11.42,
+  "max_pause_s": 0.84,
+  "wpm_e": 158
+ },
+ "takes/ch04_intro_03_s3.wav": {
+  "span_s": 11.36,
+  "max_pause_s": 0.77,
+  "wpm_e": 158
+ },
+ "takes/ch04_intro_03_s4.wav": {
+  "span_s": 11.75,
+  "max_pause_s": 0.83,
+  "wpm_e": 153
+ },
+ "takes/ch04_intro_03_s5.wav": {
+  "span_s": 11.43,
+  "max_pause_s": 0.83,
+  "wpm_e": 157
+ },
+ "takes/ch04_outro_01_s1.wav": {
+  "span_s": 6.89,
+  "max_pause_s": 0.86,
+  "wpm_e": 122
+ },
+ "takes/ch04_outro_01_s2.wav": {
+  "span_s": 6.57,
+  "max_pause_s": 0.78,
+  "wpm_e": 128
+ },
+ "takes/ch04_outro_01_s3.wav": {
+  "span_s": 6.68,
+  "max_pause_s": 0.75,
+  "wpm_e": 126
+ },
+ "takes/ch04_outro_01_s4.wav": {
+  "span_s": 6.62,
+  "max_pause_s": 0.74,
+  "wpm_e": 127
+ },
+ "takes/ch04_outro_01_s5.wav": {
+  "span_s": 6.73,
+  "max_pause_s": 0.76,
+  "wpm_e": 125
+ },
+ "takes/ch04_outro_02_s1.wav": {
+  "span_s": 7.39,
+  "max_pause_s": 0.44,
+  "wpm_e": 162
+ },
+ "takes/ch04_outro_02_s2.wav": {
+  "span_s": 7.54,
+  "max_pause_s": 0.46,
+  "wpm_e": 159
+ },
+ "takes/ch04_outro_02_s3.wav": {
+  "span_s": 7.17,
+  "max_pause_s": 0.27,
+  "wpm_e": 167
+ },
+ "takes/ch04_outro_02_s4.wav": {
+  "span_s": 7.29,
+  "max_pause_s": 0.33,
+  "wpm_e": 165
+ },
+ "takes/ch04_outro_02_s5.wav": {
+  "span_s": 7.37,
+  "max_pause_s": 0.35,
+  "wpm_e": 163
+ },
+ "takes/ch04_outro_03_s1.wav": {
+  "span_s": 9.25,
+  "max_pause_s": 1.02,
+  "wpm_e": 117
+ },
+ "takes/ch04_outro_03_s2.wav": {
+  "span_s": 8.51,
+  "max_pause_s": 0.92,
+  "wpm_e": 127
+ },
+ "takes/ch04_outro_03_s3.wav": {
+  "span_s": 8.68,
+  "max_pause_s": 0.94,
+  "wpm_e": 124
+ },
+ "takes/ch04_outro_03_s4.wav": {
+  "span_s": 8.5,
+  "max_pause_s": 1.04,
+  "wpm_e": 127
+ },
+ "takes/ch04_outro_03_s5.wav": {
+  "span_s": 8.7,
+  "max_pause_s": 0.98,
+  "wpm_e": 124
+ },
+ "takes/ch04_outro_04_s1.wav": {
+  "span_s": 9.19,
+  "max_pause_s": 1.08,
+  "wpm_e": 104
+ },
+ "takes/ch04_outro_04_s2.wav": {
+  "span_s": 9.2,
+  "max_pause_s": 0.99,
+  "wpm_e": 104
+ },
+ "takes/ch04_outro_04_s3.wav": {
+  "span_s": 9.16,
+  "max_pause_s": 0.84,
+  "wpm_e": 105
+ },
+ "takes/ch04_outro_04_s4.wav": {
+  "span_s": 9.47,
+  "max_pause_s": 1.11,
+  "wpm_e": 101
+ },
+ "takes/ch04_outro_04_s5.wav": {
+  "span_s": 9.52,
+  "max_pause_s": 1.09,
+  "wpm_e": 101
+ },
+ "takes/ch05_intro_01_s1.wav": {
+  "span_s": 6.88,
+  "max_pause_s": 0.77,
+  "wpm_e": 131
+ },
+ "takes/ch05_intro_01_s2.wav": {
+  "span_s": 6.94,
+  "max_pause_s": 0.77,
+  "wpm_e": 130
+ },
+ "takes/ch05_intro_01_s3.wav": {
+  "span_s": 6.92,
+  "max_pause_s": 0.7,
+  "wpm_e": 130
+ },
+ "takes/ch05_intro_01_s4.wav": {
+  "span_s": 7.19,
+  "max_pause_s": 0.83,
+  "wpm_e": 125
+ },
+ "takes/ch05_intro_01_s5.wav": {
+  "span_s": 7.04,
+  "max_pause_s": 0.68,
+  "wpm_e": 128
+ },
+ "takes/ch05_intro_02_s1.wav": {
+  "span_s": 9.96,
+  "max_pause_s": 0.58,
+  "wpm_e": 114
+ },
+ "takes/ch05_intro_02_s2.wav": {
+  "span_s": 9.3,
+  "max_pause_s": 0.56,
+  "wpm_e": 123
+ },
+ "takes/ch05_intro_02_s3.wav": {
+  "span_s": 9.33,
+  "max_pause_s": 0.55,
+  "wpm_e": 122
+ },
+ "takes/ch05_intro_02_s4.wav": {
+  "span_s": 9.45,
+  "max_pause_s": 0.57,
+  "wpm_e": 121
+ },
+ "takes/ch05_intro_02_s5.wav": {
+  "span_s": 9.58,
+  "max_pause_s": 0.55,
+  "wpm_e": 119
+ },
+ "takes/ch05_intro_03_s1.wav": {
+  "span_s": 10.1,
+  "max_pause_s": 0.87,
+  "wpm_e": 113
+ },
+ "takes/ch05_intro_03_s2.wav": {
+  "span_s": 9.39,
+  "max_pause_s": 0.6,
+  "wpm_e": 121
+ },
+ "takes/ch05_intro_03_s3.wav": {
+  "span_s": 9.15,
+  "max_pause_s": 0.6,
+  "wpm_e": 125
+ },
+ "takes/ch05_intro_03_s4.wav": {
+  "span_s": 9.17,
+  "max_pause_s": 0.64,
+  "wpm_e": 124
+ },
+ "takes/ch05_intro_03_s5.wav": {
+  "span_s": 9.23,
+  "max_pause_s": 0.57,
+  "wpm_e": 124
+ },
+ "takes/finale_01_s1.wav": {
+  "span_s": 7.67,
+  "max_pause_s": 0.92,
+  "wpm_e": 110
+ },
+ "takes/finale_01_s2.wav": {
+  "span_s": 7.54,
+  "max_pause_s": 0.98,
+  "wpm_e": 111
+ },
+ "takes/finale_01_s3.wav": {
+  "span_s": 7.64,
+  "max_pause_s": 0.94,
+  "wpm_e": 110
+ },
+ "takes/finale_01_s4.wav": {
+  "span_s": 7.27,
+  "max_pause_s": 0.71,
+  "wpm_e": 116
+ },
+ "takes/finale_01_s5.wav": {
+  "span_s": 7.81,
+  "max_pause_s": 0.94,
+  "wpm_e": 108
+ },
+ "takes/finale_04_s1.wav": {
+  "span_s": 8.62,
+  "max_pause_s": 0.97,
+  "wpm_e": 132
+ },
+ "takes/finale_04_s2.wav": {
+  "span_s": 8.51,
+  "max_pause_s": 0.9,
+  "wpm_e": 134
+ },
+ "takes/finale_04_s3.wav": {
+  "span_s": 8.78,
+  "max_pause_s": 0.88,
+  "wpm_e": 130
+ },
+ "takes/finale_04_s4.wav": {
+  "span_s": 8.9,
+  "max_pause_s": 0.96,
+  "wpm_e": 128
+ },
+ "takes/finale_04_s5.wav": {
+  "span_s": 8.7,
+  "max_pause_s": 1.01,
+  "wpm_e": 131
+ },
+ "takes/finale_06_s1.wav": {
+  "span_s": 4.13,
+  "max_pause_s": 0.02,
+  "wpm_e": 203
+ },
+ "takes/finale_06_s2.wav": {
+  "span_s": 4.13,
+  "max_pause_s": 0.02,
+  "wpm_e": 203
+ },
+ "takes/finale_06_s3.wav": {
+  "span_s": 4.02,
+  "max_pause_s": 0.02,
+  "wpm_e": 209
+ },
+ "takes/finale_06_s4.wav": {
+  "span_s": 4.06,
+  "max_pause_s": 0.02,
+  "wpm_e": 207
+ },
+ "takes/finale_06_s5.wav": {
+  "span_s": 4.29,
+  "max_pause_s": 0.01,
+  "wpm_e": 196
+ },
+ "takes/teaser_2041_01_s1.wav": {
+  "span_s": 6.33,
+  "max_pause_s": 0.73,
+  "wpm_e": 123
+ },
+ "takes/teaser_2041_01_s2.wav": {
+  "span_s": 6.66,
+  "max_pause_s": 0.9,
+  "wpm_e": 117
+ },
+ "takes/teaser_2041_01_s3.wav": {
+  "span_s": 6.41,
+  "max_pause_s": 0.79,
+  "wpm_e": 122
+ },
+ "takes/teaser_2041_01_s4.wav": {
+  "span_s": 6.89,
+  "max_pause_s": 0.93,
+  "wpm_e": 113
+ },
+ "takes/teaser_2041_01_s5.wav": {
+  "span_s": 6.31,
+  "max_pause_s": 0.77,
+  "wpm_e": 124
+ },
+ "takes/teaser_2041_02_s1.wav": {
+  "span_s": 4.77,
+  "max_pause_s": 0.35,
+  "wpm_e": 176
+ },
+ "takes/teaser_2041_02_s2.wav": {
+  "span_s": 4.77,
+  "max_pause_s": 0.33,
+  "wpm_e": 176
+ },
+ "takes/teaser_2041_02_s3.wav": {
+  "span_s": 4.86,
+  "max_pause_s": 0.35,
+  "wpm_e": 173
+ },
+ "takes/teaser_2041_02_s4.wav": {
+  "span_s": 5.01,
+  "max_pause_s": 0.33,
+  "wpm_e": 168
+ },
+ "takes/teaser_2041_02_s5.wav": {
+  "span_s": 4.92,
+  "max_pause_s": 0.16,
+  "wpm_e": 171
+ },
+ "takes/teaser_2041_03_s1.wav": {
+  "span_s": 5.55,
+  "max_pause_s": 0.79,
+  "wpm_e": 119
+ },
+ "takes/teaser_2041_03_s2.wav": {
+  "span_s": 5.59,
+  "max_pause_s": 0.78,
+  "wpm_e": 118
+ },
+ "takes/teaser_2041_03_s3.wav": {
+  "span_s": 5.91,
+  "max_pause_s": 0.99,
+  "wpm_e": 112
+ },
+ "takes/teaser_2041_03_s4.wav": {
+  "span_s": 5.51,
+  "max_pause_s": 0.75,
+  "wpm_e": 120
+ },
+ "takes/teaser_2041_03_s5.wav": {
+  "span_s": 5.75,
+  "max_pause_s": 1.02,
+  "wpm_e": 115
+ },
+ "takes/teaser_2041_04_s1.wav": {
+  "span_s": 7.83,
+  "max_pause_s": 1.45,
+  "wpm_e": 84
+ },
+ "takes/teaser_2041_04_s2.wav": {
+  "span_s": 7.46,
+  "max_pause_s": 1.09,
+  "wpm_e": 88
+ },
+ "takes/teaser_2041_04_s3.wav": {
+  "span_s": 7.26,
+  "max_pause_s": 0.96,
+  "wpm_e": 91
+ },
+ "takes/teaser_2041_04_s4.wav": {
+  "span_s": 7.27,
+  "max_pause_s": 1.04,
+  "wpm_e": 91
+ },
+ "takes/teaser_2041_04_s5.wav": {
+  "span_s": 7.43,
+  "max_pause_s": 1.27,
+  "wpm_e": 89
+ }
+}

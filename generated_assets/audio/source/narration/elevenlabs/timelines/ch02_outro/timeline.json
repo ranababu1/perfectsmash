@@ -1,0 +1,402 @@
+{
+ "seq": "ch02_outro",
+ "kind": "outro",
+ "chapter": "vita",
+ "pre_roll_s": 3.0,
+ "slide_starts_s": [
+  3.0,
+  13.054,
+  24.081,
+  33.275
+ ],
+ "slide_ends_s": [
+  11.054,
+  22.081,
+  30.775,
+  41.444
+ ],
+ "gaps": [
+  [
+   11.054,
+   13.054
+  ],
+  [
+   22.081,
+   24.081
+  ],
+  [
+   30.775,
+   33.275
+  ]
+ ],
+ "end_card_s": 42.644,
+ "turn_s": 13.054,
+ "shift_s": 33.275,
+ "end_s": 43.644,
+ "items": [
+  {
+   "slide": 1,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_outro_01.master.wav",
+   "start_s": 3.0,
+   "duration_s": 8.054,
+   "words": [
+    {
+     "w": "Vita's",
+     "s": 0.0,
+     "e": 0.6
+    },
+    {
+     "w": "expansion",
+     "s": 0.6,
+     "e": 1.14
+    },
+    {
+     "w": "has",
+     "s": 1.14,
+     "e": 1.42
+    },
+    {
+     "w": "stopped.",
+     "s": 1.42,
+     "e": 1.92
+    },
+    {
+     "w": "The",
+     "s": 3.12,
+     "e": 3.26
+    },
+    {
+     "w": "revised",
+     "s": 3.26,
+     "e": 3.74
+    },
+    {
+     "w": "future",
+     "s": 3.74,
+     "e": 4.22
+    },
+    {
+     "w": "shows",
+     "s": 4.22,
+     "e": 4.62
+    },
+    {
+     "w": "fewer",
+     "s": 4.62,
+     "e": 5.0
+    },
+    {
+     "w": "people",
+     "s": 5.0,
+     "e": 5.36
+    },
+    {
+     "w": "trapped",
+     "s": 5.36,
+     "e": 5.76
+    },
+    {
+     "w": "by",
+     "s": 5.76,
+     "e": 6.08
+    },
+    {
+     "w": "treatments",
+     "s": 6.08,
+     "e": 6.5
+    },
+    {
+     "w": "they",
+     "s": 6.5,
+     "e": 6.78
+    },
+    {
+     "w": "cannot",
+     "s": 6.78,
+     "e": 7.14
+    },
+    {
+     "w": "maintain.",
+     "s": 7.14,
+     "e": 7.74
+    }
+   ],
+   "sentences": [
+    {
+     "text": "VITA's expansion has stopped.",
+     "start_s": 0.0,
+     "end_s": 1.92
+    },
+    {
+     "text": "The revised future shows fewer people trapped by treatments they cannot maintain.",
+     "start_s": 3.12,
+     "end_s": 7.874
+    }
+   ]
+  },
+  {
+   "slide": 2,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_outro_02.master.wav",
+   "start_s": 13.054,
+   "duration_s": 9.027,
+   "words": [
+    {
+     "w": "But",
+     "s": 0.0,
+     "e": 0.2
+    },
+    {
+     "w": "the",
+     "s": 0.2,
+     "e": 0.38
+    },
+    {
+     "w": "research",
+     "s": 0.38,
+     "e": 0.82
+    },
+    {
+     "w": "archive",
+     "s": 0.82,
+     "e": 1.28
+    },
+    {
+     "w": "reveals",
+     "s": 1.28,
+     "e": 1.68
+    },
+    {
+     "w": "something",
+     "s": 1.68,
+     "e": 2.18
+    },
+    {
+     "w": "impossible.",
+     "s": 2.18,
+     "e": 3.02
+    },
+    {
+     "w": "The",
+     "s": 4.18,
+     "e": 4.3
+    },
+    {
+     "w": "breakthrough",
+     "s": 4.3,
+     "e": 4.7
+    },
+    {
+     "w": "timelines",
+     "s": 4.7,
+     "e": 5.3
+    },
+    {
+     "w": "were",
+     "s": 5.3,
+     "e": 5.54
+    },
+    {
+     "w": "calculated",
+     "s": 5.54,
+     "e": 6.16
+    },
+    {
+     "w": "before",
+     "s": 6.16,
+     "e": 6.6
+    },
+    {
+     "w": "the",
+     "s": 6.6,
+     "e": 6.84
+    },
+    {
+     "w": "experiments",
+     "s": 6.84,
+     "e": 7.34
+    },
+    {
+     "w": "began.",
+     "s": 7.34,
+     "e": 7.94
+    }
+   ],
+   "sentences": [
+    {
+     "text": "But the research archive reveals something impossible.",
+     "start_s": 0.0,
+     "end_s": 3.02
+    },
+    {
+     "text": "The breakthrough timelines were calculated before the experiments began.",
+     "start_s": 4.18,
+     "end_s": 8.847
+    }
+   ]
+  },
+  {
+   "slide": 3,
+   "speaker": "narrator",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_outro_03.master.wav",
+   "start_s": 24.081,
+   "duration_s": 6.694,
+   "words": [
+    {
+     "w": "Vita",
+     "s": 0.0,
+     "e": 0.52
+    },
+    {
+     "w": "did",
+     "s": 0.52,
+     "e": 1.0
+    },
+    {
+     "w": "not",
+     "s": 1.0,
+     "e": 1.36
+    },
+    {
+     "w": "discover",
+     "s": 1.36,
+     "e": 1.98
+    },
+    {
+     "w": "its",
+     "s": 1.98,
+     "e": 2.28
+    },
+    {
+     "w": "future,",
+     "s": 2.28,
+     "e": 2.84
+    },
+    {
+     "w": "someone",
+     "s": 4.0,
+     "e": 4.38
+    },
+    {
+     "w": "gave",
+     "s": 4.38,
+     "e": 4.84
+    },
+    {
+     "w": "it",
+     "s": 4.84,
+     "e": 5.06
+    },
+    {
+     "w": "the",
+     "s": 5.06,
+     "e": 5.26
+    },
+    {
+     "w": "answer.",
+     "s": 5.26,
+     "e": 5.8
+    }
+   ],
+   "sentences": [
+    {
+     "text": "VITA did not discover its future.",
+     "start_s": 0.0,
+     "end_s": 2.84
+    },
+    {
+     "text": "Someone gave it the answer.",
+     "start_s": 4.0,
+     "end_s": 6.514
+    }
+   ]
+  },
+  {
+   "slide": 4,
+   "speaker": "control",
+   "wav": "/workspace/tfj-narration-el/stems/vta_vo_outro_04.master.wav",
+   "start_s": 33.275,
+   "duration_s": 8.169,
+   "words": [
+    {
+     "w": "Source",
+     "s": 0.0,
+     "e": 0.46
+    },
+    {
+     "w": "signature",
+     "s": 0.46,
+     "e": 0.96
+    },
+    {
+     "w": "matches",
+     "s": 0.96,
+     "e": 1.46
+    },
+    {
+     "w": "the",
+     "s": 1.46,
+     "e": 1.74
+    },
+    {
+     "w": "helix",
+     "s": 1.74,
+     "e": 2.18
+    },
+    {
+     "w": "directive.",
+     "s": 2.18,
+     "e": 2.66
+    },
+    {
+     "w": "The",
+     "s": 3.94,
+     "e": 4.02
+    },
+    {
+     "w": "next",
+     "s": 4.02,
+     "e": 4.26
+    },
+    {
+     "w": "facility",
+     "s": 4.26,
+     "e": 4.82
+    },
+    {
+     "w": "is",
+     "s": 4.82,
+     "e": 5.2
+    },
+    {
+     "w": "Novagrid,",
+     "s": 5.2,
+     "e": 5.98
+    },
+    {
+     "w": "2096.",
+     "s": 6.7,
+     "e": 7.58
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Source signature matches the Helix directive.",
+     "start_s": 0.0,
+     "end_s": 2.66
+    },
+    {
+     "text": "The next facility is Nova Grid.",
+     "start_s": 3.94,
+     "end_s": 7.58
+    },
+    {
+     "text": "2096.",
+     "start_s": 6.7,
+     "end_s": 7.989
+    }
+   ]
+  }
+ ]
+}

@@ -19,5 +19,96 @@
   "prompt_influence": 0.5,
   "output_format": "pcm_48000",
   "character_cost": "66"
+ },
+ "arrival": {
+  "prompt": "Temporal arrival: a soft reverse whoosh resolving into a shimmering high tone and a gentle low thump, sci-fi, no music",
+  "duration_seconds": 4.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "44"
+ },
+ "helix_city": {
+  "prompt": "Futuristic city at dawn from a high window, distant automated traffic hum, soft electronic chimes, gentle wind, no voices, no music",
+  "duration_seconds": 12.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "132"
+ },
+ "helix_powerdown": {
+  "prompt": "Huge server hall powering down: electrical hum winding down into silence, relays clicking off one by one, no music",
+  "duration_seconds": 7.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "77"
+ },
+ "vita_lab": {
+  "prompt": "Sterile biotech laboratory ambience, soft refrigeration hum, quiet medical monitor beeps, faint liquid bubbling, no voices, no music",
+  "duration_seconds": 12.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "132"
+ },
+ "vita_heartbeat": {
+  "prompt": "Slow steady heartbeat monitor beeping in a quiet empty laboratory, then slowly fading out, no music",
+  "duration_seconds": 8.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "88"
+ },
+ "nova_reactor": {
+  "prompt": "Enormous energy reactor deep resonant hum with a faint repeating electronic signal pulse buried in static interference, no music",
+  "duration_seconds": 12.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "132"
+ },
+ "nova_signal": {
+  "prompt": "Eerie distorted radio signal emerging from static noise, a repeating pulsed pattern, sci-fi, no voices, no music",
+  "duration_seconds": 8.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "88"
+ },
+ "civitas_crowd": {
+  "prompt": "Muffled city crowd murmur slowly fading away into a quiet cold electronic data hum, no music",
+  "duration_seconds": 12.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "132"
+ },
+ "civitas_data": {
+  "prompt": "Ominous digital data stream, rapid computer processing chatter and clicks building up, then an abrupt stop, no music",
+  "duration_seconds": 6.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "66"
+ },
+ "meridian_facility": {
+  "prompt": "Vast hidden underground facility, deep low drone, distant metal resonances, cold ventilation air, no voices, no music",
+  "duration_seconds": 12.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "132"
+ },
+ "finale_alert": {
+  "prompt": "Sci-fi alert: a soft repeating warning tone with glitching corrupted digital signal interference, tense, no music",
+  "duration_seconds": 6.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "66"
+ },
+ "teaser_morning": {
+  "prompt": "Quiet early morning outside a university building, birdsong, distant city traffic, calm and ordinary, no music, no voices",
+  "duration_seconds": 10.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "110"
+ },
+ "teaser_machine": {
+  "prompt": "Small laboratory machine switching on for the first time: a click, a soft electrical hum rising, faint whirring, no music",
+  "duration_seconds": 5.0,
+  "prompt_influence": 0.5,
+  "output_format": "pcm_48000",
+  "character_cost": "55"
  }
 }

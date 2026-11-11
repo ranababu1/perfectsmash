@@ -1,0 +1,36 @@
+{
+ "bed": "/workspace/tfj-narration-el/cine/ch01_intro/bed48.wav",
+ "base": "ch01_intro",
+ "voices": [
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_intro_01.master.wav",
+   3.5
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_intro_02.master.wav",
+   16.45
+  ],
+  [
+   "/workspace/tfj-narration-el/stems/hlx_vo_intro_03.master.wav",
+   26.452
+  ]
+ ],
+ "sfx": [
+  {
+   "name": "arrival",
+   "path": "/workspace/tfj-narration-el/sfx/arrival.wav",
+   "start_s": 0.0,
+   "lufs": -24,
+   "fade_in": 0,
+   "fade_out": 0.5
+  },
+  {
+   "name": "helix_city",
+   "path": "/workspace/tfj-narration-el/sfx/helix_city.wav",
+   "start_s": 1.0,
+   "lufs": -33,
+   "fade_in": 2.0,
+   "fade_out": 3.0
+  }
+ ]
+}

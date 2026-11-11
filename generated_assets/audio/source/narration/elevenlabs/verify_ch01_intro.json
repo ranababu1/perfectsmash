@@ -1,0 +1,66 @@
+{
+ "hlx_vo_intro_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Welcome to 2089. Helix Systems built Aura to manage the city, traffic, food, power, emergency response."
+ },
+ "hlx_vo_intro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate."
+ },
+ "hlx_vo_intro_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Your target is the Helix Central Operations Campus. Destroy the infrastructure that allows Aura to replicate. Keep the impact contained. This is the first intervention."
+ },
+ "hlx_vo_outro_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Helix went dark. Aura's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission."
+ },
+ "hlx_vo_outro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "The revised timeline is already changing, but the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian."
+ },
+ "hlx_vo_outro_03": {
+  "errs_word_timing_decode": 2,
+  "hyp": "Intervention confirmed. New coordinates received. 2092. Vitagenomics. Your next target is ready.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "Intervention confirmed. New coordinates received.  2092. Vita Genomics. Your next target is ready."
+ },
+ "vta_vo_intro_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "The first intervention changed the city, it did not change the people who built the next machine."
+ },
+ "vta_vo_intro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "In 2092, Vita Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives."
+ },
+ "vta_vo_intro_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "But the program is no longer correcting illness. It is making people dependent on the system that edits them."
+ },
+ "vta_vo_intro_04": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme."
+ },
+ "vta_vo_intro_05": {
+  "errs_word_timing_decode": 1,
+  "hyp": "Do not mistake the laboris for the people inside them. The target is the machinery.",
+  "errs_ogg_decode": 0,
+  "hyp_ogg": "Do not mistake the laboratories for the people inside them.  The target is the machinery."
+ },
+ "vta_vo_outro_01": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Vita's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain."
+ },
+ "vta_vo_outro_02": {
+  "errs_word_timing_decode": 0,
+  "hyp": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began."
+ },
+ "vta_vo_outro_03": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Vita did not discover its future, someone gave it the answer."
+ },
+ "vta_vo_outro_04": {
+  "errs_word_timing_decode": 0,
+  "hyp": "Source signature matches the helix directive. The next facility is Novagrid, 2096."
+ }
+}

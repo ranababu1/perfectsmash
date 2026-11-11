@@ -3,6 +3,7 @@
 
   mix_cine.py opening  --el DIR --bed BED48.wav --out DIR
   mix_cine.py showcase --el DIR --score FINALE.flac --out DIR
+  mix_cine.py plan --plan PLAN.json --out DIR      (chapter intros/outros, finale, teaser; see cine_build.py)
 
 Places mastered voice stems on the timeline, layers sound effects into the music bed, builds a
 sidechain-style ducking envelope from voice activity (look-ahead 150 ms, attack 120 ms, hold 250 ms,
@@ -124,8 +125,25 @@ def showcase(a):
     return r
 
 
+def sfx_at(path, lufs):
+    x = load(path); m = pyln.Meter(SR)
+    return x * 10 ** ((lufs - m.integrated_loudness(x)) / 20)
+
+
+def plan(a):
+    """generic: plan JSON {bed, base, voices: [[wav, start_s]], sfx: [{path, start_s, lufs, fade_in, fade_out}]}."""
+    P = json.load(open(a.plan))
+    bed = load(P['bed'])
+    for e in P.get('sfx', []):
+        bed = place(bed, sfx_at(e['path'], e['lufs']), e['start_s'], fade_in=e.get('fade_in', 0.0), fade_out=e.get('fade_out', 0.0))
+    voice = np.zeros_like(bed)
+    for w, t in P['voices']:
+        voice = place(voice, load(w), t)
+    return finish(bed, voice, a.out, P['base'], bed_lufs=-16.5)
+
+
 if __name__ == '__main__':
-    p = argparse.ArgumentParser(); p.add_argument('mode'); p.add_argument('--el'); p.add_argument('--bed'); p.add_argument('--score'); p.add_argument('--out')
+    p = argparse.ArgumentParser(); p.add_argument('mode'); p.add_argument('--el'); p.add_argument('--bed'); p.add_argument('--score'); p.add_argument('--out'); p.add_argument('--plan')
     a = p.parse_args(); os.makedirs(a.out, exist_ok=True)
-    r = opening(a) if a.mode == 'opening' else showcase(a)
+    r = {'opening': opening, 'showcase': showcase, 'plan': plan}[a.mode](a)
     print(json.dumps(r, indent=1))
