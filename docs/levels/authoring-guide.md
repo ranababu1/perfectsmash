@@ -105,6 +105,11 @@ ai_core_module (soft to weapons, survives falls), energy_component (soft; destro
 blast 70 dmg / 110 px), temporal_crystal (immune to everything but the Temporal Lance).
 Blasts are occluded by components between the blast and a target (steel and concrete block most).
 
+**Flight (2026-11-11).** Projectiles have no air drag: real flight follows the aim preview's
+ballistic arc exactly (an earlier default damping made lobs land 25-50 px short). The Breach Charge
+(950 px/s, full gravity) reaches roughly 900 px horizontally from the muzzle at most, so lob targets
+should sit within x ≈ 1100 for an operative at x 180. `health_scale` must stay within 0.5-4.
+
 ## 6. Chapter kits (component kind → material, reference sizes px)
 
 Generated from `data/integrated_assets.json` on 2026-11-11; `scale_range` 0.8-1.25 unless noted.
@@ -115,7 +120,12 @@ Generated from `data/integrated_assets.json` on 2026-11-11; `scale_range` 0.8-1.
 - **civitas**: surveillance_core (ai_core_module 70×110, critical), civic_column (concrete 30×120, 40×200, 40×280), civic_screen (glass 60×100, 120×70), data_exchange_rack (electronic 40×120, 50×90), relay_bridge (composite 160×24, 240×24), security_wall (steel 30×140, 40×200), sensor_array (glass 60×40, 90×60), sensor_mast (alloy 22×160, 22×240).
 - **meridian**: convergence_core (energy 80×120, critical), anchor_column (steel 30×160, 40×260), convergence_deck (composite 200×24, 320×30), monolith_slab (concrete 60×160, 140×40), phase_shield (glass 20×120, 80×120), quantum_stabilizer (electronic 50×80), temporal_cell (energy 36×50), timeline_relay (alloy 24×200).
 
-Nova Grid and Meridian cores are `energy_component`: destroying them sets off a secondary blast.
+Nova Grid `reactor_core` and Meridian `convergence_core` use the material **`reactor_housing`**
+(added 2026-11-11 after the first Nova Grid pass: as plain `energy_component` the cores died to one
+Pulse shot or any falling deck, which flattened the difficulty curve). It has 260 health, survives
+falls (structural resistance 0.6), takes ×1.6 from the Pulse Cannon and ×1.5 from the Disruptor, and
+sets off a large secondary blast (110 damage, 150 px) when destroyed. Use plain `energy_component`
+for capacitor / cryo / temporal cells and power cells.
 Any kind may carry another material when the puzzle needs it (e.g. Meridian `phase_shield` or
 `temporal_cell` as `temporal_crystal`), keeping the kind's size rules.
 

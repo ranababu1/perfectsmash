@@ -1,6 +1,6 @@
 extends TestCase
 
-const IDS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "ai_core_module", "energy_component", "temporal_crystal"]
+const IDS := ["lightweight_alloy", "reinforced_steel", "composite", "glass_polymer", "concrete", "electronic_module", "ai_core_module", "energy_component", "reactor_housing", "temporal_crystal"]
 
 
 func _material(overrides: Dictionary = {}) -> Dictionary:

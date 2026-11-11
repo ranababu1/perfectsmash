@@ -116,7 +116,7 @@
 				"cooldown": 1.4,
 				"aim_preview_seconds": 0.7
 			},
-			"material_bonus": {"energy_component": 3.0, "electronic_module": 1.6, "ai_core_module": 1.3, "concrete": 0.5, "reinforced_steel": 0.6},
+			"material_bonus": {"energy_component": 3.0, "electronic_module": 1.6, "ai_core_module": 1.3, "concrete": 0.5, "reinforced_steel": 0.6, "reactor_housing": 1.6},
 			"upgrades": {
 				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [50, 100, 160]},
 				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [50, 100, 160]},
@@ -148,7 +148,7 @@
 				"aim_preview_seconds": 0.8,
 				"blast_ignores_cover": 1
 			},
-			"material_bonus": {"electronic_module": 5.0, "ai_core_module": 2.5, "energy_component": 2.0, "*": 0.1},
+			"material_bonus": {"electronic_module": 5.0, "ai_core_module": 2.5, "energy_component": 2.0, "*": 0.1, "reactor_housing": 1.5},
 			"upgrades": {
 				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [60, 120, 190]},
 				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 1, 2], "costs": [60, 120, 190]},

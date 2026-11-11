@@ -38,6 +38,12 @@ func _init(p_weapon_id: String, p_stats: Dictionary, start: Vector2, velocity: V
 	_previous_speed = velocity.length()
 	mass = float(stats.projectile_mass)
 	gravity_scale = float(stats.gravity_scale)
+	# No air drag: the flight must follow the aim preview's ballistic arc exactly (Godot's default
+	# 2D linear damp of 0.1 made lobs land 25-50 px short of the arc the player was shown).
+	linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
+	linear_damp = 0.0
+	angular_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
+	angular_damp = 0.0
 	fuse_seconds = float(stats.get("fuse_seconds", 0.0))
 	pierces_left = int(stats.get("pierce_count", 0))
 	_previous_velocity = velocity

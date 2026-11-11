@@ -199,3 +199,24 @@ func test_hud_uses_production_theme_icons_and_operative() -> void:
 	screen.select_weapon("breach_charge")
 	assert_eq(String(screen.view.operative.muzzle.get_parent().name), "opr_wpn_breach_charge_a", "the shown weapon follows the selection")
 	await _free(main)
+
+
+## Ported from the retired legacy UI-flow suite: a press that starts on a HUD button (Pause, a
+## weapon button) and is dragged into the scene must never fire a round.
+func test_drag_starting_on_a_hud_button_never_fires() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	var ammo: int = screen.engine.weapons.kinetic_accelerator.ammo
+	tree.root.notification(Window.NOTIFICATION_VP_MOUSE_ENTER)
+	var pause_button := screen.hud.find_child("PauseButton", true, false) as Control
+	var start := pause_button.get_global_rect().get_center() if pause_button != null else Vector2(tree.root.get_visible_rect().size.x - 60, 50)
+	var into_scene := screen.view.plane_to_screen(Vector2(830.0, 462.0))
+	_mouse(start, true)
+	await tree.process_frame
+	_motion(into_scene)
+	await tree.process_frame
+	_mouse(into_scene, false)
+	await tree.process_frame
+	assert_eq(screen.engine.weapons.kinetic_accelerator.ammo, ammo, "a drag that starts on a HUD button never fires")
+	assert_true(screen.world.projectiles.is_empty())
+	await _free(main)

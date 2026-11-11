@@ -44,6 +44,13 @@
 			"on_destroyed": {"blast_damage": 70, "blast_radius": 110, "blast_impulse": 260}
 		},
 		{
+			"_note": "Shielded housing of an energy core (Nova Grid reactor, Meridian convergence core): built to survive falls and debris and to take several hits, but it is still an energy store, so its destruction sets off a large secondary blast. Plain energy_component stays for capacitor and temporal cells.",
+			"id": "reactor_housing",
+			"density": 0.0018, "friction": 0.6, "bounce": 0.05,
+			"health": 260, "impact_resistance": 0.3, "blast_resistance": 0.25, "structural_resistance": 0.6, "min_damage": 6, "blast_transmission": 0.3,
+			"on_destroyed": {"blast_damage": 110, "blast_radius": 150, "blast_impulse": 420}
+		},
+		{
 			"_note": "Meridian temporal crystal (anchors, stabiliser lattices): unaffected by every weapon, blast and collision except the Temporal Lance (vulnerable_to). Light and brittle once the Lance reaches it.",
 			"id": "temporal_crystal",
 			"density": 0.0014, "friction": 0.5, "bounce": 0.05,
