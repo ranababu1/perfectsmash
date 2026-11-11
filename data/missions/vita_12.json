@@ -1,0 +1,181 @@
+{
+	"id": "vita_12",
+	"name": "Patient Zero",
+	"chapter": 2,
+	"briefing": "The first cohort's records were removed from a sealed wing. Its lower bay is walled in; the upper floors are not.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "seal_1",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 620,
+			"w": 80,
+			"h": 40
+		},
+		{
+			"id": "seal_2",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 580,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"seal_1"
+			]
+		},
+		{
+			"id": "seal_3",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 540,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"seal_2"
+			]
+		},
+		{
+			"id": "bay_l",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 860,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "bay_r",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1040,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "bay_roof",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 950,
+			"y": 508,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"bay_l",
+				"bay_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 950,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "up_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 880,
+			"y": 416.0,
+			"w": 26,
+			"h": 160,
+			"supports": [
+				"bay_roof"
+			]
+		},
+		{
+			"id": "up_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1020,
+			"y": 416.0,
+			"w": 26,
+			"h": 160,
+			"supports": [
+				"bay_roof"
+			]
+		},
+		{
+			"id": "up_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 950,
+			"y": 324,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"up_l",
+				"up_r"
+			]
+		},
+		{
+			"id": "wing_cap",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 950,
+			"y": 297.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"up_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "cap",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Drop the wing cap",
+			"targets": [
+				"wing_cap"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

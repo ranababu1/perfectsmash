@@ -1,0 +1,123 @@
+{
+	"id": "vita_06",
+	"name": "Better Than Human",
+	"chapter": 2,
+	"briefing": "Corporate messaging calls it optimisation. The vault is raised on a tall bioreactor frame. Its feet are not.",
+	"width": 1700,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "frame_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 820,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "frame_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 980,
+			"y": 520.0,
+			"w": 30,
+			"h": 240
+		},
+		{
+			"id": "frame_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 900,
+			"y": 388,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"frame_l",
+				"frame_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 900,
+			"y": 321.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.5,
+			"critical_asset": true,
+			"supports": [
+				"frame_deck"
+			]
+		},
+		{
+			"id": "guard_tank",
+			"kind": "bioreactor",
+			"material": "glass_polymer",
+			"x": 700,
+			"y": 570.0,
+			"w": 60,
+			"h": 140
+		},
+		{
+			"id": "lab_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1250,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the enhancement rack",
+			"targets": [
+				"lab_rack"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

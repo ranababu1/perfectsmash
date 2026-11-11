@@ -1,0 +1,29 @@
+[
+	{
+		"name": "upper floor first",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "up_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "up_l"
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					950,
+					520
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					950,
+					520
+				]
+			}
+		]
+	}
+]

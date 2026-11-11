@@ -1,0 +1,52 @@
+[
+	{
+		"name": "cell then core",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "trial_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "trial_cell"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	},
+	{
+		"name": "kinetic only",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "trial_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "trial_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

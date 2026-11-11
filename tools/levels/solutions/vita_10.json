@@ -1,0 +1,89 @@
+[
+	{
+		"name": "down the line",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "station_rack_1",
+				"through": [
+					"pane_1"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "station_rack_2",
+				"through": [
+					"pane_2"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core",
+				"through": [
+					"pane_3"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "line_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "line_cell"
+			}
+		]
+	},
+	{
+		"name": "pane by pane",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pane_1"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "station_rack_1"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "station_rack_1"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pane_2"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "station_rack_2"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "station_rack_2"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pane_3"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "line_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "line_cell"
+			}
+		]
+	}
+]

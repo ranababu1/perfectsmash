@@ -1,0 +1,272 @@
+{
+	"id": "vita_20",
+	"name": "The Price of Perfection",
+	"chapter": 2,
+	"briefing": "The programme's core stands inside a glass containment shell under a heavy cap. A controlled failure brings it down on the vault.",
+	"width": 2000,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 6,
+	"target_time": 95,
+	"rewards": {
+		"completion_points": 1600,
+		"completion_research_data": 38,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 5
+		},
+		"kinetic_accelerator": {
+			"ammunition": 10
+		},
+		"breach_charge": {
+			"ammunition": 3
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "front_1",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 680,
+			"y": 620,
+			"w": 80,
+			"h": 40
+		},
+		{
+			"id": "front_2",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 680,
+			"y": 580,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"front_1"
+			]
+		},
+		{
+			"id": "shell_a",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 820,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "shell_b",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 820,
+			"y": 460.0,
+			"w": 60,
+			"h": 120,
+			"supports": [
+				"shell_a"
+			]
+		},
+		{
+			"id": "shell_c",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1120,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "shell_d",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1120,
+			"y": 460.0,
+			"w": 60,
+			"h": 120,
+			"supports": [
+				"shell_c"
+			]
+		},
+		{
+			"id": "shell_roof",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 970,
+			"y": 388,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"shell_b",
+				"shell_d"
+			]
+		},
+		{
+			"id": "shell_cap",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 970,
+			"y": 361.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"shell_roof"
+			]
+		},
+		{
+			"id": "cult_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 900,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1010,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true
+		},
+		{
+			"id": "low_pane",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 1380,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "low_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1460,
+			"y": 570.0,
+			"w": 50,
+			"h": 140,
+			"health_scale": 0.6
+		},
+		{
+			"id": "far_col",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1580,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "far_cell",
+			"kind": "cryo_cell",
+			"material": "energy_component",
+			"x": 1580,
+			"y": 455.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"far_col"
+			]
+		},
+		{
+			"id": "hi_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1740,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "hi_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1860,
+			"y": 520.0,
+			"w": 26,
+			"h": 240
+		},
+		{
+			"id": "hi_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 1800,
+			"y": 388,
+			"w": 160,
+			"h": 24,
+			"supports": [
+				"hi_l",
+				"hi_r"
+			]
+		},
+		{
+			"id": "hi_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1800,
+			"y": 326.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"hi_deck"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the culture rack",
+			"targets": [
+				"cult_rack"
+			]
+		},
+		{
+			"id": "far",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the cell and both far racks",
+			"targets": [
+				"far_cell",
+				"hi_rack",
+				"low_rack"
+			],
+			"count": 3
+		},
+		{
+			"id": "cap",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Drop the shell cap",
+			"targets": [
+				"shell_cap"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 8 shots",
+			"limit": 8
+		}
+	]
+}

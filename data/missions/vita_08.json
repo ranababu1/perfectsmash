@@ -1,0 +1,153 @@
+{
+	"id": "vita_08",
+	"name": "The Dependency",
+	"chapter": 2,
+	"briefing": "A concrete face shields the maintenance vault from the front. Behind it the same system hangs from glass.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"kinetic_accelerator": {
+			"ammunition": 4
+		},
+		"breach_charge": {
+			"ammunition": 3
+		},
+		"penetrator": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "face_1",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 620,
+			"w": 80,
+			"h": 40
+		},
+		{
+			"id": "face_2",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 580,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"face_1"
+			]
+		},
+		{
+			"id": "face_3",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 720,
+			"y": 540,
+			"w": 80,
+			"h": 40,
+			"supports": [
+				"face_2"
+			]
+		},
+		{
+			"id": "tank_l",
+			"kind": "bioreactor",
+			"material": "glass_polymer",
+			"x": 900,
+			"y": 570.0,
+			"w": 60,
+			"h": 140
+		},
+		{
+			"id": "tank_r",
+			"kind": "bioreactor",
+			"material": "glass_polymer",
+			"x": 1060,
+			"y": 570.0,
+			"w": 60,
+			"h": 140
+		},
+		{
+			"id": "hang_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 980,
+			"y": 488,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"tank_l",
+				"tank_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 980,
+			"y": 585.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.0,
+			"critical_asset": true
+		},
+		{
+			"id": "pump_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 520,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "pump",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the pump rack",
+			"targets": [
+				"pump_rack"
+			]
+		},
+		{
+			"id": "cap",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Bring down the hanging deck",
+			"targets": [
+				"hang_deck"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

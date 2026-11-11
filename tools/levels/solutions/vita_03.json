@@ -1,0 +1,67 @@
+[
+	{
+		"name": "along the rack line",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "rack_1",
+				"through": [
+					"rack_2"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "spare_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "spare_cell"
+			}
+		]
+	},
+	{
+		"name": "rack by rack",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_1"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_1"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_2"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_2"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_3"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "rack_3"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

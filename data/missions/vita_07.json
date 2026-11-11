@@ -1,0 +1,138 @@
+{
+	"id": "vita_07",
+	"name": "Cold Chain",
+	"chapter": 2,
+	"briefing": "Treatment distribution runs along one long storage rack under a heavy beam. Take the far end out from under it.",
+	"width": 1800,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 3,
+	"target_time": 50,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 3
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		},
+		"breach_charge": {
+			"ammunition": 1
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "rack_end_l",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 760,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "rack_end_r",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1060,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		},
+		{
+			"id": "cold_beam",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 910,
+			"y": 488,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"rack_end_l",
+				"rack_end_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1000,
+			"y": 421.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true,
+			"supports": [
+				"cold_beam"
+			]
+		},
+		{
+			"id": "beam_cap",
+			"kind": "containment_cap",
+			"material": "concrete",
+			"x": 820,
+			"y": 461.0,
+			"w": 120,
+			"h": 30,
+			"supports": [
+				"cold_beam"
+			]
+		},
+		{
+			"id": "cold_cell_col",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1300,
+			"y": 590.0,
+			"w": 26,
+			"h": 100
+		},
+		{
+			"id": "cold_cell",
+			"kind": "cryo_cell",
+			"material": "energy_component",
+			"x": 1300,
+			"y": 515.0,
+			"w": 36,
+			"h": 50,
+			"supports": [
+				"cold_cell_col"
+			]
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "cell",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the cold cell",
+			"targets": [
+				"cold_cell"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 5 shots",
+			"limit": 5
+		}
+	]
+}

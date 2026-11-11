@@ -1,0 +1,42 @@
+[
+	{
+		"name": "strike the centre",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "price_col",
+				"lift": [
+					60,
+					50,
+					70
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "price_col",
+				"lift": [
+					60,
+					50,
+					70
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "price_col",
+				"lift": [
+					60,
+					50,
+					70
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "left_rack"
+			}
+		]
+	}
+]

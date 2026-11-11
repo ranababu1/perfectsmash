@@ -1,0 +1,47 @@
+[
+	{
+		"name": "drop the cap",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "tank_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "tank_r"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	},
+	{
+		"name": "through the glass",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "vault_core",
+				"through": [
+					"tank_l"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

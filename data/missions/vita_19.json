@@ -1,0 +1,148 @@
+{
+	"id": "vita_19",
+	"name": "Dependency Chain",
+	"chapter": 2,
+	"briefing": "One frame carries the whole programme: the first cohort's rack at one end and the vault at the other. Weaken it, then finish it.",
+	"width": 1900,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 4,
+	"target_time": 60,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 8
+		},
+		"breach_charge": {
+			"ammunition": 2
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "chain_a",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 780,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "chain_b",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 940,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "chain_c",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 1100,
+			"y": 560.0,
+			"w": 26,
+			"h": 160
+		},
+		{
+			"id": "chain_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 940,
+			"y": 468,
+			"w": 320,
+			"h": 24,
+			"supports": [
+				"chain_a",
+				"chain_b",
+				"chain_c"
+			],
+			"min_supports": 2
+		},
+		{
+			"id": "cohort_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 820,
+			"y": 406.0,
+			"w": 40,
+			"h": 100,
+			"supports": [
+				"chain_deck"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 1060,
+			"y": 401.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 2.0,
+			"critical_asset": true,
+			"supports": [
+				"chain_deck"
+			]
+		},
+		{
+			"id": "ward_pane",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 660,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "ward_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 740,
+			"y": 590.0,
+			"w": 40,
+			"h": 100
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": true,
+			"label": "Destroy the cohort and ward racks",
+			"targets": [
+				"cohort_rack",
+				"ward_rack"
+			],
+			"count": 2
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 6 shots",
+			"limit": 6
+		}
+	]
+}

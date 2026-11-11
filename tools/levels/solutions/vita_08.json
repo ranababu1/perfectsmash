@@ -1,0 +1,56 @@
+[
+	{
+		"name": "lob behind the face",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"point": [
+					980,
+					560
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					1000,
+					480
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "pump_rack"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pump_rack"
+			}
+		]
+	},
+	{
+		"name": "rack first",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pump_rack"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "pump_rack"
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					980,
+					560
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					1000,
+					480
+				]
+			}
+		]
+	}
+]

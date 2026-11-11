@@ -1,0 +1,33 @@
+[
+	{
+		"name": "cut the neck",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "neck",
+				"through": [
+					"glass_b"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "neck",
+				"through": [
+					"glass_b"
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "tier_cell"
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "tier_cell"
+			}
+		]
+	}
+]

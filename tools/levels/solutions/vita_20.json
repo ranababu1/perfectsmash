@@ -1,0 +1,61 @@
+[
+	{
+		"name": "expose, breach, finish",
+		"steps": [
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "shell_b"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "shell_b"
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					1010,
+					560
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					1010,
+					560
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "low_rack",
+				"through": [
+					"shell_c",
+					"low_pane"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "low_rack",
+				"through": [
+					"shell_c",
+					"low_pane"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "far_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "hi_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "hi_l"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "hi_rack"
+			}
+		]
+	}
+]

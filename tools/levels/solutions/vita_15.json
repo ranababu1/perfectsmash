@@ -1,0 +1,34 @@
+[
+	{
+		"name": "high and low",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "ctl_low",
+				"through": [
+					"far_rack"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "far_rack",
+				"through": [
+					"ctl_col_l",
+					"ctl_col_r"
+				]
+			},
+			{
+				"weapon": "breach_charge",
+				"target": "ctl_deck"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "vault_core"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

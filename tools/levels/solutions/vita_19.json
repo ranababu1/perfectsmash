@@ -1,0 +1,40 @@
+[
+	{
+		"name": "weaken then finish",
+		"steps": [
+			{
+				"weapon": "penetrator",
+				"target": "ward_rack",
+				"through": [
+					"ward_pane"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "chain_a",
+				"through": [
+					"chain_b"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "chain_a",
+				"through": [
+					"chain_b"
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "chain_b"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "chain_b"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "vault_core"
+			}
+		]
+	}
+]

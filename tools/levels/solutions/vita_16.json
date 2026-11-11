@@ -1,0 +1,37 @@
+[
+	{
+		"name": "overhead collapse",
+		"steps": [
+			{
+				"weapon": "breach_charge",
+				"target": "arch_roof"
+			},
+			{
+				"weapon": "breach_charge",
+				"point": [
+					970,
+					560
+				]
+			},
+			{
+				"weapon": "penetrator",
+				"target": "seal_rack"
+			},
+			{
+				"weapon": "penetrator",
+				"target": "seal_cell",
+				"through": [
+					"arch_r"
+				]
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "seal_cell"
+			},
+			{
+				"weapon": "kinetic_accelerator",
+				"target": "seal_rack"
+			}
+		]
+	}
+]

@@ -1,0 +1,132 @@
+{
+	"id": "vita_02",
+	"name": "Clean Room",
+	"chapter": 2,
+	"briefing": "Two glass panes stand between the shooter and a vault on a service tower. Remove the pane or the tower.",
+	"width": 1600,
+	"ground_y": 640,
+	"operative": [
+		180,
+		640
+	],
+	"recommended_shots": 2,
+	"target_time": 40,
+	"rewards": {
+		"completion_points": 1100,
+		"completion_research_data": 25,
+		"optional_research_data": 6
+	},
+	"weapons": {
+		"penetrator": {
+			"ammunition": 4
+		},
+		"kinetic_accelerator": {
+			"ammunition": 6
+		}
+	},
+	"statics": [],
+	"components": [
+		{
+			"id": "tower_col_l",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 820,
+			"y": 590.0,
+			"w": 26,
+			"h": 100
+		},
+		{
+			"id": "tower_col_r",
+			"kind": "lab_column",
+			"material": "lightweight_alloy",
+			"x": 980,
+			"y": 590.0,
+			"w": 26,
+			"h": 100
+		},
+		{
+			"id": "tower_deck",
+			"kind": "lab_deck",
+			"material": "composite",
+			"x": 900,
+			"y": 528.0,
+			"w": 200,
+			"h": 24,
+			"supports": [
+				"tower_col_l",
+				"tower_col_r"
+			]
+		},
+		{
+			"id": "vault_core",
+			"kind": "gene_vault_core",
+			"material": "ai_core_module",
+			"x": 900,
+			"y": 461.0,
+			"w": 70,
+			"h": 110,
+			"health_scale": 1.5,
+			"critical_asset": true,
+			"supports": [
+				"tower_deck"
+			]
+		},
+		{
+			"id": "pane_low",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 700,
+			"y": 580.0,
+			"w": 60,
+			"h": 120
+		},
+		{
+			"id": "pane_high",
+			"kind": "cleanroom_panel",
+			"material": "glass_polymer",
+			"x": 700,
+			"y": 460.0,
+			"w": 60,
+			"h": 120,
+			"supports": [
+				"pane_low"
+			]
+		},
+		{
+			"id": "sample_rack",
+			"kind": "specimen_rack",
+			"material": "electronic_module",
+			"x": 1150,
+			"y": 570.0,
+			"w": 50,
+			"h": 140
+		}
+	],
+	"objectives": [
+		{
+			"id": "core",
+			"type": "destroy_critical",
+			"mandatory": true,
+			"label": "Destroy the gene vault core",
+			"targets": [
+				"vault_core"
+			]
+		},
+		{
+			"id": "rack",
+			"type": "destroy_components",
+			"mandatory": false,
+			"label": "Destroy the sample rack",
+			"targets": [
+				"sample_rack"
+			]
+		},
+		{
+			"id": "efficient",
+			"type": "max_shots",
+			"mandatory": false,
+			"label": "Finish within 4 shots",
+			"limit": 4
+		}
+	]
+}
