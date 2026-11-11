@@ -32,7 +32,7 @@ and device testing, rights approval (narration not legally cleared), signing, st
 | Main menu, chapter/mission select (names), settings (sound, music, vibration, narration volume), results | Complete | haptics on fire / blasts / core |
 | Save schema v4 (local JSON) | Complete | migrates v1-v3; rc2 adds the optional `settings.narration_volume` |
 | Retired slingshot game | Removed from the game | engine-level tests kept |
-| Android debug APK | rc2 built 2026-11-11 | `build/temporal1-1.0.0-rc2-debug.apk`, ~198 MB, version code 3 |
+| Android debug APK | rc2 rebuilt 2026-11-12 with narration | `build/temporal1-1.0.0-rc2-debug.apk`, ~216 MB, version code 3; 50 voice lines + 12 beds inside |
 | Unsigned release AAB | rc1 only | not rebuilt for rc2 (owner approval of the rc2 scope first) |
 | iOS | Not built | no macOS environment |
 | Store materials, privacy policy, Data safety | Drafted | `docs/store/` (owner submits) |
@@ -51,7 +51,7 @@ and device testing, rights approval (narration not legally cleared), signing, st
 
 - **No physical-device or human play-test** yet: difficulty, aiming feel, target times and performance on phones are unverified.
 - **Rights:** AI-assisted art and audio are `pending_review`; commercial clearance not claimed. `gameplay_bed.ogg` (unverified licence) is never shipped.
-- **Narration:** integrated and measured on desktop; not yet listened to by a person or played on a phone. The rc2 APK in `build/` predates the integration (rebuild before device testing). Rights: commercially usable per provider terms, not legally cleared.
+- **Narration:** integrated and measured on desktop; not yet listened to by a person or played on a phone. The rc2 APK in `build/` (2026-11-12) includes it; on the emulator the opening plays narrated on the manifest timeline. Rights: commercially usable per provider terms, not legally cleared.
 - **Audio:** music/ambience re-encoded to Vorbis q1 for size; new weapon sounds reuse library files — needs a listening review.
 - Emulator screenshots can lag behind the app (stale frames); device checks used paired captures and the mission clock to confirm state.
 - **Curves:** shot curves rise within each chapter but some mid-chapter levels sit at the low end of their bands; many levels have a single recorded line (see `docs/levels/*.md` notes).

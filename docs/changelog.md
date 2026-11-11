@@ -30,7 +30,8 @@ Branch `fix/rc2-owner-issues` (PR #16), with `main` merged in for the narration 
   - Subtitle vs heard speech: 0.05–0.09 s before.
   - Speech end to slide change: 1.3–3.5 s.
   - Bed under speech vs gaps: 6–14 dB lower.
-- **Not done:** human listening on a phone, physical devices, iOS. The rc2 APK was not rebuilt after this integration.
+- **APK:** `build/temporal1-1.0.0-rc2-debug.apk` rebuilt with narration (~216 MB, was ~198 MB; 50 voice lines and 12 beds inside, no review-only audio). Android 17 emulator: fresh install plays the narrated opening on the manifest timeline; no Godot errors in logcat.
+- **Not done:** human listening on a phone, physical devices, iOS; release AAB not rebuilt.
 
 ## 2026-11-11 — 1.0.0-rc2 (candidate, untagged): owner-reported fixes and narration architecture
 

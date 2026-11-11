@@ -2,12 +2,12 @@
 
 > **1.0.0-rc2 (candidate, not tagged).** Fixes the three owner-reported issues (weapon fallback,
 > Main Menu from pause with Android back, cinematic narration playback) — see `docs/changelog.md`.
-> Debug APK: `build/temporal1-1.0.0-rc2-debug.apk` (~198 MB, version name 1.0.0-rc2, code 3), built with
+> Debug APK: `build/temporal1-1.0.0-rc2-debug.apk` (~216 MB with narration, version name 1.0.0-rc2, code 3; rebuilt 2026-11-12 from `54262f7`), built with
 > `python tools/release/make_export_presets.py --version-name 1.0.0-rc2 --version-code 3` then
 > `godot_console --headless --export-debug "Android Debug" build/temporal1-1.0.0-rc2-debug.apk`.
-> The release AAB was not rebuilt. The narration package was integrated on 2026-11-12 after that APK
-> was built: rebuild the APK before device testing. The `v1.0.0-rc2` tag waits for the owner's
-> listening check and approval.
+> It contains all 50 voice lines and 12 music beds (mix references and review samples excluded).
+> Emulator: fresh install plays the narrated opening on the manifest timeline. The release AAB was
+> not rebuilt. The `v1.0.0-rc2` tag waits for the owner's listening check and approval.
 > The rc1 record below is unchanged.
 
 Release candidate of the complete game: 100 missions in five chapters, six weapons, story
