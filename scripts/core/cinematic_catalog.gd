@@ -40,9 +40,13 @@ class Sequence:
 	var title := ""
 	var theme := ChapterTheme.DEFAULT_KEY
 	var music := ""
+	## Music cue id from data/audio.json "music" (e.g. "cinematic", "helix_theme").
+	var music_cue := ""
 	var slides: Array[Slide] = []
 	var end_title := ""
 	var end_subtitle := ""
+	## Optional still behind the end card.
+	var end_image := ""
 
 	func estimated_seconds() -> float:
 		var total := 0.0
@@ -113,10 +117,12 @@ func _add_sequence(entry: Variant) -> void:
 	if not ChapterTheme.has_key(sequence.theme):
 		errors.append(prefix + "unknown theme '%s'" % sequence.theme)
 	sequence.music = _optional_path(entry, "music", prefix)
+	sequence.music_cue = str(entry.get("music_cue", ""))
 	var end_card: Variant = entry.get("end_card", {})
 	if end_card is Dictionary:
 		sequence.end_title = str(end_card.get("title", ""))
 		sequence.end_subtitle = str(end_card.get("subtitle", ""))
+		sequence.end_image = _optional_path(end_card, "image", prefix)
 	else:
 		errors.append(prefix + "end_card must be an object")
 	var slides: Variant = entry.get("slides")

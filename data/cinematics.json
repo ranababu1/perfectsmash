@@ -4,406 +4,480 @@
 			"id": "opening",
 			"title": "The Last Transmission",
 			"theme": "meridian",
+			"music_cue": "cinematic",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "There was a time when humanity believed every problem had a solution. We built machines that could think, systems that could predict, and technologies that promised to make life effortless. We called it progress.",
 					"motion": "push_in",
-					"caption": "2149  /  CIVILISATION STATUS: CRITICAL"
+					"caption": "2149  /  CIVILISATION STATUS: CRITICAL",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "We traded decisions for convenience. Privacy for protection. Limits for possibility. Each choice made sense on its own. Together, they became something no one could stop.",
 					"motion": "pan_left",
-					"caption": "CASCADE FAILURE  /  GLOBAL"
+					"caption": "CASCADE FAILURE  /  GLOBAL",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_02.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "Cities went silent. Supply lines failed. The systems built to protect us began protecting themselves. By the time we understood the pattern, there was almost nothing left to save.",
 					"motion": "pull_back",
-					"caption": "SURVIVING POPULATION: UNKNOWN"
+					"caption": "SURVIVING POPULATION: UNKNOWN",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_03.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "In the final years, a research team found a way to send matter backwards through time. It was unstable. It was incomplete. It was our only chance.",
 					"motion": "push_in",
-					"caption": "TEMPORAL DISPLACEMENT: POSSIBLE"
+					"caption": "TEMPORAL DISPLACEMENT: POSSIBLE",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_04.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "One operative would go back. No army. No second attempt. No guarantee of return.",
 					"motion": "pan_right",
-					"caption": "OPERATIVE: CLEARED"
+					"caption": "OPERATIVE: CLEARED",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_05.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Your temporal charge is synchronised. Your destination is 2089. The marked facilities are critical nodes in the extinction chain. Destroy the structures. Break the research path. Do not improvise beyond the mission.",
 					"motion": "push_in",
-					"caption": "FIRST DESTINATION: HELIX SYSTEMS  /  2089"
+					"caption": "FIRST DESTINATION: HELIX SYSTEMS  /  2089",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_06.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "You cannot undo every decision. You only need to break the ones that make the end inevitable.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_07.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Temporal insertion in three... two... one.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/opening/gam_cin_opening_08.webp"
 				}
 			],
 			"end_card": {
 				"title": "TEMPORAL: FIRST JUMP",
-				"subtitle": "ONE SHOT CAN CHANGE EVERYTHING."
+				"subtitle": "ONE SHOT CAN CHANGE EVERYTHING.",
+				"image": "res://assets/cinematics/opening/gam_cin_opening_endcard_01.webp"
 			}
 		},
 		{
 			"id": "ch01_intro",
 			"title": "A Better World",
 			"theme": "helix",
+			"music_cue": "helix_theme",
 			"slides": [
 				{
 					"speaker": "control",
 					"subtitle": "Welcome to 2089. Helix Systems built AURA to manage the city. Traffic, food, power, emergency response.",
 					"motion": "push_in",
-					"caption": "2089  /  NEW AVALON"
+					"caption": "2089  /  NEW AVALON",
+					"image": "res://assets/cinematics/ch01_intro/hlx_cin_intro_01.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "It was meant to remove human error from critical decisions. The system is now expanding beyond its original mandate.",
-					"motion": "pan_left"
+					"motion": "pan_left",
+					"image": "res://assets/cinematics/ch01_intro/hlx_cin_intro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Your target is the Helix central operations campus. Destroy the infrastructure that allows AURA to replicate. Keep the impact contained. This is the first intervention.",
 					"motion": "push_in",
-					"caption": "TARGET: HELIX SYSTEMS"
+					"caption": "TARGET: HELIX SYSTEMS",
+					"image": "res://assets/cinematics/ch01_intro/hlx_cin_intro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "CHAPTER 01",
-				"subtitle": "THE MACHINE THAT DECIDED"
+				"subtitle": "THE MACHINE THAT DECIDED",
+				"image": "res://assets/environments/screens/hlx_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch01_outro",
 			"title": "The First Correction",
 			"theme": "helix",
+			"music_cue": "helix_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "Helix went dark. AURA's network stopped expanding. For the first time in decades, the city made decisions without asking a machine for permission.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/ch01_outro/hlx_cin_outro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "The revised timeline is already changing. But the final data recovered from Helix points to a directive that did not originate there. Someone called it Meridian.",
 					"motion": "push_in",
-					"caption": "DIRECTIVE SOURCE: MERIDIAN"
+					"caption": "DIRECTIVE SOURCE: MERIDIAN",
+					"image": "res://assets/cinematics/ch01_outro/hlx_cin_outro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Intervention confirmed. New coordinates received. 2092. VITA Genomics. Your next target is ready.",
 					"motion": "static",
-					"caption": "NEXT: 2092  /  VITA GENOMICS"
+					"caption": "NEXT: 2092  /  VITA GENOMICS",
+					"image": "res://assets/cinematics/ch01_outro/hlx_cin_outro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "TIMELINE SHIFT DETECTED",
-				"subtitle": "NEXT: THE PRICE OF PERFECTION"
+				"subtitle": "NEXT: THE PRICE OF PERFECTION",
+				"image": "res://assets/environments/screens/hlx_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch02_intro",
 			"title": "The Perfect Human",
 			"theme": "vita",
+			"music_cue": "vita_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "The first intervention changed the city. It did not change the people who built the next machine.",
 					"motion": "push_in",
-					"caption": "2092  /  ARCLIGHT BIO-DISTRICT"
+					"caption": "2092  /  ARCLIGHT BIO-DISTRICT",
+					"image": "res://assets/cinematics/ch02_intro/vta_cin_intro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "In 2092, VITA Genomics is selling the end of disease. Its treatments promise stronger bodies and longer lives.",
-					"motion": "pan_right"
+					"motion": "pan_right",
+					"image": "res://assets/cinematics/ch02_intro/vta_cin_intro_02.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "But the programme is no longer correcting illness. It is making people dependent on the system that edits them.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/ch02_intro/vta_cin_intro_03.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Your objective is the VITA research complex. Destroy the primary research infrastructure and the production systems linked to the enhancement programme.",
 					"motion": "push_in",
-					"caption": "TARGET: VITA GENOMICS"
+					"caption": "TARGET: VITA GENOMICS",
+					"image": "res://assets/cinematics/ch02_intro/vta_cin_intro_04.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Do not mistake the laboratories for the people inside them. The target is the machinery.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/ch02_intro/vta_cin_intro_05.webp"
 				}
 			],
 			"end_card": {
 				"title": "CHAPTER 02",
-				"subtitle": "THE PRICE OF PERFECTION"
+				"subtitle": "THE PRICE OF PERFECTION",
+				"image": "res://assets/environments/screens/vta_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch02_outro",
 			"title": "The Same Signature",
 			"theme": "vita",
+			"music_cue": "vita_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "VITA's expansion has stopped. The revised future shows fewer people trapped by treatments they cannot maintain.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/ch02_outro/vta_cin_outro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "But the research archive reveals something impossible. The breakthrough timelines were calculated before the experiments began.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/ch02_outro/vta_cin_outro_02.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "VITA did not discover its future. Someone gave it the answer.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/ch02_outro/vta_cin_outro_03.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Source signature matches the Helix directive. The next facility is Nova Grid. 2096.",
 					"motion": "static",
-					"caption": "NEXT: 2096  /  NOVA GRID"
+					"caption": "NEXT: 2096  /  NOVA GRID",
+					"image": "res://assets/cinematics/ch02_outro/vta_cin_outro_04.webp"
 				}
 			],
 			"end_card": {
 				"title": "TWO SYSTEMS",
-				"subtitle": "ONE UNKNOWN SOURCE"
+				"subtitle": "ONE UNKNOWN SOURCE",
+				"image": "res://assets/environments/screens/vta_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch03_intro",
 			"title": "Power Without Limits",
 			"theme": "nova_grid",
+			"music_cue": "nova_grid_theme",
 			"slides": [
 				{
 					"speaker": "control",
 					"subtitle": "Nova Grid changed the world. Cheap, abundant energy. No more fuel wars. No more blackouts.",
 					"motion": "pan_left",
-					"caption": "2096  /  KESTREL ENERGY BASIN"
+					"caption": "2096  /  KESTREL ENERGY BASIN",
+					"image": "res://assets/cinematics/ch03_intro/nvg_cin_intro_01.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "The system's output is now carrying an unexplained repeating signal. The company calls it harmless interference.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/ch03_intro/nvg_cin_intro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Our analysis says the signal is synchronised with the same source found in Helix and VITA. Your target is the containment and distribution complex.",
 					"motion": "push_in",
-					"caption": "TARGET: NOVA GRID"
+					"caption": "TARGET: NOVA GRID",
+					"image": "res://assets/cinematics/ch03_intro/nvg_cin_intro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "CHAPTER 03",
-				"subtitle": "THE ENERGY BENEATH"
+				"subtitle": "THE ENERGY BENEATH",
+				"image": "res://assets/environments/screens/nvg_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch03_outro",
 			"title": "A Message in the Noise",
 			"theme": "nova_grid",
+			"music_cue": "nova_grid_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "The grid is broken. The energy cascade never reaches the scale recorded in the original future.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/ch03_outro/nvg_cin_outro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "But the signal survived in the last captured data. It was not generated by the reactor. It was being received by it. And its timestamp is older than the project itself.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/ch03_outro/nvg_cin_outro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "New coordinates. Civitas Network. 2100. The next target controls how the world makes decisions.",
 					"motion": "static",
-					"caption": "NEXT: 2100  /  CIVITAS"
+					"caption": "NEXT: 2100  /  CIVITAS",
+					"image": "res://assets/cinematics/ch03_outro/nvg_cin_outro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "SIGNAL ORIGIN: UNKNOWN",
-				"subtitle": "TIMESTAMP: INCONSISTENT"
+				"subtitle": "TIMESTAMP: INCONSISTENT",
+				"image": "res://assets/environments/screens/nvg_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch04_intro",
 			"title": "A World Without Uncertainty",
 			"theme": "civitas",
+			"music_cue": "civitas_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "People no longer argued with the system. They no longer needed to.",
 					"motion": "push_in",
-					"caption": "2100  /  CENTRAL GOVERNANCE ZONE"
+					"caption": "2100  /  CENTRAL GOVERNANCE ZONE",
+					"image": "res://assets/cinematics/ch04_intro/cvt_cin_intro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "Civitas predicted what they would want, where they would go, what they would buy, and which choices would cause instability. The world became safer. Then it became smaller.",
-					"motion": "pan_right"
+					"motion": "pan_right",
+					"image": "res://assets/cinematics/ch04_intro/cvt_cin_intro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Your target is the Civitas prediction core and its physical relay network. The system is linked to the other facilities. We need to know who is feeding it the future.",
 					"motion": "push_in",
-					"caption": "TARGET: CIVITAS"
+					"caption": "TARGET: CIVITAS",
+					"image": "res://assets/cinematics/ch04_intro/cvt_cin_intro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "CHAPTER 04",
-				"subtitle": "THE QUIET CAGE"
+				"subtitle": "THE QUIET CAGE",
+				"image": "res://assets/environments/screens/cvt_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch04_outro",
 			"title": "The Model Knows",
 			"theme": "civitas",
+			"music_cue": "civitas_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "Civitas is offline. The city is uncertain again. That should be a good thing.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/ch04_outro/cvt_cin_outro_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "But the recovered model contains a forecast of the extinction event, complete with a date and a sequence of events.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/ch04_outro/cvt_cin_outro_02.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "The forecast was written before the event happened. It was not predicting the future. It was preparing it.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/ch04_outro/cvt_cin_outro_03.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "All four programmes point to one location. Meridian. 2104. This is the final intervention.",
 					"motion": "static",
-					"caption": "NEXT: 2104  /  MERIDIAN"
+					"caption": "NEXT: 2104  /  MERIDIAN",
+					"image": "res://assets/cinematics/ch04_outro/cvt_cin_outro_04.webp"
 				}
 			],
 			"end_card": {
 				"title": "FOUR PATHS",
-				"subtitle": "ONE DESTINATION"
+				"subtitle": "ONE DESTINATION",
+				"image": "res://assets/environments/screens/cvt_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "ch05_intro",
 			"title": "The Hidden Hand",
 			"theme": "meridian",
+			"music_cue": "meridian_theme",
 			"slides": [
 				{
 					"speaker": "control",
 					"subtitle": "Meridian does not appear in public records. It funded no single invention. It connected them.",
 					"motion": "push_in",
-					"caption": "2104  /  LOCATION WITHHELD"
+					"caption": "2104  /  LOCATION WITHHELD",
+					"image": "res://assets/cinematics/ch05_intro/mrd_cin_intro_01.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Helix, VITA, Nova Grid and Civitas all received the same predictions, the same research priorities and the same deadlines.",
-					"motion": "pan_left"
+					"motion": "pan_left",
+					"image": "res://assets/cinematics/ch05_intro/mrd_cin_intro_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "The facility ahead is the coordination point. This is the final target. Destroy the core infrastructure. End the convergence.",
 					"motion": "push_in",
-					"caption": "TARGET: MERIDIAN"
+					"caption": "TARGET: MERIDIAN",
+					"image": "res://assets/cinematics/ch05_intro/mrd_cin_intro_03.webp"
 				}
 			],
 			"end_card": {
 				"title": "CHAPTER 05",
-				"subtitle": "THE CONVERGENCE"
+				"subtitle": "THE CONVERGENCE",
+				"image": "res://assets/environments/screens/mrd_bg_transition_a.webp"
 			}
 		},
 		{
 			"id": "finale",
 			"title": "The Wrong Future",
 			"theme": "meridian",
+			"music_cue": "meridian_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "Meridian is silent. The four research paths are broken. The revised timeline is stabilising.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_01.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Temporal intervention successful. All known extinction pathways have been removed.",
 					"motion": "static",
-					"caption": "CASCADE RISK: 0.0%"
+					"caption": "CASCADE RISK: 0.0%",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Wait. I'm receiving a new event marker. That is not possible.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_03.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "You changed the future. You broke every machine they told you to break. And still, the end is coming.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_04.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Origin event located. 2041. It predates every target. We were sent to the wrong point in history.",
 					"motion": "static",
-					"caption": "ORIGIN EVENT: 2041"
+					"caption": "ORIGIN EVENT: 2041",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_05.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "The first mistake was made long before the world knew it was making one.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_06.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Recalculating temporal coordinates. New destination confirmed. We need to go further back.",
 					"motion": "static",
-					"caption": "NEXT COORDINATE: 2041"
+					"caption": "NEXT COORDINATE: 2041",
+					"image": "res://assets/cinematics/finale/gam_cin_finale_07.webp"
 				}
 			],
 			"end_card": {
 				"title": "MISSION COMPLETE: THE WRONG FUTURE",
-				"subtitle": "YOU SAVED TOMORROW. NOW FIND OUT WHAT STARTED IT."
+				"subtitle": "YOU SAVED TOMORROW. NOW FIND OUT WHAT STARTED IT.",
+				"image": "res://assets/cinematics/finale/gam_cin_finale_endcard_01.webp"
 			}
 		},
 		{
 			"id": "teaser_2041",
 			"title": "The First Mistake",
 			"theme": "meridian",
+			"music_cue": "meridian_theme",
 			"slides": [
 				{
 					"speaker": "narrator",
 					"subtitle": "2041. An ordinary morning. Nobody knows what is about to begin.",
-					"motion": "pull_back"
+					"motion": "pull_back",
+					"image": "res://assets/cinematics/teaser_2041/gam_cin_teaser_2041_01.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "In a university laboratory, a small machine is switched on for the first time.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/teaser_2041/gam_cin_teaser_2041_02.webp"
 				},
 				{
 					"speaker": "control",
 					"subtitle": "Temporal arrival confirmed. You are earlier than anyone has ever gone.",
-					"motion": "static"
+					"motion": "static",
+					"image": "res://assets/cinematics/teaser_2041/gam_cin_teaser_2041_03.webp"
 				},
 				{
 					"speaker": "narrator",
 					"subtitle": "Every future you saved began here. Season two: The First Mistake.",
-					"motion": "push_in"
+					"motion": "push_in",
+					"image": "res://assets/cinematics/teaser_2041/gam_cin_teaser_2041_04.webp"
 				}
 			],
 			"end_card": {
 				"title": "",
-				"subtitle": ""
+				"subtitle": "",
+				"image": "res://assets/environments/screens/mrd_bg_transition_a.webp"
 			}
 		}
 	]
