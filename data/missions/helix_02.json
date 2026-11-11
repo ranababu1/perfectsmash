@@ -9,7 +9,7 @@
 		180,
 		640
 	],
-	"recommended_shots": 2,
+	"recommended_shots": 3,
 	"target_time": 40,
 	"rewards": {
 		"completion_points": 1000,

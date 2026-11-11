@@ -15,8 +15,9 @@ func _make_main() -> Node:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -58,7 +59,8 @@ func test_rig_walks_through_every_state_and_clip() -> void:
 	await tree.process_frame
 	await tree.process_frame
 	assert_eq(rig.state, OperativeRig.State.IDLE, "idle after inactivity")
-	assert_true(_started.has("idle"), "idle clip played")
+	# The rig can already be idling when the test starts listening (suite order, load time).
+	assert_true(_started.has("idle") or rig._animation.current_animation == "idle", "idle clip played (started: %s, current: %s)" % [_started, rig._animation.current_animation])
 
 	# ready: recent input
 	_started.clear()

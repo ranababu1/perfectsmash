@@ -212,6 +212,6 @@ func test_upgrades_flow_into_effective_stats() -> void:
 	assert_false(levels.has("ghost_weapon"), "unknown weapons filtered")
 	assert_false(levels.get("kinetic_accelerator", {}).has("made_up"), "unknown attributes filtered")
 	var materials := MaterialCatalog.load_from_file()
-	var def := MissionDefinition.load_from_file("res://data/missions/helix_01.json", materials, _weapons)
+	var def := MissionDefinition.load_from_file("res://data/missions/helix_08.json", materials, _weapons)
 	var engine := MissionEngine.new(def, materials, _weapons, levels)
 	assert_eq(engine.weapons.breach_charge.ammo, 5, "3 mission charges + 2 capacity")

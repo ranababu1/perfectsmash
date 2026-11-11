@@ -1,0 +1,19 @@
+[
+	{
+		"name": "direct: the exposed controller",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
+		]
+	},
+	{
+		"name": "weak point: left column",
+		"steps": [
+			{"weapon": "kinetic_accelerator", "target": "relay_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "relay_col_l"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"},
+			{"weapon": "kinetic_accelerator", "target": "relay_core"}
+		]
+	}
+]

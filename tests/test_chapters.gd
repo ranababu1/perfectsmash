@@ -24,10 +24,11 @@ func test_chapter_for_level_boundaries() -> void:
 	assert_true(catalog.chapter_for_level(101) == null)
 
 
-func test_every_shipped_level_has_a_chapter() -> void:
-	var levels := LevelCatalog.load_from_file()
+func test_every_campaign_slot_has_a_chapter() -> void:
 	var chapters := ChapterCatalog.load_from_file()
-	for i in levels.levels.size():
+	var slots := MissionCatalog.load_default().slots
+	assert_eq(slots.size(), 100)
+	for i in slots.size():
 		assert_true(chapters.chapter_for_level(i + 1) != null, "level %d has no chapter" % (i + 1))
 
 

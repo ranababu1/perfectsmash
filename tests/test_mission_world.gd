@@ -1,10 +1,10 @@
 extends TestCase
-## MissionWorld + MissionEngine on the real 2D physics with the Helix greybox (helix_01).
+## MissionWorld + MissionEngine on the real 2D physics with the Helix reference facility (helix_08, the original prototype).
 ## Shots are placed directly at known positions so each test checks one tactic. Assertions use
 ## damage-state categories, not exact health, because Godot 2D contact resolution is not
 ## bit-reproducible run to run.
 
-const HELIX := "res://data/missions/helix_01.json"
+const HELIX := "res://data/missions/helix_08.json"
 const State := DamageableComponent.State
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 

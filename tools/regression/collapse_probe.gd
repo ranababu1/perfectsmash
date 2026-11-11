@@ -6,7 +6,7 @@ extends SceneTree
 ##
 ##   godot_console --headless --fixed-fps 60 -s tools/regression/collapse_probe.gd [-- --verbose]
 
-const MISSION := "res://data/missions/helix_01.json"
+const MISSION := "res://data/missions/helix_08.json"
 const CORE := "aura_core"
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 

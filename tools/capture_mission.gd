@@ -16,8 +16,9 @@ func _initialize() -> void:
 func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(CAPTURE_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	root.add_child(main)
 	await _frames(40)
 	var screen: MissionScreen = main._mission

@@ -1,0 +1,11 @@
+[
+	{
+		"name": "column breach + kinetic finish",
+		"steps": [
+			{"weapon": "breach_charge", "target": "pillar_l"},
+			{"weapon": "kinetic_accelerator", "target": "aura_core"},
+			{"weapon": "kinetic_accelerator", "target": "aura_core"},
+			{"weapon": "kinetic_accelerator", "target": "aura_core"}
+		]
+	}
+]

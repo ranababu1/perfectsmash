@@ -42,7 +42,7 @@ func _kill(e: MissionEngine, id: String) -> void:
 
 func test_shipped_scoring_is_valid() -> void:
 	assert_true(_scoring.is_valid(), ", ".join(_scoring.errors))
-	var helix := MissionDefinition.load_from_file("res://data/missions/helix_01.json", _materials, _weapons)
+	var helix := MissionDefinition.load_from_file("res://data/missions/helix_08.json", _materials, _weapons)
 	assert_eq(helix.completion_points, 1000)
 	assert_eq(helix.completion_research_data, 20)
 

@@ -1,5 +1,5 @@
 {
-	"_note": "Weapon behaviour and upgrade data. Speeds in px/s, radii in px, cooldown in seconds. 'fuse_seconds' > 0 makes a charge burst in the air that long after launch if it has not hit anything (it still detonates on contact); 0 = contact fuse only. 'ammunition' is the weapon's default per-mission allowance; missions may override it. Upgrade levels are 1-3 (0 = base); costs are Research Data per level. Values are tuning starting points.",
+	"_note": "Weapon behaviour and upgrade data. Speeds in px/s, radii in px, cooldown in seconds. 'fuse_seconds' > 0 makes a charge burst in the air that long after launch if it has not hit anything (it still detonates on contact); 0 = contact fuse only. 'ammunition' is the weapon's default per-mission allowance; missions may override it. Upgrade levels are 1-3 (0 = base); costs are Research Data per level. Values are tuning starting points. Optional stats (chapter II-V weapons): pierce_count, pierce_speed_keep, blast_ignores_cover (see WeaponCatalog.OPTIONAL_STATS). 'material_bonus' maps material ids to damage multipliers ('*' = all others). '_role' is a design note.",
 	"weapons": [
 		{
 			"id": "kinetic_accelerator",
@@ -57,6 +57,136 @@
 				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3], "costs": [30, 60, 100]},
 				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.1, 0.2, 0.3], "costs": [30, 60, 100]},
 				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [30, 60, 100]}
+			}
+		},
+		{
+			"id": "penetrator",
+			"display_name": "Penetrator",
+			"unlock_chapter": 2,
+			"delivery": "direct",
+			"_role": "Focused penetration: a dense dart with high armour penetration that passes through up to two components it destroys or that are light (glass, polymer, electronics, alloy panels: impact resistance <= 0.2) and keeps flying.",
+			"stats": {
+				"launch_speed": 2000,
+				"min_launch_speed": 2000,
+				"gravity_scale": 0.15,
+				"projectile_radius": 6,
+				"projectile_mass": 3,
+				"impact_damage": 110,
+				"penetration": 0.75,
+				"blast_damage": 0,
+				"blast_radius": 0,
+				"blast_impulse": 0,
+				"blast_edge_falloff": 0,
+				"fuse_seconds": 0,
+				"ammunition": 6,
+				"cooldown": 1.6,
+				"aim_preview_seconds": 0.7,
+				"pierce_count": 2,
+				"pierce_speed_keep": 0.8,
+				"pierce_max_resistance": 0.2
+			},
+			"material_bonus": {},
+			"upgrades": {
+				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [40, 80, 130]},
+				"piercing": {"stat": "pierce_count", "op": "add", "levels": [1, 1, 2], "costs": [40, 80, 130]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.15, 0.3, 0.45], "costs": [40, 80, 130]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3], "costs": [40, 80, 130]}
+			}
+		},
+		{
+			"id": "pulse_cannon",
+			"display_name": "Pulse Cannon",
+			"unlock_chapter": 3,
+			"delivery": "direct",
+			"_role": "Energy pulse: a near-flat bolt that discharges on contact in a small radius; it overloads energy components (triple damage) and shorts electronics, while doing little to concrete and steel.",
+			"stats": {
+				"launch_speed": 1500,
+				"min_launch_speed": 1500,
+				"gravity_scale": 0.05,
+				"projectile_radius": 10,
+				"projectile_mass": 2,
+				"impact_damage": 60,
+				"penetration": 0.0,
+				"blast_damage": 55,
+				"blast_radius": 75,
+				"blast_impulse": 160,
+				"blast_edge_falloff": 0.5,
+				"fuse_seconds": 0,
+				"ammunition": 8,
+				"cooldown": 1.4,
+				"aim_preview_seconds": 0.7
+			},
+			"material_bonus": {"energy_component": 3.0, "electronic_module": 1.6, "ai_core_module": 1.3, "concrete": 0.5, "reinforced_steel": 0.6, "reactor_housing": 1.6},
+			"upgrades": {
+				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [50, 100, 160]},
+				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [50, 100, 160]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 2, 3], "costs": [50, 100, 160]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [50, 100, 160]}
+			}
+		},
+		{
+			"id": "disruptor",
+			"display_name": "Disruptor",
+			"unlock_chapter": 4,
+			"delivery": "direct",
+			"_role": "Electromagnetic disruptor: a slow, arcing canister that releases a wide EMP field. The field ignores cover and pushes nothing, burns out electronics and shield emitters, and barely scratches structure.",
+			"stats": {
+				"launch_speed": 1150,
+				"min_launch_speed": 1150,
+				"gravity_scale": 0.45,
+				"projectile_radius": 11,
+				"projectile_mass": 2,
+				"impact_damage": 10,
+				"penetration": 0.0,
+				"blast_damage": 60,
+				"blast_radius": 170,
+				"blast_impulse": 0,
+				"blast_edge_falloff": 0.6,
+				"fuse_seconds": 0,
+				"ammunition": 3,
+				"cooldown": 2.0,
+				"aim_preview_seconds": 0.8,
+				"blast_ignores_cover": 1
+			},
+			"material_bonus": {"electronic_module": 5.0, "ai_core_module": 2.5, "energy_component": 2.0, "*": 0.1, "reactor_housing": 1.5},
+			"upgrades": {
+				"blast_efficiency": {"stat": "blast_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [60, 120, 190]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 1, 2], "costs": [60, 120, 190]},
+				"targeting_assistance": {"stat": "aim_preview_seconds", "op": "add", "levels": [0.15, 0.3, 0.45], "costs": [60, 120, 190]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [60, 120, 190]}
+			}
+		},
+		{
+			"id": "temporal_lance",
+			"display_name": "Temporal Lance",
+			"unlock_chapter": 5,
+			"delivery": "direct",
+			"_role": "Charged temporal impact: a dead-straight lance that passes through up to three components and is the only weapon that can fracture temporal crystal. Scarce: two or three charges per mission.",
+			"stats": {
+				"launch_speed": 2600,
+				"min_launch_speed": 2600,
+				"gravity_scale": 0.0,
+				"projectile_radius": 8,
+				"projectile_mass": 5,
+				"impact_damage": 150,
+				"penetration": 0.6,
+				"blast_damage": 0,
+				"blast_radius": 0,
+				"blast_impulse": 0,
+				"blast_edge_falloff": 0,
+				"fuse_seconds": 0,
+				"ammunition": 2,
+				"cooldown": 3.0,
+				"aim_preview_seconds": 1.0,
+				"pierce_count": 3,
+				"pierce_speed_keep": 0.9
+			},
+			"material_bonus": {"temporal_crystal": 3.0},
+			"upgrades": {
+				"impact_energy": {"stat": "impact_damage", "op": "multiply", "levels": [1.15, 1.3, 1.5], "costs": [70, 140, 220]},
+				"penetration": {"stat": "penetration", "op": "add", "levels": [0.1, 0.2, 0.3], "costs": [70, 140, 220]},
+				"energy_capacity": {"stat": "ammunition", "op": "add", "levels": [1, 1, 2], "costs": [70, 140, 220]},
+				"energy_efficiency": {"stat": "cooldown", "op": "multiply", "levels": [0.9, 0.8, 0.7], "costs": [70, 140, 220]}
 			}
 		}
 	]

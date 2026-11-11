@@ -33,26 +33,6 @@ func assert_near(actual: float, expected: float, tolerance: float, message: Stri
 		failures.append("%s expected %f ± %f got %f" % [message, expected, tolerance, actual])
 
 
-## Creates a GameSession in its own SubViewport so it gets an isolated physics world.
-func make_session(def: LevelDefinition) -> GameSession:
-	await PhysicsWarmup.run(tree)
-	var viewport := SubViewport.new()
-	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
-	tree.root.add_child(viewport)
-	var session := GameSession.new()
-	viewport.add_child(session)
-	session.setup(def)
-	return session
-
-
-## Removes the session's world immediately; queue_free alone would leave its bodies
-## in the physics space for one more step.
-func free_session(session: GameSession) -> void:
-	var viewport := session.get_parent()
-	tree.root.remove_child(viewport)
-	viewport.queue_free()
-
-
 func wait_physics_frames(count: int) -> void:
 	for i in count:
 		await tree.physics_frame

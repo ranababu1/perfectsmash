@@ -266,6 +266,149 @@
 			"files": [
 				"res://assets/audio/sfx/shared/gam_sfx_ui_defeat_01.ogg"
 			]
+		},
+		"penetrator_fire": {
+			"fallback": "launch",
+			"volume_db": -1.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t2_03.ogg"
+			]
+		},
+		"penetrator_impact": {
+			"fallback": "impact",
+			"volume_db": -5.0,
+			"pitch_variance": 0.05,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_impact_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_impact_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_impact_03.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_impact_04.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_impact_05.ogg"
+			]
+		},
+		"penetrator_ready": {
+			"fallback": "click",
+			"volume_db": -4.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_handle_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_handle_02.ogg"
+			]
+		},
+		"pulse_cannon_fire": {
+			"fallback": "launch",
+			"volume_db": -3.0,
+			"pitch_variance": 0.05,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg"
+			]
+		},
+		"pulse_cannon_discharge": {
+			"fallback": "shatter",
+			"volume_db": -5.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_energy_discharge_04.ogg"
+			]
+		},
+		"pulse_cannon_ready": {
+			"fallback": "click",
+			"volume_db": -16.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_04.ogg"
+			]
+		},
+		"disruptor_fire": {
+			"fallback": "launch",
+			"volume_db": -2.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_charge_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_charge_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_charge_03.ogg"
+			]
+		},
+		"disruptor_emp": {
+			"fallback": "shatter",
+			"volume_db": -3.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_02.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_machine_failure_04.ogg"
+			]
+		},
+		"disruptor_emp_crackle": {
+			"fallback": "shatter",
+			"volume_db": -4.0,
+			"pitch_variance": 0.05,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_01.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_03.ogg",
+				"res://assets/audio/sfx/shared/shr_sfx_electric_short_05.ogg"
+			]
+		},
+		"disruptor_ready": {
+			"fallback": "click",
+			"volume_db": -4.0,
+			"pitch_variance": 0.06,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_handle_03.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_weapon_handle_04.ogg"
+			]
+		},
+		"temporal_lance_fire": {
+			"fallback": "launch",
+			"volume_db": 0.0,
+			"pitch_variance": 0.03,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_kinetic_fire_t3_03.ogg"
+			]
+		},
+		"temporal_lance_impact": {
+			"fallback": "shatter",
+			"volume_db": -6.0,
+			"pitch_variance": 0.04,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_breach_shockwave_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_shockwave_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_breach_shockwave_03.ogg"
+			]
+		},
+		"temporal_lance_ready": {
+			"fallback": "click",
+			"volume_db": -3.0,
+			"pitch_variance": 0.0,
+			"bus": "SFX",
+			"files": [
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_01.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_02.ogg",
+				"res://assets/audio/sfx/shared/opr_sfx_reload_ready_03.ogg"
+			]
 		}
 	},
 	"impact_by_material": {
@@ -276,7 +419,9 @@
 		"ai_core_module": "impact_electronic",
 		"energy_component": "impact_electronic",
 		"composite": "impact_composite",
-		"concrete": "impact_concrete"
+		"concrete": "impact_concrete",
+		"temporal_crystal": "impact_glass",
+		"reactor_housing": "impact_electronic"
 	},
 	"destroyed_by_material": {
 		"reinforced_steel": "structure_collapse",
@@ -286,7 +431,9 @@
 		"glass_polymer": "impact_glass",
 		"electronic_module": "machine_failure",
 		"energy_component": "secondary_blast",
-		"ai_core_module": "core_destroyed"
+		"ai_core_module": "core_destroyed",
+		"temporal_crystal": "impact_glass",
+		"reactor_housing": "secondary_blast"
 	},
 	"default_impact": "impact_generic",
 	"default_destroyed": "component_destroyed",
@@ -330,13 +477,6 @@
 			"file": "res://assets/audio/music/shared/gam_mus_defeat_mission.ogg",
 			"volume_db": -10.5,
 			"loop_overlap": 0.0,
-			"bus": "Music",
-			"loops": false
-		},
-		"legacy_bed": {
-			"file": "res://assets/audio/music/gameplay_bed.ogg",
-			"volume_db": -12.0,
-			"loop_overlap": 4.5,
 			"bus": "Music",
 			"loops": false
 		},
@@ -421,7 +561,7 @@
 		"meridian_excavation": {"file": "res://assets/audio/ambience/meridian/mrd_amb_excavation_01.ogg", "volume_db": -6.0, "loop_overlap": 0.0, "bus": "Ambience", "loops": true}
 	},
 	"missions": {
-		"helix_01": {
+		"helix_08": {
 			"intensity": [
 				"helix_prep",
 				"helix_gameplay",

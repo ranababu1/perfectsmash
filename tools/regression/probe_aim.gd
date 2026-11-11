@@ -10,7 +10,13 @@ const LIFTS := [0, -4, -8, -12, -16, -20, -24, -28, -32, -40, -50, -60, -75, -90
 
 
 ## Returns {direction: Vector2 (ZERO when blocked), blocker: String (component id, "static" or "")}.
-static func aim(world: MissionWorld, target: ComponentBody) -> Dictionary:
+## `through`: component ids a piercing round is expected to pass (treated as transparent).
+static func aim(world: MissionWorld, target: ComponentBody, through: Array = []) -> Dictionary:
+	var transparent: Array[RID] = []
+	for id: Variant in through:
+		var body := world.body_for(str(id))
+		if body != null:
+			transparent.append(body.get_rid())
 	var weapon := world.engine.selected_weapon()
 	var gravity := float(ProjectSettings.get_setting("physics/2d/default_gravity")) * float(weapon.stats.gravity_scale)
 	var muzzle := world.muzzle_position()
@@ -19,7 +25,7 @@ static func aim(world: MissionWorld, target: ComponentBody) -> Dictionary:
 	var clearable := []
 	for lift: int in LIFTS:
 		var direction := (target.global_position + Vector2(0, lift)) - muzzle
-		var hit := first_hit(world, muzzle, weapon.launch_velocity(direction, 1.0), gravity, float(weapon.stats.projectile_radius))
+		var hit := first_hit(world, muzzle, weapon.launch_velocity(direction, 1.0), gravity, float(weapon.stats.projectile_radius), transparent)
 		trace.append("%d:%s" % [lift, (hit as ComponentBody).component_id if hit is ComponentBody else ("static" if hit != null else "none")])
 		if hit == target:
 			return {"direction": direction, "blocker": "", "trace": trace}
@@ -33,9 +39,9 @@ static func aim(world: MissionWorld, target: ComponentBody) -> Dictionary:
 	return {"direction": Vector2.ZERO, "blocker": blocker, "trace": trace}
 
 
-static func first_hit(world: MissionWorld, start: Vector2, velocity: Vector2, gravity: float, radius: float = 4.0) -> Object:
+static func first_hit(world: MissionWorld, start: Vector2, velocity: Vector2, gravity: float, radius: float = 4.0, transparent: Array[RID] = []) -> Object:
 	var space := world.get_world_2d().direct_space_state
-	var exclude: Array[RID] = []
+	var exclude: Array[RID] = transparent.duplicate()
 	for p in world.projectiles:
 		if is_instance_valid(p):
 			exclude.append(p.get_rid())

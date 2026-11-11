@@ -151,6 +151,12 @@ func _parse_component(entry: Dictionary) -> Dictionary:
 		supports.assign(raw_supports)
 	else:
 		errors.append("component '%s': supports must be an array of ids" % str(entry.get("id")))
+	var shielded_by: Array[String] = []
+	var raw_shields: Variant = entry.get("shielded_by", [])
+	if raw_shields is Array and raw_shields.all(func(s: Variant) -> bool: return s is String):
+		shielded_by.assign(raw_shields)
+	else:
+		errors.append("component '%s': shielded_by must be an array of ids" % str(entry.get("id")))
 	var scale: Variant = entry.get("health_scale", 1.0)
 	var minimum: Variant = entry.get("min_supports", -1)
 	return {
@@ -164,6 +170,8 @@ func _parse_component(entry: Dictionary) -> Dictionary:
 		"critical_asset": entry.get("critical_asset", false) == true,
 		"supports": supports,
 		"min_supports": int(minimum) if (minimum is float or minimum is int) else -1,
+		## Shield emitters: while any of these components stands, this one takes no damage.
+		"shielded_by": shielded_by,
 	}
 
 
@@ -202,6 +210,8 @@ func _validate(materials: MaterialCatalog, weapons: WeaponCatalog) -> void:
 	for weapon_id in weapon_order:
 		if not weapons.has_weapon(weapon_id):
 			errors.append(prefix + "unknown weapon '%s'" % weapon_id)
+		elif chapter >= 1 and weapons.get_weapon(weapon_id).unlock_chapter > chapter:
+			errors.append(prefix + "weapon '%s' unlocks in chapter %d" % [weapon_id, weapons.get_weapon(weapon_id).unlock_chapter])
 		total_ammo += int(weapon_ammunition[weapon_id])
 	if total_ammo < recommended_shots:
 		errors.append(prefix + "ammunition (%d) is below the recommended shots (%d)" % [total_ammo, recommended_shots])
@@ -222,6 +232,10 @@ func _validate(materials: MaterialCatalog, weapons: WeaponCatalog) -> void:
 		_check_box(c, where.trim_suffix(": "))
 	if components.is_empty():
 		errors.append(prefix + "mission has no components")
+	for c in components:
+		for emitter: String in c.shielded_by:
+			if emitter == c.id or not ids.has(emitter):
+				errors.append(prefix + "component '%s': unknown shield emitter '%s'" % [c.id, emitter])
 
 	var structure := StructuralDependencySystem.from_entries(structure_entries())
 	for problem in structure.errors:

@@ -604,3 +604,19 @@ Implementation batches for the prototype: (1) materials, weapons, damage, damage
 - **Deferred (default):** cinematic player and Story Archive; removal of the legacy 20 levels (kept frozen for regression).
 - **Contracts and ownership:** `docs/interfaces.md` (mission catalog naming `<chapter theme>_<nn>`, schema, signals, HUD, weapons, audio ids, save v4, asset baseline, test layout).
 - **Milestones:** M0 baseline (orchestrator), then one chapter batch of 20 per milestone (M1 Helix 02-20, M2 VITA, M3 Nova Grid, M4 Civitas, M5 Meridian). Each batch: schema-valid, assets mapped, solvable by probe within its recommended shots, QA report, full suite green. Physical-device validation is a human task and is not claimed by any milestone.
+
+## 13. Revision 7: complete game, autonomous delivery (owner, 2026-11-11)
+
+**Status:** Owner decisions, final. They supersede revision 6 defaults where they differ.
+
+- **Mandate:** deliver the complete game (100 integrated, playable, balanced and verified missions in five chapters) in one autonomous cycle; milestone summaries are not approval gates.
+- **Git:** the orchestrator may merge its own PRs into `main` once the quality gates pass; work goes through chapter-level branches and PRs (review history); never push directly to `main`, never force-push or rewrite history.
+- **Weapons:** build all four chapter weapons — Penetrator (II), Pulse Cannon (III), Disruptor (IV), Temporal Lance (V) — each unlocked at the start of its chapter, implemented, balanced, upgradable and tested before levels depend on it; levels are designed around them.
+- **Cinematics:** a cinematic player and Story Archive built from the existing stills with slow pan and zoom, subtitles, music and skip. No AI-generated narration or voice recordings; voice settings stay hidden.
+- **Online:** release one is fully offline and single-player: no accounts, leaderboards, Temporal Frontlines, cloud saves, advertisements, in-app purchases or analytics. The architecture stays extensible.
+- **Retired levels:** removed from shipped content once the 100 missions have independent coverage; regression tests that validate engine behaviour are kept.
+- **Helix 01:** the original prototype moves to about level 8 with its gameplay and physics identity intact; a new, approachable level 1 teaches the basics.
+- **Rights:** stop using `gameplay_bed.ogg` (licence unverified) and use reviewed chapter music from the library; never alter or falsely clear licence/rights fields; keep an explicit rights audit. The game may be technically complete, but commercial release clearance is not claimed until the owner approves the outstanding rights.
+- **Builds:** debug Android APK, unsigned release Android AAB, release candidate tag `1.0.0-rc1`. Signing keys are the owner's and are never accessed. iOS is recorded as unverified (no macOS environment).
+- **Store materials:** screenshots, descriptions, short and long copy, release notes, feature graphics and privacy documentation; the privacy statement must reflect the audited behaviour of the final application and its dependencies. The owner submits and publishes.
+- **Visual direction:** keep the Helix camera, HUD, results presentation and visual language; evolve environments, palettes, atmosphere and identity so each chapter feels like a different world.

@@ -1,5 +1,5 @@
 {
-	"_note": "Physical behaviour only. Visual appearance lives in presentation code. Initial values are tuning starting points, to be calibrated in play (Batch 5). Units: density = mass per square pixel; health = damage points; resistances = fraction of damage absorbed (0-0.95); min_damage = per-hit damage (after resistance) below which a hit is ignored; structural_resistance (optional, defaults to impact_resistance) = fraction of structural damage (falls, crushing, debris) absorbed; blast_transmission = share of a blast (damage and knockback) that passes through a component of this material when it stands between the blast and a target (0.05-1, multiplied per blocker; weapon penetration lets part of the blocked share through).",
+	"_note": "Physical behaviour only. Visual appearance lives in presentation code. Initial values are tuning starting points, to be calibrated in play (Batch 5). Units: density = mass per square pixel; health = damage points; resistances = fraction of damage absorbed (0-0.95); min_damage = per-hit damage (after resistance) below which a hit is ignored; structural_resistance (optional, defaults to impact_resistance) = fraction of structural damage (falls, crushing, debris) absorbed; blast_transmission = share of a blast (damage and knockback) that passes through a component of this material when it stands between the blast and a target (0.05-1, multiplied per blocker; weapon penetration lets part of the blocked share through); vulnerable_to (optional) = weapon ids whose damage applies, any other damage (other weapons, secondary blasts, collisions) is ignored.",
 	"materials": [
 		{
 			"id": "lightweight_alloy",
@@ -42,6 +42,20 @@
 			"density": 0.0016, "friction": 0.6, "bounce": 0.05,
 			"health": 90, "impact_resistance": 0.15, "blast_resistance": 0.0, "min_damage": 4, "blast_transmission": 0.5,
 			"on_destroyed": {"blast_damage": 70, "blast_radius": 110, "blast_impulse": 260}
+		},
+		{
+			"_note": "Shielded housing of an energy core (Nova Grid reactor, Meridian convergence core): built to survive falls and debris and to take several hits, but it is still an energy store, so its destruction sets off a large secondary blast. Plain energy_component stays for capacitor and temporal cells.",
+			"id": "reactor_housing",
+			"density": 0.0018, "friction": 0.6, "bounce": 0.05,
+			"health": 260, "impact_resistance": 0.3, "blast_resistance": 0.25, "structural_resistance": 0.6, "min_damage": 6, "blast_transmission": 0.3,
+			"on_destroyed": {"blast_damage": 110, "blast_radius": 150, "blast_impulse": 420}
+		},
+		{
+			"_note": "Meridian temporal crystal (anchors, stabiliser lattices): unaffected by every weapon, blast and collision except the Temporal Lance (vulnerable_to). Light and brittle once the Lance reaches it.",
+			"id": "temporal_crystal",
+			"density": 0.0014, "friction": 0.5, "bounce": 0.05,
+			"health": 200, "impact_resistance": 0.3, "blast_resistance": 0.3, "min_damage": 6, "blast_transmission": 0.3,
+			"vulnerable_to": ["temporal_lance"]
 		}
 	]
 }

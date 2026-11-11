@@ -8,7 +8,7 @@ extends Node
 ## and export presets are never touched. Desktop runs are functional smoke tests only; mobile
 ## evidence must come from physical devices.
 ##
-## Scenarios drive the real app root (menu, GameScreen, physics) and add proxy scenes for content
+## Scenarios drive the real app root (menu) and add proxy scenes for content
 ## that does not exist yet (chapter parallax art, particles/shaders, cinematics). Proxies are
 ## labelled as such in the report.
 
@@ -73,26 +73,8 @@ func _run() -> void:
 	await _wait(1.0)
 	await _scenario("menu_idle", 6.0, "real")
 
-	_report["level_load_ms"] = await _measure_level_loads()
-
-	_main._start_level(0)
-	await _wait(0.5)
-	_drive_solutions()
-	await _scenario("level_ordinary_L01", 8.0, "real")
-
-	var finale: int = _main.catalog.index_of("L20")
-	_main._start_level(maxi(finale, 0))
-	await _wait(0.5)
-	_drive_solutions()
-	await _scenario("destruction_L20_grand_collapse", 12.0, "real")
-
-	_main._game.start(_stress_level(), 99, false)
-	await _wait(0.5)
-	_drive_stress_shots()
-	await _scenario("destruction_stress_synthetic", 12.0, "synthetic level, real physics")
-
-	_main._show_menu()
-	await _wait(0.3)
+	# The retired slingshot scenarios (level loads, L01, L20, synthetic stress, soak) were removed
+	# with the legacy game on 2026-11-11; real mission load is measured by mission_benchmark.gd.
 	var proxy := _parallax_proxy()
 	add_child(proxy)
 	await _wait(0.5)
@@ -111,10 +93,6 @@ func _run() -> void:
 	await _scenario("cinematic_proxy", 10.0, "proxy slides")
 	proxy.queue_free()
 
-	var soak_minutes := float(_config.get("soak_minutes", 0.0))
-	if soak_minutes > 0.0:
-		await _soak(soak_minutes)
-
 	_report["scenarios"] = _results
 	_report["focus_lost_during_run"] = _focus_lost
 	_report["memory"] = _memory()
@@ -127,8 +105,9 @@ func _make_main() -> Node:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUTPUT_DIR))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(SAVE_PATH)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	return main
 
 
@@ -190,67 +169,6 @@ func _summarise(scenario_name: String, kind: String, seconds: float) -> Dictiona
 static func _percentile(sorted: PackedFloat32Array, q: float) -> float:
 	var index := clampi(int(ceil(q * sorted.size())) - 1, 0, sorted.size() - 1)
 	return sorted[index]
-
-
-func _measure_level_loads() -> Array:
-	var loads := []
-	for i in _main.catalog.levels.size():
-		var start := Time.get_ticks_usec()
-		_main._start_level(i)
-		await get_tree().process_frame
-		loads.append({"id": _main.catalog.levels[i].id, "ms_to_next_frame": snappedf((Time.get_ticks_usec() - start) / 1000.0, 0.01)})
-	_main._show_menu()
-	await _wait(0.3)
-	return loads
-
-
-## Fires the level's stored solution shots whenever the session accepts a launch.
-func _drive_solutions() -> void:
-	var game: GameScreen = _main._game
-	var shots: Array[Vector2] = game.session.definition.solution
-	for velocity in shots:
-		while is_instance_valid(game) and not game.session.can_launch():
-			await get_tree().physics_frame
-		if not is_instance_valid(game):
-			return
-		game.session.launch(velocity)
-		await _wait(0.2)
-
-
-func _drive_stress_shots() -> void:
-	var game: GameScreen = _main._game
-	for velocity: Vector2 in [Vector2(1150, -300), Vector2(1200, -420), Vector2(1250, -200)]:
-		var waited := 0
-		while is_instance_valid(game) and not game.session.can_launch() and waited < 600:
-			await get_tree().physics_frame
-			waited += 1
-		if not is_instance_valid(game) or not game.session.can_launch():
-			return
-		game.session.launch(velocity)
-		await _wait(0.2)
-
-
-## A deliberately heavy layout (60 wood blocks, 8 glass, 4 stone, 3 targets) for worst-case
-## destruction load. Not a shipped level.
-func _stress_level() -> LevelDefinition:
-	var blocks := []
-	for column in 10:
-		for row in 6:
-			blocks.append({"x": 720 + column * 44, "y": 620 - row * 40, "w": 40, "h": 38, "material": "wood"})
-	for i in 8:
-		blocks.append({"x": 700 + i * 60, "y": 375, "w": 56, "h": 12, "material": "glass"})
-	for i in 4:
-		blocks.append({"x": 760 + i * 120, "y": 345, "w": 100, "h": 30, "material": "stone"})
-	var data := {
-		"id": "BENCH_STRESS", "name": "Stress", "hint": "", "shots": 3, "par": 3,
-		"launcher": [180, 540], "objective": {"type": "destroy_targets"},
-		"statics": [], "blocks": blocks,
-		"targets": [{"x": 800, "y": 310, "r": 18}, {"x": 920, "y": 310, "r": 18}, {"x": 1040, "y": 310, "r": 18}],
-	}
-	var def := LevelDefinition.from_dict(data)
-	if not def.is_valid():
-		push_error("renderer_eval: stress level invalid: %s" % ", ".join(def.errors))
-	return def
 
 
 ## Three full-screen translucent layers drifting at different speeds: the overdraw pattern a
@@ -348,29 +266,6 @@ func _cinematic_proxy() -> Node:
 	subtitle.size = Vector2(view.x, 60)
 	root.add_child(subtitle)
 	return layer
-
-
-## Repeats the stress level for the configured minutes, reporting each minute separately so a
-## thermal slowdown shows up as rising frame times.
-func _soak(minutes: float) -> void:
-	var rounds := int(ceil(minutes))
-	for minute in rounds:
-		_main._start_level(0)
-		await get_tree().process_frame
-		_main._game.start(_stress_level(), 99, false)
-		await _wait(0.3)
-		_soak_driver(60.0)
-		await _scenario("soak_minute_%02d" % (minute + 1), 60.0, "synthetic level, sustained")
-
-
-func _soak_driver(seconds: float) -> void:
-	var deadline := Time.get_ticks_msec() + int(seconds * 1000.0)
-	while Time.get_ticks_msec() < deadline:
-		await _drive_stress_shots()
-		if Time.get_ticks_msec() >= deadline or not is_instance_valid(_main._game):
-			return
-		_main._game.start(_stress_level(), 99, false)
-		await _wait(0.3)
 
 
 func _proxy_texture(base: Color, contrast: float, seed_value: int) -> Texture2D:

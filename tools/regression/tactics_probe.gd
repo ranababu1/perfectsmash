@@ -9,7 +9,7 @@ extends SceneTree
 ##
 ##   godot_console --headless --fixed-fps 60 -s tools/regression/tactics_probe.gd [-- --variants=a,b]
 
-const MISSION := "res://data/missions/helix_01.json"
+const MISSION := "res://data/missions/helix_08.json"
 const ProbeAim := preload("res://tools/regression/probe_aim.gd")
 const VARIANTS := ["shipped", "pre_batch5"]
 const BREACH_ANGLES := [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]

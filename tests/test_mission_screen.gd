@@ -10,8 +10,9 @@ func _make_main() -> Node:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
-	main.boot_mission = "helix_01"
+	main.boot_mission = "helix_08"
 	tree.root.add_child(main)
 	await tree.process_frame
 	return main
@@ -43,22 +44,21 @@ func test_app_boots_into_the_campaign_menu() -> void:
 	if FileAccess.file_exists(TEST_SAVE):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(TEST_SAVE))
 	var main: Node = MainScript.new()
+	main.cinematics_enabled = false
 	main.save = SaveService.new(TEST_SAVE)
 	tree.root.add_child(main)
 	await tree.process_frame
 	assert_true(main._campaign != null and main._mission == null, "the campaign menu is the first screen")
 	assert_eq(main._campaign.view, CampaignScreen.View.MENU)
 	assert_eq(main._campaign.continue_target(), "helix_01", "Continue starts the first mission on a fresh save")
-	assert_true(main._menu == null, "legacy menu is not shown")
 	await _free(main)
 
 
-func test_boot_mission_starts_helix_01() -> void:
+func test_boot_mission_starts_the_requested_mission() -> void:
 	var main: Node = await _make_main()
 	var screen: MissionScreen = main._mission
 	assert_true(screen != null, "boot_mission starts the mission directly")
-	assert_true(main._menu == null, "legacy menu is not shown")
-	assert_eq(screen.engine.definition.id, "helix_01")
+	assert_eq(screen.engine.definition.id, "helix_08")
 	assert_true(screen.view.operative != null, "operative is in the scene")
 	assert_true(screen.view.camera.current)
 	await _free(main)
@@ -157,7 +157,7 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	assert_true(screen.last_score.mission_points > 1000)
 	assert_true(screen.last_research_granted >= 20, "completion Research Data granted")
 	var stored := SaveService.new(TEST_SAVE).load_progress()
-	assert_true(stored.is_mission_completed("helix_01"), "result written to disk")
+	assert_true(stored.is_mission_completed("helix_08"), "result written to disk")
 	assert_eq(stored.research_data, screen.last_research_granted)
 	var first_score: Dictionary = screen.last_score.duplicate()
 	var first_granted := screen.last_research_granted
@@ -176,8 +176,8 @@ func test_finished_mission_is_scored_saved_and_not_farmable() -> void:
 	assert_eq(again.last_research_granted, 0, "replaying for the same result earns no Research Data")
 	var reloaded := SaveService.new(TEST_SAVE).load_progress()
 	assert_eq(reloaded.research_data, first_granted)
-	assert_eq(reloaded.mission_result("helix_01").attempts, 2, "both runs counted")
-	assert_eq(reloaded.mission_result("helix_01").completions, 2)
+	assert_eq(reloaded.mission_result("helix_08").attempts, 2, "both runs counted")
+	assert_eq(reloaded.mission_result("helix_08").completions, 2)
 	await _free(main)
 
 
@@ -196,4 +196,25 @@ func test_hud_uses_production_theme_icons_and_operative() -> void:
 	assert_true(screen.view.operative.muzzle != null, "weapon model with its muzzle marker")
 	screen.select_weapon("breach_charge")
 	assert_eq(String(screen.view.operative.muzzle.get_parent().name), "opr_wpn_breach_charge_a", "the shown weapon follows the selection")
+	await _free(main)
+
+
+## Ported from the retired legacy UI-flow suite: a press that starts on a HUD button (Pause, a
+## weapon button) and is dragged into the scene must never fire a round.
+func test_drag_starting_on_a_hud_button_never_fires() -> void:
+	var main: Node = await _make_main()
+	var screen: MissionScreen = main._mission
+	var ammo: int = screen.engine.weapons.kinetic_accelerator.ammo
+	tree.root.notification(Window.NOTIFICATION_VP_MOUSE_ENTER)
+	var pause_button := screen.hud.find_child("PauseButton", true, false) as Control
+	var start := pause_button.get_global_rect().get_center() if pause_button != null else Vector2(tree.root.get_visible_rect().size.x - 60, 50)
+	var into_scene := screen.view.plane_to_screen(Vector2(830.0, 462.0))
+	_mouse(start, true)
+	await tree.process_frame
+	_motion(into_scene)
+	await tree.process_frame
+	_mouse(into_scene, false)
+	await tree.process_frame
+	assert_eq(screen.engine.weapons.kinetic_accelerator.ammo, ammo, "a drag that starts on a HUD button never fires")
+	assert_true(screen.world.projectiles.is_empty())
 	await _free(main)

@@ -11,7 +11,7 @@ func _hud() -> MissionHud:
 func _engine() -> MissionEngine:
 	var materials := MaterialCatalog.load_from_file()
 	var weapons := WeaponCatalog.load_from_file()
-	var def := MissionDefinition.load_from_file("res://data/missions/helix_01.json", materials, weapons)
+	var def := MissionDefinition.load_from_file("res://data/missions/helix_08.json", materials, weapons)
 	return MissionEngine.new(def, materials, weapons)
 
 

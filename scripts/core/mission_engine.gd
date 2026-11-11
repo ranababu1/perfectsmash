@@ -27,6 +27,8 @@ signal mission_finished(success: bool)
 ## Mandatory goals are complete and the scene has settled, but optional goals remain. Emitted at
 ## most once per mission; the mission stays active until continue_mission() or finish_mission().
 signal decision_requested
+## The last standing shield emitter of `component_id` fell: it can be damaged from now on.
+signal shield_dropped(component_id: String)
 
 enum Phase { ACTIVE, SUCCEEDED, FAILED }
 
@@ -47,6 +49,8 @@ var _total_health := 0.0
 ## all optional goals complete, or the ammunition running out.
 var awaiting_decision := false
 var _decision_offered := false
+## component id -> Array[String] of shield emitter ids (only shielded components are listed).
+var _shields := {}
 
 
 ## `upgrade_levels`: weapon id -> {attribute: level}. Callers must pass a valid definition.
@@ -72,6 +76,9 @@ func _init(p_definition: MissionDefinition, materials: MaterialCatalog, weapon_c
 		_total_health += component.max_health
 	structure = StructuralDependencySystem.from_entries(definition.structure_entries())
 	objectives = MissionObjectives.new(definition.objectives)
+	for c in definition.components:
+		if not (c.get("shielded_by", []) as Array).is_empty():
+			_shields[c.id] = c.shielded_by
 
 
 func is_active() -> bool:
@@ -139,14 +146,33 @@ func tick(delta: float, scene_settled: bool) -> void:
 
 
 ## Routes damage to a component. Returns the damage applied after resistance.
-func apply_damage(component_id: String, raw: float, damage_type: String, penetration: float = 0.0) -> float:
+## `source` is the weapon id that caused the damage ("" for collisions and secondary blasts).
+## Shielded components and materials restricted by `vulnerable_to` ignore damage they don't accept.
+func apply_damage(component_id: String, raw: float, damage_type: String, penetration: float = 0.0, source: String = "") -> float:
 	var component: DamageableComponent = components.get(component_id)
 	if component == null:
 		push_warning("MissionEngine: damage for unknown component '%s'" % component_id)
 		return 0.0
-	if not is_active():
+	if not is_active() or is_shielded(component_id) or not component.material.accepts_damage_from(source):
 		return 0.0
 	return component.receive_damage(raw, damage_type, penetration)
+
+
+## True while at least one of the component's shield emitters is not destroyed.
+func is_shielded(component_id: String) -> bool:
+	for emitter: String in _shields.get(component_id, []):
+		if component_state(emitter) != DamageableComponent.State.DESTROYED:
+			return true
+	return false
+
+
+## Components currently protected by a standing shield emitter.
+func shielded_components() -> Array[String]:
+	var ids: Array[String] = []
+	for id: String in _shields:
+		if is_shielded(id) and component_state(id) != DamageableComponent.State.DESTROYED:
+			ids.append(id)
+	return ids
 
 
 ## Destroys a component outright (e.g. it fell out of the mission area).
@@ -247,6 +273,9 @@ func _on_component_state_changed(component: DamageableComponent, previous: int, 
 
 func _on_component_destroyed(component: DamageableComponent) -> void:
 	component_destroyed.emit(component.id)
+	for shielded: String in _shields:
+		if (_shields[shielded] as Array).has(component.id) and not is_shielded(shielded):
+			shield_dropped.emit(shielded)
 	var released := structure.fail(component.id)
 	if not released.is_empty():
 		components_released.emit(released)
